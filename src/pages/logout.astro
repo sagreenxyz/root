@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Logout – Root" protected={false}>
+  <div style="max-width: 400px; margin: 4rem auto; text-align: center;">
+    <div style="font-size:3rem; margin-bottom:1rem;">👋</div>
+    <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Signing out…</h1>
+    <p style="color:#64748b;">You will be redirected to the login page.</p>
+  </div>
+</Layout>
+
+<script>
+  sessionStorage.removeItem('auth_token');
+  sessionStorage.removeItem('auth_user');
+  window.location.replace((import.meta.env.BASE_URL || '') + '/login');
+</script>

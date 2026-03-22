@@ -1,0 +1,110 @@
+---
+interface Props {
+  title: string;
+  protected?: boolean;
+}
+
+const { title, protected: isProtected = true } = Astro.props;
+
+// Build-time base URL for client-side redirects
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Root – a protected Astro site" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <title>{title}</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --accent: #6366f1;
+        --accent-dark: #4f46e5;
+        --text: #1e293b;
+        --muted: #64748b;
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --border: #e2e8f0;
+      }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        padding: 0 2rem;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      header a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.1rem; }
+      nav a {
+        margin-left: 1.5rem;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+      nav a:hover { color: var(--accent); }
+      main { flex: 1; padding: 2rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href={base || '/'}>⚡ Root</a>
+      <nav id="site-nav">
+        <a href={`${base}/`} id="nav-home">Home</a>
+        <a href={`${base}/dashboard`} id="nav-dashboard">Dashboard</a>
+        <a href={`${base}/login`} id="nav-login">Login</a>
+        <a href={`${base}/logout`} id="nav-logout" style="display:none">Logout</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> · Hosted on GitHub Pages</p>
+    </footer>
+
+    {isProtected && (
+      <script define:vars={{ base }}>
+        (function () {
+          const token = sessionStorage.getItem('auth_token');
+          if (!token) {
+            window.location.replace((base || '') + '/login?next=' + encodeURIComponent(window.location.pathname));
+          }
+        })();
+      </script>
+    )}
+
+    <script define:vars={{ base }}>
+      (function () {
+        const token = sessionStorage.getItem('auth_token');
+        const loginLink = document.getElementById('nav-login');
+        const logoutLink = document.getElementById('nav-logout');
+        if (token) {
+          if (loginLink) loginLink.style.display = 'none';
+          if (logoutLink) logoutLink.style.display = 'inline';
+        }
+      })();
+    </script>
+  </body>
+</html>

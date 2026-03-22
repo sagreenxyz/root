@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dashboard – Root" protected={true}>
+  <h1 style="margin-bottom:1rem;">📊 Dashboard</h1>
+  <p style="color:#64748b; margin-bottom:2rem;">Welcome to your protected dashboard. Only authenticated users can see this page.</p>
+
+  <div style="display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); margin-bottom:2rem;">
+    {[
+      { label: 'Pages', value: '4', icon: '📄' },
+      { label: 'Users', value: '1', icon: '👤' },
+      { label: 'Status', value: 'Live', icon: '🟢' },
+      { label: 'Host', value: 'GitHub Pages', icon: '☁️' },
+    ].map(card => (
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
+        <div style="font-size:1.5rem; margin-bottom:0.5rem;">{card.icon}</div>
+        <div style="font-size:0.8rem; color:#64748b; text-transform:uppercase; letter-spacing:0.05em;">{card.label}</div>
+        <div style="font-size:1.4rem; font-weight:700; margin-top:0.25rem;">{card.value}</div>
+      </div>
+    ))}
+  </div>
+
+  <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem;">
+    <h2 style="font-size:1rem; font-weight:600; margin-bottom:1rem;">Session Info</h2>
+    <p id="session-user" style="color:#64748b; font-size:0.9rem;"></p>
+  </div>
+</Layout>
+
+<script>
+  const user = sessionStorage.getItem('auth_user') || 'unknown';
+  const el = document.getElementById('session-user');
+  if (el) el.textContent = `Logged in as: ${user}`;
+</script>
