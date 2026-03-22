@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const articles = [
+  {
+    icon: '🚀',
+    title: 'Getting Started',
+    date: 'March 2025',
+    summary: 'An introduction to this site and how it works — built with Astro and hosted on GitHub Pages.',
+    body: `This site is a static web application built with Astro and deployed to GitHub Pages via a GitHub Actions workflow. It has two distinct areas:\n\n• Public area — open to everyone, no login required.\n• Protected area — accessible only to authenticated users. Credentials are verified client-side using SHA-256 hashing, and private content is stored as AES-256-GCM ciphertext.\n\nThe goal is to demonstrate a simple, server-free approach to gating content without relying on a backend.`,
+  },
+  {
+    icon: '⚡',
+    title: 'Why Static Sites?',
+    date: 'February 2025',
+    summary: 'Static sites are fast, secure, and cheap to host — here\'s why that matters.',
+    body: `Static sites are pre-rendered at build time, meaning there is no server process to compromise, no database to attack, and no hosting bill to worry about when traffic spikes.\n\nFor content-focused sites, the Jamstack approach — JavaScript, APIs, and Markup — delivers excellent performance while keeping infrastructure simple. Astro takes this further with its "zero JS by default" philosophy, shipping only the JavaScript you explicitly add.\n\nHosting on GitHub Pages adds automatic HTTPS, global CDN delivery, and zero cost for public repositories.`,
+  },
+  {
+    icon: '🔐',
+    title: 'How Authentication Works',
+    date: 'January 2025',
+    summary: 'A look at the client-side, hash-based authentication used to protect private content.',
+    body: `Because this site has no server, traditional session-based or token-based authentication is not an option. Instead, a simple but effective approach is used:\n\n1. At build time, a SHA-256 hash of "<username>:<password>" is injected into the site as a build secret.\n2. When you sign in, the browser hashes your entered credentials and compares the result to the stored hash.\n3. If they match, your auth token (the hash itself) is stored in sessionStorage for the duration of the browser session.\n4. Private content is encrypted with AES-256-GCM, keyed from the auth token via PBKDF2. Decryption happens entirely in the browser.\n\nNo plaintext password ever leaves your device.`,
+  },
+];
+---
+
+<Layout title="Public Content – Root" protected={false}>
+  <div style="margin-bottom:2rem;">
+    <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">🌐 Public Content</h1>
+    <p style="color:#64748b; font-size:1rem;">
+      Articles and information available to everyone — no account required.
+      Looking for private content?
+      <a href={`${base}/dashboard`} style="color:#6366f1; font-weight:600;">Sign in →</a>
+    </p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+    {articles.map((article) => (
+      <article style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.75rem;">
+        <div style="display:flex; align-items:flex-start; gap:1rem;">
+          <div style="font-size:2rem; line-height:1;">{article.icon}</div>
+          <div style="flex:1;">
+            <div style="display:flex; align-items:baseline; gap:0.75rem; margin-bottom:0.35rem; flex-wrap:wrap;">
+              <h2 style="font-size:1.15rem; font-weight:700;">{article.title}</h2>
+              <span style="font-size:0.8rem; color:#94a3b8;">{article.date}</span>
+            </div>
+            <p style="color:#64748b; font-size:0.95rem; margin-bottom:1rem;">{article.summary}</p>
+            <details>
+              <summary style="cursor:pointer; color:#6366f1; font-size:0.875rem; font-weight:600; user-select:none;">
+                Read more
+              </summary>
+              <div style="margin-top:0.9rem; white-space:pre-wrap; line-height:1.75; font-size:0.9rem; color:#334155; border-top:1px solid #f1f5f9; padding-top:0.9rem;">
+                {article.body}
+              </div>
+            </details>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div style="margin-top:2.5rem; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+    <div style="flex:1; min-width:200px;">
+      <p style="font-weight:700; margin-bottom:0.25rem;">🔒 More content is available to members</p>
+      <p style="color:#64748b; font-size:0.875rem;">Sign in to access your private dashboard and encrypted content.</p>
+    </div>
+    <a
+      href={`${base}/dashboard`}
+      style="display:inline-block; background:#6366f1; color:#fff; padding:0.65rem 1.5rem; border-radius:0.5rem; text-decoration:none; font-size:0.9rem; font-weight:600; white-space:nowrap; transition:background 0.2s;"
+      onmouseover="this.style.background='#4f46e5'"
+      onmouseout="this.style.background='#6366f1'"
+    >Sign In →</a>
+  </div>
+</Layout>
