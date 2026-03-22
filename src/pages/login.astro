@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+// AUTH_HASH is injected by the GitHub Actions build step via the AUTH_HASH secret.
+// It must be the SHA-256 hex digest of "<username>:<password>".
+const validHash = import.meta.env.AUTH_HASH ?? '';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Sign In – Root" protected={false}>
+  <div style="max-width:400px; margin:4rem auto; background:#fff; border:1px solid #e2e8f0; border-radius:1rem; padding:2.5rem; box-shadow:0 4px 24px rgba(0,0,0,.06);">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:0.5rem;">🔐</div>
+      <h1 style="font-size:1.5rem; font-weight:700;">Sign In</h1>
+      <p style="color:#64748b; font-size:0.9rem; margin-top:0.25rem;">Enter your credentials to access private content</p>
+    </div>
+
+    <!-- Session-expired notice (shown when ?timeout=1 is in the URL) -->
+    <div id="timeout-msg" style="display:none; color:#92400e; font-size:0.875rem; margin-bottom:1rem; padding:0.5rem 0.75rem; background:#fffbeb; border-radius:0.4rem; border:1px solid #fde68a;">
+      ⏱ Your session expired due to inactivity. Please sign in again.
+    </div>
+
+    <form id="login-form" autocomplete="on">
+      <div style="margin-bottom:1rem;">
+        <label for="username" style="display:block; font-size:0.875rem; font-weight:500; margin-bottom:0.4rem;">Username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          autocomplete="username"
+          placeholder="Username"
+          required
+          style="width:100%; padding:0.6rem 0.8rem; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:1rem; outline:none; transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#6366f1'"
+          onblur="this.style.borderColor='#e2e8f0'"
+        />
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label for="password" style="display:block; font-size:0.875rem; font-weight:500; margin-bottom:0.4rem;">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="••••••••"
+          required
+          style="width:100%; padding:0.6rem 0.8rem; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:1rem; outline:none; transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#6366f1'"
+          onblur="this.style.borderColor='#e2e8f0'"
+        />
+      </div>
+      <div id="error-msg" style="display:none; color:#dc2626; font-size:0.875rem; margin-bottom:1rem; padding:0.5rem 0.75rem; background:#fef2f2; border-radius:0.4rem; border:1px solid #fecaca;"></div>
+      <button
+        type="submit"
+        style="width:100%; padding:0.75rem; background:#6366f1; color:#fff; border:none; border-radius:0.5rem; font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.2s;"
+        onmouseover="this.style.background='#4f46e5'"
+        onmouseout="this.style.background='#6366f1'"
+      >Sign In</button>
+    </form>
+    <p style="text-align:center; margin-top:1.5rem; color:#64748b; font-size:0.8rem;">Contact the site administrator if you need access.</p>
+  </div>
+</Layout>
+
+<!-- Inject the hash from the AUTH_HASH build secret (no plaintext credentials in source). -->
+<script define:vars={{ validHash, base }}>
+  window.__authHash = validHash;
+  window.__base = base;
+</script>
+
+<script>
+  const VALID_HASH: string = (window as any).__authHash ?? '';
+  const BASE: string = (window as any).__base ?? '';
+
+  async function sha256(message: string): Promise<string> {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  // Show session-expired notice if redirected after inactivity timeout
+  if (new URLSearchParams(window.location.search).get('timeout') === '1') {
+    const timeoutMsg = document.getElementById('timeout-msg') as HTMLElement;
+    if (timeoutMsg) timeoutMsg.style.display = 'block';
+    // Clean up the URL so a page refresh doesn't show the notice again
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  // If already authenticated, redirect to private dashboard immediately
+  const existingToken = sessionStorage.getItem('auth_token');
+  if (existingToken) {
+    window.location.replace(BASE + '/private/dashboard');
+  }
+
+  // Login form submission
+  const form = document.getElementById('login-form') as HTMLFormElement;
+  const errorMsg = document.getElementById('error-msg') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = (document.getElementById('username') as HTMLInputElement).value.trim();
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+
+    const hash = await sha256(`${username}:${password}`);
+
+    if (hash === VALID_HASH) {
+      sessionStorage.setItem('auth_token', hash);
+      sessionStorage.setItem('auth_user', username);
+      // Signal the inactivity monitor (defined in Layout.astro) to start.
+      document.dispatchEvent(new CustomEvent('auth:login'));
+      // Redirect to the originally requested page (if any), otherwise to private dashboard.
+      // Use URL parsing to verify same-origin and prevent open redirect attacks.
+      const nextParam = new URLSearchParams(window.location.search).get('next');
+      if (nextParam) {
+        try {
+          const target = new URL(nextParam, window.location.origin);
+          if (target.origin === window.location.origin) {
+            window.location.replace(target.pathname + target.search + target.hash);
+            return;
+          }
+        } catch (_) {
+          // Invalid URL – fall through to private dashboard
+        }
+      }
+      window.location.replace(BASE + '/private/dashboard');
+    } else {
+      errorMsg.textContent = 'Invalid username or password. Please try again.';
+      errorMsg.style.display = 'block';
+      (document.getElementById('password') as HTMLInputElement).value = '';
+    }
+  });
+</script>
