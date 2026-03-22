@@ -88,10 +88,95 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         (function () {
           const token = sessionStorage.getItem('auth_token');
           if (!token) {
-            window.location.replace((base || '') + '/login?next=' + encodeURIComponent(window.location.pathname));
+            window.location.replace((base || '') + '/dashboard?next=' + encodeURIComponent(window.location.pathname));
           }
         })();
       </script>
     )}
+
+    <!-- Inactivity monitor: auto-logout after 15 minutes of inactivity -->
+    <script define:vars={{ base }}>
+      (function () {
+        var TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes
+        var WARN_MS    = 60 * 1000;       // warn 60 seconds before logout
+
+        var logoutTimer = null;
+        var warnTimer   = null;
+        var warnEl      = null;
+        var countdownInterval = null;
+
+        function clearAllTimers() {
+          clearTimeout(logoutTimer);
+          clearTimeout(warnTimer);
+          clearInterval(countdownInterval);
+        }
+
+        function removeWarning() {
+          clearInterval(countdownInterval);
+          if (warnEl) { warnEl.remove(); warnEl = null; }
+        }
+
+        function showWarning() {
+          if (!warnEl) {
+            warnEl = document.createElement('div');
+            warnEl.setAttribute('role', 'alert');
+            warnEl.setAttribute('aria-live', 'polite');
+            warnEl.style.cssText = [
+              'position:fixed', 'bottom:1.5rem', 'right:1.5rem',
+              'background:#1e293b', 'color:#fff',
+              'padding:1rem 1.25rem', 'border-radius:0.75rem',
+              'font-size:0.875rem', 'font-family:system-ui,sans-serif',
+              'box-shadow:0 4px 24px rgba(0,0,0,.3)',
+              'z-index:9999', 'max-width:300px', 'line-height:1.5',
+            ].join(';');
+            document.body.appendChild(warnEl);
+          }
+          var secsLeft = Math.round(WARN_MS / 1000);
+          function render() {
+            warnEl.innerHTML = '\u26a0\ufe0f You will be signed out due to inactivity in <strong>' +
+              secsLeft + '</strong> second' + (secsLeft !== 1 ? 's' : '') + '.';
+          }
+          render();
+          countdownInterval = setInterval(function () {
+            secsLeft--;
+            if (secsLeft > 0) render();
+            else clearInterval(countdownInterval);
+          }, 1000);
+        }
+
+        function doLogout() {
+          sessionStorage.removeItem('auth_token');
+          sessionStorage.removeItem('auth_user');
+          window.location.replace((base || '') + '/dashboard?timeout=1');
+        }
+
+        function reset() {
+          if (!sessionStorage.getItem('auth_token')) return;
+          clearAllTimers();
+          removeWarning();
+          warnTimer   = setTimeout(showWarning, TIMEOUT_MS - WARN_MS);
+          logoutTimer = setTimeout(doLogout,    TIMEOUT_MS);
+        }
+
+        function start() {
+          if (!sessionStorage.getItem('auth_token')) return;
+          var events = ['mousemove', 'mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
+          events.forEach(function (ev) {
+            document.addEventListener(ev, reset, { passive: true });
+          });
+          reset();
+        }
+
+        // Start when a successful login is signalled from another script
+        document.addEventListener('auth:login', start);
+
+        // Auto-start if the visitor is already authenticated when the page loads
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', start);
+        } else {
+          start();
+        }
+      })();
+    </script>
   </body>
 </html>
