@@ -1,0 +1,252 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `The Nurse Practice Act (NPA) is the foundational legislative instrument that governs the practice of nursing in a given jurisdiction. In the United States, each of the fifty states, the District of Columbia, and the U.S. territories has enacted its own Nurse Practice Act—a state statute that defines the legal parameters of nursing practice, establishes the authority and composition of the state board of nursing, sets the requirements for initial licensure and licence renewal, delineates the grounds for disciplinary action, and specifies the scope of practice of registered nurses (RNs), licensed practical/vocational nurses (LPNs/LVNs), and advanced practice registered nurses (APRNs). Analogous legislative frameworks exist in other countries under different names: the Nursing and Midwifery Order (United Kingdom), the Nursing Act (Canada, provincially), and the Health Practitioner Regulation National Law (Australia).
+
+For nursing students and practising nurses, familiarity with the Nurse Practice Act applicable to their jurisdiction is a professional and legal obligation, not an optional supplement to clinical education. Every nursing action—from medication administration and patient assessment to delegation, documentation, and the provision of advanced practice services—occurs within the legal framework that the NPA establishes. Ignorance of that framework is neither a defence to regulatory action nor a protection against the professional and personal consequences of practising outside one's authorised scope. This article provides a comprehensive academic overview of the Nurse Practice Act as a legal, regulatory, and professional instrument, examining its structure, content, administrative apparatus, relationship to professional standards, and implications for nursing practice.`,
+  },
+  {
+    id: 'historical-development',
+    heading: 'Historical Development of Nurse Practice Acts',
+    body: `The legislative regulation of nursing practice in the United States has a history extending more than a century, reflecting the gradual professionalisation of nursing and the evolving complexity of healthcare delivery. Understanding this history illuminates both the purpose of contemporary NPAs and the forces that continue to shape their evolution.
+
+Early Permissive Registration Laws. The first nurse registration laws in the United States were enacted in the early twentieth century, with North Carolina, New Jersey, New York, and Virginia passing registration statutes in 1903. These early laws were permissive rather than mandatory: they established a voluntary register of nurses who met specified educational requirements, but did not prohibit unregistered individuals from practising as nurses. Their primary function was to provide public assurance of the educational credentials of registered nurses, thereby distinguishing trained nurses from the far larger population of self-styled "nurses" with no formal training.
+
+Mandatory Licensure. The transition from permissive registration to mandatory licensure—which prohibited anyone from practising as a nurse without a valid licence—occurred gradually across states during the mid-twentieth century and was substantially complete by the 1950s. Mandatory licensure established nursing as a regulated profession in the full legal sense, grounding it in the state's police power to protect public health and safety by restricting certain occupations to qualified practitioners. The shift to mandatory licensure was accompanied by the development of the first uniform nursing examination—the precursor to the contemporary NCLEX—which standardised the knowledge requirements for licensure across states.
+
+Expansion of Scope and APRN Recognition. The latter decades of the twentieth century and the early twenty-first century have been characterised by a progressive expansion of nursing scope of practice—particularly for advanced practice registered nurses—as evidence accumulated that APRNs could provide a broad range of services safely and effectively, and as healthcare workforce shortages created political pressure to remove scope-of-practice restrictions. The National Council of State Boards of Nursing (NCSBN) Consensus Model for APRN Regulation (2008) proposed a uniform national framework for APRN licensure, accreditation, certification, and education (LACE) that has been progressively adopted by states. Ongoing legislative campaigns to achieve full practice authority for APRNs in all states continue to be a major focus of professional nursing organisations.
+
+The Nurse Licensure Compact. The Nurse Licensure Compact (NLC), administered by the NCSBN and currently adopted by the majority of U.S. states, allows RNs and LPNs/LVNs to hold a single multistate licence that authorises practice in all compact member states. The NLC addresses the workforce mobility needs of travel nurses, telehealth providers, and nurses who live in border regions, while maintaining each state's regulatory authority over nursing practice within its borders. The Enhanced Nurse Licensure Compact (eNLC), implemented in 2018, updated the original compact to include uniform licensure requirements and enhanced public protection provisions.`,
+  },
+  {
+    id: 'structure-content',
+    heading: 'Structure and Content of the Nurse Practice Act',
+    body: `While the specific provisions of Nurse Practice Acts vary across jurisdictions, most NPAs share a common structural and substantive architecture. The following overview describes the major elements typically contained in a state NPA.
+
+Definitions. NPAs typically begin with a definitions section that specifies the legal meaning of key terms: "registered nurse," "licensed practical nurse," "advanced practice registered nurse," "nursing practice," "independent practice," "supervision," "delegation," and related concepts. These definitions are legally operative: a nurse who performs an activity that falls within the statutory definition of nursing practice but who lacks the required licence may be subject to prosecution for the unauthorised practice of a licensed profession.
+
+Board of Nursing. NPAs establish the state board of nursing (BON) as the administrative body responsible for implementing and enforcing the Act. BON composition—typically including RNs, LPNs/LVNs, APRNs, and public (non-nurse) members—and the appointment process (usually gubernatorial appointment) are specified in the NPA. The BON's statutory authority includes promulgating administrative rules and regulations that supplement the NPA, establishing licensure procedures, approving nursing education programmes, investigating complaints, conducting disciplinary hearings, and imposing sanctions.
+
+Licensure Requirements. NPAs specify the requirements for initial licensure: graduation from an approved nursing education programme, passing scores on the relevant licensure examination (NCLEX-RN or NCLEX-PN), absence of disqualifying criminal history, and completion of any required English proficiency or background check requirements. Requirements for licence renewal—including continuing competency requirements, continuing education hours, and the renewal period—are also specified or authorised to be established by the BON through rule-making.
+
+Scope of Practice. The scope of practice provisions of the NPA define what nurses at each level of licensure are legally authorised to do—and, by implication, what activities fall outside their legal authority. RN scope of practice provisions typically authorise nursing assessment, nursing diagnosis, planning, implementation, and evaluation; patient education; medication administration; coordination of care; supervision of other nursing personnel; and specific clinical tasks that may be enumerated in rules. LPN/LVN scope of practice is generally narrower and more procedurally defined, and LPNs/LVNs typically function under the direction of an RN, APRN, or physician. APRN scope of practice—for nurse practitioners, certified nurse-midwives, certified registered nurse anesthetists, and clinical nurse specialists—may include diagnosis and treatment of health conditions, prescription of medications, and ordering of diagnostic tests, within the parameters established by state law.
+
+Disciplinary Provisions. NPAs enumerate the grounds on which a nurse's licence may be suspended, revoked, restricted, or conditioned. Common grounds include: conviction of a crime substantially related to nursing practice, unprofessional conduct, practice while impaired by alcohol or other drugs, falsification of records, negligent or incompetent practice, fraud in obtaining a licence, aiding or abetting unlicensed practice, and violation of board rules or orders. The disciplinary process typically includes investigation, notice and opportunity to be heard (due process protections), a formal hearing before the BON or an administrative law judge, a board determination, and the right of judicial review.`,
+  },
+  {
+    id: 'scope-of-practice',
+    heading: 'Scope of Practice: Definitions and Boundaries',
+    body: `The scope of practice concept is central to the Nurse Practice Act and to the legal regulation of all health professions. Scope of practice defines the boundaries of legally authorised professional activity for a specific category of licensee, serving both a protective function (protecting the public from unqualified practitioners) and a permissive function (granting qualified practitioners the legal authority to provide services that would otherwise be restricted).
+
+Defining Nursing Scope of Practice. The legal definition of nursing scope of practice in state NPAs typically takes one of three forms. Definitional statutes describe nursing practice in general functional terms (e.g., "the performance of nursing assessment, planning, intervention, and evaluation"). List-based statutes enumerate specific activities that nurses are authorised to perform. Hybrid statutes combine a general definition with specific examples. The definitional approach has the advantage of flexibility—it does not require legislative amendment every time nursing practice evolves—but creates interpretive uncertainty at the margins. The NCSBN and state BONs provide interpretive opinions and position statements to guide nurses and employers in applying statutory definitions to specific practice questions.
+
+Intra-Professional Scope Distinctions. NPAs distinguish the scope of practice of RNs, LPNs/LVNs, and APRNs. These distinctions reflect differences in educational preparation (the RN's baccalaureate or associate degree preparation versus the APRN's graduate-level clinical training), degree of professional autonomy, and the complexity of clinical decision-making that each level of nurse is prepared to manage. Nurses who perform activities outside their authorised scope—whether by exceeding their licensure level or by accepting a delegation that is outside their competence—violate the NPA and may be subject to disciplinary action by the BON.
+
+Full Practice Authority and Scope Restrictions. A major ongoing policy debate in nursing concerns the extent to which state NPAs restrict APRN practice by requiring physician supervision, collaboration agreements, or co-signature requirements for APRN prescriptions and orders. Research consistently demonstrates that APRN practice in states with full practice authority (where APRNs may practice independently without mandatory physician oversight) produces patient outcomes equivalent to those in restrictive states, while increasing access to care in underserved areas. Professional nursing organisations—including the American Association of Nurse Practitioners (AANP) and the American Nurses Association (ANA)—actively advocate for legislative reform to achieve full practice authority for APRNs in all states, a goal endorsed by the Institute of Medicine's landmark report The Future of Nursing (2010) and its 2021 successor The Future of Nursing 2020–2030.
+
+Practice Setting and Scope. Scope of practice questions frequently arise in specific practice settings—schools, correctional facilities, occupational health, telehealth—where nursing roles may involve tasks not contemplated by the general scope provisions of the NPA. BON advisory opinions, facility policies, and professional organisation guidance help nurses in these settings determine the boundaries of their practice authority. Nurses who are uncertain whether a specific activity falls within their scope should consult their BON, employer policies, and applicable professional standards before performing the activity.`,
+  },
+  {
+    id: 'board-of-nursing',
+    heading: 'The Board of Nursing: Authority and Function',
+    body: `The state board of nursing is the primary regulatory body for nursing practice in each jurisdiction, exercising delegated legislative authority to implement and enforce the Nurse Practice Act. Understanding the structure, authority, and functions of the BON is essential for nurses who are subject to its jurisdiction—which is to say, every licensed nurse practising in the state.
+
+Regulatory Authority. BON authority derives from the NPA's delegation of rule-making power: the NPA authorises the BON to promulgate administrative rules—regulations that have the force of law—specifying the details of licensure procedures, scope of practice clarifications, disciplinary processes, and continuing competency requirements. BON rules are published in the state administrative code, and nurses are presumed to know and comply with them. Ignorance of a BON rule is not a defence to a disciplinary proceeding.
+
+Complaint Investigation. When a complaint is filed against a nurse—by a patient, a patient's family member, an employer, a colleague, or another regulatory body—the BON is responsible for investigating the complaint to determine whether it falls within the BON's jurisdiction and whether there is probable cause to proceed with disciplinary action. The investigation process typically involves review of medical records and facility documents, interviews with the complainant and the nurse, and consultation with clinical experts. The nurse is entitled to due process protections throughout this process.
+
+Disciplinary Sanctions. Following investigation and, where warranted, a formal hearing, the BON may impose a range of disciplinary sanctions: a formal reprimand, conditions on the licence (e.g., prohibition on working in a particular clinical setting, requirement for supervised practice, mandatory substance abuse evaluation and treatment), suspension of the licence for a specified period, or revocation of the licence. Disciplinary actions are a matter of public record in most states and are reported to the NCSBN's Nursys database, which maintains a national registry of nurse licensure and disciplinary information accessible to employers and other BONs.
+
+Relationship with Other Regulatory Bodies. The BON is not the only regulatory authority that may have jurisdiction over nursing practice. Federal and state criminal law enforcement, accreditation bodies (The Joint Commission, DNV Healthcare), and occupational health and safety agencies may also investigate and sanction conduct that falls within nursing practice. Employers exercise independent regulatory functions through disciplinary processes, reference-checking practices, and hospital medical staff credentialing (for APRNs with hospital practice privileges). Nurses who are subject to disciplinary action by one body may face concurrent investigations by others.`,
+  },
+  {
+    id: 'delegation-supervision',
+    heading: 'Delegation, Supervision, and Accountability Under the NPA',
+    body: `Among the most practically significant provisions of the Nurse Practice Act—and the most frequently misunderstood—are those relating to delegation and supervision. Delegation, as defined in the NPA and NCSBN guidelines, is the transfer of responsibility for performing a specific nursing task to another person, while retaining accountability for the outcome. It is not a wholesale transfer of authority: the delegating nurse remains responsible for the appropriateness of the delegation and for the supervision of its performance.
+
+Legal Framework for Delegation. Most state NPAs and BON rules specify the conditions under which RNs may delegate nursing tasks to UAP (unlicensed assistive personnel), LPNs/LVNs, or other nursing support roles. The NCSBN's Five Rights of Delegation—right task, right circumstance, right person, right directions and communication, and right supervision and evaluation—are widely adopted as the clinical framework for delegation decision-making. A delegation decision that fails any of these criteria may constitute an unsafe or unlawful delegation, exposing the delegating nurse to disciplinary action regardless of whether harm results.
+
+Supervisory Responsibility. The NPA and BON rules impose supervisory responsibilities on RNs who delegate tasks to others. Supervision requires the delegating nurse to be accessible, to provide appropriate direction and instruction, to monitor the performance of the delegated activity, and to evaluate and take corrective action as needed. The degree of supervision required varies with the complexity and risk of the task, the setting, the competence of the delegate, and the acuity of the patient. A registered nurse who delegates a task and then becomes unavailable for supervision has not fulfilled the supervisory obligation imposed by the NPA.
+
+Accountability for Nursing Education Programmes. NPAs authorise the BON to approve nursing education programmes and to establish the curricular standards and clinical requirements that programmes must meet to maintain approval. Nursing students who are enrolled in BON-approved programmes are typically authorised to perform nursing activities within the programme's clinical component under the supervision of a licensed nurse or nurse educator, even before they hold a personal nursing licence. The legal protection afforded by this student status is contingent on acting within the programme's authorised clinical activities and under appropriate supervision; a nursing student who performs clinical activities outside the supervised programme context may be subject to prosecution for the unlicensed practice of nursing.`,
+  },
+  {
+    id: 'advanced-practice',
+    heading: 'Advanced Practice Registered Nursing and the NPA',
+    body: `Advanced practice registered nurses—nurse practitioners (NPs), certified registered nurse anesthetists (CRNAs), certified nurse-midwives (CNMs), and clinical nurse specialists (CNSs)—occupy a distinct and clinically powerful tier of nursing practice whose legal parameters are defined by NPA provisions specific to APRN practice, and increasingly by the NCSBN Consensus Model for APRN Regulation.
+
+APRN Licensure and Certification. Under the Consensus Model, APRN licensure is based on national certification by an accredited certifying body specific to the APRN's role and population focus (e.g., American Association of Nurse Practitioners Certification Board for family nurse practitioners, National Board of Certification and Recertification for Nurse Anesthetists for CRNAs). States that have adopted the Consensus Model require APRNs to hold national certification as a condition of APRN licensure, establishing a direct link between professional certification standards and legal practice authority.
+
+Prescriptive Authority. One of the most consequential expansions of nursing scope of practice has been the extension of prescriptive authority to APRNs. Prescriptive authority—the legal right to prescribe medications, including controlled substances—is regulated by state NPAs and pharmacy practice acts, and its scope varies considerably across states. In states with full practice authority, APRNs may prescribe the full range of medications, including Schedule II controlled substances, without physician oversight. In collaborative practice states, prescriptive authority is conditional on a collaborative practice agreement with a physician. In restricted states, prescriptive authority requires physician supervision and may be limited in the categories of medications APRNs may prescribe.
+
+Hospital Privileges and Credentialing. APRNs who practice in hospital settings typically require institution-specific clinical privileges—granted by the hospital's medical staff or credentialing committee—in addition to state licensure. The credentialing process verifies the APRN's education, training, certification, and clinical competence for the specific privileges requested. Hospital bylaws governing APRN credentialing vary substantially and do not always align with the full scope of APRN practice authority granted by state law; negotiating and expanding hospital privileges remains an active domain of APRN advocacy.`,
+  },
+  {
+    id: 'implications',
+    heading: 'Implications for Nursing Practice and Education',
+    body: `The Nurse Practice Act has direct and pervasive implications for every dimension of nursing practice and for the education of nursing students preparing to enter the profession.
+
+Knowing Your NPA. The most fundamental practice implication of the NPA is the obligation of every nurse to know the Act applicable to their jurisdiction, the BON rules promulgated under it, and the professional standards that BONs incorporate by reference. State BONs publish NPAs and administrative rules on their websites and typically provide guidance documents, advisory opinions, and position statements on common scope of practice questions. Nursing students should familiarise themselves with their state's NPA before beginning clinical rotations and should consult the BON whenever a specific practice question arises for which guidance is unclear.
+
+Documentation and the NPA. The NPA and BON rules impose documentation requirements that are directly linked to disciplinary accountability: timely, accurate, objective, and complete documentation of nursing assessments, interventions, and patient responses is both a patient safety requirement and a legal obligation. Documentation failures—late entries, inaccurate records, omissions of critical assessments or interventions—are a frequent basis for disciplinary complaints and litigation, and are among the most readily preventable sources of professional legal risk.
+
+Crossing State Lines. Nurses who practice in multiple states—including telehealth nurses, travel nurses, and nurses who live in border areas—must be attentive to the specific NPA requirements of each state in which they practice. The Nurse Licensure Compact simplifies multi-state practice for nurses in compact states but does not eliminate the need to understand that the nursing practice law applicable to a specific clinical encounter is the law of the state in which the patient is located, not the state in which the nurse is physically present.
+
+Scope of Practice as a Dynamic Boundary. The NPA establishes the legal minimum and maximum of nursing scope of practice, but individual nurses' actual competence may fall short of the authorised maximum. A nurse who is authorised by the NPA to perform a procedure but who has not been trained in that procedure, has not maintained competency through practice and education, or is unfamiliar with the facility's protocol for the procedure may be acting outside the bounds of safe practice even if not outside the legal scope. Professional nursing competency standards reinforce the NPA's legal framework with a practice-level expectation of ongoing competency maintenance that is simultaneously an ethical and legal obligation.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `The Nurse Practice Act is the foundational legal instrument of professional nursing, defining the boundaries of authorised practice, establishing the regulatory apparatus that governs licensure and discipline, and constituting the legal expression of the profession's social contract with the public. Its provisions on scope of practice, BON authority, disciplinary standards, and APRN regulation directly shape the conditions under which every nurse practises, from the novice nursing student on first clinical placement to the experienced nurse practitioner providing independent primary care. Nurses who understand the NPA—who know its structure, who are familiar with the BON rules that supplement it, who can locate and apply its provisions to clinical situations—are better positioned to practice within legally and professionally safe boundaries, to advocate for appropriate scope expansion, and to participate in the ongoing democratic processes through which nursing law is shaped and revised. In an era of rapid change in healthcare delivery, workforce distribution, and the organisational structures of healthcare systems, nursing's legal framework must continually evolve to serve its core purpose: the protection of the public through the assurance of safe, competent, and ethical nursing care.`,
+  },
+];
+---
+
+<Layout title="Nurse Practice Act – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Nurse Practice Act</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            📋 Nursing Law &amp; Regulation
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Nurse Practice Act
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic examination of the foundational legislative instrument governing nursing practice—covering
+          its historical development, structural provisions, scope of practice definitions, board of nursing
+          authority, APRN regulation, and implications for nursing education and clinical practice.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'American Association of Nurse Practitioners. (2023). <em>State practice environment.</em> AANP. https://www.aanp.org/advocacy/state/state-practice-environment',
+            'American Nurses Association. (2015). <em>Nursing: Scope and standards of practice</em> (3rd ed.). ANA.',
+            'Institute of Medicine. (2010). <em>The future of nursing: Leading change, advancing health.</em> National Academies Press.',
+            'National Academies of Sciences, Engineering, and Medicine. (2021). <em>The future of nursing 2020–2030: Charting a path to achieve health equity.</em> National Academies Press.',
+            'National Council of State Boards of Nursing. (2008). <em>Consensus model for APRN regulation: Licensure, accreditation, certification and education.</em> NCSBN.',
+            'National Council of State Boards of Nursing. (2019). <em>National guidelines for nursing delegation.</em> NCSBN.',
+            'Pearson, L. J. (2023). The Pearson report: A national overview of nurse practitioner legislation and healthcare issues. <em>American Journal for Nurse Practitioners</em> (annual update).',
+            'Scope of Practice Policy. (2023). <em>Scope of practice for nurse practitioners by state.</em> Scope of Practice Policy.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'First U.S. laws', def: 'NC, NJ, NY, VA — 1903' },
+            { term: 'Regulating body', def: 'State Board of Nursing (BON)' },
+            { term: 'Licensure exams', def: 'NCLEX-RN; NCLEX-PN' },
+            { term: 'Compact', def: 'Nurse Licensure Compact (NLC/eNLC)' },
+            { term: 'APRN framework', def: 'NCSBN Consensus Model (2008)' },
+            { term: 'Delegation guide', def: 'Five Rights of Delegation (NCSBN)' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Licensure and scope of practice',
+            '✅ Safe delegation under law',
+            '✅ BON disciplinary awareness',
+            '✅ APRN prescriptive authority',
+            '✅ Multi-state compact practice',
+            '✅ Documentation legal obligations',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

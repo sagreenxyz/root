@@ -1,0 +1,250 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Medical terminology is the standardised language of healthcare—a specialised vocabulary derived predominantly from Greek and Latin roots that allows clinicians, researchers, educators, and administrators to communicate with precision, efficiency, and international consistency. For nursing professionals, fluency in medical terminology is not a supplementary skill but a foundational competency: it enables accurate documentation, safe medication administration, meaningful participation in interprofessional communication, and the confident interpretation of clinical literature. Unlike colloquial language, medical terms carry precise denotations that reduce the ambiguity inherent in natural language descriptions of pathological states, anatomical structures, diagnostic procedures, and therapeutic interventions. A nurse who misreads or mispronounces a term, or who confuses similarly spelled words with divergent meanings, risks patient safety—making systematic mastery of medical terminology an ethical obligation as much as a professional one.
+
+This article provides an academic overview of medical terminology as a structured linguistic system, examining its classical origins, structural components, organisational principles, domain-specific vocabularies, and implications for nursing education and practice. It is intended as a reference resource for nursing students seeking to situate their terminology study within a broader conceptual framework, and for practising nurses seeking to consolidate or extend their linguistic competence.`,
+  },
+  {
+    id: 'historical-origins',
+    heading: 'Historical Origins',
+    body: `The vocabulary of Western medicine is rooted primarily in ancient Greek and Latin, reflecting the intellectual traditions from which scientific medicine emerged. Greek contributed the majority of terms relating to diagnosis, pathology, and the sciences of the body; Latin provided the nomenclature of anatomy, pharmacology, and clinical procedures. This bilingual heritage was systematised through the texts of Hippocrates (c. 460–370 BCE), Galen (129–216 CE), and their medieval commentators, whose works were transmitted through Arabic scholarship before re-entering European medical education during the Renaissance.
+
+The standardisation of anatomical terminology accelerated with the publication of Andreas Vesalius's De humani corporis fabrica in 1543, which corrected Galenic errors while preserving the Latin-Greek nomenclatural tradition. Subsequent centuries saw the proliferation of eponymous terms—terms naming diseases, structures, or procedures after the clinician or researcher associated with their discovery (e.g., Fallopian tubes, Parkinson's disease, Babinski reflex)—though modern practice favours descriptive, non-eponymous terminology wherever possible, as eponyms convey no information about the entity they name.
+
+The twentieth century brought major international efforts at terminological standardisation. Nomina Anatomica (first published 1895, revised multiple times) and its successor, Terminologia Anatomica (1998), established internationally agreed Latin-based anatomical terms. The Systematized Nomenclature of Medicine Clinical Terms (SNOMED CT) and the International Classification of Diseases (ICD) represent contemporary information-age initiatives that extend terminological standardisation to diagnostic coding and electronic health records. For nurses working in digital health environments, familiarity with these standardised terminological systems is increasingly essential.`,
+  },
+  {
+    id: 'word-structure',
+    heading: 'Word Structure: Roots, Prefixes, and Suffixes',
+    body: `Medical terms are constructed from a small set of recurring morphological components: roots (also called combining forms), prefixes, and suffixes. Understanding these components individually enables the systematic decoding of unfamiliar terms, transforming rote memorisation into analytical comprehension.
+
+Word Roots and Combining Forms. The root is the core meaning-bearing element of a medical term. It typically denotes an anatomical structure, organ system, or physiological process. When a root is joined to a suffix beginning with a consonant, a combining vowel—usually "o," occasionally "i" or "a"—is inserted to facilitate pronunciation. The root together with its combining vowel is called the combining form. Common examples include: cardi(o)- (heart), hepat(o)- (liver), nephr(o)- (kidney), derm(at)(o)- (skin), oste(o)- (bone), neur(o)- (nerve), gastr(o)- (stomach), and pulmon(o)- (lung). A single term may incorporate two roots, as in gastroenteritis (gastr- + enter- + -itis), where both the stomach and intestine are implicated.
+
+Prefixes. Prefixes are attached to the beginning of a root to modify its meaning, typically by specifying location, direction, quantity, time, or negation. They do not require combining vowels. Key prefixes include: a-/an- (without; anuria = no urine production), brady- (slow; bradycardia), tachy- (fast; tachypnoea), hyper- (above normal; hypertension), hypo- (below normal; hypoglycaemia), peri- (surrounding; pericardium), endo- (within; endoscopy), epi- (upon; epidermis), supra- (above; suprarenal), infra- (below; infraorbital), anti- (against; antipyretic), and poly- (many; polyuria).
+
+Suffixes. Suffixes are attached at the end of a root or combining form and frequently indicate a condition, procedure, discipline, or relationship. They are central to clinical communication because they signal whether a term refers to a disease state, a diagnostic examination, a surgical intervention, or a medical specialist. Common suffixes include: -itis (inflammation; appendicitis), -ectomy (surgical removal; appendectomy), -ostomy (surgical opening; colostomy), -otomy (surgical incision; thoracotomy), -plasty (surgical repair; rhinoplasty), -scopy (visual examination; colonoscopy), -graphy (process of recording; radiography), -gram (the record produced; electrocardiogram), -logy (study of; cardiology), -ology used attributively (specialist; cardiologist as -logist), -pathy (disease; neuropathy), -algia (pain; neuralgia), -aemia (blood condition; leukaemia), -uria (urine condition; haematuria), -pnoea (breathing; dyspnoea), and -dynia (pain; pleurodynia).
+
+Applying the Analytical Framework. Confronted with the term "hepatomegaly," a student who recognises hepat(o)- (liver) and -megaly (enlargement) immediately understands the term as liver enlargement, without recourse to a dictionary. Similarly, "cholecystectomy" resolves to chole- (bile) + cyst(o)- (bladder/sac) + -ectomy (surgical removal) = surgical removal of the gallbladder. This analytical approach to decoding medical language is the single most transferable skill in terminology education, enabling lifelong independent learning as new terms are encountered in clinical contexts.`,
+  },
+  {
+    id: 'body-systems',
+    heading: 'Body Systems and Speciality Vocabularies',
+    body: `Medical terminology is organised partly by body system, and each clinical speciality develops its own dense sublanguage. Nursing students are introduced to these vocabularies progressively across their programmes, and clinical placement provides the iterative exposure necessary for consolidation.
+
+Cardiovascular System. The cardiovascular vocabulary encompasses terms relating to the heart (cardiology), blood vessels (angiology), and circulatory dynamics. Key diagnostic terms include arrhythmia (irregular heart rhythm), myocardial infarction (death of heart muscle tissue), angina pectoris (chest pain due to myocardial ischaemia), congestive heart failure, and atherosclerosis (fatty plaque deposition in arterial walls). Procedural terms include electrocardiography, echocardiography, cardiac catheterisation, and percutaneous coronary intervention. Pharmacological categories include antihypertensives, antiarrhythmics, anticoagulants, and thrombolytics.
+
+Respiratory System. The respiratory vocabulary addresses conditions and procedures relating to the lungs, airways, and breathing mechanics. Important terms include pneumonia (lung inflammation due to infection), chronic obstructive pulmonary disease (COPD), bronchospasm, pleuritis, pneumothorax (air in the pleural space), and haemoptysis (coughing up blood). Procedural terms include bronchoscopy, spirometry, thoracentesis, and mechanical ventilation.
+
+Musculoskeletal System. Orthopaedic and rheumatological vocabulary includes osteoporosis (decreased bone density), osteoarthritis, rheumatoid arthritis, fracture subtypes (comminuted, oblique, spiral, greenstick), myopathy (muscle disease), tendinopathy, and bursitis. Surgical terms include arthroplasty (joint replacement), arthroscopy (joint visualisation), and osteotomy.
+
+Neurological System. Neurology contributes a particularly rich vocabulary: cerebrovascular accident (stroke), transient ischaemic attack, encephalopathy, meningitis, neuropathy, paraplegia, quadriplegia, dysphasia (language impairment), apraxia (inability to perform purposeful movements), and ataxia (disordered coordination). Diagnostic procedures include lumbar puncture (cerebrospinal fluid analysis), electroencephalography, and neuroimaging modalities.
+
+Gastrointestinal System. GI terminology includes hepatitis (liver inflammation), cirrhosis (liver fibrosis), pancreatitis, cholecystitis (gallbladder inflammation), Crohn's disease, ulcerative colitis, gastroparesis, dysphagia (difficulty swallowing), haematemesis (vomiting blood), and melaena (dark tarry stool indicating upper GI bleeding). Procedural terms include endoscopy, colonoscopy, paracentesis, and laparoscopy.
+
+Renal and Urological Systems. Key terms include glomerulonephritis, pyelonephritis, nephrolithiasis (kidney stones), acute kidney injury, chronic kidney disease, haematuria, proteinuria, oliguria (decreased urine output), and anuria (absent urine output). Procedural terms include urinalysis, renal biopsy, haemodialysis, and cystoscopy.`,
+  },
+  {
+    id: 'abbreviations',
+    heading: 'Abbreviations, Acronyms, and Symbol Systems',
+    body: `Clinical environments make extensive use of abbreviations, acronyms, and symbols—a pragmatic necessity given the volume and pace of documentation in acute care settings. However, abbreviations represent a significant source of medication and documentation errors, and their use is regulated by institutional policy and professional standards.
+
+Common Clinical Abbreviations. Standard abbreviations encountered in nursing documentation include: bid (twice daily), tid (three times daily), qid (four times daily), prn (as needed), stat (immediately), NPO/NBM (nothing by mouth), ROM (range of motion), SOB (shortness of breath), BP (blood pressure), HR (heart rate), RR (respiratory rate), SpO₂ (peripheral oxygen saturation), GCS (Glasgow Coma Scale), ADL (activities of daily living), and IV (intravenous).
+
+Dangerous Abbreviations. Several abbreviations have been identified by patient safety organisations—including the Joint Commission and the Institute for Safe Medication Practices (ISMP)—as sources of preventable errors and are prohibited from use in official clinical documentation. These include: U or u (units; may be misread as "0" or "4," leading to tenfold dosing errors), IU (international units; may be misread as "IV"), QD and QOD (daily and every other day; may be confused with each other and with QID), MS and MSO₄ (morphine sulphate; may be confused with magnesium sulphate), and trailing zeros after decimal points (e.g., "1.0 mg" may be misread as "10 mg"). Nursing students must be thoroughly familiar with the prohibited abbreviations list used by their clinical facility.
+
+Diagnostic Coding Systems. ICD-10-CM (International Classification of Diseases, Tenth Revision, Clinical Modification) is the standard diagnostic coding system used in the United States for documentation, billing, and epidemiological surveillance. Each diagnosis is assigned an alphanumeric code (e.g., J18.9 = pneumonia, unspecified organism; I21.9 = acute myocardial infarction, unspecified). Current Procedural Terminology (CPT) codes are used for billing procedural services. Familiarity with these systems supports accurate documentation and has direct implications for reimbursement, public health reporting, and continuity of care.`,
+  },
+  {
+    id: 'pharmacological-terminology',
+    heading: 'Pharmacological Terminology',
+    body: `Medications constitute one of the most terminology-dense domains of clinical practice, and medication errors are among the leading causes of preventable patient harm. Mastery of pharmacological terminology is therefore a patient safety priority as much as an academic competency.
+
+Drug Naming Conventions. Most drugs have three names: a chemical name (the precise molecular description, rarely used clinically), a generic name (the internationally recognised non-proprietary name, e.g., metformin, atenolol, amoxicillin), and a brand name (the proprietary trade name assigned by the manufacturer, e.g., Glucophage, Tenormin, Amoxil). Professional practice standards and formulary policies generally mandate the use of generic names in clinical documentation to prevent confusion between brand-name products from different manufacturers.
+
+Pharmacokinetics and Pharmacodynamics. Pharmacokinetic terminology describes what the body does to a drug: absorption (the process by which a drug enters systemic circulation), distribution (how a drug disperses through body compartments), metabolism (biotransformation of the drug, primarily in the liver), and excretion (elimination from the body, primarily via the kidneys—collectively summarised by the acronym ADME). Pharmacodynamic terminology describes what the drug does to the body: mechanism of action, receptor binding (agonist = activates receptor; antagonist = blocks receptor), therapeutic index (ratio of toxic dose to effective dose), and drug-receptor affinity.
+
+Drug Class Nomenclature. Pharmacological agents are grouped into therapeutic classes based on their mechanism of action or clinical use. Key class names carry embedded meaning: -olol suffix (beta-blockers, e.g., metoprolol), -pril suffix (ACE inhibitors, e.g., lisinopril), -sartan suffix (angiotensin receptor blockers, e.g., losartan), -statin suffix (HMG-CoA reductase inhibitors, e.g., atorvastatin), -mycin/-micin suffix (antibiotics, e.g., erythromycin, gentamicin), -cillin suffix (penicillin-class antibiotics, e.g., amoxicillin), and -zole suffix (antifungals and proton pump inhibitors, e.g., fluconazole, omeprazole). Recognising these class-level suffixes enables nurses to infer basic pharmacological properties of unfamiliar agents and to anticipate class-specific adverse effects and contraindications.
+
+Routes of Administration. Documentation of medication administration requires precise use of route terminology: oral (PO), sublingual (SL), buccal, topical, transdermal, intramuscular (IM), subcutaneous (SC or SQ), intravenous (IV), intrathecal, epidural, inhalation, and rectal (PR). Each route carries implications for absorption rate, bioavailability, onset of action, and patient comfort, and misidentification of the intended route is a sentinel medication error.`,
+  },
+  {
+    id: 'nursing-documentation',
+    heading: 'Terminology in Nursing Documentation',
+    body: `Nursing documentation is a medicolegal record that must be accurate, objective, and expressed in standard professional terminology. It serves multiple functions: communicating patient status to the interprofessional team, providing a legal record of care delivered, supporting continuity of care across shifts and settings, supplying data for quality improvement and research, and supporting billing and reimbursement processes.
+
+Objective versus Subjective Language. Clinical documentation standards require nurses to distinguish clearly between objective findings (measurable, observable data: "blood pressure 168/94 mmHg; patient diaphoretic") and subjective data (the patient's own reports: "patient reports crushing chest pain rated 8/10 on numeric rating scale"). Avoiding subjective interpretive language ("patient appears anxious") in favour of behavioural descriptions ("patient verbalises worry about surgical outcome; wringing hands; rate of speech elevated") enhances the precision and defensibility of nursing notes.
+
+Standardised Nursing Terminologies. Several terminological systems have been developed specifically for nursing documentation. The North American Nursing Diagnosis Association International (NANDA-I) taxonomy provides standardised nursing diagnoses (e.g., "Impaired gas exchange related to alveolar-capillary membrane changes," "Acute pain related to surgical incision"). The Nursing Interventions Classification (NIC) catalogues over 550 standardised nursing interventions, and the Nursing Outcomes Classification (NOC) provides standardised patient outcome indicators. Use of NIC/NOC terminology within electronic health records facilitates nursing-sensitive outcome measurement and contributes to the nursing evidence base.
+
+Clinical Handover Communication. SBAR (Situation, Background, Assessment, Recommendation) is a widely adopted structured communication framework used during clinical handovers and escalation. Consistent use of standard terminology within SBAR exchanges reduces the ambiguity inherent in shift-to-shift communication and supports safe, efficient care transitions. Nurses who communicate using imprecise language or idiomatic expressions risk information loss that may compromise patient safety.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Implications for Nursing Education and Practice',
+    body: `The teaching and learning of medical terminology in nursing education programmes has evolved substantially in recent decades. Traditional approaches relying on rote memorisation of word lists have been progressively supplemented—and in some curricula supplanted—by analytical approaches that foreground morphological decomposition, contextual learning, and application in simulated and clinical environments.
+
+Morphological Analysis in Terminology Education. Research in health professions education supports the superiority of morphological analysis (teaching students to decode terms via roots, prefixes, and suffixes) over simple memorisation for long-term retention and transfer to novel terms. Students who learn to recognise that "-ectomy" means surgical removal and "nephr-" means kidney will correctly decode "nephrectomy" on first encounter, whereas students who have only memorised "nephrectomy" will be unable to decode "nephroureterectomy" or "heminephrectomy" without additional instruction.
+
+Technology and Terminology Learning. Digital tools—vocabulary applications, electronic flashcard systems, gamified learning platforms, and clinical simulation software—have expanded the pedagogical repertoire available to terminology educators. Spaced repetition algorithms, which schedule review of material at intervals calibrated to the forgetting curve, are particularly well-supported by evidence for vocabulary acquisition. Integration of terminology instruction into simulation exercises and clinical case-based learning promotes contextual encoding that supports retention and transfer.
+
+Clinical Application and Ongoing Learning. Professional nursing practice demands ongoing terminology acquisition throughout a career. The emergence of new diagnostic categories, therapeutic modalities, pharmacological agents, and information technologies continuously generates new vocabulary. Nurses working in specialised clinical contexts—oncology, cardiac intensive care, neonatal intensive care, nephrology—develop domain-specific terminological expertise that supplements foundational medical vocabulary. Reading of professional nursing journals, participation in continuing education, and engagement with clinical reference resources supports the lifelong terminological development that professional competence requires.
+
+Patient Communication. A paradox of medical terminology education is that fluency in the language of healthcare must coexist with the ability to communicate clearly with patients who do not share that linguistic background. Nursing standards of care require that patient education be delivered in plain language accessible to the patient's health literacy level. Nurses must therefore develop code-switching competence: the ability to move fluidly between technical professional discourse with colleagues and accessible everyday language with patients and families, translating complex clinical information without distorting its meaning or clinical significance.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Medical terminology constitutes the lexical infrastructure of healthcare communication—a carefully constructed, historically grounded, and continuously evolving language that enables precision, safety, and efficiency in clinical environments. For nursing students, its study is a prerequisite for effective participation in all domains of professional practice: documentation, medication administration, interprofessional communication, patient education, and ongoing professional learning. Approached not as a list of words to be memorised but as a systematic, analysable linguistic code, medical terminology becomes a transferable tool for lifelong clinical learning. The morphological principles that underlie its structure—root-prefix-suffix analysis, combining forms, and class-level naming conventions—equip nurses with a generative capacity to decode novel terms independently, supporting the adaptive expertise that contemporary nursing demands. As health information systems become increasingly data-driven and as nursing practice expands into new clinical domains, terminological literacy will only grow in its importance to safe, effective, and evidence-based patient care.`,
+  },
+];
+---
+
+<Layout title="Medical Terminology – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Medical Terminology</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🏥 Clinical Foundations
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Medical Terminology
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the standardised language of healthcare—its classical origins,
+          morphological structure, body-system vocabularies, abbreviation safety, pharmacological
+          naming conventions, and implications for nursing documentation and patient communication.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Brookins-Fisher, J., Janssen, C., &amp; Taliaferro, D. (2022). <em>Medical terminology for health professionals</em> (8th ed.). Cengage Learning.',
+            'Chabner, D.-E. (2021). <em>The language of medicine</em> (12th ed.). Elsevier.',
+            'Institute for Safe Medication Practices. (2023). <em>ISMP list of error-prone abbreviations, symbols, and dose designations.</em> ISMP.',
+            'International Anatomical Terminology Federation. (1998). <em>Terminologia anatomica: International anatomical terminology.</em> Thieme.',
+            'Mosby. (2022). <em>Mosby\'s medical dictionary</em> (11th ed.). Elsevier.',
+            'NANDA International. (2021). <em>Nursing diagnoses: Definitions and classification 2021–2023</em> (12th ed.). Thieme.',
+            'Stedman, T. L. (2012). <em>Stedman\'s medical dictionary for the health professions and nursing</em> (7th ed.). Lippincott Williams &amp; Wilkins.',
+            'World Health Organization. (2022). <em>International statistical classification of diseases and related health problems</em> (11th rev.). WHO Press.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Primary sources', def: 'Greek &amp; Latin' },
+            { term: 'Key components', def: 'Root, prefix, suffix' },
+            { term: 'Safety concern', def: 'Dangerous abbreviations' },
+            { term: 'Drug naming', def: 'Chemical, generic, brand' },
+            { term: 'Coding system', def: 'ICD-10-CM, SNOMED CT' },
+            { term: 'Nursing taxonomy', def: 'NANDA-I, NIC, NOC' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Safe medication administration',
+            '✅ Accurate clinical documentation',
+            '✅ Interprofessional communication',
+            '✅ Patient education (plain language)',
+            '✅ Electronic health record use',
+            '✅ Lifelong professional learning',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
