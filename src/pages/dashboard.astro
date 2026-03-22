@@ -14,6 +14,11 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
       <p style="color:#64748b; font-size:0.9rem; margin-top:0.25rem;">Enter your credentials to access the dashboard</p>
     </div>
 
+    <!-- Session-expired notice (shown when ?timeout=1 is in the URL) -->
+    <div id="timeout-msg" style="display:none; color:#92400e; font-size:0.875rem; margin-bottom:1rem; padding:0.5rem 0.75rem; background:#fffbeb; border-radius:0.4rem; border:1px solid #fde68a;">
+      ⏱ Your session expired due to inactivity. Please sign in again.
+    </div>
+
     <form id="login-form" autocomplete="on">
       <div style="margin-bottom:1rem;">
         <label for="username" style="display:block; font-size:0.875rem; font-weight:500; margin-bottom:0.4rem;">Username</label>
@@ -123,6 +128,14 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
     if (sessionUser) sessionUser.textContent = `Logged in as: ${username}`;
   }
 
+  // Show session-expired notice if redirected after inactivity timeout
+  if (new URLSearchParams(window.location.search).get('timeout') === '1') {
+    const timeoutMsg = document.getElementById('timeout-msg') as HTMLElement;
+    if (timeoutMsg) timeoutMsg.style.display = 'block';
+    // Clean up the URL so a page refresh doesn't show the notice again
+    history.replaceState(null, '', window.location.pathname);
+  }
+
   // If already authenticated, show dashboard immediately
   const token = sessionStorage.getItem('auth_token');
   const user = sessionStorage.getItem('auth_user') || 'unknown';
@@ -145,6 +158,8 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
       sessionStorage.setItem('auth_token', hash);
       sessionStorage.setItem('auth_user', username);
       showDashboard(username);
+      // Signal the inactivity monitor (defined in Layout.astro) to start
+      document.dispatchEvent(new CustomEvent('auth:login'));
     } else {
       errorMsg.textContent = 'Invalid username or password. Please try again.';
       errorMsg.style.display = 'block';
