@@ -102,7 +102,25 @@ They are safe to commit — without the correct credentials they are unreadable 
 3. The web app derives the same key from the session token and decrypts  
    entirely in the browser — no server, no extra secrets.
 
-### Encrypting a file
+### Option A — Build-time auto-encryption (recommended for demo/shared content)
+
+Place plaintext `.txt` files in `src/data/plaintext/`. They are automatically
+encrypted using `AUTH_HASH` during every build and written to
+`src/data/encrypted-auto/` (gitignored). The encrypted versions are always
+consistent with whoever is allowed to log in.
+
+```
+src/data/plaintext/my-note.txt   ← commit this
+src/data/encrypted-auto/         ← gitignored, generated at build time
+```
+
+Run locally (requires `AUTH_HASH` in your `.env`):
+
+```bash
+node scripts/encrypt-with-hash.mjs
+```
+
+### Option B — Manual encryption (for content encrypted once with fixed credentials)
 
 ```bash
 # Encrypt notes.txt using the same credentials that unlock the site
@@ -120,9 +138,7 @@ deploy.  Authenticated users can select it and read the decrypted text.
 
 ### Demo file
 
-`src/data/encrypted/demo-note.json` is pre-encrypted with the credentials  
-**username `demo` / password `demo123`** as a working example.  
-It will only decrypt successfully if those are also the site's login credentials.  
-Remove it (or re-encrypt it with your real credentials) before going to  
-production.
+`src/data/plaintext/demo-note.txt` is a plaintext source that is auto-encrypted
+at build time using `AUTH_HASH`. It will always decrypt successfully for any
+user who can log in to the site.
 

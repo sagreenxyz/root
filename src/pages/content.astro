@@ -3,7 +3,13 @@ import Layout from '../layouts/Layout.astro';
 
 // Collect every encrypted-content JSON file at build time.
 // The files themselves are safe to embed — they are opaque ciphertext.
-const encryptedModules = import.meta.glob('../data/encrypted/*.json', { eager: true });
+// Two sources:
+//   • src/data/encrypted/     — manually encrypted with encrypt-content.mjs (committed to git)
+//   • src/data/encrypted-auto/ — auto-encrypted at build time from src/data/plaintext/ sources
+const encryptedModules = {
+  ...import.meta.glob('../data/encrypted/*.json', { eager: true }),
+  ...import.meta.glob('../data/encrypted-auto/*.json', { eager: true }),
+};
 const contentItems = Object.entries(encryptedModules).map(([filePath, mod]) => {
   const data = (mod as any).default ?? mod;
   return {

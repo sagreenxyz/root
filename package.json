@@ -3,7 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "predev": "node scripts/encrypt-with-hash.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/encrypt-with-hash.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
