@@ -12,7 +12,9 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 </Layout>
 
 <script define:vars={{ base }}>
-  sessionStorage.removeItem('auth_token');
-  sessionStorage.removeItem('auth_user');
-  window.location.replace((base || '') + '/');
+  (function () {
+    sessionStorage.removeItem('auth_token');
+    sessionStorage.removeItem('auth_user');
+    window.location.replace((base || '') + '/');
+  })();
 </script>

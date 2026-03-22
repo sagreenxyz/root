@@ -12,13 +12,30 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
 <!-- Redirect: authenticated users go to private dashboard, others to login -->
 <script define:vars={{ base }}>
-  if (sessionStorage.getItem('auth_token')) {
-    window.location.replace((base || '') + '/private/dashboard');
-  } else {
-    // Preserve any ?next= param passed to the old /dashboard route
-    var next = new URLSearchParams(window.location.search).get('next');
-    var target = (base || '') + '/login';
-    if (next) target += '?next=' + encodeURIComponent(next);
-    window.location.replace(target);
-  }
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var nextParam = params.get('next');
+    var timeout = params.get('timeout');
+    if (sessionStorage.getItem('auth_token')) {
+      // Already authenticated — go to private dashboard (or next if valid)
+      if (nextParam) {
+        try {
+          var target = new URL(nextParam, window.location.origin);
+          if (target.origin === window.location.origin) {
+            window.location.replace(target.pathname + target.search + target.hash);
+            return;
+          }
+        } catch (_) {}
+      }
+      window.location.replace((base || '') + '/private/dashboard');
+    } else {
+      // Not authenticated — go to login page, preserving next and timeout params
+      var loginUrl = (base || '') + '/login';
+      var qs = [];
+      if (nextParam) qs.push('next=' + encodeURIComponent(nextParam));
+      if (timeout) qs.push('timeout=' + encodeURIComponent(timeout));
+      if (qs.length) loginUrl += '?' + qs.join('&');
+      window.location.replace(loginUrl);
+    }
+  })();
 </script>
