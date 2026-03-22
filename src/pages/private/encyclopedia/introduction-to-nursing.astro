@@ -1,0 +1,186 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Nursing is one of the oldest and most essential of the health professions, encompassing a vast spectrum of roles, responsibilities, and settings that are united by a common commitment to the promotion of health, the prevention of illness, and the alleviation of suffering. As the largest single component of the global healthcare workforce, nurses constitute the primary point of contact between health systems and the populations they serve. For students entering the nursing profession, an understanding of its historical foundations, philosophical underpinnings, professional structures, and contemporary challenges is not merely academic—it forms the conceptual scaffolding upon which clinical competence and professional identity are built.\n\nThis article provides an introductory overview of nursing as a discipline and profession. It examines the definition and philosophy of nursing, traces its historical development, describes the educational pathways and regulatory frameworks that govern entry to practice, outlines the principal domains of nursing practice, and discusses the contemporary context in which nursing is evolving. Throughout, the focus remains on equipping the beginning student with the conceptual vocabulary and analytical orientation necessary to engage critically and productively with the nursing curriculum ahead.`,
+  },
+  {
+    id: 'definition-philosophy',
+    heading: 'Definition and Philosophy of Nursing',
+    body: `Nursing resists simple definition, in part because it is simultaneously a science, an art, and a moral practice. Various professional and regulatory bodies have offered formal definitions that emphasise different aspects of the profession. The International Council of Nurses (ICN) defines nursing as encompassing "autonomous and collaborative care of individuals of all ages, families, groups and communities, sick or well and in all settings." This definition highlights both the independence of nursing judgement and the collaborative nature of health-team functioning—two dimensions whose tension has been central to the profession's development.\n\nPhilosophically, nursing has been shaped by several influential conceptual frameworks. Florence Nightingale, widely regarded as the founder of modern nursing, articulated an environmental theory in which the nurse's principal role was to create conditions—physical cleanliness, adequate ventilation, light, warmth, and quiet—conducive to the patient's natural healing processes. Nightingale's empirical approach to nursing, exemplified by her systematic collection and analysis of mortality data during the Crimean War, established a precedent for evidence-based practice that continues to shape the profession.\n\nSubsequent theorists shifted the conceptual centre of nursing from environment to relationship. Virginia Henderson defined the nurse's unique function as assisting the individual "in the performance of those activities contributing to health or its recovery (or to a peaceful death) that he would perform unaided if he had the necessary strength, will or knowledge." Hildegard Peplau emphasised the therapeutic potential of the nurse-patient relationship itself, framing nursing as an interpersonal process and laying the groundwork for psychiatric-mental health nursing as a specialty. Jean Watson's Theory of Human Caring positioned nursing as fundamentally a moral and transpersonal practice, centred on a set of caring processes that honour the dignity and subjectivity of each patient.\n\nThese diverse theoretical orientations share a common commitment to holism—the view that the person is more than the sum of their physiological parts and must be understood and cared for in the context of their psychological, social, cultural, and spiritual dimensions. This holistic orientation distinguishes nursing from biomedically reductive approaches to health and illness and constitutes one of the profession's most enduring philosophical contributions.`,
+  },
+  {
+    id: 'historical-development',
+    heading: 'Historical Development',
+    body: `The history of nursing is inseparable from broader social histories of gender, class, religion, colonialism, and medicine. Care of the sick has been practised in all known human societies, but the institutionalisation of nursing as a formal occupation is a relatively recent historical development, shaped decisively by mid-nineteenth-century social reforms.\n\nPrior to the mid-1800s, hospital nursing in the Western tradition was largely performed by religious orders—particularly by Roman Catholic nursing sisterhoods in continental Europe—and, in secular settings, by women of the lower social classes whose work was poorly paid, poorly regarded, and largely unregulated. The reforming work of Florence Nightingale and her contemporaries—including Linda Richards, often described as America's first trained nurse, and Mary Seacole, whose contributions to nursing care during the Crimean War are increasingly recognised—transformed both the practical conditions of nursing work and its public and professional status.\n\nNightingale's establishment of the first secular nursing school at St. Thomas' Hospital in London in 1860 is conventionally taken as the founding moment of modern nursing education. The Nightingale model emphasised systematic training, moral character, discipline, and the separation of nursing from domestic service. Its influence spread internationally through the network of nurses trained at St. Thomas' and through Nightingale's extensive writings, including Notes on Nursing (1860), which remained in print and in use for decades.\n\nThe late nineteenth and early twentieth centuries saw the establishment of nursing licensing and registration in several countries—New Zealand became the first country to enact nurse registration legislation in 1901—and the gradual professionalisation of nursing through the development of formal educational standards, professional associations, and codes of ethics. The twentieth century brought dramatic expansions of nursing's scope and complexity, driven by advances in medical technology, the growth of specialist clinical areas, and shifting healthcare delivery models. The latter decades of the century also saw a significant reconceptualisation of nursing knowledge as a distinct academic discipline, with doctoral-level nursing education, peer-reviewed nursing research, and nursing-specific theoretical frameworks establishing the profession's claim to a body of knowledge that is irreducibly its own.`,
+  },
+  {
+    id: 'education-pathways',
+    heading: 'Educational Pathways and Registration',
+    body: `Entry to professional nursing practice requires completion of an approved educational programme and, in virtually all jurisdictions, successful registration or licensure with a statutory regulatory authority. The specific requirements vary across national and regional systems, but several common elements obtain.\n\nIn the United States, registered nurse (RN) licensure requires completion of either an Associate Degree in Nursing (ADN) or a Bachelor of Science in Nursing (BSN), followed by successful completion of the National Council Licensure Examination for Registered Nurses (NCLEX-RN). A growing body of professional and regulatory opinion favours the BSN as the minimum preparation for professional nursing practice, citing evidence associating higher levels of nursing education with improved patient outcomes. Licensed Practical Nurses (LPNs) or Licensed Vocational Nurses (LVNs) complete shorter certificate or diploma programmes and practise under the supervision of RNs and physicians.\n\nIn the United Kingdom, nursing education is delivered at degree level and regulated by the Nursing and Midwifery Council (NMC). The NMC's 2018 Standards of Proficiency for Registered Nurses specify the knowledge, skills, and professional behaviours that graduates must demonstrate across four fields of nursing: adult nursing, children's nursing, mental health nursing, and learning disability nursing. Australia and New Zealand similarly require bachelor's degree completion for initial registration, with the relevant regulatory authorities—the Australian Health Practitioner Regulation Agency (AHPRA) and the Nursing Council of New Zealand—setting and maintaining standards.\n\nBeyond initial registration, nurses may pursue advanced practice roles through graduate-level education. Nurse practitioners, clinical nurse specialists, certified registered nurse anaesthetists, and certified nurse-midwives (in the US context) practise with expanded scope, including prescriptive authority, diagnostic capability, and independent management of patient care episodes. These advanced practice registered nurses (APRNs) represent the clinical apex of a profession that offers meaningful opportunities for career development at every level.\n\nContinuing professional development is a regulatory expectation in most jurisdictions. Nurses are required to demonstrate ongoing learning through formal coursework, clinical supervision, conference participation, or professional portfolio development as a condition of maintaining registration. This requirement reflects the profession's acknowledgment that nursing knowledge is not static and that safe, effective practice demands sustained engagement with evolving evidence and changing clinical contexts.`,
+  },
+  {
+    id: 'domains-of-practice',
+    heading: 'Principal Domains of Nursing Practice',
+    body: `Nursing is practised across an extraordinary range of settings and specialties, from acute care hospitals and intensive care units to community health centres, schools, prisons, military deployments, and international humanitarian contexts. Several broad domains of practice can be identified, each with its own knowledge base, skill set, and professional culture.\n\nAcute and Critical Care Nursing. Medical-surgical nursing constitutes the largest single area of hospital-based practice and provides the foundational clinical experience for most nursing graduates. Critical care nursing—practised in intensive care units, cardiac care units, and emergency departments—requires advanced technical competence in monitoring, ventilation, haemodynamic management, and rapid response to physiological deterioration. Perioperative nursing encompasses the preoperative, intraoperative, and postoperative phases of surgical care.\n\nPrimary and Community Health Nursing. Community health nursing, public health nursing, and district nursing collectively address the health needs of populations and individuals outside hospital settings. These roles emphasise health promotion, disease prevention, care coordination, case management, and the management of chronic conditions. School nurses, occupational health nurses, and home health nurses represent significant sub-categories of community practice.\n\nMental Health Nursing. Psychiatric-mental health nursing addresses the care of individuals experiencing mental illness, substance use disorders, and related conditions. It requires a particular emphasis on therapeutic relationship, communication skills, de-escalation, and the integration of recovery-oriented care principles. Mental health nurses work in inpatient psychiatric units, community mental health teams, forensic settings, and liaison-psychiatry services.\n\nPaediatric and Neonatal Nursing. Care of infants, children, and adolescents requires developmental knowledge and family-centred care approaches adapted to the unique physiological, psychological, and ethical dimensions of paediatric practice. Neonatal intensive care nursing is among the most technically demanding specialties in the profession.\n\nGerontological Nursing. The care of older adults across acute, subacute, and long-term care settings is an area of growing importance as populations age globally. Gerontological nursing addresses the complex interplay of multi-morbidity, polypharmacy, frailty, cognitive impairment, and social vulnerability that characterises the experience of many older patients.\n\nMidwifery. In many international contexts, midwifery is practised as a distinct profession. In others, it is integrated within nursing education and registration. Midwives provide care across the continuum of pregnancy, labour, birth, and the postnatal period, with an emphasis on supporting physiological birth and the health of mothers and newborns.\n\nEducation, Research, and Leadership. Significant numbers of nurses practise in non-clinical roles as educators in academic institutions, researchers generating the evidence base for practice, clinical educators in healthcare organisations, and leaders and managers within health systems. These roles are essential to the sustainability and advancement of the profession.`,
+  },
+  {
+    id: 'contemporary-context',
+    heading: 'Contemporary Context and Challenges',
+    body: `Nursing in the twenty-first century is shaped by a set of intersecting forces—demographic, technological, political, and social—that simultaneously expand its possibilities and intensify its demands.\n\nWorkforce Shortages. A global nursing shortage of significant proportions has been extensively documented by the World Health Organization and national health authorities. Shortages are driven by ageing nursing workforces, insufficient educational capacity in many regions, high attrition rates due to occupational stress and burnout, and inadequate investment in nursing infrastructure. The COVID-19 pandemic dramatically intensified existing workforce pressures, leading to widespread moral distress, increased attrition, and renewed international attention to the conditions of nursing work.\n\nEvidence-Based Practice. The evidence-based practice (EBP) movement—which emphasises the integration of the best available research evidence with clinical expertise and patient values in guiding clinical decisions—has transformed expectations of nursing practice. Nurses are increasingly expected to engage critically with research literature, participate in quality improvement initiatives, and apply evidence systematically to clinical decision-making. This expectation has driven significant developments in nursing education and in the structures of healthcare organisations.\n\nTechnology and Digital Health. The proliferation of electronic health records, clinical decision-support systems, telehealth platforms, wearable monitoring devices, and artificial intelligence-assisted diagnostic tools is reshaping the informational and relational dimensions of nursing work. Informatics competence—the ability to use data and technology to support patient care—is increasingly recognised as a core nursing competency. Simultaneously, nursing scholars have raised important questions about the risks of technology-mediated care to the relational and humane dimensions of nursing practice.\n\nEquity and Social Determinants of Health. A growing body of evidence demonstrates that health and illness are profoundly shaped by social, economic, and environmental conditions—the social determinants of health. Nurses, by virtue of their frequent and sustained contact with patients across diverse social contexts, are well positioned to identify and address social determinants. This positions nursing as a profession with responsibilities that extend beyond the individual clinical encounter to advocacy, community engagement, and political action on behalf of equitable health outcomes.\n\nDiversity, Equity, and Inclusion. The nursing profession is grappling seriously with longstanding issues of racism, discrimination, and structural inequity within its own ranks and in its relationships with patients. Inclusive nursing education, anti-racist clinical practice, and equitable workforce development are now recognised as professional priorities. The historical contributions of nurses from marginalised communities—including Black, Indigenous, and nurses of colour—are receiving growing scholarly and institutional attention.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Nursing is a profession of extraordinary scope, depth, and social significance. Its practice is grounded in a distinctive philosophy of holistic, relationship-centred care; its knowledge base spans biological, psychological, social, and ethical domains; and its workforce is deployed across virtually every setting in which human beings experience health, illness, and vulnerability. For the beginning nursing student, this introduction has aimed to map the conceptual terrain of a profession that will demand continuous learning, critical reflection, and moral commitment over the course of a career.\n\nThe articles that follow in this encyclopedia address specific dimensions of nursing knowledge and practice in greater depth. Together, they are intended to support the development of the intellectual habits—curiosity, rigour, humility, and practical wisdom—that characterise the excellent nurse. The study of nursing is, at its best, an education in what it means to care for another human being with knowledge, skill, and genuine compassion.`,
+  },
+];
+---
+
+<Layout title="Introduction to Nursing – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Introduction to Nursing</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🏥 Nursing Foundations
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Introduction to Nursing
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of nursing as a profession and discipline, covering its definition,
+          philosophy, history, educational pathways, principal domains of practice, and the
+          contemporary forces shaping its evolution.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Henderson, V. (1966). <em>The nature of nursing: A definition and its implications for practice, research, and education.</em> Macmillan.',
+            'International Council of Nurses. (2021). <em>The ICN code of ethics for nurses.</em> ICN.',
+            'Nightingale, F. (1860). <em>Notes on nursing: What it is, and what it is not.</em> Harrison.',
+            'Peplau, H. E. (1952). <em>Interpersonal relations in nursing.</em> Putnam.',
+            'Watson, J. (2008). <em>Nursing: The philosophy and science of caring</em> (Rev. ed.). University Press of Colorado.',
+            'World Health Organization. (2020). <em>State of the world\'s nursing 2020: Investing in education, jobs and leadership.</em> WHO.',
+            'American Association of Colleges of Nursing. (2021). <em>The essentials: Core competencies for professional nursing education.</em> AACN.',
+            'Nursing and Midwifery Council. (2018). <em>Future nurse: Standards of proficiency for registered nurses.</em> NMC.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Modern founder', def: 'Florence Nightingale (1860)' },
+            { term: 'Global workforce', def: '~29 million nurses worldwide' },
+            { term: 'US licensure', def: 'NCLEX-RN (ADN or BSN required)' },
+            { term: 'UK regulation', def: 'Nursing &amp; Midwifery Council (NMC)' },
+            { term: 'Core philosophy', def: 'Holistic, person-centred care' },
+            { term: 'Key theorists', def: 'Nightingale, Henderson, Peplau, Watson' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Professional identity formation',
+            '✅ Evidence-based practice foundations',
+            '✅ Ethical and legal accountability',
+            '✅ Holistic patient assessment',
+            '✅ Interprofessional collaboration',
+            '✅ Lifelong learning and development',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

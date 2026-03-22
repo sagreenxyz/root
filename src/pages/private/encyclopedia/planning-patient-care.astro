@@ -1,0 +1,186 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Planning patient care is the third phase of the nursing process and the intellectual bridge between assessment and action. Preceded by the identification and prioritisation of nursing diagnoses and patient problems, and followed by implementation and evaluation, the planning phase is where nursing knowledge, clinical judgment, and patient-centred values converge to produce an individualised, evidence-based care plan. Far from a bureaucratic formality, effective care planning is a sophisticated cognitive activity that requires the nurse to synthesise complex assessment data, draw on theoretical knowledge of pathophysiology and nursing science, set realistic and measurable outcomes, and identify interventions that are safe, effective, and acceptable to the patient.\n\nThis article provides a comprehensive academic overview of the planning phase of the nursing process. It examines the theoretical foundations of nursing care planning, the distinction between standardised and individualised care plans, the process of setting patient-centred goals and expected outcomes, the selection and rationale of nursing interventions, the use of clinical taxonomies including NANDA-I, NOC, and NIC, the role of interprofessional collaboration in care planning, and the documentation and legal dimensions of the care plan as a professional and organisational record.`,
+  },
+  {
+    id: 'nursing-process-context',
+    heading: 'The Nursing Process and Care Planning',
+    body: `The nursing process is the systematic, cyclical framework that structures professional nursing practice. First described in its full five-phase form—Assessment, Diagnosis, Planning, Implementation, and Evaluation (ADPIE)—in the nursing literature of the 1960s and 1970s, the nursing process provides a problem-solving structure that is applicable across clinical settings, patient populations, and nursing specialties. It is endorsed by major nursing regulatory and professional bodies internationally, including the American Nurses Association (ANA) and the International Council of Nurses (ICN), and forms the conceptual backbone of most nursing curricula.\n\nThe Assessment phase involves systematic data collection—subjective (what the patient reports) and objective (what the nurse observes and measures)—across the physiological, psychological, social, cultural, and spiritual dimensions of the patient's experience. The Diagnosis phase involves the analysis and synthesis of assessment data to identify nursing diagnoses and patient problems that are within the nurse's scope to address. These diagnoses are distinct from medical diagnoses: they describe human responses to actual or potential health problems rather than pathological entities.\n\nThe Planning phase—the focus of this article—involves three principal activities: establishing priorities among identified nursing diagnoses, setting measurable patient goals and expected outcomes for each priority diagnosis, and selecting evidence-based nursing interventions to achieve those outcomes. The Implementation phase involves executing the care plan—performing or delegating the planned interventions and documenting their performance. The Evaluation phase involves comparing the patient's actual outcomes with the expected outcomes established in the planning phase and determining whether the care plan requires modification.\n\nThe nursing process is iterative rather than linear: evaluation findings feed back into assessment and diagnosis, triggering revision of the care plan as the patient's condition evolves. This iterative character reflects the dynamic nature of clinical situations and the continuous monitoring role that is central to nursing practice.`,
+  },
+  {
+    id: 'priority-setting',
+    heading: 'Priority Setting in Care Planning',
+    body: `When a patient presents with multiple nursing diagnoses and identified problems—as is almost always the case in complex clinical situations—the nurse must establish priorities: a hierarchical ordering of problems that determines which receive attention first. Priority setting is one of the most cognitively demanding aspects of care planning and one of the most consequential for patient outcomes.\n\nMaslow's Hierarchy of Needs. The most widely applied framework for nursing priority setting is Maslow's Hierarchy of Needs (1943), which organises human needs into a hierarchical pyramid: physiological needs (air, water, food, thermoregulation) at the base; safety needs (physical and psychological security) above; and progressively higher-order needs—belonging, esteem, and self-actualisation—at the apex. In nursing application, problems that threaten the patient's physiological integrity—airway compromise, haemorrhic instability, respiratory failure, acute pain—receive highest priority. Psychosocial and self-actualisation needs are important but are addressed after life-threatening physiological needs are stabilised.\n\nAcuity-Based Prioritisation. In acute care settings, priority setting is also guided by the acuity of the patient's condition—the immediacy and severity of the threat to patient safety. The ABC framework (Airway, Breathing, Circulation) provides a rapid cognitive organiser for life-threatening physiological priorities. Modifications include ABCDE (adding Disability/neurological status and Exposure/environment) and the integration of pain and consciousness level as additional prioritisation criteria. In paediatric settings, the modified ABCDE framework adjusts parameters to reflect age-specific norms.\n\nPatient and Family Priorities. Patient-centred care requires that the patient's own priorities—what she believes is most important, most distressing, or most in need of attention—be incorporated into the priority-setting process. Patients and families bring unique perspectives on the significance of different problems, the acceptability of different interventions, and the goals that matter most in the context of their lives. When the nurse's clinical priorities diverge from the patient's expressed priorities, therapeutic communication, education, and negotiation are required to reach a shared understanding that is safe, evidence-based, and genuinely patient-centred.\n\nPrioritisation Frameworks. Several mnemonic-based frameworks support systematic priority setting in nursing education and practice. CURE (Critical, Urgent, Routine, Extra/Enhancement) and the ABC/priority system provide structured approaches to rapidly ordering competing demands. The SBAR (Situation, Background, Assessment, Recommendation) communication tool, while primarily used for clinical handover, also supports the cognitive organisation required for effective prioritisation by structuring the nurse's clinical reasoning in a communicable form.`,
+  },
+  {
+    id: 'goals-outcomes',
+    heading: 'Setting Patient Goals and Expected Outcomes',
+    body: `Goals and expected outcomes are the targets against which nursing care is measured and evaluated. They provide direction for nursing interventions, criteria for evaluation, and a basis for communicating with the patient, family, and interprofessional team about the intended trajectory of care. The quality of goal-setting is therefore a critical determinant of care plan effectiveness.\n\nDistinguishing Goals from Outcomes. In nursing terminology, goals and expected outcomes are closely related but conceptually distinct. A goal is a broad statement of the direction of care—a desired state or endpoint for the patient. An expected outcome is a specific, measurable indicator that the goal is being achieved. For example, for a patient with impaired skin integrity, the goal might be "the patient will demonstrate wound healing," while an expected outcome might be "the patient's wound will decrease in size by 50% within two weeks as measured by weekly wound assessment." Expected outcomes are the operationalisation of goals into observable, evaluable terms.\n\nSMART Outcomes. The SMART framework—Specific, Measurable, Achievable, Relevant, and Time-bound—provides a widely used structure for formulating expected outcomes that are amenable to evaluation. Specific outcomes identify the patient behaviour or clinical indicator that will demonstrate progress toward the goal. Measurable outcomes specify how change will be quantified. Achievable outcomes are realistic in light of the patient's current condition, resources, and trajectory. Relevant outcomes address the identified nursing diagnosis or patient problem. Time-bound outcomes specify the timeframe within which the outcome is expected to be achieved, providing a basis for systematic evaluation and care plan revision.\n\nPatient-Centred Goal Setting. Best practice in care planning emphasises collaborative goal setting—a process in which the patient, family, and nurse jointly negotiate outcomes that reflect the patient's values, preferences, and circumstances as well as the nurse's clinical knowledge. Research consistently demonstrates that patients who are active participants in goal-setting show greater motivation to achieve outcomes, better adherence to care plans, and higher satisfaction with care. Collaborative goal setting requires communication skills, sensitivity to health literacy and cultural factors, and the ability to translate clinical language into terms that are accessible to the patient.\n\nNOC: Nursing Outcomes Classification. The Nursing Outcomes Classification (NOC), developed at the University of Iowa, is a standardised taxonomy of patient outcomes that are sensitive to nursing interventions. NOC outcomes are organised into seven domains—Functional Health, Physiologic Health, Psychosocial Health, Health Knowledge and Behaviour, Perceived Health, Family Health, and Community Health—and each outcome is defined in terms of indicators that can be rated on a five-point Likert scale, enabling quantitative measurement of patient progress. NOC is frequently used in conjunction with NANDA-I nursing diagnoses and NIC interventions to create a standardised, integrated care planning language.`,
+  },
+  {
+    id: 'selecting-interventions',
+    heading: 'Selecting Nursing Interventions',
+    body: `Once patient goals and expected outcomes have been established, the nurse selects nursing interventions—actions that are designed to assist the patient in achieving the outcomes. Intervention selection requires integration of evidence-based knowledge, clinical judgment, patient preference, and contextual factors including available resources, institutional policy, and the nurse's own competence.\n\nTypes of Nursing Interventions. Nursing interventions may be classified along several dimensions. Independent interventions are those that the nurse initiates on the basis of her own clinical judgment, without requiring a physician's order—such as repositioning a patient to prevent pressure injury, providing patient education, or offering therapeutic communication. Dependent interventions are carried out in response to a physician's or advanced practice provider's order—such as administering prescribed medications or implementing a prescribed treatment. Collaborative or interdependent interventions reflect shared decision-making and joint action among members of the interprofessional team—such as collaborating with a dietitian to develop a nutritional care plan or working with a physiotherapist on a mobility programme.\n\nEvidence-Based Intervention Selection. The evidence-based practice (EBP) paradigm requires that intervention selection be guided by the best available research evidence, integrated with clinical expertise and patient values. Nurses access evidence through clinical practice guidelines, systematic reviews, Cochrane reviews, and nursing-specific databases such as CINAHL, PubMed, and the Joanna Briggs Institute (JBI) EBP Database. Translating research evidence into clinical practice requires critical appraisal skills—the ability to evaluate the quality, relevance, and applicability of evidence to the specific patient situation.\n\nNIC: Nursing Interventions Classification. The Nursing Interventions Classification (NIC), also developed at the University of Iowa, is a comprehensive, standardised taxonomy of nursing interventions. NIC contains over 550 interventions organised into seven domains (Basic Physiological, Complex Physiological, Behavioural, Safety, Family, Health System, and Community) and 30 classes. Each intervention is defined with a label, definition, and set of associated activities. NIC interventions are linked to NANDA-I nursing diagnoses and NOC outcomes through the NNN (NANDA-I, NOC, NIC) linkage system, enabling a standardised, integrated approach to care planning that supports documentation, research, and quality improvement.\n\nRationale and Documentation of Interventions. For each selected intervention, the nurse is expected to articulate a rationale—a justification grounded in clinical knowledge and evidence that explains why the intervention is expected to contribute to the desired outcome. Documenting the rationale serves multiple functions: it demonstrates clinical reasoning and accountability, supports communication among team members, and provides a basis for evaluating the appropriateness of the care plan in retrospect. Nursing students are typically required to document rationales explicitly in care plan assignments, cultivating the habit of evidence-based justification that is expected in professional practice.`,
+  },
+  {
+    id: 'interprofessional-documentation',
+    heading: 'Interprofessional Collaboration and Care Plan Documentation',
+    body: `Contemporary healthcare is delivered by interprofessional teams, and effective care planning requires the integration of perspectives from multiple disciplines. The nursing care plan exists within a broader interprofessional care planning context that includes medical management plans, allied health intervention plans, social work assessments, and palliative care frameworks, among others. The coordination of these multiple planning documents—and the communication among the professionals responsible for them—is essential to safe, coherent patient care.\n\nInterprofessional Care Conferences. In many acute and subacute settings, the formal mechanism for interprofessional care planning is the care conference—a structured meeting in which representatives from each relevant discipline share assessments, discuss goals, negotiate priorities, and agree on a coordinated care plan. Care conferences are particularly important for patients with complex needs—those approaching discharge, those in palliative or end-of-life care, or those with multiple co-morbidities requiring management by several specialist teams. Nursing's contribution to care conferences is to represent the holistic nursing assessment, to advocate for patient and family priorities, and to ensure that the care plan reflects the realities of the patient's daily experience of illness and care.\n\nHandover and Continuity of Care. The care plan is the primary instrument for maintaining care continuity across shifts, across care settings, and across time. An effective care plan enables any nurse caring for the patient—not just the one who developed the plan—to understand the patient's priority problems, agreed goals, planned interventions, and the rationale for each. This continuity function requires that the care plan be current, accurate, and accessible—properties that are supported by electronic health record (EHR) systems that provide real-time access to care planning documentation across the care team.\n\nDocumentation Standards and Legal Significance. The care plan is a legal document. As part of the patient's health record, it may be accessed in the context of adverse event investigations, professional disciplinary proceedings, and civil litigation. Nurses are accountable for the accuracy and completeness of their care plan documentation. The medico-legal principle that "if it wasn't documented, it wasn't done" emphasises the importance of contemporaneous, accurate documentation of planned and implemented nursing care. Care plan documentation must comply with institutional policy, professional standards, and applicable regulatory requirements regarding format, timing, and content.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Planning patient care is a sophisticated, intellectually demanding, and ethically significant nursing activity. It requires the nurse to move from assessment and diagnosis to the concrete specification of goals, outcomes, and interventions that are individualised to the patient, grounded in evidence, achievable in the clinical context, and aligned with the patient's own values and priorities. It draws on clinical taxonomies—NANDA-I, NOC, NIC—that standardise nursing language and support research and quality improvement, while remaining fundamentally oriented to the particular person in the particular clinical situation.\n\nFor the nursing student, mastery of the planning phase of the nursing process is not merely an academic exercise. It is the development of a cognitive habit—the habit of thinking ahead, of specifying what needs to change and how that change will be brought about and measured—that is essential to safe and effective clinical practice. The care plan is at once a record of clinical reasoning, a communication tool for the interprofessional team, a contract with the patient regarding the goals and direction of care, and a commitment to the systematic, evidence-based approach to nursing that distinguishes professional practice from mere task performance.`,
+  },
+];
+---
+
+<Layout title="Planning Patient Care – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Planning Patient Care</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            📋 Nursing Process
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Planning Patient Care
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the planning phase of the nursing process, covering priority setting,
+          patient-centred goal and outcome formulation, evidence-based intervention selection,
+          clinical taxonomies (NANDA-I, NOC, NIC), interprofessional collaboration, and care plan documentation.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Ackley, B. J., Ladwig, G. B., Makic, M. B. F., Martinez-Kratz, M., &amp; Zanotti, M. (2023). <em>Nursing diagnosis handbook: An evidence-based guide to planning care</em> (12th ed.). Elsevier.',
+            'Butcher, H. K., Bulechek, G. M., Dochterman, J. M., &amp; Wagner, C. M. (Eds.). (2018). <em>Nursing interventions classification (NIC)</em> (7th ed.). Elsevier.',
+            'Herdman, T. H., Kamitsuru, S., &amp; Lopes, C. T. (Eds.). (2021). <em>NANDA International nursing diagnoses: Definitions and classification 2021–2023.</em> Thieme.',
+            'Maslow, A. H. (1943). A theory of human motivation. <em>Psychological Review, 50</em>(4), 370–396.',
+            'Moorhead, S., Swanson, E., Johnson, M., &amp; Maas, M. L. (Eds.). (2018). <em>Nursing outcomes classification (NOC): Measurement of health outcomes</em> (6th ed.). Elsevier.',
+            'Yildirim, B., &amp; Ozkahraman, S. (2011). Critical thinking in nursing process and education. <em>International Journal of Humanities and Social Science, 1</em>(13), 257–262.',
+            'American Nurses Association. (2021). <em>Nursing: Scope and standards of practice</em> (4th ed.). ANA.',
+            'Alfaro-LeFevre, R. (2019). <em>Critical thinking, clinical reasoning, and clinical judgment: A practical approach</em> (7th ed.). Elsevier.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Nursing process phase', def: '3rd of 5 (ADPIE)' },
+            { term: 'Priority framework', def: 'Maslow\'s Hierarchy of Needs' },
+            { term: 'Outcome taxonomy', def: 'NOC (Nursing Outcomes Classification)' },
+            { term: 'Intervention taxonomy', def: 'NIC (Nursing Interventions Classification)' },
+            { term: 'Diagnosis taxonomy', def: 'NANDA-I (nursing diagnoses)' },
+            { term: 'Goal framework', def: 'SMART outcomes' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Individualised, evidence-based care',
+            '✅ Patient-centred goal setting',
+            '✅ Safe priority setting',
+            '✅ Interprofessional team coordination',
+            '✅ Legal documentation standards',
+            '✅ Care continuity across shifts',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

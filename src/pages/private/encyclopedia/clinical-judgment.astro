@@ -1,0 +1,186 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Clinical judgment is the cornerstone of professional nursing practice. It is the complex cognitive and metacognitive process by which nurses recognise salient clinical information, interpret its meaning in the context of a specific patient, respond with appropriate action, and reflect on the outcomes of that action. Unlike rule-following or algorithmic decision-making, clinical judgment is an integrative capacity that combines formal knowledge, experiential pattern recognition, ethical reasoning, and sensitivity to the unique circumstances of the individual patient. In an era of increasingly sophisticated clinical technology and decision-support systems, clinical judgment remains an irreducibly human competency—one that cannot be fully automated or replaced.\n\nThe National Council of State Boards of Nursing (NCSBN) has placed clinical judgment at the centre of its Next Generation NCLEX (NGN) initiative, acknowledging that the assessment of clinical judgment in nursing education and licensing represents a critical quality assurance function. This article traces the theoretical foundations of clinical judgment in nursing, examines influential models and frameworks, explores the cognitive processes involved, discusses factors that facilitate or impair good judgment, and considers the implications for nursing education and practice.`,
+  },
+  {
+    id: 'theoretical-foundations',
+    heading: 'Theoretical Foundations',
+    body: `The study of clinical judgment in nursing draws on multiple intellectual traditions, including cognitive psychology, philosophy of mind, decision theory, and nursing theory. These traditions have produced distinct but complementary accounts of how expert clinical reasoning operates.\n\nIntuition and Pattern Recognition. Early phenomenological research by Patricia Benner, drawing on the Dreyfus model of skill acquisition, established that expert nurses frequently make accurate and rapid clinical judgements that cannot be fully articulated as chains of explicit reasoning. In From Novice to Expert (1984), Benner argued that nursing expertise involves a shift from analytic, rule-based reasoning to holistic, intuitive pattern recognition—the ability to grasp a clinical situation as a whole without deliberate decomposition into components. This account positioned clinical judgment not merely as a cognitive skill but as a form of embodied, experientially grounded practical wisdom.\n\nHypothetic-Deductive Reasoning. Cognitive psychologists, working primarily with medical practitioners, described an alternative model in which clinical reasoning proceeds through hypothesis generation and testing. The clinician observes initial data, generates a set of competing diagnostic hypotheses, actively seeks information to confirm or disconfirm each, and progressively narrows to the most likely explanation. This hypothetic-deductive model accounts for the structured, analytical quality of clinical reasoning in unfamiliar or complex situations where pattern recognition is unavailable or unreliable.\n\nDual-Process Theory. More recently, dual-process theories of cognition—particularly as applied to clinical reasoning by Croskerry and others—have proposed an integrated account. System 1 reasoning is fast, automatic, and pattern-driven; it is the mode that underlies intuitive clinical judgment. System 2 reasoning is slow, deliberate, and analytical; it is engaged when System 1 responses are uncertain, when stakes are high, or when situations are genuinely novel. Expert clinicians deploy both systems, calibrating their use to situational demands—but are vulnerable to cognitive biases when System 1 responses are accepted uncritically in complex or atypical situations.\n\nNursing-Specific Frameworks. The nursing profession has also developed its own theoretical frameworks for clinical judgment, most influentially the Clinical Judgment Model proposed by Christine Tanner in 2006. Tanner's model characterises clinical judgment as involving four interrelated processes: Noticing, Interpreting, Responding, and Reflecting. This model, grounded in extensive qualitative research on how nurses actually reason, has become foundational in nursing education and has informed the structure of the NCSBN's Clinical Judgment Measurement Model (NCJMM).`,
+  },
+  {
+    id: 'tanner-model',
+    heading: "Tanner's Clinical Judgment Model",
+    body: `Christine Tanner's 2006 model, published in the Journal of Nursing Education, remains the most cited framework for clinical judgment in nursing. It is grounded in qualitative research with practising nurses and nursing students, and it articulates clinical judgment as a contextually embedded, relational, and reflective process.\n\nNoticing. The first phase of the model involves the nurse's initial grasp of the clinical situation—her perception of what is salient and what requires attention. Noticing is shaped by the nurse's prior clinical experiences (which generate expectations about typical patient presentations), her relationship with the patient (which provides baseline knowledge of the patient's usual condition), and the clinical context (which alerts the nurse to common patterns in specific settings). Expert nurses are more likely to notice subtle deviations from expected patterns than novices, who lack the experiential template against which to detect meaningful variation.\n\nInterpreting. Having noticed relevant data, the nurse must interpret its significance—assigning meaning to what she has observed in the context of the specific patient and situation. Tanner identifies three interpretive approaches: analytic reasoning (deliberate, rule-governed processing of data); intuition (rapid, holistic pattern recognition based on prior experience); and narrative or contextual thinking (understanding the patient's situation in terms of their personal history, values, and circumstances). Expert nursing judgment draws flexibly on all three, selecting the approach that is best suited to the demands of the situation.\n\nResponding. Interpretation leads to action. The responding phase encompasses both the decision about what to do and the implementation of that decision in a manner that is responsive to the patient's immediate reaction and to evolving situational cues. Skilled nursing response is not merely technically correct—it is attuned to the patient as a person, communicatively sensitive, and adaptable as new information emerges.\n\nReflecting. Tanner's model includes a reflective dimension that operates both during the clinical encounter (reflection-in-action) and after it (reflection-on-action), following the terminology introduced by Donald Schön. Reflection-in-action involves the nurse monitoring her own reasoning and responses in real time, adjusting her interpretations and actions as the situation evolves. Reflection-on-action involves retrospective review of clinical encounters to consolidate learning, identify errors in reasoning, and refine clinical understanding. Both forms of reflection are essential to the development of clinical expertise over time.`,
+  },
+  {
+    id: 'ncsbn-model',
+    heading: 'NCSBN Clinical Judgment Measurement Model',
+    body: `The NCSBN developed the Clinical Judgment Measurement Model (NCJMM) to operationalise clinical judgment for the purposes of assessment and, specifically, to guide the design of the Next Generation NCLEX (NGN) licensing examination. The NCJMM draws substantially on Tanner's framework but adapts it for measurable application in high-stakes testing contexts.\n\nThe NCJMM identifies six cognitive skills that constitute clinical judgment: Recognise Cues, Analyse Cues, Prioritise Hypotheses, Generate Solutions, Take Actions, and Evaluate Outcomes. These skills map broadly onto the Notice, Interpret, Respond, and Reflect phases of Tanner's model but are articulated with greater specificity to support item development and scoring.\n\nRecognise Cues involves identifying relevant patient data from the available information environment—including assessment findings, vital signs, laboratory results, medication records, and patient and family statements. Analyse Cues involves interpreting the significance of recognised cues, grouping them into meaningful patterns, and linking them to underlying pathophysiological or psychosocial processes. Prioritise Hypotheses involves ranking potential explanations for the patient's presentation in order of urgency and likelihood—a skill closely related to the nurse's ability to differentiate life-threatening from non-urgent conditions. Generate Solutions involves identifying nursing interventions that address the prioritised hypotheses, drawing on knowledge of evidence-based practice guidelines and patient-specific factors. Take Actions involves selecting and implementing appropriate interventions from the generated solutions, with attention to timing, sequence, and patient safety. Evaluate Outcomes involves assessing the patient's response to interventions and determining whether the clinical situation has improved, remained stable, or deteriorated in ways that require further action.\n\nThe NGN employs innovative item formats—including case studies, extended-drag-and-drop questions, and trend items—designed to assess these cognitive skills in a manner that better reflects the complexity of real clinical reasoning than traditional multiple-choice questions allow. Nursing educators are increasingly aligning curriculum design, teaching strategies, and formative assessment with the NCJMM to prepare students for both the NGN and the demands of clinical practice.`,
+  },
+  {
+    id: 'cognitive-biases',
+    heading: 'Cognitive Biases and Errors in Clinical Judgment',
+    body: `Clinical judgment, however expert, is vulnerable to systematic cognitive errors—biases that consistently skew reasoning in particular directions. Awareness of common cognitive biases is an important component of professional self-regulation and patient safety.\n\nAnchoring Bias. Anchoring occurs when the clinician's judgment is unduly influenced by an early piece of information or an initial diagnosis, leading to insufficient revision of that assessment as subsequent contradictory data accumulates. In nursing, anchoring may manifest as persistence with an initial pain assessment in the face of mounting evidence of clinical deterioration, or as reliance on a previous nurse's shift report to the exclusion of the nurse's own fresh assessment.\n\nAvailability Heuristic. The availability bias leads clinicians to overestimate the probability of conditions that are easily recalled—typically because they are dramatic, recent, or personally experienced—and to underestimate the probability of conditions that are less cognitively salient. A nurse who recently cared for a patient with pulmonary embolism may be more likely to consider this diagnosis in a new patient with atypical chest pain, even when the clinical probability is low.\n\nPremature Closure. Among the most dangerous biases in clinical practice, premature closure occurs when the clinician accepts the first plausible explanation for a patient's presentation and discontinues further diagnostic inquiry. It is the cognitive equivalent of "satisficing"—accepting an adequate explanation rather than pursuing the most accurate one. Premature closure is responsible for a significant proportion of diagnostic errors in both medicine and nursing.\n\nFraming Effects. The way in which clinical information is presented—its framing—can significantly influence subsequent judgment. A patient described by a colleague as "difficult" or "drug-seeking" may receive a different assessment from the nurse than the same patient presenting without that contextual label. Nurses must develop habits of conscious reframing, particularly when receiving handover information that carries strong evaluative connotations.\n\nMitigation Strategies. Research on cognitive bias mitigation in clinical contexts supports several strategies: structured clinical reasoning frameworks (such as SBAR for communication and ISBAR for assessment); deliberate slowing down of System 1 responses in high-stakes situations; explicit hypothesis generation and testing; seeking a second opinion or senior review when uncertain; and fostering a team culture in which questioning and uncertainty are normalised rather than stigmatised.`,
+  },
+  {
+    id: 'development-of-judgment',
+    heading: 'Development of Clinical Judgment in Nursing Education',
+    body: `Clinical judgment is not a fixed trait but a developing capacity that is cultivated through education, supervised clinical experience, and reflective practice. Nursing educators have a responsibility to design learning experiences that actively develop clinical judgment rather than assuming it will emerge spontaneously from clinical exposure.\n\nSimulation-Based Learning. High-fidelity clinical simulation creates controlled environments in which students can practise clinical judgment without risk to real patients. Simulation scenarios can be designed to activate specific clinical judgment skills—such as recognising the early signs of sepsis or prioritising competing demands in a complex clinical situation—and can be followed by structured debriefing that makes reasoning processes explicit and subject to critical reflection. The evidence base for simulation-based learning in nursing is robust, demonstrating improvements in knowledge, skill, and clinical reasoning competence.\n\nCase-Based and Problem-Based Learning. Case-based learning, in which students work through complex, realistic clinical scenarios either individually or in groups, activates hypothetic-deductive reasoning and promotes the integration of knowledge from multiple domains. Problem-based learning (PBL) extends this approach by placing students in the role of active investigators who must identify their own learning needs and pursue relevant resources, more closely mirroring the self-directed reasoning demands of clinical practice.\n\nClinical Supervision and Preceptorship. Direct clinical supervision, in which an experienced nurse provides real-time guidance and feedback on the student's or novice nurse's reasoning and actions, is the most ecologically valid context for developing clinical judgment. Effective preceptors make their own reasoning visible—thinking aloud during clinical decision-making—and create opportunities for supervised autonomous judgment rather than directing all decisions themselves. Structured preceptorship programmes with explicit clinical judgment objectives produce better outcomes than informal supervision alone.\n\nReflective Practice. Structured reflective practice—through reflective journaling, clinical supervision conversations, or guided portfolio development—helps nurses consolidate and generalise the learning embedded in clinical experience. Reflection prompts that specifically target clinical judgment (What did I notice? How did I interpret it? What did I do, and why? What would I do differently?) are more effective than unstructured reflection in developing the metacognitive capacities that underlie expert judgment.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Clinical judgment is the defining intellectual activity of nursing practice. It encompasses the recognition of clinically salient information, the interpretation of that information in the context of the specific patient, the generation and implementation of appropriate responses, and the reflective consolidation of learning that sustains ongoing development. It is shaped by theoretical knowledge, experiential pattern recognition, ethical reasoning, and relational sensitivity—and it is vulnerable to cognitive biases that well-educated practitioners must actively monitor and mitigate.\n\nFor the nursing student, engagement with the frameworks and research reviewed in this article provides more than theoretical enrichment. It offers a vocabulary for understanding and improving one's own reasoning processes—a metacognitive resource that becomes increasingly valuable as clinical experience accumulates. The cultivation of excellent clinical judgment is not a finite educational objective but a career-long professional commitment, grounded in the recognition that safe, effective, and compassionate nursing care depends ultimately on the quality of the reasoning that underlies it.`,
+  },
+];
+---
+
+<Layout title="Clinical Judgment – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Clinical Judgment</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🧩 Clinical Reasoning
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Clinical Judgment
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of clinical judgment in nursing, covering its theoretical foundations,
+          major frameworks including Tanner's model and the NCSBN Clinical Judgment Measurement Model,
+          cognitive biases, and strategies for developing this essential professional competency.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Benner, P. (1984). <em>From novice to expert: Excellence and power in clinical nursing practice.</em> Addison-Wesley.',
+            'Croskerry, P. (2002). Achieving quality in clinical decision making: Cognitive strategies and detection of bias. <em>Academic Emergency Medicine, 9</em>(11), 1184–1204.',
+            'National Council of State Boards of Nursing. (2019). <em>NCSBN clinical judgment measurement model.</em> NCSBN.',
+            'Tanner, C. A. (2006). Thinking like a nurse: A research-based model of clinical judgment in nursing. <em>Journal of Nursing Education, 45</em>(6), 204–211.',
+            'Dreyfus, H. L., &amp; Dreyfus, S. E. (1986). <em>Mind over machine: The power of human intuition and expertise in the era of the computer.</em> Free Press.',
+            'Kahneman, D. (2011). <em>Thinking, fast and slow.</em> Farrar, Straus and Giroux.',
+            'Schön, D. A. (1983). <em>The reflective practitioner: How professionals think in action.</em> Basic Books.',
+            'Dickison, P., Haerling, K. A., &amp; Lasater, K. (2019). Integrating the National Council of State Boards of Nursing Clinical Judgment Model into nursing educational frameworks. <em>Journal of Nursing Education, 58</em>(2), 72–78.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key theorist', def: 'Christine Tanner (2006)' },
+            { term: 'Tanner\'s phases', def: 'Notice, Interpret, Respond, Reflect' },
+            { term: 'NCSBN model', def: 'Clinical Judgment Measurement Model' },
+            { term: 'NGN application', def: 'Next Generation NCLEX (NGN)' },
+            { term: 'Dual-process', def: 'System 1 (fast) vs System 2 (slow)' },
+            { term: 'Related concept', def: 'Clinical reasoning; evidence-based practice' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ NCLEX-NGN preparation',
+            '✅ Safe clinical decision-making',
+            '✅ Patient deterioration recognition',
+            '✅ Priority-setting in complex care',
+            '✅ Reducing diagnostic error',
+            '✅ Professional development and reflection',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
