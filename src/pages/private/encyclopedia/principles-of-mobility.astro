@@ -1,0 +1,191 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Mobility—the capacity to move freely and purposefully within one's environment—is a fundamental determinant of health, functional independence, and quality of life across the lifespan. In nursing, the principles of mobility encompass the assessment of movement capacity, the prevention of complications arising from immobility, the planning and delivery of therapeutic interventions to maintain or restore functional movement, and the education of patients and caregivers in safe movement techniques. Mobility is not merely a physical parameter; it intersects with psychological well-being, social participation, and the capacity for self-care. The loss of mobility—whether sudden, as in acute illness or injury, or gradual, as in progressive neurological or musculoskeletal disease—carries consequences that extend across virtually every organ system and every dimension of human experience.\n\nFor nursing students and registered nurses, a thorough understanding of mobility principles provides the conceptual foundation for safe patient handling, falls prevention, rehabilitation support, and the prevention of pressure injuries, deep vein thrombosis, and hospital-acquired pneumonia. This article presents the theoretical and practical dimensions of mobility as understood within contemporary nursing science and evidence-based clinical practice.`,
+  },
+  {
+    id: 'physiological-basis',
+    heading: 'Physiological Basis of Movement',
+    body: `Purposeful human movement arises from the coordinated activity of the musculoskeletal, neurological, cardiovascular, and respiratory systems. Skeletal muscle contraction, initiated by motor neurones originating in the motor cortex and mediated through the spinal cord and peripheral nerves, produces the forces that move bones around joint axes. The degree of movement possible at any given joint—its range of motion (ROM)—is constrained by the joint's anatomical design, the integrity of the surrounding capsule and ligaments, and the extensibility of the muscles and tendons that cross it.\n\nThe cerebellum coordinates the timing and precision of movement, while the basal ganglia modulate the initiation and fluency of voluntary motor activity. The vestibular system and proprioceptive receptors in muscles, tendons, and joint capsules provide continuous sensory feedback that enables postural adjustments and the maintenance of balance. Disruption at any point along this integrated system—through neurological injury, muscular deconditioning, joint pathology, or pharmacological sedation—may impair mobility in characteristic ways that guide nursing assessment and intervention.\n\nCardiovascular and respiratory contributions to mobility are equally significant. Adequate cardiac output and oxygen delivery are prerequisites for sustained physical activity; conversely, immobility reduces venous return, diminishes cardiac stroke volume, and promotes orthostatic hypotension when the patient attempts to stand. Respiratory function is also compromised by immobility: in the supine position, diaphragmatic excursion is restricted, functional residual capacity is reduced, and secretion clearance is impaired—conditions that predispose the patient to atelectasis and pneumonia.`,
+  },
+  {
+    id: 'effects-of-immobility',
+    heading: 'Effects of Immobility',
+    body: `Immobility—defined as any significant restriction in the type, amount, or duration of movement—produces adverse effects across multiple organ systems with a rapidity that is often underestimated in clinical settings. Nursing staff who understand the systemic consequences of immobility are better positioned to prioritise early mobilisation and to detect complications before they become clinically entrenched.\n\nMusculoskeletal Effects. Skeletal muscle begins to atrophy within 24–48 hours of immobility in acutely ill patients. Disuse atrophy preferentially affects type-I (slow-twitch, oxidative) muscle fibres and may reduce muscle mass at a rate of 1–3% per day during critical illness. Joint stiffness arises from changes in the composition and organisation of synovial fluid and periarticular connective tissue; contractures—fixed loss of joint range of motion—may develop within days to weeks if passive stretching is not undertaken. Bone density declines with immobility as osteoclastic activity exceeds osteoblastic activity in the absence of mechanical loading.\n\nCardiovascular Effects. Venous pooling in the lower limbs reduces preload and cardiac output. Plasma volume contraction, occurring rapidly with bed rest, further diminishes cardiovascular reserve. Orthostatic hypotension—a fall in systolic blood pressure of ≥20 mmHg or diastolic blood pressure of ≥10 mmHg within three minutes of standing—is a common and potentially dangerous consequence of prolonged recumbency. Venous stasis predisposes the immobile patient to deep vein thrombosis (DVT) and pulmonary embolism.\n\nRespiratory Effects. Gravity-dependent pooling of pulmonary secretions, reduced tidal volume, and impaired cough effectiveness combine to increase the risk of hypostatic pneumonia. Atelectasis—collapse of alveoli secondary to reduced aeration—may develop insidiously and contribute to hypoxaemia.\n\nIntegumentary Effects. Sustained pressure over bony prominences impairs capillary perfusion, leading to ischaemia and, if unrelieved, tissue necrosis. Pressure injuries (formerly termed pressure ulcers or decubitus ulcers) represent a significant patient harm event associated with prolonged immobility, particularly in combination with moisture, friction, and nutritional deficits.\n\nPsychological Effects. Immobility is strongly associated with depression, anxiety, delirium (particularly in older adults), and a generalised loss of sense of autonomy. Hospitalised patients who are unable to mobilise independently often report feelings of helplessness and diminished self-worth. Delirium, characterised by acute fluctuating disturbance in attention and cognition, is both precipitated and perpetuated by immobility in susceptible individuals.`,
+  },
+  {
+    id: 'assessment',
+    heading: 'Assessment of Mobility',
+    body: `Systematic assessment of a patient's mobility status is the prerequisite for appropriate care planning and the safe implementation of mobility-promoting interventions. Assessment encompasses the patient's baseline functional mobility, factors that may modify safe movement, and the patient's own goals and preferences regarding mobility.\n\nFunctional Mobility Assessment. Nurses assess the patient's capacity to perform key mobility tasks: rolling in bed, moving from supine to sitting, transferring from bed to chair, standing, ambulating, and climbing stairs. Assessment tools such as the Barthel Index, the Functional Independence Measure (FIM), and the Morse Falls Scale provide standardised frameworks for quantifying and communicating mobility status. The Timed Up and Go (TUG) test—measuring the time required for a patient to rise from a chair, walk three metres, return, and sit—provides a reliable, clinically feasible indicator of mobility and fall risk in ambulatory patients.\n\nModifying Factors. Assessment must identify factors that modify safe mobility, including pain (assessed using validated scales such as the Numeric Rating Scale or the PAINAD for cognitively impaired patients), orthostatic hypotension, cardiovascular instability, cognitive impairment, sedation, nutritional status, the presence of invasive lines and devices, and environmental hazards. Polypharmacy—particularly the concurrent use of antihypertensives, benzodiazepines, opioids, and antipsychotics—significantly increases fall risk and must be reviewed as part of mobility assessment.\n\nGoals and Preferences. Person-centred mobility care requires that the patient's own goals, values, and preferences are incorporated into the care plan. For some patients, the goal is restoration of full pre-morbid function; for others, the goal is optimising independence within the constraints of a chronic condition. Advance care planning discussions may be relevant when deteriorating mobility signals disease progression.`,
+  },
+  {
+    id: 'interventions',
+    heading: 'Nursing Interventions to Promote Mobility',
+    body: `Evidence-based nursing interventions to promote and maintain mobility span a continuum from passive ROM exercises for the unconscious patient to supported ambulation and progressive exercise for the recovering patient.\n\nPassive and Active Range-of-Motion Exercises. For patients who cannot initiate movement independently, nurses perform passive ROM exercises—moving limb segments through their full anatomical range without patient effort—to maintain joint flexibility, stimulate circulation, and prevent contractures. As the patient's condition improves, assisted-active and active ROM exercises progressively transfer responsibility for movement to the patient.\n\nPositioning and Repositioning. Repositioning—changing the patient's body position at regular intervals (typically every two hours for patients at high pressure injury risk)—serves multiple functions: it relieves sustained pressure on vulnerable tissues, promotes lung expansion by changing the dependent zones of the lung, reduces venous pooling, and maintains joint alignment. Evidence-based positioning protocols specify the frequency, sequencing, and technique of repositioning and form part of the broader pressure injury prevention bundle.\n\nEarly Mobilisation. Early progressive mobilisation in the acute and critical care setting—moving patients from bed rest to upright positioning, sitting, standing, and ambulation as clinical stability permits—is a core component of enhanced recovery after surgery (ERAS) protocols and ICU rehabilitation bundles. Early mobilisation reduces the duration of mechanical ventilation, intensive care unit length of stay, and the incidence of ICU-acquired weakness and delirium.\n\nSafe Patient Handling. The use of mechanical lifting devices, transfer belts, slide sheets, and stand-assist equipment reduces the risk of musculoskeletal injury to both patients and nursing staff during mobility assistance. Institutional safe patient handling programmes establish policies, provide equipment, and train staff in evidence-based handling techniques.\n\nFalls Prevention. Multifactorial falls prevention programmes—incorporating mobility assessment, medication review, environmental modification, patient education, and appropriate use of mobility aids—are recommended for all patients at elevated falls risk. Bed alarm systems, non-slip footwear, adequate lighting, and call-bell accessibility are among the environmental interventions that nurses coordinate as part of a falls prevention bundle.`,
+  },
+  {
+    id: 'special-populations',
+    heading: 'Special Populations and Considerations',
+    body: `Mobility assessment and intervention must be tailored to the specific physiological, psychological, and social characteristics of different patient populations.\n\nOlder Adults. Age-related changes in muscle mass (sarcopenia), bone density (osteoporosis), joint integrity (osteoarthritis), balance, and neurological processing speed substantially increase the risk of mobility impairment and falls in older adults. The clinical syndrome of frailty—characterised by reduced physiological reserve, weakness, slowness, exhaustion, and low physical activity—represents a state of heightened vulnerability in which apparently minor stressors can precipitate rapid functional decline. Early identification of frailty using validated tools (e.g., the Clinical Frailty Scale) enables targeted prevention and rehabilitation.\n\nPostoperative Patients. Surgical patients face specific mobility challenges including pain, drain and catheter encumbrance, anaesthesia-related residual effects, and altered body image. Preoperative prehabilitation programmes—structured exercise and nutritional optimisation in the weeks preceding surgery—improve postoperative functional recovery. Postoperatively, clear, graduated mobilisation protocols that balance pain management with progressive activity are associated with reduced complication rates and shorter hospital stays.\n\nPatients with Neurological Impairment. Stroke, spinal cord injury, multiple sclerosis, Parkinson's disease, and traumatic brain injury each produce characteristic mobility impairments requiring specialist rehabilitation strategies. Nurses working in rehabilitation settings collaborate closely with physiotherapists and occupational therapists to implement mobility goals, provide therapeutic positioning, and reinforce rehabilitation activities in their day-to-day care.\n\nPaediatric Patients. Children's mobility needs and rehabilitation approaches differ from those of adults due to ongoing developmental maturation, different injury patterns, and the important role of play in paediatric mobility promotion. Family-centred care—actively involving parents and caregivers in mobility activities—is a foundational principle in paediatric nursing.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `The principles of mobility underpin numerous core nursing competencies and directly influence patient safety, outcomes, and experience.\n\nDocumentation and Communication. Accurate, timely documentation of mobility assessment findings, the patient's functional trajectory, and the outcomes of mobility interventions enables continuity of care across shifts and disciplines. Structured clinical handover frameworks (e.g., ISBAR) should include mobility status as a standard parameter, particularly for patients at elevated risk of falls, pressure injury, or functional decline.\n\nMedication Management. Nurses play a central role in identifying medications that impair mobility or elevate fall risk, communicating these concerns to prescribers, and educating patients about their effects. Proactive medication review is an integral component of mobility care planning.\n\nPatient and Caregiver Education. Teaching patients and family members about the importance of movement, the safe use of mobility aids, techniques for safe transfer and ambulation, and strategies for maintaining mobility in the home environment is a key nursing responsibility. Written and verbal education should be tailored to the patient's health literacy, language, and readiness to learn.\n\nInterprofessional Collaboration. Optimal mobility care for complex patients requires collaborative input from physiotherapists (who design and deliver progressive exercise and rehabilitation programmes), occupational therapists (who assess functional capacity and recommend adaptive equipment and home modifications), dietitians (who address nutritional factors that influence muscle strength and healing), and medical colleagues (who manage underlying conditions and prescribe relevant therapies). The nurse serves as coordinator and advocate, ensuring that mobility goals are consistently supported across the care team.\n\nReflective Practice. Critically reflecting on mobility care decisions—including the rationale for and timing of mobilisation, the identification of barriers, and the patient's response to interventions—is a professional responsibility that drives continuous improvement in care quality.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `The principles of mobility constitute one of the most clinically consequential domains of nursing knowledge. Movement—or its absence—exerts profound effects on every organ system and on the patient's psychological well-being and social participation. The immobility complications of pressure injury, DVT, pneumonia, muscle atrophy, contracture, and delirium are largely preventable through systematic nursing assessment, proactive evidence-based interventions, and early mobilisation. The nurse's role in mobility care spans the full continuum from direct physical care—repositioning, ROM exercises, safe patient handling—to education, advocacy, and interprofessional collaboration.\n\nAs healthcare systems increasingly recognise the harms of prolonged bed rest and institutionalised immobility, nursing leadership in the implementation and evaluation of mobility-promoting programmes becomes ever more critical. A nurse who understands the physiological rationale for early mobilisation, possesses the technical skills for safe patient handling, and approaches each patient's mobility with individualised, person-centred care is a fundamental contributor to patient safety, functional recovery, and quality of life.`,
+  },
+];
+---
+
+<Layout title="Principles of Mobility – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Principles of Mobility</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🚶 Clinical Nursing Practice
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Principles of Mobility
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the physiological basis of human movement, the systemic consequences
+          of immobility, evidence-based nursing assessment, and interventions to promote and restore
+          functional mobility across clinical settings.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents (inline, mobile-friendly) -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Bergström, N., Braden, B. J., Laguzza, A., &amp; Holman, V. (1987). The Braden Scale for predicting pressure sore risk. <em>Nursing Research, 36</em>(4), 205–210.',
+            'Creditor, M. C. (1993). Hazards of hospitalization of the elderly. <em>Annals of Internal Medicine, 118</em>(3), 219–223.',
+            'Doherty-King, B., &amp; Bowers, B. (2011). How nurses decide to ambulate hospitalized older adults: Development of a conceptual model. <em>The Gerontologist, 51</em>(6), 786–797.',
+            'Herridge, M. S., Tansey, C. M., Matté, A., Tomlinson, G., Diaz-Granados, N., Cooper, A., … &amp; Cheung, A. M. (2011). Functional disability 5 years after acute respiratory distress syndrome. <em>New England Journal of Medicine, 364</em>(14), 1293–1304.',
+            'Inouye, S. K., Bogardus, S. T., Charpentier, P. A., Leo-Summers, L., Acampora, D., Holford, T. R., &amp; Cooney, L. M. (1999). A multicomponent intervention to prevent delirium in hospitalized older patients. <em>New England Journal of Medicine, 340</em>(9), 669–676.',
+            'Needham, D. M. (2008). Mobilizing patients in the intensive care unit: Improving neuromuscular weakness and physical function. <em>JAMA, 300</em>(14), 1685–1690.',
+            'Podsiadlo, D., &amp; Richardson, S. (1991). The Timed "Up &amp; Go": A test of basic functional mobility for frail elderly persons. <em>Journal of the American Geriatrics Society, 39</em>(2), 142–148.',
+            'Stiller, K. (2013). Physiotherapy in intensive care: An updated systematic review. <em>Chest, 144</em>(3), 825–847.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key risk', def: 'Immobility complications' },
+            { term: 'Assessment tool', def: 'Morse Falls Scale; Barthel Index' },
+            { term: 'Onset of atrophy', def: '24–48 hours of immobility' },
+            { term: 'Repositioning', def: 'Every 2 hours (high-risk)' },
+            { term: 'Key concept', def: 'Early progressive mobilisation' },
+            { term: 'Related to', def: 'Pressure injury, DVT, Delirium' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Falls prevention',
+            '✅ Pressure injury prevention',
+            '✅ Safe patient handling',
+            '✅ Early mobilisation protocols',
+            '✅ Rehabilitation support',
+            '✅ Patient education',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
