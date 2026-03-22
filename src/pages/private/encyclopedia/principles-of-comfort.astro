@@ -1,0 +1,192 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Comfort is a fundamental human need and a central goal of nursing care. As a clinical concept, comfort transcends the simple absence of pain to encompass the patient's physical, psychospiritual, sociocultural, and environmental states. The principles of comfort in nursing draw on a rich theoretical tradition, most notably Katharine Kolcaba's Theory of Comfort, alongside an expanding evidence base in pain science, palliative care, patient-centred care, and environmental design. For nursing students and registered nurses, applying the principles of comfort demands the integration of skilled clinical assessment, pharmacological and non-pharmacological intervention, interpersonal compassion, and advocacy for environments that support healing and well-being.\n\nComfort is not a passive state to be delivered to patients but an active, dynamic quality that nursing care can promote, protect, and restore. In every clinical encounter—from routine vital sign measurement to complex palliative care—the nurse's attentiveness to patient comfort reflects the discipline's deepest professional values. This article examines the theoretical foundations, dimensions, assessment, and nursing interventions that constitute the principles of comfort in contemporary nursing practice.`,
+  },
+  {
+    id: 'theoretical-foundations',
+    heading: 'Theoretical Foundations',
+    body: `The conceptualisation of comfort in nursing has evolved from a largely intuitive focus on physical ease to a sophisticated, multi-dimensional theoretical construct that informs both practice and research.\n\nKolcaba's Theory of Comfort. Katharine Kolcaba's middle-range Theory of Comfort, first formally articulated in the early 1990s, provides the most influential framework for understanding comfort in nursing. Kolcaba defines comfort as the immediate experience of being strengthened through having the needs for relief, ease, and transcendence addressed in four contexts: physical, psychospiritual, sociocultural, and environmental. This produces a taxonomic structure—a comfort grid—that identifies twelve conceptual cells representing the intersection of three types (relief, ease, transcendence) and four contexts. Relief refers to the state of a patient whose specific need has been met. Ease refers to a state of calm or contentment. Transcendence refers to the state in which a person can rise above discomfort or problems.\n\nEarlier Conceptualisations. Before Kolcaba's systematic theorisation, comfort was addressed in nursing literature primarily as a component of physical care—positioning, warmth, pain relief, and the management of distressing symptoms. Orlando's (1961) nursing process theory recognised discomfort as a signal that prompts nursing action. Henderson's (1966) model of nursing included "helping the patient avoid discomforts and anxieties" among its foundational elements. Watson's (1988) Human Caring Science framework, emphasising the transpersonal dimension of the nurse-patient relationship, aligns closely with the psychospiritual and sociocultural dimensions of Kolcaba's model.\n\nContemporary Integration. Contemporary comfort-focused nursing practice integrates Kolcaba's theoretical framework with evidence from pain science, palliative and supportive care research, environmental psychology, and person-centred care. The growing recognition of the relationship between comfort and health outcomes—including reduced length of stay, improved adherence to treatment, lower analgesic requirements, and enhanced patient satisfaction—has positioned comfort not as a luxury but as a quality and safety imperative.`,
+  },
+  {
+    id: 'dimensions',
+    heading: 'Dimensions of Comfort',
+    body: `Comfort, as understood within Kolcaba's framework and contemporary nursing science, is a multi-dimensional phenomenon that cannot be adequately addressed by attention to physical symptoms alone.\n\nPhysical Comfort. Physical comfort relates to bodily sensations and homeostatic mechanisms. Its most prominent components include freedom from pain, optimal positioning and body alignment, thermal comfort, freedom from nausea and other distressing symptoms, and the maintenance of skin integrity. Pain—defined by the International Association for the Study of Pain as "an unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage"—is the most widely studied threat to physical comfort and one of the most prevalent patient concerns in clinical settings. However, physical comfort encompasses many dimensions beyond pain, including dyspnoea, pruritus, thirst, fatigue, and hunger.\n\nPsychospiritual Comfort. Psychospiritual comfort encompasses the patient's sense of internal peace, meaning, purpose, and connectedness to something greater than themselves. Illness, hospitalisation, and the prospect of death or disability threaten psychospiritual comfort by disrupting the patient's sense of identity, control, and connection to their existential framework. Spiritual care—respectful engagement with the patient's beliefs, values, and sources of meaning—is integral to comprehensive comfort care. Psychological well-being, including freedom from excessive fear, grief, and existential distress, is equally central to this dimension.\n\nSociocultural Comfort. Sociocultural comfort relates to interpersonal and cultural dimensions of the patient's experience: the quality of relationships with family, friends, and healthcare providers; the maintenance of social roles and cultural identity; and the receipt of care that is concordant with the patient's cultural background and social context. Language concordance, the involvement of family in care, respect for cultural practices around illness and healing, and sensitivity to the social meanings of specific diagnoses or treatments all contribute to sociocultural comfort.\n\nEnvironmental Comfort. Environmental comfort pertains to the patient's physical surroundings: light, temperature, noise, odour, aesthetic quality, privacy, and access to nature and natural light. The clinical environment significantly influences patient experience, physiological parameters, sleep quality, and psychological state. Noise-induced sleep disruption in hospital settings, for example, has been associated with delayed healing, increased pain sensitivity, and heightened anxiety—illustrating the direct clinical consequences of environmental discomfort.`,
+  },
+  {
+    id: 'assessment',
+    heading: 'Assessment of Comfort',
+    body: `Systematic and individualisable assessment of comfort is foundational to evidence-based comfort promotion. Assessment must be sensitive to the multi-dimensional nature of comfort and to the patient's capacity to communicate their experience.\n\nPain Assessment. Pain assessment is the most extensively validated component of comfort assessment, supported by a wide range of instruments for different populations and clinical contexts. Self-report is the gold standard: validated tools including the Numeric Rating Scale (NRS, 0–10), the Verbal Rating Scale (VRS), and the Visual Analogue Scale (VAS) are appropriate for cognitively intact adults. For patients unable to self-report—including those with severe cognitive impairment, delirium, or critical illness—behavioural observation tools such as the Pain Assessment in Advanced Dementia (PAINAD) scale and the Critical-Care Pain Observation Tool (CPOT) provide valid alternatives. The assessment of pain should include its character (quality, location, radiation), temporal pattern (onset, duration, aggravating and relieving factors), functional impact, and emotional burden.\n\nBroader Comfort Assessment. Kolcaba's General Comfort Questionnaire (GCQ) and its abbreviated derivatives provide validated, multi-dimensional instruments for comfort assessment in research and clinical practice. In clinical settings, structured holistic assessment frameworks—including systematic attention to physical symptoms, psychological state, spiritual needs, social support, and environmental factors—enable comprehensive comfort assessment as part of routine nursing care. The assessment of comfort should be repeated at regular intervals and in response to changes in the patient's condition.\n\nBarriers to Assessment. Effective comfort assessment is impeded by communication barriers (language differences, cognitive impairment, aphasia, intubation), clinician assumptions about patient experience, time constraints, inadequate training, and patient reluctance to report discomfort. Nurses must apply clinical acuity, observational skill, and knowledge of the patient's condition and context to supplement self-report wherever it is incomplete. Attention to non-verbal indicators—facial expression, body posture, guarding behaviour, vocalisation, and physiological parameters—is essential in the assessment of comfort in vulnerable populations.`,
+  },
+  {
+    id: 'interventions',
+    heading: 'Nursing Interventions to Promote Comfort',
+    body: `Nursing interventions to promote comfort span a broad spectrum, from pharmacological pain management to environmental modification, therapeutic presence, and spiritual care. Evidence-based comfort care integrates multiple modalities calibrated to the individual patient's needs and preferences.\n\nPain Management. Effective pain management is central to comfort nursing. The World Health Organization's analgesic ladder—recommending a stepwise approach from non-opioid analgesics (paracetamol, NSAIDs) through weak opioids to strong opioids, with adjuvants added at each step as indicated—remains the foundation of cancer pain management and is broadly applied in non-cancer contexts. Multimodal analgesia—combining analgesics with complementary mechanisms of action to achieve effective pain control with reduced doses and side effects of each agent—is the evidence-based standard in perioperative pain management. Nurses play central roles in assessing pain, administering prescribed analgesics, monitoring efficacy and adverse effects, and advocating for timely revision of inadequate pain management plans.\n\nPositioning and Physical Measures. Optimal body positioning reduces pressure on vulnerable tissues, facilitates respiratory mechanics, reduces oedema, and alleviates musculoskeletal discomfort. The use of pillows, pressure-redistributing mattresses, and positioning aids is a fundamental nursing comfort intervention. Application of heat promotes muscle relaxation and increases tissue extensibility; cold application reduces acute inflammation and provides analgesia through local vasoconstriction and slowed nerve conduction. Both thermal modalities require careful assessment of skin integrity and patient preference before application.\n\nNon-Pharmacological Interventions. A range of non-pharmacological interventions complement analgesic management and promote multi-dimensional comfort. Relaxation techniques—including guided imagery, progressive muscle relaxation, and breathing exercises—reduce pain-related anxiety and activate endogenous pain-modulating systems. Music therapy has demonstrated efficacy in reducing procedure-related pain and anxiety, improving sleep quality, and promoting overall comfort in hospitalised patients. Massage and tactile comfort measures—including therapeutic touch, hand massage, and comfort positioning—address physical comfort while simultaneously supporting psychospiritual and sociocultural dimensions. Distraction, virtual reality, and cognitive-behavioural approaches are increasingly supported by evidence for specific patient populations.\n\nEnvironmental Modification. Creating and maintaining a comfortable physical environment is a core nursing responsibility. Noise reduction strategies—including communication about nighttime noise levels, use of earplugs or white noise, and coordination of care activities to minimise sleep disruption—improve patient comfort and sleep quality. Optimising lighting (ensuring adequate daytime light and minimising nighttime exposure) supports circadian rhythm, sleep, and delirium prevention. Attending to temperature, fresh air, access to views of nature, personal possessions, and privacy contributes meaningfully to the patient's environmental comfort.\n\nTherapeutic Presence and Relational Care. The quality of the nurse-patient relationship is itself a powerful comfort intervention. Therapeutic presence—being fully and authentically present with the patient, attending to their verbal and non-verbal communication, and responding with empathy and genuine concern—has been associated with reduced patient anxiety, increased sense of safety, and enhanced satisfaction. Simple acts of attentiveness—introducing oneself by name, sitting at the patient's eye level, maintaining appropriate eye contact, listening without interruption—demonstrate respect and contribute meaningfully to comfort even in the absence of specific therapeutic interventions.`,
+  },
+  {
+    id: 'palliative-end-of-life',
+    heading: 'Comfort in Palliative and End-of-Life Care',
+    body: `The principles of comfort assume particular prominence and urgency in palliative and end-of-life care, where the primary goal of care shifts from disease modification to the relief of suffering and the promotion of quality of life for the patient and their family.\n\nPalliative Comfort Care. Palliative care—specialised medical and nursing care for people with life-limiting illness—places comfort at the centre of its philosophy and practice. Symptom management in palliative care encompasses not only pain but also dyspnoea (one of the most distressing end-of-life symptoms), nausea and vomiting, constipation, fatigue, anxiety, depression, delirium, and existential suffering. Expert palliative nursing requires detailed knowledge of the pharmacological and non-pharmacological management of these symptoms and the skill to titrate interventions in response to the patient's changing condition and goals.\n\nComfort-Focused Care at the End of Life. As death approaches, nursing comfort interventions focus on ensuring physical ease (freedom from pain, dyspnoea, and other distressing symptoms), psychological peace (addressing fear, grief, and unfinished emotional business), spiritual care (supporting the patient's quest for meaning and connection), and family support (enabling presence, preparing the family for what to expect, and attending to their own needs). The Liverpool Care Pathway, the subsequent individualised comfort-focused care plans that replaced it, and the Five Priorities for Care of the Dying Person (NHS England) all reflect the evidence-based principle that high-quality end-of-life care is defined by comfort and dignity rather than technological intervention.\n\nSedation for Refractory Symptoms. Palliative sedation—the use of sedating medications to reduce consciousness in patients with refractory suffering at the end of life—is a clinically and ethically complex comfort intervention. Proportionate palliative sedation, administered at the minimum dose required to achieve comfort, is ethically distinct from euthanasia and is supported by professional nursing and medical organisations in specific, clearly defined clinical circumstances. Nurses involved in the administration of palliative sedation benefit from clear institutional guidelines, specialist palliative care support, and access to ethical consultation.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `The principles of comfort are woven throughout the fabric of nursing practice, from acute care to primary health, community nursing, and residential aged care.\n\nDocumentation and Advocacy. Accurate documentation of comfort assessment findings—including pain scores, functional impact, and patient-reported well-being—enables continuity of care and provides the basis for evaluating the effectiveness of comfort interventions. Nurses who observe inadequately managed discomfort are professionally obligated to escalate their concerns, advocate for treatment revision, and seek specialist input as indicated. Comfort-related advocacy may include requesting pain specialist or palliative care consultation, challenging care practices that prioritise procedural efficiency over patient comfort, and ensuring that patient preferences and goals of care are reflected in treatment plans.\n\nPerson-Centred Comfort Care. Individualism in comfort care—recognising that comfort needs, thresholds, and preferences vary substantially between patients and across time—is a foundational principle. The patient is the expert on their own comfort experience. Nursing care plans should document not only standardised comfort interventions but also the patient's specific preferences, effective strategies identified through prior nursing encounters, and the patient's own goals for comfort management. Cultural and spiritual dimensions of comfort must be explored and incorporated as an integral part of care planning.\n\nPaediatric and Older Adult Considerations. Children require age-appropriate comfort assessment tools (e.g., FLACC scale for young children; Wong-Baker FACES for preschool and school-age children) and comfort interventions (e.g., parental presence, comfort positioning, non-nutritive sucking for neonates, distraction and play for older children). Older adults present specific challenges in comfort assessment due to the higher prevalence of cognitive impairment, stoicism regarding pain, comorbid conditions that complicate symptom interpretation, and polypharmacy risks that influence analgesic selection. Dementia-specific comfort assessment tools and non-pharmacological comfort strategies are particularly important in aged care settings.\n\nSelf-Care and Compassion Fatigue. The sustained emotional engagement that high-quality comfort care demands places nurses at risk of compassion fatigue and burnout. Organisational supports—including clinical supervision, peer support, manageable workloads, and access to employee assistance programmes—are essential for sustaining the capacity for compassionate comfort care over a nursing career. Self-aware reflective practice, including recognition of one's own limits and the seeking of support when needed, is a professional responsibility that enables long-term therapeutic engagement.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `The principles of comfort represent both the science and the art of nursing at their fullest expression. Grounded in a rich theoretical tradition anchored by Kolcaba's taxonomy and informed by an expanding evidence base, comfort care in nursing addresses the physical, psychospiritual, sociocultural, and environmental dimensions of patient experience with equal seriousness and rigour. The nurse who understands that comfort encompasses far more than the absence of pain—that it includes a sense of ease, transcendence, connection, meaning, and environmental safety—brings a fundamentally different quality of presence to clinical encounters.\n\nComfort is not peripheral to clinical nursing but central to it. In an era of increasingly technological healthcare, the nurse who can relieve a patient's pain, ease their anxiety, honour their spiritual needs, support their family, and advocate for a healing environment performs work that is simultaneously clinically essential and deeply humane. Cultivating excellence in comfort care—through rigorous assessment, evidence-based intervention, person-centred relationship, and reflective practice—is both a professional imperative and a lasting contribution to the quality of care that nursing delivers.`,
+  },
+];
+---
+
+<Layout title="Principles of Comfort – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Principles of Comfort</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🛏️ Clinical Nursing Practice
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Principles of Comfort
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of Kolcaba's Theory of Comfort, the multi-dimensional assessment and
+          promotion of patient comfort, pharmacological and non-pharmacological interventions, and
+          the application of comfort principles across clinical settings including end-of-life care.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents (inline, mobile-friendly) -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Henderson, V. (1966). <em>The nature of nursing: A definition and its implications for practice, research, and education.</em> Macmillan.',
+            'International Association for the Study of Pain. (2020). IASP terminology: Pain. Retrieved from https://www.iasp-pain.org/terminology',
+            'Kolcaba, K. Y. (1991). A taxonomic structure for the concept comfort. <em>Image: Journal of Nursing Scholarship, 23</em>(4), 237–240.',
+            'Kolcaba, K. Y. (1994). A theory of holistic comfort for nursing. <em>Journal of Advanced Nursing, 19</em>(6), 1178–1184.',
+            'Kolcaba, K. (2003). <em>Comfort theory and practice: A vision for holistic health care and research.</em> Springer.',
+            'NHS England. (2014). <em>One chance to get it right: Improving people\'s experience of care in the last few days and hours of life.</em> NHS England.',
+            'Puntillo, K. A., Max, A., Timsit, J. F., Vignoud, L., Chanques, G., Robleda, G., … &amp; Azoulay, E. (2014). Determinants of procedural pain intensity in the intensive care unit. <em>American Journal of Respiratory and Critical Care Medicine, 189</em>(1), 39–47.',
+            'Watson, J. (1988). <em>Nursing: Human science and human care. A theory of nursing.</em> National League for Nursing.',
+            'World Health Organization. (1986). <em>Cancer pain relief.</em> WHO.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key theorist', def: 'Katharine Kolcaba' },
+            { term: 'Theory', def: 'Theory of Comfort (1991–1994)' },
+            { term: 'Dimensions', def: 'Physical, Psychospiritual, Sociocultural, Environmental' },
+            { term: 'Types', def: 'Relief, Ease, Transcendence' },
+            { term: 'Assessment tool', def: 'General Comfort Questionnaire (GCQ)' },
+            { term: 'Related to', def: 'Pain management, Palliative care' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Pain assessment & management',
+            '✅ Palliative & end-of-life care',
+            '✅ Non-pharmacological interventions',
+            '✅ Environmental comfort',
+            '✅ Spiritual & psychosocial care',
+            '✅ Person-centred care',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

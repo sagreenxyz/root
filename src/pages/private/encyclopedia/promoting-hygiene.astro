@@ -1,0 +1,191 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Hygiene—the practice of maintaining cleanliness to preserve health and prevent disease—is one of the most ancient and enduring principles of nursing care. The word derives from Hygieia, the Greek goddess of health and cleanliness, and the discipline it describes sits at the intersection of scientific evidence, cultural practice, professional ethics, and human dignity. Promoting hygiene in nursing encompasses personal hygiene care (bathing, oral hygiene, hair care, nail care, and perineal care), environmental hygiene, hand hygiene, and the broader principles of infection prevention and control. These practices are not peripheral to nursing—they are foundational to patient safety, therapeutic relationship building, comfort, and the prevention of healthcare-associated infections.\n\nFor nursing students, mastery of hygiene promotion requires both technical competence and interpersonal skill. The provision of hygiene care creates one of the most intimate nurse-patient encounters in clinical practice, demanding sensitivity to cultural background, personal preference, modesty, and the patient's capacity for self-care. This article provides an academic overview of the principles that underpin evidence-based hygiene promotion across the lifespan and across clinical settings.`,
+  },
+  {
+    id: 'historical-background',
+    heading: 'Historical Background',
+    body: `The recognition that cleanliness could prevent illness predates modern microbiology by millennia. Ancient Egyptian, Greek, and Roman civilisations developed sophisticated sanitation systems, and religious codes across multiple traditions prescribed specific hygiene practices. However, the scientific basis for hygiene promotion was established in the nineteenth century through a series of pivotal discoveries.\n\nIgnaz Semmelweis, a Hungarian physician working in Vienna in the 1840s, demonstrated through epidemiological observation and controlled intervention that handwashing by medical staff dramatically reduced the incidence of puerperal (childbed) fever. His insistence on handwashing with chlorinated lime solution reduced maternal mortality on his ward from approximately 10–18% to less than 2%. Despite the clarity of his data, Semmelweis's findings were largely rejected by the medical establishment of his time—a sobering episode in the history of evidence translation.\n\nLouis Pasteur's germ theory of disease, advanced in the 1860s, provided the theoretical framework that ultimately gave scientific credence to Semmelweis's observations. Joseph Lister, building on Pasteur's work, introduced antiseptic surgical technique in 1865, dramatically reducing post-operative infection mortality. Florence Nightingale, whose sanitary reforms in military hospitals during the Crimean War (1854–56) reduced mortality from disease from approximately 40% to 2%, independently championed environmental hygiene and patient cleanliness as nursing responsibilities. Nightingale's statistical analyses and advocacy established hygiene promotion as a defining element of professional nursing identity.\n\nIn the twentieth and twenty-first centuries, the emergence of healthcare-associated infections (HAIs), antibiotic-resistant organisms, and global infectious disease pandemics has reinforced the critical importance of hygiene in clinical settings and stimulated the development of evidence-based infection prevention and control programmes.`,
+  },
+  {
+    id: 'personal-hygiene',
+    heading: 'Personal Hygiene Care',
+    body: `Personal hygiene care encompasses a range of activities directed at maintaining the cleanliness, comfort, and integrity of the patient's body. Each element carries specific clinical rationale alongside its foundational contribution to dignity and well-being.\n\nBathing and Skin Care. Regular bathing removes micro-organisms, body secretions, dead skin cells, and environmental contaminants from the skin surface. Warm water and pH-balanced cleansers preserve the skin's acid mantle—the slightly acidic film that forms a barrier against pathogenic organisms. For hospitalised patients, chlorhexidine gluconate (CHG) bathing—using CHG-impregnated cloths or CHG-containing solution—is supported by evidence as an effective strategy for reducing healthcare-associated infections including central-line associated bloodstream infections (CLABSIs) and methicillin-resistant Staphylococcus aureus (MRSA) colonisation in high-risk settings. Skin assessment during bathing provides an important opportunity for early detection of pressure injury, skin breakdown, rash, or signs of abuse.\n\nOral Hygiene. The mouth is a reservoir for a wide range of micro-organisms that can, under conditions of impaired host defence or aspiration, cause serious infection. Oral hygiene—regular toothbrushing, use of antimicrobial oral rinses, and oral suctioning in mechanically ventilated patients—reduces dental plaque, periodontal disease, and the microbial burden available for aspiration. Ventilator-associated pneumonia (VAP), one of the most serious healthcare-associated infections, is significantly reduced by systematic oral care bundles in intensive care settings. In non-ventilated patients, oral hygiene reduces halitosis, maintains mucosal integrity, and preserves the patient's comfort and self-esteem.\n\nHair and Nail Care. Scalp cleanliness reduces the risk of fungal infection and promotes comfort and self-image. Nail care—including trimming and cleaning—prevents the accumulation of micro-organisms under the nails and reduces the risk of skin damage from scratching. Long, unkempt nails may lacerate fragile skin in older adults or infants; clean, well-maintained nails are also a professional and aesthetic consideration for healthcare workers.\n\nPerineal Care. Perineal hygiene—cleansing of the genitalia and perineum—is essential for preventing urinary tract infections (UTIs), particularly in catheterised patients. Catheter-associated urinary tract infections (CAUTIs) are the most prevalent healthcare-associated infection globally; daily perineal care using soap and water, with careful anterior-to-posterior technique, reduces periurethral colonisation. Perineal care also maintains the comfort and dignity of patients with incontinence and prevents moisture-associated skin damage (MASD).`,
+  },
+  {
+    id: 'hand-hygiene',
+    heading: 'Hand Hygiene',
+    body: `Hand hygiene is universally recognised as the single most effective measure for preventing healthcare-associated infections. The World Health Organization's (WHO) Five Moments for Hand Hygiene framework specifies the critical points at which hand hygiene must be performed in healthcare settings: before touching a patient; before performing a clean or aseptic procedure; after body fluid exposure risk; after touching a patient; and after touching the patient's surroundings.\n\nThe two primary methods of hand hygiene in clinical practice are the use of alcohol-based hand rub (ABHR) and handwashing with soap and water. ABHR is the preferred method for most clinical indications because it is more effective against a broader range of pathogens (except Clostridioides difficile spores and norovirus), requires less time, causes less skin damage, and is more convenient to use at the point of care. The recommended technique involves applying an adequate volume of ABHR to dry hands and rubbing systematically for at least 20–30 seconds until the hands are dry. Handwashing with soap and water is required after exposure to spore-forming organisms (e.g., C. difficile), after visible soiling with blood or body fluids, and before eating and after toileting.\n\nDespite the compelling evidence for hand hygiene effectiveness, compliance among healthcare workers globally remains suboptimal, with observed rates typically ranging from 40–60%. Barriers include time pressure, high workload, skin irritation from frequent handwashing, lack of role modelling, and insufficient access to hand hygiene products. Successful hand hygiene improvement programmes employ multimodal strategies: system change (ensuring product availability), training and education, monitoring and feedback, reminders and communications, and a positive institutional safety culture.\n\nNursing students and registered nurses bear particular responsibility for hand hygiene compliance given their frequency and duration of patient contact. They also serve as role models for other clinical staff and are positioned to advocate for hand hygiene culture within their clinical teams.`,
+  },
+  {
+    id: 'infection-prevention',
+    heading: 'Infection Prevention and Environmental Hygiene',
+    body: `Hygiene promotion in nursing extends beyond the individual patient to encompass the broader clinical environment. Environmental surfaces, shared equipment, and the air in clinical spaces all represent potential vectors for pathogen transmission that nursing staff must understand and manage.\n\nStandard Precautions. Standard precautions—the baseline infection prevention practices applied to all patients regardless of known or suspected infection status—encompass hand hygiene, the use of personal protective equipment (PPE) appropriate to the anticipated exposure risk, safe handling and disposal of sharps, respiratory hygiene and cough etiquette, safe injection practices, and appropriate environmental cleaning and disinfection. Standard precautions reflect the principle that all blood, body fluids, secretions, excretions (except sweat), non-intact skin, and mucous membranes may harbour transmissible pathogens.\n\nTransmission-Based Precautions. For patients with known or suspected infection with organisms transmitted by contact, droplet, or airborne routes, standard precautions are augmented by transmission-based precautions. Contact precautions (e.g., for MRSA, C. difficile, norovirus) require gloves and gown for patient contact and dedicated or disinfected patient care equipment. Droplet precautions (e.g., for influenza, pertussis) require surgical mask within one metre of the patient. Airborne precautions (e.g., for tuberculosis, measles, varicella) require a fit-tested filtering facepiece respirator (FFP3 or N95) and, ideally, placement of the patient in a negative-pressure room.\n\nEnvironmental Cleaning. Clinical environments must be cleaned regularly using detergent and disinfectant products appropriate to the pathogens of concern. High-touch surfaces—bed rails, call bells, light switches, door handles, tap handles—carry the highest contamination burden and require most frequent attention. Enhanced cleaning and disinfection protocols using sporicidal agents are required after discharge of patients colonised or infected with C. difficile. Nursing staff who identify environmental hygiene deficits are professionally obligated to report these and to advocate for corrective action.\n\nEquipment Hygiene. Shared patient care equipment—stethoscopes, blood pressure cuffs, thermometers, infusion pumps—must be cleaned and disinfected between patients according to the level of decontamination required (cleaning, disinfection, or sterilisation), as determined by the equipment's intended use and the Spaulding classification.`,
+  },
+  {
+    id: 'cultural-considerations',
+    heading: 'Cultural and Psychosocial Considerations',
+    body: `Hygiene practices are deeply embedded in cultural, religious, and personal identity, and nursing approaches to hygiene care must be sensitively negotiated within this context. Cultural humility—the ongoing commitment to self-reflection, learning, and openness regarding cultural difference—is a prerequisite for person-centred hygiene care.\n\nCultural Variation in Hygiene Practice. Preferred bathing frequency, bathing method (shower versus bath; immersive versus stand-up), use of specific cleansing products, hair care traditions, oral care practices, and perineal hygiene customs vary significantly across cultural backgrounds. Some cultural and religious traditions specify the use of same-sex caregivers for intimate hygiene. Dietary practices and beliefs may influence oral hygiene. Religious observance may specify specific bodily cleansing rituals—for example, Islamic wudu (ritual ablution before prayer), Jewish mikveh (ritual immersion), or Sikh turban care. Nurses who are unaware of or fail to accommodate these practices risk causing significant distress and violating patient dignity.\n\nSelf-Care Promotion. Preserving the patient's capacity for self-care—allowing and encouraging patients to perform as much of their own hygiene care as safely possible—is both ethically important (respecting autonomy and dignity) and clinically beneficial (maintaining upper limb function, self-efficacy, and psychological well-being). Dependency-inducing care practices, in which nursing staff perform hygiene tasks that the patient could perform independently or with minimal assistance, contribute to functional decline and learned helplessness, particularly in older adults.\n\nPsychological Impact of Hygiene Care. Hygiene care can be a powerful therapeutic encounter or a source of distress and shame, depending on how it is delivered. For patients experiencing depression, fatigue, or altered body image, the support of a compassionate nurse during hygiene care may represent a significant source of psychological sustenance. For patients with cognitive impairment or dementia, bathing is frequently a trigger for behavioural expressions of distress; person-centred approaches that prioritise comfort, familiar routines, and minimal coercion significantly reduce distress during hygiene care for this population.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `The promotion of hygiene is a defining element of nursing's scope of practice, requiring the integration of clinical knowledge, interpersonal skill, cultural competence, and evidence-based technique.\n\nAssessment. Hygiene assessment encompasses the patient's baseline hygiene status and any alterations (skin integrity, oral mucosa, hair and scalp condition, nail condition, perineal integrity), the patient's preferred hygiene practices and cultural or religious requirements, the patient's self-care capacity and any barriers to independence (cognitive, physical, motivational), and environmental factors that may facilitate or impede hygiene. Incorporating hygiene assessment into the routine clinical assessment—rather than treating it as a separate or lower-priority domain—reflects the understanding that hygiene status is a valid clinical parameter with direct consequences for infection risk, skin integrity, comfort, and well-being.\n\nPlanning and Implementation. Hygiene care plans should be individualised, documented, and communicated across shifts and care transitions. The timing and method of hygiene care should align with the patient's preferences and routine where possible; imposing rigid institutional routines on hygiene can erode patient autonomy and dignity. During implementation, nurses apply appropriate infection prevention measures (hand hygiene, PPE as indicated), use validated technique for each hygiene procedure, conduct skin and oral assessment as part of care, and document findings and the patient's response.\n\nEducation. Patient education regarding hygiene practices is a core nursing responsibility across all clinical settings. Discharge planning should include assessment of the patient's capacity to manage hygiene at home, identification of barriers (access to facilities, resources, cognition, physical function), and connection to appropriate community supports. For patients with chronic conditions that affect hygiene (e.g., stroke, dementia, skin disease), caregiver education is equally important.\n\nAdvocacy and Quality Improvement. Nurses are positioned to observe and report hygiene-related quality deficits—whether in patient care practices, environmental cleaning, or hand hygiene compliance—and to advocate for improvements. Participation in infection prevention committees, quality improvement projects, and audit and feedback programmes represents an important professional contribution to organisational hygiene culture.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Promoting hygiene is simultaneously one of the most basic and most scientifically sophisticated dimensions of nursing practice. Its foundations in germ theory and epidemiology, established by Semmelweis, Pasteur, Lister, and Nightingale, have been elaborated into a rich evidence base that supports every aspect of clinical hygiene practice—from hand hygiene technique to oral care bundles in the ICU. The cultural, psychological, and interpersonal dimensions of hygiene care are equally complex, requiring nurses to bring sensitivity, humility, and respect for individual identity and preference to every hygiene encounter.\n\nHealthcare-associated infections, preventable through systematic hygiene practice, remain a leading cause of patient harm globally. Nursing has both the opportunity and the professional obligation to lead in reducing this burden through exemplary personal practice, team-based quality improvement, patient and family education, and advocacy for institutional hygiene culture. A nurse who understands and enacts the principles of hygiene promotion—technically, interpersonally, and systemically—makes a direct and measurable contribution to patient safety and dignity.`,
+  },
+];
+---
+
+<Layout title="Promoting Hygiene – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Promoting Hygiene</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🧼 Clinical Nursing Practice
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Promoting Hygiene
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the evidence base and nursing principles underpinning personal hygiene
+          care, hand hygiene, infection prevention, and the cultural and psychosocial dimensions of
+          hygiene promotion across clinical settings.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents (inline, mobile-friendly) -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Boyce, J. M., &amp; Pittet, D. (2002). Guideline for hand hygiene in health-care settings. <em>Infection Control &amp; Hospital Epidemiology, 23</em>(S12), S3–S40.',
+            'Centers for Disease Control and Prevention. (2011). <em>Guide to infection prevention for outpatient settings: Minimum expectations for safe care.</em> CDC.',
+            'Gould, D. J., Moralejo, D., Drey, N., Chudleigh, J. H., &amp; Taljaard, M. (2017). Interventions to improve hand hygiene compliance in patient care. <em>Cochrane Database of Systematic Reviews, 9</em>, CD005186.',
+            'Nightingale, F. (1860). <em>Notes on nursing: What it is, and what it is not.</em> D. Appleton.',
+            'Pearson, L. S., &amp; Hutton, J. L. (2002). A controlled trial to compare the ability of foam swabs and toothbrushes to remove dental plaque. <em>Journal of Advanced Nursing, 39</em>(5), 480–489.',
+            'Semmelweis, I. P. (1861). <em>Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers</em> [The etiology, concept, and prophylaxis of childbed fever]. C.A. Hartleben.',
+            'Simmons, B. P. (1983). CDC guidelines for the prevention and control of nosocomial infections. <em>American Journal of Infection Control, 11</em>(3), 97–100.',
+            'World Health Organization. (2009). <em>WHO guidelines on hand hygiene in health care.</em> WHO Press.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key framework', def: 'WHO 5 Moments for Hand Hygiene' },
+            { term: 'Top HAI', def: 'CAUTI; CLABSI; VAP' },
+            { term: 'Origin', def: 'Semmelweis, 1847; Nightingale, 1854' },
+            { term: 'Preferred method', def: 'Alcohol-based hand rub (most settings)' },
+            { term: 'VAP prevention', def: 'Oral care bundle in ICU' },
+            { term: 'Related to', def: 'Infection prevention, Patient dignity' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Infection prevention & control',
+            '✅ Personal hygiene care',
+            '✅ Hand hygiene compliance',
+            '✅ Patient dignity & self-care',
+            '✅ Cultural competence',
+            '✅ Environmental hygiene',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
