@@ -48,6 +48,17 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
           onblur="this.style.borderColor='#e2e8f0'"
         />
       </div>
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.875rem; color:#475569; cursor:pointer;">
+          <input
+            id="remember-me"
+            name="remember"
+            type="checkbox"
+            style="width:1rem; height:1rem; accent-color:#6366f1; cursor:pointer;"
+          />
+          Remember me on this device
+        </label>
+      </div>
       <div id="error-msg" style="display:none; color:#dc2626; font-size:0.875rem; margin-bottom:1rem; padding:0.5rem 0.75rem; background:#fef2f2; border-radius:0.4rem; border:1px solid #fecaca;"></div>
       <button
         type="submit"
@@ -143,8 +154,8 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
   }
 
   // If already authenticated, show dashboard immediately
-  const token = sessionStorage.getItem('auth_token');
-  const user = sessionStorage.getItem('auth_user') || 'unknown';
+  const token = sessionStorage.getItem('auth_token') || localStorage.getItem('auth_token');
+  const user = sessionStorage.getItem('auth_user') || localStorage.getItem('auth_user') || 'unknown';
   if (token) {
     showDashboard(user);
   }
@@ -161,8 +172,14 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
     const hash = await sha256(`${username}:${password}`);
 
     if (hash === VALID_HASH) {
-      sessionStorage.setItem('auth_token', hash);
-      sessionStorage.setItem('auth_user', username);
+      const rememberMe = (document.getElementById('remember-me') as HTMLInputElement).checked;
+      const storage = rememberMe ? localStorage : sessionStorage;
+      const otherStorage = rememberMe ? sessionStorage : localStorage;
+      // Write to the chosen storage and clear any stale token from the other one.
+      storage.setItem('auth_token', hash);
+      storage.setItem('auth_user', username);
+      otherStorage.removeItem('auth_token');
+      otherStorage.removeItem('auth_user');
       // Signal the inactivity monitor (defined in Layout.astro) to start.
       // This also covers the redirect path below: the monitor will auto-start
       // on the target page because auth_token is already set in sessionStorage.
@@ -194,6 +211,8 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
   logoutBtn?.addEventListener('click', () => {
     sessionStorage.removeItem('auth_token');
     sessionStorage.removeItem('auth_user');
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('auth_user');
     window.location.reload();
   });
 </script>

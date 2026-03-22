@@ -122,7 +122,7 @@ const contentItems = Object.entries(encryptedModules).map(([filePath, mod]) => {
   // ── UI state ────────────────────────────────────────────────────────────────
 
   const items: any[] = (window as any).__encryptedContent ?? [];
-  const authToken: string = sessionStorage.getItem('auth_token') ?? '';
+  const authToken: string = sessionStorage.getItem('auth_token') ?? localStorage.getItem('auth_token') ?? '';
 
   const placeholder = document.getElementById('placeholder') as HTMLElement;
   const viewer = document.getElementById('viewer') as HTMLElement;

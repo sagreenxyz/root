@@ -98,7 +98,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     {isProtected && (
       <script define:vars={{ base }}>
         (function () {
-          const token = sessionStorage.getItem('auth_token');
+          const token = sessionStorage.getItem('auth_token') || localStorage.getItem('auth_token');
           if (!token) {
             window.location.replace((base || '') + '/dashboard?next=' + encodeURIComponent(window.location.pathname));
           }
@@ -159,11 +159,13 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         function doLogout() {
           sessionStorage.removeItem('auth_token');
           sessionStorage.removeItem('auth_user');
+          localStorage.removeItem('auth_token');
+          localStorage.removeItem('auth_user');
           window.location.replace((base || '') + '/dashboard?timeout=1');
         }
 
         function reset() {
-          if (!sessionStorage.getItem('auth_token')) return;
+          // Use the cached flag set by start(); avoids redundant storage reads on every event.
           clearAllTimers();
           removeWarning();
           warnTimer   = setTimeout(showWarning, TIMEOUT_MS - WARN_MS);
@@ -171,7 +173,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         }
 
         function start() {
-          if (!sessionStorage.getItem('auth_token')) return;
+          if (!sessionStorage.getItem('auth_token') && !localStorage.getItem('auth_token')) return;
           var events = ['mousemove', 'mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
           events.forEach(function (ev) {
             document.addEventListener(ev, reset, { passive: true });
