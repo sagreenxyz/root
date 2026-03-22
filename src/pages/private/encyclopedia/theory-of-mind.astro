@@ -1,0 +1,177 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Theory of Mind (ToM) refers to the cognitive capacity to attribute mental states—including beliefs, intentions, desires, emotions, and knowledge—to oneself and to others, and to understand that the mental states of other individuals may differ from one's own. Often described informally as "mindreading," this faculty enables human beings to predict, interpret, and explain the behaviour of others by reference to their inner psychological lives. For nursing professionals, Theory of Mind is not merely an academic curiosity; it is a foundational dimension of empathic clinical practice, therapeutic communication, and patient-centred care. A nurse who can reliably model what a patient understands, fears, or desires is better positioned to tailor information, negotiate treatment plans, and provide compassionate support across the full spectrum of clinical settings.`,
+  },
+  {
+    id: 'historical-background',
+    heading: 'Historical Background',
+    body: `The term "Theory of Mind" was introduced into the scientific literature by the primatologists David Premack and Guy Woodruff in their landmark 1978 paper "Does the chimpanzee have a theory of mind?" Premack and Woodruff were investigating whether chimpanzees could infer the purposes and goals of human actors from observing their behaviour—a capacity that would require attributing mental states to others. Their work prompted an important theoretical response from philosophers Daniel Dennett, who proposed the "false-belief task" as the decisive empirical criterion for genuine mindreading ability.\n\nBuilding on this challenge, developmental psychologists Heinz Wimmer and Josef Perner designed the first controlled false-belief experiment with human children in 1983, known as the "Maxi task." Their findings established that most typically developing children acquire a representational understanding of others' beliefs—and crucially, the understanding that others can hold beliefs that are factually incorrect—between the ages of three and five years. This developmental milestone became central to subsequent research. In 1985, Simon Baron-Cohen, Alan Leslie, and Uta Frith extended the paradigm to clinical populations, demonstrating that the majority of children with autism spectrum disorder failed false-belief tasks that age-matched typically developing peers and children with Down syndrome passed with ease. This seminal finding catalysed decades of research into the neurological, developmental, and clinical dimensions of Theory of Mind.`,
+  },
+  {
+    id: 'core-concepts',
+    heading: 'Core Concepts',
+    body: `Several interlocking concepts constitute the theoretical core of Theory of Mind research.\n\nFalse-Belief Understanding. The capacity to represent another person's belief as distinct from one's own, and specifically to understand that another person can hold a belief that is factually false, is regarded as the gold-standard indicator of first-order ToM. A child who understands that a classmate believes a candy box contains candy (when the child herself knows it actually contains pencils) demonstrates first-order ToM. Higher-order ToM extends this recursively: understanding what person A believes person B believes about a situation requires second-order mentalistic reasoning, a capacity typically consolidated in middle childhood and refined throughout adolescence.\n\nIntentionality and Mental State Attribution. ToM encompasses more than belief attribution. It includes recognising and reasoning about intentions (what an agent is trying to achieve), desires (what an agent wants), emotions (what an agent is feeling), and knowledge states (what an agent knows or does not know). These dimensions interact: understanding that a patient intends to adhere to a medication regimen despite believing it will cause side effects requires simultaneous attribution of intention, belief, and emotional valence.\n\nPerspective-Taking. Closely related to but distinct from belief attribution, perspective-taking involves the ability to adopt another person's perceptual, conceptual, or affective viewpoint. In nursing contexts, affective perspective-taking—imaginatively inhabiting a patient's emotional experience—forms the cognitive basis of empathy. Cognitive perspective-taking—understanding another's informational standpoint—informs the nurse's ability to calibrate explanations to the patient's existing health literacy.\n\nPragmatic Inference. Language comprehension relies heavily on Theory of Mind. Understanding indirect speech acts, irony, metaphor, and implicature all require the listener to infer the speaker's communicative intentions beyond the literal semantic content of an utterance. Deficits in ToM therefore manifest not only in social behaviour but also in subtle difficulties with language pragmatics—a consideration relevant when communicating with patients who have acquired brain injuries, dementia, or certain psychiatric conditions.`,
+  },
+  {
+    id: 'neuroscience',
+    heading: 'Neurological Foundations',
+    body: `Advances in functional neuroimaging have substantially clarified the neural architecture that supports Theory of Mind. Rather than residing in a single dedicated module, ToM recruits a distributed network of regions whose activity converges when individuals reason about the mental states of others.\n\nThe medial prefrontal cortex (mPFC), particularly its anterior and ventral portions, is consistently activated in neuroimaging studies involving mental state attribution. It is thought to support the decoupling of one's own perspective from another's—the metacognitive capacity to represent representations. The temporoparietal junction (TPJ), located at the posterior junction of the temporal and parietal lobes in each hemisphere, responds selectively to reasoning about beliefs and intentions, and is considered a critical node for distinguishing self from other at the representational level. The posterior superior temporal sulcus (pSTS) contributes to the perception of intentional and goal-directed action, integrating biological motion cues with higher-order social interpretation. The anterior temporal cortex and amygdala are also recruited, the latter being particularly implicated in the rapid evaluation of socially and emotionally salient information—including the recognition of fear, trustworthiness, and other affectively charged social signals.\n\nThe discovery of mirror neurons in the primate premotor cortex—cells that fire both when an animal performs an action and when it observes another performing the same action—prompted significant interest in their potential role in social cognition and empathy. While the empirical basis for a direct human "mirror neuron system" remains an active area of debate, the resonance principle underlying mirror neuron function—representing the actions and states of others in one's own motor and affective systems—has proven theoretically productive in understanding empathy and imitation. Nursing researchers and educators have drawn on resonance models to explain the affective dimensions of the nurse-patient relationship and the cognitive-affective integration that underlies compassionate care.`,
+  },
+  {
+    id: 'development',
+    heading: 'Developmental Trajectory',
+    body: `Theory of Mind capacities emerge in a relatively predictable developmental sequence across typically developing children, though the pace and character of this emergence are modulated by genetic, environmental, and cultural factors.\n\nPrecursors to full ToM are observable in the first year of life. Joint attention—the triadic coordination of attention between infant, caregiver, and external object—emerges around nine to twelve months and reflects an early understanding that other agents share or direct attentional states. Pretend play, observable by eighteen to twenty-four months, implies an understanding of the distinction between appearance and reality, a precursor to representational flexibility. By two years of age, most children begin using mental state language (want, think, know, feel) in their speech, demonstrating an emergent conceptual vocabulary for internal states.\n\nThe transition between ages three and five is pivotal: children shift from a "desire psychology" (understanding that behaviour is driven by desires) to a "belief-desire psychology" that accommodates the representational nature of belief. This shift, marked by success on standard false-belief tasks, reflects a qualitative reorganisation of social-cognitive understanding rather than a simple accretion of factual knowledge. Longitudinal studies indicate that individual differences in the rate of this developmental transition predict later social competence, emotional understanding, and academic achievement.\n\nToM development continues well beyond early childhood. The capacity for nuanced higher-order mental state reasoning, the integration of ToM with executive function and inhibitory control, and the application of ToM to complex literary and narrative contexts extend through adolescence into adulthood. Ageing is associated with modest but consistent declines in certain aspects of ToM performance, particularly on tasks requiring the rapid integration of contextual cues—a consideration of practical importance for nursing care of older adult populations.`,
+  },
+  {
+    id: 'clinical-relevance',
+    heading: 'Clinical Relevance',
+    body: `Disruptions to Theory of Mind are implicated across a wide range of clinical conditions that nursing professionals regularly encounter. Understanding the profile of ToM impairment in specific conditions enables nurses to adapt their communication strategies and care plans accordingly.\n\nAutism Spectrum Disorder. The "mindblindness" hypothesis advanced by Simon Baron-Cohen posits that the core social difficulties of autism spectrum disorder (ASD)—including challenges in reciprocal social interaction, pragmatic language use, and social imagination—arise substantially from delays or differences in the development of Theory of Mind. Individuals with ASD show heterogeneous ToM profiles; many develop compensatory cognitive strategies for mentalising tasks in controlled experimental settings while continuing to experience difficulties in the rapid, intuitive social inference demanded by naturalistic interaction. For nurses caring for patients with ASD, awareness of this profile supports proactive communication strategies: explicit statement of expectations, avoidance of irony or indirect phrasing, and attention to sensory and contextual factors that may heighten cognitive load.\n\nSchizophrenia Spectrum Disorders. Patients with schizophrenia spectrum disorders exhibit robust deficits on a range of ToM tasks, including tests of false-belief understanding, faux pas recognition, and the attribution of intentions to ambiguous social scenarios. These deficits are relatively stable across phases of illness and are not fully explained by general cognitive impairment or medication effects. ToM impairment in schizophrenia is associated with poorer functional outcomes, reduced social competence, and greater difficulty in therapeutic alliance formation. Nurses working with this population benefit from clear, literal communication; explicit negotiation of meaning; and attention to the patient's interpretations of social interactions, which may be coloured by mistaken attributions of intent.\n\nDementia and Acquired Brain Injury. Frontotemporal dementia (FTD), in which neurodegeneration disproportionately affects prefrontal and anterior temporal regions, is associated with pronounced ToM impairment and the disturbed social behaviour that characterises the condition. Alzheimer's disease is associated with more variable and typically later-emerging ToM deficits as the disease progresses into prefrontal and temporoparietal circuits. Acquired brain injury affecting the mPFC, TPJ, or their white-matter connections can produce discrete ToM deficits that contribute to social disinhibition, inappropriate social behaviour, or difficulty in reconstructing interpersonal relationships post-injury. Nursing assessment of patients with these conditions should include attention to social cognition alongside standard cognitive screening.\n\nDepression and Anxiety. While ToM is most prominently studied in neurodevelopmental and psychotic conditions, emerging research indicates that major depressive disorder is associated with a specific pattern of hypermentalising—a tendency to over-attribute mental states and read unintended negative intent into ambiguous social situations. This cognitive bias contributes to rumination, interpersonal conflict, and social withdrawal. Anxious patients may similarly over-attribute threatening intentions to neutral or ambiguous social cues. Recognising these patterns enables nurses to provide corrective, supportive reframing and to design therapeutic conversations that do not inadvertently reinforce maladaptive social inferences.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `The practical implications of Theory of Mind for nursing span therapeutic communication, patient assessment, health education, interprofessional collaboration, and self-care.\n\nTherapeutic Communication. Effective therapeutic communication rests on the nurse's ability to model the patient's beliefs, emotions, and concerns accurately, and to respond in ways that are calibrated to the patient's actual psychological state rather than to assumptions derived from the nurse's own experience. ToM provides the theoretical scaffolding for understanding why such calibration is both demanding and essential. A nurse who attributes her own tolerance for medical uncertainty to a newly diagnosed patient may inadvertently minimise the patient's distress. One who accurately recognises that the patient's silence reflects fear rather than agreement can open a space for the patient to voice concerns, producing a more therapeutically productive interaction.\n\nHealth Literacy and Patient Education. Effective health education requires the nurse to adopt the patient's epistemic perspective—to reason explicitly about what the patient does and does not know, what misconceptions may be operative, and what emotional valence attaches to specific health information. This is, in essence, an exercise in applied Theory of Mind. Nurses who engage in deliberate perspective-taking before and during patient education sessions are better able to pitch explanations at the appropriate level, anticipate and address barriers to understanding, and correct misconceptions without generating defensiveness.\n\nInformed Consent and Shared Decision-Making. Shared decision-making, endorsed by professional nursing bodies and health policy organisations internationally, requires that patients be genuine participants in decisions about their care. For this to occur, nurses must be able to assess the patient's understanding of relevant information, identify gaps, and support the patient in articulating preferences that are both authentic and adequately informed. Each of these activities requires sustained ToM engagement: the nurse must simultaneously track her own knowledge, the patient's knowledge, and the gap between them.\n\nInterprofessional Collaboration. Healthcare is delivered through teams. Nurses routinely collaborate with physicians, allied health professionals, administrative staff, and family members, each of whom brings a distinct epistemic and motivational perspective to clinical situations. Navigating these perspectives—understanding what a physician believes the evidence supports, what a family member fears, what an allied health colleague prioritises—requires interprofessionally applied ToM. Deficits in this domain, whether arising from cognitive fatigue, cultural misunderstanding, or situational stress, contribute to communication failures that are a leading cause of adverse events in hospital settings.\n\nCompassion and Self-Awareness. The affective dimension of Theory of Mind—empathy—is inseparable from the concept of compassion that nursing ethics places at the centre of professional practice. However, ToM research also draws attention to the potential cost of sustained empathic engagement: compassion fatigue, vicarious traumatisation, and burnout are associated with the repeated emotional resonance that mentalising demands. Nurses benefit from educational and institutional supports that cultivate reflective ToM skills—the ability to engage imaginatively with patients' experiences without losing one's own perspective—rather than simply endorsing undifferentiated empathic immersion. Mindfulness-based practices, clinical supervision, and reflective writing are among the evidence-informed strategies that support this balance.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Theory of Mind occupies a central position in the cognitive and neuroscientific literature on social cognition, and its clinical relevance for nursing practice is both broad and deep. From the formative work of Premack, Woodruff, Baron-Cohen, and their contemporaries, a rich body of research has established that the capacity to model the mental lives of others is biologically grounded, developmentally patterned, neurologically distributed, and clinically sensitive. For nursing students and practitioners, engagement with this literature offers more than theoretical enrichment. It provides a conceptual vocabulary for understanding the cognitive demands of empathic practice, a framework for anticipating and interpreting the social-cognitive profiles of patients across diagnostic categories, and a basis for critically reflecting on the interpersonal dynamics of therapeutic relationships. As nursing care becomes increasingly complex, delivered to increasingly diverse patient populations in increasingly technology-mediated environments, the cultivation of Theory of Mind capacities—alongside technical skill and evidence-based knowledge—constitutes an indispensable dimension of professional excellence.`,
+  },
+];
+---
+
+<Layout title="Theory of Mind – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Theory of Mind</span>
+  </nav>
+
+  <div style="display:grid; grid-template-columns:1fr 240px; gap:2rem; align-items:start;">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🧠 Psychology &amp; Neuroscience
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Theory of Mind
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the cognitive capacity to attribute mental states to self and others,
+          its neurological foundations, developmental trajectory, clinical significance, and applications
+          in nursing practice.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents (inline, mobile-friendly) -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Baron-Cohen, S., Leslie, A. M., &amp; Frith, U. (1985). Does the autistic child have a "theory of mind"? <em>Cognition, 21</em>(1), 37–46.',
+            'Baron-Cohen, S. (1995). <em>Mindblindness: An essay on autism and theory of mind.</em> MIT Press.',
+            'Dennett, D. C. (1978). Beliefs about beliefs. <em>Behavioral and Brain Sciences, 1</em>(4), 568–570.',
+            'Frith, U. (2001). Mind blindness and the brain in autism. <em>Neuron, 32</em>(6), 969–979.',
+            'Gallagher, H. L., &amp; Frith, C. D. (2003). Functional imaging of "theory of mind." <em>Trends in Cognitive Sciences, 7</em>(2), 77–83.',
+            'Premack, D., &amp; Woodruff, G. (1978). Does the chimpanzee have a theory of mind? <em>Behavioral and Brain Sciences, 1</em>(4), 515–526.',
+            'Saxe, R., &amp; Kanwisher, N. (2003). People thinking about thinking people. <em>NeuroImage, 19</em>(4), 1835–1842.',
+            'Wimmer, H., &amp; Perner, J. (1983). Beliefs about beliefs: Representation and constraining function of wrong beliefs in young children\'s understanding of deception. <em>Cognition, 13</em>(1), 103–128.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar (hidden on small screens via grid column collapse) -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Origin', def: 'Premack &amp; Woodruff, 1978' },
+            { term: 'Alias', def: 'Mindreading; Mentalising' },
+            { term: 'Key test', def: 'False-belief task' },
+            { term: 'Onset', def: '~3–5 years (typical)' },
+            { term: 'Neural hub', def: 'mPFC + TPJ' },
+            { term: 'Related to', def: 'Empathy, Mentalising, Executive Function' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Therapeutic communication',
+            '✅ Patient-centred care',
+            '✅ Health education',
+            '✅ Shared decision-making',
+            '✅ Compassion fatigue awareness',
+            '✅ Interprofessional collaboration',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
