@@ -26,8 +26,8 @@
 
 import { createHash } from 'node:crypto';
 import { webcrypto } from 'node:crypto';
-import { readFile, writeFile } from 'node:fs/promises';
-import { resolve, basename, extname } from 'node:path';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { resolve, basename, extname, dirname } from 'node:path';
 
 const { subtle } = webcrypto;
 
@@ -111,6 +111,7 @@ const result = {
   encryptedAt: new Date().toISOString(),
 };
 
+await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, JSON.stringify(result, null, 2) + '\n', 'utf8');
 
 console.log(`✅  Encrypted "${inputArg}" → "${outputArg ?? outputPath}"`);
