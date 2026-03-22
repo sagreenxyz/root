@@ -1,0 +1,185 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Scope of practice is a regulatory and professional concept that defines the boundaries within which a registered nurse—or any other regulated health professional—is authorised to practise. It delineates the actions, procedures, processes, and responsibilities that a nurse is permitted to perform on the basis of specific education, demonstrated competency, and jurisdictional authorisation. Understanding scope of practice is essential for every nursing student and practitioner, both as a matter of legal compliance and as a foundation for safe, effective, and ethically sound clinical care.\n\nScope of practice is not a static construct. It evolves in response to advances in nursing education and research, shifting patterns of healthcare delivery, legislative change, and the documented capacity of nursing to contribute to health outcomes beyond traditionally defined boundaries. The expansion of nursing scope of practice—particularly for advanced practice registered nurses—has become a central policy debate in health systems across the world, as governments and professional organisations grapple with questions of workforce adequacy, access to care, and the optimal deployment of skilled health professionals.`,
+  },
+  {
+    id: 'regulatory-foundations',
+    heading: 'Regulatory Foundations',
+    body: `Nursing scope of practice is established and enforced through a regulatory framework that typically operates at the level of the jurisdiction—a state, province, territory, or country—and is administered by a nursing regulatory authority such as a state board of nursing (in the United States), a provincial college of nurses (in Canada), or a national nursing council (in many other countries).\n\nThe Nurse Practice Act. In the United States, each state has a Nurse Practice Act (NPA)—a statute enacted by the state legislature that defines the legal scope of nursing practice within that jurisdiction. NPAs establish the categories of nursing licensure (registered nurse, licensed practical nurse/licensed vocational nurse, advanced practice registered nurse), specify the educational and examination requirements for licensure, identify acts that constitute unprofessional conduct, and grant authority to state boards of nursing to promulgate more specific rules and regulations. Because NPAs vary by state, nurses who practise across state lines—including through telehealth and travel nursing—must understand the regulatory requirements of each jurisdiction in which they work. The Nurse Licensure Compact (NLC), adopted by a growing number of states, facilitates multi-state practice by allowing nurses to hold a single multistate licence.\n\nInternational regulatory variation. Outside the United States, nursing regulation takes a variety of forms. In the United Kingdom, the Nursing and Midwifery Council (NMC) registers nurses and midwives, sets standards for education and practice, and maintains a public register of practitioners. In Australia, the Nursing and Midwifery Board of Australia (NMBA) fulfils an equivalent function under the Health Practitioner Regulation National Law. In Canada, each province and territory has its own regulatory college. Despite these structural variations, a common principle underlies nursing regulation in all jurisdictions: the purpose of regulating nursing practice is the protection of the public, not the protection of the profession.`,
+  },
+  {
+    id: 'levels-of-practice',
+    heading: 'Levels of Nursing Practice and Their Scopes',
+    body: `Within most regulatory systems, nursing practice is differentiated into multiple levels, each with a distinct scope defined by educational preparation, supervised experience, and demonstrated competency.\n\nEnrolled nurses and licensed practical/vocational nurses. In many jurisdictions, a category of nurse below the registered nurse level exists, variously designated as enrolled nurse (Australia and the UK), licensed practical nurse (LPN, United States), or licensed vocational nurse (LVN, used in Texas and California). These practitioners typically complete a shorter preparatory programme than registered nurses and practise under the supervision or direction of a registered nurse or medical practitioner. Their scope of practice is more limited: they may administer specified medications, perform certain procedures, and contribute to care planning, but they are generally not authorised to perform initial comprehensive assessments, formulate nursing diagnoses independently, or provide care to highly complex or unstable patients without close supervision.\n\nRegistered nurses. The registered nurse (RN) operates with a broader and more autonomous scope than enrolled or practical nurses. Registered nurses are educationally prepared—at minimum, at the diploma or associate degree level in some jurisdictions, and increasingly at the baccalaureate level—to provide comprehensive nursing assessment and care across a range of settings and patient populations. The RN scope encompasses independent nursing assessment, nursing diagnosis, care planning, implementation of therapeutic interventions, patient and family education, and evaluation. Registered nurses may delegate specified aspects of care to enrolled nurses and unlicensed assistive personnel, and they retain accountability for delegated tasks.\n\nAdvanced practice registered nurses. Advanced practice registered nurses (APRNs) in the United States—including nurse practitioners (NPs), clinical nurse specialists (CNSs), certified registered nurse anaesthetists (CRNAs), and certified nurse-midwives (CNMs)—possess graduate-level education and specialised clinical training that authorises them to perform functions historically associated with medical practice: comprehensive physical examination, differential diagnosis, ordering and interpreting diagnostic tests, prescribing medications, and managing acute and chronic conditions. APRN scope of practice varies substantially across states: in "full practice" states, APRNs may practise and prescribe independently; in "reduced practice" states, a collaborative agreement with a physician is required; in "restricted practice" states, physician supervision or delegation is mandated for many functions.`,
+  },
+  {
+    id: 'factors-influencing-scope',
+    heading: 'Factors That Define and Influence Scope of Practice',
+    body: `Scope of practice is determined by the interaction of multiple factors, each of which nurses must understand and navigate in clinical practice.\n\nEducation and competency. The bedrock of scope of practice is the nurse's educational preparation and demonstrated clinical competency. A nurse is authorised to perform only those acts for which she has received sufficient education and for which she can demonstrate ongoing competency. The obligation to practise within the limits of one's individual competency—and to identify and address competency gaps through continuing education, supervision, or referral—is a professional and ethical responsibility that persists throughout a nursing career, independent of what the regulatory framework technically permits.\n\nInstitutional policies and protocols. Healthcare institutions establish their own policies, procedures, and clinical protocols that may further define, and in some cases restrict, the scope of practice of nurses employed within them. A hospital's medication administration policy, for example, may prohibit nurses from administering certain high-alert medications without a double-check, even if the jurisdictional NPA does not require this precaution. Institutional scope definition must be consistent with the regulatory floor established by law; an institution cannot authorise nurses to perform acts outside their legally established scope, but it may restrict practice below that floor for reasons of patient safety or organisational risk management.\n\nEvidence and standards of practice. Professional nursing organisations publish standards of practice and position statements that articulate the evidence-based expectations for nursing performance across clinical domains. These standards do not have the force of law but establish the benchmark against which nursing practice will be measured in the context of professional review, disciplinary proceedings, or civil litigation. Nurses who depart from established standards of practice without clinical justification risk adverse regulatory and legal consequences.\n\nDelegation principles. Scope of practice intersects with delegation—the transfer of responsibility for the performance of a nursing activity to an unlicensed assistive person or a lower-scope practitioner—in important ways. The delegating nurse retains accountability for the outcome of delegated tasks and must ensure that the person to whom a task is delegated possesses the competency to perform it safely in the specific clinical context. The Five Rights of Delegation—right task, right circumstance, right person, right direction and communication, right supervision and evaluation—provide a practical framework for safe, legally defensible delegation decisions.`,
+  },
+  {
+    id: 'ethical-dimensions',
+    heading: 'Ethical Dimensions of Scope of Practice',
+    body: `Scope of practice is not merely a legal and regulatory matter; it is embedded in a network of professional ethical obligations that give it moral weight and significance.\n\nNon-maleficence and patient safety. The fundamental ethical principle of non-maleficence—the obligation to avoid causing harm—provides the moral foundation for scope of practice. Nurses who perform acts beyond their competence, outside their authorised scope, or without appropriate supervision risk causing patient harm. The ethical obligation to practise within scope is therefore not a bureaucratic constraint but an expression of the nurse's commitment to patient safety and the foundational obligation not to harm.\n\nBeneficence and access to care. Tensions between non-maleficence and the principle of beneficence—the obligation to act in the patient's best interest—arise when restrictive scope of practice provisions limit access to needed care. In rural and underserved communities, where physician workforce shortages are acute, restrictions on APRN scope of practice may prevent patients from accessing timely, appropriate care that nurse practitioners are demonstrably competent to provide. The ethical case for expanding APRN scope of practice is therefore grounded in beneficence and justice as well as in evidence about safety and effectiveness.\n\nProfessional integrity and moral courage. Practising within scope of practice sometimes requires moral courage—the willingness to decline requests, refuse directives, and advocate for one's own professional authority in the face of institutional pressure or interprofessional hierarchy. A nurse who is directed to perform a procedure for which she is neither trained nor authorised—whether by a supervisor, a physician, or institutional custom—faces an ethical obligation to refuse and to escalate the situation through appropriate channels. This refusal is not insubordination; it is an expression of professional integrity and a protection for the patient.`,
+  },
+  {
+    id: 'expanding-scope',
+    heading: 'Expanding Scope of Practice: Policy and Evidence',
+    body: `The question of whether and how to expand nursing scope of practice—particularly for advanced practice registered nurses—is one of the most actively debated topics in health policy. The evidence base relevant to this question is substantial and largely supportive of expanded scope.\n\nOutcomes of APRN practice. Multiple systematic reviews and meta-analyses have found that nurse practitioners and other APRNs practising at full scope produce health outcomes equivalent to those of physicians for a wide range of primary care and specialty conditions, including chronic disease management, preventive care, and acute illness assessment. Patient satisfaction with APRN care is generally high. These findings have supported the arguments of professional nursing organisations, health economists, and policy advocates for the removal of practice restrictions that constrain APRN scope without demonstrable patient safety justification.\n\nBarriers to scope expansion. Despite the evidence base, barriers to APRN scope expansion persist in many jurisdictions. These include organised opposition from medical professional associations, who argue that physician oversight is necessary to ensure care quality; restrictive state legislation that has proven difficult to amend; and institutional cultures that marginalise nursing's professional authority. The COVID-19 pandemic prompted temporary scope expansions in many jurisdictions, allowing APRNs to practise and prescribe independently during the public health emergency; advocacy efforts are ongoing to make many of these expansions permanent.\n\nGlobal perspectives. Internationally, the development of advanced practice nursing roles has proceeded at varying rates. In the United Kingdom, Canada, Australia, and New Zealand, nurse practitioner roles are well-established, with defined scopes that include prescribing, ordering diagnostics, and managing complex patients. In lower- and middle-income countries, task-shifting—the deliberate expansion of nursing scope to address physician workforce shortages—has been endorsed by the World Health Organization as a strategy for improving health access and equity.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Nursing scope of practice is a foundational concept that defines the legal, professional, and ethical boundaries of nursing action. It is determined by regulatory authority, shaped by education and competency, influenced by institutional context, and animated by ethical commitment. For nursing students, understanding scope of practice is not a peripheral regulatory matter but a central element of professional preparation: it provides the framework within which clinical decision-making occurs, establishes the limits of individual authority and responsibility, and articulates the standards against which practice will be measured throughout a nursing career. As nursing continues to evolve—expanding its evidence base, asserting its professional authority, and advocating for health equity—scope of practice will remain a living, contested, and critically important dimension of what it means to be a nurse.`,
+  },
+];
+---
+
+<Layout title="Nursing Scope of Practice – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Nursing Scope of Practice</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            ⚖️ Professional &amp; Regulatory Practice
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Nursing Scope of Practice
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the regulatory, professional, and ethical dimensions of nursing
+          scope of practice, including levels of practice, influencing factors, delegation principles,
+          and the evolving policy debate around scope expansion.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'American Nurses Association. (2021). <em>Nursing: Scope and standards of practice</em> (4th ed.). ANA.',
+            'Buerhaus, P. I., DesRoches, C. M., Dittus, R., &amp; Donelan, K. (2015). Practice characteristics of primary care nurse practitioners and physicians. <em>Nursing Outlook, 63</em>(2), 144–153.',
+            'Institute of Medicine. (2011). <em>The future of nursing: Leading change, advancing health.</em> National Academies Press.',
+            'National Council of State Boards of Nursing. (2016). <em>National guidelines for nursing delegation.</em> NCSBN.',
+            'Newhouse, R. P., Stanik-Hutt, J., White, K. M., Johantgen, M., Bass, E. B., Zangaro, G., Wilson, R. F., Fountain, L., Steinwachs, D. M., Heindel, L., &amp; Weiner, J. P. (2011). Advanced practice nurse outcomes 1990–2008: A systematic review. <em>Nursing Economics, 29</em>(5), 230–250.',
+            'Nursing and Midwifery Council. (2018). <em>The code: Professional standards of practice and behaviour for nurses, midwives and nursing associates.</em> NMC.',
+            'World Health Organization. (2020). <em>State of the world\'s nursing 2020: Investing in education, jobs and leadership.</em> WHO.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Governed by', def: 'Nurse Practice Acts; regulatory boards' },
+            { term: 'Levels', def: 'LPN/LVN → RN → APRN' },
+            { term: 'APRN roles', def: 'NP, CNS, CRNA, CNM' },
+            { term: 'Key principle', def: 'Competency-based practice' },
+            { term: 'US compact', def: 'Nurse Licensure Compact (NLC)' },
+            { term: 'Related to', def: 'Delegation, Standards of Practice, Ethics' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Legal protection for nurses',
+            '✅ Patient safety assurance',
+            '✅ Safe delegation decisions',
+            '✅ APRN role clarity',
+            '✅ Professional accountability',
+            '✅ Advocacy for practice rights',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
