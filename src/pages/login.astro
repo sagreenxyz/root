@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// AUTH_HASH is injected by the GitHub Actions build step via the AUTH_HASH secret.
+// It must be the SHA-256 hex digest of "<username>:<password>".
+const validHash = import.meta.env.AUTH_HASH ?? '';
 ---
 
 <Layout title="Login – Root" protected={false}>
@@ -18,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
           name="username"
           type="text"
           autocomplete="username"
-          placeholder="admin"
+          placeholder="Username"
           required
           style="width:100%; padding:0.6rem 0.8rem; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:1rem; outline:none; transition:border-color 0.2s;"
           onfocus="this.style.borderColor='#6366f1'"
@@ -47,14 +50,19 @@ import Layout from '../layouts/Layout.astro';
         onmouseout="this.style.background='#6366f1'"
       >Sign In</button>
     </form>
-    <p style="text-align:center; margin-top:1.5rem; color:#64748b; font-size:0.8rem;">Default credentials: <code>admin</code> / <code>admin</code></p>
+    <p style="text-align:center; margin-top:1.5rem; color:#64748b; font-size:0.8rem;">Contact the site administrator if you need access.</p>
   </div>
 </Layout>
 
+<!-- Inject the hash from the AUTH_HASH build secret (no plaintext credentials in source). -->
+<script define:vars={{ validHash }}>
+  window.__authHash = validHash;
+</script>
+
 <script>
-  // SHA-256 of "admin:admin" — to change credentials, replace this hash with
-  // the SHA-256 hex digest of "<username>:<password>".
-  const VALID_HASH = '8da193366e1554c08b2870c50f737b9587c3372b656151c4a96028af26f51334';
+  // Hash is injected at build time from the AUTH_HASH GitHub Actions secret
+  // via window.__authHash (set by the define:vars inline script above).
+  const VALID_HASH: string = (window as any).__authHash ?? '';
 
   /**
    * Returns the SHA-256 hex digest of the given message using the Web Crypto API.

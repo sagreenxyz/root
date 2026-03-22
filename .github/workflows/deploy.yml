@@ -41,6 +41,7 @@ jobs:
         env:
           SITE: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          AUTH_HASH: ${{ secrets.AUTH_HASH }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
