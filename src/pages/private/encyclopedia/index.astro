@@ -1,0 +1,82 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const articles = [
+  {
+    slug: 'theory-of-mind',
+    icon: '🧠',
+    category: 'Psychology & Neuroscience',
+    title: 'Theory of Mind',
+    summary:
+      'The cognitive capacity to attribute mental states—beliefs, intentions, desires, and emotions—to oneself and others, and its significance for empathic nursing practice.',
+    tags: ['cognition', 'empathy', 'autism', 'communication', 'neuroscience'],
+  },
+];
+---
+
+<Layout title="Encyclopedia – Root" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Encyclopedia</span>
+  </nav>
+
+  <!-- Header -->
+  <div style="margin-bottom:2rem;">
+    <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">📚 Encyclopedia</h1>
+    <p style="color:#64748b; font-size:1rem; line-height:1.6;">
+      Academic reference articles written for nursing students. All content in this section is
+      peer-reviewed in style and written at a graduate academic level to support evidence-based
+      clinical practice and professional development.
+    </p>
+  </div>
+
+  <!-- Article grid -->
+  <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2.5rem;">
+    {articles.map((article) => (
+      <a
+        href={`${base}/private/encyclopedia/${article.slug}`}
+        style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s, border-color 0.2s;"
+        onmouseover="this.style.boxShadow='0 4px 16px rgba(99,102,241,0.12)'; this.style.borderColor='#a5b4fc';"
+        onmouseout="this.style.boxShadow='none'; this.style.borderColor='#e2e8f0';"
+      >
+        <div style="display:flex; align-items:flex-start; gap:1rem;">
+          <div style="font-size:2rem; line-height:1; flex-shrink:0;">{article.icon}</div>
+          <div style="flex:1; min-width:0;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+              <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">
+                {article.category}
+              </span>
+            </div>
+            <h2 style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">{article.title}</h2>
+            <p style="color:#64748b; font-size:0.9rem; line-height:1.6; margin-bottom:0.75rem;">{article.summary}</p>
+            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+              {article.tags.map(tag => (
+                <span style="font-size:0.75rem; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:0.3rem; padding:0.1rem 0.5rem;">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style="color:#94a3b8; font-size:1.2rem; flex-shrink:0; align-self:center;">›</div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- Info callout -->
+  <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem 1.5rem; display:flex; align-items:flex-start; gap:0.75rem;">
+    <span style="font-size:1.25rem; flex-shrink:0;">💡</span>
+    <div>
+      <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">More articles coming soon</p>
+      <p style="color:#15803d; font-size:0.85rem; line-height:1.6;">
+        This encyclopedia is growing. Future articles will cover topics such as therapeutic
+        communication frameworks, pathophysiology of common conditions, pharmacology essentials,
+        and evidence-based clinical guidelines—all written with nursing students as the primary
+        audience.
+      </p>
+    </div>
+  </div>
+</Layout>
