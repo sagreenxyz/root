@@ -20,7 +20,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   <!-- Stats cards -->
   <div style="display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); margin-bottom:2rem;">
     {[
-      { label: 'Pages', value: '9', icon: '📄' }, // update when pages are added or removed
+      { label: 'Pages', value: '12', icon: '📄' }, // update when pages are added or removed
       { label: 'Users', value: '1', icon: '👤' },
       { label: 'Status', value: 'Live', icon: '🟢' },
       { label: 'Host', value: 'GitHub Pages', icon: '☁️' },
@@ -52,6 +52,10 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         onmouseover="this.style.background='#e0e7ff'"
         onmouseout="this.style.background='#eef2ff'"
       >📚 Encyclopedia</a>
+      <a href={`${base}/private/journal`} style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:0.5rem; text-decoration:none; font-size:0.875rem; font-weight:600; transition:background 0.15s;"
+        onmouseover="this.style.background='#e0e7ff'"
+        onmouseout="this.style.background='#eef2ff'"
+      >📓 Journal</a>
       <a href={`${base}/content`} style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:0.5rem; text-decoration:none; font-size:0.875rem; font-weight:600; transition:background 0.15s;"
         onmouseover="this.style.background='#e0e7ff'"
         onmouseout="this.style.background='#eef2ff'"
