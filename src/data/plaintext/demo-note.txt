@@ -1,0 +1,13 @@
+Welcome to your encrypted content vault!
+
+This is a demo note that is automatically re-encrypted at build time using
+your site's configured credentials (AUTH_HASH). It will always be decryptable
+by any user who logs in successfully.
+
+You can add your own private notes by running:
+
+  node scripts/encrypt-content.mjs <username> <password> your-file.txt \
+      src/data/encrypted/your-file.json
+
+Or place plaintext files in src/data/plaintext/ to have them encrypted
+automatically during every build.
