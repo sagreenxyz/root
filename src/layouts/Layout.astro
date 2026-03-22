@@ -6,8 +6,8 @@ interface Props {
 
 const { title, protected: isProtected = true } = Astro.props;
 
-// Build-time base URL for client-side redirects
-const base = import.meta.env.BASE_URL;
+// Build-time base URL for client-side redirects (strip trailing slash so ${base}/path is always correct)
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 ---
 
 <!doctype html>

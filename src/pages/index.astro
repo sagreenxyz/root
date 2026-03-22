@@ -7,11 +7,11 @@ import Layout from '../layouts/Layout.astro';
   <p>You are authenticated. This is a protected Astro site hosted on GitHub Pages.</p>
 
   <div style="margin-top: 2rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-    <a href={`${import.meta.env.BASE_URL}/dashboard`} style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
+    <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/dashboard`} style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
       <h2 style="font-size:1.1rem; margin-bottom:0.5rem;">📊 Dashboard</h2>
       <p style="color:#64748b; font-size:0.9rem;">View your protected dashboard.</p>
     </a>
-    <a href={`${import.meta.env.BASE_URL}/logout`} style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
+    <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/logout`} style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
       <h2 style="font-size:1.1rem; margin-bottom:0.5rem;">🔒 Logout</h2>
       <p style="color:#64748b; font-size:0.9rem;">End your session securely.</p>
     </a>
