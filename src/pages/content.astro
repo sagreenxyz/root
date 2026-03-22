@@ -20,10 +20,10 @@ const contentItems = Object.entries(encryptedModules).map(([filePath, mod]) => {
 ---
 
 <Layout title="Content – Root" protected={true}>
-  <div style="display:grid; gap:1.5rem; grid-template-columns:260px 1fr; align-items:start;">
+  <div class="content-grid">
 
     <!-- Sidebar: list of content files -->
-    <aside style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; position:sticky; top:1.5rem;">
+    <aside class="content-sidebar" style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
       <h2 style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:1rem;">
         🔒 Encrypted Files
       </h2>
@@ -71,6 +71,27 @@ const contentItems = Object.entries(encryptedModules).map(([filePath, mod]) => {
     </div>
   </div>
 </Layout>
+
+<style>
+  .content-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+  .content-sidebar {
+    position: sticky;
+    top: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+    .content-sidebar {
+      position: static;
+    }
+  }
+</style>
 
 <!-- Pass encrypted payloads to the client script -->
 <script define:vars={{ contentItems }}>
