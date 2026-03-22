@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const tools = [
+  {
+    icon: '🗺️',
+    title: 'Clinical Concept Map',
+    description:
+      'Fill in your WGU Nursing Concept Map step-by-step, then download or print a professionally formatted PDF ready for submission.',
+    href: '/tools/concept-map',
+    badge: 'D439 • D440',
+  },
+];
+---
+
+<Layout title="WGU Nursing Tools" protected={false}>
+  <div style="margin-bottom:2rem;">
+    <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">🩺 WGU Nursing Tools</h1>
+    <p style="color:#64748b; font-size:1rem;">
+      Free interactive utilities for WGU nursing students — no sign-in required.
+    </p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+    {tools.map((tool) => (
+      <a
+        href={`${base}${tool.href}`}
+        style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.75rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s, border-color 0.2s;"
+        onmouseover="this.style.boxShadow='0 4px 20px rgba(99,102,241,.12)'; this.style.borderColor='#c7d2fe';"
+        onmouseout="this.style.boxShadow=''; this.style.borderColor='#e2e8f0';"
+      >
+        <div style="display:flex; align-items:flex-start; gap:1rem;">
+          <div style="font-size:2.25rem; line-height:1; flex-shrink:0;">{tool.icon}</div>
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; gap:0.65rem; margin-bottom:0.35rem; flex-wrap:wrap;">
+              <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b;">{tool.title}</h2>
+              {tool.badge && (
+                <span style="font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">
+                  {tool.badge}
+                </span>
+              )}
+            </div>
+            <p style="color:#64748b; font-size:0.95rem; line-height:1.6;">{tool.description}</p>
+            <span style="display:inline-block; margin-top:1rem; font-size:0.875rem; font-weight:600; color:#6366f1;">
+              Open tool →
+            </span>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div style="margin-top:2.5rem; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem 1.5rem; font-size:0.875rem; color:#14532d; line-height:1.6;">
+    💡 <strong>These tools are open to everyone.</strong> No account or password is needed.
+    If you are a site member, you can also access your private
+    <a href={`${base}/private/journal`} style="color:#15803d; font-weight:600;">Journal</a> and
+    <a href={`${base}/private/encyclopedia`} style="color:#15803d; font-weight:600;">Encyclopedia</a>
+    after signing in.
+  </div>
+</Layout>
