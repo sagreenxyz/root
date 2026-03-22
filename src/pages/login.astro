@@ -77,6 +77,22 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
+  // Redirect to the next param if it's same-origin, otherwise fall back to the private dashboard.
+  function redirectAfterAuth(nextParam: string | null): void {
+    if (nextParam) {
+      try {
+        const target = new URL(nextParam, window.location.origin);
+        if (target.origin === window.location.origin) {
+          window.location.replace(target.pathname + target.search + target.hash);
+          return;
+        }
+      } catch (_) {
+        // Invalid URL – fall through to private dashboard
+      }
+    }
+    window.location.replace(BASE + '/private/dashboard');
+  }
+
   // Show session-expired notice if redirected after inactivity timeout
   if (new URLSearchParams(window.location.search).get('timeout') === '1') {
     const timeoutMsg = document.getElementById('timeout-msg') as HTMLElement;
@@ -85,24 +101,9 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     history.replaceState(null, '', window.location.pathname);
   }
 
-  // If already authenticated, redirect to private dashboard (or next param if valid)
-  const existingToken = sessionStorage.getItem('auth_token');
-  if (existingToken) {
-    const nextParam = new URLSearchParams(window.location.search).get('next');
-    if (nextParam) {
-      try {
-        const target = new URL(nextParam, window.location.origin);
-        if (target.origin === window.location.origin) {
-          window.location.replace(target.pathname + target.search + target.hash);
-        } else {
-          window.location.replace(BASE + '/private/dashboard');
-        }
-      } catch (_) {
-        window.location.replace(BASE + '/private/dashboard');
-      }
-    } else {
-      window.location.replace(BASE + '/private/dashboard');
-    }
+  // If already authenticated, redirect immediately
+  if (sessionStorage.getItem('auth_token')) {
+    redirectAfterAuth(new URLSearchParams(window.location.search).get('next'));
   }
 
   // Login form submission
@@ -121,21 +122,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       sessionStorage.setItem('auth_user', username);
       // Signal the inactivity monitor (defined in Layout.astro) to start.
       document.dispatchEvent(new CustomEvent('auth:login'));
-      // Redirect to the originally requested page (if any), otherwise to private dashboard.
-      // Use URL parsing to verify same-origin and prevent open redirect attacks.
-      const nextParam = new URLSearchParams(window.location.search).get('next');
-      if (nextParam) {
-        try {
-          const target = new URL(nextParam, window.location.origin);
-          if (target.origin === window.location.origin) {
-            window.location.replace(target.pathname + target.search + target.hash);
-            return;
-          }
-        } catch (_) {
-          // Invalid URL – fall through to private dashboard
-        }
-      }
-      window.location.replace(BASE + '/private/dashboard');
+      redirectAfterAuth(new URLSearchParams(window.location.search).get('next'));
     } else {
       errorMsg.textContent = 'Invalid username or password. Please try again.';
       errorMsg.style.display = 'block';
