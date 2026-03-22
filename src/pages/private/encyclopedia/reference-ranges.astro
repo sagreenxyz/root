@@ -1,0 +1,495 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const abgValues = [
+  { param: 'pH', normal: '7.35–7.45', low: '< 7.35 (acidaemia)', high: '> 7.45 (alkalaemia)' },
+  { param: 'PaCO₂', normal: '35–45 mmHg', low: '< 35 (resp. alkalosis / hypervent.)', high: '> 45 (resp. acidosis / hypovent.)' },
+  { param: 'PaO₂', normal: '80–100 mmHg', low: '< 80 hypoxaemia; < 60 severe', high: '> 100 (hyperoxia on supplemental O₂)' },
+  { param: 'HCO₃⁻', normal: '22–26 mEq/L', low: '< 22 (met. acidosis / compensation)', high: '> 26 (met. alkalosis / compensation)' },
+  { param: 'Base excess', normal: '−2 to +2 mEq/L', low: '< −2 (base deficit / metabolic acidosis)', high: '> +2 (metabolic alkalosis)' },
+  { param: 'SaO₂', normal: '≥ 95%', low: '< 90% requires supplemental O₂', high: '100% (on supplemental O₂ often)' },
+  { param: 'A-a gradient', normal: '5–15 mmHg (room air)', low: 'N/A', high: '> 15 suggests V/Q mismatch, shunt, or diffusion defect' },
+];
+
+const electrolytes = [
+  { param: 'Sodium (Na⁺)', normal: '135–145 mEq/L', low: '< 135 hyponatraemia', high: '> 145 hypernatraemia' },
+  { param: 'Potassium (K⁺)', normal: '3.5–5.0 mEq/L', low: '< 3.5 hypokalaemia', high: '> 5.0 hyperkalaemia' },
+  { param: 'Chloride (Cl⁻)', normal: '98–106 mEq/L', low: '< 98 hypochloraemia (met. alk.)', high: '> 106 hyperchloraemia (normal-AG acidosis)' },
+  { param: 'Bicarbonate (HCO₃⁻)', normal: '22–26 mEq/L', low: '< 22 acidosis / compensation', high: '> 26 alkalosis / compensation' },
+  { param: 'Calcium (Ca²⁺) total', normal: '8.5–10.5 mg/dL', low: '< 8.5 hypocalcaemia', high: '> 10.5 hypercalcaemia' },
+  { param: 'Calcium ionised', normal: '4.6–5.1 mg/dL (1.15–1.27 mmol/L)', low: '< 4.6 clinically significant', high: '> 5.1 hypercalcaemia symptoms' },
+  { param: 'Magnesium (Mg²⁺)', normal: '1.7–2.2 mg/dL (0.70–0.95 mmol/L)', low: '< 1.7 hypomagnesaemia', high: '> 2.2 hypermagnesaemia' },
+  { param: 'Phosphate (PO₄³⁻)', normal: '2.5–4.5 mg/dL (0.81–1.45 mmol/L)', low: '< 2.5 hypophosphataemia', high: '> 4.5 hyperphosphataemia' },
+  { param: 'Anion gap', normal: '8–12 mEq/L', low: 'N/A (< 8 consider hypoalbuminaemia)', high: '> 12 elevated (lactic acidosis, DKA, uraemia, toxins)' },
+];
+
+const fluidParams = [
+  { param: 'Serum osmolality', normal: '275–295 mOsm/kg', low: '< 275 hypo-osmolality (hyponatraemia, excess water)', high: '> 295 hyperosmolality (dehydration, hypernatraemia, hyperglycaemia)' },
+  { param: 'Urine output', normal: '≥ 0.5 mL/kg/hr (adult)', low: '< 0.5 mL/kg/hr oliguria; < 30 mL/hr', high: '> 3 mL/kg/hr polyuria (DI, osmotic diuresis)' },
+  { param: 'Urine specific gravity', normal: '1.005–1.030', low: '< 1.005 dilute; DI, excess intake', high: '> 1.030 concentrated; dehydration, SIADH' },
+  { param: 'Urine osmolality', normal: '300–900 mOsm/kg', low: '< 100 appropriate dilution (water excess / DI)', high: '> 900 concentrated (dehydration, SIADH)' },
+  { param: 'Urine sodium (spot)', normal: '40–220 mEq/L (variable)', low: '< 20 mEq/L: renal Na⁺ avidity (FVD, hepatorenal, prerenal AKI)', high: '> 40 mEq/L: SIADH, diuretics, AKI, cerebral salt wasting' },
+  { param: 'BUN (urea)', normal: '7–20 mg/dL', low: '< 7: low protein intake, liver disease', high: '> 20: dehydration, GI bleed, renal failure (BUN:Cr > 20:1 = prerenal)' },
+  { param: 'Serum creatinine', normal: '0.6–1.2 mg/dL (♀ lower end)', low: '< 0.6: low muscle mass, malnutrition', high: '> 1.2: impaired GFR (interpret with BUN)' },
+  { param: 'BNP', normal: '< 100 pg/mL', low: 'N/A', high: '> 400 pg/mL: consistent with heart failure / fluid overload' },
+  { param: 'Haematocrit (Hct)', normal: '37–52% (sex-dependent)', low: '< 37% anaemia (or haemodilution with FVE)', high: '> 52% polycythaemia or haemoconcentration (FVD)' },
+];
+
+const abgDisorders = [
+  { disorder: 'Metabolic acidosis', ph: '↓', paco2: '↓ (compensation)', hco3: '↓ (primary)', causes: 'DKA, lactic acidosis, uraemia, diarrhoea, RTA' },
+  { disorder: 'Metabolic alkalosis', ph: '↑', paco2: '↑ (compensation)', hco3: '↑ (primary)', causes: 'Vomiting, NG suction, diuretics, hyperaldosteronism' },
+  { disorder: 'Respiratory acidosis', ph: '↓', paco2: '↑ (primary)', hco3: '↑ (compensation)', causes: 'COPD, opioids, airway obstruction, NMD, pneumothorax' },
+  { disorder: 'Respiratory alkalosis', ph: '↑', paco2: '↓ (primary)', hco3: '↓ (compensation)', causes: 'Anxiety, pain, fever, sepsis, PE, mechanical hypervent.' },
+];
+
+const compensationFormulas = [
+  { disorder: 'Metabolic acidosis', formula: 'Expected PaCO₂ = (1.5 × HCO₃⁻) + 8 ± 2', note: "Winter's formula" },
+  { disorder: 'Metabolic alkalosis', formula: 'Expected PaCO₂ = (0.7 × HCO₃⁻) + 21 ± 2', note: '' },
+  { disorder: 'Acute resp. acidosis', formula: 'ΔHCO₃⁻ ≈ 0.1 × ΔPaCO₂ (max ~30 mEq/L)', note: '' },
+  { disorder: 'Chronic resp. acidosis', formula: 'ΔHCO₃⁻ ≈ 0.35 × ΔPaCO₂ (max ~45 mEq/L)', note: '' },
+  { disorder: 'Acute resp. alkalosis', formula: 'ΔHCO₃⁻ ≈ 0.2 × ΔPaCO₂', note: '' },
+  { disorder: 'Chronic resp. alkalosis', formula: 'ΔHCO₃⁻ ≈ 0.5 × ΔPaCO₂ (min ~18 mEq/L)', note: '' },
+];
+
+const clinicalSigns = [
+  {
+    category: 'Fluid Volume Deficit',
+    color: '#fef9c3',
+    border: '#fde047',
+    textColor: '#713f12',
+    signs: [
+      'Thirst, dry mucous membranes',
+      'Tachycardia (early compensatory)',
+      'Orthostatic hypotension (↑HR ≥20 bpm or ↓SBP ≥20 mmHg on standing)',
+      'Decreased skin turgor ("tenting")',
+      'Sunken eyes, sunken fontanelle (infants)',
+      'Oliguria (< 0.5 mL/kg/hr), dark concentrated urine',
+      'Confusion / altered mental status (severe)',
+      'Capillary refill > 2 seconds',
+      'Haemoconcentration (↑Hct, ↑BUN, BUN:Cr > 20:1)',
+    ],
+  },
+  {
+    category: 'Fluid Volume Excess',
+    color: '#eff6ff',
+    border: '#93c5fd',
+    textColor: '#1e3a5f',
+    signs: [
+      'Peripheral oedema (pitting, +1 to +4)',
+      'Elevated jugular venous pressure (> 3 cm above sternal angle at 45°)',
+      'Pulmonary crackles (bases)',
+      'Dyspnoea, orthopnoea, PND',
+      'S3 gallop (ventricular volume overload)',
+      'Weight gain > 0.5–1 kg/day',
+      'Elevated BNP (> 400 pg/mL)',
+      'Dilutional hyponatraemia',
+      'Ascites, pleural effusion (in chronic states)',
+    ],
+  },
+  {
+    category: 'Hypokalaemia (K⁺ < 3.5 mEq/L)',
+    color: '#f5f3ff',
+    border: '#ddd6fe',
+    textColor: '#4c1d95',
+    signs: [
+      'Muscle weakness (ascending), fatigue',
+      'Muscle cramps, myalgia',
+      'Decreased deep tendon reflexes',
+      'Paralytic ileus, abdominal distension',
+      'ECG: flat/inverted T waves, U waves, ST depression, wide QRS',
+      'Ventricular arrhythmias (especially with digoxin)',
+      'Polyuria (nephrogenic DI)',
+      'Metabolic alkalosis',
+    ],
+  },
+  {
+    category: 'Hyperkalaemia (K⁺ > 5.0 mEq/L)',
+    color: '#fff1f2',
+    border: '#fda4af',
+    textColor: '#881337',
+    signs: [
+      'Muscle weakness, paraesthesiae',
+      'ECG progression: peaked T waves → prolonged PR → wide QRS → sine wave → VF/asystole',
+      'Bradycardia',
+      'Metabolic acidosis (often coexistent)',
+      'Pseudo-hyperkalaemia: check for haemolysed sample',
+    ],
+  },
+  {
+    category: 'Hypocalcaemia (Ca²⁺ < 8.5 mg/dL)',
+    color: '#ecfeff',
+    border: '#a5f3fc',
+    textColor: '#164e63',
+    signs: [
+      'Perioral & digital paraesthesiae',
+      'Muscle cramps, carpopedal spasm',
+      "Chvostek's sign (facial twitch on tap)",
+      "Trousseau's sign (carpal spasm with BP cuff)",
+      'Laryngospasm (severe)',
+      'Tetany, seizures (severe)',
+      'ECG: prolonged QT interval',
+    ],
+  },
+  {
+    category: 'Hypercalcaemia (Ca²⁺ > 10.5 mg/dL)',
+    color: '#fff7ed',
+    border: '#fdba74',
+    textColor: '#7c2d12',
+    signs: [
+      'Bones: bone pain, pathological fractures',
+      'Stones: renal calculi, polyuria, polydipsia',
+      'Groans: nausea, vomiting, constipation, anorexia',
+      'Psychic moans: depression, confusion, lethargy, coma',
+      'ECG: shortened QT interval',
+      'Muscle weakness, hyporeflexia',
+    ],
+  },
+];
+---
+
+<Layout title="Clinical Reference Ranges – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Reference Ranges</span>
+  </nav>
+
+  <!-- Page header -->
+  <div style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+      <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+        📊 Clinical Utility
+      </span>
+      <span style="font-size:0.75rem; color:#94a3b8;">Quick Reference</span>
+    </div>
+    <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+      Clinical Reference Ranges
+    </h1>
+    <p style="font-size:1rem; color:#475569; line-height:1.6; max-width:68ch;">
+      A consolidated quick-reference guide for use during clinical placements. Covers arterial blood
+      gas parameters, serum electrolytes, fluid assessment values, acid-base disorder patterns,
+      compensation formulae, and key clinical signs of common imbalances.
+    </p>
+    <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap; margin-top:0.75rem;">
+      <span>🎓 Target audience: Nursing students in clinicals</span>
+      <span>⚠️ Values are adult reference ranges — always verify local laboratory norms</span>
+    </div>
+  </div>
+
+  <!-- Quick navigation -->
+  <nav aria-label="Section navigation" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1rem 1.25rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Jump to section</p>
+    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+      {[
+        { href: '#abg', label: '🫁 ABG Values' },
+        { href: '#electrolytes', label: '⚡ Electrolytes' },
+        { href: '#fluid', label: '💧 Fluid Balance' },
+        { href: '#disorders', label: '🧪 Acid-Base Disorders' },
+        { href: '#compensation', label: '📐 Compensation Formulae' },
+        { href: '#clinical-signs', label: '🩺 Clinical Signs' },
+        { href: '#abg-steps', label: '📋 ABG Steps' },
+      ].map(({ href, label }) => (
+        <a
+          href={href}
+          style="font-size:0.82rem; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.4rem; padding:0.2rem 0.6rem; text-decoration:none; font-weight:500; transition:background 0.15s;"
+          onmouseover="this.style.background='#e0e7ff'"
+          onmouseout="this.style.background='#eef2ff'"
+        >{label}</a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- ABG Normal Values -->
+  <section id="abg" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      🫁 Arterial Blood Gas (ABG) — Normal Values
+    </h2>
+    <div style="overflow-x:auto; border-radius:0.65rem; border:1px solid #e2e8f0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Parameter</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#059669; border-bottom:1px solid #e2e8f0;">Normal Range</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#dc2626; border-bottom:1px solid #e2e8f0;">Low / Decreased</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#d97706; border-bottom:1px solid #e2e8f0;">High / Increased</th>
+          </tr>
+        </thead>
+        <tbody>
+          {abgValues.map((row, i) => (
+            <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+              <td style="padding:0.6rem 1rem; font-weight:600; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.param}</td>
+              <td style="padding:0.6rem 1rem; color:#065f46; border-bottom:1px solid #f1f5f9;">{row.normal}</td>
+              <td style="padding:0.6rem 1rem; color:#b91c1c; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.low}</td>
+              <td style="padding:0.6rem 1rem; color:#b45309; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.high}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Electrolytes -->
+  <section id="electrolytes" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      ⚡ Serum Electrolytes — Normal Ranges
+    </h2>
+    <div style="overflow-x:auto; border-radius:0.65rem; border:1px solid #e2e8f0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Electrolyte</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#059669; border-bottom:1px solid #e2e8f0;">Normal Range</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#dc2626; border-bottom:1px solid #e2e8f0;">Low (Hypo-)</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#d97706; border-bottom:1px solid #e2e8f0;">High (Hyper-)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {electrolytes.map((row, i) => (
+            <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+              <td style="padding:0.6rem 1rem; font-weight:600; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.param}</td>
+              <td style="padding:0.6rem 1rem; color:#065f46; border-bottom:1px solid #f1f5f9;">{row.normal}</td>
+              <td style="padding:0.6rem 1rem; color:#b91c1c; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.low}</td>
+              <td style="padding:0.6rem 1rem; color:#b45309; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.high}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Fluid Assessment -->
+  <section id="fluid" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      💧 Fluid Balance — Assessment Parameters
+    </h2>
+    <div style="overflow-x:auto; border-radius:0.65rem; border:1px solid #e2e8f0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Parameter</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#059669; border-bottom:1px solid #e2e8f0;">Normal / Expected</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#dc2626; border-bottom:1px solid #e2e8f0;">Below Normal</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#d97706; border-bottom:1px solid #e2e8f0;">Above Normal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fluidParams.map((row, i) => (
+            <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+              <td style="padding:0.6rem 1rem; font-weight:600; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.param}</td>
+              <td style="padding:0.6rem 1rem; color:#065f46; border-bottom:1px solid #f1f5f9;">{row.normal}</td>
+              <td style="padding:0.6rem 1rem; color:#b91c1c; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.low}</td>
+              <td style="padding:0.6rem 1rem; color:#b45309; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.high}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Acid-Base Disorder Patterns -->
+  <section id="disorders" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      🧪 Acid-Base Disorder Patterns
+    </h2>
+    <div style="overflow-x:auto; border-radius:0.65rem; border:1px solid #e2e8f0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Disorder</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">pH</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">PaCO₂</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">HCO₃⁻</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Common Causes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {abgDisorders.map((row, i) => (
+            <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+              <td style="padding:0.6rem 1rem; font-weight:600; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.disorder}</td>
+              <td style="padding:0.6rem 1rem; color:#1e293b; border-bottom:1px solid #f1f5f9; font-size:1rem; font-weight:700;">{row.ph}</td>
+              <td style="padding:0.6rem 1rem; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.paco2}</td>
+              <td style="padding:0.6rem 1rem; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.hco3}</td>
+              <td style="padding:0.6rem 1rem; color:#475569; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.causes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Compensation Formulae -->
+  <section id="compensation" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      📐 Compensation Formulae
+    </h2>
+    <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:0.65rem; padding:1rem 1.25rem; margin-bottom:1rem; font-size:0.85rem; color:#78350f;">
+      <strong>How to use:</strong> Calculate the expected compensatory value and compare with the measured value. If the measured value is outside the expected range, a second primary acid-base disorder is present (mixed disorder).
+    </div>
+    <div style="overflow-x:auto; border-radius:0.65rem; border:1px solid #e2e8f0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Primary Disorder</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Expected Compensation</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {compensationFormulas.map((row, i) => (
+            <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+              <td style="padding:0.6rem 1rem; font-weight:600; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.disorder}</td>
+              <td style="padding:0.6rem 1rem; color:#1e3a5f; font-family:monospace; border-bottom:1px solid #f1f5f9;">{row.formula}</td>
+              <td style="padding:0.6rem 1rem; color:#64748b; font-size:0.82rem; border-bottom:1px solid #f1f5f9;">{row.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Clinical Signs -->
+  <section id="clinical-signs" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      🩺 Clinical Signs at a Glance
+    </h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:1rem;">
+      {clinicalSigns.map(({ category, color, border, textColor, signs }) => (
+        <div style={`background:${color}; border:1px solid ${border}; border-radius:0.65rem; padding:1.1rem 1.25rem;`}>
+          <p style={`font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:${textColor}; margin-bottom:0.65rem;`}>{category}</p>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
+            {signs.map(sign => (
+              <li style={`font-size:0.82rem; color:#334155; display:flex; gap:0.4rem; align-items:flex-start;`}>
+                <span style={`color:${textColor}; font-weight:700; flex-shrink:0;`}>•</span>
+                {sign}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ABG Interpretation Steps -->
+  <section id="abg-steps" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      📋 Systematic ABG Interpretation — Step by Step
+    </h2>
+    <div style="display:flex; flex-direction:column; gap:0.75rem;">
+      {[
+        { step: 1, title: 'Assess pH', detail: 'pH < 7.35 = acidaemia | pH 7.35–7.45 = normal (may be mixed) | pH > 7.45 = alkalaemia', color: '#fee2e2', border: '#fca5a5', num: '#dc2626' },
+        { step: 2, title: 'Identify primary disorder', detail: 'PaCO₂ moves same direction as pH? → respiratory disorder. HCO₃⁻ moves same direction as pH? → metabolic disorder.', color: '#fef3c7', border: '#fcd34d', num: '#d97706' },
+        { step: 3, title: 'Assess compensation', detail: 'Use compensation formulae. If measured value ≠ expected → mixed disorder present.', color: '#d1fae5', border: '#6ee7b7', num: '#059669' },
+        { step: 4, title: 'Calculate anion gap (if metabolic acidosis)', detail: 'AG = Na⁺ − (Cl⁻ + HCO₃⁻). Normal 8–12. If high AG: check delta-delta ratio = ΔAG / ΔHCO₃⁻. Ratio < 1 → concurrent normal-AG acidosis; ratio > 2 → concurrent metabolic alkalosis.', color: '#e0f2fe', border: '#7dd3fc', num: '#0369a1' },
+        { step: 5, title: 'Assess oxygenation', detail: 'PaO₂ (normal 80–100 mmHg). SpO₂ (normal ≥ 95%). Calculate A-a gradient if appropriate. Elevated A-a gradient → V/Q mismatch, shunt, or diffusion defect.', color: '#ede9fe', border: '#c4b5fd', num: '#7c3aed' },
+        { step: 6, title: 'Correlate with clinical context', detail: 'Always interpret the ABG in the context of the patient\'s history, presenting illness, medications, and clinical examination. No laboratory result should be interpreted in isolation.', color: '#f0fdf4', border: '#86efac', num: '#16a34a' },
+      ].map(({ step, title, detail, color, border, num }) => (
+        <div style={`background:${color}; border:1px solid ${border}; border-radius:0.65rem; padding:1rem 1.25rem; display:flex; gap:1rem; align-items:flex-start;`}>
+          <div style={`color:${num}; font-size:1.2rem; font-weight:800; flex-shrink:0; min-width:1.5rem; text-align:center;`}>{step}</div>
+          <div>
+            <p style="font-weight:700; color:#1e293b; font-size:0.9rem; margin-bottom:0.25rem;">{title}</p>
+            <p style="font-size:0.85rem; color:#334155; line-height:1.6;">{detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- IV Fluid Summary -->
+  <section id="iv-fluids" style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+      💉 Common IV Fluids — Composition &amp; Indications
+    </h2>
+    <div style="overflow-x:auto; border-radius:0.65rem; border:1px solid #e2e8f0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+        <thead>
+          <tr style="background:#f8fafc;">
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Fluid</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Na⁺ (mEq/L)</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Tonicity</th>
+            <th style="text-align:left; padding:0.65rem 1rem; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0;">Primary Indications</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { fluid: '0.9% NaCl (Normal saline)', na: '154', tonicity: 'Isotonic', indications: 'Volume resuscitation, hypovolaemia, hypochloraemic alkalosis' },
+            { fluid: 'Lactated Ringer\'s (LR)', na: '130', tonicity: 'Isotonic', indications: 'Volume resuscitation, burns, trauma (preferred balanced crystalloid)' },
+            { fluid: 'Plasmalyte 148', na: '140', tonicity: 'Isotonic', indications: 'Balanced crystalloid; large-volume resuscitation' },
+            { fluid: '0.45% NaCl (Half-normal)', na: '77', tonicity: 'Hypotonic', indications: 'Free water replacement (hypernatraemia); maintenance (not resuscitation)' },
+            { fluid: '5% Dextrose in water (D5W)', na: '0', tonicity: 'Hypotonic (metabolised)', indications: 'Free water supplementation, drug diluent; not for volume resuscitation' },
+            { fluid: '3% NaCl (Hypertonic saline)', na: '513', tonicity: 'Hypertonic', indications: 'Severe symptomatic hyponatraemia, cerebral oedema, TBI osmotherapy' },
+            { fluid: '5% Albumin', na: '~145', tonicity: 'Oncotically active', indications: 'Hypoalbuminaemia, cirrhosis (SBP, large-volume paracentesis), septic shock (selected)' },
+          ].map((row, i) => (
+            <tr style={`background:${i % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+              <td style="padding:0.6rem 1rem; font-weight:600; color:#1e293b; border-bottom:1px solid #f1f5f9;">{row.fluid}</td>
+              <td style="padding:0.6rem 1rem; color:#1e3a5f; border-bottom:1px solid #f1f5f9;">{row.na}</td>
+              <td style="padding:0.6rem 1rem; color:#475569; border-bottom:1px solid #f1f5f9;">{row.tonicity}</td>
+              <td style="padding:0.6rem 1rem; color:#475569; border-bottom:1px solid #f1f5f9; font-size:0.82rem;">{row.indications}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Safety callout -->
+  <div style="background:#fef2f2; border:1px solid #fca5a5; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem; display:flex; align-items:flex-start; gap:0.75rem;">
+    <span style="font-size:1.25rem; flex-shrink:0;">⚠️</span>
+    <div>
+      <p style="font-weight:700; font-size:0.9rem; color:#7f1d1d; margin-bottom:0.5rem;">Critical Safety Reminders</p>
+      <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#991b1b; display:flex; flex-direction:column; gap:0.3rem;">
+        <li>• Never administer undiluted potassium chloride (KCl) IV — fatal arrhythmia risk</li>
+        <li>• Correct hyponatraemia slowly (max 8–10 mEq/L/24 hr) to prevent osmotic demyelination syndrome</li>
+        <li>• In COPD/CO₂ retainers: target SpO₂ 88–92% to avoid suppressing hypoxic drive</li>
+        <li>• Always verify serum K⁺ and Mg²⁺ before administering digoxin</li>
+        <li>• IV magnesium sulphate must be administered slowly — monitor for loss of deep tendon reflexes (early toxicity sign)</li>
+        <li>• Reference ranges are guidelines; always interpret values in clinical context and verify with local laboratory norms</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Related articles -->
+  <div style="border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Related Encyclopedia Articles</p>
+    <div style="display:flex; flex-direction:column; gap:0.5rem;">
+      {[
+        { href: `${base}/private/encyclopedia/fluid-balance`, icon: '💧', title: 'Fluid Balance', desc: 'Compartments, regulation, deficit and excess, nursing management' },
+        { href: `${base}/private/encyclopedia/electrolyte-balance`, icon: '⚡', title: 'Electrolyte Balance', desc: 'Sodium, potassium, calcium, magnesium, phosphate physiology and imbalances' },
+        { href: `${base}/private/encyclopedia/acid-base-regulation`, icon: '🧪', title: 'Acid-Base Regulation', desc: 'Buffer systems, respiratory and renal regulation, ABG interpretation' },
+        { href: `${base}/private/encyclopedia/theory-of-mind`, icon: '🧠', title: 'Theory of Mind', desc: 'Cognitive capacity for empathy and patient-centred care' },
+      ].map(({ href, icon, title, desc }) => (
+        <a
+          href={href}
+          style="display:flex; align-items:center; gap:0.75rem; padding:0.65rem 0.75rem; border:1px solid #e2e8f0; border-radius:0.5rem; text-decoration:none; color:inherit; transition:background 0.15s;"
+          onmouseover="this.style.background='#f8fafc'"
+          onmouseout="this.style.background='transparent'"
+        >
+          <span style="font-size:1.25rem;">{icon}</span>
+          <div>
+            <p style="font-weight:600; color:#1e293b; font-size:0.9rem; margin-bottom:0.1rem;">{title}</p>
+            <p style="color:#64748b; font-size:0.8rem;">{desc}</p>
+          </div>
+          <span style="margin-left:auto; color:#94a3b8;">›</span>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Back link -->
+  <a
+    href={`${base}/private/encyclopedia`}
+    style="display:inline-block; padding:0.6rem 1.25rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+    onmouseover="this.style.background='#e2e8f0'"
+    onmouseout="this.style.background='#f1f5f9'"
+  >← Back to Encyclopedia</a>
+</Layout>
+
+<style>
+  @media (max-width: 640px) {
+    table { font-size: 0.78rem; }
+    td, th { padding: 0.5rem 0.65rem; }
+  }
+</style>

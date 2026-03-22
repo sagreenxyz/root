@@ -4,6 +4,76 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
 const articles = [
   {
+    slug: 'introduction-to-nursing',
+    icon: '🏥',
+    category: 'Nursing Foundations',
+    title: 'Introduction to Nursing',
+    summary:
+      'An overview of nursing as a discipline and profession, covering its historical development, defining characteristics, theoretical frameworks, domains of practice, and the nursing process.',
+    tags: ['nursing history', 'nursing theory', 'nursing process', 'professional identity', 'foundations'],
+  },
+  {
+    slug: 'nursing-scope-of-practice',
+    icon: '⚖️',
+    category: 'Professional & Regulatory Practice',
+    title: 'Nursing Scope of Practice',
+    summary:
+      'The regulatory, professional, and ethical dimensions of nursing scope of practice, including levels of practice, delegation principles, and the evolving policy debate around scope expansion.',
+    tags: ['regulation', 'scope of practice', 'delegation', 'APRN', 'Nurse Practice Act'],
+  },
+  {
+    slug: 'clinical-judgment',
+    icon: '🧩',
+    category: 'Clinical Reasoning & Decision-Making',
+    title: 'Clinical Judgment',
+    summary:
+      'The cognitive and affective processes through which nurses interpret patient data, identify priorities, and determine evidence-based courses of action in complex clinical environments.',
+    tags: ['clinical reasoning', 'decision-making', 'patient safety', 'cognitive bias', 'NCLEX-NGN'],
+  },
+  {
+    slug: 'planning-patient-care',
+    icon: '📋',
+    category: 'Care Planning & Nursing Process',
+    title: 'Planning Patient Care',
+    summary:
+      'The planning phase of the nursing process: nursing diagnoses, patient goals, evidence-based interventions, prioritisation frameworks, documentation standards, and interprofessional coordination.',
+    tags: ['care planning', 'nursing diagnosis', 'NANDA', 'SMART goals', 'nursing process'],
+    slug: 'fluid-balance',
+    icon: '💧',
+    category: 'Physiology & Pathophysiology',
+    title: 'Fluid Balance',
+    summary:
+      'Body fluid compartments, neurohormonal regulation mechanisms, pathophysiology of fluid volume deficit and excess, clinical assessment strategies, and nursing management principles.',
+    tags: ['fluid', 'homeostasis', 'ADH', 'RAAS', 'oedema', 'hypovolaemia', 'hypervolaemia'],
+  },
+  {
+    slug: 'electrolyte-balance',
+    icon: '⚡',
+    category: 'Physiology & Pathophysiology',
+    title: 'Electrolyte Balance',
+    summary:
+      'Physiological roles of key electrolytes, their regulatory mechanisms, clinical manifestations of sodium, potassium, calcium, magnesium, and phosphate imbalances, and safe nursing management.',
+    tags: ['electrolytes', 'sodium', 'potassium', 'calcium', 'magnesium', 'ECG', 'homeostasis'],
+  },
+  {
+    slug: 'acid-base-regulation',
+    icon: '🧪',
+    category: 'Physiology & Pathophysiology',
+    title: 'Acid-Base Regulation',
+    summary:
+      'Buffer systems, respiratory and renal regulatory mechanisms, primary acid-base disorders, a systematic ABG interpretation framework, and nursing applications in clinical practice.',
+    tags: ['ABG', 'pH', 'acidosis', 'alkalosis', 'bicarbonate', 'PaCO₂', 'blood gas'],
+  },
+  {
+    slug: 'reference-ranges',
+    icon: '📊',
+    category: 'Clinical Utility',
+    title: 'Clinical Reference Ranges',
+    summary:
+      'A consolidated quick-reference guide for clinical placements covering ABG parameters, serum electrolytes, fluid assessment values, acid-base disorder patterns, compensation formulae, and key clinical signs.',
+    tags: ['reference', 'normal values', 'clinicals', 'ABG', 'electrolytes', 'quick reference'],
+  },
+  {
     slug: 'theory-of-mind',
     icon: '🧠',
     category: 'Psychology & Neuroscience',
@@ -38,6 +108,49 @@ const articles = [
     summary:
       'Kolcaba\'s Theory of Comfort, the multi-dimensional assessment and promotion of patient comfort, and pharmacological and non-pharmacological interventions across clinical settings.',
     tags: ['comfort', 'pain management', 'palliative care', 'Kolcaba', 'person-centred care'],
+    slug: 'medical-terminology',
+    icon: '🏥',
+    category: 'Clinical Foundations',
+    title: 'Medical Terminology',
+    summary:
+      'The standardised language of healthcare—its classical Greek and Latin origins, morphological structure, body-system vocabularies, abbreviation safety, pharmacological naming conventions, and implications for nursing documentation.',
+    tags: ['terminology', 'roots & suffixes', 'pharmacology', 'documentation', 'abbreviations'],
+  },
+  {
+    slug: 'ethical-legal-dilemmas',
+    icon: '⚖️',
+    category: 'Ethics & Law',
+    title: 'Ethical and Legal Dilemmas',
+    summary:
+      'Situations in which competing moral principles and legal obligations resist clear resolution—covering bioethical foundations, informed consent, end-of-life care, confidentiality, resource allocation, and ethical decision-making frameworks.',
+    tags: ['ethics', 'law', 'informed consent', 'autonomy', 'end-of-life', 'moral distress'],
+  },
+  {
+    slug: 'nursing-decisions-actions',
+    icon: '🩺',
+    category: 'Clinical Practice',
+    title: 'Nursing Decisions and Actions',
+    summary:
+      'The cognitive and behavioural foundations of nursing practice—clinical reasoning models, the nursing process (ADPIE), priority setting, evidence-based practice, delegation, and professional accountability for nursing decisions.',
+    tags: ['clinical reasoning', 'nursing process', 'ADPIE', 'EBP', 'accountability', 'delegation'],
+  },
+  {
+    slug: 'legal-ethical-situations',
+    icon: '⚖️',
+    category: 'Ethics & Law',
+    title: 'Legal and Ethical Situations',
+    summary:
+      'Major categories of legal and ethical situation in nursing practice—mandatory reporting of abuse, impaired colleagues, professional boundary management, cultural and religious considerations, and whistleblowing for patient safety.',
+    tags: ['mandatory reporting', 'boundaries', 'whistleblowing', 'cultural humility', 'abuse', 'conscientious objection'],
+  },
+  {
+    slug: 'nurse-practice-act',
+    icon: '📋',
+    category: 'Nursing Law & Regulation',
+    title: 'Nurse Practice Act',
+    summary:
+      'The foundational legislative instrument governing nursing practice—its historical development, structural provisions, scope of practice definitions, board of nursing authority, APRN regulation, and implications for nursing practice.',
+    tags: ['NPA', 'scope of practice', 'licensure', 'BON', 'APRN', 'delegation', 'regulation'],
   },
 ];
 ---
@@ -100,7 +213,7 @@ const articles = [
       <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">More articles coming soon</p>
       <p style="color:#15803d; font-size:0.85rem; line-height:1.6;">
         This encyclopedia is growing. Future articles will cover topics such as therapeutic
-        communication frameworks, pathophysiology of common conditions, pharmacology essentials,
+        communication frameworks, pharmacology essentials, haematological disorders,
         and evidence-based clinical guidelines—all written with nursing students as the primary
         audience.
       </p>

@@ -1,0 +1,185 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Clinical judgment is widely recognised as the cognitive and affective hallmark of expert nursing practice. It refers to the complex, context-sensitive process by which nurses interpret patient data, identify the significance of observed changes, weigh competing priorities, and determine and evaluate courses of action. Unlike rule-following or protocol execution, clinical judgment involves dynamic reasoning under conditions of uncertainty, time pressure, and incomplete information—conditions that are endemic to clinical nursing environments. The development of sound clinical judgment is therefore a central educational goal of nursing programmes at every level and a subject of sustained scholarly inquiry in nursing science.\n\nThe significance of clinical judgment extends beyond individual patient encounters. The capacity of nurses to detect subtle changes in patient condition, anticipate deterioration, identify safety concerns, and initiate timely interventions is directly linked to patient outcomes at the unit, hospital, and health-system levels. Failures of clinical judgment have been identified as contributing factors in serious adverse events, including failure-to-rescue episodes—cases in which a patient's deteriorating condition goes unrecognised or inadequately acted upon until a life-threatening complication has occurred. Understanding and cultivating clinical judgment is therefore not merely a matter of educational aspiration but of patient safety imperative.`,
+  },
+  {
+    id: 'theoretical-foundations',
+    heading: 'Theoretical Foundations',
+    body: `Multiple theoretical frameworks have been proposed to describe and explain the nature of clinical judgment in nursing. These frameworks draw on cognitive psychology, phenomenology, and nursing theory, and they differ importantly in their conceptualisation of the reasoning processes involved.\n\nBenner's novice-to-expert model. Patricia Benner's landmark 1984 work From Novice to Expert, grounded in Dreyfus brothers' phenomenological model of skill acquisition, provided the first systematic nursing-specific account of how clinical judgment develops over a professional career. Benner described five stages of nursing skill acquisition—novice, advanced beginner, competent, proficient, and expert—each characterised by a qualitatively different relationship to rules, context, and clinical perception. The novice operates on explicit rules without the ability to contextualise them; the expert, by contrast, perceives clinical situations holistically and acts on intuitive grasp grounded in extensive experiential pattern recognition, without the laborious step-by-step reasoning that characterises earlier stages. Benner's framework was influential in directing nursing education toward clinical experience as an irreplaceable complement to didactic instruction, and in legitimising intuition as a valid mode of clinical knowing.\n\nTanner's clinical judgment model. Christine Tanner's 2006 conceptual model of clinical judgment, synthesised from an extensive review of the research literature, proposed four integrated processes: noticing, interpreting, responding, and reflecting. Noticing refers to the nurse's initial perceptual engagement with a clinical situation—what she attends to and what she brings to that situation in terms of experiential background, theoretical knowledge, and orientation to the patient. Interpreting involves making sense of noticed data through the activation of narrative reasoning, analytic reasoning, and intuitive pattern recognition. Responding is the selection and initiation of a course of action. Reflecting encompasses both reflection-in-action (real-time adjustment of response) and reflection-on-action (retrospective evaluation of reasoning and outcomes). Tanner's model emphasised the relational and contextual dimensions of clinical judgment—the ways in which the nurse-patient relationship, the clinical setting, and the nurse's own experiential history shape what is perceived and how it is interpreted.\n\nNext Generation NCLEX clinical judgment measurement model. The National Council of State Boards of Nursing (NCSBN) developed the Next Generation NCLEX (NGN) Clinical Judgment Measurement Model (CJMM) as the framework for a new generation of nursing licensure examination items designed to directly assess clinical judgment. The NCLEX-CJMM describes six cognitive skills: recognise cues, analyse cues, prioritise hypotheses, generate solutions, take action, and evaluate outcomes. This model has had substantial influence on nursing curriculum design in the United States, as programmes have restructured their pedagogical approaches to align with and explicitly develop the cognitive skills the model articulates.`,
+  },
+  {
+    id: 'cognitive-processes',
+    heading: 'Cognitive Processes in Clinical Judgment',
+    body: `Understanding the cognitive processes that underlie clinical judgment enables nurses and nursing educators to identify both the capabilities to cultivate and the vulnerabilities to guard against.\n\nAnalytical reasoning. Analytical reasoning is the deliberate, sequential, rule-governed mode of clinical thinking. It involves the systematic collection and interpretation of data, the generation of a differential list of possible explanations, the evaluation of evidence for and against each possibility, and the selection of the best-supported conclusion. Analytical reasoning is most visible in formal processes such as the nursing process and structured clinical assessment frameworks. It is particularly important when dealing with unfamiliar situations, complex presentations, or high-stakes decisions that require explicit justification.\n\nIntuitive reasoning. Intuitive or non-analytical reasoning operates rapidly and automatically, drawing on patterns stored in long-term memory through repeated clinical exposure. Expert nurses frequently describe their clinical judgments as arriving as a Gestalt—a holistic immediate impression that "something is wrong" with a patient—prior to the articulation of specific clinical evidence. Research in cognitive psychology identifies this mode of reasoning as "System 1" thinking: fast, unconscious, and pattern-based. While expert intuition is often accurate, it is also subject to characteristic biases, particularly when the clinician's prior experience has not adequately prepared them for the patient or situation at hand.\n\nDual-process theory and cognitive bias. Dual-process theories of reasoning distinguish between rapid, automatic, pattern-based processing and slow, deliberate, analytical processing. In clinical judgment, the interaction between these two modes is a source of both efficiency and error. Cognitive biases—systematic deviations from normative reasoning that arise from heuristic shortcuts—are particularly well-documented in clinical contexts. Anchoring bias (over-weighting initial impressions), premature closure (stopping the diagnostic search once a plausible explanation has been found), confirmation bias (selectively attending to evidence that supports a prevailing hypothesis), and availability bias (over-estimating the likelihood of recently encountered diagnoses) all pose risks to accurate clinical judgment. Awareness of these biases, combined with metacognitive habits of self-monitoring and deliberate analytical reflection, is a key component of safe clinical reasoning.\n\nContextual influences. Clinical judgment does not occur in a cognitive vacuum. It is profoundly shaped by contextual factors including the nurse's relationship with the patient (a sustained therapeutic relationship facilitates noticing of subtle changes), the unit culture (settings that support speaking up and questioning promote sounder collective judgment), time pressure and cognitive load (fatigue and interruptions degrade analytical processing), and resource availability (the nurse's response options are constrained by what is available in the clinical environment). Nursing education that addresses these contextual factors—rather than treating clinical judgment as a purely individual cognitive capacity—better prepares students for the realities of practice.`,
+  },
+  {
+    id: 'clinical-reasoning-strategies',
+    heading: 'Clinical Reasoning Strategies',
+    body: `A range of structured reasoning strategies support the development and exercise of sound clinical judgment. These strategies provide scaffolding for clinical thinking—particularly for students and novice nurses—while also serving as deliberate analytical tools for experienced practitioners managing complex or unfamiliar presentations.\n\nSEAT and SBAR. Structured communication frameworks such as SBAR (Situation, Background, Assessment, Recommendation) and its variants support clinical judgment by requiring the nurse to organise her assessment and reasoning into a coherent clinical narrative before communicating with physicians and other team members. The discipline of SBAR communication promotes clarity in the assessment process itself, as the nurse must have worked through her interpretation of the situation sufficiently to articulate a recommendation.\n\nClinical reasoning cycle. The clinical reasoning cycle, developed by Tracy Levett-Jones and colleagues, provides an eight-step model for systematic clinical reasoning: consider the patient situation; collect cues and information; process information; identify problems and issues; establish goals; take action; evaluate outcomes; reflect on process and new learning. This model is widely used in Australian nursing education as a scaffold for case-based learning and simulation.\n\nHypothesis-driven assessment. Rather than performing an exhaustive head-to-toe assessment on every patient in every situation, experienced nurses adapt their assessment approach to the clinical hypotheses they are testing. A nurse who notices that a patient appears pale, diaphoretic, and anxious will direct her assessment toward the cardiovascular and haemodynamic parameters most relevant to the hypothesis of haemodynamic compromise, rather than systematically assessing all body systems with equal thoroughness. Teaching students to reason from observation to hypothesis to targeted assessment—rather than executing a uniform assessment protocol regardless of clinical context—is a key pedagogical strategy for developing clinical judgment.\n\nSituation awareness. Situation awareness—the continuous perception and comprehension of clinical cues, combined with projection of their implications into the near future—is a concept adapted from aviation and human factors research for clinical application. Nursing simulation programmes increasingly incorporate the development of situation awareness as an explicit educational objective, using structured debriefing to help students reflect on what they noticed, what they missed, and how their real-time interpretation of the situation shaped their responses.`,
+  },
+  {
+    id: 'development-education',
+    heading: 'Development of Clinical Judgment in Education',
+    body: `The cultivation of clinical judgment is a defining challenge of nursing education. Because clinical judgment develops through experience, and because educational programmes must both accelerate this development and ensure that students do not harm patients in the process, nursing education employs a variety of pedagogical strategies designed to build clinical reasoning capacity in controlled or simulated environments before students encounter high-stakes clinical decisions independently.\n\nCase-based learning. Case-based learning (CBL) presents students with detailed clinical scenarios and requires them to reason through assessment, diagnosis, and management decisions as if they were the responsible nurse. Well-designed cases challenge students to notice and interpret relevant cues, identify competing priorities, generate and evaluate interventions, and anticipate outcomes. CBL is most effective when it involves active discussion, peer reasoning, and facilitated debriefing by an expert nurse educator.\n\nSimulation. High-fidelity clinical simulation—using mannequins, standardised patients, and immersive environments that replicate clinical settings—provides students with opportunities to exercise clinical judgment in contexts that approximate the urgency and ambiguity of real clinical situations without exposing patients to risk. Evidence supports simulation's effectiveness in developing clinical reasoning and recognising deteriorating patients. Crucially, the educational value of simulation resides largely in structured debriefing rather than the simulation itself: it is the post-scenario reflection on reasoning processes, decision points, and alternative actions that produces durable learning.\n\nClinical placement and supervision. Supervised clinical practice remains irreplaceable as a context for developing clinical judgment. Research in expertise development consistently demonstrates that experiential pattern recognition—the substrate of expert intuition—is acquired through repeated exposure to diverse clinical presentations, combined with feedback from more experienced practitioners. Preceptorship models, in which students and novice nurses are paired with expert practitioners for sustained periods, provide both modelling of expert clinical reasoning and opportunities for progressively autonomous practice under graduated supervision.\n\nReflective practice. Reflection—systematic, disciplined thinking about one's clinical experiences, reasoning processes, and outcomes—is widely recognised as a mechanism for converting experience into learning. Reflective writing, structured clinical journals, and critical incident analysis all support the development of clinical judgment by making the reasoning behind clinical decisions explicit, subject to scrutiny, and available for reconstruction in light of outcomes and feedback.`,
+  },
+  {
+    id: 'clinical-judgment-safety',
+    heading: 'Clinical Judgment and Patient Safety',
+    body: `The relationship between clinical judgment and patient safety is direct and well-documented. Failures of clinical judgment—whether arising from inadequate knowledge, cognitive bias, context-induced distraction, or communication breakdown—are implicated in a substantial proportion of preventable adverse events in hospital and community settings.\n\nRecognising deterioration. The capacity to detect early signs of physiological deterioration in acutely unwell patients is among the most consequential applications of clinical judgment in hospital nursing. Early warning scoring systems (such as the NEWS2 score in the United Kingdom and the Modified Early Warning Score used in other contexts) provide structured tools for quantifying physiological deviation from normal parameters and triggering escalation protocols. However, the effective use of these tools requires clinical judgment: the nurse must decide when the scored deterioration is clinically significant, whether additional cues not captured by the score merit concern, and how to interpret score trends over time in the context of the patient's baseline and clinical trajectory.\n\nSpeaking up and escalation. Sound clinical judgment is necessary but not sufficient for patient safety; the nurse must also be willing and able to communicate her clinical concerns effectively and to escalate appropriately when initial responses are inadequate. Research on communication failures in adverse event investigations has consistently identified hierarchical deference—the reluctance to challenge more senior clinicians—as a contributing factor. Nursing education that builds both clinical judgment capacity and interprofessional communication confidence is therefore dually important for patient safety.\n\nDocumentation and clinical handover. Clinical judgment is operationally expressed not only in direct patient care but also in documentation and clinical handover. The nurse's written and verbal communication of her clinical assessment, her interpretation of its significance, and her recommendations for ongoing monitoring and intervention constitutes a critical link in the continuity of safe care. Deficient documentation—whether through omission, vagueness, or failure to communicate the clinical significance of observations—can interrupt this continuity and contribute to harm.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Clinical judgment is the intellectual and moral core of nursing practice. It encompasses the perceptual, cognitive, affective, and relational capacities through which nurses make sense of complex clinical situations and determine how to act on behalf of their patients. Grounded in theoretical frameworks such as Benner's novice-to-expert model and Tanner's clinical judgment model, and now increasingly operationalised through the NCSBN's clinical judgment measurement model, clinical judgment is a subject of rigorous scholarly attention and a primary objective of nursing education. Its development requires not only the acquisition of theoretical knowledge but sustained clinical experience, reflective practice, structured feedback, and the cultivation of metacognitive awareness. For nursing students, understanding what clinical judgment is—and committing to its deliberate development throughout their education and career—is among the most important investments they can make in both their own professional growth and the safety of the patients in their care.`,
+  },
+];
+---
+
+<Layout title="Clinical Judgment – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Clinical Judgment</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🧩 Clinical Reasoning &amp; Decision-Making
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Clinical Judgment
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of clinical judgment in nursing, covering its theoretical foundations,
+          cognitive processes, reasoning strategies, educational development, and relationship to
+          patient safety.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Benner, P. (1984). <em>From novice to expert: Excellence and power in clinical nursing practice.</em> Addison-Wesley.',
+            'Kahneman, D. (2011). <em>Thinking, fast and slow.</em> Farrar, Straus and Giroux.',
+            'Levett-Jones, T., Hoffman, K., Dempsey, Y., Jeong, S. Y.-S., Noble, D., Norton, C. A., Roche, J., &amp; Hickey, N. (2010). The "five rights" of clinical reasoning: An educational model to enhance nursing students\' ability to identify and manage clinically "at risk" patients. <em>Nurse Education Today, 30</em>(6), 515–520.',
+            'National Council of State Boards of Nursing. (2019). <em>NCLEX-RN examination: Test plan for the National Council Licensure Examination for Registered Nurses.</em> NCSBN.',
+            'Tanner, C. A. (2006). Thinking like a nurse: A research-based model of clinical judgment in nursing. <em>Journal of Nursing Education, 45</em>(6), 204–211.',
+            'Thompson, C., &amp; Dowding, D. (2009). <em>Essential decision making and clinical judgment for nurses.</em> Churchill Livingstone.',
+            'Croskerry, P. (2002). Achieving quality in clinical decision making: Cognitive strategies and detection of bias. <em>Academic Emergency Medicine, 9</em>(11), 1184–1204.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key theorist', def: 'Benner (1984); Tanner (2006)' },
+            { term: 'NCSBN model', def: 'Recognise → Analyse → Prioritise → Generate → Act → Evaluate' },
+            { term: 'Reasoning modes', def: 'Analytical (System 2) &amp; Intuitive (System 1)' },
+            { term: 'Key risk', def: 'Cognitive bias (anchoring, premature closure)' },
+            { term: 'Education strategies', def: 'Simulation, CBL, reflection, preceptorship' },
+            { term: 'Related to', def: 'Patient Safety, Nursing Process, SBAR' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Recognising patient deterioration',
+            '✅ Evidence-based decision-making',
+            '✅ Safe medication administration',
+            '✅ Prioritisation of care',
+            '✅ Effective clinical handover',
+            '✅ Interprofessional communication',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

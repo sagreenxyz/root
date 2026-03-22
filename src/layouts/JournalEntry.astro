@@ -1,0 +1,380 @@
+---
+/**
+ * JournalEntry.astro
+ * Universal layout for nursing-student journal entries.
+ * Wraps the daily narrative (slot) and renders the full
+ * WGU Nursing Concept Map template beneath it.
+ *
+ * All concept-map props are optional; when omitted the
+ * corresponding section renders a styled placeholder so
+ * students can see the required format at a glance.
+ */
+import Layout from './Layout.astro';
+
+interface ConceptMapSection {
+  label: string;
+  placeholder: string;
+}
+
+export interface Props {
+  /** Page <title> value */
+  title: string;
+  /** ISO date string, e.g. '2026-03-22' */
+  date: string;
+  /** Short descriptor for the type of day, e.g. 'Pre-Clinical Quiz Day' */
+  entryType: string;
+  /** Course code + name, e.g. 'D439 – Foundations of Nursing' */
+  course?: string;
+  /** Clinical instructor or contact */
+  instructor?: string;
+
+  /* ── WGU Nursing Concept Map fields ────────────────────────── */
+  /** Clinical Experience: facility name, unit, city, state */
+  clinicalLocation?: string;
+  /** Clinical Experience: date range MM/DD/YYYY – MM/DD/YYYY or Present */
+  clinicalDates?: string;
+  /** Clinical Experience: type of patients encountered */
+  patientTypes?: string;
+  /** Focus topic: primary disease process, disorder, or injury */
+  focusTopic?: string;
+  /** A: Pathophysiology – how the disease affects body systems */
+  pathophysiology?: string;
+  /** A: Risk Factors */
+  riskFactors?: string[];
+  /** B: Recognizing Cues – at least four cues (text items) */
+  recognizingCues?: string[];
+  /** C: Analyzing Cues – Supporting (analysis statements, ×3) */
+  analyzingCuesSupporting?: string[];
+  /** C1: Analyzing Cues – Concerning (top-two cues) */
+  analyzingCuesConcerning?: string[];
+  /** D: Prioritized Hypotheses (×3, in order of priority) */
+  prioritizedHypotheses?: string[];
+  /** E: Generated Solutions / Goals (×4) */
+  generatedSolutions?: string[];
+  /** F: Take Actions – nursing actions performed (×4) */
+  takeActions?: string[];
+  /** G: Evaluation Outcomes (×4) */
+  evaluationOutcomes?: string[];
+}
+
+const {
+  title,
+  date,
+  entryType,
+  course,
+  instructor,
+  clinicalLocation,
+  clinicalDates,
+  patientTypes,
+  focusTopic,
+  pathophysiology,
+  riskFactors,
+  recognizingCues,
+  analyzingCuesSupporting,
+  analyzingCuesConcerning,
+  prioritizedHypotheses,
+  generatedSolutions,
+  takeActions,
+  evaluationOutcomes,
+} = Astro.props;
+
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+/** Format ISO date to readable string */
+function formatDate(iso: string): string {
+  const [year, month, day] = iso.split('-');
+  const d = new Date(Number(year), Number(month) - 1, Number(day));
+  return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+const displayDate = formatDate(date);
+
+/** Render an ordered list with placeholder items when no data supplied */
+function listItems(items: string[] | undefined, count: number, placeholder: string): string[] {
+  if (items && items.length > 0) return items;
+  return Array.from({ length: count }, () => placeholder);
+}
+
+const cues = listItems(recognizingCues, 4, 'Use the Concept Map Template for this field.');
+const supporting = listItems(analyzingCuesSupporting, 3, 'Use the Concept Map Template for this field.');
+const concerning = listItems(analyzingCuesConcerning, 2, 'Use the Concept Map Template for this field.');
+const hypotheses = listItems(prioritizedHypotheses, 3, 'Use the Concept Map Template for this field.');
+const solutions = listItems(generatedSolutions, 4, 'Use the Concept Map Template for this field.');
+const actions = listItems(takeActions, 4, 'Use the Concept Map Template for this field.');
+const outcomes = listItems(evaluationOutcomes, 4, 'Use the Concept Map Template for this field.');
+const risks = listItems(riskFactors, 3, 'Use the Concept Map Template for this field.');
+---
+
+<Layout title={title} protected={true}>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/journal`} style="color:#6366f1; text-decoration:none; font-weight:500;">Journal</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>{date}</span>
+  </nav>
+
+  <!-- Entry header -->
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem; flex-wrap:wrap;">
+      <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+        📓 {entryType}
+      </span>
+      {course && (
+        <span style="font-size:0.75rem; color:#94a3b8;">
+          {course}
+        </span>
+      )}
+    </div>
+    <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">{title}</h1>
+    <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+      <span>📅 {displayDate}</span>
+      {instructor && <span>👩‍⚕️ {instructor}</span>}
+      <span>🔒 Protected content</span>
+    </div>
+  </header>
+
+  <!-- Daily narrative (slot) -->
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
+      📝 Journal Entry
+    </h2>
+    <div style="line-height:1.75; color:#374151; font-size:0.95rem;">
+      <slot />
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       WGU NURSING CONCEPT MAP TEMPLATE
+       Revised 11/21/2025
+       ════════════════════════════════════════════════════════════ -->
+  <section style="margin-bottom:2.5rem;">
+    <div style="background:#1e293b; border-radius:0.75rem 0.75rem 0 0; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+      <h2 style="color:#fff; font-size:1rem; font-weight:700; margin:0;">🗺️ WGU Nursing Concept Map</h2>
+      <span style="font-size:0.75rem; color:#94a3b8;">Revised 11/21/2025</span>
+    </div>
+
+    <div style="background:#fff; border:1px solid #e2e8f0; border-top:none; border-radius:0 0 0.75rem 0.75rem; padding:1.5rem; display:flex; flex-direction:column; gap:1.5rem;">
+
+      <!-- Clinical Experience Information -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:1rem;">
+          Clinical Experience Information
+        </h3>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+          <!-- 1. Location -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1rem;">
+            <p style="font-size:0.8rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">
+              1. Location <span style="font-weight:400; color:#64748b;">(facility name, hospital unit if applicable, city, and state)</span>
+            </p>
+            <p style={`font-size:0.9rem; color:${clinicalLocation ? '#1e293b' : '#94a3b8'}; font-style:${clinicalLocation ? 'normal' : 'italic'};`}>
+              {clinicalLocation ?? 'Use the Concept Map Template Word document for a fillable template.'}
+            </p>
+          </div>
+
+          <!-- 2. Dates -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1rem;">
+            <p style="font-size:0.8rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">
+              2. Dates of clinical experience <span style="font-weight:400; color:#64748b;">(MM/DD/YYYY – MM/DD/YYYY) or (MM/DD/YYYY – Present)</span>
+            </p>
+            <p style={`font-size:0.9rem; color:${clinicalDates ? '#1e293b' : '#94a3b8'}; font-style:${clinicalDates ? 'normal' : 'italic'};`}>
+              {clinicalDates ?? 'Use the Concept Map Template Word document for a fillable template.'}
+            </p>
+          </div>
+
+          <!-- 3. Patient types -->
+          <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1rem;">
+            <p style="font-size:0.8rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">
+              3. Type of patients encountered <span style="font-weight:400; color:#64748b;">(e.g., obstetric, pediatric, adult, critical care, etc.)</span>
+            </p>
+            <p style={`font-size:0.9rem; color:${patientTypes ? '#1e293b' : '#94a3b8'}; font-style:${patientTypes ? 'normal' : 'italic'};`}>
+              {patientTypes ?? 'Use the Concept Map Template Word document for a fillable template.'}
+            </p>
+          </div>
+        </div>
+
+        <div style="background:#fef9c3; border:1px solid #fde047; border-radius:0.5rem; padding:0.75rem 1rem; margin-top:0.75rem; font-size:0.8rem; color:#713f12;">
+          ⚠️ <strong>Privacy notice:</strong> Do not include patient identifying information (e.g., patient name, date of birth, etc.).
+        </div>
+      </div>
+
+      <!-- Focus Topic -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.75rem;">
+          Approved Focus Topic
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.5rem;">
+          Primary disease process, disorder, or injury (e.g., pneumonia, influenza, gestational diabetes). Do not use symptoms as a focus topic.
+        </p>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1rem;">
+          <p style={`font-size:0.9rem; color:${focusTopic ? '#1e293b' : '#94a3b8'}; font-style:${focusTopic ? 'normal' : 'italic'};`}>
+            {focusTopic ?? 'Use the Concept Map Template Word document for a fillable template.'}
+          </p>
+        </div>
+      </div>
+
+      <!-- A. Pathophysiology & Risk Factors -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.75rem;">
+          A. Disease Process / Pathophysiology / Risk Factors
+        </h3>
+
+        <p style="font-size:0.75rem; font-weight:600; color:#1e293b; margin-bottom:0.4rem;">Pathophysiology</p>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.5rem;">
+          Explain how the disease process, disorder, or injury affects body system functions, rather than simply defining the condition.
+        </p>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.5rem; padding:1rem; margin-bottom:1rem;">
+          <p style={`font-size:0.9rem; color:${pathophysiology ? '#1e293b' : '#94a3b8'}; font-style:${pathophysiology ? 'normal' : 'italic'}; line-height:1.65;`}>
+            {pathophysiology ?? 'Use the Concept Map Template Word document for a fillable template.'}
+          </p>
+        </div>
+
+        <p style="font-size:0.75rem; font-weight:600; color:#1e293b; margin-bottom:0.4rem;">Risk Factors</p>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.5rem;">
+          What increases a person's risk for developing this condition?
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {risks.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.4rem; color:${riskFactors && riskFactors.length > 0 ? '#1e293b' : '#94a3b8'}; font-style:${riskFactors && riskFactors.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- B. Recognizing Cues -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          B. Recognizing Cues (List)
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          List at least four cues relevant to the patient's current condition. Draw from medical records, signs &amp; symptoms, and vital signs.
+        </p>
+        <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:0.5rem; padding:0.75rem 1rem; margin-bottom:0.75rem; font-size:0.8rem; color:#0369a1;">
+          <strong>Guiding questions:</strong> What does the patient look like? What are the patient's complaints? What relevant medical history exists? What are the relevant vital signs?
+        </div>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {cues.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.4rem; color:${recognizingCues && recognizingCues.length > 0 ? '#1e293b' : '#94a3b8'}; font-style:${recognizingCues && recognizingCues.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- C. Analyzing Cues – Supporting -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          C. Analyzing Cues – Supporting (Statements)
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          Select three cues from Aspect B and provide analysis statements explaining how each cue connects to the disease process/disorder/injury.
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {supporting.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.4rem; color:${analyzingCuesSupporting && analyzingCuesSupporting.length > 0 ? '#1e293b' : '#94a3b8'}; font-style:${analyzingCuesSupporting && analyzingCuesSupporting.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- C1. Analyzing Cues – Concerning -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          C1. Analyzing Cues – Concerning (List)
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          From the supporting cues in Aspect C, select the two cues of greatest concern.
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {concerning.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#fff7ed; border:1px solid #fed7aa; border-radius:0.4rem; color:${analyzingCuesConcerning && analyzingCuesConcerning.length > 0 ? '#7c2d12' : '#94a3b8'}; font-style:${analyzingCuesConcerning && analyzingCuesConcerning.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- D. Prioritized Hypotheses -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          D. Prioritized Hypotheses
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          Develop three hypotheses predicting the potential positive impacts of recommended nursing interventions. List in order of priority.
+          Focus on <em>nursing</em> interventions (pain management, oxygen therapy, fluid resuscitation, education, safety measures), not physician-performed interventions.
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {hypotheses.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.4rem; color:${prioritizedHypotheses && prioritizedHypotheses.length > 0 ? '#1e293b' : '#94a3b8'}; font-style:${prioritizedHypotheses && prioritizedHypotheses.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- E. Generated Solutions -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          E. Generated Solutions (Goals)
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          Add four generated solutions/nursing actions with their desired positive impacts/goals.
+          Each intervention should be connected to an anticipated outcome. Focus on nursing actions.
+          These statements should fully correspond with Aspects F &amp; G.
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {solutions.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.4rem; color:${generatedSolutions && generatedSolutions.length > 0 ? '#14532d' : '#94a3b8'}; font-style:${generatedSolutions && generatedSolutions.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- F. Take Actions -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          F. Take Actions
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          Provide details on four nursing actions performed, in order of priority.
+          List nursing actions observed or performed while participating in patient care.
+          These statements should fully correspond with Aspects E &amp; G.
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {actions.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.4rem; color:${takeActions && takeActions.length > 0 ? '#1e293b' : '#94a3b8'}; font-style:${takeActions && takeActions.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- G. Evaluation Outcomes -->
+      <div>
+        <h3 style="font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; margin-bottom:0.5rem;">
+          G. Evaluation Outcomes
+        </h3>
+        <p style="font-size:0.75rem; color:#64748b; margin-bottom:0.75rem;">
+          Add four outcome statements evaluating the effectiveness of performed actions and goal progress.
+          Indicate whether the patient met goals from Aspect E after completing actions in Aspect F.
+          If goals were not met, outline partial progress or lack of progress. Offer a true view of the patient's status at the end of the clinical shift.
+        </p>
+        <ol style="list-style:decimal; padding-left:1.4rem; display:flex; flex-direction:column; gap:0.5rem;">
+          {outcomes.map((item) => (
+            <li style={`font-size:0.9rem; padding:0.6rem 0.8rem; background:#faf5ff; border:1px solid #e9d5ff; border-radius:0.4rem; color:${evaluationOutcomes && evaluationOutcomes.length > 0 ? '#4a044e' : '#94a3b8'}; font-style:${evaluationOutcomes && evaluationOutcomes.length > 0 ? 'normal' : 'italic'};`}>
+              {item}
+            </li>
+          ))}
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

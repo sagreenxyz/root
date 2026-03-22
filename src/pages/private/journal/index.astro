@@ -1,0 +1,83 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const entries = [
+  {
+    date: '2026-03-22',
+    slug: '2026-03-22',
+    icon: '📋',
+    entryType: 'Pre-Clinical Quiz Day',
+    title: 'D439 Pre-Assessment Quiz – Meeting with Dr. Jen Scarpena',
+    summary:
+      'Met with Dr. Jen Scarpena this morning to complete the required 10-question online quiz for permission to sit the D439 Foundations of Nursing course objective assessment.',
+    tags: ['D439', 'quiz', 'pre-assessment', 'Dr. Scarpena'],
+  },
+];
+---
+
+<Layout title="Journal – Root" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Journal</span>
+  </nav>
+
+  <!-- Header -->
+  <div style="margin-bottom:2rem;">
+    <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">📓 Nursing Journal</h1>
+    <p style="color:#64748b; font-size:1rem; line-height:1.6;">
+      Personal reflections and structured entries from clinical experiences, quizzes, and
+      coursework milestones. Each entry uses the WGU Nursing Concept Map template to build
+      consistent, professional documentation habits.
+    </p>
+  </div>
+
+  <!-- Entry list -->
+  <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2.5rem;">
+    {entries.map((entry) => (
+      <a
+        href={`${base}/private/journal/${entry.slug}`}
+        style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s, border-color 0.2s;"
+        onmouseover="this.style.boxShadow='0 4px 16px rgba(99,102,241,0.12)'; this.style.borderColor='#a5b4fc';"
+        onmouseout="this.style.boxShadow='none'; this.style.borderColor='#e2e8f0';"
+      >
+        <div style="display:flex; align-items:flex-start; gap:1rem;">
+          <div style="font-size:2rem; line-height:1; flex-shrink:0;">{entry.icon}</div>
+          <div style="flex:1; min-width:0;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem; flex-wrap:wrap;">
+              <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">
+                {entry.entryType}
+              </span>
+              <span style="font-size:0.72rem; color:#94a3b8;">{entry.date}</span>
+            </div>
+            <h2 style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">{entry.title}</h2>
+            <p style="color:#64748b; font-size:0.9rem; line-height:1.6; margin-bottom:0.75rem;">{entry.summary}</p>
+            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+              {entry.tags.map(tag => (
+                <span style="font-size:0.75rem; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:0.3rem; padding:0.1rem 0.5rem;">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style="color:#94a3b8; font-size:1.2rem; flex-shrink:0; align-self:center;">›</div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- Info callout -->
+  <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem 1.5rem; display:flex; align-items:flex-start; gap:0.75rem;">
+    <span style="font-size:1.25rem; flex-shrink:0;">💡</span>
+    <div>
+      <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">More entries coming soon</p>
+      <p style="color:#15803d; font-size:0.85rem; line-height:1.6;">
+        Journal entries will be added after each clinical experience and significant course
+        milestone. Every entry follows the WGU Nursing Concept Map template structure to
+        build consistent, evidence-based clinical documentation skills.
+      </p>
+    </div>
+  </div>
+</Layout>

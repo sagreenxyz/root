@@ -1,0 +1,185 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Planning patient care is the third and pivotal step of the nursing process, bridging the assessment and diagnostic phases with the implementation of nursing interventions. It is the stage at which the nurse translates her clinical judgment about patient needs into an organised, evidence-based, and individualized plan of action designed to achieve specific, measurable patient goals. Done well, care planning is not a bureaucratic exercise or a documentation formality; it is an act of professional reasoning, interprofessional coordination, and patient partnership that establishes the strategic framework within which all subsequent nursing care is delivered.\n\nThe significance of structured care planning for patient outcomes is well-supported by evidence. Patients whose care is guided by explicit, documented plans experience fewer adverse events, greater continuity across shifts and providers, and higher levels of engagement in their own health management. For nursing students, mastery of care planning provides the conceptual architecture through which clinical knowledge, assessment skill, and therapeutic action are integrated into coherent, goal-directed nursing practice.`,
+  },
+  {
+    id: 'purpose-principles',
+    heading: 'Purpose and Principles of Care Planning',
+    body: `The purpose of care planning is threefold: to provide a structured, individualised framework for nursing care delivery; to communicate the nurse's clinical judgments and intended interventions to other members of the healthcare team; and to establish a basis for evaluating the effectiveness of care and the extent to which patient goals have been achieved.\n\nIndividualisation. The cardinal principle of care planning is that it must be individualised—that is, it must reflect the specific circumstances, needs, values, and goals of the particular patient, not merely the typical presentation of a diagnostic category. While standardised care plans and clinical pathways provide useful frameworks, effective care planning requires the nurse to contextualise these frameworks with patient-specific data, modifying or supplementing standard approaches as the patient's individual situation demands.\n\nPatient-centeredness. Contemporary nursing standards require that care planning be conducted as a collaborative process in which the patient—and where appropriate the patient's family or carers—are genuine participants rather than passive recipients. Patient-centred care planning involves eliciting the patient's own priorities, preferences, and goals; providing information sufficient to enable informed participation in decision-making; and establishing goals that are meaningful to the patient rather than exclusively determined by clinician assessment. Research consistently demonstrates that care plans developed with patient participation are associated with higher patient engagement, better adherence, and more accurate alignment between clinical interventions and patient priorities.\n\nEvidence-based practice. Nursing interventions included in a care plan should be grounded in the best available evidence regarding their effectiveness for addressing the identified patient problems. The integration of evidence-based practice into care planning requires the nurse to draw on established clinical guidelines, research literature, and professional standards while adapting recommendations to the specific patient's context. Standardised nursing classification systems—including the Nursing Outcomes Classification (NOC) and the Nursing Interventions Classification (NIC)—provide evidence-linked frameworks for articulating patient goals and selecting interventions, and they facilitate research on the relationships among nursing diagnoses, interventions, and outcomes.\n\nContinuity. A care plan is not a snapshot but a living document. Its value for patient continuity depends on its consistent review, updating, and communication across shifts, settings, and team members. A care plan that reflects the patient's condition at admission but is not revised as the clinical situation evolves fails in its fundamental purpose and may contribute to harm by directing care toward outdated priorities.`,
+  },
+  {
+    id: 'components',
+    heading: 'Components of a Nursing Care Plan',
+    body: `A complete nursing care plan typically comprises four interrelated components: nursing diagnoses, patient goals and expected outcomes, nursing interventions, and evaluation criteria.\n\nNursing diagnoses. The nursing diagnosis is the nurse's clinical judgment about the patient's actual or potential health problem that nursing care can address. Nursing diagnoses are formulated on the basis of the assessment data gathered in the first step of the nursing process and serve as the organising framework for the care plan. The most widely used taxonomy of nursing diagnoses is NANDA International (formerly the North American Nursing Diagnosis Association), which provides standardised diagnostic labels, definitions, defining characteristics, and related or risk factors for hundreds of nursing diagnoses. A well-formulated nursing diagnosis provides three elements: the diagnostic label (the problem), the related factor or aetiology (the cause or contributing condition), and the defining characteristics (the evidence that supports the diagnosis). For risk diagnoses—problems that have not yet occurred but for which the patient is vulnerable—the related risk factors replace defining characteristics. Accurate diagnostic formulation is foundational: a care plan built on an incorrect or imprecise nursing diagnosis will fail to direct interventions toward the patient's actual needs.\n\nPatient goals and expected outcomes. Goals and expected outcomes specify what the care plan is designed to achieve and provide the criteria against which the effectiveness of nursing care will be evaluated. Effective goal statements are patient-centred (expressed in terms of what the patient will do or demonstrate, rather than what the nurse will do), specific (clearly describing the expected behaviour or measurement), measurable (including objective criteria by which achievement can be assessed), achievable (realistic given the patient's condition and the clinical context), relevant (directly related to the nursing diagnosis), and time-bound (specifying the timeframe within which the goal is expected to be achieved)—collectively, the SMART criteria. Goals are typically categorised as short-term (achievable within hours to days) or long-term (achievable over weeks to months), with short-term goals frequently serving as intermediate steps toward longer-term outcomes.\n\nNursing interventions. Nursing interventions are the specific actions the nurse and other members of the care team will take to assist the patient in achieving the established goals. Interventions may be independent (within the nurse's autonomous scope of practice, requiring no physician order), collaborative or interdependent (implemented jointly with other health professionals), or dependent (requiring a physician order, such as medication administration). Each intervention in a care plan should be grounded in rationale—a justification derived from physiological, psychological, or evidence-based principles that explains why the intervention is expected to contribute to goal achievement. The requirement to articulate rationale is particularly important for nursing students, for whom the discipline of connecting intervention to evidence is a critical component of developing clinical reasoning.\n\nEvaluation criteria. The evaluation component specifies how and when the nurse will assess the patient's progress toward established goals and determine whether the care plan is achieving its intended outcomes. Evaluation criteria should be directly linked to the goal statements and should specify observable, measurable indicators of goal attainment. Evaluation drives the iterative, cyclical nature of the nursing process: when evaluation reveals that goals are not being achieved, the nurse must reassess, reformulate diagnoses if necessary, revise goals, and modify interventions accordingly.`,
+  },
+  {
+    id: 'prioritisation',
+    heading: 'Prioritisation in Care Planning',
+    body: `A fundamental skill of care planning is prioritisation—the determination of which patient problems to address first when resources, time, and attention are finite. Prioritisation requires clinical judgment grounded in both theoretical frameworks and situational assessment.\n\nMaslow's hierarchy of needs provides a widely used framework for nursing prioritisation. According to this model, physiological needs (airway, breathing, circulation, nutrition, elimination, thermoregulation) take precedence over safety needs (protection from harm, a secure environment), which in turn take precedence over belonging needs (social connection, therapeutic relationships), esteem needs (dignity, autonomy, achievement), and self-actualisation needs (personal growth, meaning). In acute care contexts, this hierarchy directs nurses to ensure physiological stability before attending to higher-order needs, though skilled nursing integrates attention to all levels of the hierarchy as the clinical situation permits.\n\nAcute, urgent, and non-urgent categorisation. A practical framework for clinical prioritisation categorises nursing diagnoses into three tiers. First-priority (acute) problems are those that, if left unaddressed, pose an immediate threat to the patient's life or physiological stability—for example, ineffective airway clearance, impaired gas exchange, or acute pain of haemodynamic significance. Second-priority (urgent) problems are those that, while not immediately life-threatening, require attention within a defined timeframe to prevent deterioration or significant distress—for example, risk for infection at a wound site, or knowledge deficit regarding a new medication. Third-priority (non-urgent) problems are those that can be addressed once more pressing needs are managed—for example, constipation in a stable postoperative patient, or readiness for enhanced health management.\n\nPatient priorities and shared decision-making. While clinical frameworks for prioritisation are essential, the patient's own priorities must also be incorporated into the care plan. A patient who identifies pain control as her most urgent concern deserves to have that priority acknowledged and addressed, even if the nurse's clinical assessment identifies other problems of equivalent physiological importance. The negotiation of priority between clinical and patient perspectives is itself a skilled interpersonal and ethical process that requires open communication, transparent clinical reasoning, and genuine respect for patient autonomy.`,
+  },
+  {
+    id: 'documentation',
+    heading: 'Documentation of Care Plans',
+    body: `The care plan must be documented in a form that is accessible, clear, and legally defensible. Documentation practices vary across clinical settings and jurisdictions, but certain principles apply universally.\n\nElectronic health records and standardised care planning tools. The majority of acute care settings in high-income countries have transitioned from paper-based to electronic health records (EHRs), which typically include integrated care planning modules. EHR-based care plans offer significant advantages over paper systems: they are accessible to all authorised members of the care team simultaneously, they can integrate assessment data directly into the care planning workflow, and they enable tracking of goal attainment over time. However, EHR systems also carry risks: templates may encourage superficial completion of standardised fields without genuine clinical reasoning; cut-and-paste documentation practices can perpetuate outdated information; and the cognitive burden of navigating complex systems can reduce the time and attention available for clinical judgment.\n\nClinical pathways and standardised care plans. Clinical pathways—structured, multidisciplinary plans that outline the expected trajectory of care for patients with specific diagnoses or procedures—provide standardised templates that can improve consistency and reduce variation in care delivery. When used thoughtfully, clinical pathways can embed evidence-based interventions into routine practice and prompt attention to key clinical milestones. Their limitation is that they are designed for the "expected" patient and may fail to accommodate significant individual variation; nurses are responsible for identifying when a patient's trajectory diverges from the pathway and for adapting the care plan accordingly.\n\nLegal and professional accountability. The care plan is a legal document. Its contents—nursing diagnoses, goals, interventions, and evaluation—are admissible as evidence in legal proceedings involving allegations of negligent nursing care. Documentation that accurately reflects the nurse's clinical assessment, reasoning, and actions is both a professional obligation and a protection against unjustified liability. Conversely, documentation that is incomplete, inaccurate, or retrospectively altered creates legal vulnerability and may obstruct the continuity of safe care.`,
+  },
+  {
+    id: 'interprofessional-dimensions',
+    heading: 'Interprofessional Dimensions of Care Planning',
+    body: `Patient care planning does not occur in a professional vacuum. In contemporary healthcare environments, effective care planning is inherently interprofessional—it integrates the assessments, goals, and interventions of multiple disciplines into a coherent plan that addresses the full complexity of the patient's needs.\n\nThe multidisciplinary team. Depending on the clinical setting and patient complexity, a patient's care team may include the primary nurse, a nurse practitioner or physician, a physiotherapist, an occupational therapist, a social worker, a dietitian, a pharmacist, a clinical psychologist, a chaplain, and a range of other specialists. Each discipline brings a distinctive assessment framework and intervention repertoire. The nursing care plan, while focused on nursing-specific diagnoses and interventions, must be coordinated with the contributions of these other disciplines to avoid duplication, conflict, or gaps in care.\n\nMultidisciplinary team meetings and ward rounds. Structured forums for interprofessional care discussion—including multidisciplinary team (MDT) meetings and ward rounds—provide opportunities to review the care plan in the context of the full team's assessment, to revise goals in light of specialist input, and to allocate responsibility for specific interventions across disciplines. The nurse's contribution to these forums is substantive: as the professional who spends the most continuous time with the patient, the nurse holds the most comprehensive real-time understanding of the patient's condition, concerns, and response to treatment, and this perspective is essential to effective MDT decision-making.\n\nCare coordination and transitions of care. Care planning extends beyond the immediate clinical encounter to encompass the full trajectory of the patient's care across settings and time. Effective care coordination—the deliberate organisation of patient care activities and the sharing of information among all participants in the patient's care to ensure timely, appropriate care delivery—requires that the care plan be communicated clearly and accurately at every transition: at shift handover, at transfer between units, and at discharge. The quality of discharge planning in particular has significant implications for patient outcomes after hospitalisation: patients who leave hospital with an inadequate discharge plan are at elevated risk of readmission, medication errors, and avoidable complications.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Planning patient care is an act of professional synthesis: it draws together the nurse's assessment findings, clinical judgments, evidence-based knowledge, patient values, and interprofessional input into a coherent, individualised, goal-directed framework for therapeutic action. Its components—nursing diagnoses, patient goals, nursing interventions, and evaluation criteria—provide the structural scaffolding for safe, effective, and accountable nursing practice. Its principles—individualisation, patient-centeredness, evidence-base, and continuity—reflect the core values of nursing as a discipline and a profession. For nursing students, the discipline of care planning serves a dual function: it is both a practical tool for organising clinical action and a pedagogical scaffold for developing the integrated clinical reasoning that characterises expert nursing practice. Approached with intellectual engagement and genuine patient-centeredness, care planning is not a documentation burden but a professional opportunity—an occasion to think carefully, act purposefully, and evaluate honestly in service of the patients whose care has been entrusted to the nursing profession.`,
+  },
+];
+---
+
+<Layout title="Planning Patient Care – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Planning Patient Care</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            📋 Care Planning &amp; Nursing Process
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Planning Patient Care
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the planning phase of the nursing process, covering the purpose,
+          principles, and components of nursing care plans, prioritisation frameworks, documentation
+          standards, and interprofessional dimensions of patient care planning.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'American Nurses Association. (2021). <em>Nursing: Scope and standards of practice</em> (4th ed.). ANA.',
+            'Bulecheck, G. M., Butcher, H. K., Dochterman, J. M., &amp; Wagner, C. M. (Eds.). (2013). <em>Nursing interventions classification (NIC)</em> (6th ed.). Elsevier Mosby.',
+            'Carpenito, L. J. (2021). <em>Nursing diagnosis: Application to clinical practice</em> (16th ed.). Wolters Kluwer.',
+            'Herdman, T. H., Kamitsuru, S., &amp; Lopes, C. T. (Eds.). (2021). <em>NANDA International nursing diagnoses: Definitions &amp; classification 2021–2023.</em> Thieme.',
+            'Moorhead, S., Swanson, E., Johnson, M., &amp; Maas, M. L. (Eds.). (2018). <em>Nursing outcomes classification (NOC)</em> (6th ed.). Elsevier.',
+            'Paans, W., Nieweg, R. M., van der Schans, C. P., &amp; Sermeus, W. (2011). What factors influence the prevalence and accuracy of nursing diagnoses documentation in clinical practice? A systematic literature review. <em>Journal of Clinical Nursing, 20</em>(17–18), 2386–2403.',
+            'Redman, B. K. (2007). <em>The practice of patient education: A case study approach</em> (10th ed.). Mosby.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Process step', def: 'Third step of the nursing process' },
+            { term: 'Diagnosis taxonomy', def: 'NANDA International' },
+            { term: 'Goal criteria', def: 'SMART (Specific, Measurable, Achievable, Relevant, Time-bound)' },
+            { term: 'Priority framework', def: "Maslow's Hierarchy of Needs" },
+            { term: 'Classifications', def: 'NIC (interventions), NOC (outcomes)' },
+            { term: 'Related to', def: 'Nursing Diagnosis, Clinical Judgment, MDT' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Individualised patient care',
+            '✅ Evidence-based interventions',
+            '✅ Patient safety and continuity',
+            '✅ Interprofessional coordination',
+            '✅ Discharge planning',
+            '✅ Legal accountability',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
