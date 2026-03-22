@@ -72,6 +72,7 @@ const base = import.meta.env.BASE_URL;
         <a href={`${base}/`} id="nav-home">Home</a>
         <a href={`${base}/dashboard`} id="nav-dashboard">Dashboard</a>
         <a href={`${base}/login`} id="nav-login">Login</a>
+        <a href={`${base}/generate-hash`} id="nav-generate-hash">Generate Hash</a>
         <a href={`${base}/logout`} id="nav-logout" style="display:none">Logout</a>
       </nav>
     </header>
@@ -99,9 +100,11 @@ const base = import.meta.env.BASE_URL;
       (function () {
         const token = sessionStorage.getItem('auth_token');
         const loginLink = document.getElementById('nav-login');
+        const generateHashLink = document.getElementById('nav-generate-hash');
         const logoutLink = document.getElementById('nav-logout');
         if (token) {
           if (loginLink) loginLink.style.display = 'none';
+          if (generateHashLink) generateHashLink.style.display = 'none';
           if (logoutLink) logoutLink.style.display = 'inline';
         }
       })();

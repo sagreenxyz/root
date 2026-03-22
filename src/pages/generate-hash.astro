@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Generate AUTH_HASH – Root" protected={false}>
+  <div style="max-width: 520px; margin: 4rem auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,.06);">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:0.5rem;">🔑</div>
+      <h1 style="font-size:1.5rem; font-weight:700;">Generate AUTH_HASH</h1>
+      <p style="color:#64748b; font-size:0.9rem; margin-top:0.25rem;">
+        Create the hash value to store as your <code style="background:#f1f5f9; padding:0.1rem 0.4rem; border-radius:0.3rem; font-size:0.85rem;">AUTH_HASH</code> GitHub repository secret.
+      </p>
+    </div>
+
+    <form id="hash-form" autocomplete="off">
+      <div style="margin-bottom:1rem;">
+        <label for="username" style="display:block; font-size:0.875rem; font-weight:500; margin-bottom:0.4rem;">Username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          autocomplete="off"
+          placeholder="Username"
+          required
+          style="width:100%; padding:0.6rem 0.8rem; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:1rem; outline:none; transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#6366f1'"
+          onblur="this.style.borderColor='#e2e8f0'"
+        />
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label for="password" style="display:block; font-size:0.875rem; font-weight:500; margin-bottom:0.4rem;">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          placeholder="••••••••"
+          required
+          style="width:100%; padding:0.6rem 0.8rem; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:1rem; outline:none; transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#6366f1'"
+          onblur="this.style.borderColor='#e2e8f0'"
+        />
+      </div>
+      <button
+        type="submit"
+        style="width:100%; padding:0.75rem; background:#6366f1; color:#fff; border:none; border-radius:0.5rem; font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.2s;"
+        onmouseover="this.style.background='#4f46e5'"
+        onmouseout="this.style.background='#6366f1'"
+      >Generate Hash</button>
+    </form>
+
+    <div id="result-section" style="display:none; margin-top:1.5rem;">
+      <hr style="border:none; border-top:1px solid #e2e8f0; margin-bottom:1.5rem;" />
+      <label style="display:block; font-size:0.875rem; font-weight:500; margin-bottom:0.4rem;">Your AUTH_HASH value</label>
+      <div style="display:flex; gap:0.5rem; align-items:stretch;">
+        <input
+          id="hash-output"
+          type="text"
+          readonly
+          style="flex:1; padding:0.6rem 0.8rem; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.85rem; font-family:monospace; background:#f8fafc; color:#1e293b; outline:none;"
+        />
+        <button
+          id="copy-btn"
+          type="button"
+          title="Copy to clipboard"
+          style="padding:0.6rem 1rem; background:#6366f1; color:#fff; border:none; border-radius:0.5rem; font-size:0.875rem; font-weight:600; cursor:pointer; white-space:nowrap; transition:background 0.2s;"
+          onmouseover="this.style.background='#4f46e5'"
+          onmouseout="this.style.background='#6366f1'"
+        >Copy</button>
+      </div>
+      <p id="copy-status" style="display:none; margin-top:0.5rem; color:#16a34a; font-size:0.8rem;">✓ Copied to clipboard!</p>
+
+      <div style="margin-top:1.5rem; padding:1rem; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.5rem; font-size:0.85rem; color:#15803d;">
+        <p style="font-weight:600; margin-bottom:0.4rem;">Next steps</p>
+        <ol style="padding-left:1.2rem; line-height:1.8;">
+          <li>Copy the hash value above.</li>
+          <li>Go to your GitHub repository → <strong>Settings → Secrets and variables → Actions</strong>.</li>
+          <li>Create or update a secret named <code style="background:#dcfce7; padding:0.1rem 0.3rem; border-radius:0.25rem;">AUTH_HASH</code> and paste the value.</li>
+          <li>Re-run the deployment workflow so the new hash is embedded in the site.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  /**
+   * Returns the SHA-256 hex digest of the given message using the Web Crypto API.
+   * Credentials are hashed in the format "<username>:<password>" — matching the
+   * format expected by the login page and the AUTH_HASH secret.
+   */
+  async function sha256(message: string): Promise<string> {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  const form = document.getElementById('hash-form') as HTMLFormElement;
+  const resultSection = document.getElementById('result-section') as HTMLElement;
+  const hashOutput = document.getElementById('hash-output') as HTMLInputElement;
+  const copyBtn = document.getElementById('copy-btn') as HTMLButtonElement;
+  const copyStatus = document.getElementById('copy-status') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // Trim leading/trailing whitespace from the username; passwords are intentionally NOT trimmed.
+    const username = (document.getElementById('username') as HTMLInputElement).value.trim();
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+
+    const hash = await sha256(`${username}:${password}`);
+    hashOutput.value = hash;
+    resultSection.style.display = 'block';
+    copyStatus.style.display = 'none';
+  });
+
+  copyBtn?.addEventListener('click', async () => {
+    const hash = hashOutput.value;
+    if (!hash) return;
+    try {
+      await navigator.clipboard.writeText(hash);
+      copyStatus.style.display = 'block';
+      setTimeout(() => { copyStatus.style.display = 'none'; }, 3000);
+    } catch {
+      // Fallback: select the text so the user can copy manually
+      hashOutput.select();
+      copyStatus.textContent = 'Press Ctrl+C (or ⌘C) to copy the selected hash.';
+      copyStatus.style.color = '#b45309';
+      copyStatus.style.display = 'block';
+      setTimeout(() => {
+        copyStatus.style.display = 'none';
+        copyStatus.textContent = '✓ Copied to clipboard!';
+        copyStatus.style.color = '#16a34a';
+      }, 4000);
+    }
+  });
+</script>
