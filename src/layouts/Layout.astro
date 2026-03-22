@@ -81,9 +81,16 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       <nav id="site-nav">
         <a href={`${base}/`}>Home</a>
         <a href={`${base}/public`}>Public</a>
-        <span class="nav-divider" aria-hidden="true">|</span>
-        <a href={`${base}/dashboard`}>Dashboard</a>
-        <a href={`${base}/content`}><span class="nav-protected" aria-label="protected">🔒</span> Content</a>
+        <span id="nav-guest" style="display:none;">
+          <span class="nav-divider" aria-hidden="true">|</span>
+          <a href={`${base}/login`}>Sign In</a>
+        </span>
+        <span id="nav-authed" style="display:none;">
+          <span class="nav-divider" aria-hidden="true">|</span>
+          <a href={`${base}/private/dashboard`}>Dashboard</a>
+          <a href={`${base}/content`}><span class="nav-protected" aria-label="protected">🔒</span> Content</a>
+          <a href={`${base}/logout`}>Sign Out</a>
+        </span>
       </nav>
     </header>
 
@@ -100,7 +107,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         (function () {
           const token = sessionStorage.getItem('auth_token');
           if (!token) {
-            window.location.replace((base || '') + '/dashboard?next=' + encodeURIComponent(window.location.pathname));
+            window.location.replace((base || '') + '/login?next=' + encodeURIComponent(window.location.pathname));
           }
         })();
       </script>
@@ -159,7 +166,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         function doLogout() {
           sessionStorage.removeItem('auth_token');
           sessionStorage.removeItem('auth_user');
-          window.location.replace((base || '') + '/dashboard?timeout=1');
+          window.location.replace((base || '') + '/login?timeout=1');
         }
 
         function reset() {
@@ -188,6 +195,24 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         } else {
           start();
         }
+      })();
+    </script>
+    <!-- Nav state: show guest or authed links based on sessionStorage -->
+    <script>
+      (function () {
+        function updateNav() {
+          var authed = !!sessionStorage.getItem('auth_token');
+          var guest = document.getElementById('nav-guest');
+          var auth = document.getElementById('nav-authed');
+          if (guest) guest.style.display = authed ? 'none' : 'contents';
+          if (auth) auth.style.display = authed ? 'contents' : 'none';
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', updateNav);
+        } else {
+          updateNav();
+        }
+        document.addEventListener('auth:login', updateNav);
       })();
     </script>
   </body>

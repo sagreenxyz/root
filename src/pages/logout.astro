@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Signing Out – Root" protected={false}>
+  <div style="text-align:center; padding:4rem 1rem;">
+    <div style="font-size:2.5rem; margin-bottom:1rem;">👋</div>
+    <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Signing Out…</h1>
+    <p style="color:#64748b; font-size:0.95rem;">You have been signed out. Redirecting to home…</p>
+  </div>
+</Layout>
+
+<script define:vars={{ base }}>
+  (function () {
+    sessionStorage.removeItem('auth_token');
+    sessionStorage.removeItem('auth_user');
+    window.location.replace((base || '') + '/');
+  })();
+</script>
