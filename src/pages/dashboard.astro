@@ -157,9 +157,25 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
     if (hash === VALID_HASH) {
       sessionStorage.setItem('auth_token', hash);
       sessionStorage.setItem('auth_user', username);
-      showDashboard(username);
-      // Signal the inactivity monitor (defined in Layout.astro) to start
+      // Signal the inactivity monitor (defined in Layout.astro) to start.
+      // This also covers the redirect path below: the monitor will auto-start
+      // on the target page because auth_token is already set in sessionStorage.
       document.dispatchEvent(new CustomEvent('auth:login'));
+      // Redirect to the originally requested page (if any), otherwise show dashboard.
+      // Use URL parsing to verify same-origin and prevent open redirect attacks.
+      const nextParam = new URLSearchParams(window.location.search).get('next');
+      if (nextParam) {
+        try {
+          const target = new URL(nextParam, window.location.origin);
+          if (target.origin === window.location.origin) {
+            window.location.replace(target.pathname + target.search + target.hash);
+            return;
+          }
+        } catch (_) {
+          // Invalid URL – fall through to show dashboard
+        }
+      }
+      showDashboard(username);
     } else {
       errorMsg.textContent = 'Invalid username or password. Please try again.';
       errorMsg.style.display = 'block';
