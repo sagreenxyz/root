@@ -71,7 +71,7 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
 
     <div style="display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); margin-bottom:2rem;">
       {[
-        { label: 'Pages', value: '2', icon: '📄' }, // update if pages are added or removed
+        { label: 'Pages', value: '3', icon: '📄' }, // update if pages are added or removed
         { label: 'Users', value: '1', icon: '👤' },
         { label: 'Status', value: 'Live', icon: '🟢' },
         { label: 'Host', value: 'GitHub Pages', icon: '☁️' },
@@ -82,6 +82,14 @@ const validHash = import.meta.env.AUTH_HASH ?? '';
           <div style="font-size:1.4rem; font-weight:700; margin-top:0.25rem;">{card.value}</div>
         </div>
       ))}
+    </div>
+
+    <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-bottom:1rem;">
+      <h2 style="font-size:1rem; font-weight:600; margin-bottom:0.75rem;">Quick Links</h2>
+      <a id="content-link" href="/content" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:0.5rem; text-decoration:none; font-size:0.875rem; font-weight:600; transition:background 0.15s;"
+        onmouseover="this.style.background='#e0e7ff'"
+        onmouseout="this.style.background='#eef2ff'"
+      >🔒 View Encrypted Content</a>
     </div>
 
     <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem;">

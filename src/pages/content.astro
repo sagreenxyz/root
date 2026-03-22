@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Collect every encrypted-content JSON file at build time.
+// The files themselves are safe to embed — they are opaque ciphertext.
+const encryptedModules = import.meta.glob('../data/encrypted/*.json', { eager: true });
+const contentItems = Object.entries(encryptedModules).map(([filePath, mod]) => {
+  const data = (mod as any).default ?? mod;
+  return {
+    key: filePath.split('/').pop()!.replace(/\.json$/, ''),
+    ...data,
+  };
+});
+---
+
+<Layout title="Content – Root" protected={true}>
+  <div style="display:grid; gap:1.5rem; grid-template-columns:260px 1fr; align-items:start;">
+
+    <!-- Sidebar: list of content files -->
+    <aside style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; position:sticky; top:1.5rem;">
+      <h2 style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:1rem;">
+        🔒 Encrypted Files
+      </h2>
+      {contentItems.length === 0 ? (
+        <p style="color:#94a3b8; font-size:0.875rem;">
+          No content yet. Run the encryption script to add files.
+        </p>
+      ) : (
+        <ul id="content-list" style="list-style:none; display:flex; flex-direction:column; gap:0.4rem;">
+          {contentItems.map((item) => (
+            <li>
+              <button
+                class="content-btn"
+                data-key={item.key}
+                style="width:100%; text-align:left; padding:0.55rem 0.75rem; border:1px solid #e2e8f0; border-radius:0.5rem; background:#f8fafc; color:#1e293b; font-size:0.875rem; cursor:pointer; transition:background 0.15s;"
+                onmouseover="this.style.background='#f1f5f9'"
+                onmouseout="if(!this.dataset.active) this.style.background='#f8fafc'; else this.style.background='#eef2ff';"
+              >
+                📄 {item.title ?? item.key}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </aside>
+
+    <!-- Main area: decrypted content viewer -->
+    <div>
+      <div id="placeholder" style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:2.5rem; text-align:center; color:#94a3b8;">
+        <div style="font-size:2.5rem; margin-bottom:0.75rem;">🔐</div>
+        <p style="font-size:0.95rem;">Select a file on the left to decrypt and view it.</p>
+      </div>
+
+      <div id="viewer" style="display:none; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:2rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem; gap:1rem; flex-wrap:wrap;">
+          <h1 id="viewer-title" style="font-size:1.25rem; font-weight:700;"></h1>
+          <span id="viewer-meta" style="font-size:0.75rem; color:#94a3b8;"></span>
+        </div>
+        <div id="viewer-body" style="line-height:1.7; white-space:pre-wrap; font-size:0.95rem; color:#1e293b;"></div>
+      </div>
+
+      <div id="decrypt-error" style="display:none; background:#fef2f2; border:1px solid #fecaca; border-radius:0.75rem; padding:1.5rem; color:#dc2626; font-size:0.9rem;">
+        ❌ Decryption failed. The file may have been encrypted with different credentials.
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<!-- Pass encrypted payloads to the client script -->
+<script define:vars={{ contentItems }}>
+  window.__encryptedContent = contentItems;
+</script>
+
+<script>
+  // ── Crypto helpers ──────────────────────────────────────────────────────────
+
+  function fromHex(hex: string): Uint8Array {
+    const bytes = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < bytes.length; i++) {
+      bytes[i] = parseInt(hex.slice(i * 2, i * 2 + 2), 16);
+    }
+    return bytes;
+  }
+
+  async function deriveKey(authTokenHex: string, salt: Uint8Array): Promise<CryptoKey> {
+    const keyMaterial = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(authTokenHex),
+      { name: 'PBKDF2' },
+      false,
+      ['deriveKey'],
+    );
+    return crypto.subtle.deriveKey(
+      {
+        name: 'PBKDF2',
+        salt,
+        iterations: 100_000,
+        hash: 'SHA-256',
+      },
+      keyMaterial,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt'],
+    );
+  }
+
+  async function decryptItem(item: any, authToken: string): Promise<string> {
+    const salt = fromHex(item.salt);
+    const iv = fromHex(item.iv);
+    const ciphertext = fromHex(item.ciphertext);
+    const key = await deriveKey(authToken, salt);
+    const plainBuffer = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ciphertext);
+    return new TextDecoder().decode(plainBuffer);
+  }
+
+  // ── UI state ────────────────────────────────────────────────────────────────
+
+  const items: any[] = (window as any).__encryptedContent ?? [];
+  const authToken: string = sessionStorage.getItem('auth_token') ?? '';
+
+  const placeholder = document.getElementById('placeholder') as HTMLElement;
+  const viewer = document.getElementById('viewer') as HTMLElement;
+  const viewerTitle = document.getElementById('viewer-title') as HTMLElement;
+  const viewerMeta = document.getElementById('viewer-meta') as HTMLElement;
+  const viewerBody = document.getElementById('viewer-body') as HTMLElement;
+  const decryptError = document.getElementById('decrypt-error') as HTMLElement;
+
+  function showPlaceholder() {
+    placeholder.style.display = '';
+    viewer.style.display = 'none';
+    decryptError.style.display = 'none';
+  }
+
+  function showViewer(title: string, meta: string, body: string) {
+    placeholder.style.display = 'none';
+    decryptError.style.display = 'none';
+    viewerTitle.textContent = title;
+    viewerMeta.textContent = meta;
+    viewerBody.textContent = body;
+    viewer.style.display = '';
+  }
+
+  function showError() {
+    placeholder.style.display = 'none';
+    viewer.style.display = 'none';
+    decryptError.style.display = '';
+  }
+
+  // ── Button click handlers ───────────────────────────────────────────────────
+
+  let activeKey: string | null = null;
+
+  document.querySelectorAll<HTMLButtonElement>('.content-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const key = btn.dataset.key!;
+      if (key === activeKey) return;
+
+      // Update button styling
+      document.querySelectorAll<HTMLButtonElement>('.content-btn').forEach((b) => {
+        b.style.background = '#f8fafc';
+        delete b.dataset.active;
+      });
+      btn.style.background = '#eef2ff';
+      btn.dataset.active = '1';
+      activeKey = key;
+
+      const item = items.find((i: any) => i.key === key);
+      if (!item) { showPlaceholder(); return; }
+
+      try {
+        const plaintext = await decryptItem(item, authToken);
+        const encryptedAt = item.encryptedAt
+          ? new Date(item.encryptedAt).toLocaleString()
+          : 'unknown';
+        showViewer(
+          item.title ?? key,
+          `Encrypted ${encryptedAt} · AES-256-GCM`,
+          plaintext,
+        );
+      } catch {
+        showError();
+      }
+    });
+  });
+</script>

@@ -10,6 +10,7 @@ An [Astro](https://astro.build) site hosted on [GitHub Pages](https://pages.gith
 - 🔐 **Authentication** — SHA-256 password hashing via the Web Crypto API, session stored in `sessionStorage`
 - ☁️ **GitHub Pages** — automated deployment via GitHub Actions on every push to `main`
 - 📊 **Protected pages** — unauthenticated visitors are redirected to the login page
+- 🔒 **Encrypted content** — store private notes / documents as AES-256-GCM blobs in the repository; only logged-in users can decrypt them in the browser
 
 ## Credentials — GitHub Actions Secret
 
@@ -85,3 +86,43 @@ npm run preview    # preview the built site locally
 Push to `main` — GitHub Actions will build and deploy to GitHub Pages automatically.
 
 Ensure **GitHub Pages** is enabled for the repository (Settings → Pages → Source: GitHub Actions).
+
+## Encrypted content
+
+You can store private text documents in the repository as encrypted blobs.  
+They are safe to commit — without the correct credentials they are unreadable ciphertext.
+
+### How it works
+
+1. The encryption key is derived (PBKDF2-SHA256, 100 000 iterations) from  
+   `SHA-256(username:password)` — the same value the login page already stores  
+   in `sessionStorage` as `auth_token`.
+2. Each file is encrypted with **AES-256-GCM** using a random salt and IV,  
+   both stored alongside the ciphertext in a JSON blob.
+3. The web app derives the same key from the session token and decrypts  
+   entirely in the browser — no server, no extra secrets.
+
+### Encrypting a file
+
+```bash
+# Encrypt notes.txt using the same credentials that unlock the site
+node scripts/encrypt-content.mjs <username> <password> notes.txt \
+    src/data/encrypted/notes.json
+
+# Commit only the .json output — never the plaintext source
+git add src/data/encrypted/notes.json
+git commit -m "add encrypted notes"
+git push
+```
+
+The encrypted file appears automatically on the `/content` page after the next  
+deploy.  Authenticated users can select it and read the decrypted text.
+
+### Demo file
+
+`src/data/encrypted/demo-note.json` is pre-encrypted with the credentials  
+**username `demo` / password `demo123`** as a working example.  
+It will only decrypt successfully if those are also the site's login credentials.  
+Remove it (or re-encrypt it with your real credentials) before going to  
+production.
+
