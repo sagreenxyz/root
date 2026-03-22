@@ -1,0 +1,250 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Electrolytes are ionically charged mineral compounds dissolved in body fluids that, by virtue of their electrical charge, are capable of conducting electrical impulses and mediating the osmotic forces that govern fluid distribution across biological membranes. The term derives from the Greek elektron (amber, the classical source of static electricity) and lytos (able to be dissolved), reflecting the dual nature of these compounds as dissolved substances and electrical conductors. The principal electrolytes of clinical significance in nursing practice are sodium (Na⁺), potassium (K⁺), chloride (Cl⁻), bicarbonate (HCO₃⁻), calcium (Ca²⁺), magnesium (Mg²⁺), and phosphate (PO₄³⁻). Each exerts distinct physiological functions, each is regulated through distinct mechanisms, and each produces a characteristic constellation of clinical manifestations when its concentration deviates from the narrow range compatible with normal cellular and organ function. The ability to recognise, interpret, and respond to electrolyte imbalances is a clinical skill of the highest order for nursing professionals, who are often the first to identify changes in a patient's status and to initiate or escalate care accordingly.`,
+  },
+  {
+    id: 'physiology',
+    heading: 'Physiological Foundations of Electrolyte Balance',
+    body: `Electrolytes are not uniformly distributed across body fluid compartments; rather, their distribution is tightly regulated to maintain electrochemical gradients that are essential for cellular function. The intracellular fluid (ICF) is rich in potassium, magnesium, and phosphate, while the extracellular fluid (ECF) is rich in sodium, calcium, and chloride. These concentration differences are maintained by adenosine triphosphate (ATP)-dependent ion pumps, most notably the sodium-potassium ATPase (Na⁺/K⁺-ATPase), which actively transports three sodium ions out of the cell and two potassium ions into the cell for each ATP molecule hydrolysed. The resulting concentration gradients underpin the resting membrane potential—the electrical polarity across the cell membrane that is prerequisite for the generation of action potentials in excitable tissues (neurons, cardiac myocytes, and skeletal muscle cells).
+
+Electrochemical neutrality is preserved in each compartment: the total positive charge of cations must equal the total negative charge of anions. This principle is captured in the concept of the anion gap (AG), calculated as sodium minus the sum of chloride and bicarbonate: AG = Na⁺ − (Cl⁻ + HCO₃⁻). The normal anion gap (approximately 8–12 mEq/L) represents the contribution of unmeasured anions—principally albumin, phosphate, sulphate, and organic acids—to electrochemical balance. An elevated anion gap indicates the presence of additional unmeasured anions, most commonly lactate (in lactic acidosis), ketones (in ketoacidosis), or exogenous toxins.
+
+The regulation of electrolyte balance involves multiple organ systems acting in concert. The kidneys are the primary regulators of sodium, potassium, chloride, phosphate, and bicarbonate; the gastrointestinal tract is the primary site of calcium and magnesium absorption; and the endocrine system—through the actions of aldosterone, parathyroid hormone (PTH), calcitonin, vitamin D, and insulin—provides the hormonal signals that coordinate electrolyte flux across these interfaces. Disruption of any component of this regulatory network, whether through primary organ pathology, pharmacological intervention, or iatrogenic causes, can produce clinically significant electrolyte imbalance.`,
+  },
+  {
+    id: 'sodium',
+    heading: 'Sodium: The Primary Extracellular Cation',
+    body: `Sodium is the most abundant cation in the ECF (normal range 135–145 mEq/L) and the principal determinant of ECF osmolality and volume. Because water moves freely across most cell membranes in response to osmotic gradients, changes in serum sodium concentration cause reciprocal changes in the distribution of total body water between the ICF and ECF compartments. Hyponatraemia and hypernatraemia are therefore disorders not merely of sodium but of the relationship between total body sodium and total body water.
+
+Hyponatraemia (serum Na⁺ < 135 mEq/L). Hyponatraemia is the most common electrolyte abnormality in hospitalised patients, affecting approximately 15–30 percent of hospital inpatients. Its aetiology is most usefully categorised by volume status: hypovolaemic hyponatraemia (sodium and water both depleted but water proportionally less) arises from losses through the kidney (as in diuretic use or mineralocorticoid deficiency), gastrointestinal tract, or third space; euvolaemic hyponatraemia (total body sodium normal, total body water expanded) is most commonly caused by SIADH, hypothyroidism, or glucocorticoid deficiency; hypervolaemic hyponatraemia (both sodium and water increased, water disproportionately greater) occurs in heart failure, hepatic cirrhosis, and nephrotic syndrome. Clinical manifestations are primarily neurological, reflecting osmotic water movement into brain cells: nausea, headache, lethargy, confusion, and, in severe cases (Na⁺ < 120 mEq/L or rapid decline), seizures, cerebral oedema, and coma. Correction must be controlled to avoid osmotic demyelination syndrome (ODS, formerly central pontine myelinolysis), which can result from overly rapid sodium correction.
+
+Hypernatraemia (serum Na⁺ > 145 mEq/L). Hypernatraemia reflects a deficit of water relative to sodium and is almost always associated with either inadequate water intake or excessive water loss. Common causes include diabetes insipidus (central or nephrogenic), profuse sweating, osmotic diuresis, or inadequate access to water in patients who are dependent, unconscious, or institutionalised. The clinical manifestations reflect cellular dehydration: intense thirst (unless the thirst mechanism is impaired), dry mucous membranes, oliguria, and neurological symptoms ranging from irritability and lethargy to seizures, intracranial haemorrhage (from traction on bridging veins as the brain shrinks), and coma. Correction requires careful free-water replacement over 48–72 hours to avoid cerebral oedema from rapid cellular rehydration.`,
+  },
+  {
+    id: 'potassium',
+    heading: 'Potassium: The Principal Intracellular Cation',
+    body: `Potassium is the dominant intracellular cation, with an intracellular concentration of approximately 140 mEq/L contrasted with a normal serum concentration of 3.5–5.0 mEq/L. This steep concentration gradient, maintained by the Na⁺/K⁺-ATPase, is the principal determinant of the resting membrane potential of all excitable cells. Small changes in extracellular potassium concentration therefore have disproportionately large effects on the resting membrane potential and cellular excitability, explaining the particular cardiac and neuromuscular toxicity of potassium imbalance.
+
+Hypokalaemia (serum K⁺ < 3.5 mEq/L). Hypokalaemia is most commonly caused by gastrointestinal losses (vomiting, diarrhoea, nasogastric suction, fistulae), renal losses (diuretics—particularly loop and thiazide diuretics—hyperaldosteronism, hypomagnesaemia), or transcellular shift of potassium into cells (as occurs with alkalosis, insulin administration, or beta-agonist therapy). Manifestations include skeletal muscle weakness (ascending, potentially involving respiratory muscles), muscle cramps, paralytic ileus, polyuria and polydipsia (from hypokalaemia-induced nephrogenic diabetes insipidus), and characteristic ECG changes: flattened or inverted T waves, prominent U waves, ST depression, and widening of the QRS complex. Severe hypokalaemia predisposes to ventricular arrhythmias, particularly in the context of digoxin therapy or pre-existing cardiac disease. Replacement may be oral or intravenous; intravenous potassium must be administered slowly (maximum 20 mEq/hour peripherally, 40 mEq/hour centrally with continuous cardiac monitoring) because rapid administration can cause fatal cardiac arrhythmias.
+
+Hyperkalaemia (serum K⁺ > 5.0 mEq/L). Hyperkalaemia is most commonly caused by renal insufficiency (reduced potassium excretion), medications (ACE inhibitors, angiotensin receptor blockers, potassium-sparing diuretics, non-steroidal anti-inflammatory drugs, trimethoprim), transcellular shift (acidosis, tissue necrosis, rhabdomyolysis, severe haemolysis), or excessive potassium intake in the context of impaired excretion. Pseudohyperkalaemia—falsely elevated serum potassium due to haemolysis of the blood sample—must be excluded before treatment. Clinical manifestations include muscle weakness, paraesthesiae, and the life-threatening ECG progression: tall peaked T waves → prolonged PR interval → widened QRS → sine-wave pattern → ventricular fibrillation or asystole. Management is stratified by severity and ECG changes: intravenous calcium gluconate (for cardiac membrane stabilisation), insulin with dextrose and inhaled salbutamol (to promote transcellular potassium shift), sodium bicarbonate (in the context of acidaemia), and potassium-binding resins or renal replacement therapy (to remove total body potassium).`,
+  },
+  {
+    id: 'calcium-magnesium-phosphate',
+    heading: 'Calcium, Magnesium, and Phosphate',
+    body: `Calcium. Total serum calcium (normal range 8.5–10.5 mg/dL or 2.12–2.62 mmol/L) exists in three forms: ionised (free, physiologically active, approximately 45%), protein-bound (principally to albumin, approximately 40%), and complexed to anions (approximately 15%). Because only ionised calcium is physiologically active, total calcium measurements must be corrected for albumin concentration (add 0.8 mg/dL for each 1 g/dL decrease in serum albumin below 4.0 g/dL), or ionised calcium should be measured directly. Calcium is regulated by parathyroid hormone (PTH), which raises serum calcium by stimulating osteoclastic bone resorption, increasing renal tubular reabsorption, and (via stimulation of 1-alpha-hydroxylase in the kidney) increasing the production of active vitamin D (1,25-dihydroxycholecalciferol), which in turn enhances intestinal calcium absorption. Calcitonin, secreted by thyroid parafollicular cells, lowers serum calcium by inhibiting osteoclast activity and increasing renal calcium excretion.
+
+Hypocalcaemia (Ca²⁺ < 8.5 mg/dL) produces increased neuromuscular excitability manifesting as perioral and digital paraesthesiae, muscle cramps, Chvostek's sign (twitching of facial muscles on percussion of the facial nerve anterior to the ear), Trousseau's sign (carpal spasm induced by inflation of a blood pressure cuff above systolic pressure for three minutes), laryngospasm, and, in severe cases, tetany and seizures. ECG changes include a prolonged QT interval predisposing to torsades de pointes. Common causes include hypoparathyroidism (post-surgical being most common), vitamin D deficiency, hypomagnesaemia (which impairs PTH secretion and action), renal failure (reduced 1-alpha-hydroxylase activity), and acute pancreatitis (saponification of calcium by released lipases).
+
+Hypercalcaemia (Ca²⁺ > 10.5 mg/dL) produces the classical mnemonic "Bones, Stones, Groans, and Psychic Moans": bone pain from osteolysis, nephrolithiasis and nephrogenic diabetes insipidus from renal calcium deposition, constipation, nausea, anorexia, and neuropsychiatric manifestations including depression, cognitive impairment, and confusion. Primary hyperparathyroidism and malignancy (through osteolytic metastases or PTH-related protein secretion) account for the great majority of cases. ECG changes include a shortened QT interval. Severe hypercalcaemia (> 14 mg/dL) constitutes a medical emergency requiring aggressive intravenous hydration, loop diuretics, and, in malignancy-associated cases, bisphosphonates or calcitonin.
+
+Magnesium (normal range 1.7–2.2 mg/dL or 0.7–0.95 mmol/L) serves as an essential cofactor for over 300 enzymatic reactions, is required for the activity of Na⁺/K⁺-ATPase (making hypomagnesaemia a driver of refractory hypokalaemia and hypocalcaemia), and plays a critical role in DNA synthesis, protein synthesis, and neuromuscular transmission. Hypomagnesaemia is common in hospitalised patients, particularly those receiving loop diuretics, proton pump inhibitors, or aminoglycoside antibiotics, and in those with alcohol use disorder, malabsorption, or diabetes. Manifestations resemble hypocalcaemia: neuromuscular excitability, tremor, hyperreflexia, cardiac arrhythmias (particularly torsades de pointes), and ECG changes (prolonged QT, ST depression). Magnesium sulphate is the treatment of choice and also has specific clinical applications in pre-eclampsia (prevention of eclamptic seizures) and severe asthma (smooth muscle relaxation).
+
+Phosphate (normal range 2.5–4.5 mg/dL or 0.81–1.45 mmol/L) is critical to energy metabolism (as a component of ATP), intracellular signalling (phosphorylation reactions), cell membrane integrity (phospholipid bilayers), and oxygen delivery (as a determinant of 2,3-diphosphoglycerate levels in red blood cells, which regulate haemoglobin-oxygen affinity). Hypophosphataemia (< 2.5 mg/dL), which can be severe (< 1.0 mg/dL) in refeeding syndrome, diabetic ketoacidosis treatment, and malabsorption, produces muscle weakness (including respiratory muscle weakness), haemolytic anaemia, impaired leukocyte function, and, in severe cases, encephalopathy and cardiac dysfunction. Hyperphosphataemia occurs principally in chronic kidney disease and produces secondary hyperparathyroidism, renal osteodystrophy, and vascular calcification.`,
+  },
+  {
+    id: 'clinical-assessment',
+    heading: 'Clinical Assessment of Electrolyte Status',
+    body: `The clinical assessment of electrolyte status integrates the history, physical examination, and laboratory data in a systematic and iterative manner.
+
+History. A thorough history should identify predisposing factors for electrolyte imbalance: dietary intake (including use of salt substitutes, which contain potassium chloride); gastrointestinal losses (vomiting, diarrhoea, fistulae, nasogastric drainage); medications (diuretics, ACE inhibitors, laxatives, antacids, aminoglycosides, proton pump inhibitors, chemotherapeutic agents); underlying medical conditions (renal disease, endocrine disorders, malabsorption, liver disease, heart failure, malignancy); recent procedures (surgery, blood transfusion, parenteral nutrition); and symptoms including muscle weakness, cramps, paraesthesiae, palpitations, nausea, constipation, and confusion.
+
+Physical Examination. Systematic examination of neuromuscular, cardiac, and gastrointestinal systems is essential. Neuromuscular signs include deep tendon reflex assessment (hyperreflexia in hypomagnesaemia and hypocalcaemia; hyporeflexia in hypercalcaemia and severe hyperkalaemia), muscle strength testing, Chvostek's sign, and Trousseau's sign. Cardiac assessment includes auscultation for arrhythmia and evaluation of the ECG—one of the most sensitive indicators of potassium and calcium imbalance. Gastrointestinal assessment includes bowel sounds (reduced or absent in hypokalaemia) and assessment of nausea, vomiting, and constipation.
+
+Laboratory Assessment. A standard basic metabolic panel (BMP) includes sodium, potassium, chloride, bicarbonate (or CO₂), urea (BUN), creatinine, and glucose. A comprehensive metabolic panel (CMP) adds calcium, albumin, total protein, and liver function tests. Magnesium and phosphate require specific requests. Urinary electrolyte measurements—spot urine sodium, potassium, chloride, and their fractional excretions—help distinguish renal from extrarenal causes of imbalance. Arterial blood gas analysis provides real-time assessment of acid-base status, which profoundly influences electrolyte distribution and must be interpreted concurrently.
+
+ECG Interpretation. The ECG provides a rapid, non-invasive assessment of the cellular consequences of electrolyte imbalance, particularly for potassium and calcium. Nursing students must be able to recognise the cardinal ECG changes associated with hypokalaemia (flattened T waves, U waves, ST depression), hyperkalaemia (peaked T waves, widened QRS, sine-wave pattern), hypocalcaemia (prolonged QT interval), and hypercalcaemia (shortened QT interval).`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `Nursing management of electrolyte imbalances encompasses prevention, detection, pharmacological management support, patient safety, and education.
+
+Prevention. Many electrolyte imbalances are iatrogenic and therefore preventable. Nurses play a pivotal role in preventing diuretic-induced hypokalaemia and hypomagnesaemia through timely reporting of abnormal laboratory values, advocacy for appropriate dietary supplementation or electrolyte replacement orders, and ensuring that replacement therapy is prescribed and administered. Refeeding syndrome—the potentially fatal hypophosphataemia, hypokalaemia, and hypomagnesaemia that occurs when nutrition is rapidly introduced to malnourished patients—is preventable through coordinated monitoring and cautious refeeding protocols.
+
+Safe Administration of Electrolyte Replacement. Intravenous electrolyte administration carries significant risks. Nurses must verify the concentration, rate, and route of administration against current guidelines. Key safety rules include: never administer undiluted potassium chloride intravenously (fatal cardiac arrhythmia); limit peripheral intravenous potassium concentration to 40 mEq/L and rate to 20 mEq/hour (with continuous cardiac monitoring for rates > 10 mEq/hour); administer intravenous magnesium sulphate over at least 15–60 minutes depending on indication; and monitor patients receiving intravenous calcium for tissue extravasation (calcium gluconate is less irritating than calcium chloride via the peripheral route).
+
+Continuous Monitoring. Patients at risk for electrolyte imbalance require continuous ECG monitoring, serial laboratory electrolyte measurements at intervals determined by clinical acuity, assessment of neuromuscular status, and strict intake and output recording. Nurses must be familiar with the specific monitoring parameters relevant to each electrolyte and the criteria for escalating abnormal findings to the medical team.
+
+Medication Safety. Many medications either cause electrolyte imbalances or are rendered more toxic by them. Digoxin toxicity is dramatically potentiated by hypokalaemia and hypomagnesaemia; nurses administering digoxin must verify that potassium and magnesium are within acceptable ranges before administration. Non-steroidal anti-inflammatory drugs impair renal potassium excretion and can precipitate hyperkalaemia in susceptible patients. Aminoglycoside antibiotics cause renal magnesium wasting. These pharmacological interactions constitute a critical knowledge base for safe nursing practice.
+
+Patient Education. Patients with conditions predisposing to chronic electrolyte imbalance—including heart failure, chronic kidney disease, liver disease, and endocrine disorders—require education regarding dietary electrolyte sources and restrictions, early warning symptoms of imbalance, medication adherence, and the importance of regular laboratory monitoring. Patients taking potassium-wasting diuretics should understand potassium-rich dietary sources; those with chronic kidney disease should understand the need to limit potassium and phosphate intake.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Electrolyte balance is a multidimensional physiological domain whose clinical importance is matched only by its complexity. The principal electrolytes—sodium, potassium, calcium, magnesium, phosphate, chloride, and bicarbonate—each contribute essential and distinct functions to cellular homeostasis, neuromuscular excitability, cardiac rhythm, acid-base regulation, and metabolic activity. Their concentrations are maintained within narrow physiological ranges through the integrated actions of renal, gastrointestinal, and endocrine regulatory systems, and their disturbance produces characteristic clinical syndromes that range from subtle and insidious to acute and life-threatening. For the nursing student, mastery of electrolyte physiology and pathophysiology is not an abstract intellectual exercise; it is the foundation for the safe and competent assessment and management of patients across every clinical speciality. The ability to recognise early signs of imbalance, interpret laboratory and ECG findings in their clinical context, and intervene safely and effectively—including the critically important safe administration of replacement therapy—constitutes a core clinical competency that will be exercised throughout a nursing career.`,
+  },
+];
+---
+
+<Layout title="Electrolyte Balance – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Electrolyte Balance</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            ⚡ Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Electrolyte Balance
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the physiological role of electrolytes, their regulatory mechanisms,
+          the pathophysiology and clinical manifestations of key electrolyte imbalances, and the
+          nursing assessment and management principles essential to safe clinical practice.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#7c3aed; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#7c3aed; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Agus, Z. S. (1999). Hypomagnesemia. <em>Journal of the American Society of Nephrology, 10</em>(7), 1616–1622.',
+            'Aronson, P. S., &amp; Giebisch, G. (2011). Effects of pH on potassium: New explanations for old observations. <em>Journal of the American Society of Nephrology, 22</em>(11), 1981–1989.',
+            'Hoorn, E. J., &amp; Zietse, R. (2017). Diagnosis and treatment of hyponatremia: Compilation of the guidelines. <em>Journal of the American Society of Nephrology, 28</em>(5), 1340–1349.',
+            'Kraft, M. D., Btaiche, I. F., &amp; Sacks, G. S. (2005). Review of the refeeding syndrome. <em>Nutrition in Clinical Practice, 20</em>(6), 625–633.',
+            'Mount, D. B. (2016). Fluid and electrolyte disturbances. In D. Kasper, A. Fauci, S. Hauser, D. Longo, J. Jameson, &amp; J. Loscalzo (Eds.), <em>Harrison\'s principles of internal medicine</em> (19th ed., pp. 295–326). McGraw-Hill.',
+            'Pepin, J., &amp; Shields, C. (2012). Advances in diagnosis and management of hypokalemic and hyperkalemic emergencies. <em>Emergency Medicine Practice, 14</em>(2), 1–17.',
+            'Sterns, R. H. (2015). Disorders of plasma sodium—causes, consequences, and correction. <em>New England Journal of Medicine, 372</em>(1), 55–65.',
+            'Zivin, J. R., Gooley, T., Zager, R. A., &amp; Ryan, M. J. (2001). Hypocalcemia: A pervasive metabolic abnormality in the critically ill. <em>American Journal of Kidney Diseases, 37</em>(4), 689–698.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Normal Ranges</p>
+        <dl style="font-size:0.82rem; display:grid; gap:0.5rem;">
+          {[
+            { term: 'Sodium (Na⁺)', def: '135–145 mEq/L' },
+            { term: 'Potassium (K⁺)', def: '3.5–5.0 mEq/L' },
+            { term: 'Chloride (Cl⁻)', def: '98–106 mEq/L' },
+            { term: 'Bicarbonate (HCO₃⁻)', def: '22–26 mEq/L' },
+            { term: 'Calcium (Ca²⁺) total', def: '8.5–10.5 mg/dL' },
+            { term: 'Magnesium (Mg²⁺)', def: '1.7–2.2 mg/dL' },
+            { term: 'Phosphate (PO₄³⁻)', def: '2.5–4.5 mg/dL' },
+            { term: 'Anion gap', def: '8–12 mEq/L' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#f5f3ff; border:1px solid #ddd6fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#6d28d9; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ ECG rhythm monitoring',
+            '✅ Safe IV electrolyte admin.',
+            '✅ Refeeding syndrome prevention',
+            '✅ Medication safety (digoxin)',
+            '✅ Neuromuscular assessment',
+            '✅ Dietary counselling',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#c2410c; margin-bottom:0.5rem;">⚠️ Never Do</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.82rem; color:#374151; display:flex; flex-direction:column; gap:0.35rem;">
+          {[
+            '• IV KCl undiluted — fatal',
+            '• Rapid Na⁺ correction → ODS',
+            '• Digoxin with low K⁺/Mg²⁺',
+            '• Rapid Mg²⁺ IV → arrest',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia/reference-ranges`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f5f3ff; color:#6d28d9; border:1px solid #ddd6fe; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s; margin-bottom:0.5rem;"
+        onmouseover="this.style.background='#ede9fe'"
+        onmouseout="this.style.background='#f5f3ff'"
+      >📊 Reference Ranges</a>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

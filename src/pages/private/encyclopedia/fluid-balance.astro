@@ -1,0 +1,256 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Fluid balance is the physiological state in which the volume of water gained by the body equals the volume of water lost over a defined period. Because water constitutes approximately 60 percent of adult body weight—a proportion that varies with age, sex, and adiposity—its precise regulation is fundamental to cardiovascular stability, cellular metabolism, thermoregulation, and the transport of oxygen, nutrients, hormones, and waste products. Disruption of fluid balance, whether in the direction of deficit or excess, generates a cascade of systemic consequences that range from mild functional impairment to life-threatening haemodynamic collapse. For nursing professionals, fluid balance is not merely a laboratory parameter to be recorded; it is a dynamic clinical construct that demands continuous assessment, informed interpretation, and timely intervention. Mastery of this concept is therefore essential to safe and effective nursing practice across every clinical speciality.`,
+  },
+  {
+    id: 'fluid-compartments',
+    heading: 'Fluid Compartments and Distribution',
+    body: `Body water is distributed across two principal compartments: the intracellular fluid (ICF) and the extracellular fluid (ECF). The ICF accounts for approximately 40 percent of body weight (roughly two-thirds of total body water) and represents the fluid contained within the cytoplasm of all cells. The ECF comprises the remaining one-third and is further subdivided into the intravascular compartment (plasma, approximately 5 percent of body weight), the interstitial compartment (fluid surrounding cells, approximately 15 percent), and a smaller transcellular fraction that encompasses cerebrospinal fluid, synovial fluid, aqueous humour, and pleural, pericardial, and peritoneal fluid.
+
+The movement of water between compartments is governed by the Starling forces—hydrostatic pressure and osmotic pressure—operating across semi-permeable membranes. At the arterial end of a capillary, hydrostatic pressure exceeds oncotic pressure, driving fluid into the interstitium. At the venous end, oncotic pressure predominates, drawing fluid back into the capillary. Disruption of these forces—as occurs with hypoalbuminaemia, venous hypertension, lymphatic obstruction, or increased capillary permeability—produces oedema, the pathological accumulation of fluid in interstitial spaces.
+
+Osmolality—the concentration of osmotically active solutes per kilogram of solvent—is the principal determinant of water distribution between compartments. Normal serum osmolality ranges from 275 to 295 mOsm/kg. Sodium, the dominant extracellular cation, is the primary determinant of ECF osmolality; alterations in serum sodium are therefore closely coupled to changes in ECF volume and, through osmotic equilibration, to ICF volume. This coupling is the physiological basis for the clinical dictum that water follows sodium.`,
+  },
+  {
+    id: 'regulation',
+    heading: 'Regulation of Fluid Balance',
+    body: `The maintenance of fluid homeostasis depends on an integrated network of neurohormonal mechanisms that continuously match intake to output and distribute fluid appropriately across compartments.
+
+Antidiuretic Hormone (ADH / Vasopressin). Synthesised in the hypothalamic supraoptic and paraventricular nuclei and released from the posterior pituitary, ADH is the primary regulator of water reabsorption in the renal collecting ducts. Its secretion is stimulated by an increase in plasma osmolality of as little as 1–2 percent (detected by hypothalamic osmoreceptors) and by a decrease in effective circulating volume of 5–10 percent (detected by baroreceptors in the carotid sinus, aortic arch, and left atrium). ADH acts on V2 receptors in the collecting duct principal cells to increase the density of aquaporin-2 water channels in the apical membrane, thereby increasing water permeability and reducing urine output. The syndrome of inappropriate ADH secretion (SIADH), in which ADH release is sustained despite adequate volume and low osmolality, produces hyponatraemia and is a common and clinically significant cause of fluid imbalance in hospitalised patients.
+
+The Renin-Angiotensin-Aldosterone System (RAAS). A decrease in renal perfusion pressure, detected by juxtaglomerular cells in the afferent arteriole, triggers the release of renin, which cleaves angiotensinogen to angiotensin I. Angiotensin-converting enzyme (ACE) converts angiotensin I to angiotensin II, a potent vasoconstrictor that also stimulates aldosterone secretion from the adrenal cortex. Aldosterone promotes sodium (and secondary water) reabsorption in the distal tubule and collecting duct, expanding ECF volume. The RAAS is a central target of pharmacological management in conditions of chronic fluid excess, including heart failure and hypertension, through the use of ACE inhibitors, angiotensin receptor blockers, and aldosterone antagonists.
+
+Atrial Natriuretic Peptide (ANP) and Brain Natriuretic Peptide (BNP). Released from atrial and ventricular myocytes respectively in response to wall stretch caused by volume overload, natriuretic peptides oppose the RAAS by promoting sodium and water excretion (natriuresis and diuresis), inhibiting aldosterone and ADH secretion, and inducing vasodilation. BNP and its inactive precursor fragment NT-proBNP are clinically measured as biomarkers of ventricular wall stress; elevated levels support a diagnosis of heart failure and correlate with the degree of fluid overload.
+
+Thirst. The conscious sensation of thirst, generated by hypothalamic osmoreceptors and by angiotensin II acting on circumventricular organs, is the behavioural determinant of fluid intake. In healthy adults, thirst is a reliable and sensitive mechanism for maintaining hydration. However, thirst is impaired or unreliable in infants, older adults, patients with altered consciousness, and those receiving certain medications, making these populations particularly vulnerable to fluid deficit.`,
+  },
+  {
+    id: 'fluid-deficit',
+    heading: 'Fluid Volume Deficit',
+    body: `Fluid volume deficit (FVD), or hypovolaemia, occurs when the loss of water and solutes from the ECF exceeds intake. It may arise from inadequate intake alone (as in the dysphagic, confused, or incapacitated patient) or, more commonly, from abnormal losses including haemorrhage, profuse diaphoresis, vomiting, diarrhoea, burns, third-spacing, excessive diuresis, or adrenal insufficiency.
+
+Pathophysiology. Loss of ECF volume reduces venous return and cardiac preload, decreasing stroke volume and cardiac output. Compensatory sympathetic activation increases heart rate and peripheral vasoconstriction, and the RAAS and ADH responses are activated to conserve sodium and water. If losses are not corrected, these compensatory mechanisms are eventually overwhelmed, leading to progressive tissue hypoperfusion, lactic acidosis, and, in severe cases, circulatory shock.
+
+Clinical Presentation. The clinical manifestations of FVD are broadly proportional to its severity. Mild deficit (approximately 2–4 percent of body weight lost) produces thirst, dry mucous membranes, mild postural dizziness, and a slight increase in heart rate. Moderate deficit (4–8 percent) produces marked orthostatic hypotension, tachycardia at rest, reduced skin turgor, sunken eyes, oliguria (urine output less than 0.5 mL/kg/hour), and concentrated urine with a specific gravity greater than 1.030 and an osmolality greater than 500 mOsm/kg. Severe deficit (greater than 8 percent) produces supine hypotension, tachycardia, confusion, mottled extremities, and represents haemodynamic compromise requiring emergency intervention.
+
+Laboratory Findings. Haemoconcentration raises the haematocrit and serum protein concentrations. Urea (BUN) rises disproportionately to creatinine (BUN:creatinine ratio greater than 20:1 in prerenal azotaemia), reflecting increased tubular urea reabsorption under ADH stimulation. Urine sodium falls below 20 mEq/L (sodium avidity), and the fractional excretion of sodium (FeNa) is less than 1 percent, indicating intact renal tubular conservation. Serum sodium may be elevated (hypernatraemia) in pure water deficit, normal (isotonic dehydration) in proportional sodium and water loss, or low in hypotonic dehydration or if the patient has consumed excess free water.
+
+Nursing Management. Nursing priorities in fluid volume deficit include accurate assessment of intake and output (with documentation of all sources of abnormal loss), daily weight measurement (the most reliable clinical indicator of acute fluid shifts, with one kilogram approximating one litre of water), vital sign monitoring with attention to postural changes, assessment of skin turgor, mucous membranes, urine characteristics, level of consciousness, and peripheral perfusion. Fluid replacement is guided by the severity of deficit, the underlying cause, and the patient's comorbidities. Oral rehydration is preferred for mild-to-moderate isotonic deficit in alert patients; intravenous crystalloid (typically 0.9% sodium chloride or balanced solutions such as lactated Ringer's) is indicated for moderate-to-severe deficit or when the oral route is unavailable.`,
+  },
+  {
+    id: 'fluid-excess',
+    heading: 'Fluid Volume Excess',
+    body: `Fluid volume excess (FVE), or hypervolaemia, is characterised by an abnormal expansion of the ECF compartment, almost always involving a proportionate excess of both sodium and water. Common causes include heart failure, hepatic cirrhosis, nephrotic syndrome (which reduces plasma oncotic pressure), acute and chronic kidney disease (which impairs renal excretion), and the administration of excessive intravenous fluid.
+
+Pathophysiology. Regardless of aetiology, FVE results in elevated hydrostatic pressure at the capillary level (or reduced oncotic pressure in hypoalbuminaemic states), favouring movement of fluid from the intravascular to the interstitial compartment and producing oedema. In heart failure, reduced cardiac output paradoxically activates the RAAS (through reduced renal perfusion), causing sodium and water retention that worsens the already overloaded circulation. Pulmonary oedema—the accumulation of fluid in the alveoli and interstitium of the lungs—represents the most immediately life-threatening consequence of intravascular fluid excess, impairing gas exchange and producing hypoxaemia.
+
+Clinical Presentation. Signs of FVE include peripheral oedema (pitting oedema of the ankles, pretibial areas, and sacrum in the recumbent patient), pulmonary crackles (reflecting interstitial and alveolar fluid), dyspnoea (particularly orthopnoea and paroxysmal nocturnal dyspnoea), elevated jugular venous pressure, and a third heart sound (S3 gallop). Weight gain of 0.5–1.0 kg per day or greater indicates fluid accumulation. Laboratory findings may include a dilutional decrease in haematocrit and serum protein, hyponatraemia in severe dilutional states, and elevated BNP or NT-proBNP reflecting ventricular stretch.
+
+Nursing Management. Nursing care of the patient with FVE includes vigilant monitoring of respiratory status (with position of comfort—typically high-Fowler's—to optimise diaphragmatic excursion), strict intake and output records, daily weights, monitoring of oedema using a standardised scale (+1 to +4), assessment of jugular venous pressure, and auscultation of lung fields. Dietary sodium restriction supports pharmacological management. Diuretic therapy—most commonly loop diuretics such as furosemide—is the pharmacological cornerstone of treatment; nurses must monitor the response (urine output, weight change, electrolyte levels) and observe for adverse effects including hypokalaemia, hyponatraemia, hypotension, and ototoxicity.`,
+  },
+  {
+    id: 'clinical-assessment',
+    heading: 'Clinical Assessment of Fluid Status',
+    body: `Accurate clinical assessment of fluid status integrates subjective history, objective physical examination, intake-output analysis, daily weight trending, and interpretation of laboratory and haemodynamic data. No single parameter is sufficient; clinical judgment must synthesise multiple sources of evidence.
+
+History. The assessment begins with a targeted history eliciting the duration and nature of any abnormal losses (vomiting, diarrhoea, haemorrhage, excessive sweating), oral intake relative to baseline, weight change over recent days, and relevant medical history (cardiac, hepatic, renal, endocrine conditions) and medications (diuretics, NSAIDs, ACE inhibitors, corticosteroids).
+
+Physical Examination. Key findings include: skin turgor (assessed by pinching the skin over the clavicle or dorsum of the hand; a slow return, or "tenting," suggests deficit, though this sign is less reliable in older adults due to reduced skin elasticity); mucous membrane moisture; capillary refill time (normal less than 2 seconds); jugular venous pressure (assessed at 45 degrees; elevation suggests volume excess or impaired cardiac function); auscultation of lung bases for crackles; peripheral pulse quality; and presence, distribution, and pitting grade of oedema.
+
+Urine Assessment. Urine colour, specific gravity, and osmolality provide rapid non-laboratory indicators of fluid status. Concentrated amber urine with high specific gravity indicates renal conservation of water (suggesting FVD or ADH excess). Dilute pale urine with low specific gravity may indicate FVE, diabetes insipidus, or excessive fluid intake.
+
+Haemodynamic Monitoring. In the critical care setting, central venous pressure (CVP), pulmonary artery wedge pressure (PAWP), and point-of-care ultrasonography (POCUS) of the inferior vena cava (IVC) diameter and its respiratory variation provide more precise assessment of preload and volume responsiveness. A collapsing IVC (collapse greater than 50 percent with inspiration) correlates with low right atrial pressure and volume responsiveness; a plethoric, poorly collapsing IVC suggests elevated right atrial pressure consistent with FVE or right heart failure.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `The clinical management of fluid balance is a core nursing responsibility that spans assessment, planning, intervention, evaluation, and patient education.
+
+Intake and Output Monitoring. Accurate documentation of all fluid intake (oral, enteral, intravenous, irrigation) and all output (urine, emesis, wound drainage, diarrhoea, ostomy output, insensible losses) is the foundation of fluid management. Insensible losses—those that cannot be directly measured—include respiratory and perspiratory losses totalling approximately 800–1,000 mL per day in the afebrile adult, increasing by approximately 100–150 mL per day for each degree Celsius of fever.
+
+Daily Weighing. Daily weights, measured on the same calibrated scale at the same time (typically after voiding and before breakfast), provide the most reliable serial indicator of fluid shifts. A change of one kilogram corresponds approximately to one litre of fluid gain or loss. Nursing documentation should flag weight changes exceeding 1 kg in 24 hours for clinical review.
+
+Intravenous Fluid Management. Nurses administer intravenous fluids according to prescriptions but bear clinical responsibility for monitoring the rate, volume, and patient response. Isotonic crystalloids (0.9% NaCl, lactated Ringer's solution) expand the ECF without causing significant osmotic shifts and are the first-line choice for volume resuscitation. Hypotonic solutions (0.45% NaCl) provide free water and are used for cellular rehydration but are contraindicated in acute hypovolaemia. Hypertonic solutions (3% NaCl, 5% dextrose in 0.9% NaCl) increase ECF osmolality and are used for specific indications including symptomatic hyponatraemia and traumatic brain injury requiring osmotherapy. Colloids (albumin, gelatin solutions) expand plasma volume more efficiently than crystalloids per administered volume but are reserved for specific clinical contexts.
+
+Patient Education. Patients and families require instruction in fluid restriction or fluid loading regimens, the rationale for sodium restriction, signs and symptoms of fluid imbalance to report, and the importance of daily weight monitoring at home. For patients with heart failure, structured self-monitoring programmes incorporating daily weight, symptom tracking, and clear thresholds for contacting healthcare providers have demonstrated efficacy in reducing hospitalisations.
+
+Special Populations. Older adults present particular challenges in fluid assessment: reduced thirst sensitivity, diminished renal concentrating capacity, reduced total body water, and polypharmacy (particularly diuretics and RAAS-active agents) increase both the frequency and severity of fluid imbalance. Paediatric patients have proportionally greater total body water, higher metabolic rates, and greater insensible losses per kilogram, requiring weight-based fluid calculations and age-specific normal values for vital signs and urine output.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Fluid balance is a deceptively complex physiological parameter whose disturbances are among the most common and consequential encountered in clinical nursing practice. A thorough grounding in the anatomy of body fluid compartments, the neurohormonal regulation of fluid homeostasis, the pathophysiology of fluid volume deficit and excess, and the clinical assessment skills required to identify and quantify imbalance equips the nursing student to approach this domain with both intellectual rigour and practical competence. The integration of meticulous intake-output recording, serial weight measurement, targeted physical examination, and informed interpretation of laboratory data—guided by an understanding of the underlying physiological mechanisms—constitutes the standard of care for fluid management. As clinical practice increasingly demands that nurses function as autonomous assessors and advocates, this foundational knowledge becomes not merely academic but professionally indispensable.`,
+  },
+];
+---
+
+<Layout title="Fluid Balance – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Fluid Balance</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#0891b2; background:#ecfeff; border:1px solid #a5f3fc; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            💧 Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Fluid Balance
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of body fluid compartments, neurohormonal regulation mechanisms,
+          the pathophysiology of fluid volume deficit and excess, clinical assessment strategies,
+          and nursing management principles for hospitalised patients.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#0891b2; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#0891b2; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Aucoin, M., &amp; Bhatt, D. L. (2021). Fluid management in the critically ill patient. <em>Critical Care Clinics, 37</em>(2), 345–364.',
+            'Bhave, G., &amp; Neilson, E. G. (2011). Body fluid dynamics: Back to the future. <em>Journal of the American Society of Nephrology, 22</em>(12), 2166–2181.',
+            'Hall, J. E., &amp; Hall, M. E. (2020). <em>Guyton and Hall textbook of medical physiology</em> (14th ed.). Elsevier.',
+            'Herdman, T. H., &amp; Kamitsuru, S. (Eds.). (2018). <em>NANDA international nursing diagnoses: Definitions and classification, 2018–2020.</em> Thieme.',
+            'Hoorn, E. J., &amp; Zietse, R. (2017). Diagnosis and treatment of hyponatremia: Compilation of the guidelines. <em>Journal of the American Society of Nephrology, 28</em>(5), 1340–1349.',
+            'Inzucchi, S. E., &amp; Sherwin, R. S. (2018). Fluid and electrolyte physiology. In L. Goldman &amp; A. I. Schafer (Eds.), <em>Goldman-Cecil medicine</em> (26th ed., pp. 724–741). Elsevier.',
+            'Severs, D., Hoorn, E. J., &amp; Rookmaaker, M. B. (2015). A critical appraisal of intravenous fluids. <em>Nephrology Dialysis Transplantation, 30</em>(2), 178–185.',
+            'Vincent, J. L., &amp; De Backer, D. (2013). Circulatory shock. <em>New England Journal of Medicine, 369</em>(18), 1726–1734.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Total body water', def: '~60% of body weight (adult)' },
+            { term: 'ICF', def: '~40% body weight (2/3 of TBW)' },
+            { term: 'ECF', def: '~20% body weight (1/3 of TBW)' },
+            { term: 'Normal osmolality', def: '275–295 mOsm/kg' },
+            { term: 'Key hormone', def: 'ADH (vasopressin), aldosterone' },
+            { term: 'Normal urine output', def: '≥ 0.5 mL/kg/hr' },
+            { term: '1 kg weight change', def: '≈ 1 L fluid change' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#ecfeff; border:1px solid #a5f3fc; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#0e7490; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Intake & output monitoring',
+            '✅ Daily weight assessment',
+            '✅ IV fluid management',
+            '✅ Oedema assessment',
+            '✅ Haemodynamic monitoring',
+            '✅ Patient & family education',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#c2410c; margin-bottom:0.5rem;">⚠️ Priority Assessments</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '• Urine output < 0.5 mL/kg/hr',
+            '• BP drop > 20 mmHg on standing',
+            '• SpO₂ falling with crackles',
+            '• Acute weight gain > 1 kg/day',
+            '• Altered level of consciousness',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia/reference-ranges`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#ecfeff; color:#0e7490; border:1px solid #a5f3fc; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s; margin-bottom:0.5rem;"
+        onmouseover="this.style.background='#cffafe'"
+        onmouseout="this.style.background='#ecfeff'"
+      >📊 Reference Ranges</a>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
