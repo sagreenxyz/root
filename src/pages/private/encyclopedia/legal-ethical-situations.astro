@@ -1,0 +1,229 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Legal and ethical situations in nursing encompass the full spectrum of clinical encounters in which questions of law, professional regulation, or moral obligation arise and require thoughtful navigation. While ethical dilemmas—situations in which competing values resist clear resolution—have been addressed separately, legal and ethical situations as a broader category includes the routine intersection of nursing practice with legal requirements (mandatory reporting, documentation standards, scope of practice boundaries), institutional policy, and ethical expectation. For nursing students and practising nurses, recognition of when a situation carries legal or ethical dimensions is the first requirement of professional competence; the capacity to respond appropriately is the second.
+
+This article provides a systematic overview of the major categories of legal and ethical situation encountered in nursing, examining the frameworks that nurses apply, the professional obligations implicated, and the institutional and regulatory contexts within which nursing practice occurs. It addresses the relationship between law and ethics, surveys specific situational categories—including abuse and neglect, impaired colleagues, boundary violations, cultural and religious considerations, and whistleblowing—and considers the personal and professional resources that support ethical and legally safe nursing practice. The article is grounded in an awareness that law and ethics, while overlapping, are not identical: legal behaviour is not always ethical, and ethical obligation may exceed legal requirement.`,
+  },
+  {
+    id: 'law-and-ethics',
+    heading: 'The Relationship Between Law and Ethics',
+    body: `Law and ethics both regulate human conduct, but they do so through different mechanisms and with different authorities. Law is a system of enforceable rules established by governmental authority; violations of law result in civil liability, criminal prosecution, regulatory sanction, or professional discipline. Ethics is a systematic inquiry into the principles that should govern human conduct; violations of ethical norms result in moral criticism, professional censure, and—where ethical norms are codified in professional codes—potential disciplinary consequences through professional regulatory bodies.
+
+Overlap and Divergence. In many clinical situations, the legally required course of action and the ethically required course of action coincide: obtaining informed consent before treatment is both a legal requirement (regulated by statute and case law) and an ethical obligation (grounded in respect for patient autonomy). However, divergence is common and sometimes significant. A nurse may be legally permitted to perform a particular action but ethically obligated to refuse it—for example, administering a medication that the nurse has reason to believe is being prescribed inappropriately. Conversely, a nurse may have a strong ethical obligation—for example, to disclose an error to a patient—that is not explicitly required by law in a given jurisdiction and may even conflict with institutional risk-management advice.
+
+Professional Codes of Ethics. Professional codes of ethics—including the American Nurses Association Code of Ethics for Nurses with Interpretive Statements (2015), the International Council of Nurses Code of Ethics for Nurses (2021), and equivalent national documents—articulate the ethical standards of the nursing profession and serve as authoritative guides to ethical conduct. These codes occupy an intermediate position between abstract ethical theory and institutional policy: they are more specific than general bioethical principles and more enduring than individual institutional policies, providing stable reference points for ethical reasoning across varied practice contexts. Nursing regulatory bodies may incorporate elements of the professional code into their competency standards and disciplinary frameworks, giving ethical obligations partial legal force.
+
+Conscientious Objection. A particularly fraught area of law-ethics intersection is conscientious objection—the right of healthcare professionals to decline participation in legal procedures or practices that violate their deeply held moral or religious convictions. In jurisdictions that have legalised procedures such as medical assistance in dying, termination of pregnancy, or certain forms of contraception, nurses may claim conscientious objection to participation. The legal and ethical parameters of conscientious objection are contested: professional organisations generally recognise a qualified right to conscientious objection contingent on (1) timely disclosure to supervisors, (2) ensuring that the patient's access to care is not compromised, and (3) not abandoning a patient in an emergency. Nurses must be familiar with both the legal framework for conscientious objection in their jurisdiction and the professional expectations of their regulatory body.`,
+  },
+  {
+    id: 'abuse-neglect',
+    heading: 'Mandatory Reporting: Abuse and Neglect',
+    body: `Among the most clearly legally defined ethical situations in nursing is the mandatory reporting of suspected abuse and neglect. Every U.S. state and most comparable jurisdictions impose a legal obligation on nurses (and other designated healthcare providers) to report reasonable suspicion of child abuse, child neglect, and in many jurisdictions, elder abuse, domestic violence, and vulnerable adult abuse. Failure to report carries civil and criminal liability and constitutes professional misconduct.
+
+Child Abuse and Neglect. Nurses across all clinical settings—not only paediatric or primary care settings—may encounter children who show signs of abuse or neglect: unexplained or discrepant injuries, pattern injuries consistent with infliction (circular burns, belt-buckle-shaped bruises, bilateral ear bruising), concerning parent-child interaction dynamics, developmental regression, or a child's own disclosure. The reporting obligation attaches to reasonable suspicion, not certainty: nurses are not investigators and are not expected to determine whether abuse has occurred before reporting. Reports are made to designated child protective services agencies; the identity of the reporter is typically protected by statute.
+
+Elder Abuse. Elder abuse—physical, psychological, financial, sexual, or neglect perpetrated against a person aged 60 or 65 years or older—is significantly underreported despite affecting an estimated 1 in 6 older adults globally (WHO, 2021). Nurses in aged care, home health, emergency, and primary care settings are positioned to identify elder abuse indicators: unexplained injuries, poor hygiene inconsistent with stated care arrangements, malnourishment or dehydration in the presence of a caregiver, unexplained financial transactions, or fearfulness in the presence of a caregiver. Mandatory reporting requirements for elder abuse vary by jurisdiction, and nurses should be familiar with the specific requirements applicable to their practice setting.
+
+Intimate Partner Violence. Intimate partner violence (IPV) affects approximately 1 in 3 women and 1 in 4 men in the United States and is a significant contributor to morbidity, mortality, and healthcare utilisation. Nurses in emergency, obstetric, primary care, and mental health settings are positioned to identify patients experiencing IPV through universal screening or presentation with trauma, injuries, or psychosocial indicators. The ethical and legal obligations relating to IPV reporting are more complex and jurisdiction-dependent than child abuse reporting: some jurisdictions mandate reporting of suspected domestic violence injuries, while others emphasise patient autonomy and the potential risks of mandatory reporting to victim safety. The evidence-based nursing response to IPV includes trauma-informed care, safety planning, and connection with community resources.`,
+  },
+  {
+    id: 'impaired-colleagues',
+    heading: 'Impaired Colleagues and Substance Misuse',
+    body: `One of the most personally and professionally challenging legal and ethical situations in nursing is encountering a colleague who appears to be impaired by alcohol, drugs, or another substance while on duty, or who shows signs of substance dependence in their personal life. Nursing is a profession with elevated rates of substance use disorder compared to the general population, in part reflecting the occupational stressors of nursing practice and the ready access to controlled substances in clinical settings.
+
+Recognition and Obligation. Signs of impairment in a colleague include: slurred speech, unsteady gait, the smell of alcohol, pinpoint or dilated pupils, confusion or disorientation, mood changes, frequent absences from the clinical unit, missing controlled substances, or patient complaints about care quality. The ethical obligation to act is clear: an impaired nurse poses a direct risk to patient safety, and the professional obligation to protect patients from harm takes precedence over interpersonal loyalty or reluctance to involve management. The legal obligation may be equally clear in jurisdictions where healthcare facilities are required to report impaired practitioners to regulatory bodies.
+
+Reporting Mechanisms. The appropriate response to a nurse who appears impaired while on duty typically involves immediate removal from clinical contact with patients and a report to the shift supervisor, nursing management, or the relevant human resources and risk management personnel. Long-term responses may involve mandatory referral to occupational health, substance use evaluation and treatment, and—in cases of controlled substance diversion—reporting to the relevant regulatory board and law enforcement authorities. Many jurisdictions and professional nursing organisations have established Alternative to Discipline (ATD) or Peer Assistance Programmes that provide confidential monitoring and treatment pathways for nurses with substance use disorders, with the dual goals of protecting patients and supporting nurse recovery.
+
+Institutional Culture and Non-Reporting. Research consistently identifies non-reporting of impaired colleagues as a significant patient safety problem in nursing workplaces. Non-reporting is driven by complex factors: reluctance to harm a colleague's career, uncertainty about what is observed, fear of retaliation, cultural norms discouraging "snitching," and inexperience in how to report. Nursing education that explicitly addresses the ethical and legal obligations relating to impaired colleagues, and that provides practical guidance on reporting processes, is essential to addressing this gap. Institutional leadership that responds to reports consistently, fairly, and supportively—without retaliating against good-faith reporters—is equally essential.`,
+  },
+  {
+    id: 'professional-boundaries',
+    heading: 'Professional Boundaries and Boundary Violations',
+    body: `The therapeutic relationship between nurse and patient is defined by a power differential—the nurse possesses clinical expertise, institutional authority, and access to intimate physical and personal information about the patient—that creates the potential for exploitation when professional boundaries are not maintained. Professional boundaries are the behavioural, physical, and relational limits that define and protect the therapeutic nature of the nurse-patient relationship.
+
+Types of Boundary Violations. Boundary violations exist on a spectrum from minor incursions to serious exploitation. Self-disclosure beyond what is therapeutically indicated, accepting gifts of more than token value, providing personal contact details, maintaining contact with patients outside clinical encounters, and fostering financial or personal dependency all represent boundary crossings that may progress to more serious violations. At the extreme end of the spectrum, sexual contact with a patient constitutes a profound professional and legal violation that results in regulatory action, loss of licensure, and civil or criminal liability. Boundary violations can occur in both directions, with some patients making inappropriate requests of nurses; the professional obligation lies with the nurse to maintain boundaries regardless of patient initiation.
+
+Dual Relationships. A dual relationship exists when a nurse simultaneously occupies the professional nursing role and another role with respect to the same individual—as a friend, family member, employer, or intimate partner. Dual relationships create role conflicts, compromise the objectivity of clinical judgement, and may compromise the patient's willingness to disclose clinically relevant information. Professional nursing organisations generally recommend against providing nursing care to family members or close friends in formal clinical settings (beyond immediate emergency care), and nurses who find themselves in dual relationships should disclose the situation to their supervisor and arrange for alternative care provision.
+
+Social Media and Digital Boundaries. The pervasive use of social media has created new dimensions of professional boundary management. Posting patient images, sharing identifying clinical information, accepting patient connection requests on personal social media accounts, and communicating with patients via personal messaging platforms all represent boundary violations with potential legal consequences under privacy legislation as well as professional disciplinary consequences. Institutional social media policies and professional nursing organisation guidance—which uniformly caution against social media use that could compromise patient privacy or the professional nurse-patient relationship—should be thoroughly internalised by nursing students before they commence clinical placements.`,
+  },
+  {
+    id: 'cultural-religious',
+    heading: 'Cultural, Religious, and Spiritual Considerations',
+    body: `Healthcare is delivered to patients whose cultural, religious, and spiritual backgrounds shape their experiences of illness, their understanding of treatment options, their decision-making processes, and their expectations of care. Legal and ethical situations arise when these backgrounds create tension with standard clinical practices, professional nursing values, or institutional policies.
+
+Cultural Humility and Cultural Competence. The concept of cultural competence—the acquisition of specific knowledge, attitudes, and skills to care effectively for patients from particular cultural backgrounds—has been increasingly complemented and in some frameworks replaced by cultural humility: a lifelong process of self-reflection and critique of one's own cultural assumptions, combined with a commitment to learning from and advocating for patients whose backgrounds differ from one's own. Culturally humble nursing practice approaches each patient's cultural, religious, and spiritual context as a unique individual expression rather than a predictable categorical feature, avoiding stereotyping while remaining attentive to the social and cultural dimensions of care.
+
+Religiously Informed Refusals. Patients may refuse specific medical treatments on religious grounds: Jehovah's Witness patients refuse blood transfusion; some Christian Scientists decline conventional medical treatment; some Muslim patients may decline procedures scheduled during Ramadan fasting; some patients across traditions decline treatments they associate with moral wrongdoing. These refusals must be respected when made by a competent adult patient with decision-making capacity, regardless of the nurse's own assessment of the wisdom of the refusal. Documenting that the patient has received full information about the risks of refusal, that capacity has been assessed, and that the refusal is consistent and genuine is both ethically important and legally protective. When a patient who lacks capacity has a religious directive (such as a pre-signed refusal of blood transfusion), the legal and ethical weight of that directive depends on jurisdiction-specific law and must be adjudicated with input from clinical ethics and legal counsel.
+
+Culturally Specific Practices. Some patients or families request or continue cultural health practices alongside conventional medical care: traditional herbal medicines, spiritual healers, rituals, dietary practices, or prayer. Nurses who approach these practices with curiosity and respect, assessing for potential drug-herb interactions, nutrition-related concerns, or infection risks without dismissing or stigmatising the practices, are better positioned to provide safe, culturally integrated care. Conflict arises when a culturally specific practice is assessed as posing a serious risk to the patient, requiring the nurse to engage in a respectful, honest dialogue about the clinical concerns while maintaining cultural respect.`,
+  },
+  {
+    id: 'whistleblowing',
+    heading: 'Whistleblowing and Speaking Up for Safety',
+    body: `Whistleblowing—the act of reporting wrongdoing, unsafe practice, or organisational failures to an appropriate authority—is among the most ethically complex and personally costly professional obligations a nurse may face. It is simultaneously a moral obligation grounded in the duty to protect patients and the public, and a professionally and personally high-risk action that may invite retaliation, professional isolation, and career disruption.
+
+Legal Protections for Whistleblowers. Most jurisdictions have enacted whistleblower protection legislation that provides some degree of legal protection to employees who report in good faith illegal activity, serious safety violations, or professional misconduct. In the United States, the Whistleblower Protection Act (1989) protects federal employees; nurse-specific protections are included in the Nurse Staffing Standards for Hospital Patient Safety and Quality Care Act and various state nurse protection statutes. In practice, legal protections are imperfect and do not eliminate the personal and professional costs that whistleblowers frequently experience.
+
+The Ethics of Speaking Up. Beyond formal whistleblowing to external authorities, nurses face daily decisions about whether and how to speak up about safety concerns within their own institutions: questioning a physician's order, raising a concern about a colleague's practice, reporting an environmental hazard, or challenging a staffing decision that they believe is unsafe. Research on patient safety consistently identifies a "culture of silence"—in which hierarchy, interprofessional dynamics, fear of embarrassment, and organisational culture suppress safety-relevant communication—as a major contributor to preventable adverse events. Programmes that train nurses in structured assertive communication—SBAR (Situation, Background, Assessment, Recommendation), CUS (Concerned, Uncomfortable, This is a Safety issue), and two-challenge rules—provide practical tools for speaking up in high-stakes situations.
+
+Institutional Responses and Nursing Leadership. Healthcare organisations that respond to nurse-raised safety concerns with investigation, transparency, and genuine improvement demonstrate the kind of psychological safety that supports reporting. Those that respond with dismissal, blame, or retaliation undermine both the reporting culture and the moral integrity of their nursing staff. Nursing leaders—charge nurses, nurse managers, directors of nursing—play a central role in shaping the culture within which individual nurses exercise or suppress their ethical obligation to speak up. Nurses who understand the evidence on this issue are better positioned to advocate for the institutional conditions that support ethical nursing practice.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Legal and ethical situations pervade nursing practice across every clinical context and patient population. Navigating them requires an integrated repertoire of knowledge—about relevant law, professional standards, ethical principles, and institutional policy—combined with the reflective capacity to apply this knowledge thoughtfully to the particular circumstances of individual situations. The categories surveyed in this article—mandatory reporting, impaired colleagues, professional boundaries, cultural and religious considerations, and whistleblowing—represent some of the most challenging situations nurses encounter, precisely because they involve competing obligations, uncertain evidence, personal risk, and moral complexity. Nursing education that explicitly addresses these situations, that provides both conceptual frameworks and practical skills, and that supports the development of moral courage—the capacity to act ethically in the face of personal or professional risk—prepares nurses for the full demands of professional practice. In a healthcare system that depends on the integrity, advocacy, and ethical commitment of its nursing workforce, the cultivation of this competence is a matter of institutional and social importance as much as individual professional development.`,
+  },
+];
+---
+
+<Layout title="Legal and Ethical Situations – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Legal and Ethical Situations</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            ⚖️ Ethics &amp; Law
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Legal and Ethical Situations
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic survey of the major categories of legal and ethical situation encountered in nursing
+          practice—including mandatory reporting, impaired colleagues, professional boundary management,
+          cultural and religious considerations, and speaking up for patient safety.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'American Nurses Association. (2015). <em>Code of ethics for nurses with interpretive statements.</em> ANA.',
+            'Beauchamp, T. L., &amp; Childress, J. F. (2019). <em>Principles of biomedical ethics</em> (8th ed.). Oxford University Press.',
+            'Epstein, E. G., &amp; Hamric, A. B. (2009). Moral distress, moral residue, and the crescendo effect. <em>Journal of Clinical Ethics, 20</em>(4), 330–342.',
+            'International Council of Nurses. (2021). <em>The ICN code of ethics for nurses.</em> ICN.',
+            'Lachman, V. D. (2010). Moral courage: Essential ingredient of ethical nursing practice. <em>Medsurg Nursing, 19</em>(5), 313–316.',
+            'Marquis, B. L., &amp; Huston, C. J. (2021). <em>Leadership roles and management functions in nursing: Theory and application</em> (10th ed.). Lippincott Williams &amp; Wilkins.',
+            'Tervalon, M., &amp; Murray-García, J. (1998). Cultural humility versus cultural competence. <em>Journal of Health Care for the Poor and Underserved, 9</em>(2), 117–125.',
+            'World Health Organization. (2021). <em>Elder abuse.</em> WHO.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key distinction', def: 'Legal ≠ always ethical; ethics may exceed law' },
+            { term: 'Reporting threshold', def: 'Reasonable suspicion (not certainty)' },
+            { term: 'Boundary principle', def: 'Power differential demands nurse responsibility' },
+            { term: 'Objection right', def: 'Conscientious objection (qualified)' },
+            { term: 'Speaking-up tool', def: 'SBAR; CUS; two-challenge rule' },
+            { term: 'Protection law', def: 'Whistleblower Protection Act (US, 1989)' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Mandatory abuse reporting',
+            '✅ Impaired colleague response',
+            '✅ Professional boundary maintenance',
+            '✅ Cultural humility in care',
+            '✅ Whistleblowing and speaking up',
+            '✅ Conscientious objection rights',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

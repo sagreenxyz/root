@@ -1,0 +1,226 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Nursing decisions and actions constitute the operational core of professional nursing practice—the moment-to-moment cognitive and behavioural outputs through which nurses translate clinical knowledge, ethical commitment, and interpersonal skill into patient care. Unlike the relatively scripted decision-making of medical officers, whose authority is centred on diagnosis and prescribing, nursing decision-making is distinguished by its continuous, contextual, and relational character. Nurses assess patients repeatedly throughout every shift, interpret evolving clinical data, prioritise competing demands across multiple patients, coordinate care with interprofessional teams, educate patients and families, administer medications, execute therapeutic procedures, and provide the physical and emotional support that sustains patients through illness, injury, and recovery. Each of these activities involves decisions—some deliberate and analytically explicit, others rapid and intuition-driven—that collectively determine the quality and safety of care.
+
+This article examines the nature, theoretical underpinnings, and practical dimensions of nursing decisions and actions. It surveys the cognitive processes that underlie clinical reasoning, describes the major models of nursing decision-making, considers factors that support or impair decision quality, and explores the relationships among nursing actions, patient outcomes, and professional accountability. A thorough understanding of how nurses think and act in clinical settings is foundational to both the quality improvement of nursing practice and the development of the next generation of nursing professionals.`,
+  },
+  {
+    id: 'clinical-reasoning',
+    heading: 'Clinical Reasoning and Clinical Judgement',
+    body: `Clinical reasoning is the cognitive process by which nurses collect, interpret, and synthesise patient information to identify problems, generate hypotheses, evaluate options, and arrive at care decisions. It is often described as the intellectual engine of professional nursing practice, and its cultivation—through education, supervision, and reflective experience—is a primary goal of nursing curricula internationally.
+
+Models of Clinical Reasoning. Several theoretical models describe the cognitive processes involved in clinical reasoning. The hypothetico-deductive model, borrowed from scientific philosophy, describes reasoning as a process of generating hypotheses (candidate diagnoses or care problems) from initial patient cues and then seeking information to confirm or disconfirm them. The pattern recognition model, derived from expertise research, describes how experienced clinicians rapidly match current patient presentations to prototypes stored in long-term memory, bypassing the analytical steps that novices must traverse. Both models operate in clinical practice: novice nurses tend toward more deliberate hypothetico-deductive reasoning, while experienced nurses increasingly rely on pattern recognition for familiar presentations, reserving analytical reasoning for novel or complex situations.
+
+Clinical Judgement. Clinical judgement refers to the interpretive conclusions that clinical reasoning produces—the nurse's determination that a patient is deteriorating, that a medication effect is inadequate, or that a family is not coping with a diagnosis. Tanner's Clinical Judgement Model (2006), one of the most widely cited frameworks in nursing education, describes clinical judgement as a four-phase process: noticing (perceiving clinically relevant cues), interpreting (making sense of what is noticed), responding (deciding what action to take), and reflecting (evaluating the effectiveness of actions taken). The model emphasises that clinical judgement is not a purely cognitive exercise but is embedded in relational and contextual factors: the nurse's relationship with the patient, the expectations of the clinical environment, and the broader social and institutional culture of nursing practice.
+
+Intuition in Clinical Nursing. The role of intuition—rapid, non-analytical knowing that is difficult to verbalise but that experienced nurses consistently report—has been a contested topic in nursing epistemology. Drawing on the Dreyfus model of skill acquisition, Patricia Benner's influential work From Novice to Expert (1984) argued that expert nurses develop a form of embodied clinical intuition that represents not irrational guessing but the highly compressed, pattern-based processing of a large experiential database. Subsequent research has partially supported this characterisation, showing that expert nurses generate more accurate cue interpretations under time pressure and with limited information than novices operating deliberately. The practical implication for nursing education is that clinical intuition, rather than being dismissed or celebrated uncritically, should be cultivated through supervised experience and subjected to reflective analysis.`,
+  },
+  {
+    id: 'nursing-process',
+    heading: 'The Nursing Process',
+    body: `The nursing process—Assessment, Diagnosis, Planning, Implementation, and Evaluation (ADPIE)—is the foundational problem-solving framework of professional nursing. Originally conceptualised by Ida Jean Orlando in the 1960s and subsequently elaborated and formalised by nursing theorists including Yura and Walsh (1967) and, later, NANDA International, the nursing process provides a systematic, iterative structure for clinical reasoning and care delivery.
+
+Assessment. Assessment involves the systematic collection of subjective data (the patient's own account of their symptoms, concerns, and history) and objective data (measurable clinical findings: vital signs, physical examination findings, laboratory results, diagnostic imaging). Comprehensive assessment encompasses physical, psychological, social, cultural, spiritual, and environmental dimensions of the patient's condition. The quality of assessment depends heavily on the nurse's communication skills, observational acuity, clinical knowledge, and capacity to build a therapeutic relationship in which patients feel safe to disclose relevant information. Assessment is not a one-time event but a continuous process that is updated with every patient contact.
+
+Nursing Diagnosis. Based on assessment findings, nurses formulate nursing diagnoses—clinical judgements about actual or potential human responses to health problems or life processes (NANDA-I, 2021). Nursing diagnoses are distinct from medical diagnoses in that they address human responses to illness, injury, and treatment rather than pathological conditions per se, and they define the domain of independent nursing intervention. A patient with myocardial infarction (medical diagnosis) may have nursing diagnoses of Acute pain related to myocardial ischaemia, Activity intolerance related to imbalance between oxygen supply and demand, and Anxiety related to perceived threat to life—each of which directs a distinct dimension of nursing care.
+
+Planning. Care planning translates nursing diagnoses into measurable outcomes and the nursing interventions designed to achieve them. Effective care plans specify outcomes in observable, measurable terms (e.g., "Patient will report pain ≤4/10 on numeric rating scale within 30 minutes of analgesic administration"), identify nursing interventions with sufficient specificity to guide practice, establish realistic time frames, and incorporate the patient's own goals and priorities. Interprofessional care planning—conducted collaboratively with medicine, allied health, social work, and other disciplines—ensures that nursing goals are integrated with the overall therapeutic plan.
+
+Implementation. Implementation is the action phase of the nursing process—the actual performance of nursing interventions as specified in the care plan. These include independent interventions (actions within the nurse's autonomous scope of practice, such as patient education, repositioning, emotional support, and skin care), dependent interventions (actions requiring a medical order, such as medication administration), and collaborative interventions (actions requiring coordination with other disciplines, such as physiotherapy referral). Safe, effective implementation requires not only technical skill but also the relational and communicative capacities to engage patients as active participants in their own care.
+
+Evaluation. Evaluation assesses the extent to which nursing interventions have achieved the planned patient outcomes and determines whether modifications to the care plan are necessary. It closes the loop of the nursing process by generating new assessment data that initiates a revised cycle of diagnosis, planning, and implementation. Evaluation is thus continuous rather than episodic, driving the dynamic responsiveness to changing patient status that characterises skilled nursing care.`,
+  },
+  {
+    id: 'priority-setting',
+    heading: 'Priority Setting and Time Management',
+    body: `Among the most demanding cognitive tasks in nursing practice is the simultaneous management of multiple patients with competing needs under conditions of time pressure, interruption, and resource constraint. Priority setting—the systematic ranking of nursing actions by urgency, importance, and clinical consequence—is an essential competency that distinguishes safe from unsafe nursing practice.
+
+Maslow's Hierarchy in Clinical Priority Setting. A widely taught heuristic for clinical priority setting adapts Maslow's hierarchy of needs to guide the sequencing of nursing actions: physiological needs (airway, breathing, circulation, and immediate life-threatening conditions) take precedence over safety needs (risk of falls, medication errors, infection), which take precedence over psychological and social needs. This framework, while not a substitute for clinical judgement, provides a useful starting scaffold for novice nurses developing priority-setting skills.
+
+ABCDE Framework. The ABCDE (Airway, Breathing, Circulation, Disability, Exposure) assessment framework, widely used in acute and emergency nursing, provides a systematic, life-threat-first approach to rapid clinical assessment and initial priority setting. Working through the ABCDE sequence ensures that immediately life-threatening problems are identified and addressed before more detailed assessment proceeds.
+
+Delegation and Task Assignment. Registered nurses frequently supervise and delegate tasks to enrolled nurses, nursing assistants, and other support personnel. Safe delegation requires judgement about the complexity and risk of the task, the competence and scope of practice of the delegate, the degree of supervision available, and the current condition of the patient. The five rights of delegation—right task, right circumstance, right person, right direction and communication, and right supervision and evaluation—provide a practical framework for delegation decisions. Inappropriate delegation—assigning tasks that exceed the delegate's competence or that require ongoing clinical assessment—is a source of preventable patient harm and a basis for nursing accountability.
+
+Interruptions and Cognitive Load. Research consistently demonstrates that nursing practice is characterised by high rates of interruption, with nurses on acute wards experiencing an interruption every three to five minutes on average. Interruptions during high-risk nursing activities—particularly medication administration—are significantly associated with medication errors. Organisational strategies including dedicated medication administration safety zones, structured handover protocols, and workflow redesign that reduces unnecessary task switching support the cognitive conditions necessary for safe nursing decision-making.`,
+  },
+  {
+    id: 'evidence-based-practice',
+    heading: 'Evidence-Based Practice and Nursing Decisions',
+    body: `Evidence-based practice (EBP) is the integration of the best available research evidence with clinical expertise and patient values in making healthcare decisions. For nursing, EBP represents both an epistemological commitment—decisions should be grounded in the best available evidence rather than tradition, authority, or habit—and a practical methodology for identifying, appraising, and implementing research findings in clinical settings.
+
+The Hierarchy of Evidence. Not all research evidence is of equal quality for informing clinical decisions. Evidence hierarchies rank study designs by their susceptibility to bias: at the apex sit systematic reviews and meta-analyses of randomised controlled trials, followed by individual RCTs, cohort studies, case-control studies, cross-sectional studies, and expert opinion. Clinical practice guidelines—synthesised, appraised, and periodically updated by professional organisations and government health bodies—translate this evidence hierarchy into actionable clinical recommendations. Nurses who can locate, appraise, and interpret clinical practice guidelines are better positioned to advocate for evidence-based care in clinical settings.
+
+The Iowa Model of EBP. Among the several EBP frameworks developed for nursing, the Iowa Model of Evidence-Based Practice (updated 2017) is one of the most widely adopted in hospital and health system settings. It describes EBP as a cyclical, organisationally embedded process: identifying a clinical problem or question (a "trigger"), searching for and appraising available evidence, piloting a practice change, evaluating outcomes, and institutionalising or disseminating successful changes. The model foregrounds the organisational and interprofessional dimensions of EBP implementation, acknowledging that evidence translation requires not only individual nurse capacity but also institutional resources, leadership support, and collaborative structures.
+
+Clinical Practice Guidelines and Protocols. Standardised clinical protocols and order sets—derived from evidence-based guidelines and endorsed by the interprofessional team—constrain nursing decision-making in beneficial ways: they reduce unwarranted variation in care, prevent omission of guideline-recommended interventions, and support safe care delivery in routine situations. However, protocols cannot anticipate every clinical scenario, and nurses retain the professional obligation to exercise independent judgement when a patient's circumstances fall outside the protocol's scope or when protocol adherence would be clinically inappropriate.`,
+  },
+  {
+    id: 'accountability',
+    heading: 'Accountability and Responsibility in Nursing Actions',
+    body: `Nursing decisions and actions occur within a framework of professional accountability that encompasses legal liability, regulatory oversight, institutional policy, and ethical obligation. Understanding this accountability framework is essential for both the safe conduct of nursing practice and the professional development of individual nurses.
+
+Scope of Practice. Each nurse is legally authorised to practise only within the scope of practice defined by the regulatory authority in their jurisdiction (e.g., state nursing boards in the United States, the Nursing and Midwifery Council in the United Kingdom, AHPRA in Australia). Scope of practice encompasses the range of activities a nurse is educated, competent, and legally authorised to perform, and varies by level of education (registered nurse, nurse practitioner, advanced practice nurse) and specialisation. Practising outside one's authorised scope—whether by performing actions for which one is not qualified or by accepting a delegation that exceeds one's competence—exposes both the nurse and the patient to risk.
+
+Professional Standards and Standards of Care. The legal standard of care to which nurses are held in civil litigation is the care that a reasonable, prudent nurse with equivalent education, training, and experience would provide under similar circumstances. This standard is defined partly by statute and regulation, partly by professional nursing standards (such as those published by the American Nurses Association), and partly by institutional policy. Deviation from the standard of care that causes foreseeable patient harm constitutes negligence—the most common basis for nursing malpractice claims.
+
+Documentation as a Medicolegal Record. Nursing documentation is both a communication tool and a medicolegal record. The legal principle "if it wasn't documented, it wasn't done" reflects the evidentiary weight that nursing notes carry in litigation, disciplinary proceedings, and quality reviews. Accurate, timely, and complete nursing documentation—using objective language, standardised terminology, and contemporaneous recording—is a professional obligation and a patient safety requirement. Failure to document clinical assessments, interventions, and patient responses may prevent the detection of deterioration and constitutes a basis for professional accountability.
+
+Near-Miss Reporting and Safety Culture. Medication errors, near-misses, falls, and other adverse events must be reported through institutional incident reporting systems, which serve quality improvement, risk management, and organisational learning functions. Professional and ethical norms require honest, complete reporting even when the nurse is the individual who made the error. Healthcare organisations that cultivate psychologically safe cultures—in which reporting is met with systemic analysis rather than individual blame—generate more complete adverse event data and achieve superior safety outcomes. Nurses who are aware of this evidence have both a professional incentive and a moral obligation to support a reporting culture by modelling transparent, non-punitive error disclosure.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Nursing decisions and actions represent the practical realisation of nursing knowledge, values, and skill in the service of patient wellbeing. From the rapid pattern recognition of the experienced emergency nurse to the careful deliberative reasoning of the nurse navigating a complex ethical dilemma, clinical decision-making operates across a spectrum of cognitive modes that are shaped by education, experience, context, and the relational quality of the nurse-patient encounter. The nursing process provides a systematic framework for organising this decision-making; evidence-based practice provides its epistemological foundation; clinical reasoning theories illuminate its cognitive architecture; and professional accountability frameworks define its legal and ethical boundaries. Nursing education that cultivates all of these dimensions—technical skill, critical reasoning, ethical sensitivity, evidence literacy, and reflective self-awareness—prepares graduates for the complex, high-stakes decision-making that contemporary nursing demands. As healthcare systems grow in complexity and as nursing's scope of practice continues to expand, the quality of nursing decisions and actions will remain the most consequential determinant of patient safety and outcomes.`,
+  },
+];
+---
+
+<Layout title="Nursing Decisions and Actions – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Nursing Decisions and Actions</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🩺 Clinical Practice
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Nursing Decisions and Actions
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic examination of the cognitive and behavioural foundations of nursing practice—covering
+          clinical reasoning models, the nursing process, priority setting, evidence-based practice,
+          and professional accountability for nursing decisions and actions.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Benner, P. (1984). <em>From novice to expert: Excellence and power in clinical nursing practice.</em> Addison-Wesley.',
+            'Doenges, M. E., Moorhouse, M. F., &amp; Murr, A. C. (2019). <em>Nursing diagnosis manual: Planning, individualizing, and documenting client care</em> (6th ed.). F.A. Davis.',
+            'Melnyk, B. M., &amp; Fineout-Overholt, E. (2022). <em>Evidence-based practice in nursing &amp; healthcare</em> (5th ed.). Lippincott Williams &amp; Wilkins.',
+            'NANDA International. (2021). <em>Nursing diagnoses: Definitions and classification 2021–2023</em> (12th ed.). Thieme.',
+            'Tanner, C. A. (2006). Thinking like a nurse: A research-based model of clinical judgment in nursing. <em>Journal of Nursing Education, 45</em>(6), 204–211.',
+            'Titler, M. G., Kleiber, C., Steelman, V. J., Rakel, B. A., Budreau, G., Everett, L. Q., … Goode, C. J. (2001). The Iowa model of evidence-based practice to promote quality care. <em>Critical Care Nursing Clinics of North America, 13</em>(4), 497–509.',
+            'Reason, J. (2000). Human error: Models and management. <em>BMJ, 320</em>(7237), 768–770.',
+            'Potter, P. A., Perry, A. G., Stockert, P., &amp; Hall, A. (2022). <em>Fundamentals of nursing</em> (11th ed.). Elsevier.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Nursing process', def: 'ADPIE (Assessment–Diagnosis–Planning–Implementation–Evaluation)' },
+            { term: 'Judgement model', def: 'Tanner\'s Clinical Judgement Model (2006)' },
+            { term: 'Priority framework', def: 'ABCDE; Maslow\'s hierarchy' },
+            { term: 'EBP model', def: 'Iowa Model (updated 2017)' },
+            { term: 'Expertise theory', def: 'Benner\'s Novice-to-Expert (1984)' },
+            { term: 'Legal standard', def: 'Reasonable prudent nurse' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Clinical reasoning development',
+            '✅ Safe care prioritisation',
+            '✅ Evidence-based care planning',
+            '✅ Accountability and documentation',
+            '✅ Safe delegation practice',
+            '✅ Adverse event reporting',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

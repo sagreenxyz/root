@@ -1,0 +1,231 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Ethical and legal dilemmas in nursing arise when the demands of moral principle and legal obligation intersect in ways that resist straightforward resolution. Unlike routine clinical decisions, which can be guided by established protocols and evidence-based guidelines, ethical-legal dilemmas present nurses with situations in which competing values—patient autonomy, beneficence, non-maleficence, justice, fidelity, and veracity—cannot all be fully satisfied simultaneously, and where the legally permissible course of action may conflict with the morally preferable one, or vice versa. Navigating these dilemmas requires not only familiarity with the substantive principles of bioethics and the relevant legal framework, but also the reflective capacity to apply these principles thoughtfully to the particular circumstances of individual patients, families, and clinical settings.
+
+This article provides a systematic examination of ethical and legal dilemmas as they present in nursing practice. It surveys the theoretical foundations of biomedical ethics, describes the major categories of dilemma encountered clinically, examines the legal frameworks within which nurses operate, and considers institutional and professional resources that support ethical decision-making. The article is intended to support nursing students in developing the critical thinking and ethical reasoning skills that professional nursing organisations, accreditation bodies, and healthcare ethics commissions identify as core competencies for contemporary nursing practice.`,
+  },
+  {
+    id: 'foundations',
+    heading: 'Foundations of Biomedical Ethics',
+    body: `The contemporary framework of biomedical ethics is most influentially articulated in the four-principle approach (principlism) developed by Tom Beauchamp and James Childress in their landmark text Principles of Biomedical Ethics (first published 1979, now in its eighth edition). Principlism provides a set of mid-level moral principles derived from both common morality and medical tradition that serve as analytical tools for ethical reasoning in clinical contexts.
+
+Respect for Autonomy. Autonomy—the right of competent individuals to make their own decisions about matters affecting their own lives and bodies—is foundational to contemporary biomedical ethics and underlies the legal and ethical requirement for informed consent. Respecting autonomy requires not only refraining from interference with a patient's choices but also supporting the patient's capacity to make decisions by providing accurate, comprehensible information, ensuring freedom from coercion, and recognising the cultural and relational dimensions of decision-making. Tension arises when a patient's autonomous choice conflicts with what the healthcare team believes to be clinically beneficial—the classic autonomy-beneficence tension.
+
+Beneficence. The principle of beneficence requires that healthcare professionals act in ways that promote the patient's welfare and wellbeing. In clinical ethics, beneficence is often understood to encompass both positive action to promote good and the avoidance of harm. The challenge is that determinations of what constitutes benefit are not always straightforward: reasonable clinicians may disagree about prognosis, treatment efficacy, or the weighing of quality-of-life considerations. Moreover, the patient's own assessment of what constitutes benefit may diverge from that of the clinical team.
+
+Non-Maleficence. The principle of non-maleficence—primum non nocere, "first, do no harm"—directs clinicians to avoid causing unnecessary harm to patients. In practice, virtually every clinical intervention carries some potential for harm, and the application of non-maleficence therefore requires proportionate weighing of potential harms against anticipated benefits. The doctrine of double effect, originally derived from Catholic moral theology and now widely employed in secular bioethics, provides a framework for evaluating actions whose performance produces both a good effect (the intended benefit) and a foreseen but unintended harmful effect (e.g., the use of opioid analgesics in doses that may hasten death when administered for palliative symptom relief).
+
+Justice. The principle of justice in healthcare encompasses both distributive justice (the fair allocation of healthcare resources, burdens, and benefits across populations) and procedural justice (the fairness of decision-making processes affecting individual patients). At the bedside, justice considerations arise when limited resources—intensive care unit beds, specialist consultation time, expensive medications—must be allocated among patients with competing needs. At the systemic level, justice considerations animate debates about health equity, access to care, and the social determinants of health that nursing advocacy increasingly addresses.
+
+Veracity and Fidelity. Beyond the four canonical principles, bioethicists widely recognise additional moral obligations relevant to nursing: veracity (the obligation to tell the truth) and fidelity (the obligation to keep promises and maintain trust). Both are implicated in the therapeutic relationship and in the informed consent process. Nurses may face dilemmas involving truth-telling when a patient requests information that colleagues believe should be withheld, or when cultural or familial dynamics create pressure to conceal a diagnosis.`,
+  },
+  {
+    id: 'informed-consent',
+    heading: 'Informed Consent and Refusal of Treatment',
+    body: `Informed consent is simultaneously a legal requirement and an ethical principle—the procedural expression of respect for patient autonomy in clinical contexts. For consent to be legally and ethically valid, it must satisfy three conditions: the patient must receive adequate information about the proposed treatment (its nature, purpose, likely benefits, material risks, and available alternatives), the patient must have the cognitive and emotional capacity to understand and evaluate that information, and the consent must be given voluntarily, free from coercion or undue influence.
+
+Capacity Assessment. A critical and frequently contested step in the informed consent process is the determination of decision-making capacity. Capacity is a clinical determination (not a legal one—legal incompetence is established by a court) and is generally assessed in relation to specific decisions: a patient may have capacity to refuse a routine venipuncture but lack capacity to consent to major surgery. Standard capacity assessments evaluate whether the patient can understand the relevant information, appreciate how it applies to their situation, reason about the options, and communicate a consistent choice. Nurses play an important role in identifying patients who may lack capacity, documenting observations relevant to capacity, and alerting the clinical team to concerns.
+
+Informed Refusal. The right to refuse treatment—including life-sustaining treatment—is as legally and ethically protected as the right to consent, provided the patient has capacity. A competent adult's refusal of a recommended treatment must be respected even when healthcare professionals believe the refusal is unwise or will result in serious harm or death. This principle generates some of the most challenging dilemmas in clinical nursing practice: the Jehovah's Witness patient who refuses blood transfusion, the patient with anorexia nervosa who refuses nasogastric feeding, or the patient with terminal illness who refuses further chemotherapy. In each case, respecting autonomy requires nurses to provide the information, support, and dignity that allow the patient to exercise a genuine, informed choice, while also attending carefully to whether the refusal reflects a stable authentic preference or a transient, reversible decision-making impairment.
+
+Surrogate Decision-Making. When a patient lacks decision-making capacity, decisions are typically made by a surrogate (substitute decision-maker) designated by law or by the patient's prior appointment. The surrogate is expected to apply the substituted judgment standard—deciding as the patient would have decided if able—using knowledge of the patient's values, previously expressed preferences, and advance directives. When substituted judgment is not possible because the patient's preferences are unknown, the best interest standard is applied: the surrogate selects the option that a reasonable person in the patient's circumstances would most plausibly choose. Conflicts between surrogate and clinical team over the appropriate course of treatment constitute a major category of ethical dilemma, often requiring ethics consultation.`,
+  },
+  {
+    id: 'end-of-life',
+    heading: 'End-of-Life Ethical Dilemmas',
+    body: `The end of life is a domain of particularly concentrated ethical and legal complexity, and nurses working in acute, critical care, palliative, and aged care settings regularly encounter dilemmas that resist simple resolution.
+
+Advance Directives and Do-Not-Resuscitate Orders. Advance directives—including living wills, healthcare proxies, and Physician/Medical Orders for Life-Sustaining Treatment (POLST/MOLST)—represent patients' attempts to project their autonomous preferences into clinical situations in which they may lack capacity. Despite the legal force of advance directives in most jurisdictions, their implementation is frequently complicated in practice: documents may be unavailable at the moment of crisis, may not clearly address the specific situation that arises, or may conflict with the wishes of family members or surrogates. Do-Not-Resuscitate (DNR) orders, which direct the clinical team not to initiate cardiopulmonary resuscitation in the event of cardiac or respiratory arrest, are among the most emotionally charged clinical documents. Nurses must understand both the legal status of DNR orders and the clinical, ethical, and communication processes surrounding their completion.
+
+Withdrawing and Withholding Life-Sustaining Treatment. Bioethical consensus—affirmed by major professional organisations, courts, and ethics commissions internationally—holds that there is no morally significant distinction between withholding life-sustaining treatment that has not yet been initiated and withdrawing treatment already in progress. Both actions are morally permissible when the burdens of continued treatment outweigh its benefits and when the patient (or surrogate) has made an informed decision consistent with the patient's values. Despite this consensus, many nurses report greater moral distress in withdrawing treatment (e.g., discontinuing mechanical ventilation) than in withholding it, an asymmetry that may reflect psychological rather than moral considerations. Ethics education that explicitly addresses this issue can reduce the moral distress associated with end-of-life clinical decisions.
+
+Medically Assisted Dying. Medical assistance in dying (MAID), physician-assisted suicide, and voluntary assisted dying represent a spectrum of practices—now legally available in a growing number of jurisdictions—that raise profound ethical questions about the limits of clinical medicine, the meaning of non-maleficence, and the proper role of nursing. In jurisdictions where assisted dying is legal, nurses face questions about conscientious objection, their role in the process, the protection of vulnerable patients, and the provision of high-quality palliative care as an alternative. In jurisdictions where it remains illegal, nurses may encounter requests from patients or families and must respond compassionately while acting within the law. The professional nursing position on MAID varies across national and state/provincial nursing organisations, and nurses must be familiar with both the legal status and the professional position statement applicable in their jurisdiction.
+
+Palliative Sedation. Palliative sedation—the use of sedating medications to reduce consciousness in patients with refractory symptoms at the end of life—is a legally and ethically accepted practice when carried out in accordance with established criteria. Its use raises the question of whether deep continuous sedation, which may hasten death, is morally distinguishable from euthanasia. The prevailing bioethical view, supported by the doctrine of double effect, holds that the intent of palliative sedation (relief of suffering) distinguishes it from euthanasia (intentional causing of death), provided the depth and duration of sedation are proportionate to symptom control needs. Nurses administering palliative sedation must understand its ethical justification and be equipped to discuss its rationale with patients, families, and colleagues.`,
+  },
+  {
+    id: 'confidentiality',
+    heading: 'Confidentiality, Privacy, and Disclosure',
+    body: `The obligation to protect patient confidentiality is both a longstanding ethical principle—grounded in respect for autonomy and the therapeutic trust relationship—and a legally codified requirement in most jurisdictions. In the United States, the Health Insurance Portability and Accountability Act (HIPAA) Privacy Rule establishes minimum standards for the protection of individually identifiable health information. Comparable legislation exists in Canada (PIPEDA and provincial health privacy statutes), Australia (Privacy Act and State health records legislation), and the United Kingdom (UK GDPR and common law duty of confidentiality). Violations of patient confidentiality may result in civil liability, regulatory sanctions, and professional disciplinary action.
+
+Exceptions to Confidentiality. No confidentiality obligation is absolute, and both law and ethics recognise circumstances in which disclosure without patient consent is permissible or required. Mandatory reporting obligations—for communicable diseases, child abuse, domestic violence (in some jurisdictions), and certain occupational injuries—require disclosure to designated public health or law enforcement authorities regardless of patient consent. The duty to warn (derived from the landmark Tarasoff v. Regents of the University of California, 1976) may require disclosure to identifiable third parties threatened by a patient with a specific intention to cause harm—a legal requirement in many U.S. states and an ethical consideration in others.
+
+Disclosure to Family Members. A common clinical dilemma involves disclosure of patient information to family members without the patient's explicit consent. Cultural norms, family dynamics, and assumptions about the nature of illness and medical decision-making may create pressure to share information with relatives before or instead of the patient. Ethically and legally, competent adult patients have the right to determine who receives information about their health, and family members have no inherent legal right to that information without patient authorisation. Nurses who disclose patient information to family members without consent—even with benevolent intent—may violate both ethical obligations and legal requirements. At the same time, cultural humility requires recognition that for some patients and families, relational or collective models of decision-making are experienced as more consonant with their values than individualistic autonomy models.`,
+  },
+  {
+    id: 'resource-allocation',
+    heading: 'Resource Allocation and Triage Ethics',
+    body: `The just distribution of scarce healthcare resources is an ethical imperative that became viscerally apparent during the COVID-19 pandemic, when intensive care capacity, mechanical ventilators, and personal protective equipment were acutely insufficient to meet demand. Resource allocation dilemmas arise at multiple levels: the bedside (deciding which of two deteriorating patients receives the available critical care bed), the institutional (allocating scarce organs for transplantation), and the systemic (prioritising vaccine distribution or expensive novel therapeutics).
+
+Triage Principles. Emergency triage—the sorting of patients by urgency and likelihood of benefit from treatment—is a well-established clinical practice whose ethical underpinnings draw on utilitarian reasoning (maximising overall benefit from available resources) modulated by considerations of clinical need and equity. Crisis standards of care, adopted by health systems during mass casualty events and public health emergencies, provide formal frameworks for resource allocation decisions that otherwise fall outside normal institutional policies, authorising reallocation of life-sustaining resources from patients unlikely to benefit to those with a greater probability of survival.
+
+Nursing Moral Distress in Resource-Constrained Environments. Nurses frequently experience moral distress—defined as the suffering that arises when a nurse knows the morally right course of action but is prevented by institutional or external constraints from pursuing it—in resource-constrained settings. Staffing shortages that prevent nurses from providing the level of care they regard as clinically appropriate, equipment limitations that require rationing, and organisational cultures that deprioritise safety generate moral residue (lasting ethical discomfort arising from ethically compromised decisions) that accumulates over time and contributes to burnout and attrition. Institutional mechanisms that support ethical practice—adequate staffing ratios, access to ethics consultation, psychologically safe cultures of reporting, and leadership commitment to moral agency—are essential countermeasures.`,
+  },
+  {
+    id: 'ethical-decision-making',
+    heading: 'Frameworks for Ethical Decision-Making',
+    body: `Several structured frameworks have been developed to support ethical reasoning in clinical practice, moving beyond intuitive responses to dilemmas toward systematic, defensible analysis.
+
+The Four-Quadrant Approach. Jonsen, Siegler, and Winslade's four-quadrant framework (described in Clinical Ethics, 8th ed.) organises ethically relevant information into four domains: medical indications (diagnosis, prognosis, treatment options, and goals of care), patient preferences (expressed and inferred values, advance directives, capacity, surrogacy), quality of life (the patient's own evaluation of life quality under different clinical outcomes), and contextual features (family circumstances, institutional factors, resource constraints, cultural considerations, legal obligations). Working through each quadrant systematically helps clinicians identify the ethically salient features of a case and prevents selective attention to only the features that are immediately salient.
+
+MORAL Framework. The MORAL framework—Massage the dilemma, Outline options, Review criteria and resolve, Affirm position and act, Look back—is a nursing-specific ethical decision-making tool that emphasises the iterative, reflective character of clinical ethical reasoning. It acknowledges that ethical dilemmas are not solved once and for all but require ongoing monitoring, re-evaluation, and willingness to revise decisions as circumstances evolve.
+
+Ethics Consultation. Clinical ethics consultation—provided by ethics committees, ethics consultants, or dedicated ethics consultation services—is available in most acute care institutions as a resource for patients, families, and clinical staff facing difficult ethical dilemmas. Ethics consultation is not a decision-making authority; it provides facilitation, ethical analysis, and recommendations that inform but do not replace the decision-making authority of patients, surrogates, and clinicians. Nurses have an important role in identifying situations warranting ethics consultation, facilitating the consultation process, and implementing agreed care plans.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Ethical and legal dilemmas are a defining feature of professional nursing practice, arising across clinical specialities, care settings, and patient populations. The complexity of these dilemmas reflects the irreducible value pluralism of healthcare: multiple defensible principles and legitimate interests compete in situations that resist formulaic resolution. Nursing education that develops moral sensitivity—the capacity to perceive ethically relevant features of clinical situations—alongside knowledge of bioethical principles, legal frameworks, and institutional resources equips nurses to engage with dilemmas as competent moral agents rather than as passive bystanders. The cultivation of reflective ethical practice, supported by peer discussion, ethics education, clinical supervision, and institutional ethics infrastructure, is an ongoing professional obligation. In environments of increasing clinical complexity, workforce pressure, and technological change, the capacity for ethical reasoning is not supplementary to clinical expertise but constitutive of it.`,
+  },
+];
+---
+
+<Layout title="Ethical and Legal Dilemmas – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Ethical and Legal Dilemmas</span>
+  </nav>
+
+  <div class="article-grid">
+    <!-- Main article -->
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            ⚖️ Ethics &amp; Law
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Ethical and Legal Dilemmas
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic examination of situations in which moral principles and legal obligations intersect
+          in clinical nursing—covering bioethical foundations, informed consent, end-of-life care,
+          confidentiality, resource allocation, and frameworks for ethical decision-making.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Table of contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'American Nurses Association. (2015). <em>Code of ethics for nurses with interpretive statements.</em> ANA.',
+            'Beauchamp, T. L., &amp; Childress, J. F. (2019). <em>Principles of biomedical ethics</em> (8th ed.). Oxford University Press.',
+            'Hamric, A. B., Hanson, C. M., Tracy, M. F., &amp; O\'Grady, E. T. (2014). <em>Advanced practice nursing: An integrative approach</em> (5th ed.). Elsevier.',
+            'International Council of Nurses. (2021). <em>The ICN code of ethics for nurses.</em> ICN.',
+            'Jonsen, A. R., Siegler, M., &amp; Winslade, W. J. (2022). <em>Clinical ethics: A practical approach to ethical decisions in clinical medicine</em> (9th ed.). McGraw-Hill.',
+            'Tarasoff v. Regents of the University of California, 17 Cal. 3d 425 (1976).',
+            'Truog, R. D., Mitchell, C., &amp; Daley, G. Q. (2020). The toughest triage — allocating ventilators in a pandemic. <em>New England Journal of Medicine, 382</em>(21), 1973–1975.',
+            'Wilkinson, J. M. (1988). Moral distress in nursing practice: Experience and effect. <em>Nursing Forum, 23</em>(1), 16–29.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Core framework', def: 'Beauchamp &amp; Childress principlism' },
+            { term: 'Four principles', def: 'Autonomy, Beneficence, Non-maleficence, Justice' },
+            { term: 'Key law (US)', def: 'HIPAA, state statutes' },
+            { term: 'Decision tool', def: 'Four-quadrant; MORAL framework' },
+            { term: 'Ethics resource', def: 'Clinical ethics consultation' },
+            { term: 'Moral concept', def: 'Moral distress, moral residue' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Informed consent facilitation',
+            '✅ End-of-life care decisions',
+            '✅ Confidentiality obligations',
+            '✅ Advocacy for patient rights',
+            '✅ Ethics consultation referral',
+            '✅ Moral distress recognition',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
