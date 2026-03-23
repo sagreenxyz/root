@@ -1,0 +1,164 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Grief, Hospice & Palliative Care – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Grief, Hospice &amp; Palliative Care</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">🕊️</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6b7280; background:#f9fafb; border:1px solid #d1d5db; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Grief, Hospice &amp; Palliative Care</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Stages of grief, hospice versus palliative care, communicating with grieving families, and empathy in nursing practice.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#stages-grief" style="color:#6366f1;">Stages of Grief</a></li>
+      <li><a href="#hospice-palliative" style="color:#6366f1;">Hospice versus Palliative Care</a></li>
+      <li><a href="#grieving-communication" style="color:#6366f1;">Communicating with a Grieving Family</a></li>
+      <li><a href="#empathy" style="color:#6366f1;">Empathy – What It Is &amp; Examples</a></li>
+    </ol>
+  </div>
+
+  <section id="stages-grief" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Stages of Grief</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Kübler-Ross Model</strong> (1969) — five stages of grief (DABDA). Originally described for terminally ill patients; now applied broadly to any significant loss (diagnosis, loss of function, death of loved one). <strong>The stages are not linear</strong> — people move back and forth and may skip stages entirely.</p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Denial:</strong> Shock and disbelief. "This can't be happening." "The tests must be wrong." Acts as a protective buffer against overwhelming reality. Nursing: Allow the patient/family to process; do not confront denial unless it prevents necessary care decisions.</li>
+      <li><strong>Anger:</strong> Frustration, rage, resentment. "Why me?" "It's not fair." May be directed at healthcare team, God, family, or self. Nursing: Do not take anger personally; listen without judgment; validate the feeling. "It makes sense that you feel angry right now."</li>
+      <li><strong>Bargaining:</strong> Attempts to negotiate. "If I do everything right, maybe I'll get more time." Often involves bargaining with God or healthcare providers. Nursing: Support hope while maintaining honesty; do not make promises.</li>
+      <li><strong>Depression:</strong> Deep sadness, withdrawal, crying, hopelessness. Two types: reactive (over losses already experienced) and preparatory (anticipating future losses). Nursing: Allow expression of sadness; sit with the patient; avoid premature cheerfulness. Assess for clinical depression requiring treatment.</li>
+      <li><strong>Acceptance:</strong> Coming to terms with reality. Not necessarily happy, but peaceful acknowledgment. "I've had a good life." Nursing: Support and accompany; facilitate completion of unfinished business; involve in end-of-life planning.</li>
+    </ol>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Other grief models:</strong> Worden's Tasks of Mourning (accepting the reality, working through pain, adjusting to the world without the person, maintaining connection while moving on); Rando's 6 R's; Bowlby's attachment theory of grief.</p>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> Anticipatory grief occurs BEFORE the death — family members may begin grieving during terminal illness. This is normal and should be supported. Complicated grief (prolonged, dysfunctional grief lasting &gt;12 months) may require referral to mental health professionals.
+    </div>
+  </section>
+
+  <section id="hospice-palliative" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Hospice versus Palliative Care</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Both focus on <strong>comfort</strong> and <strong>quality of life</strong> rather than cure. The key distinction is eligibility and the relationship to curative treatment.</p>
+
+    <div style="overflow-x:auto; margin-bottom:1rem;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr style="background:#f1f5f9;">
+            <th style="padding:0.75rem 1rem; text-align:left; border:1px solid #e2e8f0; color:#1e293b;">Feature</th>
+            <th style="padding:0.75rem 1rem; text-align:left; border:1px solid #e2e8f0; color:#1e293b;">Palliative Care</th>
+            <th style="padding:0.75rem 1rem; text-align:left; border:1px solid #e2e8f0; color:#1e293b;">Hospice Care</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;"><strong>Eligibility</strong></td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Any stage of serious illness</td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Terminal illness, prognosis ≤6 months</td>
+          </tr>
+          <tr style="background:#f8fafc;">
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;"><strong>Curative treatment</strong></td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">May continue alongside</td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Curative treatment is stopped/declined</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;"><strong>Focus</strong></td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Symptom management, QOL at any stage</td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Comfort care, dignified death, family support</td>
+          </tr>
+          <tr style="background:#f8fafc;">
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;"><strong>Setting</strong></td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Hospital, outpatient, home</td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Home, hospice facility, SNF, hospital</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;"><strong>Team</strong></td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Interprofessional (MD, NP, RN, SW, chaplain)</td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Same + volunteers, bereavement counselors</td>
+          </tr>
+          <tr style="background:#f8fafc;">
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;"><strong>Family support</strong></td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Included in care</td>
+            <td style="padding:0.75rem 1rem; border:1px solid #e2e8f0; color:#374151;">Bereavement support up to 13 months post-death</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Key phrase:</strong> "All hospice is palliative care, but not all palliative care is hospice." Palliative care is appropriate at diagnosis of any serious illness; hospice is appropriate when curative treatment is no longer desired or beneficial and death is expected within 6 months.
+    </div>
+  </section>
+
+  <section id="grieving-communication" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Communicating with a Grieving Family</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">When a family member has just lost a loved one, the nurse's role is to provide compassionate presence, accurate information, and practical support.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>What TO do:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Be present:</strong> Sit with the family; do not rush; allow silence</li>
+      <li><strong>Acknowledge the loss directly:</strong> "I'm so sorry for your loss." Use the deceased person's name.</li>
+      <li><strong>Validate feelings:</strong> "This must be an incredibly difficult time." "Your feelings are completely understandable."</li>
+      <li><strong>Listen actively:</strong> Allow them to share memories, express emotions, ask questions</li>
+      <li><strong>Provide information clearly:</strong> Explain what happened in simple, honest terms; answer questions honestly</li>
+      <li><strong>Offer practical support:</strong> Offer water, a private space, help contacting others, chaplain services</li>
+      <li><strong>Allow them to see the body:</strong> If they wish to say goodbye, prepare the patient's appearance beforehand; offer privacy and time</li>
+      <li><strong>Provide bereavement resources:</strong> Grief support groups, chaplain, social work, hospice bereavement services</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>What NOT to say:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>"I know how you feel." — you don't; this minimizes their unique experience</li>
+      <li>"Everything happens for a reason." — can feel dismissive or hurtful</li>
+      <li>"They're in a better place." — unless you know their religious beliefs align</li>
+      <li>"At least they didn't suffer." — minimizes loss</li>
+      <li>"You need to stay strong for your family." — invalidates their grief</li>
+      <li>"Let me know if you need anything." — too vague; offer specific help</li>
+    </ul>
+  </section>
+
+  <section id="empathy" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Empathy – What It Is &amp; Examples</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Empathy is the ability to understand and share the feelings of another person — to perceive the world from their perspective and communicate that understanding back to them. It is distinct from sympathy (feeling sorry FOR someone) and is the foundation of therapeutic nursing relationships.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Components of empathy (Wiseman, 1996):</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Seeing the world as others see it (perspective-taking)</li>
+      <li>Not judging the other person's feelings or experience</li>
+      <li>Recognizing the other person's emotion</li>
+      <li>Communicating that recognition back</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Empathy vs. sympathy:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Sympathy:</strong> "I feel so sorry that you're in pain." (feeling pity; distance between nurse and patient)</li>
+      <li><strong>Empathy:</strong> "That sounds incredibly painful. I can hear how frustrated you are." (entering the patient's emotional world)</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Empathic nursing examples:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Patient says: "I'm scared about my surgery." Empathic response: "It's completely understandable to feel scared. Can you tell me what worries you most? I want to make sure we address your concerns."</li>
+      <li>Patient crying after receiving a terminal diagnosis. Empathic response: Sit down beside the patient. "This must be devastating news. I'm here with you." (do not rush to fix or explain; allow silence)</li>
+      <li>Family member frustrated with care: "Nobody tells us anything!" Empathic response: "I can hear how frustrated and worried you are. Let me sit down with you and make sure you have all the information you need."</li>
+      <li>Patient newly diagnosed with diabetes: "I don't understand why this happened to me." Empathic response: "A new diagnosis like this can feel overwhelming. Let's take it one step at a time together."</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Clinical note:</strong> Empathy is not agreeing with everything the patient says or giving false hope. It is creating a space where the patient feels genuinely understood. Empathic nurses improve patient adherence, satisfaction, and clinical outcomes.
+    </div>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/sleep-comfort-pain`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Sleep, Comfort &amp; Pain
+    </a>
+    <a href={`${base}/private/d439/critical-thinking`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Critical Thinking &amp; Review →
+    </a>
+  </div>
+</Layout>

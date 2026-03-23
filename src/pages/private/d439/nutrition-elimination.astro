@@ -1,0 +1,231 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Nutrition & Elimination – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Nutrition &amp; Elimination</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">🍽️</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Nutrition &amp; Elimination</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Constipation, bowel training, enteral feeding, NG tube, urinary catheters, 24-hour urine collection, and clear liquid diets.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#constipation" style="color:#6366f1;">Constipation Prevention</a></li>
+      <li><a href="#bowel-training" style="color:#6366f1;">Bowel Training</a></li>
+      <li><a href="#enteral" style="color:#6366f1;">Enteral Feeding / Providing Enteral Feedings</a></li>
+      <li><a href="#ng-tube" style="color:#6366f1;">NG Tube Insertion</a></li>
+      <li><a href="#oral-ng" style="color:#6366f1;">Oral Care for a Patient with an NG Tube</a></li>
+      <li><a href="#catheter" style="color:#6366f1;">Inserting Urinary Catheters (Women &amp; Men)</a></li>
+      <li><a href="#remove-catheter" style="color:#6366f1;">Removing a Urinary Catheter</a></li>
+      <li><a href="#urine-24h" style="color:#6366f1;">24-Hour Urine Collection</a></li>
+      <li><a href="#clear-liquid" style="color:#6366f1;">Clear Liquid Diet</a></li>
+      <li><a href="#aspiration" style="color:#6366f1;">Aspiration Precautions</a></li>
+    </ol>
+  </div>
+
+  <section id="constipation" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Constipation Prevention</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Constipation is having fewer than 3 bowel movements per week, with hard, dry, difficult-to-pass stool. Prevention is a core nursing priority for immobile, post-operative, or opioid-treated patients.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Key interventions:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Fluid intake:</strong> Encourage 2,000–3,000 mL/day unless contraindicated (water, juice, warm prune juice stimulates peristalsis)</li>
+      <li><strong>Dietary fiber:</strong> 25–35 g/day — whole grains, fruits, vegetables, legumes</li>
+      <li><strong>Physical activity:</strong> Ambulation and exercise stimulate peristalsis; even passive ROM helps immobile patients</li>
+      <li><strong>Respond to urge promptly:</strong> Ignoring the urge leads to stool hardening; provide privacy and comfort</li>
+      <li><strong>Positioning:</strong> Sitting position (squatting or with footstool) uses gravity and engages the puborectalis muscle</li>
+      <li><strong>Medications:</strong> Stool softeners (docusate), bulk-forming laxatives (psyllium), osmotic agents (MiraLax), stimulants (bisacodyl) — used as ordered; avoid chronic stimulant use</li>
+      <li><strong>Bowel assessment:</strong> Document frequency, consistency (Bristol Stool Scale), and last bowel movement on admission</li>
+    </ul>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> Opioid-induced constipation is very common — always anticipate and proactively order a bowel regimen (stool softener ± stimulant laxative) when opioids are prescribed.
+    </div>
+  </section>
+
+  <section id="bowel-training" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Bowel Training</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Establish a regular, predictable pattern of defecation for patients with neurogenic bowel, fecal incontinence, or chronic constipation (e.g., spinal cord injury, stroke, MS patients).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Components of a bowel training program:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Set a consistent time:</strong> 20–40 minutes after a meal (gastrocolic reflex is strongest after breakfast)</li>
+      <li><strong>Dietary management:</strong> High fiber, adequate fluids</li>
+      <li><strong>Physical activity:</strong> Increase mobility as tolerated</li>
+      <li><strong>Positioning:</strong> Sitting on commode if possible; left lateral for bedbound patients</li>
+      <li><strong>Digital stimulation or suppository:</strong> May be ordered to stimulate reflex defecation</li>
+      <li><strong>Abdominal massage:</strong> Circular massage in the direction of colon (ascending → transverse → descending)</li>
+      <li><strong>Document:</strong> Record results daily; adjust plan based on response</li>
+    </ol>
+  </section>
+
+  <section id="enteral" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Enteral Feeding / Providing Enteral Feedings</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Indication:</strong> Patients who cannot swallow safely but have a functioning GI tract (e.g., stroke, head and neck cancer, decreased consciousness).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Routes:</strong> Nasogastric (NG), nasoduodenal, nasojejunal (NJ), percutaneous endoscopic gastrostomy (PEG), jejunostomy (J-tube).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure for providing tube feedings:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Verify tube placement before each feeding (X-ray is gold standard; also check pH of aspirate — ≤5.5 confirms gastric placement)</li>
+      <li>Check gastric residual volume (GRV) — hold feeding if GRV &gt;250–500 mL (per facility policy) and notify provider</li>
+      <li>Elevate HOB 30–45° during and 30–60 minutes after feeding to prevent aspiration</li>
+      <li>Flush tube with 30 mL water before and after feeding and medications</li>
+      <li>Administer formula at room temperature; discard open formula after 4–8 hours</li>
+      <li>Monitor for complications: aspiration, diarrhea, tube displacement, electrolyte imbalances</li>
+    </ol>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Safety:</strong> NEVER give tube feedings without confirming placement. Blue dye in feedings is no longer recommended (absorption risk). Never use a feeding tube for IV fluids.
+    </div>
+  </section>
+
+  <section id="ng-tube" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">NG Tube Insertion</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Gastric decompression, medication administration, short-term enteral feeding, lavage.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Explain procedure; place patient in high-Fowler's position (90°)</li>
+      <li>Measure tube length: tip of nose → earlobe → xiphoid process (NEX measurement)</li>
+      <li>Mark the measured length on the tube</li>
+      <li>Lubricate the distal 4 inches with water-soluble lubricant</li>
+      <li>Gently insert through the more patent nare, directing toward the back of the throat</li>
+      <li>Ask patient to flex chin to chest and swallow when tube reaches the back of the throat — advance tube with each swallow</li>
+      <li>If patient coughs, gags, or SpO2 drops, stop and reassess (may be in airway)</li>
+      <li>Confirm placement: X-ray (gold standard), aspirate pH ≤5.5, auscultate air bolus (least reliable)</li>
+      <li>Secure tube to nose with adhesive; mark exit point for monitoring</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Contraindications:</strong> Basilar skull fracture (risk of cranial insertion), severe coagulopathy, esophageal varices, recent esophageal surgery. Always have suction available during insertion.
+    </div>
+  </section>
+
+  <section id="oral-ng" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Oral Care for a Patient with an NG Tube</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">NG tubes cause mouth breathing, reduced saliva flow, and discomfort — making oral care critical for comfort and infection prevention.</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Provide oral care every 2–4 hours (more frequently if NPO)</li>
+      <li>Use a soft toothbrush or foam swab to clean teeth, gums, and tongue</li>
+      <li>Apply water-soluble lip moisturizer to prevent cracking (avoid petroleum-based products near O2)</li>
+      <li>Offer ice chips if allowed (check orders)</li>
+      <li>Keep the nare around the tube clean and free of secretions; apply water-soluble lubricant to the nare</li>
+      <li>Change tape/tube securing device daily or when soiled; assess nare for skin breakdown</li>
+      <li>Encourage rinsing the mouth if the patient can cooperate</li>
+    </ul>
+  </section>
+
+  <section id="catheter" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Inserting Urinary Catheters (Women &amp; Men)</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Indication:</strong> Urinary retention, strict I&amp;O measurement, immobility/surgery, urethral obstruction, continuous bladder irrigation.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Sterile technique is required.</strong> Use the smallest appropriate catheter (14–16 Fr for adults).</p>
+
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Female Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Position: dorsal recumbent (supine, knees flexed and apart) with good lighting</li>
+      <li>Open sterile kit using sterile technique; don sterile gloves</li>
+      <li>Clean perineum with sterile solution: use each swab once, front to back (labia majora → labia minora → urethral meatus)</li>
+      <li>Keep the non-dominant hand on the labia (now contaminated — don't use for catheter)</li>
+      <li>Lubricate catheter tip; insert 2–3 inches into the urethral meatus until urine flows</li>
+      <li>Advance 1 more inch after urine flow; inflate balloon with sterile water (usually 10 mL)</li>
+      <li>Gently pull catheter back until resistance is felt (balloon seated at bladder neck)</li>
+      <li>Secure catheter to inner thigh; drainage bag below bladder level, not on floor</li>
+    </ol>
+
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Male Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Position: supine with legs extended</li>
+      <li>Open sterile kit; don sterile gloves</li>
+      <li>Grasp penis with non-dominant hand at 90° angle; retract foreskin if present (remember to replace afterward)</li>
+      <li>Clean glans with circular motion from meatus outward; use each swab once</li>
+      <li>Lubricate catheter 6–7 inches (longer urethra); insert 7–9 inches until urine flows</li>
+      <li>Advance 1 more inch; inflate balloon; pull back gently</li>
+      <li>Replace foreskin; secure catheter to upper thigh or lower abdomen</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>CAUTI Prevention:</strong> Catheters are the #1 cause of healthcare-associated infections. Remove as soon as possible. Perform perineal care daily. Maintain closed drainage system. Keep drainage bag below bladder. Never allow bag to touch floor.
+    </div>
+  </section>
+
+  <section id="remove-catheter" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Removing a Urinary Catheter</h2>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Explain the procedure; provide privacy</li>
+      <li>Place a waterproof pad under the patient</li>
+      <li>Attach a syringe to the balloon port; aspirate ALL fluid from balloon (do not cut the catheter)</li>
+      <li>Ask patient to take a deep breath; gently withdraw catheter</li>
+      <li>Perform perineal care</li>
+      <li>Document time of removal, volume of urine in bag, and balloon volume removed</li>
+      <li>Monitor first void after removal: should occur within 4–6 hours; volume ≥150 mL</li>
+      <li>Report inability to void within 6–8 hours or signs of UTI (burning, frequency, cloudy/foul urine, fever)</li>
+    </ol>
+  </section>
+
+  <section id="urine-24h" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">24-Hour Urine Collection</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Measure creatinine clearance, protein, hormones, electrolytes, or other substances over a full 24-hour period to assess renal function and metabolic processes.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Start time:</strong> Have patient void and discard that first specimen — note the exact time (e.g., 8:00 AM)</li>
+      <li>Collect ALL urine for the next 24 hours in the labeled container (some require refrigeration or a preservative — check lab orders)</li>
+      <li>At exactly 24 hours (e.g., 8:00 AM next day), have patient void one final time and add that specimen to the collection</li>
+      <li>Label the container with patient name, date, start and end times</li>
+      <li>Keep container on ice or refrigerated throughout collection if required</li>
+      <li>Instruct patient: If any urine is accidentally discarded, the test must restart from the beginning</li>
+    </ol>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Key teaching point:</strong> The FIRST void is discarded; the LAST void at exactly 24 hours IS collected. Post a sign in the bathroom: "24-Hour Urine Collection in Progress — Save ALL Urine."
+    </div>
+  </section>
+
+  <section id="clear-liquid" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Clear Liquid Diet</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> A diet consisting of liquids that are clear (you can see through them) and liquid at room temperature. Used pre/post-operatively, before bowel procedures, and during acute GI illness.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Allowed items:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Water, ice chips</li>
+      <li>Clear broth (beef, chicken, vegetable — no noodles or solids)</li>
+      <li>Plain gelatin (Jell-O) — no fruit pieces</li>
+      <li>Apple juice, white grape juice, cranberry juice (no pulp)</li>
+      <li>Popsicles (without fruit pieces or cream)</li>
+      <li>Clear sports drinks (Gatorade, Pedialyte)</li>
+      <li>Black coffee or plain tea (no cream or milk)</li>
+      <li>Carbonated beverages (ginger ale, clear sodas)</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>NOT allowed:</strong> Milk, orange juice (opaque/pulp), tomato juice, cream soups, pudding, ice cream.</p>
+  </section>
+
+  <section id="aspiration" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Aspiration Precautions</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Risk factors:</strong> Dysphagia, decreased LOC, NG tube, enteral feeding, history of stroke, GERD, sedation, poor dentition.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing interventions:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Elevate HOB 30–45° during and for 30–60 minutes after meals/feedings</li>
+      <li>Thicken liquids as ordered (nectar-thick, honey-thick, pudding-thick)</li>
+      <li>Provide small bites; allow adequate time for chewing and swallowing</li>
+      <li>Avoid distractions during meals</li>
+      <li>Position patient slightly chin-tucked when swallowing (chin-tuck technique)</li>
+      <li>Have suction available at bedside</li>
+      <li>Consult speech-language pathology (SLP) for formal swallowing evaluation</li>
+      <li>Perform oral care before meals (reduces bacterial load if aspiration occurs)</li>
+    </ul>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/medications-procedures`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Medications &amp; Procedures
+    </a>
+    <a href={`${base}/private/d439/hygiene-personal-care`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Patient Hygiene &amp; Personal Care →
+    </a>
+  </div>
+</Layout>

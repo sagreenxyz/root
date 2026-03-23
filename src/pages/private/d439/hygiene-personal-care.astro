@@ -1,0 +1,172 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Patient Hygiene & Personal Care – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Patient Hygiene &amp; Personal Care</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">🛁</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#0d9488; background:#f0fdfa; border:1px solid #99f6e4; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Patient Hygiene &amp; Personal Care</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Oral care, tympanic temperature, back rub, nocturia, and sleep promotion strategies.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#oral-unconscious" style="color:#6366f1;">Oral Care for an Unconscious Patient</a></li>
+      <li><a href="#oral-hygiene" style="color:#6366f1;">Oral Hygiene for an Unconscious Patient (Skills)</a></li>
+      <li><a href="#tympanic" style="color:#6366f1;">Tympanic Temperature – Skills</a></li>
+      <li><a href="#back-rub" style="color:#6366f1;">Back Rub – How and Why</a></li>
+      <li><a href="#nocturia" style="color:#6366f1;">Nocturia – Definition &amp; Interventions</a></li>
+      <li><a href="#sleep" style="color:#6366f1;">Alternative Sleep Suggestions / Promote Sleep</a></li>
+      <li><a href="#sleep-apnea" style="color:#6366f1;">Sleep Apnea</a></li>
+    </ol>
+  </div>
+
+  <section id="oral-unconscious" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Oral Care for an Unconscious Patient</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Why it matters:</strong> Unconscious patients cannot swallow secretions, making them highly susceptible to aspiration pneumonia (ventilator-associated pneumonia, VAP). Oral bacteria colonize rapidly; consistent oral care significantly reduces VAP incidence.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Gather supplies: suction, padded tongue blade, toothbrush or foam swabs, cleansing solution (chlorhexidine 0.12% is evidence-based for ventilated patients), cup of water, towel</li>
+      <li>Position patient: lateral/side-lying with HOB elevated 30–45° to prevent aspiration</li>
+      <li>Place a towel under the chin; suction as needed before and during care</li>
+      <li>Open mouth gently using padded tongue blade (never use fingers — risk of bite injury)</li>
+      <li>Brush all surfaces of teeth (outer, inner, chewing, gum line) and tongue with a soft brush moistened with cleanser</li>
+      <li>Wipe with foam swabs; suction secretions and solution from mouth</li>
+      <li>Apply water-soluble lip moisturizer</li>
+      <li>Perform every 2–4 hours and PRN; document</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Safety:</strong> Use only small amounts of solution and suction thoroughly. Never tilt the head back — increases aspiration risk. Keep suction immediately accessible throughout.
+    </div>
+  </section>
+
+  <section id="oral-hygiene" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Oral Hygiene for an Unconscious Patient (Skills Summary)</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Key skill checkpoints for clinical competency:</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>✅ Perform hand hygiene; don gloves (and mask/goggles if splash risk)</li>
+      <li>✅ Position lateral with suction ready BEFORE opening mouth</li>
+      <li>✅ Use padded tongue blade, NOT fingers</li>
+      <li>✅ Brush all tooth surfaces AND tongue</li>
+      <li>✅ Suction frequently — do not allow pooling</li>
+      <li>✅ Apply lip moisturizer at end</li>
+      <li>✅ Reposition patient and raise side rails after care</li>
+      <li>✅ Document: time, condition of oral mucosa, any unusual findings</li>
+    </ul>
+  </section>
+
+  <section id="tympanic" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Tympanic Temperature – Skills</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Normal tympanic temperature:</strong> 36.0°C–37.8°C (96.8°F–100.0°F). Tympanic readings are typically 0.5°C higher than oral readings.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Attach a clean disposable probe cover to the thermometer</li>
+      <li>Straighten the ear canal: for adults, pull pinna UP and BACK; for children &lt;3 years, pull DOWN and BACK (same as ear drops)</li>
+      <li>Insert the probe snugly into the ear canal, aimed toward the tympanic membrane (toward the opposite temple)</li>
+      <li>Press the scan button; hold until the device beeps (usually 1–2 seconds)</li>
+      <li>Remove, read, and record; discard probe cover without touching inner surface</li>
+    </ol>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Factors affecting accuracy:</strong> Excessive cerumen (earwax), otitis media, incorrect probe positioning, patient positioned on the ear just before measurement (trapped air gives false reading — wait 2–3 minutes).</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> Tympanic thermometers measure infrared heat from the tympanic membrane. If the ear was recently examined with an otoscope or the patient was lying on that side, wait a few minutes for accuracy.
+    </div>
+  </section>
+
+  <section id="back-rub" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Back Rub – How and Why</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Benefits:</strong> Promotes relaxation and sleep, stimulates circulation, reduces muscle tension, prevents pressure injury development, provides an opportunity for skin assessment, and strengthens the therapeutic nurse-patient relationship.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure (3–5 minutes):</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Offer the back rub; provide privacy; position patient prone or lateral</li>
+      <li>Warm lotion in hands before applying (cold lotion causes muscle tension)</li>
+      <li>Begin with effleurage (long, gliding strokes) up the spine and out over the shoulders — establishes contact and relaxation</li>
+      <li>Progress to petrissage (kneading the muscles of the shoulders and upper back)</li>
+      <li>Use circular friction strokes along the vertebral border of the scapulae</li>
+      <li>Assess skin during care: note any redness, breakdown, or bony prominences at risk</li>
+      <li>End with gentle effleurage strokes; wipe excess lotion</li>
+      <li>Reposition and cover patient; lower bed; raise side rails</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Contraindications:</strong> Do NOT massage reddened bony prominences (increases tissue damage). Avoid areas of skin breakdown, thrombophlebitis, fractures, or recent surgery.
+    </div>
+  </section>
+
+  <section id="nocturia" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Nocturia – Definition &amp; Interventions</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Nocturia is the need to wake from sleep one or more times per night to void. It is a significant cause of sleep disruption, falls, and reduced quality of life, especially in older adults.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Common causes:</strong> BPH (men), overactive bladder, UTI, diabetes (polyuria), heart failure (leg edema resorbed supine), diuretic timing, medications (e.g., loop diuretics), excessive evening fluid intake, caffeine/alcohol.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing interventions:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Limit fluid intake 2–3 hours before bedtime</li>
+      <li>Avoid caffeinated and alcoholic beverages in the evening (both increase urine output)</li>
+      <li>Time diuretics for morning or early afternoon (not evening)</li>
+      <li>Encourage voiding immediately before bed (double-voiding technique)</li>
+      <li>Ensure safe path to bathroom: nightlight, call light within reach, non-slip footwear, bed in low position</li>
+      <li>For fall-risk patients: bedside commode or urinal</li>
+      <li>Address underlying cause (treat UTI, optimize HF management, adjust medications)</li>
+      <li>Bladder training and pelvic floor exercises (Kegel exercises) for overactive bladder</li>
+    </ul>
+  </section>
+
+  <section id="sleep" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Alternative Sleep Suggestions / Promote Sleep</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Hospital environments are notoriously disruptive to sleep. Nursing interventions to promote sleep include non-pharmacological strategies first.</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Sleep hygiene education:</strong> Consistent sleep/wake schedule, use bed only for sleep, limit daytime napping</li>
+      <li><strong>Environmental modifications:</strong> Dim lights, reduce noise (lower call bell volume, close door), maintain comfortable room temperature (~68°F/20°C)</li>
+      <li><strong>Cluster nursing care:</strong> Group assessments and interventions to allow 90-minute uninterrupted sleep cycles</li>
+      <li><strong>Relaxation techniques:</strong> Progressive muscle relaxation, deep breathing (4-7-8 breathing), guided imagery</li>
+      <li><strong>Guided imagery:</strong> Patient closes eyes, takes slow breaths, visualizes a peaceful place using all senses — activates parasympathetic nervous system, reduces anxiety</li>
+      <li><strong>Warm bath or back rub:</strong> Promotes vasodilation and muscle relaxation</li>
+      <li><strong>Warm milk or herbal tea:</strong> Tryptophan in warm milk promotes serotonin; chamomile tea has mild anxiolytic properties</li>
+      <li><strong>Limit screen time:</strong> Blue light suppresses melatonin; avoid screens 1 hour before sleep</li>
+      <li><strong>Limit caffeine and alcohol:</strong> No caffeine after noon; alcohol disrupts sleep architecture</li>
+      <li><strong>Pain management:</strong> Uncontrolled pain is a major sleep disruptor — address pain proactively</li>
+    </ul>
+  </section>
+
+  <section id="sleep-apnea" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Sleep Apnea</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Sleep apnea is a disorder characterized by repeated episodes of partial or complete upper airway obstruction during sleep, causing apnea (cessation of breathing for ≥10 seconds) or hypopnea, leading to oxygen desaturation and sleep fragmentation.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Types:</strong> Obstructive sleep apnea (OSA — most common, airway collapse), Central sleep apnea (brain fails to signal breathing muscles), Mixed (combination).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Signs and symptoms:</strong> Loud snoring, witnessed apnea episodes, excessive daytime sleepiness, morning headache, difficulty concentrating, nocturia, irritability, restless sleep.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Risk factors:</strong> Obesity (BMI &gt;30), male sex, age &gt;40, large neck circumference (&gt;17 inches in men, &gt;16 inches in women), smoking, alcohol use, family history, craniofacial abnormalities.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Diagnosis:</strong> Polysomnography (sleep study); STOP-BANG screening tool in clinical settings.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing management:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Ensure patient brings CPAP/BiPAP machine to hospital; apply during sleep</li>
+      <li>Elevate HOB 30–45° (reduces airway collapse in obese patients)</li>
+      <li>Monitor SpO2 continuously during sleep and after sedation/opioids</li>
+      <li>Weight loss education — even 10% body weight loss significantly reduces OSA severity</li>
+      <li>Avoid alcohol and sedative medications</li>
+      <li>Lateral positioning preferred over supine (reduces tongue/soft palate obstruction)</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Clinical alert:</strong> Patients with undiagnosed or poorly managed sleep apnea are at high risk post-operatively with opioid analgesia. Always screen with STOP-BANG and monitor closely.
+    </div>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/nutrition-elimination`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Nutrition &amp; Elimination
+    </a>
+    <a href={`${base}/private/d439/assessment-vitals`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Assessment &amp; Vital Signs →
+    </a>
+  </div>
+</Layout>

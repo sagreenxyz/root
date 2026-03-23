@@ -1,0 +1,182 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Assessment & Vital Signs – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Assessment &amp; Vital Signs</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">🩺</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Assessment &amp; Vital Signs</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Blood pressure technique, hypertension causes, dehydration assessment, activity intolerance, and pain assessment in all patient populations.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#bp-technique" style="color:#6366f1;">Blood Pressure Measurement Technique</a></li>
+      <li><a href="#high-bp" style="color:#6366f1;">What Causes High Blood Pressure</a></li>
+      <li><a href="#dehydration" style="color:#6366f1;">Assessing a Patient for Dehydration</a></li>
+      <li><a href="#activity-intolerance" style="color:#6366f1;">How to Determine Activity Intolerance</a></li>
+      <li><a href="#pain-adults-children" style="color:#6366f1;">Assessing Pain in Adults &amp; Children</a></li>
+      <li><a href="#pain-comatose" style="color:#6366f1;">Assessing Pain in a Comatose Patient</a></li>
+      <li><a href="#cardiac" style="color:#6366f1;">How to Prevent Cardiac Diseases</a></li>
+    </ol>
+  </div>
+
+  <section id="bp-technique" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Blood Pressure Measurement Technique</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Normal adult BP:</strong> &lt;120/&lt;80 mmHg (AHA 2017 guidelines). Hypertension Stage 1: 130–139/80–89 mmHg.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Equipment:</strong> Sphygmomanometer (aneroid or mercury — mercury no longer used), stethoscope, correct cuff size.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Cuff sizing:</strong> Cuff bladder should encircle 80% of the arm circumference; too small = falsely high reading; too large = falsely low reading.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure (auscultatory method):</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Patient seated quietly for ≥5 minutes; feet flat on floor; arm at heart level; no caffeine or exercise in prior 30 minutes</li>
+      <li>Apply cuff to bare upper arm, lower edge 2–3 cm above antecubital fossa; align arrow with brachial artery</li>
+      <li>Palpate radial pulse; inflate cuff 20–30 mmHg above the point where pulse disappears (estimated systolic)</li>
+      <li>Place stethoscope bell/diaphragm over brachial artery; deflate cuff slowly at 2–3 mmHg/second</li>
+      <li><strong>Systolic BP:</strong> First Korotkoff sound (clear tapping sound)</li>
+      <li><strong>Diastolic BP:</strong> Last Korotkoff sound (when sounds disappear — Phase V)</li>
+      <li>Deflate cuff completely; wait 1–2 minutes before re-measuring if needed</li>
+      <li>Document: arm used, patient position, reading</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Common errors:</strong> Not waiting for patient to rest, improper cuff size, deflating too quickly (misses diastolic), talking during measurement, arm not at heart level (low arm = falsely high; raised arm = falsely low), auscultatory gap (silence between Korotkoff sounds — can cause underestimation of systolic).
+    </div>
+  </section>
+
+  <section id="high-bp" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">What Causes High Blood Pressure</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Primary (essential) hypertension (90–95% of cases):</strong> No single identifiable cause. Risk factors include:</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Age (arteries stiffen with age), family history/genetics</li>
+      <li>Obesity (BMI &gt;30) — increases cardiac output and vascular resistance</li>
+      <li>High sodium diet — causes fluid retention, increases blood volume</li>
+      <li>Physical inactivity</li>
+      <li>Tobacco use — causes vasoconstriction and endothelial damage</li>
+      <li>Excessive alcohol consumption</li>
+      <li>Stress — activates sympathetic nervous system (catecholamines → vasoconstriction)</li>
+      <li>Race — Black Americans have higher prevalence and earlier onset</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Secondary hypertension (5–10%):</strong> Due to identifiable cause: chronic kidney disease (most common), primary aldosteronism, renal artery stenosis, obstructive sleep apnea, thyroid disorders, pheochromocytoma, medications (NSAIDs, OCP, decongestants, stimulants).</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Pathophysiology:</strong> BP = Cardiac Output × Systemic Vascular Resistance. Hypertension results from increased CO (e.g., high fluid volume), increased SVR (e.g., vasoconstriction), or both. The renin-angiotensin-aldosterone system (RAAS) is a key regulator.
+    </div>
+  </section>
+
+  <section id="dehydration" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Assessing a Patient for Dehydration</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Dehydration = fluid volume deficit (FVD).</strong> Occurs when output exceeds intake. Common causes: vomiting, diarrhea, fever, diaphoresis, inadequate intake, hemorrhage, burns.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Priority nursing assessment for vomiting and dehydration:</strong> Airway first (aspiration risk), then ABCs; then fluid/electrolyte status.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Signs and symptoms of dehydration:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Skin:</strong> Poor turgor (tenting — pinch skin over sternum or forearm; should spring back in &lt;2 seconds), dry mucous membranes, dry lips, sunken eyes</li>
+      <li><strong>Vital signs:</strong> Tachycardia (compensatory), hypotension (orthostatic first — BP drops &gt;20 mmHg systolic or &gt;10 mmHg diastolic when standing), tachypnea, low-grade fever</li>
+      <li><strong>Urine:</strong> Decreased output (&lt;30 mL/hr indicates inadequate renal perfusion), dark amber/concentrated urine, high specific gravity (&gt;1.030), elevated BUN</li>
+      <li><strong>Neurological:</strong> Restlessness, confusion, lethargy, dizziness (especially orthostatic)</li>
+      <li><strong>Weight:</strong> Acute weight loss (1 kg ≈ 1 L fluid lost)</li>
+      <li><strong>Labs:</strong> Elevated hematocrit, BUN, creatinine, sodium (hypernatremia), and serum osmolality</li>
+    </ul>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> Skin turgor is the most classic assessment finding, but it is unreliable in elderly patients (skin loses elasticity with age). Assess mucous membranes, urine output, and vital signs together for a complete picture.
+    </div>
+  </section>
+
+  <section id="activity-intolerance" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">How to Determine Activity Intolerance</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>NANDA-I definition:</strong> Activity Intolerance — Insufficient physiological or psychological energy to endure or complete required or desired daily activities.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Assessment parameters — compare baseline to response after activity:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Heart rate:</strong> Normal response = HR increases; intolerance = HR increases &gt;20 bpm above baseline, or HR &gt;100 bpm with minimal exertion; or HR fails to return to baseline within 3–5 minutes of rest</li>
+      <li><strong>Blood pressure:</strong> Normal = mild increase; intolerance = systolic drops &gt;20 mmHg during activity, or disproportionate rise</li>
+      <li><strong>Respiratory rate:</strong> Normal = mild increase; intolerance = RR &gt;24, dyspnea at rest or with minimal activity</li>
+      <li><strong>SpO2:</strong> Should remain ≥95%; drop below 90% with activity indicates intolerance</li>
+      <li><strong>Subjective:</strong> Patient reports fatigue, weakness, dizziness, chest pain, or palpitations with activity</li>
+      <li><strong>Appearance:</strong> Pallor, diaphoresis, cyanosis, use of accessory muscles</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Causes:</strong> Cardiac conditions (HF, angina), anemia, COPD, deconditioning, pain, malnutrition, depression, obesity.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Action:</strong> Stop activity if signs of intolerance appear; have patient rest; reassess; report to provider.</p>
+  </section>
+
+  <section id="pain-adults-children" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Assessing Pain in Adults &amp; Children</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Pain is the 5th vital sign.</strong> Always use a validated, age-appropriate tool. The patient's self-report is the most reliable indicator.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Assessment framework — PQRSTU:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>P</strong> — Provokes/Palliates: What makes pain better or worse?</li>
+      <li><strong>Q</strong> — Quality: Sharp, dull, burning, throbbing, aching, stabbing?</li>
+      <li><strong>R</strong> — Region/Radiation: Where is it? Does it radiate?</li>
+      <li><strong>S</strong> — Severity: Rate on 0–10 scale</li>
+      <li><strong>T</strong> — Timing: Constant or intermittent? When did it start?</li>
+      <li><strong>U</strong> — Understanding: What does the patient think is causing it?</li>
+    </ul>
+
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Pain scales by age:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Adults (verbal):</strong> Numeric Rating Scale (NRS) 0–10; Visual Analog Scale (VAS)</li>
+      <li><strong>Adults (non-verbal/cognitive impairment):</strong> PAINAD scale (Pain Assessment in Advanced Dementia); CPOT (Critical Care Pain Observation Tool)</li>
+      <li><strong>Children ≥8 years:</strong> NRS 0–10 (same as adults)</li>
+      <li><strong>Children 3–7 years:</strong> Wong-Baker FACES scale (faces range from smiling to crying — patient points to face that represents their pain)</li>
+      <li><strong>Infants and toddlers (&lt;3 years):</strong> FLACC scale — Face, Legs, Activity, Cry, Consolability (0–2 points each, total 0–10)</li>
+      <li><strong>Neonates:</strong> NIPS (Neonatal Infant Pain Scale) or CRIES</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> Always reassess pain 30–60 minutes after a non-pharmacological intervention and 15–30 minutes after IV medication (60 minutes for oral/IM). Document reassessment — this demonstrates evaluation of interventions.
+    </div>
+  </section>
+
+  <section id="pain-comatose" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Assessing Pain in a Comatose Patient</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Comatose patients cannot self-report pain. Use <strong>behavioral observation tools</strong> that assess physiological and behavioral indicators.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>CPOT (Critical Care Pain Observation Tool) — most validated for ICU/unconscious patients:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Facial expression:</strong> Relaxed (0), tense/frowning (1), grimacing (2)</li>
+      <li><strong>Body movements:</strong> Absence of movements (0), protection/guarding (1), restlessness/agitation (2)</li>
+      <li><strong>Muscle tension:</strong> Relaxed (0), tense/rigid (1), very tense/rigid (2)</li>
+      <li><strong>Compliance with ventilator (intubated) / Vocalization (extubated):</strong> Tolerating (0), coughing/moaning (1), fighting/crying out (2)</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Score 0–8; score ≥3 indicates significant pain requiring intervention.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Additional indicators:</strong> Tachycardia, hypertension, diaphoresis, tearing, pupillary dilation, flushing — all physiologic signs of pain but can also reflect other conditions (assess in context).</p>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Principle:</strong> Absence of behavioral pain indicators does NOT mean absence of pain — deeply sedated or pharmacologically paralyzed patients cannot display behavioral responses. Assume painful procedures (suctioning, turning, wound care) cause pain and premedicate as ordered.
+    </div>
+  </section>
+
+  <section id="cardiac" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">How to Prevent Cardiac Diseases</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Primary prevention</strong> targets people without existing disease. Nurses play a key role in education and risk reduction.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Modifiable risk factor reduction:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Smoking cessation:</strong> Most important single modifiable risk factor; refer to cessation programs, NRT, or pharmacotherapy (varenicline)</li>
+      <li><strong>Blood pressure control:</strong> Target &lt;130/80 mmHg; DASH diet, medications as prescribed</li>
+      <li><strong>Cholesterol management:</strong> Dietary changes (reduce saturated/trans fats), statins as ordered, monitor LDL</li>
+      <li><strong>Diabetes management:</strong> Maintain HbA1c &lt;7%, control glucose — hyperglycemia damages blood vessels</li>
+      <li><strong>Physical activity:</strong> ≥150 minutes moderate aerobic activity per week; strengthens myocardium, lowers BP and cholesterol</li>
+      <li><strong>Healthy diet:</strong> Mediterranean or DASH diet — fruits, vegetables, whole grains, lean proteins, healthy fats; limit sodium (&lt;2.3 g/day), processed foods, red meat</li>
+      <li><strong>Weight management:</strong> BMI 18.5–24.9; even 5–10% weight loss reduces cardiac risk significantly</li>
+      <li><strong>Alcohol moderation:</strong> ≤1 drink/day (women), ≤2 drinks/day (men)</li>
+      <li><strong>Stress management:</strong> Relaxation techniques, social support, counseling</li>
+    </ul>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/hygiene-personal-care`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Patient Hygiene &amp; Personal Care
+    </a>
+    <a href={`${base}/private/d439/communication-teaching`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Communication &amp; Patient Teaching →
+    </a>
+  </div>
+</Layout>
