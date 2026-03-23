@@ -1,0 +1,293 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'case-overview',
+    heading: 'Case Overview',
+    body: `Patient: Mr. James Holloway, 68-year-old male. Admitted to the medical-surgical unit from the emergency department with a two-day history of worsening dyspnoea, increased sputum production, and a productive cough with yellow-green sputum. He has a 45-pack-year smoking history (quit 5 years ago) and a documented diagnosis of COPD (GOLD Stage III). His wife called 911 after he was unable to complete a sentence without pausing to breathe.\n\nAdmitting diagnosis: Acute exacerbation of COPD, likely triggered by a viral upper respiratory tract infection. Secondary concern for possible community-acquired pneumonia pending chest radiograph and sputum culture results.\n\nRelevant past medical history: COPD (GOLD Stage III), hypertension, type 2 diabetes mellitus, and chronic lower back pain. Current outpatient medications include tiotropium inhaler (once daily), salmeterol/fluticasone inhaler (twice daily), metformin 1000 mg twice daily, lisinopril 10 mg daily, and ibuprofen 400 mg as needed for back pain.\n\nAllergies: Penicillin (rash).\n\nThis worked example traces the reasoning of a second-year nursing student—referred to throughout as "the student nurse"—as they apply the seven-phase concept map process to Mr. Holloway's care. Each phase demonstrates the cognitive moves described in the Nursing Concept Map encyclopedia article, grounded in the specific clinical data this patient presents.`,
+  },
+  {
+    id: 'phase1',
+    heading: 'Phase 1: Data Collection (Assessment)',
+    body: `The student nurse begins by reviewing Mr. Holloway's chart before entering the room. The admitting diagnosis, medication list, allergy documentation, and pending result flags are all noted. She then conducts a systematic head-to-toe assessment.\n\nVital signs on arrival to the unit: Temperature 37.9 °C (100.2 °F); heart rate 108 bpm (sinus tachycardia confirmed on cardiac monitor); respiratory rate 28 breaths/min; blood pressure 158/92 mmHg; SpO₂ 84% on room air, rising to 90% on 2 L/min nasal cannula.\n\nRespiratory assessment: Barrel-shaped chest consistent with chronic air-trapping. Prolonged expiratory phase with audible expiratory wheeze. Diffuse coarse crackles in both lung bases and diminished breath sounds bilaterally in the lower lobes. Accessory muscle use (sternocleidomastoid and scalene) visible at rest. Patient is using pursed-lip breathing spontaneously.\n\nCardiovascular assessment: Heart rate 108 bpm, regular rhythm. No peripheral oedema noted. Peripheral capillary refill 3 seconds bilaterally.\n\nNeurological: Alert and oriented to person, place, and time; however, becomes visibly distressed and agitated when attempting to answer questions. Glasgow Coma Scale score 15.\n\nSkin and integument: Mild central cyanosis noted at the lips. No peripheral cyanosis. Skin warm and diaphoretic.\n\nGastrointestinal and genitourinary: Bowel sounds present in all four quadrants. Last bowel movement this morning. Urine output 35 mL/hr (adequate but low-normal).\n\nSubjective data from the patient interview: Mr. Holloway reports that his breathing has been "getting worse for two days." He describes his breathlessness as 8/10 at rest. He states "I can't catch my breath no matter what I do." He reports that his sputum changed from white to yellow-green approximately 48 hours ago. He says he has not been able to sleep lying flat and has spent the last two nights in the recliner. He admits to not refilling his tiotropium inhaler for the past three weeks because of cost concerns. His wife adds that he was confused and "not himself" last evening, which appears to have resolved by this morning.\n\nDiagnostic results available: Arterial blood gas (ABG) on 2 L/min nasal cannula — pH 7.32, PaCO₂ 58 mmHg, PaO₂ 58 mmHg, HCO₃ 30 mEq/L (consistent with partially compensated respiratory acidosis and chronic CO₂ retention). Complete blood count — WBC 13.4 × 10³/µL with a neutrophil predominance; haemoglobin 13.8 g/dL; haematocrit 41%; platelets 214 × 10³/µL. Basic metabolic panel — Na⁺ 139 mEq/L; K⁺ 3.7 mEq/L; Cl⁻ 101 mEq/L; CO₂ 30 mEq/L; BUN 22 mg/dL; creatinine 1.1 mg/dL; glucose 148 mg/dL. Chest radiograph — hyperinflation with flattened diaphragms, increased AP diameter, and a new infiltrate in the right lower lobe.\n\nMedication reconciliation findings: Mr. Holloway has been without his tiotropium (long-acting anticholinergic bronchodilator) for three weeks. This represents a significant gap in his maintenance therapy that the student nurse identifies as a contributing factor to the severity of this exacerbation.`,
+  },
+  {
+    id: 'phase2',
+    heading: 'Phase 2: Data Organisation',
+    body: `With the assessment complete, the student nurse sorts the data into clusters.\n\nCluster 1 — Oxygenation and ventilation cues: SpO₂ 84% on room air / 90% on 2 L/min NC; RR 28/min; pH 7.32, PaCO₂ 58 mmHg, PaO₂ 58 mmHg, HCO₃ 30 (partially compensated respiratory acidosis); accessory muscle use; central cyanosis; audible expiratory wheeze; prolonged expiratory phase; barrel chest. This cluster points strongly toward impaired gas exchange and ineffective breathing pattern.\n\nCluster 2 — Airway clearance cues: Coarse crackles bilaterally; diminished breath sounds in lower lobes; productive cough with yellow-green sputum; WBC 13.4 with neutrophilia; right lower lobe infiltrate on CXR; low-grade fever 37.9 °C. This cluster points toward ineffective airway clearance and probable concurrent infection.\n\nCluster 3 — Activity and functional capacity cues: Unable to complete a sentence; diaphoresis; HR 108 at rest; patient reports inability to sleep lying flat; reports dyspnoea 8/10 at rest. This cluster points toward activity intolerance.\n\nCluster 4 — Anxiety and psychosocial cues: Agitation when answering questions; wife reports he was confused and "not himself" last evening (likely hypoxia-driven); reports distress and inability to catch breath; 8/10 dyspnoea. This cluster points toward anxiety related to breathlessness and fear of suffocation.\n\nCluster 5 — Knowledge and self-management cues: Three-week lapse in tiotropium use due to cost; prior history of smoking 45 pack-years; two-day delay before seeking care. This cluster points toward deficient knowledge regarding disease management and the clinical significance of a COPD exacerbation.\n\nCluster 6 — Infection risk cues: Yellow-green sputum; elevated WBC 13.4; right lower lobe infiltrate; sputum culture pending; low-grade fever; penicillin allergy (constrains antibiotic options). This cluster points toward risk for worsening infection / sepsis.\n\nSeparating medical from nursing diagnoses: The medical diagnosis is "acute exacerbation of COPD with possible community-acquired pneumonia." The nursing diagnoses will address Mr. Holloway's human responses to this medical condition — compromised gas exchange, inability to clear his airway, fatigue that limits activity, anxiety, self-management deficits, and infection risk. These are the domains within which the student nurse can independently intervene and measure outcomes.`,
+  },
+  {
+    id: 'phase3',
+    heading: 'Phase 3: Clinical Reasoning and Nursing Diagnoses',
+    body: `The student nurse analyses each cluster and formulates nursing diagnoses using the NANDA-I three-part format.\n\nNursing Diagnosis 1 (Priority 1): Impaired Gas Exchange R/T ventilation-perfusion mismatch and alveolar hypoventilation secondary to COPD exacerbation AEB SpO₂ 84% on room air (90% on 2 L/min NC), pH 7.32, PaCO₂ 58 mmHg, PaO₂ 58 mmHg, central cyanosis, RR 28/min, and use of accessory muscles.\n\nRationale for priority: This diagnosis represents the most immediate life threat. The ABG demonstrates respiratory acidosis with CO₂ retention — a sign that Mr. Holloway's respiratory muscles are fatiguing and his ventilatory drive is marginal. Hypoxaemia at SpO₂ 84% is life-threatening and must be corrected urgently. Per the ABC framework, oxygenation and ventilation take precedence over all other diagnoses.\n\nNursing Diagnosis 2 (Priority 2): Ineffective Airway Clearance R/T excessive mucus production and bronchospasm secondary to COPD exacerbation and probable pneumonia AEB coarse bilateral crackles, productive cough with yellow-green sputum, diminished breath sounds in bilateral lower lobes, and right lower lobe infiltrate.\n\nNursing Diagnosis 3 (Priority 3): Activity Intolerance R/T imbalance between oxygen supply and demand AEB inability to complete a sentence without pausing, diaphoresis, heart rate 108 bpm at rest, and patient-reported dyspnoea 8/10 with minimal exertion.\n\nNursing Diagnosis 4 (Priority 4): Anxiety R/T acute dyspnoea and fear of suffocation AEB visible agitation, distress during conversation, and patient statement "I can't catch my breath no matter what I do."\n\nNursing Diagnosis 5 (Priority 5): Deficient Knowledge R/T COPD self-management, importance of maintenance inhaler adherence, and early recognition of exacerbation warning signs AEB three-week lapse in tiotropium use due to cost and two-day delay before seeking care.\n\nNursing Diagnosis 6 (Priority 6): Risk for Infection (progression/worsening) R/T respiratory secretion stasis, immunocompromised state, and confirmed bacterial superinfection (pending culture), compounded by penicillin allergy.\n\nPrioritisation rationale: The student nurse applies both ABC prioritisation and Maslow's Hierarchy. Impaired gas exchange and ineffective airway clearance are immediate physiological threats to life (Airway and Breathing). Activity intolerance, though physically distressing, is downstream of the oxygenation problem and will improve as the primary diagnoses are addressed. Anxiety is attended to concurrently — the student nurse recognises that unmanaged anxiety increases oxygen demand and worsens dyspnoea — but it is not the immediate life threat. Knowledge deficits and infection risk are important but do not require immediate intervention in the same sense as the oxygenation problem.`,
+  },
+  {
+    id: 'phase4',
+    heading: 'Phase 4: Goal and Outcome Setting',
+    body: `For each nursing diagnosis, the student nurse writes SMART outcomes.\n\nGoal 1 (for Impaired Gas Exchange): Mr. Holloway will maintain SpO₂ ≥ 90% on ≤ 4 L/min nasal cannula and report dyspnoea ≤ 4/10 at rest within 4 hours of initiating bronchodilator and supplemental oxygen therapy. Long-term: ABG will demonstrate pH ≥ 7.35 and PaO₂ ≥ 65 mmHg on the patient's maintenance oxygen level within 24 hours of admission.\n\nImportant note on oxygen targets in COPD: The student nurse notes from their pathophysiology content that patients with chronic CO₂ retention (as evidenced by Mr. Holloway's elevated bicarbonate of 30 and elevated baseline PaCO₂) may rely on hypoxic drive. Target SpO₂ for COPD patients with known or suspected hypercapnia is 88–92%, not the 94–98% used for most other patients. They document this in the care plan and verify it against the physician order.\n\nGoal 2 (for Ineffective Airway Clearance): Mr. Holloway will demonstrate effective airway clearance as evidenced by productive cough with expectoration of thinned, clear-to-white sputum, improved or absent crackles on auscultation, and SpO₂ maintained within target range, within 24–48 hours of treatment initiation.\n\nGoal 3 (for Activity Intolerance): Mr. Holloway will tolerate sitting at the edge of the bed for 5 minutes and performing self-care activities (face washing, oral care) without SpO₂ dropping below 88% or dyspnoea exceeding 5/10, within 48 hours of admission. Long-term: Patient will report ability to ambulate 30 feet on level surface with minimal dyspnoea (≤ 3/10) before discharge.\n\nGoal 4 (for Anxiety): Mr. Holloway will report anxiety ≤ 3/10 and demonstrate visible reduction in agitation within 1 hour of initiating anxiolytic non-pharmacological interventions (fan therapy, pursed-lip breathing coaching, reassurance). Note: The student nurse considers whether a PRN anxiolytic is ordered and discusses this with the supervising RN, given that benzodiazepines carry respiratory depression risk in this patient population.\n\nGoal 5 (for Deficient Knowledge): Before discharge, Mr. Holloway will verbally identify: (a) the purpose of each inhaler in his regimen; (b) the correct sequence for using a short-acting bronchodilator before a long-acting inhaled corticosteroid/bronchodilator; (c) at least three warning signs of COPD exacerbation requiring immediate medical attention; and (d) at least two community resources for assistance with medication costs.\n\nGoal 6 (for Risk for Infection): Mr. Holloway will remain free of signs of infection progression (WBC trending downward, temperature ≤ 37.5 °C, no new sputum colour changes) throughout hospitalisation. Sputum culture will guide antibiotic therapy selection within 48–72 hours.`,
+  },
+  {
+    id: 'phase5',
+    heading: 'Phase 5: Intervention Planning',
+    body: `The student nurse identifies interventions for each nursing diagnosis and categorises them.\n\nInterventions for Impaired Gas Exchange:\nIndependent — Elevate head of bed 30–45 degrees or position in high Fowler's to maximise thoracic expansion and reduce work of breathing. Coach and reinforce pursed-lip breathing technique, which prolongs exhalation, reduces air-trapping, and increases alveolar ventilation. Monitor SpO₂ continuously and assess mental status hourly for early signs of CO₂ narcosis. Apply and titrate supplemental oxygen to maintain SpO₂ 88–92% per COPD-specific protocol (avoid excessive oxygen, which can blunt hypoxic drive). Perform ongoing respiratory assessment every 2 hours including auscultation, accessory muscle use, respiratory rate, and presence of cyanosis.\nDependent — Administer prescribed nebulised short-acting bronchodilators (albuterol/ipratropium) as ordered; administer systemic corticosteroids (e.g., methylprednisolone IV) as ordered to reduce airway inflammation. Obtain repeat ABG per physician order to monitor response to therapy.\nCollaborative — Coordinate with respiratory therapy for bronchodilator administration and monitoring; notify physician immediately if SpO₂ falls below 88% or patient demonstrates worsening mental status, increasing PaCO₂, or signs of respiratory fatigue (paradoxical breathing).\n\nInterventions for Ineffective Airway Clearance:\nIndependent — Encourage hydration (oral fluids as tolerated) to liquefy secretions. Teach and reinforce controlled coughing technique (huff coughing). Assist with repositioning every 2 hours to facilitate postural drainage and prevent secretion pooling. Auscultate lungs after coughing episodes to assess effectiveness of secretion clearance.\nDependent — Administer prescribed nebulised mucolytic agents if ordered. Administer prescribed antibiotics per sensitivity results (noting penicillin allergy in administration record); confirm antibiotic selection avoids beta-lactam cross-reactivity.\nCollaborative — Collaborate with respiratory therapy for chest physiotherapy or oscillating positive expiratory pressure (OPEP) device use; report changes in sputum character, volume, or colour to physician.\n\nInterventions for Activity Intolerance:\nIndependent — Cluster nursing care activities to allow rest periods between. Encourage patient to perform self-care activities at his own pace with oxygen in place. Monitor SpO₂, heart rate, and dyspnoea rating before, during, and after any activity. Promote use of energy-conservation techniques (seated position during activities, sitting to shower when able). Apply pursed-lip breathing during exertion.\nCollaborative — Consult physical therapy for progressive mobility programme when patient is medically stable.\n\nInterventions for Anxiety:\nIndependent — Maintain a calm, reassuring presence at the bedside, particularly during dyspnoea episodes. Apply handheld fan directed at the patient's face (cool airflow to the V2 branch of the trigeminal nerve has evidence-based anxiolytic and dyspnoea-reducing effects). Explain all procedures and monitoring equipment clearly to reduce uncertainty. Coach pursed-lip breathing, framing it explicitly as a breathing control technique. Limit the number of clinicians in the room simultaneously; reduce environmental stimuli.\nCollaborative — Discuss with supervising RN and physician whether a low-dose, short-acting anxiolytic is appropriate, with clear documentation of respiratory risk. Involve chaplaincy or social work if patient identifies spiritual or psychosocial needs.\n\nInterventions for Deficient Knowledge:\nIndependent — Assess the patient's current understanding of COPD and its triggers before teaching. Provide education in brief sessions when dyspnoea is controlled and patient is receptive. Teach inhaler technique using teach-back method; provide written pictographic instructions. Discuss the importance of maintenance inhaler adherence and the risk of exacerbation when maintenance bronchodilators are discontinued. Provide information about patient assistance programmes and community pharmacy discount resources for inhaler cost concerns. Teach the "ABCD" warning signs of exacerbation (Acute increase in dyspnoea, change in sputum Colour/quantity, Chest tightness, Decreased exercise tolerance) and when to call for emergency help.\nCollaborative — Involve social work for financial assistance with medication costs. Refer to pulmonary rehabilitation programme prior to discharge.\n\nInterventions for Risk for Infection:\nIndependent — Perform hand hygiene before and after all patient contact. Monitor vital signs and laboratory values for infection progression. Use standard precautions; apply droplet precautions until pneumonia source is determined. Ensure vaccination history is reviewed and document influenza and pneumococcal vaccine status.\nDependent — Administer antibiotics as prescribed on schedule; document and monitor for adverse effects, particularly given penicillin allergy (cross-reactivity risk with cephalosporins documented).\nCollaborative — Review sputum culture results with the interdisciplinary team and advocate for antibiotic de-escalation or targeted therapy when sensitivities are available.`,
+  },
+  {
+    id: 'phase6',
+    heading: 'Phase 6: Drawing Connections',
+    body: `With nursing diagnoses, goals, and interventions documented, the student nurse constructs the visual concept map, placing Mr. Holloway at the centre and drawing labelled arrows to show relationships.\n\nFrom assessment data to diagnoses: The student draws arrows labelled "as evidenced by" from key cue clusters to each nursing diagnosis. For example, an arrow from "SpO₂ 84% / pH 7.32 / PaCO₂ 58 / accessory muscle use / central cyanosis" points to "Impaired Gas Exchange." An arrow from "coarse crackles / yellow-green sputum / WBC 13.4 / RLL infiltrate" points to "Ineffective Airway Clearance."\n\nBetween nursing diagnoses (complication links): The student nurse identifies the following inter-diagnosis relationships:\n— Impaired Gas Exchange "causes / worsens" Anxiety: hypoxaemia and hypercapnia directly amplify the physiological sensation of breathlessness and the sympathetic stress response.\n— Impaired Gas Exchange "contributes to" Activity Intolerance: insufficient oxygen delivery limits cellular energy production and exercise capacity.\n— Ineffective Airway Clearance "worsens" Impaired Gas Exchange: retained secretions obstruct airways and worsen ventilation-perfusion mismatch.\n— Activity Intolerance "increases" Anxiety: the fear of becoming breathless with exertion reinforces avoidance behaviour and heightens anticipatory anxiety.\n— Deficient Knowledge "led to" COPD Exacerbation: the three-week lapse in tiotropium contributed to this admission and represents an avoidable precipitant.\n— Risk for Infection (Worsening) "threatens" Impaired Gas Exchange: progression of pneumonia would further compromise oxygenation and could precipitate respiratory failure.\n\nFrom diagnoses to interventions: Arrows labelled "treated with" connect each nursing diagnosis to its interventions. For example, Impaired Gas Exchange is connected to "high Fowler's positioning," "oxygen titration to SpO₂ 88–92%," "pursed-lip breathing coaching," and "bronchodilator administration."\n\nFrom interventions to expected outcomes: Arrows labelled "expected to produce" connect each intervention to its target outcome. Pursed-lip breathing coaching is expected to produce "reduced air-trapping → improved SpO₂ and reduced dyspnoea rating." Inhaler education with teach-back is expected to produce "correct inhaler technique demonstrated before discharge."\n\nThe student nurse reflects: "Drawing these arrows makes me realise how central the Impaired Gas Exchange diagnosis is — it connects to almost everything else. If I don't address that one first and most aggressively, everything else will be harder to manage."`,
+  },
+  {
+    id: 'phase7',
+    heading: 'Phase 7: Evaluation',
+    body: `At the end of the shift (8 hours post-admission), the student nurse evaluates Mr. Holloway's response to the care plan and updates the map.\n\nEvaluation of Goal 1 (Impaired Gas Exchange): Partially met. SpO₂ is now 91% on 2 L/min nasal cannula, within the COPD target range of 88–92%. Mr. Holloway reports dyspnoea 5/10 at rest (down from 8/10). Respiratory rate has decreased from 28 to 22 breaths/min. Accessory muscle use is reduced. Repeat ABG at 4 hours: pH 7.35, PaCO₂ 54 mmHg, PaO₂ 63 mmHg — marginal improvement but now within normal pH range. Plan: Continue current oxygen and bronchodilator therapy; reassess in 4 hours. The student nurse notes the importance of not increasing oxygen flow further despite the PaO₂ of 63 mmHg, because the pH has normalised and CO₂ retention remains, consistent with COPD physiology.\n\nEvaluation of Goal 2 (Ineffective Airway Clearance): Not yet met. Crackles persist bilaterally but are somewhat reduced at the left base. Patient has coughed productively twice during the shift; sputum remains yellow-green. Sputum culture is pending. Plan: Continue chest physiotherapy collaboration with respiratory therapy; reassess sputum character every shift; ensure antibiotic administration on schedule.\n\nEvaluation of Goal 3 (Activity Intolerance): Not yet assessable this shift — patient was too dyspnoeic earlier to attempt any activity beyond repositioning in bed. By end of shift, he has been repositioned to high Fowler's without desaturation. Plan: Attempt sitting at the edge of the bed early in the next shift with respiratory therapy present; document SpO₂ and dyspnoea rating before and after.\n\nEvaluation of Goal 4 (Anxiety): Partially met. The student nurse applied fan therapy and coached pursed-lip breathing within the first hour. Mr. Holloway reports anxiety 4/10 at end of shift (down from an estimated 9/10 on arrival). He was no longer agitated when speaking with the evening nurse. The physician elected not to prescribe a benzodiazepine given respiratory risk; instead ordered a PRN oral dose of lorazepam 0.5 mg with close monitoring, to be used only if anxiety impedes cooperation with breathing treatments. Plan: Continue non-pharmacological anxiolysis; administer lorazepam only if non-pharmacological measures fail.\n\nEvaluation of Goal 5 (Deficient Knowledge): Teaching deferred this shift — Mr. Holloway's respiratory distress made him unable to receive and process educational content safely. Brief exploratory conversation with his wife occurred regarding the importance of not stopping inhalers. Plan: Begin formal inhaler education on Day 2 when dyspnoea is better controlled; involve wife in all teaching sessions; contact social work re: prescription assistance programmes on Day 1.\n\nEvaluation of Goal 6 (Risk for Infection): No progression of infection signs this shift. Temperature 37.6 °C (slightly improved). First dose of prescribed antibiotic administered on time; no immediate adverse reaction. Plan: Continue monitoring; review sputum culture results when available.\n\nMap revision: The student nurse adds a new nursing diagnosis to the concept map: Impaired Sleep Pattern R/T dyspnoea and orthopnoea (inability to lie flat) AEB patient's report of sleeping only in a recliner for two nights prior to admission. They also add a risk notation: Risk for Respiratory Failure, not a nursing diagnosis per se but a collaborative problem flagged for the interdisciplinary team given the marginal ABG improvement.\n\nStudent reflection: "I found the biggest challenge was resisting the urge to start teaching Mr. Holloway about his inhalers right away — it felt like the most obviously preventable cause of this admission. But when I looked at him struggling to breathe at 84% saturation, I realised he could not receive or retain information in that state. The concept map helped me see that I had to fix the gas exchange problem first, which would then create the conditions for safe teaching later. It also surprised me how many diagnoses radiated from the central problem — addressing one often improved another. That interconnectedness is exactly what the map made visible."`,
+  },
+];
+---
+
+<Layout title="COPD Exacerbation — Worked Concept Map Example – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia/nursing-concept-map`} style="color:#6366f1; text-decoration:none; font-weight:500;">Nursing Concept Map</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>COPD Exacerbation — Worked Example</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#94a3b8; margin-bottom:0.65rem;">Contents</p>
+        <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
+          {sections.map((s, i) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+                onmouseover="this.style.color='#6366f1'"
+                onmouseout="this.style.color='#475569'"
+              >
+                <span style="color:#94a3b8; margin-right:0.35rem;">{i + 1}.</span>{s.heading}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#references"
+              style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+              onmouseover="this.style.color='#6366f1'"
+              onmouseout="this.style.color='#475569'"
+            >
+              <span style="color:#94a3b8; margin-right:0.35rem;">{sections.length + 1}.</span>Key References
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Patient snapshot -->
+      <div style="background:#fefce8; border:1px solid #fde68a; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#92400e; margin-bottom:0.5rem;">Patient Snapshot</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:#78350f; display:flex; flex-direction:column; gap:0.35rem;">
+          {[
+            '👤 Mr. James Holloway, 68 M',
+            '🫁 COPD exacerbation (GOLD III)',
+            '🚬 45 pack-year history (quit ×5 yr)',
+            '💊 3-week inhaler non-adherence',
+            '🩺 SpO₂ 84% on room air',
+            '🧪 pH 7.32 / PaCO₂ 58 / PaO₂ 58',
+            '🔬 RLL infiltrate on CXR',
+            '⚠️ Penicillin allergy',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <!-- Diagnoses panel -->
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Diagnoses</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.82rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '🔴 1. Impaired Gas Exchange',
+            '🔴 2. Ineffective Airway Clearance',
+            '🟠 3. Activity Intolerance',
+            '🟡 4. Anxiety',
+            '🟢 5. Deficient Knowledge',
+            '🟢 6. Risk for Infection',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <!-- Back links -->
+      <a
+        href={`${base}/private/encyclopedia/nursing-concept-map`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s; margin-bottom:0.6rem;"
+        onmouseover="this.style.background='#e0e7ff'"
+        onmouseout="this.style.background='#eef2ff'"
+      >← Concept Map Guide</a>
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🗺️ Care Planning &amp; Nursing Process
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Worked Example</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          COPD Exacerbation — Worked Concept Map Example
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          A student nurse walks through all seven phases of the nursing concept map process for a
+          68-year-old male admitted with an acute exacerbation of GOLD Stage III COPD. Each phase
+          demonstrates concrete clinical reasoning applied to real assessment data, from cue
+          recognition and nursing diagnosis formulation through SMART outcome setting, evidence-based
+          intervention planning, connection-drawing, and shift-end evaluation.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- How-to-use callout -->
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:2rem; display:flex; gap:0.75rem; align-items:flex-start;">
+        <span style="font-size:1.25rem; flex-shrink:0;">💡</span>
+        <div>
+          <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">How to use this example</p>
+          <p style="color:#15803d; font-size:0.875rem; line-height:1.65; margin:0;">
+            Read each phase in sequence, as a student nurse would work through it at the bedside and in post-conference.
+            Cross-reference the <a href={`${base}/private/encyclopedia/nursing-concept-map`} style="color:#16a34a; font-weight:600;">Nursing Concept Map guide</a> for
+            the theoretical framework underlying each step. Try covering each phase and predicting
+            what should come next before reading ahead — this active-recall approach maximises
+            the clinical reasoning benefit of worked examples.
+          </p>
+        </div>
+      </div>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- Concept map connections summary table -->
+      <section id="connections-table" style="margin-bottom:2.25rem;">
+        <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0;">
+          Key Concept Map Connections at a Glance
+        </h2>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+                <th style="text-align:left; padding:0.65rem 0.85rem; font-weight:700; color:#1e293b;">From</th>
+                <th style="text-align:left; padding:0.65rem 0.85rem; font-weight:700; color:#1e293b;">Relationship</th>
+                <th style="text-align:left; padding:0.65rem 0.85rem; font-weight:700; color:#1e293b;">To</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['SpO₂ 84%, pH 7.32, PaCO₂ 58, cyanosis, RR 28', 'as evidenced by →', 'Impaired Gas Exchange (Dx 1)'],
+                ['Coarse crackles, yellow-green sputum, WBC 13.4, RLL infiltrate', 'as evidenced by →', 'Ineffective Airway Clearance (Dx 2)'],
+                ['Ineffective Airway Clearance', 'worsens →', 'Impaired Gas Exchange'],
+                ['Impaired Gas Exchange', 'causes/worsens →', 'Anxiety (Dx 4)'],
+                ['Impaired Gas Exchange', 'contributes to →', 'Activity Intolerance (Dx 3)'],
+                ['Activity Intolerance', 'increases →', 'Anxiety'],
+                ['Deficient Knowledge', 'led to (precipitant) →', 'COPD Exacerbation / this admission'],
+                ['Risk for Infection (worsening)', 'threatens →', 'Impaired Gas Exchange'],
+                ['High Fowler\'s + oxygen titration', 'treated with / expected to improve →', 'Impaired Gas Exchange → SpO₂ ≥ 90%'],
+                ['Pursed-lip breathing coaching', 'expected to produce →', 'Reduced air-trapping → improved SpO₂ and dyspnoea'],
+                ['Fan therapy + PLB coaching', 'resolves →', 'Anxiety (Dx 4)'],
+                ['Inhaler teach-back + social work referral', 'resolves →', 'Deficient Knowledge (Dx 5)'],
+              ].map(([from, rel, to], idx) => (
+                <tr style={`border-bottom:1px solid #e2e8f0; background:${idx % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+                  <td style="padding:0.6rem 0.85rem; color:#334155; font-size:0.85rem;">{from}</td>
+                  <td style="padding:0.6rem 0.85rem; font-weight:600; color:#6366f1; white-space:nowrap; font-size:0.85rem;">{rel}</td>
+                  <td style="padding:0.6rem 0.85rem; color:#334155; font-size:0.85rem;">{to}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- COPD-specific clinical pearls -->
+      <section id="clinical-pearls" style="margin-bottom:2.25rem;">
+        <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0;">
+          COPD-Specific Clinical Pearls for Concept Map Construction
+        </h2>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            { colour: '#fef2f2', border: '#fecaca', dot: '⚠️', label: 'Oxygen target 88–92%, not 94–98%', detail: 'Patients with chronic hypercapnia and elevated bicarbonate (as seen in Mr. Holloway: HCO₃ 30) may depend on hypoxic drive. Excessive oxygen can suppress ventilatory drive, worsen hypercapnia, and precipitate respiratory failure. Always document the target SpO₂ range in your concept map outcomes.' },
+            { colour: '#fefce8', border: '#fde68a', dot: '💊', label: 'Inhaler non-adherence is a modifiable precipitant', detail: 'COPD exacerbations frequently result from maintenance inhaler non-adherence. Identifying this during Phase 1 (Deficient Knowledge cluster) allows the student nurse to address both the immediate crisis and its root cause — a powerful example of holistic, preventive nursing practice.' },
+            { colour: '#f0fdf4', border: '#bbf7d0', dot: '🫁', label: 'Pursed-lip breathing is an independent, evidence-based intervention', detail: 'PLB prolongs exhalation, creates auto-PEEP, reduces air-trapping, and has been shown to improve SpO₂ and reduce dyspnoea in COPD. It is within the independent nursing scope of practice — no order required — making it a high-value concept map intervention.' },
+            { colour: '#eff6ff', border: '#bfdbfe', dot: '🔗', label: 'Dx 2 directly worsens Dx 1 — bidirectional arrows matter', detail: 'Retained secretions worsen ventilation-perfusion mismatch (Dx 2 → worsens → Dx 1). Treating airway clearance is therefore not just about comfort: it is a direct intervention on gas exchange. The concept map makes this clinical logic visible.' },
+            { colour: '#fff7ed', border: '#fed7aa', dot: '😰', label: 'Anxiety in dyspnoea: non-pharmacological first', detail: 'Benzodiazepines carry respiratory depression risk in COPD. Evidence-based non-pharmacological interventions — cool fan to the face, pursed-lip breathing, upright positioning, calm presence — should be trialled first and documented in the concept map before pharmacological anxiolysis is considered.' },
+            { colour: '#faf5ff', border: '#e9d5ff', dot: '🧪', label: 'Penicillin allergy constrains antibiotic selection', detail: 'Many macrolide or fluoroquinolone antibiotics are used for COPD exacerbation with concurrent pneumonia. Document the allergy prominently on the concept map — it affects dependent interventions and requires collaborative communication with the pharmacist and physician.' },
+          ].map(({ colour, border, dot, label, detail }) => (
+            <div style={`background:${colour}; border:1px solid ${border}; border-radius:0.5rem; padding:0.85rem 1rem;`}>
+              <p style="font-weight:700; color:#1e293b; font-size:0.9rem; margin-bottom:0.3rem;">{dot} {label}</p>
+              <p style="color:#475569; font-size:0.875rem; margin:0; line-height:1.65;">{detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Global Initiative for Chronic Obstructive Lung Disease (GOLD). (2024). <em>Global strategy for prevention, diagnosis and management of COPD: 2024 report.</em> GOLD.',
+            'Herdman, T. H., Kamitsuru, S., &amp; Lopes, C. T. (Eds.). (2021). <em>NANDA International nursing diagnoses: Definitions and classification 2021–2023</em> (12th ed.). Thieme.',
+            'Liesker, J. J. W., Wijkstra, P. J., Ten Hacken, N. H. T., Koëter, G. H., Postma, D. S., &amp; Kerstjens, H. A. M. (2002). A systematic review of the effects of bronchodilators on exercise capacity in patients with COPD. <em>Chest, 121</em>(2), 597–608.',
+            'Mahler, D. A., &amp; O\'Donnell, D. E. (2015). Recent advances in dyspnea. <em>Chest, 147</em>(1), 232–241.',
+            'National Council of State Boards of Nursing. (2019). <em>NCLEX-RN examination: Test plan for the National Council Licensure Examination for Registered Nurses.</em> NCSBN.',
+            'Nettina, S. M. (2019). <em>Lippincott manual of nursing practice</em> (11th ed.). Wolters Kluwer.',
+            'Spahija, J., de Marchie, M., &amp; Grassino, A. (2005). Effects of imposed pursed-lips breathing on respiratory mechanics and dyspnea at rest and during exercise in COPD. <em>Chest, 128</em>(2), 640–650.',
+            'Wiseman, R., Rowett, D., &amp; Allcroft, P. (2019). Chronic refractory dyspnoea—evidence based management. <em>Australian Family Physician, 48</em>(4).',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
