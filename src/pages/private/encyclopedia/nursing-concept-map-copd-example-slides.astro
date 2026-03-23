@@ -1073,65 +1073,72 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       zIndex: '50',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       gap: '0',
-      background: 'rgba(15, 23, 42, 0.82)',
+      background: 'rgba(15, 23, 42, 0.88)',
       WebkitBackdropFilter: 'blur(6px)',
       backdropFilter: 'blur(6px)',
       borderRadius: '0 0.75rem 0.75rem 0',
-      padding: '0.6rem 0.45rem',
+      padding: '0.65rem 0.85rem 0.65rem 0.5rem',
       userSelect: 'none',
       fontFamily: 'system-ui, -apple-system, sans-serif',
     });
 
-    // "PROCESS" micro-label at the top of the panel
+    // "CONCEPT MAP PROCESS" heading at the top of the panel
     const heading = document.createElement('div');
-    heading.textContent = 'Process';
+    heading.textContent = 'Concept Map Process';
     Object.assign(heading.style, {
-      fontSize: '0.47rem',
+      fontSize: '0.55rem',
       fontWeight: '700',
-      letterSpacing: '0.1em',
+      letterSpacing: '0.08em',
       textTransform: 'uppercase',
-      color: 'rgba(255,255,255,0.35)',
-      marginBottom: '0.45rem',
+      color: 'rgba(255,255,255,0.4)',
+      marginBottom: '0.5rem',
+      width: '100%',
+      textAlign: 'center',
     });
     panel.appendChild(heading);
 
     // ── Phase dot items ──────────────────────────────────────────────────
-    const items: Array<{ dot: HTMLElement; numEl: HTMLElement }> = [];
+    const DOT_SIZE    = 22;  // px — circle diameter
+    const LINE_WIDTH  = 2;   // px — connector line width
+    const LINE_OFFSET = (DOT_SIZE - LINE_WIDTH) / 2;  // centres line under dot column
+
+    const items: Array<{ dot: HTMLElement; numEl: HTMLElement; labelEl: HTMLElement }> = [];
 
     PHASES.forEach((name, i) => {
       const phaseNum = i + 1;
 
-      // Connector line between dots (skip before the first dot)
+      // Connector line between items — aligned with the centre of the dot column
       if (i > 0) {
         const line = document.createElement('div');
         Object.assign(line.style, {
-          width: '2px',
-          height: '10px',
+          width: `${LINE_WIDTH}px`,
+          height: '8px',
           background: 'rgba(255,255,255,0.18)',
-          margin: '0 auto',
+          marginLeft: `${LINE_OFFSET}px`,
           borderRadius: '1px',
         });
         panel.appendChild(line);
       }
 
-      // Wrapper (provides tooltip via title attribute)
+      // Row wrapper: [dot] [label text]
       const item = document.createElement('div');
-      item.setAttribute('title', `Phase ${phaseNum}: ${name}`);
       Object.assign(item.style, {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center',
+        gap: '0.45rem',
         cursor: 'default',
         transition: 'opacity 0.3s',
       });
 
-      // Circle dot
+      // Circle dot with phase number
       const dot = document.createElement('div');
       Object.assign(dot.style, {
-        width: '22px',
-        height: '22px',
+        width: `${DOT_SIZE}px`,
+        height: `${DOT_SIZE}px`,
+        flexShrink: '0',
         borderRadius: '50%',
         background: 'rgba(255,255,255,0.12)',
         border: '1.5px solid rgba(255,255,255,0.18)',
@@ -1151,11 +1158,24 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         lineHeight: '1',
         transition: 'color 0.3s',
       });
-
       dot.appendChild(numEl);
+
+      // Visible phase name label
+      const labelEl = document.createElement('span');
+      labelEl.textContent = name;
+      Object.assign(labelEl.style, {
+        fontSize: '0.65rem',
+        fontWeight: '600',
+        color: 'rgba(255,255,255,0.25)',
+        lineHeight: '1.2',
+        transition: 'color 0.3s, font-weight 0.3s',
+        whiteSpace: 'nowrap',
+      });
+
       item.appendChild(dot);
+      item.appendChild(labelEl);
       panel.appendChild(item);
-      items.push({ dot, numEl });
+      items.push({ dot, numEl, labelEl });
     });
 
     document.body.appendChild(panel);
@@ -1170,7 +1190,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       const col = Math.round(Math.abs(tx) / window.innerWidth);
       const activePhase = colPhaseMap[col] ?? 0;
 
-      items.forEach(({ dot, numEl }, i) => {
+      items.forEach(({ dot, numEl, labelEl }, i) => {
         const phase = i + 1;
 
         if (activePhase === -1) {
@@ -1179,6 +1199,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
           dot.style.borderColor = 'rgba(234,88,12,0.75)';
           dot.style.transform = 'scale(1)';
           numEl.style.color = '#fff';
+          labelEl.style.color = 'rgba(255,255,255,0.75)';
+          labelEl.style.fontWeight = '600';
           (dot.parentElement as HTMLElement).style.opacity = '1';
         } else if (activePhase === 0) {
           // No active phase (Title / Case Overview)
@@ -1186,6 +1208,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
           dot.style.borderColor = 'rgba(255,255,255,0.15)';
           dot.style.transform = 'scale(1)';
           numEl.style.color = 'rgba(255,255,255,0.3)';
+          labelEl.style.color = 'rgba(255,255,255,0.25)';
+          labelEl.style.fontWeight = '600';
           (dot.parentElement as HTMLElement).style.opacity = '0.65';
         } else if (phase === activePhase) {
           // Currently active phase
@@ -1193,6 +1217,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
           dot.style.borderColor = '#ea580c';
           dot.style.transform = 'scale(1.2)';
           numEl.style.color = '#fff';
+          labelEl.style.color = '#fff';
+          labelEl.style.fontWeight = '700';
           (dot.parentElement as HTMLElement).style.opacity = '1';
         } else if (phase < activePhase) {
           // Already-covered phase
@@ -1200,6 +1226,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
           dot.style.borderColor = 'rgba(234,88,12,0.45)';
           dot.style.transform = 'scale(1)';
           numEl.style.color = 'rgba(255,255,255,0.65)';
+          labelEl.style.color = 'rgba(255,255,255,0.55)';
+          labelEl.style.fontWeight = '600';
           (dot.parentElement as HTMLElement).style.opacity = '0.9';
         } else {
           // Upcoming phase
@@ -1207,6 +1235,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
           dot.style.borderColor = 'rgba(255,255,255,0.13)';
           dot.style.transform = 'scale(1)';
           numEl.style.color = 'rgba(255,255,255,0.22)';
+          labelEl.style.color = 'rgba(255,255,255,0.18)';
+          labelEl.style.fontWeight = '600';
           (dot.parentElement as HTMLElement).style.opacity = '0.5';
         }
       });
@@ -1223,7 +1253,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       // Debounced resize handler — recalculates the active phase after the user
       // finishes resizing the window (SlidesLayout uses window.innerWidth in its
       // translateX transform, so column boundaries shift on resize).
-      let resizeTimer: ReturnType<typeof setTimeout>;
+      let resizeTimer: ReturnType<typeof setTimeout> | undefined;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(updateIndicator, 100);
