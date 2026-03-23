@@ -80,35 +80,6 @@ const sections = [
 
     <!-- Sticky sidebar -->
     <aside style="position:sticky; top:1.5rem;">
-      <!-- Contents -->
-      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#94a3b8; margin-bottom:0.65rem;">Contents</p>
-        <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
-          {sections.map((s, i) => (
-            <li>
-              <a
-                href={`#${s.id}`}
-                style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
-                onmouseover="this.style.color='#6366f1'"
-                onmouseout="this.style.color='#475569'"
-              >
-                <span style="color:#94a3b8; margin-right:0.35rem;">{i + 1}.</span>{s.heading}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a
-              href="#references"
-              style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
-              onmouseover="this.style.color='#6366f1'"
-              onmouseout="this.style.color='#475569'"
-            >
-              <span style="color:#94a3b8; margin-right:0.35rem;">{sections.length + 1}.</span>Key References
-            </a>
-          </li>
-        </ol>
-      </nav>
-
       <!-- Quick-reference phases -->
       <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
         <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#15803d; margin-bottom:0.5rem;">7 Phases</p>
@@ -273,15 +244,54 @@ const sections = [
         </ul>
       </section>
     </article>
+
+    <!-- Right sidebar: Table of Contents -->
+    <aside style="position:sticky; top:1.5rem;">
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#94a3b8; margin-bottom:0.65rem;">Contents</p>
+        <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
+          {sections.map((s, i) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+                onmouseover="this.style.color='#6366f1'"
+                onmouseout="this.style.color='#475569'"
+              >
+                <span style="color:#94a3b8; margin-right:0.35rem;">{i + 1}.</span>{s.heading}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#references"
+              style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+              onmouseover="this.style.color='#6366f1'"
+              onmouseout="this.style.color='#475569'"
+            >
+              <span style="color:#94a3b8; margin-right:0.35rem;">{sections.length + 1}.</span>Key References
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </aside>
   </div>
 </Layout>
 
 <style>
   .article-grid {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 200px 1fr 220px;
     gap: 2rem;
     align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .article-grid {
+      grid-template-columns: 180px 1fr;
+    }
+    .article-grid > aside:last-child {
+      display: none;
+    }
   }
   @media (max-width: 768px) {
     .article-grid {
