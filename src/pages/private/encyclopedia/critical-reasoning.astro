@@ -1,0 +1,217 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Critical reasoning is the disciplined process of analysing, evaluating, and constructing arguments in order to arrive at well-justified beliefs and decisions. It is distinct from informal, unreflective thinking in that it is deliberate, self-correcting, and governed by standards of clarity, accuracy, relevance, and logical validity. In nursing and other health professions, critical reasoning underpins every diagnostic and therapeutic decision: the clinician who cannot reason rigorously is vulnerable to cognitive error, susceptible to bias, and ill-equipped to navigate the complexity of clinical evidence.\n\nAt the heart of critical reasoning lie three fundamental methods of inference: deduction, induction, and abduction. An inference is the process of drawing a conclusion from premises, evidence, or observations. These three methods differ in the direction and certainty of the reasoning they support, and each plays a distinct role in both scientific inquiry and everyday clinical practice. Understanding them as complementary—rather than competing—tools allows the critical reasoner to select the most appropriate mode of inference for the situation at hand and to recognise the limits of any conclusion so derived.`,
+  },
+  {
+    id: 'deduction',
+    heading: 'Deductive Inference',
+    body: `Deductive inference proceeds from general premises to specific, necessary conclusions. If the premises are true and the argument is valid, the conclusion cannot be false—it follows with logical certainty. Deduction is therefore sometimes called the top-down approach: reasoning moves from the general rule down to the particular case.\n\nStructure. A canonical deductive argument takes the form of a syllogism: a major premise (a general rule or principle), a minor premise (a specific observation or fact), and a conclusion that follows necessarily. The classic example is: All humans are mortal (major premise); Socrates is a human (minor premise); therefore, Socrates is mortal (conclusion). No further evidence is required—the conclusion is guaranteed by the logical structure of the argument.\n\nApplication in nursing. Deductive reasoning underlies evidence-based practice when a nurse applies a general clinical guideline to a specific patient. For example: evidence-based guidelines recommend that all patients with a blood pressure consistently above 130/80 mmHg receive pharmacological intervention (general rule); this patient's blood pressure is 148/92 mmHg on three readings (specific observation); therefore, pharmacological intervention should be initiated (conclusion). Similarly, hypothesis testing in quantitative research is deductive: the researcher derives a specific, testable prediction from a general theory and then determines whether the observed data are consistent with that prediction.\n\nStrengths and limitations. The chief strength of deduction is certainty: a valid deductive argument guarantees its conclusion. The principal limitation is that this certainty is conditional—it depends entirely on the truth of the premises. If a general rule is false, or if a clinical guideline does not apply to the patient's situation, the deductive conclusion may be incorrect even though the reasoning is logically valid. Critical reasoners therefore scrutinise the premises of deductive arguments with particular care.`,
+  },
+  {
+    id: 'induction',
+    heading: 'Inductive Inference',
+    body: `Inductive inference moves in the opposite direction: from specific observations to broader generalisations and theories. Rather than applying a known rule to a case, inductive reasoning constructs the rule from accumulated cases. Because no finite set of observations can guarantee the truth of a universal generalisation, inductive conclusions are probable rather than certain. Induction is thus a bottom-up approach: reasoning builds upward from particular data points toward general patterns.\n\nStructure. An inductive argument might proceed as follows: the sun has risen every day for as long as records exist; therefore, the sun will rise tomorrow. The conclusion is highly probable—but it is not logically guaranteed. A sufficiently strong inductive argument provides good reason to believe its conclusion, but always with the acknowledgment that new evidence could, in principle, overturn it.\n\nApplication in nursing. Inductive reasoning is the foundation of qualitative research and clinical pattern recognition. When a nurse observes that patients who receive early mobility interventions consistently recover faster, she is reasoning inductively toward a generalisation that can then be tested more rigorously. At the bedside, inductive reasoning underlies the accumulated clinical experience that allows experienced nurses to recognise patterns across patients: repeated observations of a particular presentation associated with a particular outcome gradually build the experiential knowledge base that informs expert intuition. Epidemiological research—identifying risk factors for disease by analysing patterns across populations—is likewise fundamentally inductive.\n\nStrengths and limitations. Induction is the primary engine of new knowledge: it is how generalisations are formed from data, and how theories are generated from observations. Its limitation is the problem of induction, articulated by the philosopher David Hume: past regularity does not logically entail future regularity. The critical reasoner using induction must therefore evaluate the quality, quantity, and representativeness of the observations from which the generalisation is drawn, and remain open to revision when contradicting evidence emerges.`,
+  },
+  {
+    id: 'abduction',
+    heading: 'Abductive Inference',
+    body: `Abductive inference starts from an observation—often an incomplete, puzzling, or anomalous one—and seeks the most plausible explanation for it. Unlike deduction, abduction does not guarantee its conclusion; unlike induction, it does not build a general rule from repeated observations. Instead, it selects the best available hypothesis to explain a specific observation, given the evidence at hand. Abduction is sometimes described as inference to the best explanation.\n\nStructure. The abductive pattern of reasoning is: an observation is made; the observation would be explained if a particular hypothesis were true; therefore, the hypothesis is probably true (as the best available explanation). For example: the grass is wet this morning (observation); if it rained last night, the grass would be wet (explanatory hypothesis); therefore, it probably rained last night (conclusion). Note that the conclusion is not certain—a sprinkler, a burst pipe, or heavy dew would also explain the wet grass. Abduction selects the most parsimonious and plausible explanation, not the only possible one.\n\nApplication in nursing. Abductive reasoning is the primary mode of clinical diagnosis. When a nurse observes a constellation of signs and symptoms—sudden onset of chest pain, diaphoresis, dyspnoea, and ST-segment elevation—she forms the hypothesis that best explains this pattern: myocardial infarction. The diagnosis is an inference to the best explanation, not a logical certainty. Other explanations (pulmonary embolism, aortic dissection) remain possible until ruled out by further testing. The abductive hypothesis then generates specific predictions that can be tested deductively and inductively: if the hypothesis is correct, troponin levels should be elevated, the patient should respond to a particular intervention, and so on. In clinical practice, abduction is also the reasoning mode behind differential diagnosis: generating a list of candidate explanations and ranking them by plausibility in light of the available evidence.\n\nStrengths and limitations. Abduction is creative and efficient: it allows reasoners to form actionable hypotheses even under conditions of incomplete information, making it indispensable in time-pressured clinical settings. Its limitation is that the "best available explanation" may not be the correct one—particularly when the clinician's experience or the available evidence is narrow. Abductive conclusions must always be held provisionally and subjected to further testing.`,
+  },
+  {
+    id: 'comparison',
+    heading: 'Comparing the Three Methods',
+    body: `Although deduction, induction, and abduction are conceptually distinct, they are not mutually exclusive in practice. Critical reasoning typically involves all three, used in sequence and in combination.\n\nAbduction generates a hypothesis to explain an observation. Induction, applied across many similar cases, tests whether the hypothesis holds generally and can be elevated to a provisional rule. Deduction then applies that rule to new specific cases, generating testable predictions. The three methods form an integrated reasoning cycle rather than isolated tools.\n\nIn clinical practice, this cycle is visible throughout the diagnostic and therapeutic process. A nurse notices an unexpected change in a patient's condition (observation); she abductively forms the most plausible explanatory hypothesis; she recalls inductively built knowledge from clinical experience and the research literature to evaluate that hypothesis; and she deductively applies evidence-based guidelines to determine the appropriate intervention, then evaluates whether the predicted outcome is achieved.\n\nSee the comparison table in the sidebar for a concise summary of the distinguishing features of each method.`,
+  },
+  {
+    id: 'critical-reasoning-nursing',
+    heading: 'Critical Reasoning in Nursing Practice',
+    body: `For nurses, mastery of the three inference methods is not an academic exercise—it is a patient safety imperative. Clinical errors frequently arise not from a lack of factual knowledge but from failures of reasoning: anchoring on an initial hypothesis without adequate abductive scrutiny of alternative explanations (anchoring bias); inductively over-generalising from a limited number of cases (premature closure); or applying a deductive rule to a case for which its premises do not hold (misapplication of guidelines).\n\nThe Next Generation NCLEX (NGN) Clinical Judgment Measurement Model operationalises critical reasoning through six cognitive skills: recognise cues, analyse cues, prioritise hypotheses, generate solutions, take action, and evaluate outcomes. Each of these skills maps onto the inference methods described above. Recognising and analysing cues is largely abductive—forming and evaluating explanatory hypotheses. Prioritising hypotheses requires inductive knowledge of base rates and clinical presentations. Generating solutions and taking action involve deductive application of evidence-based guidelines to the specific patient situation. Evaluating outcomes provides the observational feedback that drives further inductive learning.\n\nCritical reasoning also demands metacognitive awareness—the ability to monitor and evaluate one's own reasoning processes. A nurse who asks "What is the evidence for my hypothesis?", "What alternative explanations have I not considered?", and "On what general rule am I basing this intervention, and does it apply to this patient?" is exercising the kind of self-correcting reasoning that distinguishes expert clinical judgment from unreflective habit.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Critical reasoning is the disciplined application of logical inference to arrive at well-justified beliefs and decisions. Its three core methods—deductive, inductive, and abductive inference—each contribute distinctively to the process of building knowledge and making sound clinical judgments. Deduction applies general principles with logical certainty to specific cases; induction builds general principles from accumulated specific observations with probabilistic confidence; abduction selects the most plausible explanation for incomplete or puzzling observations, enabling action under uncertainty.\n\nFor nursing students and practising nurses, cultivating fluency in all three methods—and the metacognitive awareness to choose among them appropriately—is central to safe, effective, evidence-based practice. No single method is sufficient; rigorous clinical reasoning requires their integration. The nurse who reasons deductively from validated guidelines, inductive from accumulated clinical experience, and abductively from the particular constellation of cues presented by each patient is best equipped to navigate the complexity, uncertainty, and urgency that define real-world clinical care.`,
+  },
+];
+
+const comparisonRows = [
+  { feature: 'Direction', deduction: 'General → Specific', induction: 'Specific → General', abduction: 'Observation → Best Explanation' },
+  { feature: 'Goal', deduction: 'Test / apply a theory', induction: 'Generate a theory', abduction: 'Find the best hypothesis' },
+  { feature: 'Certainty', deduction: 'Certain (if premises true)', induction: 'Probable', abduction: 'Plausible' },
+  { feature: 'Approach', deduction: 'Top-down', induction: 'Bottom-up', abduction: 'Incomplete → Likely' },
+  { feature: 'Type of logic', deduction: 'Specific conclusion from rules', induction: 'General rule from data', abduction: 'Best hypothesis from observation' },
+  { feature: 'Nursing example', deduction: 'Apply guideline to patient', induction: 'Pattern recognition across patients', abduction: 'Differential diagnosis' },
+  { feature: 'Research use', deduction: 'Quantitative hypothesis testing', induction: 'Qualitative theory generation', abduction: 'Hypothesis formation / interpretation' },
+];
+---
+
+<Layout title="Critical Reasoning – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Critical Reasoning</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+          <li style="font-size:0.85rem;">
+            <a href="#comparison-table" style="color:#6366f1; text-decoration:none; font-weight:500;">
+              — Comparison Table
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Quick Facts -->
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Deduction', def: 'General → Specific; certain' },
+            { term: 'Induction', def: 'Specific → General; probable' },
+            { term: 'Abduction', def: 'Observation → Best explanation; plausible' },
+            { term: 'Key risk', def: 'Anchoring bias, premature closure' },
+            { term: 'NGN link', def: 'Recognise → Analyse → Prioritise → Generate → Act → Evaluate' },
+            { term: 'Related to', def: 'Clinical Judgment, Nursing Process, EBP' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <!-- Nursing Relevance -->
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Differential diagnosis (abduction)',
+            '✅ Evidence-based guideline application (deduction)',
+            '✅ Clinical pattern recognition (induction)',
+            '✅ Avoiding cognitive bias',
+            '✅ Next Generation NCLEX (NGN) clinical judgment',
+            '✅ Safe, person-centred decision-making',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🧠 Clinical Reasoning &amp; Decision-Making
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Critical Reasoning
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of critical reasoning and its three core methods of inference—deduction,
+          induction, and abduction—with applications to nursing practice, clinical judgment, and
+          evidence-based decision-making.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- Comparison Table -->
+      <section id="comparison-table" style="margin-bottom:2.25rem;">
+        <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+          <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">—</span>
+          Comparison Table: Methods of Inference
+        </h2>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.9rem; color:#334155;">
+            <thead>
+              <tr style="background:#eef2ff;">
+                <th style="text-align:left; padding:0.65rem 0.85rem; border:1px solid #c7d2fe; font-weight:700; color:#4f46e5;">Feature</th>
+                <th style="text-align:left; padding:0.65rem 0.85rem; border:1px solid #c7d2fe; font-weight:700; color:#4f46e5;">Deduction</th>
+                <th style="text-align:left; padding:0.65rem 0.85rem; border:1px solid #c7d2fe; font-weight:700; color:#4f46e5;">Induction</th>
+                <th style="text-align:left; padding:0.65rem 0.85rem; border:1px solid #c7d2fe; font-weight:700; color:#4f46e5;">Abduction</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row, i) => (
+                <tr style={i % 2 === 0 ? 'background:#f8fafc;' : 'background:#fff;'}>
+                  <td style="padding:0.6rem 0.85rem; border:1px solid #e2e8f0; font-weight:600; color:#1e293b;">{row.feature}</td>
+                  <td style="padding:0.6rem 0.85rem; border:1px solid #e2e8f0;">{row.deduction}</td>
+                  <td style="padding:0.6rem 0.85rem; border:1px solid #e2e8f0;">{row.induction}</td>
+                  <td style="padding:0.6rem 0.85rem; border:1px solid #e2e8f0;">{row.abduction}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Harman, G. H. (1965). The inference to the best explanation. <em>The Philosophical Review, 74</em>(1), 88–95.',
+            'Hume, D. (1748). <em>An enquiry concerning human understanding.</em> A. Millar.',
+            'Lipton, P. (2004). <em>Inference to the best explanation</em> (2nd ed.). Routledge.',
+            'National Council of State Boards of Nursing. (2019). <em>NCLEX-RN examination: Test plan for the National Council Licensure Examination for Registered Nurses.</em> NCSBN.',
+            'Peirce, C. S. (1931–1958). <em>Collected papers of Charles Sanders Peirce</em> (Vols. 1–8). Harvard University Press.',
+            'Tanner, C. A. (2006). Thinking like a nurse: A research-based model of clinical judgment in nursing. <em>Journal of Nursing Education, 45</em>(6), 204–211.',
+          ].map(ref => (
+            <li style="font-size:0.875rem; color:#475569; line-height:1.6; padding-left:1.5rem; text-indent:-1.5rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
