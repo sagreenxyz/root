@@ -1,0 +1,159 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const allChapters = await getCollection('foundations-of-nursing');
+const chapters = allChapters.sort((a, b) => a.data.chapterNumber - b.data.chapterNumber);
+
+// Group chapters by unit
+const unitMap: Record<string, typeof chapters> = {};
+for (const ch of chapters) {
+  const unit = ch.data.unit;
+  if (!unitMap[unit]) unitMap[unit] = [];
+  unitMap[unit].push(ch);
+}
+
+const units = [
+  {
+    id: 'unit-1',
+    label: '1 — The Professional Architecture',
+    color: '#6366f1',
+    bg: '#eef2ff',
+    border: '#c7d2fe',
+    displayLabel: 'Unit 1 — The Professional Architecture',
+  },
+  {
+    id: 'unit-2',
+    label: '2 — The Clinical Mindset',
+    color: '#0891b2',
+    bg: '#ecfeff',
+    border: '#a5f3fc',
+    displayLabel: 'Unit 2 — The Clinical Mindset',
+  },
+  {
+    id: 'unit-3',
+    label: '3 — Health, Wellness, and Human Development',
+    color: '#16a34a',
+    bg: '#f0fdf4',
+    border: '#bbf7d0',
+    displayLabel: 'Unit 3 — Health, Wellness, and Human Development',
+  },
+  {
+    id: 'unit-4',
+    label: '4 — Biological Foundations and Pathophysiology',
+    color: '#d97706',
+    bg: '#fffbeb',
+    border: '#fde68a',
+    displayLabel: 'Unit 4 — Biological Foundations and Pathophysiology',
+  },
+  {
+    id: 'unit-6',
+    label: '6 — Clinical Skills',
+    color: '#dc2626',
+    bg: '#fef2f2',
+    border: '#fecaca',
+    displayLabel: 'Unit 6 — Clinical Skills',
+  },
+];
+
+const chapterIcons: Record<number, string> = {
+  1: '📜', 2: '⚖️', 3: '🤝', 4: '💬',
+  5: '🌍', 6: '🕊️', 7: '🔬', 8: '🔄',
+  9: '🧠', 10: '🏥', 11: '👶', 12: '🍽️',
+  13: '🧬', 14: '💧', 33: '🫁',
+};
+---
+
+<Layout title="Foundations of Nursing – Textbook" protected={true}>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Foundations of Nursing</span>
+  </nav>
+
+  <!-- Header -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2.5rem;">📚</span>
+      <div>
+        <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.1rem;">Foundations of Nursing</h1>
+        <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.5rem;">
+          Textbook
+        </span>
+      </div>
+    </div>
+    <p style="color:#64748b; font-size:1rem; line-height:1.6; max-width:680px;">
+      A comprehensive nursing textbook spanning {chapters.length} chapters across {Object.keys(unitMap).length} units. Each chapter covers core concepts, learning objectives, key terms, and evidence-based clinical guidance aligned with NCLEX-RN standards.
+    </p>
+  </div>
+
+  <!-- Quick-jump anchor list -->
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.75rem;">Jump to Unit</p>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+      {units.map(u => (
+        unitMap[u.label] && (
+          <a
+            href={`#${u.id}`}
+            style={`display:inline-block; padding:0.3rem 0.75rem; font-size:0.8rem; font-weight:600; border-radius:1rem; background:${u.bg}; color:${u.color}; border:1px solid ${u.border}; text-decoration:none;`}
+          >
+            {u.displayLabel}
+          </a>
+        )
+      ))}
+    </div>
+  </div>
+
+  <!-- Units and Chapters -->
+  {units.map(unit => {
+    const unitChapters = unitMap[unit.label];
+    if (!unitChapters || unitChapters.length === 0) return null;
+    return (
+      <div id={unit.id} style="margin-bottom:2.5rem;">
+        <div style={`display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem; padding:0.4rem 0.9rem; border-radius:0.4rem; background:${unit.bg}; border:1px solid ${unit.border};`}>
+          <h2 style={`font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:${unit.color}; margin:0;`}>{unit.displayLabel}</h2>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          {unitChapters.map(chapter => (
+            <a
+              href={`${base}/private/foundations-of-nursing/${chapter.id.replace(/\.md$/, '')}`}
+              style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s, border-color 0.2s;"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(99,102,241,0.12)'; this.style.borderColor='#a5b4fc';"
+              onmouseout="this.style.boxShadow='none'; this.style.borderColor='#e2e8f0';"
+            >
+              <div style="display:flex; align-items:flex-start; gap:1rem;">
+                <div style="font-size:2rem; line-height:1; flex-shrink:0;">{chapterIcons[chapter.data.chapterNumber] || '📖'}</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.3rem; flex-wrap:wrap;">
+                    <span style={`font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:${unit.color}; background:${unit.bg}; border:1px solid ${unit.border}; border-radius:0.25rem; padding:0.1rem 0.45rem;`}>
+                      Chapter {chapter.data.chapterNumber}
+                    </span>
+                  </div>
+                  <h3 style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:0.35rem;">{chapter.data.title.replace(/^Chapter \d+: /, '')}</h3>
+                  <p style="color:#64748b; font-size:0.875rem; line-height:1.5; margin:0;">{chapter.data.unit}</p>
+                </div>
+                <div style="color:#94a3b8; font-size:1.2rem; flex-shrink:0; align-self:center;">›</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    );
+  })}
+
+  <!-- Footer callout -->
+  <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem 1.5rem; display:flex; align-items:flex-start; gap:0.75rem;">
+    <span style="font-size:1.25rem; flex-shrink:0;">💡</span>
+    <div>
+      <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">Study Tip</p>
+      <p style="color:#15803d; font-size:0.85rem; line-height:1.6;">
+        Each chapter includes learning objectives, key terms, and detailed content sections. Use the Previous/Next navigation at the bottom of each chapter page to work through the textbook sequentially.
+      </p>
+    </div>
+  </div>
+
+</Layout>
