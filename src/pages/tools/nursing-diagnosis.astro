@@ -1,0 +1,949 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Nursing Diagnosis Formulator – WGU Nursing Tools" protected={false}>
+
+<style>
+  /* ── Screen styles ────────────────────────────────────────────── */
+  .nd-page { max-width: 920px; margin: 0 auto; }
+  .nd-page h1 { font-size: 1.75rem; font-weight: 800; color: #1e293b; margin-bottom: 0.35rem; }
+  .nd-page .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 2rem; }
+
+  .nd-section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .nd-section-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .nd-section-header h2 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .nd-section-header .step-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: #6366f1;
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .nd-section-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field-group label { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+  .field-group .hint { font-size: 0.75rem; color: #64748b; }
+  .field-group input,
+  .field-group textarea,
+  .field-group select {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    resize: vertical;
+  }
+  .field-group input:focus,
+  .field-group textarea:focus,
+  .field-group select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    background: #fff;
+  }
+  .field-group textarea { min-height: 80px; line-height: 1.6; }
+  .field-group select { appearance: auto; cursor: pointer; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) {
+    .row2, .row3 { grid-template-columns: 1fr; }
+  }
+
+  .numbered-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .numbered-item { display: flex; align-items: flex-start; gap: 0.6rem; }
+  .numbered-item .num {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #6366f1;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .numbered-item input,
+  .numbered-item textarea { flex: 1; }
+
+  .intervention-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  @media (max-width: 680px) { .intervention-row { grid-template-columns: 1fr; } }
+
+  /* Type toggle */
+  .type-toggle {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .type-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid #e2e8f0;
+    background: #f8fafc;
+    color: #64748b;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .type-btn.active {
+    border-color: #6366f1;
+    background: #eef2ff;
+    color: #4f46e5;
+  }
+
+  /* Action bar */
+  .action-bar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f8fafc;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn-primary { background: #6366f1; color: #fff; }
+  .btn-primary:hover { background: #4f46e5; }
+  .btn-secondary { background: #0ea5e9; color: #fff; }
+  .btn-secondary:hover { background: #0284c7; }
+  .btn-outline { background: #fff; color: #1e293b; border: 1px solid #e2e8f0; }
+  .btn-outline:hover { background: #f1f5f9; }
+
+  .info-box {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #0369a1;
+  }
+  .tip-box {
+    background: #fefce8;
+    border: 1px solid #fde047;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #713f12;
+  }
+
+  /* ── Preview panel ────────────────────────────────────────────── */
+  .preview-panel {
+    background: #fff;
+    border: 2px solid #c7d2fe;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .preview-header {
+    background: #4f46e5;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .preview-body {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: #1e293b;
+    line-height: 1.7;
+  }
+  .preview-statement {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    background: #eef2ff;
+    border-left: 4px solid #6366f1;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0.4rem 0.4rem 0;
+    margin-bottom: 1.25rem;
+    word-break: break-word;
+  }
+  .preview-block { margin-bottom: 1rem; }
+  .preview-block-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6366f1;
+    margin-bottom: 0.3rem;
+  }
+  .preview-block ul { margin: 0; padding-left: 1.2rem; }
+  .preview-block li { margin-bottom: 0.2rem; }
+  .preview-divider { border: none; border-top: 1px solid #e2e8f0; margin: 1rem 0; }
+  .placeholder-text { color: #94a3b8; font-style: italic; }
+
+  /* ── Print styles ─────────────────────────────────────────────── */
+  @media print {
+    body { background: #fff !important; font-size: 10.5pt; }
+
+    header, footer, nav, .action-bar, .nd-page .subtitle,
+    .field-group label, .field-group .hint, .info-box, .tip-box,
+    .type-toggle, #form-area, .no-print { display: none !important; }
+
+    .preview-panel { border: 1.5pt solid #6366f1; border-radius: 0; margin: 0; }
+    .preview-header {
+      background: #1e293b !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 5pt 9pt;
+    }
+    .preview-body { padding: 9pt; }
+    .preview-statement {
+      background: #eef2ff !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      border-left: 4pt solid #6366f1 !important;
+      font-size: 12pt;
+      margin-bottom: 10pt;
+    }
+    .preview-block { margin-bottom: 8pt; }
+    .preview-block-label { font-size: 7pt; }
+    .preview-divider { margin: 7pt 0; }
+
+    .nd-page h1 { font-size: 16pt; }
+    @page { margin: 0.65in; size: letter; }
+  }
+</style>
+
+<div class="nd-page" id="nd-root">
+
+  <!-- Page heading -->
+  <div style="margin-bottom:1rem;">
+    <h1>🩺 Nursing Diagnosis Formulator</h1>
+    <p class="subtitle">
+      Build a fully-formed NANDA-I nursing diagnosis step by step. The formatted statement updates
+      live in the preview below. Click <strong>Print / Save as PDF</strong> to export a clean
+      document. All data stays in your browser — nothing is sent to any server.
+    </p>
+  </div>
+
+  <!-- Sticky action bar -->
+  <div class="action-bar no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="btn btn-secondary" id="copy-btn" onclick="copyStatement()">📋 Copy Statement</button>
+    <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All Fields</button>
+  </div>
+
+  <!-- ── STEP 1: Diagnosis Identification ───────────────────────── -->
+  <div class="nd-section">
+    <div class="nd-section-header">
+      <h2>Step 1 — Diagnosis Identification</h2>
+      <span class="step-badge">Step 1 / 6</span>
+    </div>
+    <div class="nd-section-body">
+
+      <div class="field-group">
+        <label for="dx-select">Select a Common NANDA-I Diagnosis</label>
+        <span class="hint">Choose from the list or select "Custom / Other" to type your own below.</span>
+        <select id="dx-select">
+          <option value="">— Select a diagnosis —</option>
+          <optgroup label="Activity / Rest">
+            <option value="Activity Intolerance">Activity Intolerance</option>
+            <option value="Disturbed Sleep Pattern">Disturbed Sleep Pattern</option>
+            <option value="Fatigue">Fatigue</option>
+            <option value="Impaired Physical Mobility">Impaired Physical Mobility</option>
+            <option value="Risk for Disuse Syndrome">Risk for Disuse Syndrome</option>
+          </optgroup>
+          <optgroup label="Comfort">
+            <option value="Acute Pain">Acute Pain</option>
+            <option value="Chronic Pain">Chronic Pain</option>
+            <option value="Nausea">Nausea</option>
+          </optgroup>
+          <optgroup label="Elimination and Exchange">
+            <option value="Constipation">Constipation</option>
+            <option value="Diarrhea">Diarrhea</option>
+            <option value="Impaired Gas Exchange">Impaired Gas Exchange</option>
+            <option value="Impaired Urinary Elimination">Impaired Urinary Elimination</option>
+            <option value="Urinary Retention">Urinary Retention</option>
+          </optgroup>
+          <optgroup label="Fluid / Nutrition">
+            <option value="Deficient Fluid Volume">Deficient Fluid Volume</option>
+            <option value="Excess Fluid Volume">Excess Fluid Volume</option>
+            <option value="Imbalanced Nutrition: Less than Body Requirements">Imbalanced Nutrition: Less than Body Requirements</option>
+            <option value="Imbalanced Nutrition: More than Body Requirements">Imbalanced Nutrition: More than Body Requirements</option>
+            <option value="Risk for Electrolyte Imbalance">Risk for Electrolyte Imbalance</option>
+          </optgroup>
+          <optgroup label="Health Promotion">
+            <option value="Deficient Knowledge">Deficient Knowledge</option>
+            <option value="Ineffective Health Management">Ineffective Health Management</option>
+            <option value="Readiness for Enhanced Health Management">Readiness for Enhanced Health Management</option>
+            <option value="Readiness for Enhanced Self-Care">Readiness for Enhanced Self-Care</option>
+          </optgroup>
+          <optgroup label="Perception / Cognition">
+            <option value="Acute Confusion">Acute Confusion</option>
+            <option value="Chronic Confusion">Chronic Confusion</option>
+            <option value="Impaired Verbal Communication">Impaired Verbal Communication</option>
+          </optgroup>
+          <optgroup label="Respiration / Circulation">
+            <option value="Decreased Cardiac Output">Decreased Cardiac Output</option>
+            <option value="Ineffective Airway Clearance">Ineffective Airway Clearance</option>
+            <option value="Ineffective Breathing Pattern">Ineffective Breathing Pattern</option>
+            <option value="Ineffective Tissue Perfusion">Ineffective Tissue Perfusion</option>
+          </optgroup>
+          <optgroup label="Role Relationships / Coping">
+            <option value="Anxiety">Anxiety</option>
+            <option value="Caregiver Role Strain">Caregiver Role Strain</option>
+            <option value="Fear">Fear</option>
+            <option value="Hopelessness">Hopelessness</option>
+            <option value="Ineffective Coping">Ineffective Coping</option>
+            <option value="Social Isolation">Social Isolation</option>
+          </optgroup>
+          <optgroup label="Safety / Protection">
+            <option value="Hyperthermia">Hyperthermia</option>
+            <option value="Hypothermia">Hypothermia</option>
+            <option value="Impaired Skin Integrity">Impaired Skin Integrity</option>
+            <option value="Impaired Tissue Integrity">Impaired Tissue Integrity</option>
+            <option value="Risk for Aspiration">Risk for Aspiration</option>
+            <option value="Risk for Bleeding">Risk for Bleeding</option>
+            <option value="Risk for Falls">Risk for Falls</option>
+            <option value="Risk for Infection">Risk for Infection</option>
+            <option value="Risk for Injury">Risk for Injury</option>
+            <option value="Risk for Pressure Injury">Risk for Pressure Injury</option>
+          </optgroup>
+          <optgroup label="Self-Care / Self-Perception">
+            <option value="Bathing Self-Care Deficit">Bathing Self-Care Deficit</option>
+            <option value="Dressing Self-Care Deficit">Dressing Self-Care Deficit</option>
+            <option value="Disturbed Body Image">Disturbed Body Image</option>
+            <option value="Low Self-Esteem">Low Self-Esteem</option>
+          </optgroup>
+          <option value="__custom__">Custom / Other…</option>
+        </select>
+      </div>
+
+      <div class="field-group" id="custom-dx-group" style="display:none;">
+        <label for="dx-custom">Custom Diagnosis Label</label>
+        <span class="hint">Enter the exact NANDA-I diagnosis label.</span>
+        <input id="dx-custom" type="text" placeholder="e.g., Ineffective Peripheral Tissue Perfusion" />
+      </div>
+
+      <div class="field-group">
+        <label>Diagnosis Type</label>
+        <span class="hint">Select the type of nursing diagnosis.</span>
+        <div class="type-toggle" role="group" aria-label="Diagnosis type">
+          <button type="button" class="type-btn active" data-type="Actual" onclick="setType('Actual')">Actual</button>
+          <button type="button" class="type-btn" data-type="Risk" onclick="setType('Risk')">Risk (At Risk for…)</button>
+          <button type="button" class="type-btn" data-type="Health Promotion" onclick="setType('Health Promotion')">Health Promotion</button>
+        </div>
+        <input type="hidden" id="dx-type" value="Actual" />
+      </div>
+
+      <div class="row2">
+        <div class="field-group">
+          <label for="student-name">Student Name</label>
+          <input id="student-name" type="text" placeholder="First Last" />
+        </div>
+        <div class="field-group">
+          <label for="submission-date">Date</label>
+          <input id="submission-date" type="date" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Related To (Etiology) ─────────────────────────── -->
+  <div class="nd-section">
+    <div class="nd-section-header">
+      <h2>Step 2 — Related To (Etiology / Contributing Factors)</h2>
+      <span class="step-badge">Step 2 / 6</span>
+    </div>
+    <div class="nd-section-body">
+      <div class="info-box">
+        <strong>R/T</strong> identifies the causative or contributing factors that led to or are
+        maintaining the problem. These are linked with the phrase <em>"related to"</em> in the
+        diagnostic statement.
+      </div>
+      <div class="field-group">
+        <label>Related Factors / Risk Factors</label>
+        <span class="hint">List the factors that are causing or contributing to the diagnosis (at least one required).</span>
+        <div class="numbered-list" id="rt-list">
+          <div class="numbered-item"><span class="num">1</span><input type="text" class="rt-factor" placeholder="e.g., alveolar-capillary membrane changes secondary to pneumonia" /></div>
+          <div class="numbered-item"><span class="num">2</span><input type="text" class="rt-factor" placeholder="e.g., retained secretions" /></div>
+          <div class="numbered-item"><span class="num">3</span><input type="text" class="rt-factor" placeholder="e.g., (optional third factor)" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: As Evidenced By (Defining Characteristics) ────── -->
+  <div class="nd-section" id="aeb-section">
+    <div class="nd-section-header">
+      <h2 id="aeb-heading">Step 3 — As Evidenced By (Defining Characteristics)</h2>
+      <span class="step-badge">Step 3 / 6</span>
+    </div>
+    <div class="nd-section-body">
+      <div class="info-box" id="aeb-info">
+        <strong>AEB</strong> contains the objective and subjective signs and symptoms that support
+        the diagnosis. These are the cues you have assessed in the patient.
+        <em>Risk diagnoses do not use "as evidenced by" — skip to Step 4.</em>
+      </div>
+      <div class="field-group" id="aeb-fields">
+        <label>Defining Characteristics (Signs &amp; Symptoms)</label>
+        <span class="hint">Include both objective (measurable) and subjective (patient-reported) data.</span>
+        <div class="numbered-list" id="aeb-list">
+          <div class="numbered-item"><span class="num">1</span><input type="text" class="aeb-item" placeholder="e.g., O₂ saturation 88% on room air" /></div>
+          <div class="numbered-item"><span class="num">2</span><input type="text" class="aeb-item" placeholder="e.g., dyspnea on exertion" /></div>
+          <div class="numbered-item"><span class="num">3</span><input type="text" class="aeb-item" placeholder="e.g., patient reports 'I can't catch my breath'" /></div>
+          <div class="numbered-item"><span class="num">4</span><input type="text" class="aeb-item" placeholder="e.g., use of accessory muscles" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: SMART Goal / Expected Outcome ─────────────────── -->
+  <div class="nd-section">
+    <div class="nd-section-header">
+      <h2>Step 4 — SMART Goal / Expected Outcome</h2>
+      <span class="step-badge">Step 4 / 6</span>
+    </div>
+    <div class="nd-section-body">
+      <div class="tip-box">
+        💡 <strong>SMART Goal format:</strong> The patient will [<em>action verb</em>] [<em>measurable
+        criteria</em>] by [<em>timeframe</em>] as evidenced by [<em>observable outcome</em>].
+      </div>
+
+      <div class="row2">
+        <div class="field-group">
+          <label for="goal-subject">Subject</label>
+          <span class="hint">Usually "The patient will…"</span>
+          <input id="goal-subject" type="text" placeholder="The patient will" value="The patient will" />
+        </div>
+        <div class="field-group">
+          <label for="goal-timeframe">Timeframe</label>
+          <span class="hint">e.g., "by end of shift", "within 24 hours", "by discharge"</span>
+          <input id="goal-timeframe" type="text" placeholder="e.g., within 4 hours" />
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="goal-action">Measurable Action / Criteria</label>
+        <span class="hint">Describe what the patient will do or demonstrate. Be specific and measurable.</span>
+        <textarea id="goal-action" placeholder="e.g., maintain oxygen saturation ≥ 94% on 2 L/min nasal cannula and report dyspnea ≤ 3/10"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label for="goal-evidence">Observable Evidence of Goal Achievement</label>
+        <span class="hint">What will you observe or measure that confirms the goal was met?</span>
+        <input id="goal-evidence" type="text" placeholder="e.g., SpO₂ ≥ 94% and respiratory rate 12–20 breaths/min" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Nursing Interventions ─────────────────────────── -->
+  <div class="nd-section">
+    <div class="nd-section-header">
+      <h2>Step 5 — Nursing Interventions &amp; Rationale</h2>
+      <span class="step-badge">Step 5 / 6</span>
+    </div>
+    <div class="nd-section-body">
+      <div class="info-box">
+        <strong>Interventions</strong> are specific nursing actions addressing the etiology and
+        defining characteristics. Each must be accompanied by an evidence-based
+        <strong>rationale</strong> explaining <em>why</em> the action is appropriate.
+      </div>
+
+      <div class="numbered-list" id="interventions-list">
+
+        <div class="numbered-item" style="flex-direction:column; gap:0.5rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.6rem;">
+            <span class="num" style="margin-top:0.5rem;">1</span>
+            <div style="flex:1;">
+              <div class="intervention-row">
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Intervention</label>
+                  <textarea class="intervention" placeholder="e.g., Position patient in high-Fowler's position"></textarea>
+                </div>
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Rationale</label>
+                  <textarea class="rationale" placeholder="e.g., Upright positioning maximizes lung expansion and diaphragmatic excursion"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="numbered-item" style="flex-direction:column; gap:0.5rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.6rem;">
+            <span class="num" style="margin-top:0.5rem;">2</span>
+            <div style="flex:1;">
+              <div class="intervention-row">
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Intervention</label>
+                  <textarea class="intervention" placeholder="e.g., Administer supplemental oxygen as prescribed"></textarea>
+                </div>
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Rationale</label>
+                  <textarea class="rationale" placeholder="e.g., Supplemental O₂ increases alveolar oxygen concentration, improving diffusion across the membrane"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="numbered-item" style="flex-direction:column; gap:0.5rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.6rem;">
+            <span class="num" style="margin-top:0.5rem;">3</span>
+            <div style="flex:1;">
+              <div class="intervention-row">
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Intervention</label>
+                  <textarea class="intervention" placeholder="e.g., Monitor SpO₂ continuously and respiratory rate every 2 hours"></textarea>
+                </div>
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Rationale</label>
+                  <textarea class="rationale" placeholder="e.g., Continuous monitoring detects early signs of deterioration allowing timely intervention"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="numbered-item" style="flex-direction:column; gap:0.5rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.6rem;">
+            <span class="num" style="margin-top:0.5rem;">4</span>
+            <div style="flex:1;">
+              <div class="intervention-row">
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Intervention</label>
+                  <textarea class="intervention" placeholder="Intervention 4 (optional)"></textarea>
+                </div>
+                <div class="field-group">
+                  <label style="font-size:0.75rem;">Rationale</label>
+                  <textarea class="rationale" placeholder="Rationale 4 (optional)"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 6: Evaluation ─────────────────────────────────────── -->
+  <div class="nd-section">
+    <div class="nd-section-header">
+      <h2>Step 6 — Evaluation</h2>
+      <span class="step-badge">Step 6 / 6</span>
+    </div>
+    <div class="nd-section-body">
+      <div class="tip-box">
+        💡 Indicate whether the patient met, partially met, or did not meet the goal from Step 4.
+        Include specific data that supports your evaluation.
+      </div>
+      <div class="field-group">
+        <label for="eval-status">Goal Status</label>
+        <select id="eval-status">
+          <option value="">— Select outcome —</option>
+          <option value="Goal met">Goal met</option>
+          <option value="Goal partially met">Goal partially met</option>
+          <option value="Goal not met">Goal not met</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="eval-narrative">Evaluation Narrative</label>
+        <span class="hint">Describe the patient's actual response to interventions with supporting data.</span>
+        <textarea id="eval-narrative" placeholder="e.g., Patient's SpO₂ increased from 88% to 95% on 2 L/min nasal cannula within 2 hours. Respiratory rate decreased to 18 breaths/min. Patient reports dyspnea 2/10. Goal met."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Live Preview ────────────────────────────────────────────── -->
+  <div class="preview-panel" id="preview-panel">
+    <div class="preview-header">
+      👁 Live Preview — Formatted Nursing Diagnosis
+    </div>
+    <div class="preview-body" id="preview-body">
+      <div class="preview-statement" id="preview-statement">
+        <span class="placeholder-text">Your nursing diagnosis statement will appear here as you fill in the fields above…</span>
+      </div>
+
+      <div class="preview-block" id="prev-goal-block">
+        <div class="preview-block-label">Expected Outcome / SMART Goal</div>
+        <div id="prev-goal" class="placeholder-text">Complete Step 4 to see the goal…</div>
+      </div>
+
+      <hr class="preview-divider" />
+
+      <div class="preview-block" id="prev-interventions-block">
+        <div class="preview-block-label">Nursing Interventions &amp; Rationale</div>
+        <ol id="prev-interventions" style="margin:0; padding-left:1.2rem; color:#64748b; font-style:italic;">
+          <li>Complete Step 5 to see interventions…</li>
+        </ol>
+      </div>
+
+      <hr class="preview-divider" />
+
+      <div class="preview-block" id="prev-eval-block">
+        <div class="preview-block-label">Evaluation</div>
+        <div id="prev-eval" class="placeholder-text">Complete Step 6 to see evaluation…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom action bar -->
+  <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.5rem; margin-bottom:2rem;" class="no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="btn btn-secondary" onclick="copyStatement()">📋 Copy Statement</button>
+    <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All Fields</button>
+  </div>
+
+</div><!-- /.nd-page -->
+
+<script is:inline>
+(function () {
+  var STORE_KEY = 'wgu_nursing_diagnosis_v1';
+  var currentType = 'Actual';
+
+  /* ─── Helpers ────────────────────────────────────────────────── */
+  function val(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+  function inputs(selector) {
+    return Array.from(document.querySelectorAll(selector));
+  }
+  function listVals(selector) {
+    return inputs(selector).map(function (el) { return el.value.trim(); }).filter(Boolean);
+  }
+
+  /* ─── Type toggle ────────────────────────────────────────────── */
+  window.setType = function (type) {
+    currentType = type;
+    document.getElementById('dx-type').value = type;
+    document.querySelectorAll('.type-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.type === type);
+    });
+    var aebSection = document.getElementById('aeb-section');
+    var aebFields  = document.getElementById('aeb-fields');
+    if (aebSection && aebFields) {
+      var isRisk = (type === 'Risk');
+      aebFields.style.opacity = isRisk ? '0.4' : '1';
+      aebFields.querySelectorAll('input').forEach(function (el) {
+        el.disabled = isRisk;
+      });
+    }
+    updatePreview();
+    save();
+  };
+
+  /* ─── Diagnosis select → custom field toggle ─────────────────── */
+  function onDiagnosisSelectChange() {
+    var sel = document.getElementById('dx-select');
+    var customGroup = document.getElementById('custom-dx-group');
+    if (!sel || !customGroup) return;
+    customGroup.style.display = (sel.value === '__custom__') ? 'flex' : 'none';
+
+    // Auto-detect Risk diagnoses
+    if (sel.value && sel.value !== '__custom__') {
+      var lower = sel.value.toLowerCase();
+      if (lower.startsWith('risk for') || lower.startsWith('risk of')) {
+        if (currentType !== 'Risk') setType('Risk');
+      } else if (lower.startsWith('readiness for')) {
+        if (currentType !== 'Health Promotion') setType('Health Promotion');
+      } else {
+        if (currentType === 'Risk' || currentType === 'Health Promotion') setType('Actual');
+      }
+    }
+    updatePreview();
+    save();
+  }
+
+  /* ─── Build the formatted statement ─────────────────────────── */
+  function buildStatement() {
+    var selectEl = document.getElementById('dx-select');
+    var label = '';
+    if (selectEl && selectEl.value && selectEl.value !== '__custom__') {
+      label = selectEl.value;
+    } else {
+      label = val('dx-custom');
+    }
+
+    var rtFactors = listVals('.rt-factor');
+    var aebItems  = currentType !== 'Risk' ? listVals('.aeb-item') : [];
+
+    if (!label) return '';
+
+    var stmt = label;
+    if (rtFactors.length > 0) {
+      stmt += ' related to ' + rtFactors.join('; ');
+    }
+    if (aebItems.length > 0) {
+      stmt += ' as evidenced by ' + aebItems.join('; ');
+    }
+    return stmt;
+  }
+
+  /* ─── Build the SMART goal string ───────────────────────────── */
+  function buildGoal() {
+    var subject   = val('goal-subject')   || 'The patient will';
+    var action    = val('goal-action');
+    var timeframe = val('goal-timeframe');
+    var evidence  = val('goal-evidence');
+    if (!action) return '';
+    var g = subject + ' ' + action;
+    if (timeframe) g += ' ' + timeframe;
+    if (evidence)  g += ' as evidenced by ' + evidence;
+    return g + '.';
+  }
+
+  /* ─── Update preview ─────────────────────────────────────────── */
+  function updatePreview() {
+    var stmt = buildStatement();
+    var stmtEl = document.getElementById('preview-statement');
+    if (stmtEl) {
+      if (stmt) {
+        stmtEl.textContent = stmt;
+        stmtEl.style.color = '#1e293b';
+      } else {
+        stmtEl.innerHTML = '<span class="placeholder-text">Your nursing diagnosis statement will appear here as you fill in the fields above…</span>';
+      }
+    }
+
+    // Goal
+    var goalStr = buildGoal();
+    var prevGoal = document.getElementById('prev-goal');
+    if (prevGoal) {
+      if (goalStr) {
+        prevGoal.textContent = goalStr;
+        prevGoal.className = '';
+        prevGoal.style.color = '#1e293b';
+      } else {
+        prevGoal.textContent = 'Complete Step 4 to see the goal…';
+        prevGoal.className = 'placeholder-text';
+        prevGoal.style.color = '';
+      }
+    }
+
+    // Interventions
+    var prevInterventions = document.getElementById('prev-interventions');
+    if (prevInterventions) {
+      var ivEls  = inputs('.intervention');
+      var ratEls = inputs('.rationale');
+      var items  = [];
+      ivEls.forEach(function (el, i) {
+        var iv  = el.value.trim();
+        var rat = ratEls[i] ? ratEls[i].value.trim() : '';
+        if (iv) {
+          items.push({ iv: iv, rat: rat });
+        }
+      });
+      if (items.length > 0) {
+        prevInterventions.innerHTML = items.map(function (item) {
+          var rat = item.rat ? ' <span style="color:#64748b;">— <em>' + escHtml(item.rat) + '</em></span>' : '';
+          return '<li style="margin-bottom:0.4rem;">' + escHtml(item.iv) + rat + '</li>';
+        }).join('');
+      } else {
+        prevInterventions.innerHTML = '<li style="color:#94a3b8; font-style:italic;">Complete Step 5 to see interventions…</li>';
+      }
+    }
+
+    // Evaluation
+    var evalStatus  = val('eval-status');
+    var evalText    = val('eval-narrative');
+    var prevEval    = document.getElementById('prev-eval');
+    if (prevEval) {
+      if (evalStatus || evalText) {
+        var combined = '';
+        if (evalStatus) combined += '<strong>' + escHtml(evalStatus) + '.</strong> ';
+        if (evalText)   combined += escHtml(evalText);
+        prevEval.innerHTML = combined;
+        prevEval.className = '';
+        prevEval.style.color = '';
+      } else {
+        prevEval.textContent = 'Complete Step 6 to see evaluation…';
+        prevEval.className = 'placeholder-text';
+        prevEval.style.color = '';
+      }
+    }
+  }
+
+  /* ─── Escape HTML ────────────────────────────────────────────── */
+  function escHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* ─── Copy statement to clipboard ───────────────────────────── */
+  window.copyStatement = function () {
+    var stmt = buildStatement();
+    if (!stmt) { alert('Please fill in at least the diagnosis label to copy a statement.'); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(stmt).then(function () {
+        var btn = document.getElementById('copy-btn');
+        if (btn) { btn.textContent = '✅ Copied!'; setTimeout(function () { btn.textContent = '📋 Copy Statement'; }, 2000); }
+      }).catch(function () { fallbackCopy(stmt); });
+    } else {
+      fallbackCopy(stmt);
+    }
+  };
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); alert('Statement copied to clipboard.'); }
+    catch (_) { alert('Copy failed. Please select and copy the statement manually from the preview panel.'); }
+    document.body.removeChild(ta);
+  }
+
+  /* ─── Persist to sessionStorage ──────────────────────────────── */
+  function save() {
+    var data = { type: currentType };
+    document.querySelectorAll('input[id], textarea[id], select[id]').forEach(function (el) {
+      data[el.id] = el.value;
+    });
+    try { sessionStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (_) {}
+  }
+
+  function restore() {
+    var raw;
+    try { raw = sessionStorage.getItem(STORE_KEY); } catch (_) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (_) { return; }
+
+    if (data.type) { setType(data.type); }
+
+    Object.keys(data).forEach(function (key) {
+      if (key === 'type') return;
+      var el = document.getElementById(key);
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT')) {
+        el.value = data[key];
+      }
+    });
+
+    // Re-run side effects after restore
+    onDiagnosisSelectChange();
+  }
+
+  /* ─── Clear all ──────────────────────────────────────────────── */
+  window.clearAll = function () {
+    if (!confirm('Clear all fields? This cannot be undone.')) return;
+    document.querySelectorAll('input:not([type="hidden"]), textarea, select').forEach(function (el) {
+      if (el.id === 'goal-subject') { el.value = 'The patient will'; return; }
+      el.value = '';
+      if (el.tagName === 'TEXTAREA') el.style.height = 'auto';
+    });
+    setType('Actual');
+    try { sessionStorage.removeItem(STORE_KEY); } catch (_) {}
+    updatePreview();
+  };
+
+  /* ─── Auto-size textareas ────────────────────────────────────── */
+  function autosize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  /* ─── Init ───────────────────────────────────────────────────── */
+  function init() {
+    restore();
+    updatePreview();
+
+    // Default date
+    var dateEl = document.getElementById('submission-date');
+    if (dateEl && !dateEl.value) {
+      var today = new Date();
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var dd = String(today.getDate()).padStart(2, '0');
+      dateEl.value = today.getFullYear() + '-' + mm + '-' + dd;
+      save();
+    }
+
+    // Bind all inputs for live preview + save
+    document.querySelectorAll('input:not([type="hidden"]), textarea, select').forEach(function (el) {
+      if (el.tagName === 'TEXTAREA') autosize(el);
+      el.addEventListener('input', function () {
+        if (el.tagName === 'TEXTAREA') autosize(el);
+        if (el.id === 'dx-select') { onDiagnosisSelectChange(); }
+        updatePreview();
+        save();
+      });
+      el.addEventListener('change', function () {
+        if (el.id === 'dx-select') { onDiagnosisSelectChange(); }
+        updatePreview();
+        save();
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  /* ─── Expand textareas before printing ──────────────────────── */
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('textarea').forEach(function (ta) {
+      ta.style.height = 'auto';
+      ta.style.height = ta.scrollHeight + 'px';
+    });
+  });
+})();
+</script>
+
+</Layout>
