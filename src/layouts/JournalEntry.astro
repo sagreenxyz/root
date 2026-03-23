@@ -55,6 +55,11 @@ export interface Props {
   takeActions?: string[];
   /** G: Evaluation Outcomes (×4) */
   evaluationOutcomes?: string[];
+  /**
+   * When false, the WGU Nursing Concept Map template section is hidden.
+   * Defaults to true so existing entries that reference the template continue to render it.
+   */
+  showConceptMap?: boolean;
 }
 
 const {
@@ -76,6 +81,7 @@ const {
   generatedSolutions,
   takeActions,
   evaluationOutcomes,
+  showConceptMap = true,
 } = Astro.props;
 
 const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
@@ -150,6 +156,7 @@ const risks = listItems(riskFactors, 3, 'Use the Concept Map Template for this f
        WGU NURSING CONCEPT MAP TEMPLATE
        Revised 11/21/2025
        ════════════════════════════════════════════════════════════ -->
+  {showConceptMap && (
   <section style="margin-bottom:2.5rem;">
     <div style="background:#1e293b; border-radius:0.75rem 0.75rem 0 0; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
       <h2 style="color:#fff; font-size:1rem; font-weight:700; margin:0;">🗺️ WGU Nursing Concept Map</h2>
@@ -381,5 +388,6 @@ const risks = listItems(riskFactors, 3, 'Use the Concept Map Template for this f
 
     </div>
   </section>
+  )}
 
 </Layout>

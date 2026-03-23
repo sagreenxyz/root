@@ -8,6 +8,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   date="2026-03-23"
   entryType="Development Log"
   course="D439 – Foundations of Nursing"
+  showConceptMap={false}
 >
   <p style="margin-bottom:1rem;">
     Today marked a major development sprint for the site. Over the course of the day,
@@ -33,7 +34,9 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     was built to walk nursing students through the entire WGU Concept Map process —
     from data collection through evaluation. Each phase includes guided explanations,
     clinical prompts, and input fields. Completed maps can be shared via a compact JSON
-    URL. Two follow-up PRs (#41, #44) fixed a module-scope button bug and restored
+    URL. The tool is available at the
+    <a href={`${base}/tools/concept-map-coach`} style="color:#6366f1; font-weight:600;">Concept Map Coach</a>.
+    Two follow-up PRs (#41, #44) fixed a module-scope button bug and restored
     Astro-scoped styles for JS-rendered elements using <code>:global()</code>.
   </p>
 
@@ -58,25 +61,37 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       <strong>Nursing Concept Map</strong> (PR #39) — A comprehensive reference article
       covering all 7 phases of the WGU Nursing Concept Map: Data Collection, Recognizing
       Cues, Analyzing Cues, Prioritized Hypotheses, Generated Solutions, Take Actions,
-      and Evaluation of Outcomes.
+      and Evaluation of Outcomes. Read it in the
+      <a href={`${base}/private/encyclopedia/nursing-concept-map`} style="color:#6366f1; font-weight:600;">Nursing Concept Map</a>
+      encyclopedia article.
     </li>
     <li>
       <strong>COPD Exacerbation worked example</strong> (PR #42) — A fully completed
       Nursing Concept Map worked example for COPD exacerbation, added to the encyclopedia
-      to model correct documentation for students.
+      to model correct documentation for students. See the
+      <a href={`${base}/private/encyclopedia/nursing-concept-map-copd-example`} style="color:#6366f1; font-weight:600;">COPD Exacerbation Concept Map</a>
+      article.
     </li>
     <li>
       <strong>Critical Reasoning</strong> (PR #33) — An article covering deductive,
       inductive, and abductive reasoning as applied methods of clinical inference.
+      See the
+      <a href={`${base}/private/encyclopedia/critical-reasoning`} style="color:#6366f1; font-weight:600;">Critical Reasoning</a>
+      article.
     </li>
     <li>
       <strong>Charcot Foot</strong> (PR #35) — A pathophysiology article on Charcot
       neuroarthropathy, including clinical presentation, risk factors, and nursing
-      implications.
+      implications. See the
+      <a href={`${base}/private/encyclopedia/charcot-foot`} style="color:#6366f1; font-weight:600;">Charcot Foot</a>
+      article.
     </li>
     <li>
       <strong>Spastic vs. Flaccid Paralysis</strong> (PR #36) — A comparative
       pathophysiology article distinguishing upper and lower motor neuron injuries.
+      See the
+      <a href={`${base}/private/encyclopedia/spastic-vs-flaccid-paralysis`} style="color:#6366f1; font-weight:600;">Spastic vs. Flaccid Paralysis</a>
+      article.
     </li>
   </ul>
 
@@ -92,20 +107,26 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   <p style="margin-bottom:0.75rem;">
     <strong>ADPIE slide presentation</strong> (PR #32) — A horizontal-scrolling slide deck
     covering the nursing process (ADPIE) was added to the private D439 study section.
+    View it on the
+    <a href={`${base}/private/d439/nursing-process-slides`} style="color:#6366f1; font-weight:600;">Nursing Process Slides</a>
+    page.
   </p>
 
   <p style="margin-bottom:1rem;">
     <strong>Nursing Concept Map slides</strong> (PR #45) — A 13-column slide deck
     covering the full Nursing Concept Map article — including all 7 phases and a visual
-    overview — was added to complement the new encyclopedia article.
+    overview — was added to complement the new encyclopedia article. View it on the
+    <a href={`${base}/private/encyclopedia/nursing-concept-map-slides`} style="color:#6366f1; font-weight:600;">Nursing Concept Map Slides</a>
+    page.
   </p>
 
   <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🏗️ Private D439 Study Section</h2>
 
   <p style="margin-bottom:1rem;">
     <strong>D439 Foundations of Nursing private section</strong> (PR #30) — A new
-    password-protected study area was created at <code>/private/d439/</code> with
-    individual study modules for each major D439 topic: Assessment &amp; Vital Signs,
+    password-protected study area was created at the
+    <a href={`${base}/private/d439`} style="color:#6366f1; font-weight:600;">D439 study section</a>
+    with individual study modules for each major D439 topic: Assessment &amp; Vital Signs,
     Infection Control, Medications &amp; Procedures, Mobility &amp; Exercise,
     Nutrition &amp; Elimination, Hygiene &amp; Personal Care, Sleep, Comfort &amp; Pain,
     Wound &amp; Skin Care, Legal &amp; Ethical principles, Grief &amp; End-of-Life care,
