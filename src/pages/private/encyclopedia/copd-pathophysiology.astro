@@ -1,0 +1,356 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Chronic obstructive pulmonary disease (COPD) is a common, preventable, and treatable disease of the lungs characterised by persistent, usually progressive airflow limitation that is not fully reversible. It is caused by an abnormal inflammatory response of the airways and lung parenchyma to noxious particles and gases, most commonly cigarette smoke. COPD is now understood to encompass two principal, often coexisting pathological phenotypes—emphysema and chronic bronchitis—together with small-airway disease, each contributing to the characteristic obstructive spirometric pattern.
+
+COPD is a disease of global significance. The Global Burden of Disease study estimated that COPD affected approximately 480 million people worldwide in 2020 and was the third leading cause of death globally. In the United States alone, over 16 million adults have been diagnosed with COPD, and an estimated equal number remain undiagnosed. The economic burden is substantial: COPD is a leading cause of hospitalisation, disability, and loss of productive life-years. For nursing professionals, COPD represents one of the most commonly encountered chronic diseases across all clinical settings—primary care, emergency departments, acute medical wards, and community health. A thorough understanding of its pathophysiology is therefore indispensable for competent clinical assessment, evidence-based intervention, and skilled patient education.`,
+  },
+  {
+    id: 'risk-factors',
+    heading: 'Risk Factors and Aetiology',
+    body: `COPD results from the cumulative interaction of host genetic factors and environmental exposures over a lifetime. Understanding these risk factors is fundamental to prevention, case-finding, and patient education.
+
+Tobacco Smoke. Cigarette smoking is by far the most important and prevalent risk factor, accounting for approximately 80–90% of COPD cases in high-income countries. Both active smoking and sustained exposure to secondhand smoke are associated with COPD risk. The risk is dose-dependent: cumulative exposure is quantified in pack-years (the product of packs smoked per day and years of smoking). Tobacco smoke generates thousands of toxic compounds—including acrolein, nitrogen dioxide, carbon monoxide, and free radicals—that trigger the inflammatory cascade responsible for progressive airway and parenchymal damage. Crucially, not all smokers develop COPD (approximately 20–30% of heavy smokers do), indicating that host susceptibility factors play an important modifying role.
+
+Indoor and Outdoor Air Pollution. In low- and middle-income countries, biomass fuel combustion (wood, charcoal, animal dung, crop residues) burned in poorly ventilated indoor environments for cooking and heating is the most important non-tobacco cause of COPD, particularly among women who bear the greatest exposure. Ambient outdoor air pollution—particulate matter (PM2.5), ozone, nitrogen dioxide, and sulphur dioxide from traffic and industrial sources—is an independent risk factor and a potent trigger for acute exacerbations.
+
+Occupational Exposures. Occupational exposure to organic dusts (grain, cotton, wood), inorganic dusts (coal, silica, asbestos), chemical fumes, and vapours is responsible for a clinically significant proportion of COPD cases—estimated at 10–20% of all COPD in developed countries. Occupations associated with elevated risk include coal mining, hard-rock mining, tunnel work, concrete manufacturing, and farming.
+
+Genetic Factors. Alpha-1 antitrypsin (AAT) deficiency is the best-characterised genetic risk factor for COPD. AAT is a serine protease inhibitor (serpin) produced primarily by hepatocytes that neutralises neutrophil elastase and other proteases released during pulmonary inflammation. In individuals with severe AAT deficiency (PiZZ genotype), the antiprotease defence of the lung is inadequate, unopposed elastolysis destroys alveolar walls, and emphysema develops even in non-smokers—typically presenting at a younger age and with a predominant basal distribution. AAT deficiency accounts for approximately 1–2% of all COPD cases, but its identification has important implications for treatment (AAT augmentation therapy) and family screening.
+
+Other Risk Factors. Respiratory infections in early childhood—particularly severe or recurrent lower respiratory tract infections—impair lung growth and development, reducing maximally attained lung function and increasing lifetime COPD risk. Socioeconomic disadvantage is an independent risk factor, likely mediated through higher rates of smoking, indoor air pollution, occupational exposure, and reduced access to healthcare. Asthma is increasingly recognised as a risk factor for COPD development; the overlap syndrome of asthma-COPD overlap (ACO) carries particular clinical significance given different treatment implications. Low birth weight and prematurity impair lung development and predispose to accelerated lung function decline in adult life.`,
+  },
+  {
+    id: 'pathophysiology',
+    heading: 'Pathophysiology',
+    body: `The pathophysiology of COPD is complex and involves the interplay of airway inflammation, protease-antiprotease imbalance, oxidative stress, and structural remodelling that collectively produce progressive, irreversible airflow obstruction.
+
+Inflammatory Mechanisms. Inhalation of noxious particles activates the lung's innate and adaptive immune systems, initiating a chronic, dysregulated inflammatory response that persists even after smoking cessation. The characteristic cellular infiltrate of COPD involves neutrophils, macrophages, and CD8+ cytotoxic T lymphocytes. Pulmonary macrophages—greatly increased in number in the lungs of smokers with COPD relative to smokers without disease—are the central orchestrators of the inflammatory response, releasing proteases (matrix metalloproteinases, neutrophil elastase), reactive oxygen species, and pro-inflammatory cytokines including interleukin-8 (IL-8), tumour necrosis factor-alpha (TNF-α), and leukotriene B4 (LTB4). These mediators recruit additional neutrophils and CD8+ T cells, amplifying the cycle of inflammation and tissue destruction. Neutrophils, in turn, release elastase, cathepsins, and matrix metalloproteinases (MMPs) that degrade the structural proteins of the lung—elastin, collagen, and proteoglycans—contributing to alveolar destruction and emphysema.
+
+Protease-Antiprotease Imbalance. Normal lung homeostasis depends on a precise balance between proteases released by inflammatory cells and antiproteases that limit tissue destruction. In COPD, this balance is disrupted: elevated levels of neutrophil elastase, cathepsin G, MMP-9, and MMP-12 overwhelm the protective capacity of alpha-1 antitrypsin, tissue inhibitors of metalloproteinases (TIMPs), secretory leukoprotease inhibitor (SLPI), and elafin. The consequences—particularly the destruction of alveolar walls—are irreversible because the lung has limited capacity to regenerate functional alveolar tissue once destroyed.
+
+Oxidative Stress. Tobacco smoke contains an estimated 10¹⁷ free radicals per puff. These reactive oxygen species (ROS) directly damage cellular macromolecules—lipids, proteins, and DNA—and, importantly, inactivate key antiproteases (including alpha-1 antitrypsin and SLPI), further tipping the protease-antiprotease balance towards destruction. ROS also activate pro-inflammatory transcription factors, particularly nuclear factor kappa-B (NF-κB), amplifying the inflammatory cascade. Oxidative stress-induced depletion of glutathione and other antioxidant defences impairs the lung's ability to neutralise subsequent oxidative insults.
+
+Mucus Hypersecretion and Ciliary Dysfunction. Goblet-cell hyperplasia and submucosal gland hypertrophy—driven by inflammatory mediators, particularly IL-13 and epidermal growth factor receptor (EGFR) signalling—result in excess mucus production. Simultaneously, repeated insult by tobacco smoke and oxidative stress impairs mucociliary clearance by damaging ciliary ultrastructure and reducing ciliary beat frequency. The consequent retention of secretions creates a mucus plug environment that promotes bacterial colonisation, recurrent infection, and further inflammation—the characteristic clinical syndrome of chronic bronchitis.
+
+Small-Airway Disease. Inflammation of the small airways (internal diameter < 2 mm)—termed bronchiolitis—is now recognised as a critical and early determinant of airflow limitation in COPD. Inflammatory infiltration, oedema, fibrosis, and luminal narrowing of small bronchioles increase peripheral airway resistance dramatically. Because small airways collectively contribute little to total airway resistance in health, significant small-airway disease can develop before it is detectable by standard spirometry, explaining why COPD is often diagnosed late in its natural history when substantial irreversible damage has already occurred.
+
+Emphysema. Emphysema is defined pathologically as permanent enlargement of the air spaces distal to the terminal bronchioles, accompanied by destruction of alveolar walls, without obvious fibrosis. Two morphological subtypes are recognised. Centriacinar (centrilobular) emphysema—by far the more common, and most strongly associated with cigarette smoking—begins at the centre of the secondary pulmonary lobule, selectively destroying the respiratory bronchioles while initially sparing the peripheral alveolar ducts and sacs. It is most severe in the upper lobes. Panacinar (panlobular) emphysema—the pattern associated with alpha-1 antitrypsin deficiency—uniformly destroys the entire secondary lobule and is most severe in the lower lobes.
+
+The functional consequences of alveolar destruction are profound. Loss of alveolar wall tissue reduces the surface area available for gas exchange, impairing oxygen diffusion. Destruction of the alveolar walls also removes the radial traction that normally holds small airways open during exhalation—the "alveolar guy-wire" mechanism. The resulting loss of elastic recoil means that intrathoracic pressure during exhalation exceeds the now-reduced intrinsic recoil pressure of the lung at lower lung volumes, causing dynamic airway collapse. Breath gas becomes trapped distal to the collapsed airways, producing air trapping and static hyperinflation. The diaphragm, chronically flattened and disadvantaged mechanically, must generate greater inspiratory effort for equivalent tidal volume, increasing the work of breathing. Chronic hypoxaemia and hypercapnia develop as ventilation-perfusion (V/Q) mismatch worsens.
+
+Pulmonary Hypertension and Cor Pulmonale. Chronic hypoxaemia triggers hypoxic pulmonary vasoconstriction, a physiologically appropriate mechanism in acute situations (directing blood away from poorly ventilated lung units) that becomes maladaptive when sustained. In COPD, sustained hypoxic vasoconstriction, combined with structural remodelling of pulmonary arterioles (intimal hyperplasia, medial hypertrophy, and adventitial fibrosis), produces pulmonary hypertension. The right ventricle, forced to generate increased pressure to maintain cardiac output through a high-resistance pulmonary vascular bed, undergoes adaptive hypertrophy and, ultimately, dilatation and failure—the clinical syndrome of cor pulmonale. Right heart failure in COPD manifests as peripheral oedema, raised jugular venous pressure, hepatomegaly, and further reductions in exercise tolerance and quality of life.`,
+  },
+  {
+    id: 'gold-criteria',
+    heading: 'GOLD Criteria and Classification',
+    body: `The Global Initiative for Chronic Obstructive Lung Disease (GOLD) provides the internationally recognised framework for the diagnosis, classification, and management of COPD. The GOLD report—first published in 2001 and updated annually—represents a synthesis of the best available evidence reviewed by an expert international panel and is the benchmark reference for COPD care worldwide.
+
+Diagnostic Criterion. GOLD defines COPD as the presence of a post-bronchodilator forced expiratory volume in one second (FEV1) to forced vital capacity (FVC) ratio of less than 0.70, confirmed by spirometry. This fixed ratio criterion—interpreted after administration of a short-acting bronchodilator (typically salbutamol 400 µg via metered-dose inhaler)—establishes the presence of incompletely reversible airflow obstruction. It is important to note that the fixed ratio of 0.70 may overdiagnose COPD in the elderly (in whom age-related loss of elastic recoil physiologically reduces the FEV1/FVC ratio below 0.70) and underdiagnose it in younger adults; awareness of this limitation is essential in clinical interpretation. Spirometry remains the gold standard for COPD diagnosis and the cornerstone of GOLD classification.
+
+GOLD Spirometric Severity Grades. Once airflow obstruction has been confirmed (post-bronchodilator FEV1/FVC < 0.70), the degree of airflow limitation is categorised according to the percentage of predicted FEV1 in four GOLD grades:
+
+GOLD 1 (Mild): Post-bronchodilator FEV1 ≥ 80% of predicted. At this stage, airflow limitation is mild; patients are often asymptomatic or have only a mild chronic cough and sputum production. Because symptoms may be absent or trivially attributed to ageing or deconditioning, GOLD 1 disease is frequently undetected until incidentally discovered on spirometry.
+
+GOLD 2 (Moderate): Post-bronchodilator FEV1 between 50% and 79% of predicted (50% ≤ FEV1 < 80%). Symptoms become more evident: breathlessness on exertion (typically on climbing stairs or walking uphill), chronic cough, and sputum production are common. Patients may begin to limit physical activity to avoid dyspnoea. Most patients with COPD are diagnosed at this stage following a medical consultation prompted by increasing dyspnoea or a first exacerbation.
+
+GOLD 3 (Severe): Post-bronchodilator FEV1 between 30% and 49% of predicted (30% ≤ FEV1 < 50%). Exacerbations become more frequent and more severe. Dyspnoea is present with minimal exertion. Exercise tolerance is substantially reduced, and the impact on quality of life and daily activities is significant. Patients frequently require multiple medications and may develop significant hypoxaemia.
+
+GOLD 4 (Very Severe): Post-bronchodilator FEV1 < 30% of predicted. This grade represents end-stage airflow obstruction. Patients experience dyspnoea at rest or with minimal activity and are profoundly limited. Chronic respiratory failure is common, often necessitating long-term oxygen therapy (LTOT). Pulmonary hypertension, cor pulmonale, and life-threatening exacerbations are characteristic of this stage. Quality of life is severely impaired, and mortality is high.
+
+GOLD ABE Symptom and Exacerbation-Based Groups. The GOLD 2023 report—building on revisions introduced in 2017 and refined in 2022—moved beyond spirometry alone and introduced an integrated assessment that combines the degree of airflow limitation with the patient's symptom burden and exacerbation history to guide pharmacological management. Importantly, the earlier ABCD grouping (introduced in 2011) was simplified in 2023 to an ABE grouping, collapsing the former C and D groups into a single "E" (Exacerbator) group. The rationale was evidence showing that symptom burden drives quality-of-life outcomes while exacerbation history drives escalation of bronchodilator and anti-inflammatory therapy; combining the two dimensions into four groups added complexity without improving therapeutic precision.
+
+Symptom Assessment Tools. Two validated patient-reported outcome measures are used to quantify symptom burden in the GOLD assessment:
+
+The Modified Medical Research Council (mMRC) Dyspnoea Scale quantifies breathlessness on a five-point scale (0–4). Grade 0: breathless only with strenuous exercise. Grade 1: breathless when hurrying on the level or walking up a slight hill. Grade 2: walks slower than most people on the level due to breathlessness or stops for breath when walking at own pace. Grade 3: stops for breath after walking about 100 metres or after a few minutes on the level. Grade 4: too breathless to leave the house, or breathless when dressing or undressing. An mMRC score of ≥ 2 defines "more symptoms" in the GOLD grouping.
+
+The COPD Assessment Test (CAT) is an eight-item patient-completed questionnaire assessing cough, sputum, chest tightness, breathlessness on hills/stairs, activity limitation at home, confidence leaving home, sleep quality, and energy. Each item is scored 0–5 (total score 0–40). A CAT score of ≥ 10 defines "more symptoms" in the GOLD grouping and correlates with reduced health status and worse outcomes.
+
+GOLD ABE Groups (2023). Using the mMRC and CAT scores alongside exacerbation history, patients are categorised as follows:
+
+Group A: Low symptom burden (mMRC 0–1 or CAT < 10) AND low exacerbation risk (0 or 1 non-hospitalised exacerbation per year). These patients have mild to moderate disease with few symptoms and infrequent exacerbations. Recommended initial pharmacotherapy: a single long-acting bronchodilator (long-acting beta-2 agonist [LABA] or long-acting muscarinic antagonist [LAMA]).
+
+Group B: High symptom burden (mMRC ≥ 2 or CAT ≥ 10) AND low exacerbation risk (0 or 1 non-hospitalised exacerbation per year). These patients have significant symptoms despite infrequent exacerbations. Recommended initial pharmacotherapy: dual bronchodilation (LABA + LAMA combination).
+
+Group E (Exacerbators): High exacerbation risk, defined as ≥ 2 exacerbations requiring treatment with antibiotics or systemic corticosteroids in the preceding year, OR ≥ 1 exacerbation requiring hospitalisation in the preceding year—regardless of symptom burden. This group encompasses the former C and D groups. Recommended initial pharmacotherapy: LABA + LAMA combination; addition of inhaled corticosteroid (ICS) is recommended if blood eosinophil count ≥ 300 cells/µL, as this identifies patients most likely to benefit from ICS.
+
+Blood Eosinophil Count as a Biomarker. A key evolution in the GOLD framework has been the incorporation of blood eosinophil count as a biomarker to guide ICS prescribing. Emerging evidence demonstrates that ICS added to LABA ± LAMA reduces exacerbation frequency preferentially in patients with higher blood eosinophil counts. The GOLD 2023 report recommends considering ICS when eosinophils ≥ 100 cells/µL (in patients with a history of ≥ 2 exacerbations) and strongly recommends ICS when eosinophils ≥ 300 cells/µL in Group E patients. Conversely, in patients with recurrent pneumonia, a prior diagnosis of mycobacterial disease, or low eosinophil counts, the risks of ICS may outweigh its benefits.
+
+Clinical Significance of GOLD Classification for Nursing. Understanding the GOLD classification system enables nurses to contextualise a patient's functional status, anticipate likely disease trajectory, interpret medication complexity, and provide targeted education. A GOLD 3–4 patient with a CAT score of 26 and two hospitalisations in the past year (Group E) has a very different prognosis, medication burden, and educational need from a GOLD 1 patient in Group A. Nurses who can accurately situate a patient within the GOLD framework are equipped to contribute meaningfully to goals-of-care conversations, discharge planning, and community-based follow-up.`,
+  },
+  {
+    id: 'clinical-features',
+    heading: 'Clinical Features',
+    body: `The clinical presentation of COPD is characterised by a constellation of symptoms that develop insidiously over many years and are often minimised by patients who attribute them to normal ageing or smoking. The cardinal symptoms are chronic dyspnoea, chronic cough, and sputum production, but the systemic manifestations of COPD extend well beyond the lungs.
+
+Dyspnoea. Progressive exertional breathlessness is the most disabling symptom of COPD and the primary driver of exercise limitation and quality-of-life impairment. It results from the interaction of increased ventilatory demand (due to V/Q mismatch and hypoxaemia), increased work of breathing (due to airflow obstruction, hyperinflation, and diaphragmatic disadvantage), and dynamic hyperinflation—a worsening of air trapping during exertion that reduces inspiratory capacity and increases end-expiratory lung volume. Patients describe dyspnoea as a sense of increased effort to breathe, chest tightness, or an inability to take a satisfying breath. In advanced disease, dyspnoea may be present at rest.
+
+Chronic Cough and Sputum Production. A productive cough that has been present for at least three consecutive months in each of two consecutive years—in the absence of another cause—defines chronic bronchitis clinically. Sputum is characteristically mucoid in stable disease, becoming purulent (yellow-green) during exacerbations due to the presence of neutrophils and bacterial or viral pathogens. Haemoptysis (blood-streaked sputum) may occur during exacerbations; significant haemoptysis warrants investigation to exclude malignancy, which is more prevalent in the COPD population given shared tobacco exposure.
+
+Wheeze and Chest Tightness. Variable wheeze—generated by turbulent airflow through narrowed airways—is common, particularly during exacerbations. Chest tightness may reflect bronchospasm, air trapping, or intercostal muscle fatigue.
+
+Physical Examination Findings. The physical findings of COPD reflect the underlying pathology and become increasingly prominent as disease progresses. Inspection may reveal the "barrel chest" of severe emphysema—an increased anteroposterior diameter reflecting chronic hyperinflation. Use of accessory muscles of respiration (sternocleidomastoid, scalene, trapezius) at rest or with minimal activity indicates significant respiratory distress. Pursed-lip breathing—a patient-adopted strategy that generates positive end-expiratory pressure (auto-PEEP), splinting airways open during exhalation and reducing air trapping—is a characteristic adaptive behaviour. Central cyanosis of the lips and mucous membranes reflects significant hypoxaemia. Digital clubbing is not a feature of COPD per se and, if present, should prompt investigation for lung cancer or other pathology. Percussion reveals hyperresonance and a lowered diaphragm, reflecting hyperinflation. Auscultation demonstrates prolonged expiration, decreased breath sounds (due to reduced air movement through emphysematous lung), and expiratory wheeze or crackles.
+
+Systemic Manifestations. COPD is increasingly recognised as a systemic disease with multi-organ involvement that substantially compounds the burden of morbidity. Skeletal muscle wasting and peripheral muscle dysfunction—mediated by systemic inflammation, hypoxia, corticosteroid use, and inactivity—reduce exercise capacity independent of lung function. Cachexia (low body mass index < 21 kg/m²) is associated with worsened prognosis. Cardiovascular disease—ischaemic heart disease, arrhythmias, and heart failure—is the leading cause of death among COPD patients, reflecting both shared risk factors (smoking) and direct contributions of systemic inflammation, sympathetic activation, and hypoxaemia to atherosclerosis and cardiac dysfunction. Osteoporosis is accelerated by corticosteroid use, smoking, inactivity, and vitamin D deficiency. Anxiety and depression affect 25–40% of patients with COPD, profoundly impairing quality of life and medication adherence; they are systematically underdiagnosed and undertreated in this population. Anaemia of chronic disease and polycythaemia (the latter as a secondary response to chronic hypoxaemia) are both encountered, with different therapeutic implications.
+
+Phenotypic Presentations: "Pink Puffer" and "Blue Bloater." Although now recognised as an oversimplification, the historically taught distinction between the "pink puffer" (emphysema-dominant type A) and the "blue bloater" (chronic bronchitis-dominant type B) remains a useful conceptual framework for understanding the spectrum of COPD phenotypes. The type A patient is typically thin, barrel-chested, pink, and breathless, relying on increased respiratory drive and adequate ventilation to maintain a near-normal PaO₂ (hence "pink"), at the cost of extreme dyspnoea and accessory muscle use. The type B patient presents with recurrent productive cough, peripheral oedema, cyanosis (the "blue" of hypoxaemia), and hypercapnia, reflecting a blunted respiratory drive, chronic hypoventilation, and a tendency to retain CO₂. In clinical practice, most patients exhibit features of both phenotypes.`,
+  },
+  {
+    id: 'diagnosis',
+    heading: 'Diagnosis',
+    body: `The diagnosis of COPD requires spirometric confirmation and clinical context; it cannot be made on symptoms alone.
+
+Spirometry. Post-bronchodilator spirometry is the diagnostic gold standard. A post-bronchodilator FEV1/FVC ratio of less than 0.70 in a patient with a compatible clinical history (symptoms and risk factor exposure) confirms the diagnosis of COPD. The degree of FEV1 reduction (expressed as a percentage of the predicted value corrected for age, sex, height, and ethnicity) determines the GOLD spirometric grade. Spirometry should ideally be performed by a trained operator using a calibrated spirometer meeting American Thoracic Society (ATS) / European Respiratory Society (ERS) quality standards.
+
+Additional Pulmonary Function Tests. In selected patients, additional lung function testing provides diagnostic and prognostic information. Total lung capacity (TLC), residual volume (RV), and functional residual capacity (FRC)—measured by body plethysmography or helium dilution—quantify static hyperinflation and gas trapping; an elevated RV/TLC ratio is characteristic of COPD. Diffusing capacity of the lung for carbon monoxide (DLCO) is markedly reduced in emphysema, reflecting the loss of alveolar surface area available for gas exchange, and a DLCO reduction disproportionate to the degree of spirometric obstruction suggests emphysema-dominant disease.
+
+Imaging. Chest radiography is of limited sensitivity for COPD diagnosis but may demonstrate features of emphysema (hyperinflation with flattened diaphragms, increased retrosternal airspace, attenuated vascular markings) and should be performed at diagnosis to exclude malignancy and other cardiopulmonary pathology. High-resolution computed tomography (HRCT) of the thorax is not routinely indicated for COPD diagnosis but provides the most sensitive characterisation of emphysema distribution and severity, identifies bronchiectasis (a complication in up to 50% of moderate-severe COPD), and assists in surgical planning for lung volume reduction surgery (LVRS) or lung transplantation.
+
+Arterial Blood Gas. ABG measurement is indicated in patients with FEV1 < 35% predicted, in all patients with clinical features suggesting respiratory failure (peripheral oedema, raised jugular venous pressure, cyanosis, impaired consciousness), and during acute exacerbations. ABG findings in advanced COPD include hypoxaemia (PaO₂ < 60 mmHg), hypercapnia (PaCO₂ > 45 mmHg), and a compensated respiratory acidosis (elevated HCO₃⁻, pH often near normal in stable chronic disease). These findings guide the prescription of long-term oxygen therapy (LTOT) and non-invasive ventilation (NIV).
+
+Alpha-1 Antitrypsin Testing. GOLD guidelines recommend that all patients diagnosed with COPD be offered at least one measurement of serum alpha-1 antitrypsin concentration, particularly those with an early onset, a family history of COPD or liver disease, or minimal tobacco exposure. The identification of AAT deficiency has therapeutic implications (AAT augmentation therapy) and necessitates family cascade screening.
+
+Differential Diagnosis. Key differential diagnoses that must be excluded include asthma (typically with a greater degree of bronchodilator reversibility, younger age of onset, atopic history, and different inflammatory cell profile), bronchiectasis (productive cough, characteristic HRCT appearances), congestive heart failure (dyspnoea improved by diuresis, bilateral basal crackles, elevated B-type natriuretic peptide), obliterative bronchiolitis (often post-infection or post-transplant, without the expected emphysema on imaging), and central airway obstruction (flow-volume loop showing truncation of the inspiratory or expiratory limb).`,
+  },
+  {
+    id: 'exacerbations',
+    heading: 'Acute Exacerbations',
+    body: `An acute exacerbation of COPD (AECOPD) is defined by the GOLD report as an acute event characterised by a worsening of the patient's respiratory symptoms that is beyond normal day-to-day variation and that leads to a change in medication. Exacerbations represent a critical inflection point in the natural history of COPD: each exacerbation is associated with accelerated lung function decline, impaired health-related quality of life, increased risk of subsequent exacerbations, and elevated short- and long-term mortality.
+
+Aetiology. The majority of exacerbations are triggered by respiratory tract infections: viruses (most commonly rhinovirus, influenza, parainfluenza, and respiratory syncytial virus) cause approximately 30–40% of AECOPD, bacterial infections (Haemophilus influenzae, Streptococcus pneumoniae, Moraxella catarrhalis, and Pseudomonas aeruginosa in severe disease) cause another 30–40%, and a substantial proportion (20–30%) remain without a clearly identifiable infective precipitant. Environmental air pollution (PM2.5, ozone) and temperature changes are important non-infective triggers.
+
+Classification of Severity. AECOPD severity is stratified by the type of medical intervention required. Mild exacerbations are managed with increased use of short-acting bronchodilators alone, without requiring antibiotic or systemic corticosteroid prescription. Moderate exacerbations require treatment with systemic corticosteroids, antibiotics, or both. Severe exacerbations necessitate hospitalisation or emergency department attendance; very severe exacerbations require intensive care and respiratory support.
+
+Clinical Features and Assessment. The nurse's clinical assessment of an AECOPD patient should be systematic and thorough. Key clinical features include increased dyspnoea, increased cough frequency and sputum volume or purulence, wheeze, chest tightness, fever (if infective), confusion or altered consciousness (indicating hypercapnic encephalopathy), peripheral oedema (cor pulmonale), and haemodynamic instability. The nurse should assess respiratory rate (tachypnoea > 30 breaths/minute indicates severe disease), oxygen saturation (SpO₂ target 88–92% in known CO₂ retainers), use of accessory muscles, ability to complete sentences, and level of consciousness. An urgent ABG should be obtained in patients with SpO₂ < 92%, known CO₂ retention, or altered consciousness to guide oxygen titration and identify the need for non-invasive ventilation (NIV).
+
+Management of AECOPD. The cornerstone pharmacological interventions for moderate-to-severe AECOPD include:
+
+Short-Acting Bronchodilators. Inhaled short-acting beta-2 agonists (SABA; salbutamol) and short-acting muscarinic antagonists (SAMA; ipratropium) delivered via nebuliser or metered-dose inhaler with spacer are the immediate priority to relieve bronchospasm and reduce dyspnoea. Combination SABA + SAMA is more effective than either agent alone. High-dose nebulised bronchodilators should be the first-line intervention in the emergency setting.
+
+Systemic Corticosteroids. A short course of oral prednisolone (typically 40 mg daily for 5 days) reduces the duration and severity of the exacerbation, decreases the rate of treatment failure, and shortens hospital stay. Prolonged corticosteroid courses confer no additional benefit and increase the risk of adverse effects (hyperglycaemia, adrenal suppression, muscle wasting, osteoporosis, and infection, particularly Pneumocystis jirovecii pneumonia in severely immunocompromised patients).
+
+Antibiotics. Antibiotics are indicated when exacerbations are characterised by increased dyspnoea and increased sputum purulence (two Anthonisen criteria), or when respiratory failure necessitates mechanical ventilation. The choice of antibiotic should account for local resistance patterns; amoxicillin, doxycycline, or co-trimoxazole are reasonable empirical choices in uncomplicated exacerbations, while broader-spectrum agents (e.g., co-amoxiclav, fluoroquinolones) are reserved for those with recent antibiotic exposure, suspected Pseudomonas infection (patients with severe GOLD grade, frequent prior antibiotic courses, structural lung disease), or treatment failure.
+
+Controlled Oxygen Therapy. In hypoxaemic patients with known or suspected CO₂ retention, oxygen should be titrated to a target SpO₂ of 88–92% using a Venturi mask or nasal prongs, avoiding uncontrolled high-flow oxygen that can suppress hypoxic ventilatory drive and precipitate hypercapnic respiratory failure. This is one of the most clinically important nursing competencies in COPD management.
+
+Non-Invasive Ventilation. NIV via bilevel positive airway pressure (BiPAP)—providing inspiratory positive airway pressure (IPAP) and expiratory positive airway pressure (EPAP)—is the intervention of choice for acute hypercapnic respiratory failure complicating AECOPD (pH < 7.35, PaCO₂ > 45 mmHg despite optimal medical therapy). NIV reduces the need for intubation, reduces mortality, reduces complications, and shortens hospital stay. Nurses are central to NIV implementation, including mask fitting, patient coaching, and monitoring for complications (facial pressure ulcers, aspiration risk, interface intolerance).`,
+  },
+  {
+    id: 'management',
+    heading: 'Stable COPD Management',
+    body: `The management of stable COPD is guided by the GOLD ABE group, the degree of spirometric impairment, and patient-specific factors including comorbidities, inhaler device proficiency, and patient preference. The overarching goals are to reduce symptoms, improve exercise tolerance and quality of life, prevent disease progression, and prevent and treat exacerbations.
+
+Smoking Cessation. Smoking cessation is the single most effective intervention to slow the decline in FEV1 and improve prognosis in COPD. The Lung Health Study demonstrated that supported smoking cessation reduced the rate of FEV1 decline by approximately 50% compared with continued smoking. Nurses are ideally positioned to deliver brief motivational advice (the "5As" framework: Ask, Advise, Assess, Assist, Arrange) at every clinical encounter and to refer patients to structured cessation programmes. Pharmacotherapy with nicotine replacement therapy (NRT), varenicline (highest cessation rates, approximately 25–30% at one year), or bupropion should be offered to all patients motivated to quit.
+
+Inhaled Bronchodilators. Bronchodilators form the cornerstone of pharmacological management for stable COPD, acting by relaxing bronchial smooth muscle and reducing dynamic hyperinflation to improve exercise capacity and alleviate dyspnoea. Two classes of long-acting bronchodilators are available: Long-acting beta-2 agonists (LABAs; formoterol, salmeterol, indacaterol, olodaterol, vilanterol) activate beta-2 adrenergic receptors, producing smooth-muscle relaxation and bronchodilation for 12 or 24 hours. Long-acting muscarinic antagonists (LAMAs; tiotropium, glycopyrronium, umeclidinium, aclidinium) block muscarinic M3 receptors on airway smooth muscle and submucosal glands, reducing bronchoconstriction and mucus secretion for up to 24 hours. Both classes reduce exacerbation rates, improve spirometry and exercise capacity, and reduce dyspnoea compared to placebo. For symptomatic patients, LABA + LAMA combination in a single inhaler (LABA/LAMA; examples: indacaterol/glycopyrronium, umeclidinium/vilanterol, tiotropium/olodaterol) is superior to monotherapy for symptom control and exacerbation reduction.
+
+Inhaled Corticosteroids. ICS (fluticasone, budesonide, beclomethasone) reduce airway inflammation and the frequency of exacerbations in selected patients but are associated with increased risk of pneumonia, which must be weighed against their benefit. Triple therapy (LABA + LAMA + ICS) reduces exacerbations and hospitalisations in Group E patients with high eosinophil counts (≥ 300 cells/µL) compared with dual bronchodilation alone. Single-inhaler triple therapy devices (fluticasone furoate/umeclidinium/vilanterol; beclomethasone/formoterol/glycopyrronium) improve adherence and reduce device complexity for patients.
+
+Pulmonary Rehabilitation. Pulmonary rehabilitation (PR) is an evidence-based, multidisciplinary programme of exercise training, education, and self-management support for patients with symptomatic COPD (MRC ≥ 3). PR produces the largest improvements in exercise capacity, dyspnoea, and health-related quality of life of any COPD intervention—greater than any pharmacological therapy for these outcomes. Programmes typically include supervised exercise training (aerobic and resistance), education in COPD self-management (breathlessness management techniques, inhaler technique, energy conservation, action plans), nutritional support, and psychosocial support. PR should be offered to all eligible patients and is particularly important following hospitalisation for AECOPD, where it reduces re-admission rates.
+
+Long-Term Oxygen Therapy. LTOT is indicated in patients with severe resting hypoxaemia (PaO₂ ≤ 55 mmHg on two measurements ≥ 3 weeks apart in clinically stable state, or PaO₂ 55–60 mmHg with evidence of pulmonary hypertension, peripheral oedema, or polycythaemia). LTOT prescribed for ≥ 15 hours per day improves survival in this population—the only pharmacological or non-pharmacological intervention beyond smoking cessation shown to improve survival in COPD with severe hypoxaemia. Nurses are responsible for assessing oxygen delivery systems, monitoring compliance and technique, and educating patients in oxygen safety.
+
+Vaccination. Annual influenza vaccination and pneumococcal vaccination (PCV20 or PCV15 followed by PPSV23) are recommended for all patients with COPD to reduce exacerbation frequency and severity. COVID-19 vaccination is also strongly recommended given the documented risk of severe disease in COPD. Respiratory syncytial virus (RSV) vaccination should be offered where indicated by local guidelines and age criteria.
+
+Surgical and Bronchoscopic Interventions. In carefully selected patients with severe emphysema not controlled by optimal pharmacotherapy, surgical or bronchoscopic lung volume reduction may be appropriate. Lung volume reduction surgery (LVRS)—removal of the most severely emphysematous lung tissue to restore elastic recoil and diaphragmatic mechanics—improves exercise tolerance, lung function, and survival in patients with predominantly upper-lobe emphysema and low post-rehabilitation exercise capacity (as defined by the NETT criteria). Bronchoscopic lung volume reduction using endobronchial valves (EBV), coils, or vapour ablation is a less invasive alternative in patients without significant collateral ventilation (as assessed by the Chartis system or CT fissure analysis). Lung transplantation is an option for highly selected end-stage COPD patients (typically GOLD 4) without prohibitive comorbidities, offering improved quality of life but uncertain survival benefit given the risk of primary graft dysfunction, chronic lung allograft dysfunction, and infection.`,
+  },
+  {
+    id: 'nursing-considerations',
+    heading: 'Nursing Considerations',
+    body: `Nursing care of the patient with COPD spans assessment, monitoring, pharmacological support, patient education, rehabilitation facilitation, and palliative care. The nurse is the healthcare professional spending the most time at the bedside and is therefore uniquely positioned to detect subtle clinical changes, support treatment adherence, and deliver therapeutic education.
+
+Clinical Assessment. Comprehensive nursing assessment of the COPD patient includes systematic evaluation of dyspnoea severity (mMRC or Borg scale), respiratory rate, oxygen saturation, work of breathing (use of accessory muscles, pursed-lip breathing, intercostal recession), breath sounds, sputum characteristics (volume, colour, consistency), and signs of cor pulmonale (peripheral oedema, jugular venous distension). Baseline cognitive function and anxiety levels should be documented, as acute worsening of mental status may signal hypercapnic encephalopathy—a medical emergency.
+
+Oxygen Therapy Monitoring. One of the most clinically critical nursing competencies in COPD is the precise titration and monitoring of supplemental oxygen. Administering uncontrolled high-flow oxygen to a known CO₂ retainer (typically GOLD 3–4, with a history of hypercapnia on prior ABG) can suppress hypoxic ventilatory drive, worsen hypoventilation, and precipitate life-threatening hypercapnic respiratory failure—the Haldane effect and the loss of the hypoxic drive are the underlying mechanisms. The target SpO₂ for CO₂-retaining COPD patients is 88–92% using controlled-flow oxygen via a Venturi mask or titrated nasal prongs. Oxygen flow should be increased or decreased incrementally, and the patient's SpO₂ and clinical status must be reassessed after each adjustment. An ABG should be ordered if the patient's clinical status deteriorates despite adequate SpO₂.
+
+Inhaler Education. Inhaler technique is a critical determinant of COPD medication efficacy; studies have demonstrated that up to 70–80% of patients use their inhalers incorrectly. Nurses must be competent to assess and teach inhaler technique for all commonly prescribed device types: pressurised metered-dose inhalers (pMDI, ideally used with a spacer), dry powder inhalers (DPI; Turbohaler, Ellipta, Handihaler, Genuair), and soft mist inhalers (SMI; Respimat). Assessment of technique should use a device-specific checklist, corrective feedback should be provided, and technique should be reassessed at every clinical encounter. Barriers to technique—including impaired hand strength or coordination (relevant in older adults and those with musculoskeletal comorbidities), cognitive impairment, and poor breath-holding capacity—should inform device selection.
+
+COPD Action Plans. Written, individualised COPD action plans—developed collaboratively with the patient and agreed upon with the prescribing clinician—empower patients to recognise the early symptoms of exacerbation and initiate appropriate self-management steps (increasing bronchodilator frequency, commencing a rescue corticosteroid or antibiotic course, or seeking urgent medical review). Evidence demonstrates that supported self-management with written action plans reduces emergency department visits and hospitalisations. Nurses in primary care, community, and outpatient settings are ideally positioned to develop and review action plans.
+
+Breathlessness Management. Non-pharmacological strategies for managing dyspnoea are an important complement to pharmacotherapy. The nurse can teach pursed-lip breathing (to prevent dynamic airway collapse and reduce respiratory rate), diaphragmatic breathing, upright positioning (sitting forward, leaning on a table, arms supported), use of a handheld fan directed at the face (which stimulates cold receptors in the facial skin and reduces the perception of breathlessness via vagal afferents), and pacing strategies for activities of daily living. These techniques, components of formal pulmonary rehabilitation programmes, can be introduced at the bedside during acute admissions.
+
+Psychosocial Support. Anxiety and depression are prevalent and underdiagnosed in COPD, impairing self-management capacity, medication adherence, and quality of life. Nurses should use validated screening tools (Generalised Anxiety Disorder-7 [GAD-7], Patient Health Questionnaire-9 [PHQ-9]) to identify affective comorbidity and refer patients for psychological support, cognitive-behavioural therapy, or pharmacotherapy as appropriate. Peer support through COPD patient groups and pulmonary rehabilitation programmes provides additional psychosocial benefit.
+
+Palliative and End-of-Life Care. Advanced COPD (GOLD 4) is characterised by a high symptom burden, frequent hospitalisations, progressive functional decline, and a mortality comparable to many malignancies. Nurses must be comfortable initiating conversations about prognosis, goals of care, and advance care planning. Breathlessness at rest is a major source of suffering at end of life; low-dose oral or parenteral morphine is the evidence-based pharmacological intervention for refractory dyspnoea in this context, and nurses play a central role in its safe administration and monitoring. Coordination with palliative care specialists, respiratory physiotherapists, dietitians, and social workers is essential for comprehensive end-of-life support.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Chronic obstructive pulmonary disease is a multifaceted, progressive, and ultimately systemic disease whose pathophysiology integrates smoking-induced airway inflammation, protease-antiprotease imbalance, oxidative stress, alveolar destruction, small-airway disease, and hypoxic pulmonary hypertension into a cycle of escalating functional impairment. The GOLD classification framework—combining spirometric grading (GOLD 1–4) with patient symptom burden and exacerbation history (ABE groups)—provides the clinical bedrock for disease severity stratification, pharmacological decision-making, and prognostic communication. For nurses, a deep understanding of COPD pathophysiology translates directly into clinical competencies of extraordinary importance: the recognition of impending respiratory failure, the safe titration of supplemental oxygen in CO₂ retainers, the assessment and correction of inhaler technique, the delivery of evidence-based breathlessness management, and the facilitation of early, supported self-management. The nurse who understands not merely what to do for a patient with COPD, but why—grounded in an understanding of the biological mechanisms driving their disease—is equipped to provide care of a qualitatively higher order across every clinical encounter.`,
+  },
+];
+---
+
+<Layout title="COPD Pathophysiology – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>COPD Pathophysiology</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#0284c7; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- GOLD Quick Reference -->
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">GOLD Spirometric Grades</p>
+        <dl style="font-size:0.82rem; display:grid; gap:0.5rem;">
+          {[
+            { term: 'GOLD 1', def: 'FEV1 ≥ 80% predicted' },
+            { term: 'GOLD 2', def: '50% ≤ FEV1 < 80%' },
+            { term: 'GOLD 3', def: '30% ≤ FEV1 < 50%' },
+            { term: 'GOLD 4', def: 'FEV1 < 30% predicted' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;">{term}</dt>
+              <dd style="color:#64748b; margin:0;">{def}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <!-- ABE Groups -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#1e40af; margin-bottom:0.5rem;">GOLD ABE Groups (2023)</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.82rem; color:#1e3a5f; display:flex; flex-direction:column; gap:0.4rem;">
+          <li><strong>A</strong> — Low symptoms, low exacerbations</li>
+          <li><strong>B</strong> — High symptoms, low exacerbations</li>
+          <li><strong>E</strong> — ≥ 2 exacerbations/year or ≥ 1 hospitalisation</li>
+        </ul>
+      </div>
+
+      <!-- Nursing Relevance -->
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.5rem;">Nursing Priorities</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Controlled O₂ therapy (SpO₂ 88–92%)',
+            '✅ Inhaler technique assessment',
+            '✅ Dyspnoea assessment (mMRC/CAT)',
+            '✅ Exacerbation recognition',
+            '✅ Smoking cessation support',
+            '✅ COPD action plan education',
+            '✅ Pulmonary rehab referral',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia/acid-base-regulation`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s; margin-bottom:0.5rem;"
+        onmouseover="this.style.background='#dbeafe'"
+        onmouseout="this.style.background='#eff6ff'"
+      >🧪 Acid-Base Regulation</a>
+
+      <a
+        href={`${base}/private/encyclopedia/nursing-concept-map-copd-example`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s; margin-bottom:0.5rem;"
+        onmouseover="this.style.background='#dbeafe'"
+        onmouseout="this.style.background='#eff6ff'"
+      >🗺️ COPD Concept Map Example</a>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#0284c7; background:#eff6ff; border:1px solid #bfdbfe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🫁 Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          COPD: Pathophysiology and GOLD Classification
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          A comprehensive academic overview of the pathophysiology of chronic obstructive pulmonary
+          disease—covering its aetiology, inflammatory mechanisms, emphysema and bronchitis
+          subtypes, spirometric diagnosis, the GOLD spirometric grades and ABE classification
+          system, exacerbation management, and evidence-based nursing care.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#0284c7; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Global Initiative for Chronic Obstructive Lung Disease (GOLD). (2024). <em>Global strategy for prevention, diagnosis and management of COPD: 2024 report.</em> GOLD.',
+            'Agusti, A., Celli, B. R., Criner, G. J., Halpin, D., Anzueto, A., Barnes, P., Bourbeau, J., Han, M. K., Martinez, F. J., Montes de Oca, M., Mortimer, K., Papi, A., Pavord, I., Roche, N., Salvi, S., Sin, D. D., Singh, D., Stockley, R., López Varela, M. V., … Vogelmeier, C. F. (2023). Global Initiative for Chronic Obstructive Lung Disease 2023 report: GOLD executive summary. <em>American Journal of Respiratory and Critical Care Medicine, 207</em>(7), 819–837.',
+            'Barnes, P. J. (2016). Inflammatory mechanisms in patients with chronic obstructive pulmonary disease. <em>Journal of Allergy and Clinical Immunology, 138</em>(1), 16–27.',
+            'Hogg, J. C., Chu, F., Utokaparch, S., Woods, R., Elliott, W. M., Buzatu, L., Cherniack, R. M., Rogers, R. M., Sciurba, F. C., Coxson, H. O., &amp; Paré, P. D. (2004). The nature of small-airway obstruction in chronic obstructive pulmonary disease. <em>New England Journal of Medicine, 350</em>(26), 2645–2653.',
+            'Lange, P., Celli, B., Agusti, A., Boje Jensen, G., Divo, M., Faner, R., Guerra, S., Marott, J. L., Martinez, F. D., Martinez-Camblor, P., Meek, P., Owen, C. A., Petersen, H., Pinto-Plata, V., Schnohr, P., Sood, A., Soriano, J. B., Tesfaigzi, Y., &amp; Vestbo, J. (2015). Lung-function trajectories leading to chronic obstructive pulmonary disease. <em>New England Journal of Medicine, 373</em>(2), 111–122.',
+            'Mannino, D. M., &amp; Buist, A. S. (2007). Global burden of COPD: Risk factors, prevalence, and future trends. <em>Lancet, 370</em>(9589), 765–773.',
+            'Pauwels, R. A., Buist, A. S., Calverley, P. M., Jenkins, C. R., &amp; Hurd, S. S. (2001). Global strategy for the diagnosis, management, and prevention of chronic obstructive pulmonary disease: NHLBI/WHO Global Initiative for Chronic Obstructive Lung Disease (GOLD) workshop summary. <em>American Journal of Respiratory and Critical Care Medicine, 163</em>(5), 1256–1276.',
+            'Wedzicha, J. A., &amp; Seemungal, T. A. (2007). COPD exacerbations: Defining their cause and prevention. <em>Lancet, 370</em>(9589), 786–796.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
