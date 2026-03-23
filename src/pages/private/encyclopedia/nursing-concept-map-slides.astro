@@ -1,0 +1,1080 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Nursing Concept Map – Slides – Encyclopedia"
+  protected={true}
+  backHref={`${base}/private/encyclopedia/nursing-concept-map`}
+  backLabel="← Full Article"
+>
+
+  <!--
+    Slide structure follows docs/slides-design-standards.md:
+      • Each .slide-column holds one main slide (row 0) and optional slides (row 1+).
+      • Horizontal (→) moves between columns (main slides).
+      • Vertical (↓) moves to optional sub-slides within a column.
+      • Right arrow from an optional slide skips to the next MAIN slide.
+  -->
+
+  <div class="slides-wrapper">
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 1 · Title (main only)                                  -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">Encyclopedia – Nursing</div>
+          <div class="title-icon">🗺️</div>
+          <h1 class="slide-main-title">Nursing Concept Map</h1>
+          <h2 class="slide-subtitle">Seven-Phase Clinical Reasoning Guide</h2>
+          <div class="phase-row">
+            {['1','2','3','4','5','6','7'].map((num, i) => {
+              const labels = ['Data Collection','Data Organisation','Clinical Reasoning','Goal Setting','Intervention Planning','Drawing Connections','Evaluation'];
+              return (
+                <div class="phase-badge-item">
+                  <span class="phase-num">{num}</span>
+                  <span class="phase-label">{labels[i]}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 2 · What Is a Nursing Concept Map? (main only)         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 13</div>
+          <h2 class="slide-heading">What Is a Nursing Concept Map?</h2>
+          <p class="slide-intro">A <strong>visual clinical reasoning tool</strong> that organises complex patient data into an interconnected diagram, revealing the relationships between problems, diagnoses, interventions, and outcomes.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">vs. Linear Care Plan</h3>
+              <ul class="bullet-list">
+                <li>Places the <strong>patient at the centre</strong> of a web of linked concepts</li>
+                <li>Makes clinical reasoning <strong>explicit and navigable</strong></li>
+                <li>Shows causal relationships between problems</li>
+                <li>Evolved from cognitive science in the 1990s</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Why It Matters</h3>
+              <ul class="bullet-list">
+                <li>Develops <strong>deeper clinical understanding</strong></li>
+                <li>Builds sophisticated prioritisation skills</li>
+                <li>Prepares for <strong>NCLEX-NGN</strong> clinical judgment questions</li>
+                <li>Dynamic documentation tool that evolves with patient status</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            🗺️ The concept map is a <strong>seven-phase process</strong> from data collection through evaluation and revision.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 3 · Phase 1: Data Collection (main + optional)         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">3 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">1</span> Data Collection (Assessment)</h2>
+          <p class="slide-intro">The <strong>foundation of every concept map</strong>. No subsequent phase can compensate for deficiencies here.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Data Sources</h3>
+              <ul class="bullet-list">
+                <li><strong>Chart review</strong> — admitting dx, history, orders, prior results</li>
+                <li><strong>Head-to-toe assessment</strong> — systematic physical exam</li>
+                <li><strong>Patient &amp; family interview</strong> — subjective data, values, goals</li>
+                <li><strong>Diagnostics</strong> — labs, imaging, ECG, vital sign trends</li>
+                <li><strong>Medication reconciliation</strong> — doses, routes, side effects</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Data Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Subjective</strong> — patient's own words; symptoms &amp; feelings<br/><em>"My chest feels tight."</em></li>
+                <li><strong>Objective</strong> — measurable, observable findings<br/><em>BP 168/94, SpO₂ 91%, crackles bilateral bases</em></li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ Interpret diagnostics <em>in context</em> — a serum lactate of 4.2 means something very different in a febrile hypotensive patient vs. a post-elective-surgery patient.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Interview techniques &amp; medication considerations</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: Interview & medication detail -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 1</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 1 – Interview &amp; Medication Detail</h2>
+            <p class="slide-intro">Two critical but often under-resourced data sources.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Patient &amp; Family Interview</h3>
+                <ul class="bullet-list">
+                  <li>Use <strong>open-ended questions</strong> to elicit elaboration</li>
+                  <li>Practice <strong>active listening</strong> — no interrupting, reflect back</li>
+                  <li>Family provides corroborating history and baseline</li>
+                  <li>Essential for discharge planning (home environment, support systems)</li>
+                  <li>Cultural/spiritual values affect illness response and care preferences</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Medication Reconciliation</h3>
+                <ul class="bullet-list">
+                  <li>Record all medications: dose, route, frequency, indication</li>
+                  <li>Many diagnoses <em>arise from</em> pharmacological effects:</li>
+                  <li>Constipation ← opioids</li>
+                  <li>Hyponatraemia ← diuretics</li>
+                  <li>Fall risk ← sedating agents</li>
+                  <li>Medication list is both a <strong>source of cues</strong> and a driver of interventions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 4 · Phase 2: Data Organisation (main only)            -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">2</span> Data Organisation</h2>
+          <p class="slide-intro">Raw data does not automatically constitute clinical understanding. Phase 2 <strong>transforms data into interpretable clusters</strong> that point toward specific nursing diagnoses.</p>
+          <div class="three-col">
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Cluster Related Data</h3>
+              <p class="col-body">Group findings that share a physiological, psychological, or contextual basis.</p>
+              <p class="col-example">↓ breath sounds + SpO₂ 91% + productive cough → airway/gas exchange cluster</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Flag Abnormal Findings</h3>
+              <p class="col-body">Compare to reference ranges <em>and</em> to the patient's own baseline.</p>
+              <p class="col-example">HR 98 bpm may indicate compromise in a patient whose usual rate is 60</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Medical vs. Nursing Dx</h3>
+              <p class="col-body">Medical Dx = disease (physician). Nursing Dx = patient's <em>response</em> to disease (nurse).</p>
+              <p class="col-example">Pneumonia (medical) → Impaired Gas Exchange (nursing)</p>
+            </div>
+          </div>
+          <div class="callout">
+            📋 The map hub = <strong>patient identity + primary nursing concern</strong> — not the medical diagnosis alone. All branches radiate outward from this central node.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 5 · Phase 3: Clinical Reasoning & Nursing Dx           -->
+    <!--            (main + optional: NANDA PES format examples)       -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">5 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">3</span> Clinical Reasoning &amp; Nursing Diagnosis</h2>
+          <p class="slide-intro">The <strong>intellectual heart</strong> of the concept map — from organised data to diagnostic conclusions, then prioritised according to established frameworks.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">NANDA-I PES Format</h3>
+              <ul class="bullet-list">
+                <li><strong>P</strong> — Problem (NANDA-I label)<br/><em>Ineffective Airway Clearance</em></li>
+                <li><strong>R/T</strong> — Related To (aetiology)<br/><em>R/T excessive mucus secondary to pneumonia</em></li>
+                <li><strong>AEB</strong> — As Evidenced By (defining characteristics)<br/><em>AEB ↓ breath sounds, SpO₂ 91%, productive cough</em></li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Prioritisation Frameworks</h3>
+              <ul class="bullet-list">
+                <li>🔴 <strong>ABC</strong> — Airway → Breathing → Circulation (life-threatening first)</li>
+                <li>🟠 <strong>Maslow L1</strong> — Physiological needs</li>
+                <li>🟡 <strong>Maslow L2</strong> — Safety &amp; security</li>
+                <li>🟢 <strong>Maslow L3–5</strong> — Belonging / Esteem / Self-actualisation</li>
+                <li>Incorporate patient's stated priorities</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ Avoid <strong>premature closure</strong> (settling on first diagnosis) and <strong>diagnostic paralysis</strong> (unable to commit in the face of uncertainty).
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>PES statement examples</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: PES examples -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 3</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Nursing Diagnosis – PES Examples</h2>
+            <p class="slide-intro">Each diagnosis is patient-specific and directly connected to the assessment data that supports it.</p>
+            <div class="pes-list">
+              {[
+                {
+                  label: 'Actual (Airway)',
+                  stmt: 'Ineffective Airway Clearance R/T excessive mucus secondary to pneumonia AEB decreased breath sounds at right base, SpO₂ 91%, productive cough.',
+                  color: '#fef2f2', border: '#fecaca'
+                },
+                {
+                  label: 'Actual (Pain)',
+                  stmt: 'Acute Pain R/T surgical incision AEB patient rating pain 7/10, grimacing, guarding abdomen, and diaphoresis.',
+                  color: '#f0fdf4', border: '#bbf7d0'
+                },
+                {
+                  label: 'Risk (Falls)',
+                  stmt: 'Risk for Falls R/T altered gait secondary to left hip arthroplasty and sedative medications. (No AEB — risk diagnoses have no current signs/symptoms)',
+                  color: '#fffbeb', border: '#fde68a'
+                },
+                {
+                  label: 'Wellness',
+                  stmt: 'Readiness for Enhanced Nutrition R/T expressed desire to improve dietary habits and increase fruit/vegetable intake.',
+                  color: '#eef2ff', border: '#c7d2fe'
+                },
+              ].map(({ label, stmt, color, border }) => (
+                <div class="pes-card" style={`background:${color}; border-color:${border};`}>
+                  <span class="pes-label">{label}</span>
+                  <p class="pes-stmt">{stmt}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 6 · Phase 4: Goal & Outcome Setting (main only)       -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">4</span> Goal &amp; Outcome Setting</h2>
+          <p class="slide-intro">Goals specify what <strong>successful nursing care looks like</strong> and provide evaluation criteria. Always written for the <em>patient</em>, not the nurse.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">SMART Outcomes</h3>
+              <ul class="bullet-list">
+                <li><strong>S</strong>pecific — who does what?</li>
+                <li><strong>M</strong>easurable — objective criterion (SpO₂ ≥ 94%, pain ≤ 3/10)</li>
+                <li><strong>A</strong>ttainable — realistic for patient's condition</li>
+                <li><strong>R</strong>ealistic — aligned with prognosis &amp; trajectory</li>
+                <li><strong>T</strong>ime-bound — specifies a deadline</li>
+              </ul>
+              <p style="font-size:0.78rem; color:#475569; font-style:italic; margin-top:0.5rem;">
+                "Patient will maintain SpO₂ ≥ 94% on ≤ 2 L/min NC and report dyspnoea ≤ 2/10 within 24 hours."
+              </p>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Short-term vs. Long-term</h3>
+              <ul class="bullet-list">
+                <li><strong>Short-term</strong> — hours to days; immediate clinical priorities; early evidence of plan effectiveness</li>
+                <li><strong>Long-term</strong> — weeks to months; functional recovery, self-management capacity, discharge readiness</li>
+                <li>Short-term goals are often <em>necessary preconditions</em> for long-term goals</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            📋 <strong>Patient-centred language:</strong> "Patient will demonstrate correct inhaler technique" ✅ vs. "Nurse will teach inhaler technique" ❌ (that's an intervention, not an outcome).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 7 · Phase 5: Intervention Planning (main + optional)   -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">7 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">5</span> Intervention Planning</h2>
+          <p class="slide-intro">Specific, purposeful nursing actions designed to help the patient achieve established goals — grounded in <strong>evidence-based practice</strong>.</p>
+          <div class="three-col">
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Independent</h3>
+              <p class="col-body">Nurse initiates without a physician order — within <em>nursing scope of practice</em>.</p>
+              <p class="col-example">Repositioning q2h, oral care, therapeutic communication, education, ambulation</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Collaborative</h3>
+              <p class="col-body">Jointly planned with <em>other healthcare team members</em>.</p>
+              <p class="col-example">PT referral, dietitian consult, respiratory therapy, social work</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Dependent</h3>
+              <p class="col-body">Requires a <em>physician order</em> to initiate.</p>
+              <p class="col-example">Medication administration, IV fluids, wound care protocols, diagnostic labs</p>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ <strong>Write rationale for each intervention</strong> — if you cannot articulate <em>why</em> you're doing something, your practice is not grounded in clinical reasoning.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Evidence-based practice &amp; rationale writing</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: EBP & rationale -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 5</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Evidence-Based Interventions &amp; Rationale</h2>
+            <p class="slide-intro">Selecting and justifying interventions requires both evidence literacy and clinical wisdom.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Selecting Evidence-Based Interventions</h3>
+                <ul class="bullet-list">
+                  <li>Draw on <strong>clinical guidelines</strong> and systematic reviews</li>
+                  <li>Use established <strong>protocols</strong> rather than tradition or habit</li>
+                  <li>Adapt evidence-based recommendations to the <em>individual patient's circumstances and preferences</em></li>
+                  <li>Consider patient values, culture, and comorbidities</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Writing Rationale</h3>
+                <ul class="bullet-list">
+                  <li>Articulate the physiological, psychological, or evidence-based <strong>justification</strong></li>
+                  <li>Explains why this intervention will produce the desired outcome</li>
+                  <li>Develops the nurse's ability to <strong>connect action to evidence</strong></li>
+                  <li>Enables critical evaluation rather than reflexive task completion</li>
+                  <li>Required in educational concept map submissions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 8 · Phase 6: Drawing Connections (main only)           -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">8 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">6</span> Drawing Connections</h2>
+          <p class="slide-intro">The <strong>defining visual feature</strong> of a concept map — arrows and linking phrases that make relationships between concepts explicit.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Four Relationship Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Diagnostic</strong> — assessment data → nursing diagnosis<br/><em>"as evidenced by"</em></li>
+                <li><strong>Therapeutic</strong> — nursing diagnosis → interventions<br/><em>"treated with"</em></li>
+                <li><strong>Efficacy</strong> — interventions → expected outcomes<br/><em>"resolved by"</em></li>
+                <li><strong>Complication</strong> — diagnosis → related diagnosis<br/><em>"leads to", "worsened by"</em></li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Linking Phrases</h3>
+              <ul class="bullet-list">
+                <li>"Leads to" — causal/predictive relationship</li>
+                <li>"As evidenced by" — diagnosis ← supporting data</li>
+                <li>"Treated with" — diagnosis → primary interventions</li>
+                <li>"Worsened by" — aggravating factors</li>
+                <li>"Resolved by" — anticipated therapeutic response</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            🔗 Map quality = <strong>density and accuracy of connections</strong>. Richly interconnected nodes with precise linking language reflect <em>expert multi-system reasoning</em>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 9 · Phase 7: Evaluation (main + optional: outcomes)    -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">9 / 13</div>
+          <h2 class="slide-heading"><span class="phase-circle">7</span> Evaluation</h2>
+          <p class="slide-intro">The <strong>most clinically consequential phase</strong> — distinguishes responsive, evidence-informed care from static protocol-driven task completion.</p>
+          <div class="eval-grid">
+            <div class="eval-card eval-met">
+              <div class="eval-icon">✅</div>
+              <h3>Goal Met</h3>
+              <p>Patient achieved expected outcome → continue or discontinue the nursing diagnosis.</p>
+            </div>
+            <div class="eval-card eval-partial">
+              <div class="eval-icon">⚠️</div>
+              <h3>Partially Met</h3>
+              <p>Some progress made → modify the plan: adjust goal, add interventions, revise timeline.</p>
+            </div>
+            <div class="eval-card eval-not">
+              <div class="eval-icon">❌</div>
+              <h3>Not Met</h3>
+              <p>No progress / deterioration → reassess; revise diagnosis, goals, or interventions.</p>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ♻️ Evaluation loops back to <strong>Assessment</strong> — nursing is cyclic. The concept map is a <em>living document</em> that evolves with the patient's condition.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Revising diagnoses &amp; updating the map</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: revising & updating -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 7</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 7 – Revising &amp; Updating the Map</h2>
+            <p class="slide-intro">When goals are not met, determine the source of the failure before changing anything.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">When to Revise Diagnoses</h3>
+                <ul class="bullet-list">
+                  <li><strong>Resolved</strong> — discontinue the diagnosis; update the map</li>
+                  <li><strong>Incorrectly formulated</strong> — mis-clustered cues, wrong R/T factor, or problem not actually present</li>
+                  <li><strong>Superseded</strong> — a new clinical priority has emerged</li>
+                  <li>Willingness to revise is a mark of <em>intellectual integrity</em></li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Diagnosing Plan Failure</h3>
+                <ul class="bullet-list">
+                  <li><strong>Wrong intervention</strong> — choose a different evidence-based action</li>
+                  <li><strong>Goal too high / too early</strong> — adjust criteria or timeline</li>
+                  <li><strong>Wrong nursing diagnosis</strong> — re-examine the data clusters</li>
+                  <li>Each possibility requires a <em>different corrective response</em></li>
+                  <li>Revision is not failure — it is <strong>iterative, responsive practice</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 10 · Critical Thinking Steps (main + optional)         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">10 / 13</div>
+          <h2 class="slide-heading">Critical Thinking in Decision-Making</h2>
+          <p class="slide-intro">The cognitive moves operating <strong>behind every phase</strong> of concept map construction.</p>
+          <div class="thinking-grid">
+            {[
+              { icon: '👁️', step: 'Recognising', q: 'What is abnormal? What has changed?' },
+              { icon: '🔬', step: 'Analysing',   q: 'Why is this happening? What mechanism?' },
+              { icon: '🔗', step: 'Clustering',  q: 'What findings go together? What pattern?' },
+              { icon: '🚨', step: 'Prioritising', q: 'Which problem is most urgent / life-threatening?' },
+              { icon: '🔮', step: 'Hypothesising', q: 'What will happen if I do not intervene?' },
+              { icon: '✂️', step: 'Selecting',   q: 'Which intervention has the best evidence?' },
+            ].map(({ icon, step, q }) => (
+              <div class="thinking-row">
+                <span class="thinking-icon">{icon}</span>
+                <div>
+                  <strong class="thinking-step">{step}</strong>
+                  <span class="thinking-q">{q}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Predicting, Evaluating &amp; Reflecting</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: remaining steps -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Critical Thinking</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Critical Thinking – Remaining Steps</h2>
+            <p class="slide-intro">Three further cognitive moves that close the clinical reasoning loop.</p>
+            <div class="thinking-grid">
+              {[
+                { icon: '🎯', step: 'Predicting',  q: 'What outcome should I expect? In what timeframe?' },
+                { icon: '📊', step: 'Evaluating',  q: 'Did the intervention work? Did the patient respond as expected?' },
+                { icon: '🪞', step: 'Reflecting',  q: 'What would I do differently? What have I learned from this patient?' },
+              ].map(({ icon, step, q }) => (
+                <div class="thinking-row">
+                  <span class="thinking-icon">{icon}</span>
+                  <div>
+                    <strong class="thinking-step">{step}</strong>
+                    <span class="thinking-q">{q}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="callout callout-tip" style="margin-top:1rem;">
+              🪞 <strong>Reflection</strong> converts clinical experience into professional learning — it operates at a <em>meta-level</em>, examining the quality of the nurse's own reasoning process.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 11 · NCSBN Clinical Judgment Model (main only)         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">11 / 13</div>
+          <h2 class="slide-heading">NCSBN Clinical Judgment Model</h2>
+          <p class="slide-intro">The <strong>Next Generation NCLEX (NGN)</strong> framework — six cognitive skills that constitute clinical judgment and map directly onto concept map phases.</p>
+          <div class="ncsbn-grid">
+            {[
+              { num: '1', skill: 'Recognise Cues',        desc: 'Identify which information is relevant and significant — distinguish signal from noise.' },
+              { num: '2', skill: 'Analyse Cues',          desc: 'Determine what the cues mean clinically by relating them to pathophysiology and pharmacology.' },
+              { num: '3', skill: 'Prioritise Hypotheses', desc: 'Rank explanations by urgency and clinical likelihood; life-threatening possibilities first.' },
+              { num: '4', skill: 'Generate Solutions',    desc: 'Identify possible interventions for each prioritised hypothesis.' },
+              { num: '5', skill: 'Take Action',           desc: 'Select and implement the most appropriate intervention with confidence and decisiveness.' },
+              { num: '6', skill: 'Evaluate Outcomes',     desc: 'Assess the patient\'s response; determine whether to continue, modify, or revise the care plan.' },
+            ].map(({ num, skill, desc }) => (
+              <div class="ncsbn-row">
+                <span class="ncsbn-num">{num}</span>
+                <div>
+                  <strong class="ncsbn-skill">{skill}</strong>
+                  <span class="ncsbn-desc">{desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 12 · Types of Cues (main + optional)                   -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">12 / 13</div>
+          <h2 class="slide-heading">Types of Cues</h2>
+          <p class="slide-intro">A comprehensive concept map draws on cues from <strong>multiple categories</strong>. No single cue makes a diagnosis — diagnostic power comes from <em>clustering</em>.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Primary Cue Types</h3>
+              <ul class="bullet-list">
+                <li>🩺 <strong>Physiological (objective)</strong> — vitals, physical exam, labs, diagnostics, I&amp;O</li>
+                <li>💬 <strong>Subjective (patient-reported)</strong> — chief complaint, symptoms, values, functional limits</li>
+                <li>📋 <strong>Historical/contextual</strong> — past medical/surgical history, medications, social history</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Additional Cue Types</h3>
+              <ul class="bullet-list">
+                <li>🧠 <strong>Behavioural/psychosocial</strong> — anxiety, coping, adherence, health literacy</li>
+                <li>⚠️ <strong>Environmental/safety</strong> — fall risk (Braden scale), infection risk, home environment</li>
+                <li>📈 <strong>Trending (change over time)</strong> — vitals trending ↑↓, response to interventions, new mid-shift symptoms</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ The more <strong>connections</strong> the nurse identifies between cues — and between cues and diagnoses — the stronger and more defensible her clinical reasoning becomes.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Physiological cue detail</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: physiological cue detail -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Cue Types</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Physiological Cues – Detail</h2>
+            <p class="slide-intro">Objective, measurable findings from physical assessment and diagnostic investigation.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Vital Signs &amp; Physical Exam</h3>
+                <ul class="bullet-list">
+                  <li>BP, HR, RR, SpO₂, temperature, pain scale</li>
+                  <li>Breath sounds, skin colour &amp; integrity</li>
+                  <li>Peripheral oedema, bowel sounds</li>
+                  <li>Wound appearance, pupillary responses</li>
+                  <li>Glasgow Coma Scale, functional scores</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Diagnostics &amp; Labs</h3>
+                <ul class="bullet-list">
+                  <li>CBC, BMP, ABGs, coagulation studies</li>
+                  <li>Cultures (blood, urine, wound)</li>
+                  <li>Chest X-ray findings</li>
+                  <li>ECG changes</li>
+                  <li>CT / MRI reports</li>
+                  <li>Intake &amp; output balance</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+              📋 Always interpret physiological cues <em>in context</em> — compare to established norms <strong>and</strong> to the patient's own baseline.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 13 · Key Takeaways (main only)                         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">13 / 13</div>
+          <h2 class="slide-heading">Key Takeaways</h2>
+          <div class="tips-grid">
+            {[
+              { icon: '🗺️', tip: 'Concept map = patient at centre of a web of causally linked concepts' },
+              { icon: '🔴', tip: 'Prioritise using ABC then Maslow — life-threatening always first' },
+              { icon: '📝', tip: 'PES format: Problem R/T aetiology AEB defining characteristics' },
+              { icon: '🎯', tip: 'Goals are SMART and patient-centred — never nurse-centred' },
+              { icon: '🔗', tip: 'Map power = density and accuracy of linking arrows' },
+              { icon: '♻️', tip: 'Evaluation loops back to assessment — the process is cyclic' },
+              { icon: '🧠', tip: 'NCSBN model: Recognise → Analyse → Prioritise → Generate → Act → Evaluate' },
+              { icon: '📈', tip: 'Trending cues and clusters — no single cue makes a diagnosis' },
+            ].map(({ icon, tip }) => (
+              <div class="tip-card">
+                <span class="tip-icon">{icon}</span>
+                <span class="tip-text">{tip}</span>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/encyclopedia/nursing-concept-map`} class="article-link">Read full article →</a>
+            <a href={`${base}/private/encyclopedia`} class="article-link article-link-ghost">← Back to Encyclopedia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrapper -->
+
+</SlidesLayout>
+
+<style>
+  /* ── Slide inner content padding ── */
+  .slide {
+    padding: 4rem 3rem 2rem;
+  }
+
+  /* ── Optional slide: extra top padding so content clears back-hint ── */
+  .slide.optional {
+    padding-top: 5rem;
+  }
+
+  /* ── Optional slide inner wrapper (centres content) ── */
+  .opt-inner {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ── Slide number badge (top-right) ── */
+  .slide-number {
+    position: absolute;
+    top: 3.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  /* ── Title slide ── */
+  .slide-title {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+  }
+  .slide-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #15803d;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+    border-radius: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 1rem;
+  }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.15;
+    margin-bottom: 0.25rem;
+  }
+  .slide-subtitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #15803d;
+    margin-bottom: 1.5rem;
+  }
+  .phase-row {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .phase-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .phase-num {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: #16a34a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .phase-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+    max-width: 5rem;
+    line-height: 1.2;
+  }
+  .slide-note {
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+
+  /* ── Slide heading ── */
+  .slide-heading {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .phase-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: #16a34a;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .slide-intro {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Two-column layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .col-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.6rem;
+    padding: 1rem;
+  }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 0.5rem;
+  }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list {
+    font-size: 0.85rem;
+    color: #374151;
+    line-height: 1.7;
+    padding-left: 1.1rem;
+    margin: 0;
+  }
+  .bullet-list li { margin-bottom: 0.25rem; }
+
+  /* ── Callout ── */
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #bfdbfe;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: #1e3a5f;
+    line-height: 1.6;
+    margin-top: auto;
+  }
+  .callout-tip {
+    background: #f0fdf4;
+    border-left-color: #86efac;
+    color: #14532d;
+  }
+
+  /* ── Optional hint / back hint ── */
+  .optional-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-top: 0.75rem;
+  }
+  .back-hint {
+    position: absolute;
+    top: 3.5rem;
+    left: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+  .arrow { font-size: 1rem; }
+
+  /* ── Evaluation grid ── */
+  .eval-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .eval-card {
+    border-radius: 0.6rem;
+    padding: 1rem;
+    border: 1px solid;
+    text-align: center;
+  }
+  .eval-card h3 { font-size: 0.9rem; font-weight: 700; margin: 0.4rem 0; }
+  .eval-card p { font-size: 0.82rem; color: #374151; margin: 0; line-height: 1.5; }
+  .eval-icon { font-size: 1.5rem; }
+  .eval-met { background: #f0fdf4; border-color: #bbf7d0; }
+  .eval-partial { background: #fffbeb; border-color: #fde68a; }
+  .eval-not { background: #fef2f2; border-color: #fecaca; }
+
+  /* ── Critical thinking grid ── */
+  .thinking-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .thinking-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.875rem;
+    color: #374151;
+  }
+  .thinking-icon { font-size: 1.1rem; flex-shrink: 0; width: 1.5rem; }
+  .thinking-step { display: block; font-weight: 700; color: #16a34a; font-size: 0.85rem; }
+  .thinking-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; }
+
+  /* ── NCSBN grid ── */
+  .ncsbn-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .ncsbn-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.875rem;
+    color: #374151;
+  }
+  .ncsbn-num {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: #6366f1;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+  }
+  .ncsbn-skill { display: block; font-weight: 700; color: #1e293b; font-size: 0.85rem; }
+  .ncsbn-desc { display: block; font-size: 0.78rem; color: #64748b; }
+
+  /* ── PES list (optional slides) ── */
+  .pes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
+  .pes-card {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.9rem;
+  }
+  .pes-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #374151;
+    margin-bottom: 0.3rem;
+    background: rgba(0,0,0,0.06);
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.35rem;
+  }
+  .pes-stmt {
+    font-size: 0.83rem;
+    color: #374151;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── Tips grid (final slide) ── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .tip-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.75rem;
+  }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .tip-text { font-size: 0.82rem; color: #374151; line-height: 1.5; }
+
+  /* ── Exam / final slide ── */
+  .slide-exam {
+    background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+  }
+
+  /* ── Article links (bottom of final slide) ── */
+  .article-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    background: #16a34a;
+    color: #fff;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 0.3rem;
+  }
+  .article-link-ghost {
+    background: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+  }
+</style>
