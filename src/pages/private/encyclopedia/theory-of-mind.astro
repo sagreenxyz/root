@@ -44,6 +44,17 @@ const sections = [
     body: `Theory of Mind occupies a central position in the cognitive and neuroscientific literature on social cognition, and its clinical relevance for nursing practice is both broad and deep. From the formative work of Premack, Woodruff, Baron-Cohen, and their contemporaries, a rich body of research has established that the capacity to model the mental lives of others is biologically grounded, developmentally patterned, neurologically distributed, and clinically sensitive. For nursing students and practitioners, engagement with this literature offers more than theoretical enrichment. It provides a conceptual vocabulary for understanding the cognitive demands of empathic practice, a framework for anticipating and interpreting the social-cognitive profiles of patients across diagnostic categories, and a basis for critically reflecting on the interpersonal dynamics of therapeutic relationships. As nursing care becomes increasingly complex, delivered to increasingly diverse patient populations in increasingly technology-mediated environments, the cultivation of Theory of Mind capacities—alongside technical skill and evidence-based knowledge—constitutes an indispensable dimension of professional excellence.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Theory of Mind – Encyclopedia" protected={true}>
@@ -133,9 +144,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

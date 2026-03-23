@@ -79,6 +79,17 @@ Near-Miss Reporting and Safety Culture. Medication errors, near-misses, falls, a
     body: `Nursing decisions and actions represent the practical realisation of nursing knowledge, values, and skill in the service of patient wellbeing. From the rapid pattern recognition of the experienced emergency nurse to the careful deliberative reasoning of the nurse navigating a complex ethical dilemma, clinical decision-making operates across a spectrum of cognitive modes that are shaped by education, experience, context, and the relational quality of the nurse-patient encounter. The nursing process provides a systematic framework for organising this decision-making; evidence-based practice provides its epistemological foundation; clinical reasoning theories illuminate its cognitive architecture; and professional accountability frameworks define its legal and ethical boundaries. Nursing education that cultivates all of these dimensions—technical skill, critical reasoning, ethical sensitivity, evidence literacy, and reflective self-awareness—prepares graduates for the complex, high-stakes decision-making that contemporary nursing demands. As healthcare systems grow in complexity and as nursing's scope of practice continues to expand, the quality of nursing decisions and actions will remain the most consequential determinant of patient safety and outcomes.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Nursing Decisions and Actions – Encyclopedia" protected={true}>
@@ -168,9 +179,7 @@ Near-Miss Reporting and Safety Culture. Medication errors, near-misses, falls, a
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

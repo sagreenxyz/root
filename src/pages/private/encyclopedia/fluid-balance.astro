@@ -88,6 +88,17 @@ Special Populations. Older adults present particular challenges in fluid assessm
     body: `Fluid balance is a deceptively complex physiological parameter whose disturbances are among the most common and consequential encountered in clinical nursing practice. A thorough grounding in the anatomy of body fluid compartments, the neurohormonal regulation of fluid homeostasis, the pathophysiology of fluid volume deficit and excess, and the clinical assessment skills required to identify and quantify imbalance equips the nursing student to approach this domain with both intellectual rigour and practical competence. The integration of meticulous intake-output recording, serial weight measurement, targeted physical examination, and informed interpretation of laboratory data—guided by an understanding of the underlying physiological mechanisms—constitutes the standard of care for fluid management. As clinical practice increasingly demands that nurses function as autonomous assessors and advocates, this foundational knowledge becomes not merely academic but professionally indispensable.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Fluid Balance – Encyclopedia" protected={true}>
@@ -196,9 +207,7 @@ Special Populations. Older adults present particular challenges in fluid assessm
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

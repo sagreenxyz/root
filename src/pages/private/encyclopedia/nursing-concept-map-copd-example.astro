@@ -44,6 +44,17 @@ const sections = [
     body: `At the end of the shift (8 hours post-admission), the student nurse evaluates Mr. Holloway's response to the care plan and updates the map.\n\nEvaluation of Goal 1 (Impaired Gas Exchange): Partially met. SpO₂ is now 91% on 2 L/min nasal cannula, within the COPD target range of 88–92%. Mr. Holloway reports dyspnoea 5/10 at rest (down from 8/10). Respiratory rate has decreased from 28 to 22 breaths/min. Accessory muscle use is reduced. Repeat ABG at 4 hours: pH 7.35, PaCO₂ 54 mmHg, PaO₂ 63 mmHg — marginal improvement but now within normal pH range. Plan: Continue current oxygen and bronchodilator therapy; reassess in 4 hours. The student nurse notes the importance of not increasing oxygen flow further despite the PaO₂ of 63 mmHg, because the pH has normalised and CO₂ retention remains, consistent with COPD physiology.\n\nEvaluation of Goal 2 (Ineffective Airway Clearance): Not yet met. Crackles persist bilaterally but are somewhat reduced at the left base. Patient has coughed productively twice during the shift; sputum remains yellow-green. Sputum culture is pending. Plan: Continue chest physiotherapy collaboration with respiratory therapy; reassess sputum character every shift; ensure antibiotic administration on schedule.\n\nEvaluation of Goal 3 (Activity Intolerance): Not yet assessable this shift — patient was too dyspnoeic earlier to attempt any activity beyond repositioning in bed. By end of shift, he has been repositioned to high Fowler's without desaturation. Plan: Attempt sitting at the edge of the bed early in the next shift with respiratory therapy present; document SpO₂ and dyspnoea rating before and after.\n\nEvaluation of Goal 4 (Anxiety): Partially met. The student nurse applied fan therapy and coached pursed-lip breathing within the first hour. Mr. Holloway reports anxiety 4/10 at end of shift (down from an estimated 9/10 on arrival). He was no longer agitated when speaking with the evening nurse. The physician elected not to prescribe a benzodiazepine given respiratory risk; instead ordered a PRN oral dose of lorazepam 0.5 mg with close monitoring, to be used only if anxiety impedes cooperation with breathing treatments. Plan: Continue non-pharmacological anxiolysis; administer lorazepam only if non-pharmacological measures fail.\n\nEvaluation of Goal 5 (Deficient Knowledge): Teaching deferred this shift — Mr. Holloway's respiratory distress made him unable to receive and process educational content safely. Brief exploratory conversation with his wife occurred regarding the importance of not stopping inhalers. Plan: Begin formal inhaler education on Day 2 when dyspnoea is better controlled; involve wife in all teaching sessions; contact social work re: prescription assistance programmes on Day 1.\n\nEvaluation of Goal 6 (Risk for Infection): No progression of infection signs this shift. Temperature 37.6 °C (slightly improved). First dose of prescribed antibiotic administered on time; no immediate adverse reaction. Plan: Continue monitoring; review sputum culture results when available.\n\nMap revision: The student nurse adds a new nursing diagnosis to the concept map: Impaired Sleep Pattern R/T dyspnoea and orthopnoea (inability to lie flat) AEB patient's report of sleeping only in a recliner for two nights prior to admission. They also add a risk notation: Risk for Respiratory Failure, not a nursing diagnosis per se but a collaborative problem flagged for the interdisciplinary team given the marginal ABG improvement.\n\nStudent reflection: "I found the biggest challenge was resisting the urge to start teaching Mr. Holloway about his inhalers right away — it felt like the most obviously preventable cause of this admission. But when I looked at him struggling to breathe at 84% saturation, I realised he could not receive or retain information in that state. The concept map helped me see that I had to fix the gas exchange problem first, which would then create the conditions for safe teaching later. It also surprised me how many diagnoses radiated from the central problem — addressing one often improved another. That interconnectedness is exactly what the map made visible."`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="COPD Exacerbation — Worked Concept Map Example – Encyclopedia" protected={true}>
@@ -158,9 +169,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

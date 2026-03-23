@@ -44,6 +44,17 @@ const sections = [
     body: `Nursing is a profession of extraordinary breadth and depth, grounded in a rich intellectual tradition, animated by a distinctive set of values, and practised in an enormous diversity of settings and roles. For students entering the profession, engagement with nursing's history, its theoretical foundations, its domains of practice, and its professional identity provides an indispensable orientation to the challenges and rewards of nursing work. The nursing process—assess, diagnose, plan, implement, evaluate—gives practical structure to this orientation, providing a framework for clinical thinking that will serve as a constant companion throughout a nursing career. To be a nurse is to be a scientist and a humanist, a technician and an advocate, a clinician and a teacher—and to hold these roles in creative, ethically informed tension in service of the patients and communities who entrust their care to the nursing profession.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Introduction to Nursing – Encyclopedia" protected={true}>
@@ -133,9 +144,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

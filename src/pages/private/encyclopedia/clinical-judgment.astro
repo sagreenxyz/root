@@ -39,6 +39,17 @@ const sections = [
     body: `Clinical judgment is the intellectual and moral core of nursing practice. It encompasses the perceptual, cognitive, affective, and relational capacities through which nurses make sense of complex clinical situations and determine how to act on behalf of their patients. Grounded in theoretical frameworks such as Benner's novice-to-expert model and Tanner's clinical judgment model, and now increasingly operationalised through the NCSBN's clinical judgment measurement model, clinical judgment is a subject of rigorous scholarly attention and a primary objective of nursing education. Its development requires not only the acquisition of theoretical knowledge but sustained clinical experience, reflective practice, structured feedback, and the cultivation of metacognitive awareness. For nursing students, understanding what clinical judgment is—and committing to its deliberate development throughout their education and career—is among the most important investments they can make in both their own professional growth and the safety of the patients in their care.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Clinical Judgment – Encyclopedia" protected={true}>
@@ -128,9 +139,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

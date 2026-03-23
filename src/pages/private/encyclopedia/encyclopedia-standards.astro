@@ -1,0 +1,260 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `This article documents the authoritative development standards that govern all encyclopedia pages in this project. Adherence to these standards ensures that every article is consistent in structure, companion resources, language, and cross-linkage, thereby providing readers with a predictable, high-quality reference experience and contributors with clear guidance for creating and maintaining content.\n\nThe encyclopedia is designed to serve nursing students at an academic level, providing rigorous, evidence-based content written in formal American English prose. As the encyclopedia grows, a common set of standards becomes essential for preventing fragmentation, redundancy, and inconsistency. These standards define both the shape of each individual article and the broader practices—merge reviews, related-topic linking, and companion resource creation—that keep the collection coherent over time.\n\nThese standards apply to every new article created in the encyclopedia and are to be applied retrospectively to existing articles as opportunities arise. Contributors who identify deviations from these standards in existing pages are encouraged to raise them for correction during the routine merge review cycle described in §6.`,
+  },
+  {
+    id: 'core-format',
+    heading: 'Core Article Format: Academic Prose',
+    body: `Every encyclopedia main page is written in academic prose—formal, evidence-based, paragraph-structured writing that adheres to the conventions of scholarly communication. This is the foundational format requirement and it takes precedence over any stylistic preference for brevity or informality.\n\nAcademic prose in this context means:\n\nContinuous paragraph writing. Body content is presented in full paragraphs, not bullet lists, numbered steps, or fragmented sentence fragments. Each paragraph develops a single idea, opens with a clear topic sentence, supports that idea with evidence or explanation, and transitions logically to the next paragraph.\n\nFormal register. The writing avoids colloquialisms, contractions, and first-person address except where academic convention permits (e.g., the editorial "we" in methodological discussion). Passive constructions may be used appropriately; however, active voice is preferred where it does not sacrifice precision.\n\nEvidence-based content. Claims are grounded in cited literature, professional standards, or regulatory documents. Assertions that cannot be supported by reference to authoritative sources should not appear in the article body.\n\nNeutral, encyclopedic tone. The prose adopts the objective, third-person analytical voice characteristic of encyclopedic writing. Advocacy, personal opinion, and promotional language are excluded from the main article; clinical guidance is attributed to its source.\n\nThe three-pane layout (left sidebar with Quick Facts and Nursing Relevance panels, middle article column, right sticky Table of Contents) defined in the design standards document is the required structural container for the academic prose. It must not be replaced with alternative layouts.`,
+  },
+  {
+    id: 'companion-slides',
+    heading: 'Companion Slides Page Requirement',
+    body: `Every encyclopedia main page must have an associated companion slides page. The slides page is a distinct Astro file that presents the same conceptual content in a condensed, visually structured, presentation-ready format using the SlidesLayout.\n\nNaming convention. If the main article is at /private/encyclopedia/my-topic, the companion slides page is at /private/encyclopedia/my-topic-slides. The filename follows the pattern my-topic-slides.astro.\n\nContent scope. The slides page distills the key concepts, definitions, relationships, and clinical takeaways from the main article into a set of main slides organized by topic column. Each main slide contains the most important idea for that topic; optional sub-slides (accessible via vertical navigation within a column) may expand on supporting detail. The slides page does not aim to replicate the full prose depth of the main article but to provide a visual study aid and presentation scaffold.\n\nBack-link requirement. The slides page must include a back-navigation link to the main article via the backHref prop of SlidesLayout. The label should read "← Full Article" or equivalent to make the relationship between the two pages explicit.\n\nForward-link from main article. The main article's left sidebar must include a link to the companion slides page. This link should appear below the Nursing Relevance panel and above the back-to-encyclopedia link. Suggested label: "📊 View as Slides".\n\nWhere a companion slides page does not yet exist for an article, a placeholder note in the left sidebar is acceptable during the interim period, but creation of the slides page should be scheduled and tracked.`,
+  },
+  {
+    id: 'companion-summary',
+    heading: 'Companion Bullet-Point Summary Page Requirement',
+    body: `Every encyclopedia main page must also have an associated companion bullet-point summary page. This page provides a structured, scannable reference that complements the academic prose of the main article and the visual presentation of the slides page.\n\nNaming convention. If the main article is at /private/encyclopedia/my-topic, the companion summary page is at /private/encyclopedia/my-topic-summary. The filename follows the pattern my-topic-summary.astro.\n\nContent format. The summary page uses the standard encyclopedia Layout (three-pane grid) but replaces the continuous prose sections of the middle pane with structured bullet-point lists. Each section heading from the main article appears as a corresponding section on the summary page, with the body content condensed into clear, concise bullet points. Full sentences are preferred over fragments where brevity permits, but the primary goal is rapid comprehension, not rhetorical development.\n\nRelationship to main article. The summary page is a derivative of the main article; it does not introduce concepts or evidence that are not already addressed in the main prose. Where the main article cites sources, the summary page may reproduce the most critical citations but is not required to include the full references list.\n\nBack-link requirement. The summary page must link back to the main article. The suggested back-link label is "← Full Article."\n\nForward-link from main article. The main article's left sidebar must include a link to the companion summary page. Suggested label: "📋 Quick Summary." This link may appear alongside the slides page link in the sidebar.\n\nWhere a companion summary page does not yet exist, the same interim-placeholder practice described for slides pages applies.`,
+  },
+  {
+    id: 'american-english',
+    heading: 'American English Spelling Standard',
+    body: `All content in this encyclopedia is written in American English. This standard applies to all text in article bodies, sidebar panels, headings, labels, metadata tags, and any other user-facing string. British English spellings, even when more common in nursing literature published outside the United States, are not used.\n\nThe following table illustrates the preferred American English forms against their British English equivalents for terms that commonly appear in nursing and medical writing:\n\nPharmacology and physiology: use anemia (not anaemia), diarrhea (not diarrhoea), edema (not oedema), leukocyte (not leucocyte), estrogen (not oestrogen), faeces is replaced by feces, and pediatric (not paediatric).\n\nClinical and scientific vocabulary: use etiology (not aetiology), orthopedic (not orthopaedic), hemoglobin (not haemoglobin), hematology (not haematology), gynecology (not gynaecology), and catheter (spelled identically; no change needed).\n\nGeneral vocabulary: use organize (not organise), recognize (not recognise), analyze (not analyse), behavior (not behaviour), color (not colour), honor (not honour), center (not centre), defense (not defence), license (not licence for the noun), program (not programme in non-computing contexts), and fulfill (not fulfil).\n\nWhen quoting directly from a source that uses British English spelling, the quoted text may retain its original spelling, and a bracketed [sic] or editorial note is not required—the context of direct quotation makes the variance self-evident. Outside of direct quotation, however, all editorial prose must conform to American English.\n\nContributors should apply American English spelling during initial drafting. The routine merge review cycle (see §6) includes a spelling audit as a standard checklist item.`,
+  },
+  {
+    id: 'merge-review',
+    heading: 'Merge Review Practice',
+    body: `The encyclopedia requires a consistent, recurring review process to identify opportunities for merging pages that cover overlapping or closely related content. As the collection grows, some articles may develop substantial overlap with others, or two shorter articles may together form a single coherent treatment that would be better served as one well-structured page.\n\nWhat triggers a merge candidate. An article becomes a merge candidate when: (a) more than approximately one-third of its substantive content duplicates material already covered in another article; (b) two articles address closely related topics that a reader would naturally expect to find in a single reference entry; or (c) an article is too short to sustain the standard three-pane academic prose format without padding.\n\nMerge review cadence. A merge review should be conducted at the following intervals: (a) whenever a new article is added to the encyclopedia—the contributor checks whether the new content overlaps substantially with any existing article; (b) whenever an existing article undergoes significant revision; and (c) at minimum, as a periodic review applied to the collection as a whole.\n\nMerge process. When two articles are identified as merge candidates, the preferred approach is to consolidate them into the article at the more general or higher-traffic URL, redirecting the secondary URL to the primary. The merged article should acknowledge its expanded scope in its introductory section. The companion slides and summary pages for the merged article are also consolidated. The secondary article's entry is removed from the encyclopedia index, and a note is added to the primary article's Quick Facts panel indicating that it incorporates formerly separate content.\n\nWhen not to merge. Articles that address genuinely distinct clinical topics—even when they share a conceptual domain—should not be merged. The criterion is not topical proximity but substantive overlap. For example, Fluid Balance and Electrolyte Balance address related physiology but each has sufficient distinct content to remain separate. In contrast, two articles that both explain the same pathophysiological mechanism in nearly identical terms are strong merge candidates.`,
+  },
+  {
+    id: 'related-topics',
+    heading: 'Related Topics Links',
+    body: `Every encyclopedia article must include a set of links to related topics within the encyclopedia. These links serve the reader's need to navigate between conceptually adjacent articles and help establish the intellectual connections that transform a collection of isolated entries into a coherent knowledge base.\n\nPlacement. Related topics links appear in the left sidebar as a dedicated panel, positioned below the Quick Facts and Nursing Relevance panels and above the companion-page links (slides, summary) and the back-to-encyclopedia link. The panel is labeled "Related Topics."\n\nContent. A related topics panel contains between three and eight links to other encyclopedia articles whose content is directly relevant to the current article. The links are not exhaustive but selective: contributors should identify the articles that a reader of the current page is most likely to want to consult next. Related topics may include prerequisite knowledge articles, articles that apply concepts introduced here to clinical practice, or articles that address adjacent anatomical, physiological, or professional topics.\n\nFormat. Each link is rendered as a styled anchor using the standard indigo accent color (#6366f1) with an arrow prefix (→) to indicate internal navigation. The link text uses the full article title as it appears in the encyclopedia index. Example rendering: → Fluid Balance, → Electrolyte Balance, → Acid-Base Regulation.\n\nMaintenance. When a new article is added to the encyclopedia, the contributor is responsible for updating the related topics panels of any existing articles that should now link to the new page, not merely for adding related topic links within the new article itself. This bidirectional maintenance ensures that the related-topic graph remains traversable in all directions.\n\nMerge implications. When two articles are merged (see §6), the related topics panels of all articles that previously linked to the secondary article are updated to point to the consolidated primary article.`,
+  },
+];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
+---
+
+<Layout title="Encyclopedia Development Standards – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Encyclopedia Development Standards</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <!-- LEFT PANE -->
+    <aside style="position:sticky; top:1.5rem;">
+
+      <!-- Quick Facts -->
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Standard version', def: '1.0 (March 2026)' },
+            { term: 'Applies to', def: 'All encyclopedia pages' },
+            { term: 'Article format', def: 'Academic prose, three-pane layout' },
+            { term: 'Companion pages', def: 'Slides + bullet-point summary' },
+            { term: 'Spelling standard', def: 'American English' },
+            { term: 'Review cadence', def: 'Per new article + periodic audit' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <!-- Contributor Checklist -->
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Contributor Checklist</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Academic prose in middle pane',
+            '✅ Companion slides page created',
+            '✅ Companion summary page created',
+            '✅ American English spelling',
+            '✅ Merge review completed',
+            '✅ Related topics panel populated',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <!-- Related Topics -->
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#166534; margin-bottom:0.5rem;">Related Topics</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; display:flex; flex-direction:column; gap:0.4rem;">
+          <li>
+            <a
+              href={`${base}/private/encyclopedia/introduction-to-nursing`}
+              style="color:#6366f1; text-decoration:none;"
+              onmouseover="this.style.color='#4f46e5'"
+              onmouseout="this.style.color='#6366f1'"
+            >&#x2192; Introduction to Nursing</a>
+          </li>
+          <li>
+            <a
+              href={`${base}/private/encyclopedia/nursing-concept-map`}
+              style="color:#6366f1; text-decoration:none;"
+              onmouseover="this.style.color='#4f46e5'"
+              onmouseout="this.style.color='#6366f1'"
+            >&#x2192; Nursing Concept Map</a>
+          </li>
+          <li>
+            <a
+              href={`${base}/private/encyclopedia/clinical-judgment`}
+              style="color:#6366f1; text-decoration:none;"
+              onmouseover="this.style.color='#4f46e5'"
+              onmouseout="this.style.color='#6366f1'"
+            >&#x2192; Clinical Judgment</a>
+          </li>
+          <li>
+            <a
+              href={`${base}/private/encyclopedia/nursing-scope-of-practice`}
+              style="color:#6366f1; text-decoration:none;"
+              onmouseover="this.style.color='#4f46e5'"
+              onmouseout="this.style.color='#6366f1'"
+            >&#x2192; Nursing Scope of Practice</a>
+          </li>
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <!-- MIDDLE PANE -->
+    <article>
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            📐 Meta & Standards
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Encyclopedia Development Standards
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          The authoritative standards governing the creation and maintenance of all encyclopedia pages,
+          covering article format, companion resource requirements, American English spelling,
+          merge review practice, and related-topic linking.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Encyclopedia contributors</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Repository design documentation. (2026). <em>Encyclopedia article design standards</em> (Version 1.0). <code>docs/encyclopedia-article-design-standards.md</code>.',
+            'Repository design documentation. (2026). <em>Slides design standards</em> (Version 1.0). <code>docs/slides-design-standards.md</code>.',
+            'American Psychological Association. (2020). <em>Publication manual of the American Psychological Association</em> (7th ed.). APA.',
+            "Merriam-Webster. (2024). <em>Merriam-Webster's collegiate dictionary</em> (11th ed.). Merriam-Webster. [Authoritative source for American English spelling]",
+            "Garner, B. A. (2016). <em>Garner's modern English usage</em> (4th ed.). Oxford University Press.",
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- RIGHT PANE: Table of Contents -->
+    <aside style="position:sticky; top:1.5rem;">
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#94a3b8; margin-bottom:0.65rem;">Contents</p>
+        <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
+          {sections.map((s, i) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+                onmouseover="this.style.color='#6366f1'"
+                onmouseout="this.style.color='#475569'"
+              >
+                <span style="color:#94a3b8; margin-right:0.35rem;">{i + 1}.</span>{s.heading}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#references"
+              style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+              onmouseover="this.style.color='#6366f1'"
+              onmouseout="this.style.color='#475569'"
+            >
+              <span style="color:#94a3b8; margin-right:0.35rem;">{sections.length + 1}.</span>Key References
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </aside>
+
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr 220px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .article-grid {
+      grid-template-columns: 200px 1fr;
+    }
+    .article-grid > aside:last-child {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

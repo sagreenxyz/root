@@ -64,6 +64,17 @@ const sections = [
     body: `Generating a full nursing concept map is an exercise in comprehensive clinical reasoning. It begins with systematic data collection, progresses through organised data analysis and diagnostic formulation, moves through goal-setting and intervention planning, makes reasoning explicit through visual connection-drawing, and closes with rigorous evaluation and iterative revision. Each phase demands specific cognitive skills—recognition, analysis, clustering, prioritisation, hypothesis generation, solution selection, action, and reflection—that are collectively captured in the NCSBN Clinical Judgment Model and directly assessed in the Next Generation NCLEX examination.\n\nThe concept map is more than a pedagogical exercise. For the practising nurse, it externalises and systematises clinical reasoning in a way that supports communication, continuity, and collaborative care. For the nursing student, it is a scaffold for developing the complex, multi-system thinking that will eventually become the intuitive expertise of expert practice. For nursing education, it provides a window into the reasoning processes of students that written care plans alone cannot reveal—and a platform for targeted feedback on the quality of clinical judgment.\n\nApproached with intellectual rigour and genuine patient-centredness, the nursing concept map is one of the most powerful tools available for translating assessment data into personalised, evidence-based, goal-directed nursing care.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Nursing Concept Map – Encyclopedia" protected={true}>
@@ -156,9 +167,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

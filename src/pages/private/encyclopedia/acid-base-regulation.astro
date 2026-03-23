@@ -90,6 +90,17 @@ Patient Education. Patients with conditions predisposing to recurrent acid-base 
     body: `Acid-base regulation is a physiological domain of extraordinary precision and clinical significance. The maintenance of arterial pH within the narrow range of 7.35–7.45 requires the seamless integration of chemical buffer systems, pulmonary ventilatory control, and renal tubular acid excretion, each operating across different time scales and with distinct regulatory priorities. Disruptions to this system—whether metabolic or respiratory in origin, acute or chronic, simple or mixed—produce clinical syndromes whose recognition depends on the systematic interpretation of the arterial blood gas in the context of the patient's history, physical examination, and concurrent biochemical data. For the nursing student, the mastery of acid-base physiology and ABG interpretation represents a significant intellectual investment that yields immediate and lifelong clinical dividends. The ability to move fluidly between the abstract language of pH, PaCO₂, and bicarbonate and the concrete clinical reality of a breathless, confused patient at the bedside is the hallmark of the clinically competent nurse—one who understands not merely what is happening, but why, and what to do about it.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Acid-Base Regulation – Encyclopedia" protected={true}>
@@ -197,9 +208,7 @@ Patient Education. Patients with conditions predisposing to recurrent acid-base 
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

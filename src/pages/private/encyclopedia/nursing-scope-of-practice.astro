@@ -39,6 +39,17 @@ const sections = [
     body: `Nursing scope of practice is a foundational concept that defines the legal, professional, and ethical boundaries of nursing action. It is determined by regulatory authority, shaped by education and competency, influenced by institutional context, and animated by ethical commitment. For nursing students, understanding scope of practice is not a peripheral regulatory matter but a central element of professional preparation: it provides the framework within which clinical decision-making occurs, establishes the limits of individual authority and responsibility, and articulates the standards against which practice will be measured throughout a nursing career. As nursing continues to evolve—expanding its evidence base, asserting its professional authority, and advocating for health equity—scope of practice will remain a living, contested, and critically important dimension of what it means to be a nurse.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Nursing Scope of Practice – Encyclopedia" protected={true}>
@@ -128,9 +139,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

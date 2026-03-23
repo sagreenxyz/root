@@ -105,6 +105,17 @@ Scope of Practice as a Dynamic Boundary. The NPA establishes the legal minimum a
     body: `The Nurse Practice Act is the foundational legal instrument of professional nursing, defining the boundaries of authorised practice, establishing the regulatory apparatus that governs licensure and discipline, and constituting the legal expression of the profession's social contract with the public. Its provisions on scope of practice, BON authority, disciplinary standards, and APRN regulation directly shape the conditions under which every nurse practises, from the novice nursing student on first clinical placement to the experienced nurse practitioner providing independent primary care. Nurses who understand the NPA—who know its structure, who are familiar with the BON rules that supplement it, who can locate and apply its provisions to clinical situations—are better positioned to practice within legally and professionally safe boundaries, to advocate for appropriate scope expansion, and to participate in the ongoing democratic processes through which nursing law is shaped and revised. In an era of rapid change in healthcare delivery, workforce distribution, and the organisational structures of healthcare systems, nursing's legal framework must continually evolve to serve its core purpose: the protection of the public through the assurance of safe, competent, and ethical nursing care.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Nurse Practice Act – Encyclopedia" protected={true}>
@@ -194,9 +205,7 @@ Scope of Practice as a Dynamic Boundary. The NPA establishes the legal minimum a
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

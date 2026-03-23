@@ -184,6 +184,17 @@ Palliative and End-of-Life Care. Advanced COPD (GOLD 4) is characterised by a hi
     body: `Chronic obstructive pulmonary disease is a multifaceted, progressive, and ultimately systemic disease whose pathophysiology integrates smoking-induced airway inflammation, protease-antiprotease imbalance, oxidative stress, alveolar destruction, small-airway disease, and hypoxic pulmonary hypertension into a cycle of escalating functional impairment. The GOLD classification framework—combining spirometric grading (GOLD 1–4) with patient symptom burden and exacerbation history (ABE groups)—provides the clinical bedrock for disease severity stratification, pharmacological decision-making, and prognostic communication. For nurses, a deep understanding of COPD pathophysiology translates directly into clinical competencies of extraordinary importance: the recognition of impending respiratory failure, the safe titration of supplemental oxygen in CO₂ retainers, the assessment and correction of inhaler technique, the delivery of evidence-based breathlessness management, and the facilitation of early, supported self-management. The nurse who understands not merely what to do for a patient with COPD, but why—grounded in an understanding of the biological mechanisms driving their disease—is equipped to provide care of a qualitatively higher order across every clinical encounter.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="COPD Pathophysiology – Encyclopedia" protected={true}>
@@ -312,9 +323,7 @@ Palliative and End-of-Life Care. Advanced COPD (GOLD 4) is characterised by a hi
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

@@ -49,6 +49,17 @@ const sections = [
     body: `The distinction between spastic (UMN) and flaccid (LMN) paralysis is not merely an academic exercise; it is a clinically actionable framework that guides every dimension of nursing assessment, care planning, and intervention for patients with motor pathway disease. Spastic paralysis—resulting from disrupted inhibitory control over intact spinal reflex arcs—produces hypertonia, hyperreflexia, pathological reflexes, and relatively preserved early muscle bulk. Flaccid paralysis—resulting from destruction of the final common motor pathway—produces hypotonia, areflexia, absent pathological reflexes, and early, severe denervation atrophy.\n\nNurses who understand these pathophysiological differences are better equipped to anticipate complications, interpret assessment findings, communicate precisely with colleagues, and deliver individualised, evidence-based care. Whether caring for a patient with a fresh stroke, a newly diagnosed spinal cord injury, Guillain-Barré syndrome, or a longstanding neurodegenerative disease, the conceptual framework of UMN versus LMN paralysis provides an indispensable lens through which clinical observations can be systematically organised and acted upon.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Spastic vs Flaccid Paralysis – Encyclopedia" protected={true}>
@@ -136,9 +147,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

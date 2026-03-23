@@ -44,6 +44,17 @@ const sections = [
     body: `The principles of mobility constitute one of the most clinically consequential domains of nursing knowledge. Movement—or its absence—exerts profound effects on every organ system and on the patient's psychological well-being and social participation. The immobility complications of pressure injury, DVT, pneumonia, muscle atrophy, contracture, and delirium are largely preventable through systematic nursing assessment, proactive evidence-based interventions, and early mobilisation. The nurse's role in mobility care spans the full continuum from direct physical care—repositioning, ROM exercises, safe patient handling—to education, advocacy, and interprofessional collaboration.\n\nAs healthcare systems increasingly recognise the harms of prolonged bed rest and institutionalised immobility, nursing leadership in the implementation and evaluation of mobility-promoting programmes becomes ever more critical. A nurse who understands the physiological rationale for early mobilisation, possesses the technical skills for safe patient handling, and approaches each patient's mobility with individualised, person-centred care is a fundamental contributor to patient safety, functional recovery, and quality of life.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Principles of Mobility – Encyclopedia" protected={true}>
@@ -133,9 +144,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

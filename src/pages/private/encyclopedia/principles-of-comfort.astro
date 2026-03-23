@@ -44,6 +44,17 @@ const sections = [
     body: `The principles of comfort represent both the science and the art of nursing at their fullest expression. Grounded in a rich theoretical tradition anchored by Kolcaba's taxonomy and informed by an expanding evidence base, comfort care in nursing addresses the physical, psychospiritual, sociocultural, and environmental dimensions of patient experience with equal seriousness and rigour. The nurse who understands that comfort encompasses far more than the absence of pain—that it includes a sense of ease, transcendence, connection, meaning, and environmental safety—brings a fundamentally different quality of presence to clinical encounters.\n\nComfort is not peripheral to clinical nursing but central to it. In an era of increasingly technological healthcare, the nurse who can relieve a patient's pain, ease their anxiety, honour their spiritual needs, support their family, and advocate for a healing environment performs work that is simultaneously clinically essential and deeply humane. Cultivating excellence in comfort care—through rigorous assessment, evidence-based intervention, person-centred relationship, and reflective practice—is both a professional imperative and a lasting contribution to the quality of care that nursing delivers.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Principles of Comfort – Encyclopedia" protected={true}>
@@ -133,9 +144,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

@@ -82,6 +82,17 @@ Patient Education. Patients with conditions predisposing to chronic electrolyte 
     body: `Electrolyte balance is a multidimensional physiological domain whose clinical importance is matched only by its complexity. The principal electrolytes—sodium, potassium, calcium, magnesium, phosphate, chloride, and bicarbonate—each contribute essential and distinct functions to cellular homeostasis, neuromuscular excitability, cardiac rhythm, acid-base regulation, and metabolic activity. Their concentrations are maintained within narrow physiological ranges through the integrated actions of renal, gastrointestinal, and endocrine regulatory systems, and their disturbance produces characteristic clinical syndromes that range from subtle and insidious to acute and life-threatening. For the nursing student, mastery of electrolyte physiology and pathophysiology is not an abstract intellectual exercise; it is the foundation for the safe and competent assessment and management of patients across every clinical speciality. The ability to recognise early signs of imbalance, interpret laboratory and ECG findings in their clinical context, and intervene safely and effectively—including the critically important safe administration of replacement therapy—constitutes a core clinical competency that will be exercised throughout a nursing career.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Electrolyte Balance – Encyclopedia" protected={true}>
@@ -190,9 +201,7 @@ Patient Education. Patients with conditions predisposing to chronic electrolyte 
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

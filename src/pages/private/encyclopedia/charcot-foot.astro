@@ -123,6 +123,17 @@ With appropriate early intervention—prompt diagnosis, immediate total contact 
 For nursing professionals, the key contributions are vigilant early recognition of the acute inflammatory foot in the context of diabetic neuropathy, proactive patient education about the non-painful but destructive nature of the condition, support for adherence to the offloading regimen, meticulous skin and wound surveillance, and effective coordination of the multidisciplinary team. Given that the window for preventing permanent deformity is measured in days to weeks rather than months, the nurse who recognises a warm, swollen, erythematous foot in a diabetic patient and escalates appropriately may, in the most literal sense, save that patient's limb.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Charcot Foot – Encyclopedia" protected={true}>
@@ -228,9 +239,7 @@ For nursing professionals, the key contributions are vigilant early recognition 
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

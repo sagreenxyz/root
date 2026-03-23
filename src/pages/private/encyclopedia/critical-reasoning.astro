@@ -49,6 +49,17 @@ const comparisonRows = [
   { feature: 'Nursing example', deduction: 'Apply guideline to patient', induction: 'Pattern recognition across patients', abduction: 'Differential diagnosis' },
   { feature: 'Research use', deduction: 'Quantitative hypothesis testing', induction: 'Qualitative theory generation', abduction: 'Hypothesis formation / interpretation' },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Critical Reasoning – Encyclopedia" protected={true}>
@@ -141,9 +152,7 @@ const comparisonRows = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}
