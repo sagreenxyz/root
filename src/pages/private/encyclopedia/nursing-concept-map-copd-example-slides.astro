@@ -1,0 +1,1024 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="COPD Exacerbation — Worked Concept Map Example – Slides – Encyclopedia"
+  protected={true}
+  backHref={`${base}/private/encyclopedia/nursing-concept-map-copd-example`}
+  backLabel="← Full Article"
+>
+
+  <!--
+    Slide structure follows docs/slides-design-standards.md:
+      • Each .slide-column holds one main slide (row 0) and optional slides (row 1+).
+      • Horizontal (→) moves between columns (main slides).
+      • Vertical (↓) moves to optional sub-slides within a column.
+      • Right arrow from an optional slide skips to the next MAIN slide.
+  -->
+
+  <div class="slides-wrapper">
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 1 · Title (main only)                                  -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">Encyclopedia – Nursing · Worked Example</div>
+          <div class="title-icon">🫁</div>
+          <h1 class="slide-main-title">COPD Exacerbation</h1>
+          <h2 class="slide-subtitle">Worked Concept Map Example</h2>
+          <div class="patient-pill">
+            <span>👤 Mr. James Holloway · 68 M · GOLD Stage III COPD</span>
+          </div>
+          <div class="phase-row">
+            {['1','2','3','4','5','6','7'].map((num, i) => {
+              const labels = ['Data Collection','Data Organisation','Clinical Reasoning','Goal Setting','Intervention Planning','Drawing Connections','Evaluation'];
+              return (
+                <div class="phase-badge-item">
+                  <span class="phase-num">{num}</span>
+                  <span class="phase-label">{labels[i]}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 2 · Case Overview (main + optional: diagnostics)       -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">2 / 10</div>
+          <h2 class="slide-heading">Case Overview — Mr. James Holloway</h2>
+          <p class="slide-intro">68-year-old male admitted from ED with <strong>2-day history of worsening dyspnoea</strong>, productive cough, and increased sputum. Admitting diagnosis: <strong>Acute exacerbation of COPD (GOLD III)</strong> — likely viral trigger; rule out community-acquired pneumonia.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Patient History</h3>
+              <ul class="bullet-list">
+                <li>🚬 45 pack-year smoking history (quit 5 years ago)</li>
+                <li>📋 PMH: COPD (GOLD III), hypertension, T2DM, chronic low back pain</li>
+                <li>⚠️ Allergy: Penicillin (rash)</li>
+                <li>💊 3-week lapse in tiotropium due to cost concerns</li>
+                <li>Home medications: tiotropium, salmeterol/fluticasone, metformin, lisinopril, ibuprofen PRN</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Admission Vital Signs</h3>
+              <ul class="bullet-list">
+                <li>🌡️ Temp 37.9 °C (100.2 °F)</li>
+                <li>❤️ HR 108 bpm (sinus tachycardia)</li>
+                <li>🫁 RR 28 breaths/min</li>
+                <li>🩸 BP 158/92 mmHg</li>
+                <li>📊 SpO₂ <strong>84% on room air</strong> → 90% on 2 L/min NC</li>
+                <li>Patient reports dyspnoea <strong>8/10</strong> at rest</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-warning">
+            ⚠️ SpO₂ 84% + RR 28 + accessory muscle use = <strong>immediate life threat</strong> — prioritise Airway &amp; Breathing.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Diagnostic results &amp; respiratory assessment</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: diagnostics -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Case Overview</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Diagnostic Results &amp; Respiratory Assessment</h2>
+            <p class="slide-intro">Key objective findings that drive nursing diagnosis formulation.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Arterial Blood Gas (2 L/min NC)</h3>
+                <ul class="bullet-list">
+                  <li>pH <strong>7.32</strong> (↓ acidotic)</li>
+                  <li>PaCO₂ <strong>58 mmHg</strong> (↑ CO₂ retention)</li>
+                  <li>PaO₂ <strong>58 mmHg</strong> (↓ hypoxaemia)</li>
+                  <li>HCO₃ <strong>30 mEq/L</strong> (↑ renal compensation)</li>
+                  <li>→ Partially compensated <strong>respiratory acidosis</strong></li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Labs, CXR &amp; Physical Exam</h3>
+                <ul class="bullet-list">
+                  <li>WBC <strong>13.4 × 10³/µL</strong> (neutrophil predominance)</li>
+                  <li>CXR: hyperinflation, flattened diaphragms, <strong>RLL infiltrate</strong></li>
+                  <li>Barrel chest, prolonged expiratory phase, audible wheeze</li>
+                  <li>Diffuse coarse crackles bilaterally; accessory muscle use at rest</li>
+                  <li>Central cyanosis at lips; diaphoresis; capillary refill 3 s</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout" style="margin-top:1rem;">
+              📋 Wife reports patient was confused and "not himself" last evening — likely transient hypoxia-driven encephalopathy. Now GCS 15.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 3 · Phase 1: Data Collection (main + optional)         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">3 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">1</span> Data Collection (Assessment)</h2>
+          <p class="slide-intro">The student nurse reviews Mr. Holloway's chart before entering, then conducts a systematic head-to-toe assessment. Key cues clustered from this data will drive every subsequent phase.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Objective Data Highlights</h3>
+              <ul class="bullet-list">
+                <li>SpO₂ 84% RA → 90% on 2 L/min NC; RR 28/min</li>
+                <li>Barrel chest; accessory muscle use; pursed-lip breathing</li>
+                <li>Prolonged expiration; audible expiratory wheeze</li>
+                <li>Coarse bilateral crackles; ↓ breath sounds lower lobes</li>
+                <li>Mild central cyanosis; diaphoresis; HR 108</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Subjective Data Highlights</h3>
+              <ul class="bullet-list">
+                <li>"I can't catch my breath no matter what I do."</li>
+                <li>Dyspnoea 8/10 at rest; unable to complete a sentence</li>
+                <li>Sputum changed from white → yellow-green ~48 hours ago</li>
+                <li>Cannot sleep lying flat; sleeping in recliner × 2 nights</li>
+                <li>3-week tiotropium lapse due to cost concerns</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ Medication reconciliation flag: 3-week lapse in tiotropium (long-acting anticholinergic) identified as a <strong>modifiable precipitant</strong> — links to Deficient Knowledge.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>COPD-specific assessment considerations</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: COPD-specific assessment tips -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 1</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 1 – COPD-Specific Assessment Considerations</h2>
+            <p class="slide-intro">Chronic lung disease produces findings that differ from acute-onset respiratory failure — recognise baseline vs. acute change.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Chronic COPD Baseline Cues</h3>
+                <ul class="bullet-list">
+                  <li><strong>Barrel chest</strong> — chronic air-trapping, increased AP diameter</li>
+                  <li><strong>Pursed-lip breathing</strong> — spontaneous adaptation to ↑ expiratory resistance</li>
+                  <li><strong>Elevated HCO₃</strong> — chronic renal compensation for CO₂ retention</li>
+                  <li>Chronic wheeze and ↓ breath sounds — not necessarily new</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Acute Exacerbation Cues (New / Worsening)</h3>
+                <ul class="bullet-list">
+                  <li>↑ Dyspnoea from baseline; dyspnoea at rest (new)</li>
+                  <li>Sputum colour change to yellow-green (infection signal)</li>
+                  <li>SpO₂ below patient's usual baseline</li>
+                  <li>↑ RR, accessory muscle use at rest, new cyanosis</li>
+                  <li>pH ↓ below 7.35 despite chronic compensation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 4 · Phase 2: Data Organisation (main + optional)       -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">4 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">2</span> Data Organisation</h2>
+          <p class="slide-intro">The student nurse groups Mr. Holloway's findings into <strong>six clinical clusters</strong>, each pointing toward a distinct nursing diagnosis. Separating medical from nursing diagnoses clarifies the independent nursing role.</p>
+          <div class="three-col">
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">🔴 Cluster 1 – Gas Exchange</h3>
+              <p class="col-body">SpO₂ 84% RA / 90% NC; RR 28; pH 7.32; PaCO₂ 58; PaO₂ 58; accessory muscle use; central cyanosis; wheeze; prolonged expiration</p>
+              <p class="col-example">→ Impaired Gas Exchange</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">🔴 Cluster 2 – Airway</h3>
+              <p class="col-body">Coarse bilateral crackles; ↓ breath sounds lower lobes; productive cough with yellow-green sputum; WBC 13.4; RLL infiltrate; temp 37.9 °C</p>
+              <p class="col-example">→ Ineffective Airway Clearance</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">🟠 Cluster 3 – Activity</h3>
+              <p class="col-body">Cannot complete a sentence; diaphoresis; HR 108 at rest; orthopnoea × 2 nights; dyspnoea 8/10</p>
+              <p class="col-example">→ Activity Intolerance</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">🟡 Cluster 4 – Anxiety</h3>
+              <p class="col-body">Agitation when answering questions; distress; wife reports confusion last evening; "I can't catch my breath"</p>
+              <p class="col-example">→ Anxiety</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">🟢 Cluster 5 – Knowledge</h3>
+              <p class="col-body">3-week tiotropium lapse due to cost; 45 pack-year history; 2-day delay before seeking care</p>
+              <p class="col-example">→ Deficient Knowledge</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">🟢 Cluster 6 – Infection</h3>
+              <p class="col-body">Yellow-green sputum; WBC 13.4; RLL infiltrate; sputum culture pending; penicillin allergy</p>
+              <p class="col-example">→ Risk for Infection (worsening)</p>
+            </div>
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Medical vs. nursing diagnosis distinction</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: medical vs nursing diagnosis -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 2</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 2 – Medical vs. Nursing Diagnosis</h2>
+            <p class="slide-intro">Separating these domains clarifies <em>what the nurse can independently address</em> vs. what requires a physician order.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Medical Diagnosis (Physician)</h3>
+                <ul class="bullet-list">
+                  <li>Acute exacerbation of COPD (GOLD III)</li>
+                  <li>Possible community-acquired pneumonia</li>
+                  <li>Respiratory acidosis</li>
+                  <li>→ Physician treats the <em>disease process</em></li>
+                  <li>Nurse administers dependent interventions (O₂, bronchodilators, antibiotics) per orders</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Nursing Diagnoses (Nurse)</h3>
+                <ul class="bullet-list">
+                  <li>Address Mr. Holloway's <em>human responses</em> to his disease</li>
+                  <li>Impaired Gas Exchange — the nurse can independently reposition, coach PLB, titrate O₂ within ordered parameters</li>
+                  <li>Deficient Knowledge — the nurse can teach, provide resources, involve social work</li>
+                  <li>Anxiety — the nurse can apply fan therapy, coach breathing, provide presence</li>
+                  <li>→ Nurse has <strong>independent scope</strong> for all six diagnoses</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 5 · Phase 3: Clinical Reasoning & Nursing Dx           -->
+    <!--            (main + optional: PES statements)                  -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">5 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">3</span> Clinical Reasoning &amp; Nursing Diagnoses</h2>
+          <p class="slide-intro">Six nursing diagnoses formulated using NANDA-I PES format and prioritised by ABC framework then Maslow's Hierarchy.</p>
+          <div class="dx-list">
+            {[
+              { pri: '🔴 1', dx: 'Impaired Gas Exchange', rt: 'ventilation-perfusion mismatch &amp; alveolar hypoventilation secondary to COPD exacerbation', aeb: 'SpO₂ 84% RA, pH 7.32, PaCO₂ 58, central cyanosis, RR 28, accessory muscle use' },
+              { pri: '🔴 2', dx: 'Ineffective Airway Clearance', rt: 'excessive mucus &amp; bronchospasm secondary to COPD exacerbation &amp; probable pneumonia', aeb: 'coarse bilateral crackles, yellow-green sputum, ↓ breath sounds bilateral lower lobes, RLL infiltrate' },
+              { pri: '🟠 3', dx: 'Activity Intolerance', rt: 'imbalance between O₂ supply and demand', aeb: 'unable to complete a sentence, diaphoresis, HR 108 at rest, dyspnoea 8/10' },
+              { pri: '🟡 4', dx: 'Anxiety', rt: 'acute dyspnoea &amp; fear of suffocation', aeb: 'agitation, distress during conversation, "I can\'t catch my breath"' },
+              { pri: '🟢 5', dx: 'Deficient Knowledge', rt: 'COPD self-management &amp; inhaler adherence', aeb: '3-week tiotropium lapse due to cost; 2-day delay before seeking care' },
+              { pri: '🟢 6', dx: 'Risk for Infection (progression)', rt: 'secretion stasis, bacterial superinfection; penicillin allergy limits antibiotic options', aeb: 'risk diagnosis — no AEB required' },
+            ].map(({ pri, dx, rt, aeb }) => (
+              <div class="dx-row">
+                <span class="dx-pri" set:html={pri} />
+                <div>
+                  <strong class="dx-name">{dx}</strong>
+                  <span class="dx-detail">R/T <span set:html={rt} /> AEB {aeb}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Prioritisation rationale</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: prioritisation rationale -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 3</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 3 – Prioritisation Rationale</h2>
+            <p class="slide-intro">The student nurse applies both ABC and Maslow's Hierarchy to justify the priority order.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">ABC Framework</h3>
+                <ul class="bullet-list">
+                  <li>🔴 <strong>Dx 1 — Impaired Gas Exchange</strong>: SpO₂ 84% + respiratory acidosis = immediate life threat. Must be addressed first and most aggressively.</li>
+                  <li>🔴 <strong>Dx 2 — Ineffective Airway Clearance</strong>: Retained secretions worsen gas exchange — treating Dx 2 is a direct intervention on Dx 1.</li>
+                  <li>🟠 <strong>Dx 3 — Activity Intolerance</strong>: Downstream of oxygenation; will improve as Dx 1 is addressed.</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Maslow &amp; Clinical Reasoning</h3>
+                <ul class="bullet-list">
+                  <li>🟡 <strong>Dx 4 — Anxiety</strong>: Attended to concurrently — unmanaged anxiety ↑ O₂ demand and worsens dyspnoea. Non-pharmacological first (fan therapy, PLB).</li>
+                  <li>🟢 <strong>Dx 5 — Deficient Knowledge</strong>: Important but deferred — teaching is unsafe when patient is dyspnoeic at 84% SpO₂.</li>
+                  <li>🟢 <strong>Dx 6 — Risk for Infection</strong>: Monitor closely; antibiotic selection constrained by penicillin allergy.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout callout-tip" style="margin-top:1rem;">
+              🧠 Student reflection: "I had to resist the urge to teach about inhalers first — the most obvious preventable cause — but fixing the gas exchange problem first is what creates the conditions for safe teaching."
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 6 · Phase 4: Goal & Outcome Setting (main + optional)  -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">6 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">4</span> Goal &amp; Outcome Setting</h2>
+          <p class="slide-intro">SMART outcomes written for Mr. Holloway — patient-centred, measurable, and time-bound. Note the COPD-specific oxygen target.</p>
+          <div class="goal-list">
+            {[
+              { dx: 'Dx 1 — Impaired Gas Exchange', goal: 'Maintain SpO₂ ≥ 90% on ≤ 4 L/min NC and report dyspnoea ≤ 4/10 at rest within 4 hours of initiating bronchodilator + O₂ therapy.', note: '⚠️ COPD target SpO₂ 88–92% (not 94–98%) — avoid suppressing hypoxic drive' },
+              { dx: 'Dx 2 — Ineffective Airway Clearance', goal: 'Demonstrate effective airway clearance evidenced by thin, clear-to-white sputum and improved auscultation within 24–48 hours.', note: '' },
+              { dx: 'Dx 3 — Activity Intolerance', goal: 'Tolerate sitting at the edge of the bed × 5 min without SpO₂ < 88% or dyspnoea > 5/10, within 48 hours.', note: '' },
+              { dx: 'Dx 4 — Anxiety', goal: 'Report anxiety ≤ 3/10 and demonstrate reduced agitation within 1 hour of non-pharmacological anxiolytic interventions.', note: '⚠️ Benzodiazepines carry respiratory depression risk in COPD — non-pharmacological first' },
+              { dx: 'Dx 5 — Deficient Knowledge', goal: 'Verbally identify purpose of each inhaler, correct sequence, three COPD warning signs, and two medication cost resources before discharge.', note: '' },
+              { dx: 'Dx 6 — Risk for Infection', goal: 'Remain free of infection progression signs (WBC trending ↓, temp ≤ 37.5 °C, no new sputum changes) throughout hospitalisation.', note: '' },
+            ].map(({ dx, goal, note }) => (
+              <div class="goal-row">
+                <strong class="goal-dx">{dx}</strong>
+                <span class="goal-text">{goal}</span>
+                {note && <span class="goal-note">{note}</span>}
+              </div>
+            ))}
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Oxygen target rationale for COPD</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: O2 target rationale -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 4</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 4 – COPD Oxygen Target Rationale</h2>
+            <p class="slide-intro">The oxygen goal for Mr. Holloway differs from most patients — a critical COPD clinical pearl.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Why 88–92%, Not 94–98%?</h3>
+                <ul class="bullet-list">
+                  <li>Patients with <strong>chronic CO₂ retention</strong> (PaCO₂ chronically elevated) may rely on <em>hypoxic drive</em> to stimulate breathing</li>
+                  <li>Mr. Holloway's HCO₃ 30 mEq/L = chronic renal compensation → baseline hypercapnia confirmed</li>
+                  <li>Excessive O₂ can blunt hypoxic drive → <strong>↑ PaCO₂ → CO₂ narcosis → respiratory failure</strong></li>
+                  <li>Target SpO₂ 88–92% per GOLD guidelines and COPD-specific protocols</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Clinical Application</h3>
+                <ul class="bullet-list">
+                  <li>Document the target SpO₂ range <strong>explicitly</strong> in the care plan</li>
+                  <li>Titrate O₂ to the <em>minimum</em> flow that achieves 88–92%</li>
+                  <li>Monitor for ↑ PaCO₂ despite improving SpO₂ — rising PaCO₂ = worsening hypoventilation</li>
+                  <li>If SpO₂ drops below 88% — notify physician immediately; do not simply turn up O₂</li>
+                  <li>ABG monitoring is essential to guide therapy decisions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 7 · Phase 5: Intervention Planning (main + optional)   -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">7 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">5</span> Intervention Planning</h2>
+          <p class="slide-intro">Evidence-based interventions for each nursing diagnosis — categorised as independent, dependent, or collaborative.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Dx 1 — Impaired Gas Exchange</h3>
+              <ul class="bullet-list">
+                <li>🟢 <strong>Independent:</strong> High Fowler's / 30–45° HOB; coach pursed-lip breathing; continuous SpO₂ monitoring; hourly neuro checks for CO₂ narcosis</li>
+                <li>🔵 <strong>Dependent:</strong> O₂ titrated to SpO₂ 88–92%; nebulised albuterol/ipratropium; IV methylprednisolone per order</li>
+                <li>🟡 <strong>Collaborative:</strong> Respiratory therapy; notify physician if SpO₂ &lt; 88% or worsening mental status</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Dx 2 — Ineffective Airway Clearance</h3>
+              <ul class="bullet-list">
+                <li>🟢 <strong>Independent:</strong> Encourage oral hydration; teach huff coughing; reposition q2h; auscultate post-coughing</li>
+                <li>🔵 <strong>Dependent:</strong> Antibiotic administration per sensitivity (confirm penicillin allergy; avoid beta-lactam cross-reactivity)</li>
+                <li>🟡 <strong>Collaborative:</strong> Respiratory therapy for chest physio / OPEP device; report sputum changes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ Pursed-lip breathing is an <strong>independent</strong> intervention — no order required. It prolongs exhalation, reduces air-trapping, and has evidence-based support for ↑ SpO₂ and ↓ dyspnoea.
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Interventions for Dx 3–6</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: interventions for Dx 3-6 -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 5</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 5 – Interventions for Dx 3–6</h2>
+            <p class="slide-intro">Interventions for the remaining four nursing diagnoses.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Dx 3 — Activity Intolerance &amp; Dx 4 — Anxiety</h3>
+                <ul class="bullet-list">
+                  <li><strong>Activity:</strong> Cluster care to allow rest; monitor SpO₂/HR/dyspnoea before, during, after activity; coach pursed-lip breathing during exertion; PT consult when medically stable</li>
+                  <li><strong>Anxiety:</strong> Calm, reassuring presence; handheld fan to face (V2 trigeminal branch — evidence-based); coach PLB; limit clinicians in room; reduce environmental stimuli; discuss PRN anxiolytic with supervising RN (respiratory risk in COPD)</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Dx 5 — Deficient Knowledge &amp; Dx 6 — Risk for Infection</h3>
+                <ul class="bullet-list">
+                  <li><strong>Knowledge:</strong> Assess understanding before teaching; use teach-back for inhaler technique; pictographic written instructions; "ABCD" warning signs; social work referral for prescription assistance; pulmonary rehab referral pre-discharge</li>
+                  <li><strong>Infection:</strong> Standard + droplet precautions until source determined; hand hygiene; monitor WBC/temp/sputum; administer antibiotics on schedule; review culture results for de-escalation; document immunisation status</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 8 · Phase 6: Drawing Connections (main only)           -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">8 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">6</span> Drawing Connections</h2>
+          <p class="slide-intro">The student places <strong>Mr. Holloway at the centre</strong> and draws labelled arrows to show relationships between cues, diagnoses, interventions, and outcomes.</p>
+          <div class="conn-grid">
+            {[
+              { from: 'SpO₂ 84% / pH 7.32 / PaCO₂ 58 / cyanosis / RR 28', rel: 'as evidenced by →', to: 'Impaired Gas Exchange (Dx 1)' },
+              { from: 'Coarse crackles / yellow-green sputum / WBC 13.4 / RLL infiltrate', rel: 'as evidenced by →', to: 'Ineffective Airway Clearance (Dx 2)' },
+              { from: 'Ineffective Airway Clearance (Dx 2)', rel: 'worsens →', to: 'Impaired Gas Exchange (Dx 1)' },
+              { from: 'Impaired Gas Exchange (Dx 1)', rel: 'causes/worsens →', to: 'Anxiety (Dx 4)' },
+              { from: 'Impaired Gas Exchange (Dx 1)', rel: 'contributes to →', to: 'Activity Intolerance (Dx 3)' },
+              { from: 'Activity Intolerance (Dx 3)', rel: 'increases →', to: 'Anxiety (Dx 4)' },
+              { from: 'Deficient Knowledge (Dx 5)', rel: 'led to (precipitant) →', to: 'COPD Exacerbation / this admission' },
+              { from: 'Risk for Infection (Dx 6)', rel: 'threatens →', to: 'Impaired Gas Exchange (Dx 1)' },
+              { from: 'High Fowler\'s + O₂ titration + PLB coaching', rel: 'treated with / expected to improve →', to: 'Impaired Gas Exchange → SpO₂ ≥ 90%' },
+              { from: 'Fan therapy + PLB coaching', rel: 'resolves →', to: 'Anxiety (Dx 4)' },
+            ].map(({ from, rel, to }) => (
+              <div class="conn-row">
+                <span class="conn-from">{from}</span>
+                <span class="conn-rel">{rel}</span>
+                <span class="conn-to">{to}</span>
+              </div>
+            ))}
+          </div>
+          <div class="callout" style="margin-top:1rem;">
+            🔗 Student reflection: <em>"Drawing these arrows made me realise how central Dx 1 is — it connects to almost everything. If I don't address that one first and most aggressively, everything else will be harder to manage."</em>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 9 · Phase 7: Evaluation (main + optional: revisions)   -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">9 / 10</div>
+          <h2 class="slide-heading"><span class="phase-circle">7</span> Evaluation (8 Hours Post-Admission)</h2>
+          <p class="slide-intro">The student nurse evaluates Mr. Holloway's response to the care plan at the end of the shift.</p>
+          <div class="eval-grid">
+            <div class="eval-card eval-partial">
+              <div class="eval-icon">⚠️</div>
+              <h3>Dx 1 — Partially Met</h3>
+              <p>SpO₂ 91% on 2 L/min NC; dyspnoea 5/10 (↓ from 8/10); RR 22; ↓ accessory muscle use. Repeat ABG: pH 7.35, PaCO₂ 54, PaO₂ 63. Plan: continue O₂ + bronchodilators; reassess in 4 hours.</p>
+            </div>
+            <div class="eval-card eval-not">
+              <div class="eval-icon">❌</div>
+              <h3>Dx 2 — Not Yet Met</h3>
+              <p>Crackles persist bilaterally (reduced at left base). Sputum still yellow-green; culture pending. Plan: continue respiratory therapy collaboration; reassess sputum every shift.</p>
+            </div>
+            <div class="eval-card eval-not">
+              <div class="eval-icon">⏳</div>
+              <h3>Dx 3 — Not Yet Assessable</h3>
+              <p>Too dyspnoeic for activity this shift. By end of shift: repositioned to high Fowler's without desaturation. Plan: attempt sitting at edge of bed early next shift.</p>
+            </div>
+            <div class="eval-card eval-partial">
+              <div class="eval-icon">⚠️</div>
+              <h3>Dx 4 — Partially Met</h3>
+              <p>Anxiety 4/10 (↓ from ~9/10). Fan therapy + PLB coaching effective; no longer agitated. Physician ordered PRN lorazepam 0.5 mg PO with monitoring (for use only if non-pharmacological measures fail).</p>
+            </div>
+            <div class="eval-card eval-not">
+              <div class="eval-icon">❌</div>
+              <h3>Dx 5 — Deferred</h3>
+              <p>Teaching unsafe while dyspnoeic. Brief conversation with wife. Plan: begin formal inhaler education Day 2; social work contact re: prescription assistance Day 1.</p>
+            </div>
+            <div class="eval-card eval-met">
+              <div class="eval-icon">✅</div>
+              <h3>Dx 6 — No Progression</h3>
+              <p>Temp 37.6 °C (↓ slightly). First antibiotic dose given on time; no adverse reaction. Plan: continue monitoring; review culture results when available.</p>
+            </div>
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Map revision &amp; new diagnoses added</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: map revision -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Phase 7</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Phase 7 – Map Revision</h2>
+            <p class="slide-intro">Evaluation triggers updates to the concept map — it is a <em>living document</em> that evolves with the patient's status.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">New Diagnoses Added</h3>
+                <ul class="bullet-list">
+                  <li><strong>Impaired Sleep Pattern</strong> R/T dyspnoea and orthopnoea AEB sleeping only in a recliner × 2 nights prior to admission</li>
+                  <li><strong>Risk for Respiratory Failure</strong> — flagged as a collaborative problem for the interdisciplinary team given marginal ABG improvement</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Student Reflection</h3>
+                <ul class="bullet-list">
+                  <li>"The biggest challenge was resisting the urge to teach about inhalers right away."</li>
+                  <li>"Looking at him struggling at 84% saturation made it clear: fix gas exchange first."</li>
+                  <li>"The concept map made visible how many diagnoses radiated from the central problem."</li>
+                  <li>"Addressing one diagnosis often improved another — that interconnectedness is exactly what the map showed."</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout callout-tip" style="margin-top:1rem;">
+              ♻️ Evaluation loops back to Assessment — the nursing process is cyclic. The concept map is never "finished" while the patient is in your care.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 10 · Key Takeaways (main only)                         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">10 / 10</div>
+          <h2 class="slide-heading">Key Takeaways — COPD Exacerbation Worked Example</h2>
+          <div class="tips-grid">
+            {[
+              { icon: '🔴', tip: 'SpO₂ 84% + respiratory acidosis = immediate life threat — Dx 1 (Impaired Gas Exchange) must be addressed first and most aggressively' },
+              { icon: '🎯', tip: 'COPD oxygen target is 88–92%, not 94–98% — document this explicitly; avoid suppressing hypoxic drive' },
+              { icon: '🫁', tip: 'Pursed-lip breathing is an independent, evidence-based intervention — no order required; reduces air-trapping and improves SpO₂' },
+              { icon: '🔗', tip: 'Dx 2 (Airway Clearance) directly worsens Dx 1 (Gas Exchange) — treating secretions is a direct intervention on oxygenation' },
+              { icon: '📚', tip: 'Defer teaching (Dx 5) until dyspnoea is controlled — a patient at 84% SpO₂ cannot receive or retain educational content safely' },
+              { icon: '😰', tip: 'Non-pharmacological anxiety interventions (fan, PLB, presence) first — benzodiazepines carry respiratory depression risk in COPD' },
+              { icon: '⚠️', tip: 'Penicillin allergy constrains antibiotic selection — document prominently and confirm no beta-lactam cross-reactivity' },
+              { icon: '♻️', tip: 'Evaluation is cyclic — Mr. Holloway\'s map gained two new diagnoses at 8-hour evaluation; it is a living document' },
+            ].map(({ icon, tip }) => (
+              <div class="tip-card">
+                <span class="tip-icon">{icon}</span>
+                <span class="tip-text">{tip}</span>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/encyclopedia/nursing-concept-map-copd-example`} class="article-link">Read full article →</a>
+            <a href={`${base}/private/encyclopedia/nursing-concept-map`} class="article-link article-link-ghost">← Concept Map Guide</a>
+            <a href={`${base}/private/encyclopedia`} class="article-link article-link-ghost">← Back to Encyclopedia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrapper -->
+
+</SlidesLayout>
+
+<style>
+  /* ── Slide inner content padding ── */
+  .slide {
+    padding: 4rem 3rem 2rem;
+  }
+
+  /* ── Optional slide: extra top padding so content clears back-hint ── */
+  .slide.optional {
+    padding-top: 5rem;
+  }
+
+  /* ── Optional slide inner wrapper (centres content) ── */
+  .opt-inner {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ── Slide number badge (top-right) ── */
+  .slide-number {
+    position: absolute;
+    top: 3.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  /* ── Title slide ── */
+  .slide-title {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #fff7ed 0%, #f8fafc 100%);
+  }
+  .slide-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #9a3412;
+    background: #ffedd5;
+    border: 1px solid #fed7aa;
+    border-radius: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 1rem;
+  }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.15;
+    margin-bottom: 0.25rem;
+  }
+  .slide-subtitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ea580c;
+    margin-bottom: 1rem;
+  }
+  .patient-pill {
+    display: inline-block;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 9999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.82rem;
+    color: #991b1b;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .phase-row {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .phase-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .phase-num {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: #ea580c;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .phase-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+    max-width: 5rem;
+    line-height: 1.2;
+  }
+  .slide-note {
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+
+  /* ── Slide heading ── */
+  .slide-heading {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .phase-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: #ea580c;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .slide-intro {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Two-column layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  .col-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.6rem;
+    padding: 1rem;
+  }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ea580c;
+    margin-bottom: 0.5rem;
+  }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list {
+    font-size: 0.85rem;
+    color: #374151;
+    line-height: 1.7;
+    padding-left: 1.1rem;
+    margin: 0;
+  }
+  .bullet-list li { margin-bottom: 0.25rem; }
+
+  /* ── Callout ── */
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #bfdbfe;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: #1e3a5f;
+    line-height: 1.6;
+    margin-top: auto;
+  }
+  .callout-tip {
+    background: #f0fdf4;
+    border-left-color: #86efac;
+    color: #14532d;
+  }
+  .callout-warning {
+    background: #fef2f2;
+    border-left-color: #fca5a5;
+    color: #7f1d1d;
+  }
+
+  /* ── Nursing diagnoses list (Phase 3) ── */
+  .dx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .dx-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .dx-pri {
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 3.5rem;
+  }
+  .dx-name {
+    font-size: 0.85rem;
+    color: #1e293b;
+    display: block;
+  }
+  .dx-detail {
+    font-size: 0.78rem;
+    color: #64748b;
+    display: block;
+    line-height: 1.4;
+  }
+
+  /* ── Goal list (Phase 4) ── */
+  .goal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+    margin-bottom: 0.5rem;
+  }
+  .goal-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .goal-dx {
+    font-size: 0.8rem;
+    color: #ea580c;
+    font-weight: 700;
+  }
+  .goal-text {
+    font-size: 0.82rem;
+    color: #374151;
+    line-height: 1.45;
+  }
+  .goal-note {
+    font-size: 0.75rem;
+    color: #991b1b;
+    font-weight: 600;
+  }
+
+  /* ── Connections grid (Phase 6) ── */
+  .conn-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .conn-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 2fr;
+    gap: 0.5rem;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+  .conn-from { color: #334155; }
+  .conn-rel  { color: #ea580c; font-weight: 700; text-align: center; }
+  .conn-to   { color: #334155; }
+
+  /* ── Evaluation grid (Phase 7) ── */
+  .eval-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .eval-card {
+    border-radius: 0.6rem;
+    padding: 0.75rem;
+    border: 1px solid transparent;
+  }
+  .eval-card h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.3rem; color: #1e293b; }
+  .eval-card p  { font-size: 0.78rem; color: #475569; line-height: 1.5; }
+  .eval-icon    { font-size: 1.2rem; margin-bottom: 0.25rem; }
+  .eval-met     { background: #f0fdf4; border-color: #bbf7d0; }
+  .eval-partial { background: #fffbeb; border-color: #fde68a; }
+  .eval-not     { background: #fef2f2; border-color: #fecaca; }
+
+  /* ── Key takeaways (final slide) ── */
+  .slide-exam {
+    background: linear-gradient(135deg, #fff7ed 0%, #f8fafc 100%);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  .tip-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.6rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .tip-text { font-size: 0.82rem; color: #334155; line-height: 1.55; }
+
+  /* ── Article links (final slide) ── */
+  .article-link {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.45rem 1rem;
+    background: #ea580c;
+    color: #fff;
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .article-link-ghost {
+    background: transparent;
+    color: #ea580c;
+    border: 1.5px solid #ea580c;
+  }
+</style>
