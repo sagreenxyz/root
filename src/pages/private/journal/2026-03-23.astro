@@ -4,7 +4,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 ---
 
 <JournalEntry
-  title="Major Development Sprint – Tools, Encyclopedia, Slides & Concept Map Coach"
+  title="Major Development Sprint – Tools, Encyclopedia, Slides, Concept Map Coach & Textbook Quizzes"
   date="2026-03-23"
   entryType="Development Log"
   course="D439 – Foundations of Nursing"
@@ -12,10 +12,10 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 >
   <p style="margin-bottom:1rem;">
     Today marked a major development sprint for the site. Over the course of the day,
-    <strong>20 pull requests</strong> were opened, reviewed, and merged — spanning new
-    interactive tools, encyclopedia articles, slide decks, layout improvements, and
-    bug fixes. The work spans both the public WGU Nursing Tools section and the
-    private study area.
+    <strong>28 pull requests</strong> were opened, reviewed, and merged — spanning new
+    interactive tools, encyclopedia articles, slide decks, layout improvements, bug fixes,
+    and a full Foundations of Nursing textbook + quiz infrastructure. The work spans both
+    the public WGU Nursing Tools section and the private study area.
   </p>
 
   <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🛠️ New Tools</h2>
@@ -48,10 +48,20 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     common acute and chronic conditions encountered in clinical rotations.
   </p>
 
-  <p style="margin-bottom:1rem;">
+  <p style="margin-bottom:0.75rem;">
     <strong>Concept Map optional slide-deck view</strong> (PR #38) — The existing
     concept-map tool received an integrated horizontal-scrolling slide presentation view
     so students can walk through a concept map case in a structured, slide-by-slide format.
+  </p>
+
+  <p style="margin-bottom:1rem;">
+    <strong>Interactive micro-quiz component</strong> (PR #54) — A self-contained,
+    reusable quiz component was added at
+    <a href={`${base}/tools/quiz`} style="color:#6366f1; font-weight:600;">/tools/quiz</a>.
+    The proof-of-concept features a 3px progress bar, horizontally-sliding question carousel
+    with smooth cubic-bezier transitions, pill-shaped answer options, and a two-region slide
+    layout with a side panel that reveals feedback on answer. Designed as a template for
+    embedding quizzes across the site.
   </p>
 
   <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">📚 New Encyclopedia Articles</h2>
@@ -93,6 +103,22 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       <a href={`${base}/private/encyclopedia/spastic-vs-flaccid-paralysis`} style="color:#6366f1; font-weight:600;">Spastic vs. Flaccid Paralysis</a>
       article.
     </li>
+    <li>
+      <strong>COPD Pathophysiology &amp; GOLD Classification</strong> (PR #47) — A
+      graduate-level article covering the inflammatory cell infiltrate, protease–antiprotease
+      imbalance, oxidative stress, emphysema subtypes, and the GOLD spirometric grading
+      framework. See the
+      <a href={`${base}/private/encyclopedia/copd-pathophysiology`} style="color:#6366f1; font-weight:600;">COPD Pathophysiology</a>
+      article.
+    </li>
+    <li>
+      <strong>Encyclopedia Development Standards</strong> (PR #50) — A full authoring
+      reference page was published at
+      <a href={`${base}/private/encyclopedia/encyclopedia-standards`} style="color:#6366f1; font-weight:600;">Encyclopedia Standards</a>,
+      documenting the three-pane layout, companion page requirements (slides &amp; summary),
+      American English spelling, academic prose conventions, and inline bold paragraph
+      heading style applied across all articles.
+    </li>
   </ul>
 
   <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🖼️ Slide Decks & Presentation Views</h2>
@@ -120,6 +146,15 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     page.
   </p>
 
+  <p style="margin-bottom:1rem;">
+    <strong>COPD Exacerbation concept map slides</strong> (PR #53) — A companion slide
+    deck for the COPD exacerbation worked example was added, walking through all 7 concept
+    map phases in the horizontal-scrolling slide format. A "View as Slides" link was added
+    to both the article header and the sidebar. View it on the
+    <a href={`${base}/private/encyclopedia/nursing-concept-map-copd-example-slides`} style="color:#6366f1; font-weight:600;">COPD Exacerbation Concept Map Slides</a>
+    page.
+  </p>
+
   <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🏗️ Private D439 Study Section</h2>
 
   <p style="margin-bottom:1rem;">
@@ -135,9 +170,43 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     (PR #34) was added to the Infection Control page.
   </p>
 
-  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🎨 Layout & UX Improvements</h2>
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">📖 Foundations of Nursing Textbook &amp; Quizzes</h2>
+
+  <p style="margin-bottom:1rem;">
+    <strong>Foundations of Nursing textbook + NCLEX quizzes</strong> (PR #52) — The
+    full text of all five current Foundations of Nursing chapters was synced from the
+    canonical <code>sagreenxyz/textbooks</code> source into the private study section.
+    Interactive NCLEX-style chapter quizzes were created for each chapter:
+    Chapter 1 (History and Evolution of Nursing), Chapter 2 (Legal, Ethical, and Professional
+    Standards), Chapter 3 (Patient Rights, Advocacy, and Informed Consent),
+    Chapter 4 (Therapeutic Communication), and Chapter 5 (Cultural Humility, Health
+    Literacy, and Inclusive Care). The chapter index page received "Take Quiz" buttons
+    and "Quiz Available" badges for all five chapters. The build grew from 70 to 75 pages.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🎨 Layout &amp; UX Improvements</h2>
 
   <ul style="margin-bottom:1rem; padding-left:1.5rem; line-height:1.9; color:#334155;">
+    <li>
+      <strong>3-pane encyclopedia layout (TOC to right pane)</strong> (PR #46) — The
+      Table of Contents was moved to a dedicated 220px right pane across all encyclopedia
+      article pages, creating a standard three-column grid (240px left | 1fr content | 220px TOC).
+      The right pane collapses at ≤1024px tablet breakpoint.
+    </li>
+    <li>
+      <strong>SlidesLayout Astro CSS scoping fix</strong> (PR #49) — Slides were stacking
+      vertically instead of scrolling horizontally due to Astro's scoped CSS failing to
+      reach slot content from child components. Fixed by switching
+      <code>SlidesLayout.astro</code> to <code>&lt;style is:global&gt;</code> so the
+      structural layout CSS (<code>.slides-wrapper</code>, <code>.slide-column</code>,
+      etc.) applies correctly.
+    </li>
+    <li>
+      <strong>Journal entry cleanup: opt-out concept map prop</strong> (PR #51) —
+      <code>JournalEntry.astro</code> gained a <code>showConceptMap</code> boolean prop
+      (default <code>true</code>) so development-log entries can suppress the WGU Nursing
+      Concept Map template section that is only relevant to clinical entries.
+    </li>
     <li>
       <strong>Encyclopedia sidebar moved to left column</strong> (PR #31) — The Table of
       Contents / Quick Facts sidebar in encyclopedia articles was relocated from the right
