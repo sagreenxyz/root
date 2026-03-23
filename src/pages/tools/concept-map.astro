@@ -1,0 +1,630 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Clinical Concept Map – WGU Nursing Tools" protected={false}>
+
+<style>
+  /* ── Screen styles ────────────────────────────────────────────── */
+  .cm-page { max-width: 860px; margin: 0 auto; }
+  .cm-page h1 { font-size: 1.75rem; font-weight: 800; color: #1e293b; margin-bottom: 0.35rem; }
+  .cm-page .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 2rem; }
+
+  .cm-section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .cm-section-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .cm-section-header h2 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .cm-section-header .rev { font-size: 0.7rem; color: #94a3b8; }
+  .cm-section-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field-group label { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+  .field-group .hint { font-size: 0.75rem; color: #64748b; }
+  .field-group input,
+  .field-group textarea {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    resize: vertical;
+  }
+  .field-group input:focus,
+  .field-group textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    background: #fff;
+  }
+  .field-group textarea { min-height: 90px; line-height: 1.6; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .row2 { grid-template-columns: 1fr; } }
+
+  .numbered-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .numbered-item { display: flex; align-items: flex-start; gap: 0.6rem; }
+  .numbered-item .num {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #6366f1;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .numbered-item input,
+  .numbered-item textarea { flex: 1; }
+
+  .privacy-notice {
+    background: #fef9c3;
+    border: 1px solid #fde047;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #713f12;
+  }
+  .info-box {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #0369a1;
+  }
+
+  /* Action bar */
+  .action-bar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f8fafc;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn-primary { background: #6366f1; color: #fff; }
+  .btn-primary:hover { background: #4f46e5; }
+  .btn-outline { background: #fff; color: #1e293b; border: 1px solid #e2e8f0; }
+  .btn-outline:hover { background: #f1f5f9; }
+
+  /* ── Print styles ─────────────────────────────────────────────── */
+  @media print {
+    body { background: #fff !important; font-size: 10.5pt; }
+
+    /* Hide everything we don't need */
+    header, footer, nav, .action-bar,
+    .field-group label, .field-group .hint,
+    .info-box, .cm-page .subtitle,
+    .numbered-item .num { display: none !important; }
+
+    /* Section chrome */
+    .cm-section {
+      border: 1px solid #c7d2fe;
+      border-radius: 0;
+      margin-bottom: 14pt;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .cm-section-header {
+      background: #1e293b !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 5pt 9pt;
+    }
+    .cm-section-header h2 { font-size: 8pt; }
+    .cm-section-body { padding: 9pt; gap: 8pt; }
+
+    /* Inputs / textareas → styled text blocks */
+    .field-group input,
+    .field-group textarea,
+    .numbered-item input,
+    .numbered-item textarea {
+      border: none !important;
+      border-bottom: 1pt solid #cbd5e1 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 2pt 0 !important;
+      font-size: 10pt;
+      resize: none;
+      height: auto !important;
+      min-height: unset !important;
+    }
+    .field-group textarea,
+    .numbered-item textarea { min-height: 30pt !important; }
+
+    /* Row adjustments */
+    .row2 { grid-template-columns: 1fr 1fr; gap: 9pt; }
+    .numbered-item { align-items: center; gap: 4pt; }
+
+    /* Page title block */
+    .cm-page h1 { font-size: 16pt; }
+
+    /* Privacy notice */
+    .privacy-notice {
+      background: #fef9c3 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 8pt;
+    }
+
+    /* Student info card */
+    #student-info-card {
+      border: 1.5pt solid #6366f1;
+      border-radius: 4pt;
+      padding: 8pt;
+      margin-bottom: 14pt;
+      display: flex !important;
+      gap: 20pt;
+    }
+    #student-info-card .si-field { flex: 1; }
+    #student-info-card .si-label {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6366f1;
+      margin-bottom: 2pt;
+    }
+    #student-info-card .si-value {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #1e293b;
+      border-bottom: 1pt solid #c7d2fe;
+      padding-bottom: 2pt;
+    }
+
+    @page { margin: 0.65in; size: letter; }
+  }
+</style>
+
+<div class="cm-page" id="concept-map-root">
+
+  <!-- Page heading -->
+  <div style="margin-bottom:1rem;">
+    <h1>🗺️ WGU Clinical Concept Map</h1>
+    <p class="subtitle">
+      Fill in each section below, then click <strong>Print / Save as PDF</strong> to generate a
+      professionally formatted document. All data stays in your browser — nothing is sent to any server.
+    </p>
+  </div>
+
+  <!-- Cross-reference notice -->
+  <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.6rem; padding:1rem 1.25rem; margin-bottom:1.5rem; font-size:0.875rem; color:#3730a3; display:flex; align-items:flex-start; gap:0.65rem;" class="no-print">
+    <span style="font-size:1.1rem; flex-shrink:0;">📓</span>
+    <span>
+      <strong>Origin &amp; context:</strong> This tool is based on documentation shared by
+      <strong>Dr. Jen Scarpena</strong> via WebEx on <strong>March 22, 2026</strong> during a
+      pre-assessment meeting for D439 – Foundations of Nursing. See the full account in the
+      <a href={`${base}/private/journal/2026-03-22`} style="color:#4f46e5; font-weight:600;">March 22, 2026 journal entry</a>
+      (sign-in required).
+    </span>
+  </div>
+
+  <!-- Sticky action bar -->
+  <div class="action-bar">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All Fields</button>
+  </div>
+
+  <!-- ── Student Info ───────────────────────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>👤 Student Information</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="row2">
+        <div class="field-group">
+          <label for="student-name">Student Name</label>
+          <input id="student-name" type="text" placeholder="First Last" />
+        </div>
+        <div class="field-group">
+          <label for="submission-date">Date</label>
+          <input id="submission-date" type="date" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Student info print card (hidden on screen, visible when printing) -->
+  <div id="student-info-card" style="display:none;">
+    <div class="si-field">
+      <div class="si-label">Student Name</div>
+      <div class="si-value" id="print-name"></div>
+    </div>
+    <div class="si-field">
+      <div class="si-label">Date</div>
+      <div class="si-value" id="print-date"></div>
+    </div>
+  </div>
+
+  <!-- ── Clinical Experience Information ───────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>Clinical Experience Information</h2>
+      <span class="rev">Revised 11/21/2025</span>
+    </div>
+    <div class="cm-section-body">
+
+      <div class="field-group">
+        <label for="clinical-location">1. Location</label>
+        <span class="hint">Facility name, hospital unit (if applicable), city, and state</span>
+        <input id="clinical-location" type="text" placeholder="e.g., Memorial Hospital – Medical-Surgical Unit, Denver, CO" />
+      </div>
+
+      <div class="row2">
+        <div class="field-group">
+          <label for="clinical-dates">2. Dates of Clinical Experience</label>
+          <span class="hint">MM/DD/YYYY – MM/DD/YYYY or MM/DD/YYYY – Present</span>
+          <input id="clinical-dates" type="text" placeholder="e.g., 03/01/2026 – Present" />
+        </div>
+        <div class="field-group">
+          <label for="patient-types">3. Type of Patients Encountered</label>
+          <span class="hint">e.g., obstetric, pediatric, adult, critical care, etc.</span>
+          <input id="patient-types" type="text" placeholder="e.g., Adult medical-surgical" />
+        </div>
+      </div>
+
+      <div class="privacy-notice">
+        ⚠️ <strong>Privacy notice:</strong> Do not include patient identifying information
+        (e.g., patient name, date of birth, etc.).
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Approved Focus Topic ─────────────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>Approved Focus Topic</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label for="focus-topic">Primary Disease Process, Disorder, or Injury</label>
+        <span class="hint">
+          e.g., pneumonia, influenza, gestational diabetes — do not use symptoms as a focus topic.
+        </span>
+        <input id="focus-topic" type="text" placeholder="e.g., Community-acquired pneumonia" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── A. Pathophysiology & Risk Factors ────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>A. Disease Process / Pathophysiology / Risk Factors</h2>
+    </div>
+    <div class="cm-section-body">
+
+      <div class="field-group">
+        <label for="pathophysiology">Pathophysiology</label>
+        <span class="hint">
+          Explain how the disease process, disorder, or injury affects body system functions —
+          rather than simply defining the condition.
+        </span>
+        <textarea id="pathophysiology" placeholder="Describe the underlying disease process and its physiological effects…"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Risk Factors</label>
+        <span class="hint">What increases a person's risk for developing this condition?</span>
+        <div class="numbered-list" id="risk-list">
+          <div class="numbered-item"><span class="num">1</span><input type="text" class="risk-factor" placeholder="Risk factor 1" /></div>
+          <div class="numbered-item"><span class="num">2</span><input type="text" class="risk-factor" placeholder="Risk factor 2" /></div>
+          <div class="numbered-item"><span class="num">3</span><input type="text" class="risk-factor" placeholder="Risk factor 3" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── B. Recognizing Cues ───────────────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>B. Recognizing Cues (List)</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="info-box">
+        <strong>Guiding questions:</strong> What does the patient look like? What are the patient's
+        complaints? What relevant medical history exists? What are the relevant vital signs?
+      </div>
+      <div class="field-group">
+        <label>List at least four cues relevant to the patient's current condition</label>
+        <span class="hint">Draw from medical records, signs &amp; symptoms, and vital signs.</span>
+        <div class="numbered-list" id="cues-list">
+          <div class="numbered-item"><span class="num">1</span><input type="text" class="cue" placeholder="Cue 1" /></div>
+          <div class="numbered-item"><span class="num">2</span><input type="text" class="cue" placeholder="Cue 2" /></div>
+          <div class="numbered-item"><span class="num">3</span><input type="text" class="cue" placeholder="Cue 3" /></div>
+          <div class="numbered-item"><span class="num">4</span><input type="text" class="cue" placeholder="Cue 4" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── C. Analyzing Cues – Supporting ──────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>C. Analyzing Cues – Supporting (Statements)</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label>Select three cues from Aspect B and provide analysis statements</label>
+        <span class="hint">
+          Explain how each cue connects to the disease process/disorder/injury.
+        </span>
+        <div class="numbered-list" id="supporting-list">
+          <div class="numbered-item"><span class="num">1</span><textarea class="supporting" placeholder="Analysis statement 1"></textarea></div>
+          <div class="numbered-item"><span class="num">2</span><textarea class="supporting" placeholder="Analysis statement 2"></textarea></div>
+          <div class="numbered-item"><span class="num">3</span><textarea class="supporting" placeholder="Analysis statement 3"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── C1. Analyzing Cues – Concerning ─────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>C1. Analyzing Cues – Concerning (List)</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label>From the supporting cues in Aspect C, select the two cues of greatest concern</label>
+        <div class="numbered-list" id="concerning-list">
+          <div class="numbered-item"><span class="num">1</span><input type="text" class="concerning" placeholder="Most concerning cue" /></div>
+          <div class="numbered-item"><span class="num">2</span><input type="text" class="concerning" placeholder="Second most concerning cue" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── D. Prioritized Hypotheses ───────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>D. Prioritized Hypotheses</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label>Develop three hypotheses predicting positive impacts of nursing interventions</label>
+        <span class="hint">
+          List in order of priority. Focus on <em>nursing</em> interventions (pain management,
+          oxygen therapy, fluid resuscitation, education, safety measures), not
+          physician-performed interventions.
+        </span>
+        <div class="numbered-list" id="hypotheses-list">
+          <div class="numbered-item"><span class="num">1</span><textarea class="hypothesis" placeholder="Hypothesis 1 (highest priority)"></textarea></div>
+          <div class="numbered-item"><span class="num">2</span><textarea class="hypothesis" placeholder="Hypothesis 2"></textarea></div>
+          <div class="numbered-item"><span class="num">3</span><textarea class="hypothesis" placeholder="Hypothesis 3"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── E. Generated Solutions ───────────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>E. Generated Solutions (Goals)</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label>Add four generated solutions/nursing actions with their desired positive impacts</label>
+        <span class="hint">
+          Each intervention should be connected to an anticipated outcome. Focus on nursing actions.
+          These statements should fully correspond with Aspects F &amp; G.
+        </span>
+        <div class="numbered-list" id="solutions-list">
+          <div class="numbered-item"><span class="num">1</span><textarea class="solution" placeholder="Solution / Goal 1"></textarea></div>
+          <div class="numbered-item"><span class="num">2</span><textarea class="solution" placeholder="Solution / Goal 2"></textarea></div>
+          <div class="numbered-item"><span class="num">3</span><textarea class="solution" placeholder="Solution / Goal 3"></textarea></div>
+          <div class="numbered-item"><span class="num">4</span><textarea class="solution" placeholder="Solution / Goal 4"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── F. Take Actions ──────────────────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>F. Take Actions</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label>Provide details on four nursing actions performed, in order of priority</label>
+        <span class="hint">
+          List nursing actions observed or performed while participating in patient care.
+          These statements should fully correspond with Aspects E &amp; G.
+        </span>
+        <div class="numbered-list" id="actions-list">
+          <div class="numbered-item"><span class="num">1</span><textarea class="action" placeholder="Nursing action 1 (highest priority)"></textarea></div>
+          <div class="numbered-item"><span class="num">2</span><textarea class="action" placeholder="Nursing action 2"></textarea></div>
+          <div class="numbered-item"><span class="num">3</span><textarea class="action" placeholder="Nursing action 3"></textarea></div>
+          <div class="numbered-item"><span class="num">4</span><textarea class="action" placeholder="Nursing action 4"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── G. Evaluation Outcomes ───────────────────────────────── -->
+  <div class="cm-section">
+    <div class="cm-section-header">
+      <h2>G. Evaluation Outcomes</h2>
+    </div>
+    <div class="cm-section-body">
+      <div class="field-group">
+        <label>Add four outcome statements evaluating the effectiveness of performed actions</label>
+        <span class="hint">
+          Indicate whether the patient met goals from Aspect E after completing actions in Aspect F.
+          If goals were not met, outline partial progress or lack of progress. Offer a true view of
+          the patient's status at the end of the clinical shift.
+        </span>
+        <div class="numbered-list" id="outcomes-list">
+          <div class="numbered-item"><span class="num">1</span><textarea class="outcome" placeholder="Outcome 1"></textarea></div>
+          <div class="numbered-item"><span class="num">2</span><textarea class="outcome" placeholder="Outcome 2"></textarea></div>
+          <div class="numbered-item"><span class="num">3</span><textarea class="outcome" placeholder="Outcome 3"></textarea></div>
+          <div class="numbered-item"><span class="num">4</span><textarea class="outcome" placeholder="Outcome 4"></textarea></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom action bar -->
+  <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.5rem; margin-bottom:2rem;" class="no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All Fields</button>
+  </div>
+
+</div><!-- /.cm-page -->
+
+<script is:inline>
+(function () {
+  /* ── Persist data in sessionStorage ─────────────────────────── */
+  var STORE_KEY = 'wgu_concept_map_v1';
+
+  function save() {
+    var data = {};
+    document.querySelectorAll('input[id], textarea[id]').forEach(function (el) {
+      data[el.id] = el.value;
+    });
+    try { sessionStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (_) {}
+  }
+
+  function restore() {
+    var raw;
+    try { raw = sessionStorage.getItem(STORE_KEY); } catch (_) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (_) { return; }
+    Object.keys(data).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) {
+        el.value = data[id];
+      }
+    });
+  }
+
+  /* ── Auto-size textareas ─────────────────────────────────────── */
+  function autosize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  /* ── Date helper ─────────────────────────────────────────────── */
+  function isoToDisplay(iso) {
+    if (!iso) return '';
+    var parts = iso.split('-');
+    return parts[1] + '/' + parts[2] + '/' + parts[0];
+  }
+
+  /* ── Sync student info to print card ────────────────────────── */
+  function syncPrintCard() {
+    var nameEl = document.getElementById('student-name');
+    var dateEl = document.getElementById('submission-date');
+    var printName = document.getElementById('print-name');
+    var printDate = document.getElementById('print-date');
+    if (printName) printName.textContent = nameEl ? nameEl.value : '';
+    if (printDate && dateEl) {
+      printDate.textContent = isoToDisplay(dateEl.value);
+    }
+  }
+
+  /* ── Clear all ───────────────────────────────────────────────── */
+  window.clearAll = function () {
+    if (!confirm('Clear all fields? This cannot be undone.')) return;
+    document.querySelectorAll('input, textarea').forEach(function (el) {
+      el.value = '';
+      if (el.tagName === 'TEXTAREA') el.style.height = 'auto';
+    });
+    try { sessionStorage.removeItem(STORE_KEY); } catch (_) {}
+    syncPrintCard();
+  };
+
+  /* ── Init ────────────────────────────────────────────────────── */
+  function init() {
+    restore();
+    syncPrintCard();
+
+    document.querySelectorAll('input, textarea').forEach(function (el) {
+      if (el.tagName === 'TEXTAREA') autosize(el);
+      el.addEventListener('input', function () {
+        if (el.tagName === 'TEXTAREA') autosize(el);
+        save();
+        syncPrintCard();
+      });
+    });
+
+    /* Set today as default date if blank */
+    var dateEl = document.getElementById('submission-date');
+    if (dateEl && !dateEl.value) {
+      var today = new Date();
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var dd = String(today.getDate()).padStart(2, '0');
+      dateEl.value = today.getFullYear() + '-' + mm + '-' + dd;
+      syncPrintCard();   // isoToDisplay is used inside syncPrintCard
+      save();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  /* Show student info print card before printing */
+  window.addEventListener('beforeprint', function () {
+    syncPrintCard();
+    var card = document.getElementById('student-info-card');
+    if (card) card.style.display = 'flex';
+    /* Expand all textareas for print */
+    document.querySelectorAll('textarea').forEach(function (ta) {
+      ta.style.height = 'auto';
+      ta.style.height = ta.scrollHeight + 'px';
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    var card = document.getElementById('student-info-card');
+    if (card) card.style.display = 'none';
+  });
+})();
+</script>
+
+</Layout>
