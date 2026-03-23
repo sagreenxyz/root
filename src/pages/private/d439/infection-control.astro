@@ -1,0 +1,575 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Infection Control & Asepsis – D439" protected={true}>
+  <div style="max-width:860px; margin:0 auto; padding:2rem 1rem;">
+
+    <!-- Breadcrumb -->
+    <nav style="font-size:0.85rem; color:#6b7280; margin-bottom:1.5rem;">
+      <a href={`${base}/private/dashboard`} style="color:#4f46e5; text-decoration:none;">Dashboard</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <a href={`${base}/private/d439`} style="color:#4f46e5; text-decoration:none;">D439 Foundations of Nursing</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <span>Infection Control &amp; Asepsis</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header style="margin-bottom:2rem;">
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+        <span style="font-size:2rem;">🧼</span>
+        <h1 style="font-size:1.9rem; font-weight:800; color:#1e293b; margin:0;">Infection Control &amp; Asepsis</h1>
+      </div>
+      <span style="display:inline-block; background:#ede9fe; color:#6d28d9; font-size:0.78rem; font-weight:700; letter-spacing:0.05em; padding:0.25rem 0.75rem; border-radius:9999px; text-transform:uppercase;">D439 – Foundations of Nursing</span>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+      <p style="font-weight:700; color:#1e293b; margin:0 0 0.75rem 0; font-size:0.95rem;">Table of Contents</p>
+      <ol style="margin:0; padding-left:1.25rem; line-height:2; font-size:0.9rem;">
+        <li><a href="#medical-asepsis" style="color:#4f46e5; text-decoration:none;">Medical Asepsis (Clean Technique)</a></li>
+        <li><a href="#surgical-asepsis" style="color:#4f46e5; text-decoration:none;">Surgical Asepsis (Sterile Technique)</a></li>
+        <li><a href="#sterile-field" style="color:#4f46e5; text-decoration:none;">Establishing a Sterile Field</a></li>
+        <li><a href="#handwashing" style="color:#4f46e5; text-decoration:none;">Proper Handwashing Technique</a></li>
+        <li><a href="#hand-sanitizer" style="color:#4f46e5; text-decoration:none;">Proper Use of Hand Sanitizer</a></li>
+        <li><a href="#clean-gloving" style="color:#4f46e5; text-decoration:none;">Gloving – Clean (Non-Sterile) Gloves</a></li>
+        <li><a href="#sterile-gloving" style="color:#4f46e5; text-decoration:none;">Sterile Gloving</a></li>
+        <li><a href="#ppe" style="color:#4f46e5; text-decoration:none;">PPE – Personal Protective Equipment</a></li>
+        <li><a href="#droplet" style="color:#4f46e5; text-decoration:none;">Droplet Precautions</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. Medical Asepsis -->
+    <section id="medical-asepsis" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">1. Medical Asepsis (Clean Technique)</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        <strong>Medical asepsis</strong> (clean technique) refers to practices that reduce the number of microorganisms and prevent their spread. It does <em>not</em> require elimination of all organisms — only pathogenic ones are targeted. This is the standard approach for most routine nursing care and patient interactions outside of invasive procedures.
+      </p>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – When to Use Medical Asepsis</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Routine physical assessments and daily care</li>
+          <li>Administering oral, topical, or IM medications</li>
+          <li>Bathing, oral care, and perineal care</li>
+          <li>Changing non-wound dressings (e.g., peripheral IV site dressing when skin is intact)</li>
+          <li>Nasogastric tube management (unless inserting)</li>
+          <li>Specimen collection (urine via void, sputum)</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">The Chain of Infection</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Infection occurs when six links form an unbroken chain. Breaking any single link prevents disease transmission:
+      </p>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Infectious Agent</strong> – pathogen (bacteria, virus, fungus, parasite). Break it by: antimicrobials, disinfection, sterilization.</li>
+        <li><strong>Reservoir</strong> – where the pathogen lives (humans, animals, environment, equipment). Break it by: proper wound care, changing soiled linens, cleaning equipment.</li>
+        <li><strong>Portal of Exit</strong> – how the pathogen leaves (respiratory secretions, blood, feces, urine). Break it by: covering coughs/sneezes, containing drainage.</li>
+        <li><strong>Mode of Transmission</strong> – contact (direct/indirect), droplet, airborne, vector, vehicle. Break it by: hand hygiene, PPE, isolation precautions.</li>
+        <li><strong>Portal of Entry</strong> – break in skin, mucous membranes, respiratory tract. Break it by: intact skin care, sterile technique for invasive procedures.</li>
+        <li><strong>Susceptible Host</strong> – person at risk. Break it by: immunizations, nutrition, rest, turning/repositioning, adequate hydration.</li>
+      </ol>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Hand hygiene is the single most effective intervention for breaking the chain of infection</strong> at the mode of transmission link. Expect questions asking you to identify which link is being broken by a specific nursing action.</p>
+      </div>
+    </section>
+
+    <!-- 2. Surgical Asepsis -->
+    <section id="surgical-asepsis" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">2. Surgical Asepsis (Sterile Technique)</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        <strong>Surgical asepsis</strong> (sterile technique) requires the complete elimination of all microorganisms — including spores — from an object or area. It is required whenever the body's natural defenses are bypassed, such as when skin or mucous membranes are intentionally penetrated.
+      </p>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – When Sterile Technique is Required</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Urinary catheter insertion (indwelling or straight)</li>
+          <li>Invasive procedure: central line insertion, LP, thoracentesis</li>
+          <li>Surgical procedures and sterile dressing changes</li>
+          <li>Deep wound irrigation and packing</li>
+          <li>Preparation of IV medications in certain settings</li>
+          <li>Tracheostomy care (inner cannula cleaning)</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Principles of Sterile Technique</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>A sterile object becomes contaminated when touched by an unsterile object.</li>
+        <li>Sterile items are only considered sterile if you can verify the integrity of the packaging and expiration date.</li>
+        <li>A sterile field is contaminated if it becomes wet (moisture wicks bacteria through the drape — strike-through contamination).</li>
+        <li>The edges and 1-inch border of a sterile field are considered contaminated.</li>
+        <li>Sterile items held below the waist or above the level of visibility are considered contaminated.</li>
+        <li>Never reach over a sterile field; avoid talking, coughing, or sneezing over it.</li>
+        <li>A sterile field left unattended or out of sight is considered contaminated.</li>
+      </ul>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">If you are <strong>uncertain whether an item is sterile, treat it as contaminated</strong>. "When in doubt, throw it out." This is a classic NCLEX principle. Also remember: sterility must be <em>maintained</em> — sterile + sterile = sterile; sterile + non-sterile = contaminated.</p>
+      </div>
+    </section>
+
+    <!-- 3. Sterile Field -->
+    <section id="sterile-field" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">3. Establishing a Sterile Field – Step-by-Step</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        A sterile field is a microorganism-free area created to perform invasive procedures safely. Proper setup is critical to preventing healthcare-associated infections (HAIs).
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Step-by-Step Procedure</h3>
+      <ol style="line-height:2.2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Perform hand hygiene</strong> before beginning. Gather all needed supplies before opening the sterile field.</li>
+        <li><strong>Prepare the work surface</strong> – use a clean, dry, flat surface at waist height. A wet surface contaminates by wicking.</li>
+        <li><strong>Open the outermost package</strong> – grasp the folded corners and pull back away from the field. Never reach over the sterile interior.</li>
+        <li><strong>Open the sterile drape</strong> – if using a kit with a drape, open it by pinching the 1-inch corner (contaminated border). Allow it to unfold downward without shaking or touching the sterile surface.</li>
+        <li><strong>Maintain the 1-inch border rule</strong> – the outer 1-inch (2.5 cm) margin of any sterile drape is considered contaminated. Never place sterile items in this border zone.</li>
+        <li><strong>Add sterile items to the field:</strong>
+          <ul style="margin-top:0.25rem;">
+            <li><em>Sterile package:</em> Open the outer wrap (four flaps) away from you, then flip or slide the inner contents onto the field without crossing over it.</li>
+            <li><em>Sterile liquids (e.g., saline):</em> Remove the cap (do not set it down face-up — hold it or place it face-down on a clean surface). Pour from at least 6 inches above the field into a sterile basin, pouring away from the sterile field, without splashing.</li>
+            <li><em>Sterile forceps:</em> Must be handed to the nurse maintaining the sterile field, or placed on the sterile drape without touching the rim of the container to the field.</li>
+          </ul>
+        </li>
+        <li><strong>Never turn your back</strong> on or walk away from a sterile field — it is immediately considered contaminated if out of sight.</li>
+        <li><strong>Keep sterile items at or above waist level</strong> at all times. Items below the waist are contaminated.</li>
+        <li><strong>Avoid talking, coughing, or sneezing</strong> over the sterile field. If you must cough or sneeze, turn away and apply a mask if possible.</li>
+        <li><strong>Moisture = contamination</strong> – any wetness (blood, saline, sweat from gloves) that contacts the drape from below (strike-through) contaminates the entire field.</li>
+      </ol>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Common Sterile Field Errors</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Reaching over the sterile field to place items on the far side</li>
+          <li>Allowing the cap of a solution bottle to rest face-up (contaminants can settle into the cap)</li>
+          <li>Pouring solution from too close (risk of splash contamination)</li>
+          <li>Allowing the sterile gown sleeve or non-sterile arm to touch sterile items</li>
+          <li>Using expired or wet sterile packages</li>
+          <li>Leaving the field unattended even briefly</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">A very common exam scenario: a visitor or colleague reaches across the sterile field. The nurse must <strong>immediately stop the procedure and set up a new sterile field</strong>. Contamination cannot be "undone." Also: the 1-inch border and below-waist rules are high-frequency test items.</p>
+      </div>
+    </section>
+
+    <!-- 4. Handwashing -->
+    <section id="handwashing" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">4. Proper Handwashing Technique</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Proper handwashing with soap and water is essential for reducing transient microorganisms. The CDC recommends a <strong>5-step process</strong> with a minimum of 20 seconds of scrubbing.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">CDC 5-Step Handwashing Technique</h3>
+      <ol style="line-height:2.2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Wet</strong> – Turn on warm water and wet hands and wrists thoroughly before applying soap. (Wetting before soap prevents skin irritation.)</li>
+        <li><strong>Lather</strong> – Apply soap and work into a lather covering all surfaces: palms, backs of hands, between fingers, under nails, and wrists. <em>Minimum 20 seconds of scrubbing</em> — hum the "Happy Birthday" song twice as a timer.</li>
+        <li><strong>Scrub</strong> – Rub hands together vigorously, interlacing fingers, rubbing the backs of fingers against opposing palms, rotating thumbs, and scrubbing fingertips in the opposite palm. Clean under nails using the fingernails of the opposite hand or a nail pick.</li>
+        <li><strong>Rinse</strong> – Rinse hands under clean running water with fingertips pointing <em>downward</em> so water drains away from the arms. Do not touch the sink basin.</li>
+        <li><strong>Dry</strong> – Dry thoroughly with a clean paper towel using a patting motion (rubbing increases skin breakdown). <strong>Use the paper towel to turn off the faucet</strong> to avoid recontaminating clean hands. Discard towel without touching the waste bin if possible (use foot pedal).</li>
+      </ol>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – WHO 5 Moments for Hand Hygiene</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Before</strong> touching a patient</li>
+          <li><strong>Before</strong> clean/aseptic procedures</li>
+          <li><strong>After</strong> body fluid exposure risk</li>
+          <li><strong>After</strong> touching a patient</li>
+          <li><strong>After</strong> touching patient surroundings</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">When to Use Soap and Water vs. Hand Sanitizer</h3>
+      <div style="overflow-x:auto; margin-bottom:1rem;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem; color:#374151;">
+          <thead>
+            <tr style="background:#f1f5f9;">
+              <th style="padding:0.6rem 0.75rem; text-align:left; border:1px solid #e2e8f0; font-weight:700;">Situation</th>
+              <th style="padding:0.6rem 0.75rem; text-align:left; border:1px solid #e2e8f0; font-weight:700;">Soap &amp; Water</th>
+              <th style="padding:0.6rem 0.75rem; text-align:left; border:1px solid #e2e8f0; font-weight:700;">ABHR (Sanitizer)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Hands visibly soiled with dirt, blood, or body fluids</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0; color:#16a34a; font-weight:600;">✔ Required</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0; color:#dc2626; font-weight:600;">✘ Not sufficient</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">After caring for a patient with <em>C. difficile</em></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0; color:#16a34a; font-weight:600;">✔ Required</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0; color:#dc2626; font-weight:600;">✘ Spores not killed</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">After caring for a patient with norovirus</td>
+              <td style="padding:0.6rem 0.75mm; border:1px solid #e2e8f0; color:#16a34a; font-weight:600;">✔ Required</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0; color:#dc2626; font-weight:600;">✘ Not effective</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Routine patient contact (hands not visibly soiled)</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Acceptable</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0; color:#16a34a; font-weight:600;">✔ Preferred (faster, less skin damage)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Surgical Hand Scrub</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Used before donning sterile gloves for surgical procedures. Involves scrubbing hands and forearms up to 2–3 inches above the elbows for 2–6 minutes using an antimicrobial soap or surgical-approved alcohol rub. The goal is to reduce resident flora in addition to transient flora. Hands are held above elbows throughout the scrub and during rinsing to prevent contaminated water from flowing back over clean hands.
+      </p>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>C. diff and norovirus are the two most tested organisms requiring soap and water</strong> because alcohol-based hand rubs do NOT kill spores (C. diff) or non-enveloped viruses (norovirus). This is a classic NCLEX-style distractor question.</p>
+      </div>
+    </section>
+
+    <!-- 5. Hand Sanitizer -->
+    <section id="hand-sanitizer" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">5. Proper Use of Alcohol-Based Hand Sanitizer (ABHR)</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Alcohol-based hand rubs (≥60% alcohol) are the preferred method of hand hygiene for most routine patient care situations when hands are not visibly soiled. They are faster-acting, less damaging to skin with repeated use, and more effective than soap and water against most bacteria and enveloped viruses.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Correct Technique</h3>
+      <ol style="line-height:2.2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Dispense adequate volume</strong> – apply enough product (typically 1–2 pumps, ~3 mL) to cover all surfaces of both hands. Using too little will not achieve adequate antimicrobial effect.</li>
+        <li><strong>Apply to palm</strong> – rub palms together to spread the product.</li>
+        <li><strong>Cover all surfaces</strong> – rub the product over all surfaces: palms, backs of hands, between fingers, backs of fingers (interlaced), thumbs, and fingertips/nails using the same thorough technique as handwashing.</li>
+        <li><strong>Rub until completely dry</strong> – continue rubbing for approximately 20–30 seconds until hands are completely dry. <em>Do not wipe or rinse off before dry</em> — the antiseptic effect requires full evaporation contact time. Do not wave hands to speed drying.</li>
+      </ol>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – When NOT to Use Hand Sanitizer</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Hands visibly soiled</strong> with dirt, blood, or body fluids (organic matter reduces alcohol effectiveness)</li>
+          <li><strong><em>Clostridioides difficile</em> (C. diff)</strong> – alcohol does NOT kill spores; soap and water and friction are required</li>
+          <li><strong>Norovirus and other non-enveloped viruses</strong> – soap and water is more effective</li>
+          <li><strong>After removing gloves with visible contamination</strong> – wash with soap and water first</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Key phrase: <strong>"rub until completely dry."</strong> This indicates adequate contact time for the alcohol to work. Wiping or rinsing off prematurely negates the antimicrobial effect. Also note: hand sanitizer should NOT be used more than 3–4 consecutive times without performing soap-and-water handwashing, per some facility policies, due to alcohol residue buildup.</p>
+      </div>
+    </section>
+
+    <!-- 6. Clean Gloving -->
+    <section id="clean-gloving" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">6. Gloving – Clean (Non-Sterile) Gloves</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Clean gloves protect both the nurse and the patient. OSHA mandates glove use whenever exposure to blood or body fluids is anticipated (Standard Precautions). Gloves do NOT replace hand hygiene — hands must be cleaned before donning and after doffing gloves.
+      </p>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – When to Use Clean Gloves</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Any anticipated contact with blood, body fluids, secretions, excretions, mucous membranes, or non-intact skin</li>
+          <li>Administering enemas, performing perineal care, handling contaminated items or surfaces</li>
+          <li>Peripheral IV insertion and maintenance</li>
+          <li>Suctioning (oral/nasal with clean technique)</li>
+          <li>Obtaining wound cultures, handling specimens</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Donning Clean Gloves</h3>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Perform hand hygiene.</li>
+        <li>Select the correct glove size to ensure proper fit (too loose causes reduced dexterity; too tight risks tearing).</li>
+        <li>Pick up one glove by the cuff (the folded wrist edge) and slide hand in, pulling up to the wrist. Repeat for the other hand.</li>
+        <li>Interlace gloved fingers to adjust fit, if needed.</li>
+        <li>Inspect for visible tears or defects before proceeding.</li>
+      </ol>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Doffing (Removing) Clean Gloves – Critical for Prevention of Self-Contamination</h3>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Pinch the outside of one glove</strong> near the wrist (palm side) and peel it off, turning it inside-out as it comes off.</li>
+        <li><strong>Hold the removed glove in the still-gloved hand</strong> (ball it up inside the palm).</li>
+        <li><strong>Slide two fingers of the bare hand under the cuff</strong> of the remaining glove (touching only the inside — the clean side) and peel it off, encasing the first glove inside.</li>
+        <li>Discard both gloves in the appropriate waste receptacle.</li>
+        <li><strong>Perform hand hygiene immediately after glove removal</strong> — gloves can have micro-perforations and do not provide absolute protection.</li>
+      </ol>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Gloves must be changed <strong>between patients</strong> and between different procedures on the <em>same</em> patient if moving from a contaminated to a clean site. Wearing the same gloves from patient to patient is a sentinel safety violation. <strong>Gloves do not replace hand hygiene</strong> — this is a very common exam distractor.</p>
+      </div>
+    </section>
+
+    <!-- 7. Sterile Gloving -->
+    <section id="sterile-gloving" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">7. Sterile Gloving – Step-by-Step Procedure</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Sterile gloves must be applied using a technique that maintains the sterility of the outer glove surface. Even a single touch of a non-sterile surface on the exterior of the glove renders the glove contaminated.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Prerequisites</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Perform a thorough hand wash (or surgical scrub) before donning.</li>
+        <li>Open the outer sterile glove package using clean hands, touching only the outside of the wrapper.</li>
+        <li>Place the inner glove package on a clean, flat surface. Open it by peeling back the flaps (touching only the outer edges). The inner glove wrapper, once opened, becomes the sterile field for gloving.</li>
+        <li>Verify gloves are positioned with cuffs toward you, glove opening facing up.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Donning the First Glove (Dominant Hand)</h3>
+      <ol style="line-height:2.2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Using the thumb and first two fingers of the <em>non-dominant</em> hand, grasp the <strong>inner cuff edge</strong> of the glove for the dominant hand. Touch only the folded-back cuff (the inside surface — non-sterile side).</li>
+        <li>Lift the glove and slide the dominant hand in, keeping fingers together and thumb abducted.</li>
+        <li>Pull the glove up to the wrist, holding only the inside cuff. <em>Do not</em> unroll the cuff yet — leave it folded down for now.</li>
+      </ol>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Donning the Second Glove (Non-Dominant Hand)</h3>
+      <ol style="line-height:2.2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Slide the <strong>sterile-gloved fingers</strong> of the dominant hand under the <em>outer</em> cuff fold of the second glove (touching only the sterile exterior).</li>
+        <li>Lift the glove off the sterile field and slide the non-dominant hand in while keeping the sterile-gloved fingers beneath the cuff.</li>
+        <li>Pull the cuff of the second glove up and over the wrist of the gown (or bare wrist) without touching the inside of the glove or the ungloved skin.</li>
+      </ol>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Adjusting the Gloves</h3>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Now with both gloves on, slide the fingers of each gloved hand under the cuff of the other glove to unfold and position it properly.</li>
+        <li>Adjust fit by interlacing fingers — this is safe because <em>sterile touches sterile</em>.</li>
+        <li>Keep both hands above waist level at all times once gloved.</li>
+      </ol>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Key Sterile Gloving Rules</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Only the <strong>inside (cuff) of the first glove</strong> is touched with bare fingers — that portion is not part of the sterile field.</li>
+          <li>The <strong>outside of both gloves</strong> must never be touched by bare skin or unsterile surfaces.</li>
+          <li>Once both gloves are on, hands should be <strong>clasped together above waist level</strong> until the procedure begins.</li>
+          <li>If a glove tears during a procedure, remove both gloves, perform hand hygiene, and re-glove with a new sterile pair.</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">The most common sterile gloving mistake tested: the nurse touches the <strong>outside of the first glove with bare fingers</strong> when trying to put on the second. Remember: <strong>bare hand touches only the inside cuff of glove #1; sterile-gloved hand slides under the outside cuff of glove #2</strong>.</p>
+      </div>
+    </section>
+
+    <!-- 8. PPE -->
+    <section id="ppe" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">8. PPE – Personal Protective Equipment</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        PPE creates a physical barrier between the healthcare worker and potentially infectious materials. Selection of PPE is based on the anticipated exposure risk and the type of transmission precautions required.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">PPE Types and When Each is Required</h3>
+      <div style="overflow-x:auto; margin-bottom:1rem;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.88rem; color:#374151;">
+          <thead>
+            <tr style="background:#f1f5f9;">
+              <th style="padding:0.6rem 0.75rem; text-align:left; border:1px solid #e2e8f0; font-weight:700;">PPE Item</th>
+              <th style="padding:0.6rem 0.75rem; text-align:left; border:1px solid #e2e8f0; font-weight:700;">When Required</th>
+              <th style="padding:0.6rem 0.75rem; text-align:left; border:1px solid #e2e8f0; font-weight:700;">Key Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;"><strong>Gloves</strong></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Contact with blood, body fluids, mucous membranes, non-intact skin, contaminated items</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Change between tasks; remove without self-contamination</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;"><strong>Gown</strong></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Risk of clothing contamination from splash/spray; contact precautions (e.g., MRSA, C. diff, VRE)</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Tie at neck and waist; remove before leaving room</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;"><strong>Surgical Mask</strong></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Droplet precautions; risk of splash to mucous membranes; within 3 ft of droplet patient</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Covers nose and mouth; does not protect against airborne particles &lt;5 µm</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;"><strong>N95 Respirator</strong></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Airborne precautions: TB, measles, chickenpox, COVID-19 (per facility protocol)</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Must be fit-tested; filters ≥95% of airborne particles; seal check each use</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;"><strong>Eye Protection (Goggles)</strong></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Risk of splash, spray, or splatter of blood or body fluids to the eyes</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Reusable if disinfected between patients</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;"><strong>Face Shield</strong></td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">High-risk splash procedures (intubation, suctioning, C-section)</td>
+              <td style="padding:0.6rem 0.75rem; border:1px solid #e2e8f0;">Covers entire face; used instead of or in addition to goggles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Donning and Doffing Order</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.5rem;">
+          <div>
+            <p style="font-weight:700; margin:0 0 0.4rem 0; color:#1e40af;">DONNING (Putting On):</p>
+            <ol style="margin:0; padding-left:1.25rem; line-height:1.9; color:#374151;">
+              <li>🥼 <strong>Gown</strong> (protects clothing first)</li>
+              <li>😷 <strong>Mask or Respirator</strong></li>
+              <li>🥽 <strong>Goggles / Eye Protection</strong></li>
+              <li>🧤 <strong>Gloves</strong> (last — over cuffs)</li>
+            </ol>
+          </div>
+          <div>
+            <p style="font-weight:700; margin:0 0 0.4rem 0; color:#dc2626;">DOFFING (Taking Off) — Most Contaminated First:</p>
+            <ol style="margin:0; padding-left:1.25rem; line-height:1.9; color:#374151;">
+              <li>🧤 <strong>Gloves</strong> (most contaminated)</li>
+              <li>🥽 <strong>Goggles / Eye Protection</strong></li>
+              <li>🥼 <strong>Gown</strong></li>
+              <li>😷 <strong>Mask / Respirator</strong> (last — least contaminated)</li>
+            </ol>
+          </div>
+        </div>
+        <p style="margin:0.75rem 0 0 0; color:#374151; font-size:0.9rem;"><strong>Perform hand hygiene between each doffing step</strong> to prevent self-contamination. At minimum, perform hand hygiene after removing gloves and after removing all PPE.</p>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Gown Removal Technique</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        After removing gloves, untie the gown at the waist (clean hands) and then at the neck. Grasp the gown at the inside of the shoulders and pull forward and down, rolling the gown so that the contaminated outside is contained within. Roll into a bundle and discard. Avoid touching the front (contaminated surface) of the gown with bare hands.
+      </p>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">The doffing order mnemonic: <strong>"Gloves Go first, Goggles second, Gown Goes, then Mask"</strong> (GGGm). The mask is removed last because it protects the respiratory tract, and it remains the least contaminated when gloves (most contaminated) are removed first. <strong>OSHA requires training on PPE</strong> use — including donning and doffing — for all healthcare personnel.</p>
+      </div>
+    </section>
+
+    <!-- 9. Droplet Precautions -->
+    <section id="droplet" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">9. Droplet Precautions</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Droplet precautions are used for infections spread by large respiratory droplets (&gt;5 µm) that travel up to <strong>3–6 feet</strong> through the air and land on mucous membranes (eyes, nose, mouth). Droplets do not remain suspended in air for long periods — this distinguishes droplet transmission from airborne transmission.
+      </p>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Infections Requiring Droplet Precautions</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Influenza</strong> (all types)</li>
+          <li><strong>COVID-19</strong> (also may require airborne precautions per facility protocol)</li>
+          <li><strong>Pertussis</strong> (whooping cough)</li>
+          <li><strong>Bacterial meningitis</strong> (<em>Neisseria meningitidis, Haemophilus influenzae</em>)</li>
+          <li><strong>Mumps, Rubella</strong></li>
+          <li><strong>Diphtheria</strong> (pharyngeal)</li>
+          <li><strong>Adenovirus</strong></li>
+          <li><strong>Group A Streptococcus</strong> (pneumonia, pharyngitis)</li>
+          <li><strong>Mycoplasma pneumonia</strong></li>
+          <li>Epiglottitis (<em>Haemophilus influenzae</em> type b)</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Required Precautions</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Private room</strong> (preferred) or <em>cohorting</em> — placing patients with the same organism together if private rooms are unavailable. Maintain at least 3 feet of spatial separation between cohorted patients.</li>
+        <li><strong>Surgical mask</strong> – worn by healthcare workers when within <strong>3 feet</strong> of the patient. Some facilities mandate masking upon entering the room regardless of proximity.</li>
+        <li><strong>Gloves and gown</strong> – per Standard Precautions; additionally required when contact with the patient or environment is anticipated.</li>
+        <li><strong>Eye protection</strong> – if splash or spray of secretions is anticipated (e.g., suctioning, coughing patient).</li>
+        <li><strong>Keep the patient's door closed</strong> — while not strictly required for droplet precautions (unlike airborne), closing the door is good practice and often required by facility policy.</li>
+        <li><strong>Droplet precautions sign</strong> on the patient's room door.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Patient Transport and Education</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Limit patient transport and movement outside the room to essential purposes only.</li>
+        <li>When transport is necessary, have the <strong>patient wear a surgical mask</strong> to contain secretions.</li>
+        <li>Notify receiving departments (radiology, OR) before transporting so they can prepare.</li>
+        <li>Educate the patient and family: cover coughs and sneezes (cough etiquette), perform hand hygiene, avoid touching face, and understand isolation rationale.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Transmission Precautions Comparison</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.85rem; color:#374151; margin-top:0.25rem;">
+            <thead>
+              <tr style="background:#dbeafe;">
+                <th style="padding:0.5rem 0.6rem; text-align:left; border:1px solid #bfdbfe; font-weight:700;">Precaution Type</th>
+                <th style="padding:0.5rem 0.6rem; text-align:left; border:1px solid #bfdbfe; font-weight:700;">Particle Size</th>
+                <th style="padding:0.5rem 0.6rem; text-align:left; border:1px solid #bfdbfe; font-weight:700;">PPE</th>
+                <th style="padding:0.5rem 0.6rem; text-align:left; border:1px solid #bfdbfe; font-weight:700;">Room Type</th>
+                <th style="padding:0.5rem 0.6rem; text-align:left; border:1px solid #bfdbfe; font-weight:700;">Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;"><strong>Contact</strong></td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Direct/indirect touch</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Gloves + gown</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Private or cohort</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">MRSA, VRE, C. diff, scabies</td>
+              </tr>
+              <tr style="background:#eff6ff;">
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;"><strong>Droplet</strong></td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">&gt;5 µm; &lt;3–6 ft range</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Surgical mask (within 3 ft)</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Private or cohort</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Flu, COVID, meningitis, pertussis</td>
+              </tr>
+              <tr>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;"><strong>Airborne</strong></td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">≤5 µm; remains suspended</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">N95 respirator</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">Negative pressure room (AIIR)</td>
+                <td style="padding:0.5rem 0.6rem; border:1px solid #bfdbfe;">TB, measles, varicella, rubeola</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Memorize the "Big Three" for each precaution type: <strong>Airborne = "MTV" (Measles, TB, Varicella)</strong> requiring N95 + negative pressure room; <strong>Droplet = "SPIDERMAN" (Strep, Pertussis, Influenza, Diphtheria, Epiglottitis, Rubella, Mumps, Adenovirus, Neisseria/meningitis)</strong> requiring surgical mask; <strong>Contact = "MVC" (MRSA, VRE, C. diff)</strong> requiring gloves + gown. Some infections may require combined precautions (e.g., COVID-19 often uses droplet + contact).</p>
+      </div>
+    </section>
+
+    <!-- Quick Reference Summary -->
+    <section style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-bottom:2.5rem;">
+      <h2 style="font-size:1.05rem; font-weight:700; color:#1e293b; margin:0 0 1rem 0;">📋 Quick Reference Summary</h2>
+      <ul style="margin:0; padding-left:1.25rem; line-height:2.1; color:#374151; font-size:0.92rem;">
+        <li><strong>Medical asepsis</strong> = reduce microorganisms; used in routine care; breaks chain of infection</li>
+        <li><strong>Surgical asepsis</strong> = eliminate ALL organisms; required for invasive procedures</li>
+        <li><strong>Sterile field</strong>: 1-inch border contaminated; never turn your back; moisture = contamination; items must stay above waist</li>
+        <li><strong>Handwashing</strong>: Wet → Lather (20 sec) → Scrub → Rinse → Dry; use paper towel to turn off faucet</li>
+        <li><strong>Soap and water required</strong>: C. diff, norovirus, visibly soiled hands</li>
+        <li><strong>Hand sanitizer</strong>: rub until completely dry; ≥60% alcohol; ≥3 mL applied</li>
+        <li><strong>Clean gloves</strong>: gloves last on (donning); gloves first off (doffing); hand hygiene before AND after</li>
+        <li><strong>Sterile gloving</strong>: bare hand touches only inner cuff of glove #1; sterile hand slides under outer cuff of glove #2</li>
+        <li><strong>PPE donning</strong>: Gown → Mask → Goggles → Gloves</li>
+        <li><strong>PPE doffing</strong>: Gloves → Goggles → Gown → Mask (+ hand hygiene between steps)</li>
+        <li><strong>Droplet precautions</strong>: surgical mask within 3 ft; private room or cohort; patient wears mask for transport</li>
+      </ul>
+    </section>
+
+    <!-- PREV / NEXT Navigation -->
+    <nav style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+      <a href={`${base}/private/d439/nursing-process`}
+         style="display:inline-block; background:#f1f5f9; color:#64748b; text-decoration:none; padding:0.65rem 1.4rem; border-radius:9999px; font-weight:600; font-size:0.9rem; transition:background 0.15s;">
+        ← Nursing Process (ADPIE)
+      </a>
+      <a href={`${base}/private/d439/wound-skin-care`}
+         style="display:inline-block; background:#eef2ff; color:#4f46e5; text-decoration:none; padding:0.65rem 1.4rem; border-radius:9999px; font-weight:600; font-size:0.9rem; transition:background 0.15s;">
+        Wound &amp; Skin Care →
+      </a>
+    </nav>
+
+  </div>
+</Layout>
