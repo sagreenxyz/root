@@ -1,0 +1,286 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Charcot foot, formally termed Charcot neuro-osteoarthropathy (CN) or Charcot arthropathy, is a severe, progressive, and potentially limb-threatening complication characterised by pathological fracture, joint dislocation, and bony destruction of the foot and ankle in the setting of peripheral neuropathy. First described by the French neurologist Jean-Martin Charcot in 1868 in patients with tabes dorsalis, the condition is now encountered almost exclusively in persons with diabetic peripheral neuropathy, although it may also arise in any condition that produces significant loss of sensorimotor and autonomic nerve function in the lower extremity. The estimated prevalence among diabetic patients ranges from 0.1 to 7.5 percent depending on the diagnostic criteria and population studied, though the condition is widely believed to be substantially underdiagnosed due to its insidious onset and its clinical resemblance to osteomyelitis, deep venous thrombosis, and cellulitis. The consequences of missed or delayed diagnosis are severe: progressive bony collapse leads to the characteristic "rocker-bottom" foot deformity, which dramatically increases plantar pressure, predisposes to skin breakdown and ulceration, and, in the absence of appropriate management, culminates in osteomyelitis, gangrene, and major amputation. For nurses and advanced practice providers, understanding the pathophysiology of Charcot neuro-osteoarthropathy is essential for early recognition, timely referral, and the delivery of evidence-based limb-salvage care.`,
+  },
+  {
+    id: 'pathophysiology',
+    heading: 'Pathophysiology',
+    body: `The pathophysiology of Charcot neuro-osteoarthropathy is multifactorial, integrating neurological, vascular, inflammatory, and biomechanical derangements into a self-reinforcing cascade of bony destruction.
+
+Neurotraumatic Theory. The older neurotraumatic hypothesis proposes that the loss of protective pain sensation from peripheral neuropathy allows repetitive micro-trauma to accumulate in the foot and ankle without the normal pain-mediated behavioural response of offloading or rest. The resultant structural damage—micro-fractures, ligamentous laxity, and joint instability—progresses undetected because the patient neither perceives pain nor reflexively protects the extremity. This theory alone is insufficient, however, because not all profoundly neuropathic individuals develop Charcot foot, suggesting the necessity of additional contributing factors.
+
+Neurovascular Theory. The neurovascular hypothesis implicates loss of autonomic sympathetic innervation to the peripheral vasculature, which produces arteriolar vasodilation and pathological arteriovenous shunting in bone. The resulting hyperaemia—increased blood flow through bone—enhances osteoclastic activity and accelerates bone resorption and remodelling. This theory explains the warmth, erythema, and oedema characteristic of the acute phase, and is supported by Doppler studies demonstrating increased vascular flow in acute Charcot foot.
+
+The Inflammatory-RANKL Pathway. Contemporary understanding of Charcot neuro-osteoarthropathy is dominated by a neuro-inflammatory model centred on the RANK/RANKL/osteoprotegerin (OPG) axis. Following repetitive micro-trauma to the neuropathic foot, local tissue damage triggers the release of pro-inflammatory cytokines—principally tumour necrosis factor-alpha (TNF-α), interleukin-1 (IL-1), and interleukin-6 (IL-6)—by resident macrophages and bone stromal cells. These cytokines upregulate the expression of receptor activator of nuclear factor kappa-B ligand (RANKL), a membrane protein on osteoblasts and stromal cells that is the principal activator of osteoclast differentiation and activity. RANKL binds RANK on osteoclast precursors, driving their maturation into active, bone-resorbing osteoclasts. Osteoprotegerin (OPG), a decoy receptor that normally binds RANKL and prevents osteoclast activation, is produced in reduced quantities in the inflamed neuropathic foot, removing the counterregulatory brake on osteoclastogenesis.
+
+The result is an imbalance in bone turnover: osteoclastic resorption dramatically outpaces osteoblastic formation, producing progressive osteopenia and structural weakening of the bones of the foot. Advanced glycation end-products (AGEs) accumulating in the collagen matrix of ligaments and tendons further reduce their mechanical resilience, predisposing to ligamentous laxity and joint instability. Nuclear factor kappa-B (NF-κB) signalling, which mediates the transcription of inflammatory cytokines, is amplified in peripheral neuropathy and serves as a unifying upstream driver of the inflammatory cascade.
+
+Biomechanical Derangement. The structural consequences of unrestrained osteoclastogenesis—micro-fractures, cortical thinning, and periarticular erosion—in a foot that is both insensate and continuously weight-bearing create a biomechanical cycle of destruction. Micro-fractures that would ordinarily mandate offloading are ignored because of absent pain sensation, allowing fracture propagation and joint subluxation to proceed. Altered gait mechanics secondary to motor neuropathy (weakness of intrinsic foot muscles, development of claw toes and hammer toes) redistribute plantar pressure to vulnerable areas of the midfoot and hindfoot, amplifying load at structurally compromised bony sites. The eventual collapse of the medial longitudinal arch—the defining radiographic and clinical feature of late-stage Charcot foot—reflects the cumulative structural failure of the tarsometatarsal (Lisfranc) and midtarsal (Chopart) joints, which bear disproportionate load as the bony architecture of the midfoot fails.`,
+  },
+  {
+    id: 'stages',
+    heading: 'Staging and Clinical Presentation',
+    body: `Several classification systems exist for Charcot neuro-osteoarthropathy; the Eichenholtz classification (1966), though radiographically based, remains the most widely referenced framework in clinical and research settings, and has been supplemented by clinical staging systems developed to capture the prodromal period preceding overt radiographic change.
+
+Stage 0 (Prodromal / Acute Inflammation — Clinical Stage). The earliest phase is characterised by acute inflammation without radiographic bony abnormality, making diagnosis particularly challenging. The affected foot is warm (often 2–6°C warmer than the contralateral foot, detectable with an infrared thermometer), erythematous, and oedematous. The patient may report mild aching or discomfort, but the intensity of symptoms is disproportionately mild relative to the degree of physiological disruption—a reflection of the underlying neuropathy. A history of a precipitating event—minor trauma, a new pair of shoes, a recent surgical procedure or fracture—is present in approximately half of cases. This stage corresponds to the "at-risk" or pre-radiographic phase and represents the optimal window for intervention.
+
+Stage I (Development / Fragmentation — Eichenholtz Stage I). As inflammation is sustained and osteoclastic activity overwhelms the structural integrity of bone, radiographic changes emerge: periarticular osteopenia, cortical erosion, intra-articular fractures, and joint debris. Clinically, the foot remains warm, swollen, and erythematous. Sclerotic changes are absent. The patient may continue to weight-bear on the insensate limb, dramatically accelerating bony destruction.
+
+Stage II (Coalescence — Eichenholtz Stage II). The inflammatory phase begins to subside, and the body initiates reparative processes. Radiographically, the Stage II foot demonstrates healing at fracture sites, bony fusion of fragmented segments, resorption of fine debris, and early periosteal new bone formation. Warmth and erythema diminish, though oedema may persist. The characteristic structural deformities of advanced Charcot foot—medial column collapse, lateral bowing, and hindfoot valgus or varus—become fixed during this stage.
+
+Stage III (Reconstruction / Consolidation — Eichenholtz Stage III). The final stage represents quiescent disease: no active inflammation is present, the bony architecture has reconsolidated (often in a markedly deformed configuration), and the foot is cool compared to its acute counterpart. Radiography reveals dense, sclerotic bone, healed fractures, and fixed deformities. The "rocker-bottom" foot—characterised by plantar convexity due to midfoot collapse—is the archetypal Stage III deformity. The rigid, deformed foot creates areas of abnormally high plantar pressure that are at high risk for neuropathic ulceration, secondary osteomyelitis, and amputation.
+
+Anatomical Distribution. The Sanders and Frykberg classification (1991) categorises Charcot involvement by anatomical location: Pattern I (forefoot, toes and metatarsal heads); Pattern II (tarsometatarsal joints, Lisfranc joints, most common, approximately 30–40% of cases); Pattern III (naviculocuneiform, talonavicular, calcaneocuboid joints); Pattern IV (ankle and subtalar joints); Pattern V (calcaneus). Midfoot involvement (Patterns II and III) is most prevalent and most likely to produce the rocker-bottom deformity and plantar ulceration.`,
+  },
+  {
+    id: 'risk-factors',
+    heading: 'Risk Factors and Aetiology',
+    body: `Diabetic peripheral neuropathy accounts for the overwhelming majority of Charcot neuro-osteoarthropathy cases in contemporary clinical practice, responsible for an estimated 80–90 percent of all presentations. The duration of diabetes is an independent risk factor: Charcot foot rarely manifests before 10–15 years of poorly controlled disease, and its prevalence rises with cumulative glycaemic exposure. However, Charcot foot is not exclusively a complication of long-standing diabetes; it may occasionally present as the index manifestation in patients with previously undiagnosed type 2 diabetes.
+
+Beyond diabetes, any condition capable of producing severe peripheral neuropathy may precipitate Charcot neuro-osteoarthropathy. Historical causes include tabes dorsalis (neurosyphilis), syringomyelia, leprosy, chronic alcoholism, and hereditary sensorimotor neuropathies (Charcot-Marie-Tooth disease). Contemporary non-diabetic causes include chronic renal failure (uraemic neuropathy), HIV-associated neuropathy, and iatrogenic neuropathy from chemotherapeutic agents. Renal transplant recipients are at particular risk, given the combination of uraemic neuropathy, corticosteroid-induced osteoporosis, and immunosuppression-related vascular disease.
+
+Modifiable risk factors include: poor glycaemic control (reflected by elevated HbA1c), obesity (which amplifies plantar pressure and mechanical stress on already compromised bones), smoking (which impairs peripheral vascular supply and reduces bone mineral density), and vitamin D deficiency (which compounds the metabolic bone disease inherent in the condition). Non-modifiable risk factors include: age (peak incidence in the fifth and sixth decades), male sex (mild predominance), renal disease (accelerates bone loss and neuropathic progression), and genetic predisposition (polymorphisms in genes encoding OPG and RANKL have been associated with elevated susceptibility).
+
+The role of precipitating events deserves particular emphasis. Approximately 50 percent of patients with Charcot foot report a preceding trauma—often trivial, such as a twist, a fall, or prolonged walking—which may serve as the inflammatory trigger initiating the RANKL-mediated cascade in a susceptible neuropathic foot. Other documented precipitants include foot surgery, casting complications, and infection.`,
+  },
+  {
+    id: 'diagnosis',
+    heading: 'Diagnosis',
+    body: `The diagnosis of Charcot neuro-osteoarthropathy is primarily clinical, based on the constellation of acute unilateral foot warmth, erythema, and swelling in a patient with known peripheral neuropathy, but it is supported and refined by imaging and, in equivocal cases, by laboratory investigation.
+
+Clinical Assessment. The cardinal clinical finding is a unilateral warm, erythematous, oedematous foot or ankle in a diabetic patient, with warmth that is dramatically disproportionate to any perceived discomfort. A temperature differential of more than 2°C between the affected and contralateral foot, assessed with a handheld infrared thermometer, is a sensitive (though non-specific) sign of active Charcot inflammation. The astute clinician will specifically examine for the presence of peripheral neuropathy (using a 10-gram Semmes-Weinstein monofilament, vibration tuning fork at the first metatarsal head, and proprioception testing) and assess vascular supply (dorsalis pedis and posterior tibial pulses, ankle-brachial index) to exclude ischaemia as a confounder.
+
+Plain Radiography. Weight-bearing plain radiographs (anteroposterior, lateral, and oblique views of the foot) are the first-line imaging investigation and should be obtained in all suspected cases. In Stage 0 and early Stage I disease, radiographs may appear normal; early findings include periarticular osteopenia, cortical irregularity, and subtle joint-space changes. In established Stage I disease, fractures, joint dislocations, and bony debris are evident. The classic midfoot collapse and rocker-bottom deformity are visible in Stage II–III disease.
+
+Advanced Imaging. Magnetic resonance imaging (MRI) with gadolinium contrast is the imaging modality of choice when the clinical diagnosis is uncertain or when osteomyelitis must be excluded. MRI is highly sensitive for early marrow oedema, micro-fractures, and joint effusion in Stage 0 disease, and demonstrates characteristic patterns of diffuse marrow signal change (distinguishable from the focal, cortical-centred signal abnormality of osteomyelitis). However, the distinction between Charcot neuro-osteoarthropathy and osteomyelitis on MRI can be challenging, particularly when both conditions coexist—a situation that is clinically common given that neuropathic ulcers overlying deformed Charcot feet provide a portal of entry for deep infection.
+
+Bone scintigraphy (technetium-99m bone scan) with three-phase technique demonstrates markedly increased tracer uptake in all phases of active Charcot disease, reflecting the accelerated bone turnover and hyperaemia; it is highly sensitive but non-specific. Labelled white-cell scintigraphy (indium-111 or technetium-99m HMPAO-labelled leucocytes) or FDG-PET/CT may assist in differentiating Charcot from osteomyelitis when clinical and MRI findings are equivocal.
+
+Laboratory Investigations. There is no diagnostic laboratory marker specific to Charcot neuro-osteoarthropathy. Acute-phase reactants (C-reactive protein, erythrocyte sedimentation rate) and white cell count may be mildly elevated in active Charcot disease, but are more prominently elevated in osteomyelitis and septic arthritis. Bone turnover markers—serum alkaline phosphatase, cross-linked N-telopeptides of type I collagen (NTx), and bone-specific alkaline phosphatase—are elevated in the acute phase, reflecting accelerated bone resorption, and have been used in research settings to monitor disease activity and response to treatment. HbA1c should be measured to guide glycaemic optimisation.`,
+  },
+  {
+    id: 'management',
+    heading: 'Management',
+    body: `The fundamental principle underpinning the management of acute Charcot neuro-osteoarthropathy is immediate and sustained offloading: the complete elimination of mechanical stress from the affected foot. Failure to offload promptly and consistently is the single most important preventable cause of bony collapse and deformity progression.
+
+Offloading. The gold standard for offloading in the acute phase is the total contact cast (TCC), a custom-moulded plaster or fibreglass cast applied by a trained clinician that distributes plantar pressure evenly across the entire plantar surface and prevents the patient from removing it (and therefore resuming weight-bearing). Weekly or biweekly cast changes allow inspection of the skin and monitoring of limb volume changes. In patients for whom casting is not feasible—due to wound care requirements, skin fragility, severe oedema, or patient preference—removable cast walkers (RCW) made irremovable by bivalving or wrapping are an acceptable alternative. Absolute non-weight-bearing on crutches or a wheelchair may be necessary in patients with significant fracture or dislocation.
+
+The duration of offloading is determined by the resolution of clinical and imaging signs of active inflammation: normalisation of the skin temperature differential (to within 2°C of the contralateral foot), resolution of erythema and oedema, and radiographic evidence of fracture consolidation. This process typically requires 3–6 months of continuous offloading, and premature discontinuation predictably results in disease reactivation and further bony destruction.
+
+Pharmacological Adjuncts. The role of pharmacological agents targeting the RANKL pathway is an area of active clinical investigation. Bisphosphonates—potent inhibitors of osteoclastic bone resorption—have been evaluated in several small randomised controlled trials with mixed results. Pamidronate (intravenous) has demonstrated reduction in bone turnover markers and skin temperature in the acute phase in some studies, while oral alendronate has shown less consistent benefit. Current evidence does not support bisphosphonate therapy as a routine adjunct to offloading, but it may be considered in patients with severe acute disease or inadequate response to offloading alone. Denosumab, a fully human monoclonal antibody targeting RANKL (thus directly blocking the pathological pathway driving osteoclastogenesis in Charcot disease), is under investigation as a potentially more targeted therapy.
+
+Glycaemic optimisation is a crucial component of management. Improved glycaemic control reduces the inflammatory milieu, slows neuropathic progression, and promotes bone healing. Targets should be set in conjunction with the patient's endocrinologist or diabetologist, balancing the benefits of tight control against the risks of hypoglycaemia in a patient with diminished autonomic warning symptoms.
+
+Vitamin D and calcium supplementation should be considered when deficiency is confirmed, given the contribution of metabolic bone disease to the severity of osteoclastic destruction.
+
+Surgical Management. Surgery for Charcot neuro-osteoarthropathy is reserved for patients with deformity that cannot be accommodated with custom footwear and bracing, progressive instability of the hindfoot or ankle threatening function, recurrent or non-healing plantar ulceration attributable to bony prominences, and failed conservative management. Surgical options include exostectomy (excision of bony prominences causing ulceration), realignment osteotomy, and reconstructive arthrodesis of the midfoot, hindfoot, or ankle. Given the poor bone quality and elevated infection risk inherent in the diabetic foot, surgical outcomes in Charcot foot carry a substantially higher complication rate than in the non-neuropathic population, and long-term amputation rates following Charcot reconstruction remain significant.
+
+Wound Care. When Charcot deformity is complicated by plantar ulceration, wound management follows the same principles as for diabetic foot ulceration generally: sharp debridement, moist wound healing, management of infection (including targeted antibiotic therapy guided by deep wound cultures), and, if osteomyelitis is present, surgical debridement or resection of infected bone. The distinction between Charcot neuro-osteoarthropathy and osteomyelitis must be actively pursued, as the management pathways differ substantially.`,
+  },
+  {
+    id: 'nursing-implications',
+    heading: 'Nursing Implications',
+    body: `Charcot neuro-osteoarthropathy presents nursing professionals with a cluster of distinct clinical challenges spanning early recognition, patient education, wound management, multidisciplinary coordination, and psychological support.
+
+Early Recognition and Escalation. The most impactful nursing contribution to Charcot foot management is early recognition of the acute phase. Given that affected patients typically report little or no pain, the unilateral warm, erythematous, oedematous foot of a diabetic patient may be mistakenly attributed to gout, infection, or deep venous thrombosis, delaying definitive diagnosis. Nurses—particularly those working in diabetes clinics, wound care settings, and community health—should be alert to this presentation and understand the critical importance of urgent referral to a podiatrist, orthopaedic surgeon, or diabetologist with expertise in diabetic foot disease. A delay of even days to weeks in the acute phase can translate into permanent bony collapse and deformity.
+
+Infrared thermometry—the measurement of foot surface temperature at standardised plantar sites using a handheld device—is a practical and non-invasive tool that nurses can employ in diabetes clinics to detect temperature asymmetries indicative of early Charcot inflammation. Many diabetes guidelines recommend skin temperature monitoring as a component of routine diabetic foot surveillance, with a differential of ≥ 2°C warranting investigation.
+
+Patient and Family Education. Patient education is a cornerstone of Charcot foot management and presents unique challenges due to the paradox of a potentially catastrophic condition that causes minimal subjective distress. Patients must understand that the absence of pain does not reflect the absence of serious ongoing structural damage, and that adherence to offloading—even when the foot feels comfortable—is non-negotiable during the acute phase. Education should address: the nature and consequences of peripheral neuropathy; the mechanism by which the Charcot process leads to deformity and ulceration; the importance of daily foot inspection; appropriate footwear selection (custom-moulded therapeutic footwear with accommodative insoles in Stage III); recognition of signs of active inflammation to report (increased warmth, swelling, redness, or skin breakdown); and the necessity of strict glycaemic control.
+
+Offloading Adherence. Nurses are well-positioned to monitor and support adherence to offloading regimens. In patients using removable cast walkers, non-adherence (removal of the device for comfort, cosmesis, or sleeping) is a common and significant clinical problem. The nurse's relationship with the patient provides an opportunity to address barriers to adherence—including occupational demands, caregiver roles, mobility restrictions, and psychosocial factors—and to reinforce the connection between consistent offloading and limb preservation.
+
+Skin and Wound Monitoring. For patients in casting or custom footwear, nurses should inspect the skin at each cast change or clinical encounter for pressure injuries, blisters, and skin breakdown at sites of cast contact or bony prominence. When ulceration is present, wound assessment should include measurement of wound dimensions, depth, tissue type, exudate characteristics, and signs of infection; probing to bone (a clinical sign with high specificity for osteomyelitis) should be performed and documented. The Wagner or University of Texas wound classification systems provide standardised frameworks for documenting wound severity.
+
+Multidisciplinary Coordination. Optimal Charcot foot management requires coordination across multiple disciplines: podiatry, orthopaedic or vascular surgery, endocrinology or diabetology, orthotics and prosthetics, physiotherapy, occupational therapy, social work, and community nursing. The nurse frequently serves as the care coordinator and navigator, facilitating communication between team members, ensuring that investigations are ordered and followed up, arranging timely specialist referrals, and acting as the patient's primary advocate. Documentation of the agreed management plan, offloading device, wound care regimen, and monitoring schedule is essential to safe continuity across care settings.
+
+Psychological and Psychosocial Considerations. The diagnosis of Charcot neuro-osteoarthropathy—and the prospect of prolonged immobility, limb deformity, or amputation—represents a significant psychological burden. Anxiety, depression, and reduced quality of life are documented in this population, and the restrictions imposed by offloading (loss of mobility, inability to work, social isolation) compound these challenges. Nurses should routinely screen for depression and anxiety using validated tools, provide empathic and non-judgmental support, and facilitate referral to psychology or social work services when indicated. Peer support groups for patients with diabetic foot complications may be a valuable adjunct.`,
+  },
+  {
+    id: 'complications',
+    heading: 'Complications and Prognosis',
+    body: `The natural history of untreated or inadequately managed Charcot neuro-osteoarthropathy is one of progressive bony destruction, fixed deformity, and heightened risk of the entire spectrum of diabetic foot complications. The rocker-bottom deformity, which is the most common structural outcome of midfoot Charcot disease, generates plantar pressure concentrations two to three times greater than in the non-deformed neuropathic foot. These elevated pressures, acting repeatedly on insensate skin overlying rigid bony prominences, reliably produce plantar neuropathic ulcers.
+
+Neuropathic ulceration is the most common complication of Charcot foot, occurring in 60–70 percent of patients with established deformity over long-term follow-up. Plantar ulcers serve as the entry point for deep soft tissue infection, which may progress to septic arthritis, osteomyelitis, necrotising fasciitis, and, in the most severe cases, wet gangrene. The combination of osteomyelitis complicating a neuropathic ulcer over a Charcot deformity is one of the most challenging scenarios in diabetic foot surgery, as the distinction between the radiographic appearances of osteomyelitis and Charcot bony changes is extremely difficult, bone quality is poor, vascularity may be compromised, and the risk of wound complications after surgery is high.
+
+Major amputation (trans-tibial or trans-femoral) remains a significant outcome in Charcot foot; published amputation rates range from 2.7 to 5 percent at five years in centres with established diabetic foot services, but are substantially higher in settings without specialist care. Bilateral Charcot foot, which occurs in approximately 30 percent of affected patients (sequentially rather than simultaneously in most cases), represents an exceptional rehabilitative and mobility challenge.
+
+Mortality in diabetic patients with Charcot foot is substantially elevated compared to matched diabetic controls without Charcot disease, reflecting the association of Charcot neuro-osteoarthropathy with advanced microvascular and macrovascular disease, renal failure, and the systemic burden of long-standing poorly controlled diabetes. Five-year mortality rates of 20–30 percent have been reported in some series.
+
+With appropriate early intervention—prompt diagnosis, immediate total contact casting, glycaemic optimisation, and multidisciplinary care—a substantial proportion of patients can achieve bony consolidation without significant deformity, retain a plantigrade foot accommodatable with custom footwear, and avoid amputation. The prognosis is substantially better when the condition is identified in Stage 0 or Stage I than when deformity has already developed.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Charcot neuro-osteoarthropathy is a complex, potentially limb-threatening condition whose pathophysiology integrates neurological, inflammatory, vascular, and biomechanical derangements into a self-amplifying cycle of bone destruction. The contemporary understanding of the RANKL-mediated osteoclastic pathway has transformed the conceptual model of the disease from a purely mechanical phenomenon to one that is fundamentally inflammatory and amenable to targeted pharmacological intervention. The clinical imperative, however, remains unchanged since Charcot's original description: early diagnosis, immediate offloading, and sustained multidisciplinary care are the determinants of outcome.
+
+For nursing professionals, the key contributions are vigilant early recognition of the acute inflammatory foot in the context of diabetic neuropathy, proactive patient education about the non-painful but destructive nature of the condition, support for adherence to the offloading regimen, meticulous skin and wound surveillance, and effective coordination of the multidisciplinary team. Given that the window for preventing permanent deformity is measured in days to weeks rather than months, the nurse who recognises a warm, swollen, erythematous foot in a diabetic patient and escalates appropriately may, in the most literal sense, save that patient's limb.`,
+  },
+];
+---
+
+<Layout title="Charcot Foot – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Charcot Foot</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#0891b2; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Synonyms', def: 'Charcot neuro-osteoarthropathy (CN), Charcot arthropathy' },
+            { term: 'Primary aetiology', def: 'Diabetic peripheral neuropathy (~80–90%)' },
+            { term: 'Key mechanism', def: 'RANKL-mediated osteoclastogenesis' },
+            { term: 'Classic deformity', def: 'Rocker-bottom foot (midfoot collapse)' },
+            { term: 'Gold-standard Rx', def: 'Total contact cast (TCC)' },
+            { term: 'Temp differential', def: '≥ 2°C vs contralateral foot (acute)' },
+            { term: 'Offloading duration', def: 'Typically 3–6 months (acute phase)' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#ecfeff; border:1px solid #a5f3fc; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#0e7490; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Early recognition of acute phase',
+            '✅ Infrared thermometry monitoring',
+            '✅ Offloading adherence support',
+            '✅ Skin & wound surveillance',
+            '✅ Patient education (neuropathy)',
+            '✅ Multidisciplinary coordination',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#c2410c; margin-bottom:0.5rem;">⚠️ Red Flags — Escalate</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '• Unilateral warm, red, swollen foot in DM',
+            '• Foot temp ≥ 2°C warmer than contralateral',
+            '• New ulceration over bony prominence',
+            '• Probing to bone at ulcer base',
+            '• Systemic signs of infection (fever, ↑WBC)',
+            '• Progressive foot deformity',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#0891b2; background:#ecfeff; border:1px solid #a5f3fc; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🦴 Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Charcot Foot (Charcot Neuro-Osteoarthropathy)
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the pathophysiology, staging, diagnosis, and management of
+          Charcot neuro-osteoarthropathy, a progressive, inflammatory, and potentially
+          limb-threatening complication of diabetic peripheral neuropathy, with a focus on
+          nursing assessment and evidence-based limb-salvage care.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#0891b2; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Armstrong, D. G., &amp; Lavery, L. A. (1998). Elevated peak plantar pressures in patients who have Charcot arthropathy. <em>Journal of Bone and Joint Surgery, 80</em>(3), 365–369.',
+            'Brodsky, J. W. (1993). The diabetic foot. In M. H. Coughlin &amp; R. A. Mann (Eds.), <em>Surgery of the foot and ankle</em> (6th ed., pp. 877–958). Mosby.',
+            'Charcot, J.-M. (1868). Sur quelques arthropathies qui paraissent dépendre d\'une lésion du cerveau ou de la moelle épinière. <em>Archives de Physiologie Normale et Pathologique, 1</em>, 161–178.',
+            'Eichenholtz, S. N. (1966). <em>Charcot joints.</em> Charles C Thomas.',
+            'Jeffcoate, W. J., &amp; Rasmussen, L. M. (2008). Charcot neuroarthropathy in diabetes: The role of RANK ligand and nuclear factor κB. <em>Diabetic Medicine, 25</em>(5), 522–527.',
+            'Ndip, A., Rutter, M. K., Vileikyte, L., Vardhan, A., Asari, A., Jameel, M., Tahir, H. A., Lavery, L. A., &amp; Boulton, A. J. M. (2008). Plastic surgery in diabetic foot ulcers. <em>Diabetes Care, 31</em>(Suppl 2), S162–S167.',
+            'Rogers, L. C., Frykberg, R. G., Armstrong, D. G., Boulton, A. J., Edmonds, M., Van, G. H., Hartemann, A., Game, F., Jeffcoate, W., Jirkovská, A., Jude, E., Morbach, S., Morrison, W. B., Pinzur, M., Pitocco, D., Sanders, L., Wukich, D. K., &amp; Uccioli, L. (2011). The Charcot foot in diabetes. <em>Diabetes Care, 34</em>(9), 2123–2129.',
+            'Sanders, L. J., &amp; Frykberg, R. G. (1991). Diabetic neuropathic osteoarthropathy: The Charcot foot. In R. G. Frykberg (Ed.), <em>The high risk foot in diabetes mellitus</em> (pp. 297–338). Churchill Livingstone.',
+            'Wukich, D. K., &amp; Sung, W. (2009). Charcot arthropathy of the foot and ankle: Modern concepts and management review. <em>Journal of Diabetes and its Complications, 23</em>(6), 409–426.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
