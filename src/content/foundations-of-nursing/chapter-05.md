@@ -3,7 +3,6 @@ title: "Chapter 5: Cultural Humility, Health Literacy, and Inclusive Care"
 chapterNumber: 5
 unit: "1 — The Professional Architecture"
 ---
-# Chapter 5: Cultural Humility, Health Literacy, and Inclusive Care
 
 **Textbook:** *Foundations of Nursing*  
 **Unit:** 1 — The Professional Architecture  

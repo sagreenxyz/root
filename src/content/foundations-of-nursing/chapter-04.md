@@ -3,7 +3,6 @@ title: "Chapter 4: Therapeutic Communication"
 chapterNumber: 4
 unit: "1 — The Professional Architecture"
 ---
-# Chapter 4: Therapeutic Communication
 
 **Textbook:** *Foundations of Nursing*  
 **Unit:** 1 — The Professional Architecture  

@@ -3,7 +3,6 @@ title: "Chapter 2: Legal, Ethical, and Professional Standards"
 chapterNumber: 2
 unit: "1 — The Professional Architecture"
 ---
-# Chapter 2: Legal, Ethical, and Professional Standards
 
 **Textbook:** *Foundations of Nursing*  
 **Unit:** 1 — The Professional Architecture  

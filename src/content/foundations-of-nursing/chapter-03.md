@@ -3,7 +3,6 @@ title: "Chapter 3: Patient Rights, Advocacy, and Informed Consent"
 chapterNumber: 3
 unit: "1 — The Professional Architecture"
 ---
-# Chapter 3: Patient Rights, Advocacy, and Informed Consent
 
 **Textbook:** *Foundations of Nursing*  
 **Unit:** 1 — The Professional Architecture  

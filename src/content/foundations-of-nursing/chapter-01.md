@@ -3,7 +3,6 @@ title: "Chapter 1: History and Evolution of Nursing"
 chapterNumber: 1
 unit: "1 — The Professional Architecture"
 ---
-# Chapter 1: History and Evolution of Nursing
 
 **Textbook:** *Foundations of Nursing*
 **Unit:** 1 — The Professional Architecture
