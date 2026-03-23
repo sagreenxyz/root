@@ -101,6 +101,44 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     color: #0369a1;
   }
 
+  /* Case Library */
+  .case-library {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem;
+  }
+  .case-library-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e293b;
+    flex-basis: 100%;
+    margin-bottom: -0.25rem;
+  }
+  .case-library-label span { font-weight: 400; color: #64748b; }
+  .case-library select {
+    flex: 1;
+    min-width: 220px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1e293b;
+    background: #f8fafc;
+  }
+  .case-library select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+  }
+  @media print { .case-library { display: none !important; } }
+
   /* Action bar */
   .action-bar {
     display: flex;
@@ -241,6 +279,27 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       <a href={`${base}/private/journal/2026-03-22`} style="color:#4f46e5; font-weight:600;">March 22, 2026 journal entry</a>
       (sign-in required).
     </span>
+  </div>
+
+  <!-- ── Case Library ──────────────────────────────────────────── -->
+  <div class="case-library">
+    <div class="case-library-label">
+      📚 Case Library <span>— load a sample clinical case to see how the map works</span>
+    </div>
+    <select id="case-select">
+      <option value="">— Select a sample case —</option>
+      <option value="0">Case 1 · Community-Acquired Pneumonia</option>
+      <option value="1">Case 2 · Acute Decompensated Heart Failure (CHF)</option>
+      <option value="2">Case 3 · Type 2 Diabetes – Hyperglycemic Episode</option>
+      <option value="3">Case 4 · Complicated Urinary Tract Infection (UTI)</option>
+      <option value="4">Case 5 · Hypertensive Urgency</option>
+      <option value="5">Case 6 · Acute COPD Exacerbation</option>
+      <option value="6">Case 7 · Deep Vein Thrombosis (DVT)</option>
+      <option value="7">Case 8 · Post-Op Hip Fracture (ORIF)</option>
+      <option value="8">Case 9 · Acute Ischemic Stroke (CVA)</option>
+      <option value="9">Case 10 · Acute Appendicitis (Pre-Op)</option>
+    </select>
+    <button class="btn btn-outline" onclick="loadCase()">📂 Load Case</button>
   </div>
 
   <!-- Sticky action bar -->
@@ -565,6 +624,557 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       printDate.textContent = isoToDisplay(dateEl.value);
     }
   }
+
+  /* ── Sample cases ────────────────────────────────────────────── */
+  var CASES = [
+    /* 0 – Community-Acquired Pneumonia */
+    {
+      focusTopic: 'Community-acquired pneumonia (CAP)',
+      pathophysiology: 'Bacterial or viral pathogens invade the lower respiratory tract and trigger a local inflammatory response. Neutrophils and inflammatory exudate flood the alveoli, causing consolidation that impairs gas exchange. The resulting ventilation–perfusion (V/Q) mismatch leads to hypoxemia, increased work of breathing, and compensatory tachypnea. Common causative organisms include Streptococcus pneumoniae, Haemophilus influenzae, and atypical organisms such as Mycoplasma pneumoniae.',
+      riskFactors: [
+        'Advanced age (>65 years) with decreased mucociliary clearance',
+        'Cigarette smoking — impairs bronchial ciliary function and alveolar macrophage activity',
+        'Immunosuppression (e.g., HIV, long-term corticosteroid use, chemotherapy)',
+      ],
+      cues: [
+        'Productive cough with yellow-green sputum for 4 days',
+        'Oral temperature 38.9 °C (102 °F); reports chills and diaphoresis',
+        'SpO₂ 91 % on room air; respiratory rate 24 breaths/min',
+        'Dullness to percussion and decreased breath sounds at right lower lobe on auscultation',
+      ],
+      supporting: [
+        'Fever, chills, and purulent sputum are classic signs of a bacterial infectious process in the lower respiratory tract, consistent with pneumonia.',
+        'SpO₂ of 91 % reflects impaired gas exchange caused by alveolar consolidation; the compensatory increase in respiratory rate (24 breaths/min) indicates the body\'s effort to maintain adequate oxygenation.',
+        'Dullness to percussion and decreased breath sounds at the right lower lobe confirm fluid/exudate accumulation in the alveoli — a hallmark physical finding in lobar pneumonia.',
+      ],
+      concerning: [
+        'SpO₂ 91 % on room air — active hypoxemia requiring immediate oxygen supplementation',
+        'Respiratory rate 24 breaths/min — tachypnea signaling increased work of breathing and potential respiratory fatigue',
+      ],
+      hypotheses: [
+        'Supplemental oxygen therapy will improve SpO₂ to ≥95 % and reduce the patient\'s work of breathing within 30 minutes.',
+        'Repositioning to high-Fowler\'s position and encouraging deep breathing/incentive spirometry will optimize lung expansion and facilitate mucus clearance.',
+        'Administering prescribed antipyretics and ensuring adequate hydration will reduce fever and decrease metabolic demand on the respiratory system.',
+      ],
+      solutions: [
+        'Patient will maintain SpO₂ ≥95 % on ≤4 L/min nasal cannula within 1 hour of intervention.',
+        'Patient will demonstrate correct use of incentive spirometer (sustained inhalation to prescribed volume) before next assessment.',
+        'Patient\'s temperature will decrease to <38.0 °C within 1 hour of antipyretic administration.',
+        'Patient will verbalize understanding of hand hygiene, respiratory etiquette, and the importance of completing the full antibiotic course before discharge.',
+      ],
+      actions: [
+        'Applied 2 L/min nasal cannula O₂ per order; titrated to maintain SpO₂ ≥95 %; reassessed in 15 minutes.',
+        'Elevated head of bed to 45°; assisted patient to high-Fowler\'s position; encouraged deep-breathing exercises every 1–2 hours.',
+        'Administered acetaminophen 650 mg PO per order for fever; encouraged oral fluid intake of at least 2,000 mL/day; initiated IV saline lock for antibiotic administration.',
+        'Instructed patient on incentive spirometer use and proper coughing/sputum clearance technique; reinforced medication adherence and infection control measures.',
+      ],
+      outcomes: [
+        'SpO₂ improved to 96 % on 2 L/min nasal cannula within 20 minutes; patient reports decreased shortness of breath.',
+        'Patient correctly demonstrated incentive spirometry technique, achieving target volume on second attempt; tolerated repositioning well.',
+        'Oral temperature decreased to 37.6 °C within 1 hour of acetaminophen administration; patient reports decreased diaphoresis.',
+        'Patient verbalized understanding of antibiotic completion and hand hygiene; return-demonstration of incentive spirometer was satisfactory. Goals partially met — SpO₂ goal achieved; continued monitoring required for respiratory rate to return to baseline.',
+      ],
+    },
+    /* 1 – Acute Decompensated Heart Failure */
+    {
+      focusTopic: 'Acute decompensated heart failure (CHF)',
+      pathophysiology: 'In heart failure, the myocardium can no longer pump sufficient cardiac output to meet metabolic demands. Reduced ejection fraction leads to increased end-diastolic pressure and ventricular dilation. Backward failure causes elevated pulmonary capillary wedge pressure, forcing fluid into the alveolar space (pulmonary edema). Compensatory activation of the renin-angiotensin-aldosterone system (RAAS) promotes sodium and water retention, worsening fluid overload. Forward failure reduces perfusion to kidneys and peripheral tissues, causing fatigue and decreased urine output.',
+      riskFactors: [
+        'Hypertension — chronically increases afterload, causing left ventricular hypertrophy and eventual failure',
+        'Coronary artery disease — ischemia reduces viable myocardial contractility',
+        'Non-adherence to low-sodium diet and prescribed diuretics — promotes fluid accumulation and acute decompensation',
+      ],
+      cues: [
+        'Bilateral crackles (rales) heard throughout lung fields; patient reports worsening dyspnea over 3 days',
+        '2+ pitting edema in bilateral lower extremities; weight gain of 4 kg in 5 days',
+        'SpO₂ 89 % on room air; heart rate 106 bpm; respiratory rate 26 breaths/min',
+        'Orthopnea — unable to lie flat; sleeps on 3 pillows; BNP 980 pg/mL (elevated)',
+      ],
+      supporting: [
+        'Bilateral crackles indicate pulmonary edema from elevated pulmonary capillary pressure caused by left ventricular failure, directly linking the cue to the cardiac disease process.',
+        'Pitting edema and rapid weight gain reflect systemic fluid retention from RAAS activation and right-sided heart failure, confirming volume overload.',
+        'SpO₂ 89 % and elevated respiratory rate indicate pulmonary edema is impairing gas exchange; tachycardia is a compensatory mechanism to maintain cardiac output.',
+      ],
+      concerning: [
+        'SpO₂ 89 % on room air — life-threatening hypoxemia requiring immediate oxygen intervention',
+        'Respiratory rate 26 breaths/min with orthopnea — significant respiratory distress; risk of impending respiratory failure',
+      ],
+      hypotheses: [
+        'Administering supplemental oxygen and elevating the head of the bed will improve SpO₂ to ≥94 % and relieve the patient\'s subjective dyspnea within 30 minutes.',
+        'Administering prescribed IV furosemide will promote diuresis, reduce fluid overload, and improve pulmonary edema within 2–4 hours.',
+        'Daily weights and strict fluid/sodium restriction education will help the patient understand the triggers of decompensation and support self-management after discharge.',
+      ],
+      solutions: [
+        'Patient will maintain SpO₂ ≥94 % within 30 minutes of initiating supplemental oxygen.',
+        'Patient will produce at least 500 mL urine output within 2 hours of IV diuretic administration.',
+        'Patient will remain free of signs of worsening respiratory distress (RR <20, no accessory muscle use) throughout the shift.',
+        'Patient will verbalize two dietary sodium-restriction strategies before discharge.',
+      ],
+      actions: [
+        'Placed patient in high-Fowler\'s position; applied 4 L/min nasal cannula O₂; reassessed SpO₂ every 15 minutes.',
+        'Administered furosemide 40 mg IV per order; inserted urinary catheter to monitor hourly urine output; recorded strict intake and output.',
+        'Performed daily weight on the same scale each morning; monitored electrolytes (K⁺, Na⁺, BUN, creatinine) per order; reported critical values to provider.',
+        'Provided patient education on low-sodium diet (<2,000 mg/day), daily weight monitoring at home, and instruction to call provider for weight gain >2 lb in one day.',
+      ],
+      outcomes: [
+        'SpO₂ improved to 95 % on 4 L/min nasal cannula within 25 minutes; patient reports breathing feels "easier."',
+        'Urine output 650 mL in 2 hours following IV furosemide; bilateral crackles decreased to bases only on reassessment.',
+        'Respiratory rate decreased to 20 breaths/min; no accessory muscle use; pitting edema improved to 1+.',
+        'Patient correctly stated the 2-lb daily weight rule and identified two low-sodium food swaps. Goals substantially met; continued diuresis and monitoring required.',
+      ],
+    },
+    /* 2 – Type 2 Diabetes – Hyperglycemic Episode */
+    {
+      focusTopic: 'Type 2 diabetes mellitus – hyperglycemic episode',
+      pathophysiology: 'In type 2 diabetes, peripheral insulin resistance causes hyperglycemia despite adequate or elevated insulin production. Over time, pancreatic beta-cell exhaustion reduces insulin secretion. Chronic hyperglycemia causes osmotic diuresis (glucose exceeds the renal threshold at ~180 mg/dL), leading to polyuria, polydipsia, and dehydration. Cellular glucose deprivation promotes fatigue and impaired wound healing. Unlike type 1, full diabetic ketoacidosis is uncommon, but hyperosmolar hyperglycemic state (HHS) is a life-threatening complication in type 2 diabetes.',
+      riskFactors: [
+        'Obesity (BMI >30) — promotes cellular insulin resistance',
+        'Sedentary lifestyle — reduces insulin sensitivity and glucose uptake in skeletal muscle',
+        'Non-adherence to antidiabetic medications — allows sustained hyperglycemia',
+      ],
+      cues: [
+        'Blood glucose 348 mg/dL on fingerstick; patient reports not taking metformin for 3 days',
+        'Polyuria (voiding every 30–45 min) and polydipsia; dry mucous membranes',
+        'Fatigue, blurred vision, and headache; patient appears flushed',
+        'Serum osmolality 310 mOsm/kg (elevated); mild tachycardia HR 98 bpm',
+      ],
+      supporting: [
+        'BG 348 mg/dL exceeds the renal glucose threshold, triggering osmotic diuresis that explains the polyuria and polydipsia — a direct consequence of uncontrolled type 2 diabetes.',
+        'Dry mucous membranes and elevated serum osmolality (310 mOsm/kg) indicate dehydration from osmotic fluid losses caused by prolonged hyperglycemia.',
+        'Fatigue, blurred vision, and flushing are classic symptoms of hyperglycemia reflecting impaired cellular glucose utilization and osmotic shifts affecting the lens and peripheral vasculature.',
+      ],
+      concerning: [
+        'Blood glucose 348 mg/dL — severe hyperglycemia; risk of progression to hyperosmolar hyperglycemic state (HHS) if untreated',
+        'Dehydration (dry mucous membranes, osmolality 310 mOsm/kg) — requires prompt fluid replacement to prevent cardiovascular compromise',
+      ],
+      hypotheses: [
+        'Administering prescribed insulin and IV fluid replacement will reduce blood glucose to <250 mg/dL and improve hydration status within 4 hours.',
+        'Patient education on medication adherence and sick-day management will reduce the likelihood of future hyperglycemic episodes.',
+        'Monitoring blood glucose every hour and adjusting insulin per sliding scale will prevent hypoglycemia during glucose correction.',
+      ],
+      solutions: [
+        'Patient\'s blood glucose will decrease to <250 mg/dL within 4 hours of insulin and fluid administration.',
+        'Patient will remain adequately hydrated (moist mucous membranes, urine output ≥30 mL/hr).',
+        'Patient will demonstrate correct fingerstick glucose monitoring technique before discharge.',
+        'Patient will verbalize the importance of continued antidiabetic medication use during illness and when to seek emergency care.',
+      ],
+      actions: [
+        'Administered insulin per sliding scale order; initiated IV 0.9 % NaCl at 250 mL/hr per order; monitored blood glucose hourly.',
+        'Performed hourly urine output monitoring; assessed skin turgor and mucous membranes every 2 hours; monitored serum potassium per order given insulin-related K⁺ shifts.',
+        'Provided verbal and written education on metformin importance, never skipping doses, and sick-day rules (continue medications, monitor BG every 4 hours, stay hydrated).',
+        'Taught correct fingerstick technique; observed return demonstration; encouraged patient to log blood glucose values and bring log to follow-up appointments.',
+      ],
+      outcomes: [
+        'Blood glucose decreased to 218 mg/dL after 4 hours; patient reports decreased fatigue and improved vision.',
+        'Urine output averaged 55 mL/hr; mucous membranes moist; serum osmolality trending toward normal.',
+        'Patient performed correct fingerstick technique on return demonstration with one coaching prompt.',
+        'Patient verbalized two sick-day management rules and stated they would not skip metformin again. Goals met; endocrinology follow-up arranged.',
+      ],
+    },
+    /* 3 – Complicated UTI */
+    {
+      focusTopic: 'Complicated urinary tract infection (UTI) with risk for urosepsis',
+      pathophysiology: 'UTI occurs when uropathogens (most commonly Escherichia coli) ascend the urethra and colonize the bladder mucosa. The inflammatory response causes mucosal edema, dysuria, and urinary urgency/frequency. In complicated UTIs — associated with indwelling catheters, obstruction, or immunosuppression — bacteria may ascend to the ureters and renal parenchyma (pyelonephritis) or enter the bloodstream, triggering a systemic inflammatory response (urosepsis). Catheter-associated UTIs (CAUTIs) are a leading hospital-acquired infection.',
+      riskFactors: [
+        'Female anatomy — shorter urethra reduces distance for ascending bacterial migration',
+        'Indwelling urinary catheter (Foley) — disrupts normal urinary flow and provides a conduit for bacterial entry',
+        'Diabetes mellitus — glycosuria provides nutrient-rich urine supporting bacterial growth; impaired neutrophil function reduces infection resistance',
+      ],
+      cues: [
+        'Burning dysuria and urinary urgency; urine cloudy and dark amber with foul odor',
+        'Temperature 38.5 °C; heart rate 102 bpm; right-sided flank pain',
+        'Urinalysis: positive nitrites, large leukocyte esterase, WBC >50 HPF, many bacteria seen',
+        'Patient is diabetic; BG 210 mg/dL; Foley catheter in place × 4 days',
+      ],
+      supporting: [
+        'Dysuria, cloudy urine, positive nitrites, and leukocyte esterase on UA confirm bacterial infection of the urinary tract, consistent with UTI.',
+        'Right flank pain combined with fever and tachycardia suggests ascending infection to the upper urinary tract (pyelonephritis), elevating the risk for urosepsis.',
+        'An indwelling Foley catheter for 4 days and uncontrolled diabetes are direct modifiable risk factors for CAUTI; these cues are causally linked to the infection.',
+      ],
+      concerning: [
+        'Flank pain with fever 38.5 °C and HR 102 bpm — indicators of pyelonephritis and early systemic inflammatory response (urosepsis precursor)',
+        'Indwelling Foley catheter — ongoing CAUTI source; necessity must be reassessed immediately',
+      ],
+      hypotheses: [
+        'Reassessing catheter necessity and removing the Foley if no longer clinically indicated will eliminate the primary infection source and reduce CAUTI risk.',
+        'Administering prescribed IV antibiotics will reduce bacterial load, decrease fever, and prevent progression to urosepsis within 24–48 hours.',
+        'Increasing fluid intake to 2,000–3,000 mL/day will dilute urine, flush the urinary tract, and support renal perfusion.',
+      ],
+      solutions: [
+        'Foley catheter will be removed (or necessity reassessed with provider) within this nursing shift if clinically appropriate.',
+        'Patient will remain afebrile (<38.0 °C) and heart rate <100 bpm within 24 hours of antibiotic initiation.',
+        'Patient will verbalize adequate fluid intake (>2,000 mL/day) and signs of worsening infection requiring immediate notification.',
+        'Patient will demonstrate correct perineal hygiene technique before discharge.',
+      ],
+      actions: [
+        'Assessed Foley catheter necessity with provider; received order to discontinue; removed catheter using aseptic technique; documented time of removal.',
+        'Administered ceftriaxone 1 g IV per order; obtained blood cultures × 2 before first antibiotic dose; monitored WBC, BMP, and culture results per order.',
+        'Encouraged PO fluid intake ≥2,500 mL/day; monitored intake and output; assessed for signs of sepsis (altered mental status, hypotension, worsening tachycardia) every 2 hours.',
+        'Provided education on perineal hygiene (front-to-back wiping), adequate hydration, frequent voiding, and warning signs requiring an ER visit.',
+      ],
+      outcomes: [
+        'Foley catheter removed; patient voided 250 mL of clear amber urine spontaneously 2 hours later.',
+        'Temperature decreased to 37.8 °C at 6 hours post-antibiotic; HR 94 bpm; blood cultures pending.',
+        'Patient consumed 1,800 mL PO fluid by end of shift; urine appears less cloudy; flank pain 3/10 (down from 7/10).',
+        'Patient verbalized front-to-back hygiene technique and three warning signs requiring ER return. Goals partially met; continued IV antibiotics ongoing.',
+      ],
+    },
+    /* 4 – Hypertensive Urgency */
+    {
+      focusTopic: 'Hypertensive urgency',
+      pathophysiology: 'Hypertensive crisis occurs when systolic BP exceeds 180 mmHg and/or diastolic BP exceeds 120 mmHg. In hypertensive urgency, there is no acute end-organ damage — distinguishing it from hypertensive emergency. Severe hypertension causes excessive vasoconstriction and increased systemic vascular resistance, dramatically increasing cardiac afterload. If sustained, this can progress to hypertensive emergency with end-organ damage to the brain (hypertensive encephalopathy, stroke), heart (ACS, LV failure), or kidneys. Contributing mechanisms include RAAS activation, sympathetic overdrive, and endothelial dysfunction.',
+      riskFactors: [
+        'Non-adherence to antihypertensive medications — abrupt discontinuation causes rebound hypertension',
+        'Chronic kidney disease — impairs renin regulation and fluid excretion, amplifying BP elevation',
+        'High dietary sodium intake and obesity — increase intravascular volume and peripheral resistance',
+      ],
+      cues: [
+        'BP 198/118 mmHg on two readings 5 minutes apart; severe occipital headache (8/10)',
+        'No neurological deficits; pupils equal and reactive; no papilledema on exam',
+        'Patient reports not taking amlodipine or lisinopril for 5 days due to running out of refills',
+        'Heart rate 88 bpm; no chest pain, shortness of breath, or visual changes reported',
+      ],
+      supporting: [
+        'BP 198/118 mmHg with severe headache is the defining presentation of hypertensive urgency; the headache reflects elevated intracranial pressure from impaired cerebral autoregulation at extreme blood pressures.',
+        'The absence of neurological deficits, chest pain, or visual changes differentiates this from hypertensive emergency, guiding the priority toward gradual BP reduction rather than emergent IV therapy.',
+        'Medication non-adherence for 5 days directly explains the acute BP elevation; abrupt cessation of amlodipine and lisinopril causes rebound vasoconstriction and RAAS activation.',
+      ],
+      concerning: [
+        'BP 198/118 mmHg — immediate risk of progression to hypertensive emergency with end-organ damage (stroke, ACS, renal failure)',
+        'Severe occipital headache (8/10) — may signal early hypertensive encephalopathy; neurological status requires close serial monitoring',
+      ],
+      hypotheses: [
+        'Administering prescribed oral antihypertensive agents will gradually reduce BP by no more than 25 % within the first hour, reducing end-organ risk without causing ischemia.',
+        'Placing the patient in a quiet, low-stimulation environment will reduce sympathetic activation and support BP reduction.',
+        'Patient education on medication adherence and a reliable refill plan will prevent recurrence of hypertensive urgency.',
+      ],
+      solutions: [
+        'Patient\'s SBP will decrease to <160 mmHg gradually over 6–12 hours without dropping more than 25 % within the first hour.',
+        'Patient\'s headache will decrease to ≤3/10 within 2 hours of antihypertensive therapy.',
+        'Patient will remain free of new neurological symptoms (confusion, unequal pupils, facial droop, arm weakness) throughout the shift.',
+        'Patient will verbalize a plan to refill medications without a lapse before discharge.',
+      ],
+      actions: [
+        'Placed patient in a quiet room; dimmed lighting; elevated HOB to 30–45°; minimized interruptions to reduce sympathetic stimulation.',
+        'Administered prescribed oral antihypertensive agent per order; reassessed BP every 15 minutes for the first hour, then every 30 minutes.',
+        'Performed serial neurological assessments every 30 minutes (PERRLA, orientation, grip strength, facial symmetry, speech); reported any changes immediately.',
+        'Counseled patient on medication adherence; assisted with contacting pharmacy for 90-day supply; provided written medication schedule.',
+      ],
+      outcomes: [
+        'BP 172/104 mmHg at 1 hour (13 % reduction — within safe parameters); BP 158/96 mmHg at 3 hours.',
+        'Headache decreased to 4/10 at 2 hours; patient reports gradual improvement.',
+        'No new neurological symptoms throughout the shift; all neuro checks within normal limits.',
+        'Patient verbalized medication importance; pharmacy contacted for 90-day mail delivery. Goals substantially met.',
+      ],
+    },
+    /* 5 – COPD Exacerbation */
+    {
+      focusTopic: 'Acute exacerbation of chronic obstructive pulmonary disease (COPD)',
+      pathophysiology: 'COPD is characterized by persistent airflow limitation from chronic bronchitis (excess mucus, airway inflammation) and/or emphysema (alveolar wall destruction, loss of elastic recoil). During an acute exacerbation — typically triggered by respiratory infection or environmental irritants — airway inflammation worsens dramatically. Bronchoconstriction, mucus hypersecretion, and air trapping cause increased dynamic hyperinflation. The resulting V/Q mismatch and CO₂ retention (hypercapnia) lead to respiratory acidosis. Patients with COPD often depend on hypoxic drive; high-flow oxygen can suppress this drive and worsen hypoventilation.',
+      riskFactors: [
+        'Long-term cigarette smoking (>20 pack-year history) — primary cause of COPD via oxidative lung damage',
+        'Respiratory infection (viral or bacterial) — most common acute exacerbation trigger',
+        'Occupational exposure to dust, chemicals, or fumes — accelerates lung function decline',
+      ],
+      cues: [
+        'SpO₂ 87 % on room air; accessory muscle use and pursed-lip breathing; RR 28 breaths/min',
+        'Barrel chest; productive cough with thick yellow-green sputum × 5 days; increased breathlessness vs. baseline',
+        'ABG: pH 7.32, PaCO₂ 58 mmHg, PaO₂ 54 mmHg, HCO₃⁻ 30 mEq/L (compensated respiratory acidosis)',
+        '40 pack-year smoking history; albuterol inhaler providing no relief; temperature 38.2 °C',
+      ],
+      supporting: [
+        'SpO₂ 87 % and ABG PaO₂ 54 mmHg confirm significant hypoxemia from V/Q mismatch caused by worsening airflow obstruction and mucus plugging.',
+        'ABG pH 7.32 with PaCO₂ 58 mmHg and compensatory HCO₃⁻ 30 mEq/L demonstrate acute-on-chronic hypercapnic respiratory failure — a direct consequence of severe COPD exacerbation.',
+        'Accessory muscle use, pursed-lip breathing, and barrel chest reflect chronic air trapping and increased work of breathing characteristic of severe COPD.',
+      ],
+      concerning: [
+        'ABG: pH 7.32, PaCO₂ 58 mmHg — hypercapnic respiratory failure; risk of progression requiring BiPAP or intubation',
+        'SpO₂ 87 % with accessory muscle use — severe hypoxemia and respiratory fatigue; O₂ must be titrated carefully to avoid suppressing hypoxic drive',
+      ],
+      hypotheses: [
+        'Administering controlled-flow O₂ (1–2 L/min NC or 24–28 % Venturi mask) will increase SpO₂ to the COPD target of 88–92 % without suppressing hypoxic drive.',
+        'Administering prescribed bronchodilators (SABA + SAMA) and systemic corticosteroids will reduce airway inflammation and bronchospasm, improving airflow.',
+        'Positioning the patient upright and coaching pursed-lip breathing will reduce air trapping and decrease the work of breathing.',
+      ],
+      solutions: [
+        'Patient will maintain SpO₂ 88–92 % on controlled supplemental O₂ without signs of CO₂ narcosis (somnolence, decreased respiratory effort).',
+        'Respiratory rate will decrease to <22 breaths/min and accessory muscle use will diminish within 2 hours of bronchodilator therapy.',
+        'Patient will expectorate or mobilize secretions with chest physiotherapy and adequate hydration.',
+        'Patient will verbalize COPD exacerbation triggers and when to seek urgent care before discharge.',
+      ],
+      actions: [
+        'Applied 1–2 L/min O₂ via nasal cannula; titrated to SpO₂ 88–92 %; avoided high-flow O₂; reassessed ABG per order.',
+        'Administered albuterol/ipratropium (Duoneb) nebulizer every 4 hours and methylprednisolone 125 mg IV per order; positioned in high-Fowler\'s.',
+        'Encouraged hydration PO and IV; assisted with controlled coughing technique; performed chest percussion if ordered; suctioned if unable to clear secretions.',
+        'Educated patient on COPD action plan, smoking cessation resources, early exacerbation recognition, and correct multi-dose inhaler technique.',
+      ],
+      outcomes: [
+        'SpO₂ maintained 89–91 % on 1.5 L/min NC; patient alert and oriented; no signs of CO₂ narcosis.',
+        'Respiratory rate 22 breaths/min at 2 hours post-bronchodilator; accessory muscle use decreased; patient reports "easier breathing."',
+        'Patient produced small amount of yellow sputum with controlled cough; hydration maintained at 1,500 mL PO.',
+        'Patient verbalized three exacerbation warning signs and expressed willingness to contact smoking cessation hotline. Goals partially met; continued respiratory therapy required.',
+      ],
+    },
+    /* 6 – DVT */
+    {
+      focusTopic: 'Deep vein thrombosis (DVT) of the left lower extremity',
+      pathophysiology: 'DVT forms when Virchow\'s triad is present: venous stasis (reduced blood flow), endothelial injury (damage to vessel walls), and hypercoagulability (altered clotting). Thrombus formation in deep veins — most commonly in the lower extremities — causes local venous obstruction (edema, pain). The most serious complication is pulmonary embolism (PE), when a thrombus fragments and migrates to the pulmonary vasculature, potentially causing life-threatening obstruction of pulmonary blood flow.',
+      riskFactors: [
+        'Recent prolonged immobility (e.g., post-surgical bed rest) — promotes venous stasis',
+        'History of prior DVT or inherited thrombophilia (e.g., Factor V Leiden) — increases baseline hypercoagulability',
+        'Oral contraceptive use or hormone replacement therapy — estrogen promotes a pro-thrombotic state',
+      ],
+      cues: [
+        'Left calf warm, red, and swollen; circumference: left 42 cm vs. right 38 cm (4 cm difference)',
+        'Aching left calf pain (5/10) worsening with ambulation; positive Homan\'s sign',
+        'Doppler ultrasound confirmed non-occlusive thrombus in left popliteal vein; D-dimer 1.8 mg/L (elevated)',
+        'Post-op day 2 following right total knee replacement; on bed rest; no anticoagulant prophylaxis documented',
+      ],
+      supporting: [
+        'Unilateral calf erythema, warmth, swelling (4 cm circumferential difference), and pain are classic clinical signs of DVT, confirmed by positive Doppler ultrasound.',
+        'Elevated D-dimer (1.8 mg/L) reflects active fibrinolysis, indicating clot formation; combined with imaging confirmation, this supports the DVT diagnosis.',
+        'Post-surgical immobility without anticoagulant prophylaxis directly satisfies Virchow\'s triad (venous stasis + surgical endothelial injury) and explains the DVT formation.',
+      ],
+      concerning: [
+        'Confirmed popliteal DVT with no anticoagulant prophylaxis — immediate risk of clot propagation and pulmonary embolism (PE)',
+        'Patient ambulating post-operatively — popliteal DVT carries risk of thrombus dislodgement; anticoagulation must be initiated urgently',
+      ],
+      hypotheses: [
+        'Initiating prescribed anticoagulation therapy (e.g., enoxaparin) will prevent thrombus propagation and reduce the risk of PE.',
+        'Elevating the affected extremity and applying warm compresses will reduce venous congestion, decrease edema, and relieve pain.',
+        'Monitoring for signs and symptoms of PE (sudden dyspnea, pleuritic chest pain, tachycardia, hypoxia) will enable early detection and rapid intervention.',
+      ],
+      solutions: [
+        'Anticoagulation therapy will be initiated within 1 hour of confirmed DVT diagnosis per provider order.',
+        'Left lower extremity edema will show subjective improvement within 24 hours of elevation and anticoagulation.',
+        'Patient will remain free of PE signs/symptoms (sudden-onset dyspnea, pleuritic chest pain, tachycardia) throughout the shift.',
+        'Patient will verbalize signs of bleeding complications associated with anticoagulation therapy before discharge.',
+      ],
+      actions: [
+        'Notified provider of DVT diagnosis; obtained anticoagulation orders; administered enoxaparin 1 mg/kg SQ per order; documented administration time.',
+        'Elevated left lower extremity above heart level with pillows; applied IPC to right (unaffected) leg; advised against vigorous leg massage or rubbing.',
+        'Assessed respiratory status and chest pain every 2 hours; monitored SpO₂ continuously; reported new symptoms immediately.',
+        'Educated patient on anticoagulation therapy, signs of bleeding, fall prevention, and the importance of attending follow-up INR checks or dose administration.',
+      ],
+      outcomes: [
+        'Enoxaparin 80 mg SQ administered at 14:00; therapeutic anticoagulation initiated; CBC and renal function ordered.',
+        'Left calf swelling subjectively improved; patient reports pain 3/10 with elevation; circumference to be reassessed at 24 hours.',
+        'No signs or symptoms of PE throughout shift; SpO₂ 98 % on room air; lung sounds clear bilaterally.',
+        'Patient verbalized three signs of bleeding to report and the importance of not missing anticoagulation doses. Goals met; monitoring ongoing.',
+      ],
+    },
+    /* 7 – Post-Op Hip Fracture ORIF */
+    {
+      focusTopic: 'Postoperative care following right hip fracture repair (ORIF)',
+      pathophysiology: 'Hip fractures — most commonly of the femoral neck or intertrochanteric region — occur when bone integrity is compromised, often from osteoporosis combined with a fall. Surgical repair (ORIF — open reduction internal fixation) realigns and stabilizes the fracture with hardware. Post-operatively, patients face risks of hemorrhage, infection, DVT/PE (from immobility and surgical trauma), fat embolism, and neurovascular compromise. Pain impairs mobility, increasing the risk of pneumonia, pressure injuries, and deconditioning. Adequate multimodal pain management is essential to enable early mobilization and prevent complications.',
+      riskFactors: [
+        'Osteoporosis — decreased bone mineral density increases fracture risk from low-impact falls',
+        'Advanced age (>75 years) — decreased bone density, reduced muscle mass, and impaired balance increase fall risk',
+        'Polypharmacy including sedatives or antihypertensives — increase fall risk through orthostatic hypotension or sedation',
+      ],
+      cues: [
+        '78-year-old female, post-op day 1 following right hip ORIF; right hip pain 7/10; refuses incentive spirometer',
+        'Right LE: 2+ pitting edema; surgical incision intact with scant serosanguineous drainage; CMS checks intact',
+        'VS: HR 96 bpm, BP 104/68 mmHg, SpO₂ 94 % on 2 L/min NC; Hgb 9.2 g/dL (post-op anemia)',
+        'Has not ambulated since surgery; refuses PT; urine output 25 mL/hr (goal ≥30 mL/hr); Foley in place',
+      ],
+      supporting: [
+        'Hgb 9.2 g/dL reflects post-operative blood loss; combined with BP 104/68 mmHg and HR 96 bpm, this suggests hemodynamic instability requiring close monitoring.',
+        'Refusal to use incentive spirometer and continued immobility increase the risk of hypostatic pneumonia and VTE; uncontrolled pain (7/10) is the primary barrier to recovery participation.',
+        'Urine output 25 mL/hr (below 30 mL/hr goal) with low BP and post-operative state suggests decreased renal perfusion — possible hypovolemia or early AKI.',
+      ],
+      concerning: [
+        'Urine output 25 mL/hr with BP 104/68 mmHg — possible hypovolemia from post-operative blood loss; risk of acute kidney injury',
+        'Pain 7/10 with refusal of IS and PT — uncontrolled pain is the primary barrier to early mobilization; increases risk of pneumonia, DVT, and deconditioning',
+      ],
+      hypotheses: [
+        'Administering multimodal analgesics will reduce pain to ≤4/10, enabling participation in incentive spirometry and physical therapy.',
+        'Administering IV fluids (if ordered) and monitoring I&O closely will restore adequate urine output (≥30 mL/hr) and support hemodynamic stability.',
+        'Facilitating early mobilization with physical therapy support will prevent complications of immobility and promote functional recovery.',
+      ],
+      solutions: [
+        'Patient\'s pain will decrease to ≤4/10 within 45 minutes of analgesic administration, as measured by the NRS pain scale.',
+        'Urine output will increase to ≥30 mL/hr following fluid intervention and will be maintained for 4 consecutive hours.',
+        'Patient will participate in at least one session of incentive spirometry (10 breaths) before next assessment.',
+        'Patient will agree to attempt dangling at the bedside with PT support by end of shift.',
+      ],
+      actions: [
+        'Administered multimodal pain regimen (oxycodone 5 mg PO + acetaminophen 650 mg PO) per order at 08:00; reassessed pain in 45 minutes.',
+        'Notified provider of urine output 25 mL/hr; received order for 500 mL IV NS bolus; monitored response over 2 hours; documented I&O hourly.',
+        'Performed Q4h neurovascular checks (CMS) on right lower extremity; assessed for signs of DVT, compartment syndrome, and surgical site infection.',
+        'Coached patient through incentive spirometry once pain 4/10; explained pneumonia risk; arranged PT visit; facilitated bedside dangling with PT and nursing support.',
+      ],
+      outcomes: [
+        'Pain decreased to 4/10 at 45 minutes post-analgesic; patient agreed to use IS — completed 8 of 10 breaths.',
+        'Urine output increased to 38 mL/hr after IV fluid bolus; BP improved to 112/74 mmHg; provider updated.',
+        'Neurovascular checks intact throughout shift; no signs of compartment syndrome or DVT.',
+        'Patient participated in bedside dangling × 5 minutes with PT; tolerated well; expressed willingness to continue. Goals substantially met.',
+      ],
+    },
+    /* 8 – Ischemic Stroke */
+    {
+      focusTopic: 'Acute ischemic stroke (cerebrovascular accident — CVA)',
+      pathophysiology: 'Ischemic stroke occurs when blood flow to a region of the brain is interrupted by a thrombus or embolus, causing ischemia and infarction of neural tissue. Brain cells begin dying within minutes of oxygen deprivation (ischemic core). A surrounding penumbra of viable but at-risk tissue can be salvaged if perfusion is restored rapidly. Cardioembolic stroke (from atrial fibrillation) and large-vessel atherothrombotic stroke are the most common subtypes. Time-sensitive thrombolytic therapy (tPA) or mechanical thrombectomy can recanalize the occluded vessel and limit infarct size. Nursing priorities include maintaining cerebral perfusion pressure, monitoring for hemorrhagic transformation, and preventing secondary complications.',
+      riskFactors: [
+        'Atrial fibrillation — causes left atrial thrombus formation; emboli can migrate to cerebral vessels',
+        'Poorly controlled hypertension — accelerates cerebrovascular atherosclerosis',
+        'Diabetes mellitus and hyperlipidemia — promote arterial plaque formation and atherosclerosis',
+      ],
+      cues: [
+        'Sudden-onset left facial droop, left arm weakness (3/5 strength), and slurred speech at 09:15; last known well 08:45',
+        'NIHSS score 10; alert but confused; reports headache; irregular cardiac rhythm (atrial fibrillation)',
+        'CT head (non-contrast) negative for hemorrhage; BP 178/96 mmHg; HR 88 bpm',
+        'Capillary BG 142 mg/dL; SpO₂ 95 % on room air; IV access established',
+      ],
+      supporting: [
+        'Sudden-onset facial droop, arm weakness, and slurred speech are classic FAST stroke signs; onset 30 minutes ago places the patient within the tPA treatment window (<3–4.5 hours from LKW).',
+        'CT negative for hemorrhage clears the primary contraindication to tPA; BP 178/96 mmHg and AF with NIHSS 10 indicate a moderate, likely cardioembolic ischemic stroke.',
+        'Elevated BP during acute stroke is a physiologic response to maintain cerebral perfusion pressure; aggressive BP lowering before tPA is avoided unless SBP >185 mmHg (tPA threshold).',
+      ],
+      concerning: [
+        'Last known well 08:45 — patient within tPA window; every minute without treatment costs approximately 1.9 million neurons ("time is brain")',
+        'Left hemiparesis and aphasia with NIHSS 10 — moderate stroke with significant functional impairment; risk of aspiration, falls, and pressure injury',
+      ],
+      hypotheses: [
+        'Rapid stroke team activation and tPA preparation will minimize time to treatment and maximize neurological outcome.',
+        'Maintaining BP within prescribed parameters (SBP <185 mmHg pre-tPA, <180 mmHg post-tPA) will preserve cerebral perfusion while minimizing hemorrhagic transformation risk.',
+        'Aspiration precautions, optimal positioning, and frequent neuro assessments will prevent secondary complications during the acute phase.',
+      ],
+      solutions: [
+        'Stroke team will be activated and tPA eligibility assessed within 10 minutes of nurse recognition.',
+        'BP will remain within prescribed parameters throughout the tPA window and post-administration monitoring period.',
+        'Patient will remain free of aspiration, fall injury, and skin breakdown during the acute phase.',
+        'Hourly neurological assessments (NIHSS, pupil checks, LOC) will be completed and any deterioration reported immediately.',
+      ],
+      actions: [
+        'Activated stroke code at 09:18; placed patient NPO per stroke protocol; obtained 12-lead ECG confirming AF; rapid blood draw (CBC, CMP, PT/INR, aPTT).',
+        'Prepared tPA infusion per pharmacy; confirmed eligibility (reviewed contraindications); administered alteplase 0.9 mg/kg IV (10 % bolus, remainder over 60 min) per order.',
+        'Monitored BP every 15 minutes during and for 2 hours post-tPA; assessed neuro status every 15 minutes; maintained HOB at 30°.',
+        'Implemented aspiration precautions (NPO until formal swallow eval); applied non-slip socks; initiated pressure injury prevention (q2h repositioning).',
+      ],
+      outcomes: [
+        'tPA administered at 09:42 (27-minute door-to-needle time, within 60-min benchmark); patient tolerated infusion without immediate adverse reaction.',
+        'BP maintained 152–174/84–98 mmHg throughout infusion; no signs of hemorrhagic transformation (no new headache, vomiting, or neuro decline).',
+        'Left arm strength improved from 3/5 to 4/5 by end of infusion; facial droop slightly improved; NIHSS decreased from 10 to 7.',
+        'No aspiration events; speech-language pathology swallow evaluation scheduled; no skin breakdown. Goals partially met — continued monitoring and rehabilitation referral initiated.',
+      ],
+    },
+    /* 9 – Acute Appendicitis (Pre-op) */
+    {
+      focusTopic: 'Acute appendicitis (pre-operative)',
+      pathophysiology: 'Appendicitis is inflammation of the vermiform appendix, typically caused by luminal obstruction (fecalith, lymphoid hyperplasia) followed by bacterial overgrowth, increased intraluminal pressure, and ischemia of the appendiceal wall. Progressive inflammation causes the classical pain migration from the periumbilical region to the right lower quadrant (McBurney\'s point). If untreated, the appendix may perforate (within 24–72 hours of onset), leading to peritonitis and sepsis. Nursing priorities include pain management, infection monitoring, NPO maintenance, and preparation for emergent appendectomy.',
+      riskFactors: [
+        'Age 10–30 years — highest incidence of appendicitis occurs in this demographic',
+        'Male sex — appendicitis is slightly more common in males, particularly in adolescence',
+        'Low-fiber diet — may increase risk of fecalith formation, leading to luminal obstruction',
+      ],
+      cues: [
+        'RLQ pain 8/10, sharp and constant; started 18 hours ago as periumbilical cramping that migrated to RLQ',
+        'Temperature 38.4 °C; nausea and one episode of vomiting; anorexia since pain onset',
+        'WBC 16,400/mm³ (elevated); CT abdomen confirms acute appendicitis without perforation; rebound tenderness and guarding at McBurney\'s point',
+        '22-year-old male; NPO since midnight; IV access established; general surgery consult obtained; appendectomy scheduled',
+      ],
+      supporting: [
+        'Pain migration from periumbilical to RLQ over 18 hours is the pathognomonic presentation of appendicitis caused by somatic pain fiber activation as inflammation involves the overlying peritoneum.',
+        'WBC 16,400/mm³ and temperature 38.4 °C indicate a systemic inflammatory response to appendiceal infection; CT confirmation eliminates diagnostic uncertainty and rules out perforation.',
+        'Rebound tenderness and guarding at McBurney\'s point are direct peritoneal irritation signs indicating significant localized inflammation and urgency for surgical intervention.',
+      ],
+      concerning: [
+        'Acute appendicitis without perforation — 24-to-72-hour perforation risk means emergent appendectomy cannot be delayed; close monitoring for signs of perforation is critical',
+        'WBC 16,400/mm³ with fever 38.4 °C — evolving infectious process; sudden diffuse abdominal pain or temporary pain relief may indicate perforation has occurred',
+      ],
+      hypotheses: [
+        'Administering prescribed IV analgesics will reduce pain to ≤4/10, improving comfort while maintaining NPO status and surgical readiness.',
+        'Administering prescribed IV antibiotics pre-operatively will reduce bacterial load and lower the risk of post-operative infectious complications.',
+        'Monitoring for signs of perforation (sudden diffuse board-like rigidity, fever spike >39 °C, worsening tachycardia) will allow immediate notification and emergency response.',
+      ],
+      solutions: [
+        'Patient\'s pain will decrease to ≤4/10 within 30 minutes of IV analgesic administration without masking perforation signs.',
+        'Patient will remain NPO with patent IV access and pre-operative checklist completed before OR transfer.',
+        'Patient will be free of signs of appendiceal perforation (sudden diffuse abdominal rigidity, fever >39 °C) throughout the pre-operative period.',
+        'Patient will verbalize understanding of the surgical procedure, post-operative expectations, and pain management plan before going to the OR.',
+      ],
+      actions: [
+        'Administered morphine 2 mg IV per order; reassessed pain in 30 minutes; documented VS and abdominal assessment before and after analgesic.',
+        'Administered cefazolin 2 g IV pre-op antibiotic prophylaxis per order; confirmed NPO status; maintained IV 0.9 % NS at 125 mL/hr; obtained surgical consent; completed pre-op checklist.',
+        'Performed abdominal assessment every 30 minutes (bowel sounds, palpation for peritoneal signs); monitored VS every 30 minutes; reported any sudden changes immediately to provider.',
+        'Provided pre-operative teaching: explained laparoscopic appendectomy process, expected recovery, post-op pain management, and early ambulation importance; answered patient questions.',
+      ],
+      outcomes: [
+        'Pain decreased to 4/10 at 30 minutes post-morphine; patient resting more comfortably; vital signs stable.',
+        'Pre-op checklist completed; IV access patent; pre-op antibiotics administered; consent signed; patient transported to OR at 14:30.',
+        'No signs of perforation throughout pre-operative period; abdomen tender but localized to RLQ; temperature stable at 38.2 °C.',
+        'Patient verbalized understanding of surgery and post-operative care; expressed readiness for OR. All pre-operative goals met.',
+      ],
+    },
+  ];
+
+  /* ── Load a sample case into the form ───────────────────────── */
+  window.loadCase = function () {
+    var sel = document.getElementById('case-select');
+    if (!sel || sel.value === '') { alert('Please select a case from the dropdown first.'); return; }
+    var caseLabel = sel.options[sel.selectedIndex].text;
+    var c = CASES[parseInt(sel.value, 10)];
+    if (!c) return;
+    if (!confirm('Load "' + caseLabel + '"? This will overwrite any data currently in the form.')) return;
+
+    /* Focus topic */
+    var ft = document.getElementById('focus-topic');
+    if (ft) ft.value = c.focusTopic;
+
+    /* Pathophysiology */
+    var patho = document.getElementById('pathophysiology');
+    if (patho) patho.value = c.pathophysiology;
+
+    /* Risk factors */
+    document.querySelectorAll('.risk-factor').forEach(function (el, i) {
+      el.value = c.riskFactors[i] || '';
+    });
+
+    /* Cues */
+    document.querySelectorAll('.cue').forEach(function (el, i) {
+      el.value = c.cues[i] || '';
+    });
+
+    /* Supporting analysis */
+    document.querySelectorAll('.supporting').forEach(function (el, i) {
+      el.value = c.supporting[i] || '';
+    });
+
+    /* Concerning cues */
+    document.querySelectorAll('.concerning').forEach(function (el, i) {
+      el.value = c.concerning[i] || '';
+    });
+
+    /* Hypotheses */
+    document.querySelectorAll('.hypothesis').forEach(function (el, i) {
+      el.value = c.hypotheses[i] || '';
+    });
+
+    /* Solutions / Goals */
+    document.querySelectorAll('.solution').forEach(function (el, i) {
+      el.value = c.solutions[i] || '';
+    });
+
+    /* Actions */
+    document.querySelectorAll('.action').forEach(function (el, i) {
+      el.value = c.actions[i] || '';
+    });
+
+    /* Outcomes */
+    document.querySelectorAll('.outcome').forEach(function (el, i) {
+      el.value = c.outcomes[i] || '';
+    });
+
+    /* Reflow textareas and persist */
+    document.querySelectorAll('textarea').forEach(function (ta) { autosize(ta); });
+    save();
+    syncPrintCard();
+
+    /* Scroll to top of the form content */
+    var root = document.getElementById('concept-map-root');
+    if (root) root.scrollIntoView({ behavior: 'smooth' });
+  };
 
   /* ── Clear all ───────────────────────────────────────────────── */
   window.clearAll = function () {
