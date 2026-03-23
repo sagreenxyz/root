@@ -1,0 +1,572 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Wound & Skin Care – D439" protected={true}>
+  <div style="max-width:860px; margin:0 auto; padding:2rem 1rem;">
+
+    <!-- Breadcrumb -->
+    <nav style="font-size:0.85rem; color:#6b7280; margin-bottom:1.5rem;">
+      <a href={`${base}/private/dashboard`} style="color:#4f46e5; text-decoration:none;">Dashboard</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <a href={`${base}/private/d439`} style="color:#4f46e5; text-decoration:none;">D439 Foundations of Nursing</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <span>Wound &amp; Skin Care</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header style="margin-bottom:2rem;">
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+        <span style="font-size:2rem;">🩹</span>
+        <h1 style="font-size:1.9rem; font-weight:800; color:#1e293b; margin:0;">Wound &amp; Skin Care</h1>
+      </div>
+      <span style="display:inline-block; background:#ede9fe; color:#6d28d9; font-size:0.78rem; font-weight:700; letter-spacing:0.05em; padding:0.25rem 0.75rem; border-radius:9999px; text-transform:uppercase;">D439 – Foundations of Nursing</span>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+      <p style="font-weight:700; color:#1e293b; margin:0 0 0.75rem 0; font-size:0.95rem;">Table of Contents</p>
+      <ol style="margin:0; padding-left:1.25rem; line-height:2; font-size:0.9rem;">
+        <li><a href="#wound-classification" style="color:#4f46e5; text-decoration:none;">Wound Classification</a></li>
+        <li><a href="#wound-drainage" style="color:#4f46e5; text-decoration:none;">Wound Drainage Types</a></li>
+        <li><a href="#wound-healing" style="color:#4f46e5; text-decoration:none;">Primary, Secondary, and Tertiary Healing</a></li>
+        <li><a href="#braden-scale" style="color:#4f46e5; text-decoration:none;">Braden Scale</a></li>
+        <li><a href="#pressure-injury-prevention" style="color:#4f46e5; text-decoration:none;">Pressure Injury Prevention</a></li>
+        <li><a href="#wound-care" style="color:#4f46e5; text-decoration:none;">Proper Wound Care</a></li>
+        <li><a href="#diabetic-foot-care" style="color:#4f46e5; text-decoration:none;">Foot Care for Diabetics</a></li>
+        <li><a href="#shearing-force" style="color:#4f46e5; text-decoration:none;">Shearing Force</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. Wound Classification -->
+    <section id="wound-classification" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">1. Wound Classification</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Wounds are classified along several dimensions: cause, skin integrity, acuity, depth, contamination level, and (for pressure injuries) staging. Accurate classification drives appropriate treatment selection and documentation.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Intentional vs. Unintentional</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Intentional:</strong> Purposefully created for therapeutic reasons (e.g., surgical incision, venipuncture, IV insertion). Edges are clean; healing is predictable.</li>
+        <li><strong>Unintentional:</strong> Result of trauma, accident, or unexpected event (e.g., laceration, abrasion, puncture). Edges may be irregular; contamination risk is higher.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Open vs. Closed</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Open:</strong> Skin surface is broken; microorganisms can enter (e.g., lacerations, abrasions, ulcers, surgical incisions).</li>
+        <li><strong>Closed:</strong> Skin surface is intact; underlying tissue is injured (e.g., contusions, sprains, closed fractures). Risk of internal hemorrhage or compartment syndrome.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Acute vs. Chronic</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Acute:</strong> Progresses through healing phases in a predictable, timely manner (typically heals within 4 weeks). Example: clean surgical incision.</li>
+        <li><strong>Chronic:</strong> Fails to progress through healing phases in an orderly, timely manner; often stalls in the inflammatory phase for &gt;4–6 weeks. Examples: pressure injuries, diabetic foot ulcers, venous stasis ulcers. Associated with underlying conditions (diabetes, PVD, malnutrition, immunosuppression).</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Depth Classification</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Superficial (Partial Thickness – Superficial):</strong> Involves only the epidermis. Heals by epidermal regeneration. Example: superficial abrasion, first-degree burn.</li>
+        <li><strong>Partial Thickness:</strong> Extends through epidermis into the dermis but does not penetrate the dermis fully. Painful (nerve endings exposed). Example: second-degree burn, Stage II pressure injury.</li>
+        <li><strong>Full Thickness:</strong> Destroys both epidermis and dermis; may extend into subcutaneous tissue, muscle, or bone. Requires granulation and contraction for healing. May be painless if nerves are destroyed. Examples: Stage III/IV pressure injury, third-degree burn.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Wound Healing Category (Contamination Classification)</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Class I – Clean:</strong> Uninfected surgical wound; no entry into GI, respiratory, genitourinary tracts; closed primarily. Infection risk &lt;2%. Example: hernia repair.</li>
+        <li><strong>Class II – Clean-Contaminated:</strong> Surgical wound with controlled entry into GI/respiratory/GU tract with no unusual contamination. Infection risk 5–15%. Example: elective bowel surgery.</li>
+        <li><strong>Class III – Contaminated:</strong> Open, fresh accidental wounds; major breaks in sterile technique; spillage from GI tract; acute non-purulent inflammation. Infection risk 15–30%. Example: traumatic laceration, colostomy takedown.</li>
+        <li><strong>Class IV – Dirty/Infected:</strong> Old traumatic wounds with devitalized tissue; existing clinical infection or perforated viscera. Organisms present before surgery. Infection risk &gt;30%. Example: ruptured appendix, perforated colon.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Pressure Injury Staging (NPUAP/EPUAP)</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
+        Pressure injuries (formerly "pressure ulcers") are localized damage to skin and underlying soft tissue, usually over a bony prominence or related to a medical device, resulting from intense and/or prolonged pressure combined with shear.
+      </p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Stage I:</strong> Intact skin with non-blanchable erythema. Skin is red, does not blanch with fingertip pressure. May feel warmer, firmer, or softer than surrounding tissue. Painful in patients with intact sensation.</li>
+        <li><strong>Stage II:</strong> Partial-thickness loss of skin with exposed dermis. Shallow open ulcer with pink/red wound bed; no slough. May also present as an intact or ruptured blister. No slough or bruising (bruising suggests deep tissue injury).</li>
+        <li><strong>Stage III:</strong> Full-thickness skin loss with visible subcutaneous fat; granulation tissue and epibole (rolled wound edges) often present. Slough and/or eschar may be visible. Depth varies by anatomical location (nose/ear/occiput/malleolus lack subcutaneous tissue — Stage III can be shallow there).</li>
+        <li><strong>Stage IV:</strong> Full-thickness skin and tissue loss with exposed or directly palpable fascia, muscle, tendon, ligament, cartilage, or bone. Slough and/or eschar may be present. Epibole, undermining, and tunneling often present. Osteomyelitis risk is high.</li>
+        <li><strong>Unstageable:</strong> Full-thickness skin and tissue loss in which the extent of tissue damage cannot be confirmed because it is obscured by slough or eschar. Remove slough/eschar (unless dry, adherent eschar on heel — do NOT remove) to determine true stage.</li>
+        <li><strong>Deep Tissue Pressure Injury (DTPI):</strong> Intact or non-intact skin with a localized area of persistent non-blanchable deep red, maroon, or purple discoloration, or epidermal separation revealing a dark wound bed or blood-filled blister. Pain and temperature change often precede color changes. May evolve rapidly to reveal the actual extent of tissue injury.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Staging Rules</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Once a pressure injury is staged, you never <em>downstage</em> it as it heals. A healing Stage IV remains documented as Stage IV.</li>
+          <li>Do not stage mucosal membrane pressure injuries (e.g., from NG tubes, oral airways) — the NPUAP staging system applies only to skin.</li>
+          <li>Heels with dry, adherent, intact eschar should NOT be debrided — this eschar acts as a protective cover.</li>
+          <li>The most common sites for pressure injuries: sacrum, coccyx, heels, greater trochanters, ischial tuberosities, lateral malleoli.</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Stage I = <strong>intact skin</strong> + non-blanchable redness. Stage II = <strong>blister or shallow open ulcer</strong>. Stage III = <strong>subcutaneous fat visible</strong>. Stage IV = <strong>bone/tendon/muscle visible</strong>. Unstageable = <strong>covered by slough or eschar</strong>. DTPI = <strong>deep purple/maroon intact or non-intact skin</strong>. These distinctions are highly testable.</p>
+      </div>
+    </section>
+
+    <!-- 2. Wound Drainage Types -->
+    <section id="wound-drainage" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">2. Wound Drainage Types</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Assessing wound drainage (exudate) provides critical information about the healing process and infection status. Nurses must evaluate color, consistency, amount, and odor and document findings accurately each shift.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Types of Drainage</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>
+          <strong>Serous:</strong> Clear or straw-colored, watery, thin. Composed of serum (plasma without clotting proteins). <em>Normal</em> finding, especially in the inflammatory phase. Indicates a clean wound. Example: clear fluid weeping from a blister.
+        </li>
+        <li>
+          <strong>Serosanguineous:</strong> Pink-tinged or light pink/red; thin, watery mixture of serum and blood. <em>Normal</em> in the early healing phase (first 24–48 hours post-op or post-injury). Indicates a healing wound with some capillary leakage.
+        </li>
+        <li>
+          <strong>Sanguineous (Hemorrhagic):</strong> Bright red; fresh blood. <em>Expected</em> in small amounts immediately after surgery or trauma, but <strong>abnormal if excessive, persistent, or increasing</strong>. Sudden large amounts suggest hemorrhage — notify the provider immediately.
+        </li>
+        <li>
+          <strong>Purulent:</strong> Thick, opaque; yellow, green, tan, or brown in color; may have a foul odor. Composed of white blood cells, dead tissue, and bacteria. <em>Always abnormal</em> — indicates <strong>infection</strong>. Obtain wound culture per protocol and notify the provider.
+        </li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Amount Descriptors</p>
+        <p style="margin:0 0 0.5rem 0; line-height:1.8; color:#374151;">Standardize drainage amount documentation using these terms:</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Scant:</strong> Barely perceptible; spot on dressing &lt;1 cm</li>
+          <li><strong>Small:</strong> Dressing stained ≤2.5 cm (1 inch)</li>
+          <li><strong>Moderate:</strong> Dressing saturated 2.5–7.5 cm (1–3 inches)</li>
+          <li><strong>Large/Copious:</strong> Dressing completely saturated; may strike through</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Wound Drainage Devices</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>
+          <strong>Jackson-Pratt (JP) Drain:</strong> Flat, round bulb drain that creates gentle negative pressure (closed suction). Used to remove small amounts of drainage from surgical sites. Nursing care: compress/empty the bulb to reestablish suction ("strip" the drain per facility policy), measure and document output, inspect insertion site, never leave the bulb open without compressing.
+        </li>
+        <li>
+          <strong>Hemovac Drain:</strong> Larger spring-loaded disk drain; operates on the same closed-suction principle as the JP drain. Used when larger drainage volumes are expected. Compress completely when reestablishing suction; measure output each shift.
+        </li>
+        <li>
+          <strong>Penrose Drain:</strong> Open (passive) drain; a flat rubber tube that allows gravity or capillary action to drain fluid from a wound. There is no suction. The exit site requires a sterile dressing changed frequently. Penrose drains are gradually advanced (shortened) and then removed as drainage decreases.
+        </li>
+      </ul>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Serous and serosanguineous = normal. Sanguineous in large amounts = notify provider. Purulent = always infection.</strong> Know your JP vs. Hemovac (both closed suction) vs. Penrose (open/passive). A key question type: "You note the JP drain is not compressing — what do you do?" Answer: empty, compress the bulb, and reestablish suction.</p>
+      </div>
+    </section>
+
+    <!-- 3. Primary, Secondary, Tertiary Healing -->
+    <section id="wound-healing" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">3. Primary, Secondary, and Tertiary Healing (Wound Intention)</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Wound healing by intention describes the method by which a wound closes and heals. The type of intention determines nursing care priorities, expected healing time, and scar formation.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Primary Intention (First Intention)</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
+        Wound edges are clean, well-approximated, and closed with sutures, staples, adhesive strips (Steri-Strips), or tissue adhesive (Dermabond). Minimal tissue loss. Healing is rapid with <strong>minimal scarring</strong>.
+      </p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Examples:</strong> Surgical incisions, lacerations with clean edges that are sutured promptly, paper cuts.</li>
+        <li><strong>Healing time:</strong> 5–7 days for skin closure; 3–6 weeks for full tissue strength.</li>
+        <li><strong>Nursing focus:</strong> Monitor for signs of infection (redness, warmth, swelling, drainage, fever), keep incision dry per protocol, assess suture/staple line integrity.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Secondary Intention (Second Intention)</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
+        Wound is left open to heal from the inside out through <strong>granulation tissue formation</strong>, wound contraction, and epithelialization. Used when there is significant tissue loss, the wound cannot be closed without tension, or infection is present. Results in <strong>more scarring</strong> and longer healing time.
+      </p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Examples:</strong> Pressure injuries, large burns, pilonidal cyst excision, infected abscesses left open to drain.</li>
+        <li><strong>Healing time:</strong> Weeks to months depending on wound size, depth, and patient factors.</li>
+        <li><strong>Nursing focus:</strong> Moist wound healing environment (promotes granulation), wound packing if tunneling/undermining is present, frequent dressing changes, assess granulation tissue (beefy red = healthy; pale/dusky = compromised), nutritional support.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Tertiary Intention (Delayed Primary Closure / Third Intention)</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
+        Wound is intentionally <strong>left open initially</strong> to allow infection/contamination to resolve, then edges are surgically approximated and closed at a later date (typically 3–5 days). Combines features of primary and secondary healing.
+      </p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Examples:</strong> Contaminated or infected traumatic wounds, abdominal wounds left open after bowel injury, wounds needing debridement before closure.</li>
+        <li><strong>Healing time:</strong> Longer than primary; intermediate scarring.</li>
+        <li><strong>Nursing focus:</strong> Open wound care until closure, monitor for signs of infection resolution, prepare patient for planned surgical closure.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Phases of Wound Healing</p>
+        <p style="margin:0 0 0.5rem 0; line-height:1.8; color:#374151;">All wounds (regardless of intention) pass through four phases:</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Hemostasis (minutes to hours):</strong> Vasoconstriction, platelet aggregation, clot formation. Stops bleeding.</li>
+          <li><strong>Inflammatory (1–4 days):</strong> Vasodilation, increased permeability, WBC migration (neutrophils first, then macrophages). Signs: redness, warmth, swelling, pain. Purpose: clean the wound of debris and bacteria.</li>
+          <li><strong>Proliferative (4 days – 3 weeks):</strong> Granulation tissue formation, angiogenesis, collagen deposition, wound contraction, epithelialization. Key nursing concern: moist wound environment supports this phase.</li>
+          <li><strong>Maturation/Remodeling (3 weeks – 2 years):</strong> Collagen remodeling; scar formation and strengthening. Wound tensile strength reaches ~80% of original at 6 weeks but never fully recovers 100%.</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Primary = sutured, minimal scar. Secondary = open, granulation, large scar. Tertiary = left open → then sutured later (delayed closure for infected wounds).</strong> Know that "granulation tissue" is the hallmark of secondary healing — healthy granulation is beefy red and moist; pale, dusky, or friable granulation is abnormal. The proliferative phase is most dependent on adequate nutrition (protein, vitamin C, zinc).</p>
+      </div>
+    </section>
+
+    <!-- 4. Braden Scale -->
+    <section id="braden-scale" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">4. Braden Scale</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        The Braden Scale is the most widely used validated tool for assessing a patient's risk for developing pressure injuries. It evaluates six subscales and produces a total score used to guide prevention interventions. A <strong>lower score = higher risk</strong>.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">The Six Subscales</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>
+          <strong>1. Sensory Perception (1–4):</strong> Ability to respond meaningfully to pressure-related discomfort. Score of 1 = completely limited (unresponsive or unable to feel pain over most of body). Score of 4 = no impairment. Patients with decreased sensation (spinal cord injury, sedation, neuropathy) cannot shift position in response to pain.
+        </li>
+        <li>
+          <strong>2. Moisture (1–4):</strong> Degree to which skin is exposed to moisture (perspiration, urine, feces). Score of 1 = constantly moist (skin is wet every time it is moved/turned). Score of 4 = rarely moist. Moisture macerated skin, increasing tissue breakdown risk.
+        </li>
+        <li>
+          <strong>3. Activity (1–4):</strong> Degree of physical activity. Score of 1 = bedfast (confined to bed). Score of 4 = walks frequently. Patients who are bedbound or chairbound have prolonged pressure over bony prominences.
+        </li>
+        <li>
+          <strong>4. Mobility (1–4):</strong> Ability to change and control body position. Score of 1 = completely immobile (cannot make even slight changes in body or extremity position without assistance). Score of 4 = no limitations. Distinct from activity — a patient may walk but have limited ability to reposition (e.g., post-stroke hemiplegia).
+        </li>
+        <li>
+          <strong>5. Nutrition (1–4):</strong> Usual food intake pattern. Score of 1 = very poor (never eats a complete meal; rarely eats more than ⅓ of any food offered; inadequate protein; NPO or clear liquids &gt;5 days). Score of 4 = excellent (eats most of every meal; never refuses a meal; adequate protein and supplemental nutrition). Poor nutrition impairs collagen synthesis and immune response.
+        </li>
+        <li>
+          <strong>6. Friction and Shear (1–3):</strong> Note this subscale is scored 1–3, not 1–4, so maximum total is 23. Score of 1 = problem (requires moderate to maximum assistance in moving; complete lifting without sliding against sheets is impossible; frequently slides down in bed). Score of 3 = no apparent problem (moves independently in bed and chair with sufficient muscle strength to lift completely during a move). Friction and shear damage tissue integrity even without sustained pressure.
+        </li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Braden Score Interpretation</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Score 15–18:</strong> Mild risk — begin preventive measures; increase monitoring frequency</li>
+          <li><strong>Score 13–14:</strong> Moderate risk — implement full pressure injury prevention protocol</li>
+          <li><strong>Score 10–12:</strong> High risk — aggressive prevention; specialty support surfaces; turning every 1–2 hours</li>
+          <li><strong>Score ≤ 9:</strong> Very high risk — maximum prevention protocol; specialty beds; nutritional consult; wound care team referral</li>
+          <li>Total score range: <strong>6 (highest risk) to 23 (lowest risk)</strong></li>
+          <li>Braden Scale should be completed on admission, every shift or per facility policy, and with any change in patient condition</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Remember: <strong>Lower Braden = Higher Risk</strong>. Subscales: "<strong>S-M-A-M-N-F</strong>" = Sensory perception, Moisture, Activity, Mobility, Nutrition, Friction/shear. Friction &amp; Shear is the only subscale scored 1–3 (not 1–4), making the maximum total score 23. The minimum is 6. A score ≤18 indicates at least mild risk and triggers preventive interventions.</p>
+      </div>
+    </section>
+
+    <!-- 5. Pressure Injury Prevention -->
+    <section id="pressure-injury-prevention" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">5. How to Prevent Pressure Injuries</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Pressure injury prevention is a nursing priority and a quality measure. A bundle approach addressing all contributing factors is most effective. The major contributing factors are pressure, shear, friction, moisture, and inadequate nutrition.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Repositioning</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Reposition every <strong>2 hours</strong> in bed (minimum standard); more frequently for high-risk patients or those on standard mattresses.</li>
+        <li>Reposition every <strong>1 hour</strong> when sitting in a chair, as pressure on the ischial tuberosities is intense.</li>
+        <li>Use the <strong>30° lateral tilt</strong> (not 90° side-lying, which places full weight on the greater trochanter).</li>
+        <li>Maintain the head of bed at <strong>30° or less</strong> when medically safe to reduce shear forces. Temporarily elevate to 30–45° for meals and 1 hour after.</li>
+        <li>Use a turn schedule and document repositioning with each occurrence.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Pressure-Relieving Devices</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Specialty mattresses:</strong> Low-air-loss mattresses, alternating-pressure mattresses, and gel/foam overlays redistribute pressure and reduce interface pressure below capillary closing pressure (~32 mmHg).</li>
+        <li><strong>Heel protectors / heel floats:</strong> Off-load heels completely — elevate heels off the bed surface using foam boots or pillows placed lengthwise under calves. Do not place pillows under the heel directly.</li>
+        <li><strong>Foam wedges:</strong> Maintain 30° tilt positioning for lateral positioning.</li>
+        <li><strong>Seat cushions:</strong> Pressure-redistributing seat cushions for chair-bound patients.</li>
+        <li>NOTE: Specialty surfaces are adjuncts — they do NOT replace regular repositioning.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Moisture Management</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Keep skin clean and <strong>dry</strong> — moisture from incontinence, perspiration, or wound drainage macerates skin and increases breakdown risk.</li>
+        <li>Use moisture barriers (zinc oxide, petroleum-based products, silicone-based barriers) to protect perineal skin from incontinence.</li>
+        <li>Implement a bowel and bladder management program; use containment devices (fecal management systems, external urinary catheters) as indicated.</li>
+        <li>Change linen and incontinence briefs promptly after soiling.</li>
+        <li>Apply <strong>moisturizer</strong> to dry skin — dry skin cracks and fissures, increasing infection and breakdown risk. Do not massage reddened areas (breaks down underlying tissue).</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Nutrition</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Protein:</strong> Essential for tissue repair, immune function, and collagen synthesis. Target 1.2–1.5 g/kg/day for at-risk patients. Severe deficiency impairs healing significantly.</li>
+        <li><strong>Calories:</strong> Adequate caloric intake prevents catabolism of lean muscle mass for energy.</li>
+        <li><strong>Vitamin C:</strong> Required for collagen synthesis and immune function.</li>
+        <li><strong>Zinc:</strong> Cofactor for collagen synthesis and cell proliferation.</li>
+        <li>Refer to a registered dietitian for comprehensive nutritional assessment. Monitor albumin and prealbumin as markers of nutritional status.</li>
+        <li>Ensure adequate hydration (dehydration reduces skin turgor and tissue perfusion).</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Skin Inspection and Assessment</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Inspect <strong>every shift</strong> (or per facility policy) — head-to-toe skin assessment with special attention to bony prominences and skin folds.</li>
+        <li>Assess for non-blanchable erythema (Stage I indicator).</li>
+        <li>Perform blanch test: apply fingertip pressure for 3 seconds and release. Blanching = vascular; non-blanching = tissue damage.</li>
+        <li>Assess under and around all medical devices (tubes, O2 cannulas, splints, casts).</li>
+        <li>Document baseline skin assessment on admission and any changes thereafter.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Minimize Friction and Shear</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Use lift sheets, slide sheets, or mechanical lifts to reposition — never drag the patient across bed linen.</li>
+        <li>Use proper body mechanics and adequate staff for repositioning (2 nurses minimum for dependent patients).</li>
+        <li>Use padded side rails, elbow and heel protectors for patients who are restless or who propel themselves.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Prevention Bundle Key Points</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Never massage reddened/hyperemic areas — it further damages fragile capillaries</li>
+          <li>Donut-shaped devices (foam rings) are NOT recommended — they concentrate pressure at the ring edges</li>
+          <li>Pressure injuries are considered a <em>never event</em> (preventable hospital-acquired condition) — facilities may not receive Medicare/Medicaid reimbursement for hospital-acquired pressure injuries (HAPIs)</li>
+          <li>Document all preventive interventions in the nursing care plan and flow sheet</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Key numbers to memorize: reposition every <strong>2 hours in bed</strong>, every <strong>1 hour in chair</strong>; HOB no higher than <strong>30°</strong> to prevent shear (raise temporarily for meals). <strong>Never massage reddened areas.</strong> Heels must be <strong>completely off-loaded</strong> (pillow under calf, not heel). Donut devices are <strong>contraindicated</strong>.</p>
+      </div>
+    </section>
+
+    <!-- 6. Proper Wound Care -->
+    <section id="wound-care" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">6. Proper Wound Care</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Wound care encompasses assessment, cleansing, dressing selection, application, and thorough documentation. The goal is to create an optimal wound environment that promotes healing, prevents infection, and protects surrounding skin.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Wound Assessment and Documentation</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">Document each wound assessment using the <strong>WOUND</strong> or <strong>TIME</strong> framework. Every assessment should include:</p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Location:</strong> Specific anatomical site</li>
+        <li><strong>Size:</strong> Length × width × depth in centimeters (L × W × D); use a disposable ruler; measure length head-to-toe, width side-to-side</li>
+        <li><strong>Wound bed:</strong> Color and tissue type present (red/granulation, yellow/slough, black/necrosis, pink/epithelial tissue)</li>
+        <li><strong>Wound edges:</strong> Attached or unattached, rolled (epibole), undermining, or tunneling (document direction using clock positions)</li>
+        <li><strong>Periwound skin:</strong> Redness, warmth, induration, maceration, excoriation, or discoloration</li>
+        <li><strong>Drainage:</strong> Type (serous/serosanguineous/sanguineous/purulent), amount, odor</li>
+        <li><strong>Pain:</strong> Patient-reported pain at the wound site at rest and with dressing change</li>
+        <li><strong>Signs of infection:</strong> REEDA for sutured wounds — Redness, Edema, Ecchymosis, Discharge, Approximation</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Wound Cleansing Technique</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Solution:</strong> Normal saline (0.9% NaCl) is the preferred cleansing solution for most wounds. Prescribed wound cleansers may be used per order. Avoid hydrogen peroxide, povidone-iodine, and Dakin's solution routinely — they are cytotoxic to granulation tissue and impair healing.</li>
+        <li><strong>Irrigation pressure:</strong> 4–15 psi is optimal for wound irrigation (removes bacteria without damaging tissue). Use a 35 mL syringe with an 18–19 gauge angiocath or irrigation shield for appropriate pressure.</li>
+        <li><strong>Direction — Least to Most Contaminated:</strong>
+          <ul style="line-height:2; padding-left:1.25rem;">
+            <li>For surgical incisions: wipe <strong>from the incision outward</strong> (center to periphery), using one stroke per gauze.</li>
+            <li>For wounds with multiple openings: cleanse the least contaminated area first, then the most contaminated.</li>
+            <li>Never wipe back and forth over a wound with the same gauze.</li>
+          </ul>
+        </li>
+        <li>Pat wound dry gently before applying dressing to prevent maceration.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Wound Dressing Selection</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;">Dressing selection is based on wound characteristics (depth, drainage, location) and healing goals:</p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Wet-to-Moist (saline-moistened gauze):</strong> Historically used for debridement; current evidence favors moist wound healing over wet-to-dry. A dry dressing removes both necrotic tissue AND healthy granulation. When used: clean the wound, apply moistened gauze, cover with dry gauze. Change when gauze is moist (not dried). Painful to remove.</li>
+        <li><strong>Transparent Film (e.g., Tegaderm, Op-Site):</strong> Thin, clear, adhesive; waterproof but permeable to oxygen and moisture vapor. Maintains moist environment, allows visual monitoring. Use for: Stage I–II pressure injuries, IV sites, superficial wounds with minimal drainage. Do NOT use for infected wounds or heavy drainage.</li>
+        <li><strong>Hydrocolloid (e.g., DuoDERM):</strong> Absorbs small to moderate amounts of drainage; forms a gel over the wound; occlusive and waterproof. Maintains moist environment; promotes autolytic debridement. Use for: Stage II–III pressure injuries, partial-thickness wounds, dry wounds needing moisture. Change every 3–7 days or when seal is broken. Has an odor when removed (normal — not infection).</li>
+        <li><strong>Alginate (e.g., Kaltostat, Sorbsan):</strong> Derived from seaweed; highly absorbent; forms a gel on contact with exudate. Use for: heavily exudating wounds, infected wounds (can absorb bacteria), wounds requiring packing. Requires a secondary dressing.</li>
+        <li><strong>Foam Dressing (e.g., Mepilex, Allevyn):</strong> Highly absorbent; cushions wound; maintains moist environment. Use for: moderate to heavily draining wounds, pressure injuries, under compression bandages. Change every 1–3 days or when saturated.</li>
+        <li><strong>Silver/Antimicrobial Dressings:</strong> Used for infected or critically colonized wounds. Releases silver ions that are bactericidal. Examples: Mepilex Ag, Aquacel Ag.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Securing Dressings</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Use hypoallergenic tape; assess for adhesive allergy before application.</li>
+        <li>Tape parallel to the wound edges (not perpendicular across) to reduce tension and trauma on removal.</li>
+        <li>For patients with fragile skin, use gentle adhesive products (silicone-based tape) or non-adhesive dressings secured with stretch netting or elastic wrap (Kerlix, Coban).</li>
+        <li>Label the dressing with date, time, and nurse initials per facility policy.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Wound Dehiscence and Evisceration</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Wound dehiscence:</strong> Separation of wound edges; most common 5–9 days post-op. Risk factors: obesity, infection, poor nutrition, excessive straining. Action: cover with sterile saline-moistened dressing; notify provider; keep patient in low Fowler's with knees slightly flexed.</li>
+          <li><strong>Evisceration:</strong> Protrusion of abdominal organs through the wound. <strong>EMERGENCY.</strong> Cover immediately with sterile saline-moistened towels; do NOT attempt to push organs back in; call provider STAT; keep patient calm and supine; prepare for emergency surgery.</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Clean wounds from <strong>least to most contaminated</strong> — always move away from the incision, using one stroke per gauze. <strong>Normal saline is the preferred cleansing solution.</strong> Avoid hydrogen peroxide and povidone-iodine on healing wounds — they damage granulation tissue. Evisceration = <strong>sterile saline-moistened dressing cover + STAT provider notification</strong>.</p>
+      </div>
+    </section>
+
+    <!-- 7. Foot Care for Diabetics -->
+    <section id="diabetic-foot-care" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">7. Foot Care for Diabetics</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Diabetic foot complications are a leading cause of non-traumatic lower limb amputations. Two primary factors drive this risk: <strong>peripheral neuropathy</strong> (loss of protective sensation — patient cannot feel pain from injuries or pressure) and <strong>peripheral vascular disease (PVD)</strong> (impaired circulation delays healing and predisposes to infection and gangrene). Hyperglycemia further impairs immune response and wound healing.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Why Diabetic Foot Care is Critical</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Peripheral neuropathy:</strong> Damage to sensory nerves means the patient cannot feel blisters, cuts, pressure, or temperature extremes. Minor injuries go unnoticed and worsen.</li>
+        <li><strong>Peripheral vascular disease:</strong> Arterial insufficiency reduces blood flow to the feet, impairing delivery of oxygen, nutrients, and immune cells needed for healing. Even small wounds can progress to ulcers and gangrene.</li>
+        <li><strong>Impaired immune function:</strong> Hyperglycemia impairs neutrophil and macrophage function, increasing infection risk and severity.</li>
+        <li><strong>Charcot arthropathy:</strong> Neuropathy can lead to joint destruction and foot deformity, altering pressure distribution and increasing ulcer risk.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Daily Foot Inspection</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Inspect ALL surfaces of both feet <strong>every day</strong>, including between toes and the sole.</li>
+        <li>Use a mirror if patient cannot see the bottom of the feet; ask a caregiver to help if needed.</li>
+        <li>Assess for: blisters, cuts, abrasions, redness, swelling, cracking, calluses, corns, color changes (pallor, cyanosis, erythema), temperature changes, and drainage.</li>
+        <li>Report any lesion, wound, or abnormality to the healthcare provider immediately — do not wait for the next appointment.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Nail Care</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Trim toenails <strong>straight across</strong> — never rounded at the corners (prevents ingrown toenails that can cause infection).</li>
+        <li>File sharp edges with a nail file after trimming.</li>
+        <li>Do NOT cut nails too short — cut level with the tip of the toe.</li>
+        <li>For patients with thick, fungal, or severely deformed nails, or those with PVD, refer to a podiatrist for nail care. Patient with neuropathy should not perform their own nail care.</li>
+        <li>Never use sharp instruments (scissors, razors) to remove calluses or corns — refer to podiatry.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Foot Hygiene</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Wash feet daily in <strong>warm (not hot) water</strong> — test water temperature with elbow or thermometer (≤37°C/98.6°F) because neuropathy impairs temperature sensing and burns can occur.</li>
+        <li>Use mild soap; do not soak feet (prolonged soaking macerates skin).</li>
+        <li>Dry thoroughly, especially <strong>between the toes</strong> — moisture between toes promotes fungal infection (tinea pedis).</li>
+        <li>Apply moisturizing lotion to the tops and soles of feet to prevent cracking — <strong>do NOT apply between toes</strong> (excess moisture promotes fungal growth and maceration).</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Appropriate Footwear</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Never go barefoot</strong> — even indoors. Always wear shoes or slippers to protect feet from injury.</li>
+        <li>Wear well-fitting, comfortable, closed-toe shoes with adequate toe box — avoid tight shoes, pointed toes, and high heels.</li>
+        <li><strong>Inspect the inside of shoes before putting them on</strong> — feel for foreign objects, rough seams, or wrinkles (neuropathy means the patient won't feel a pebble or nail rubbing all day).</li>
+        <li>Wear clean, dry, seamless or smooth-seamed <strong>cotton socks</strong> — change daily; avoid elastic-top socks that constrict circulation.</li>
+        <li>Diabetic therapeutic shoes (Medicare may cover one pair per year for qualifying patients) provide extra depth and pressure redistribution.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">When to Notify the Provider</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Any new wound, sore, blister, or ulcer — no matter how small</li>
+        <li>Signs of infection: redness, warmth, swelling, drainage, foul odor, fever</li>
+        <li>Ingrown toenail</li>
+        <li>Callus, corn, or wart (do not self-treat with OTC chemical removers)</li>
+        <li>Color changes (pallor, cyanosis, redness) or loss of hair on the lower legs</li>
+        <li>Pain or cramping in the legs with walking (claudication — suggests PVD)</li>
+        <li>Change in skin temperature (cold feet may indicate ischemia)</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Patient Teaching Priorities</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Inspect feet <strong>daily</strong> — if you can't see the bottom of your feet, use a mirror or ask someone to help</li>
+          <li>Test bath water temperature with your elbow or a thermometer — never with your feet</li>
+          <li>Cut nails <strong>straight across</strong> — never round the corners</li>
+          <li><strong>Never go barefoot</strong>, even at home or on the beach</li>
+          <li>Do NOT use heating pads, hot water bottles, or electric blankets on feet (burns from impaired sensation)</li>
+          <li>Tight or constrictive socks/stockings impair circulation — avoid them</li>
+          <li>Glycemic control is the most important systemic intervention to prevent diabetic foot complications</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">The two root causes of diabetic foot problems are <strong>neuropathy</strong> (can't feel injury) and <strong>PVD</strong> (can't heal). Key teaching: <strong>never barefoot, test water temperature with elbow, cut nails straight across, inspect shoes before wearing, report any wound immediately.</strong> Do NOT apply lotion between toes. Do NOT use heating pads on feet.</p>
+      </div>
+    </section>
+
+    <!-- 8. Shearing Force -->
+    <section id="shearing-force" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">8. Shearing Force</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Shearing force is a mechanical force that causes tissue layers to slide against each other in <strong>opposite directions, parallel to the skin surface</strong>. It is distinct from direct perpendicular pressure, yet it is equally damaging — often more so — because it can injure deep tissues while the skin surface appears intact.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Definition and Mechanism</h3>
+      <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
+        Shear occurs when two surfaces move in opposite directions simultaneously. In the clinical setting, the classic scenario is a patient sliding downward in bed while the skin remains stationary against the mattress. The skeleton (and deep tissues) moves downward while the skin (pinned by friction against the mattress) stays in place. The opposing forces stretch and tear the blood vessels and connective tissue between the deep tissues and the skin, leading to ischemia and necrosis — even without visible skin disruption initially.
+      </p>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Classic shear scenario:</strong> Head of bed elevated &gt;30°; patient slides toward the foot of the bed. The skin stays stationary (friction with bed) while the deeper tissues and skeleton move downward.</li>
+        <li><strong>Most vulnerable site:</strong> Sacrum and coccyx — especially when HOB is elevated.</li>
+        <li><strong>Dragging a patient</strong> across a surface (instead of lifting) creates significant shear force.</li>
+        <li><strong>Shear + pressure together</strong> cause tissue damage at <strong>lower pressures</strong> than pressure alone — a combination that significantly accelerates pressure injury development.</li>
+        <li>Shear damage may be invisible at the surface initially, presenting later as a Stage III or deep tissue pressure injury.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Prevention of Shear</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Limit HOB elevation:</strong> Keep the head of bed at <strong>30° or less</strong> when clinically safe to do so. Use the lowest angle that meets medical needs (e.g., for respiratory conditions, GERD, tube feedings).</li>
+        <li><strong>Use lift sheets and slide sheets:</strong> Position a draw sheet or transfer slide under the patient and use it to lift — not drag — the patient when repositioning. Mechanical lifts (Hoyer lift) eliminate shear during major transfers.</li>
+        <li><strong>Trapeze bar:</strong> Allows mobile patients to assist with repositioning by gripping the bar to lift themselves up in bed, eliminating skin-on-mattress dragging.</li>
+        <li><strong>Heel protectors and boot devices:</strong> Off-load heels and protect against friction and shear when the patient moves in bed.</li>
+        <li><strong>Low-shear specialty mattresses:</strong> Some low-air-loss mattresses also incorporate low-friction cover materials to reduce shear forces.</li>
+        <li><strong>Proper transfer technique:</strong> Always lift, never drag. Use sufficient staff or lift equipment for dependent patients.</li>
+        <li><strong>Positioning devices:</strong> Wedges, pillows, and foam positioners stabilize the patient and prevent sliding.</li>
+        <li>Elevate the <strong>foot of the bed slightly</strong> (reverse Trendelenburg position) to counteract sliding when the HOB must be elevated — this distributes weight differently.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Shear vs. Friction</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Friction:</strong> The resistance created when two surfaces move against each other (abrasive force). Damages the epidermis and superficial dermis. Example: skin rubbing against sheets during repositioning. Results in surface skin abrasion.</li>
+          <li><strong>Shear:</strong> The result of friction PLUS the effects of gravity pulling tissues in opposite directions. Damages deep tissues (subcutaneous tissue, blood vessels, muscle). More serious than friction alone because it occurs internally.</li>
+          <li>Both are assessed together in the Braden Scale (Friction and Shear subscale, scored 1–3).</li>
+          <li>Nurses must address both: lift (don't drag), keep HOB low, use slip-reducing surfaces and lift sheets.</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Shear = forces in opposite directions parallel to skin surface.</strong> Classic exam scenario: patient slides down in bed with HOB elevated — skin stays on sheets, skeleton moves down = shear injury to sacrum. Prevention: <strong>HOB ≤30°</strong>, use <strong>lift sheets</strong> (never drag), <strong>trapeze bar</strong> for self-repositioning, and <strong>heel protectors</strong>. Key distinction: friction damages the surface; shear damages deep tissues and can be invisible at the skin surface.</p>
+      </div>
+    </section>
+
+    <!-- Quick Reference Summary -->
+    <section style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-bottom:2.5rem;">
+      <h2 style="font-size:1.05rem; font-weight:700; color:#1e293b; margin:0 0 1rem 0;">📋 Quick Reference Summary</h2>
+      <ul style="margin:0; padding-left:1.25rem; line-height:2.1; color:#374151; font-size:0.92rem;">
+        <li><strong>Wound classification:</strong> Intentional vs. unintentional; open vs. closed; acute vs. chronic; superficial/partial/full thickness; Class I–IV contamination; Stage I–IV + Unstageable + DTPI for pressure injuries</li>
+        <li><strong>Drainage types:</strong> Serous = normal (clear); Serosanguineous = normal early healing (pink); Sanguineous = abnormal if excessive (bright red); Purulent = infection (thick, opaque, colored)</li>
+        <li><strong>Drain types:</strong> JP/Hemovac = closed suction (compress bulb to restore suction); Penrose = open/passive (gravity drainage)</li>
+        <li><strong>Healing intention:</strong> Primary = sutured clean edges, minimal scar; Secondary = open, granulation, larger scar (pressure ulcers); Tertiary = open initially then sutured (infected wounds)</li>
+        <li><strong>Braden Scale:</strong> 6 subscales (S-M-A-M-N-F); score 6–23; lower = higher risk; ≤18 = intervention; ≤9 = very high risk; Friction/Shear scored 1–3 only</li>
+        <li><strong>Pressure injury prevention:</strong> Reposition q2h in bed, q1h in chair; HOB ≤30°; specialty mattresses; off-load heels; moisture barriers; protein/vitamin C/zinc nutrition; skin inspection every shift; never massage reddened areas; no donut devices</li>
+        <li><strong>Wound cleansing:</strong> Normal saline preferred; clean least → most contaminated; one stroke per gauze; 4–15 psi irrigation pressure; avoid H₂O₂ and povidone-iodine on healing wounds</li>
+        <li><strong>Diabetic foot care:</strong> Daily inspection; warm (not hot) water; dry between toes; lotion everywhere except between toes; nails cut straight across; never barefoot; inspect inside shoes; report any wound immediately</li>
+        <li><strong>Shear:</strong> Opposite-direction forces parallel to skin; HOB &gt;30° + gravity + friction = sacral shear; prevent with HOB ≤30°, lift sheets, trapeze, mechanical lifts; damages deep tissue even with intact skin surface</li>
+        <li><strong>Evisceration emergency:</strong> Cover organs with sterile saline-moistened towels; call provider STAT; do NOT replace organs; patient remains supine</li>
+      </ul>
+    </section>
+
+    <!-- PREV / NEXT Navigation -->
+    <nav style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+      <a href={`${base}/private/d439/infection-control`}
+         style="display:inline-block; background:#f1f5f9; color:#64748b; text-decoration:none; padding:0.65rem 1.4rem; border-radius:9999px; font-weight:600; font-size:0.9rem; transition:background 0.15s;">
+        ← Infection Control &amp; Asepsis
+      </a>
+      <a href={`${base}/private/d439/mobility-exercise`}
+         style="display:inline-block; background:#eef2ff; color:#4f46e5; text-decoration:none; padding:0.65rem 1.4rem; border-radius:9999px; font-weight:600; font-size:0.9rem; transition:background 0.15s;">
+        Mobility &amp; Exercise →
+      </a>
+    </nav>
+
+  </div>
+</Layout>

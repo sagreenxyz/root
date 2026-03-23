@@ -1,0 +1,140 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Medications & Procedures – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Medications &amp; Procedures</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">💉</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#dc2626; background:#fef2f2; border:1px solid #fecaca; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Medications &amp; Procedures</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Injections, oxygen safety, suctioning, pulse oximetry, and ear drop administration.</p>
+  </header>
+
+  <!-- TOC -->
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#intradermal" style="color:#6366f1;">Intradermal Injections</a></li>
+      <li><a href="#heparin" style="color:#6366f1;">Heparin Injections</a></li>
+      <li><a href="#ear-drops" style="color:#6366f1;">Ear Drop Administration</a></li>
+      <li><a href="#o2-safety" style="color:#6366f1;">O2 Safety &amp; Oxygenation Chamber Storage</a></li>
+      <li><a href="#pulse-ox" style="color:#6366f1;">Pulse Oximetry</a></li>
+      <li><a href="#suctioning" style="color:#6366f1;">Suctioning – Procedure &amp; Safety</a></li>
+      <li><a href="#nasopharyngeal" style="color:#6366f1;">Nasopharyngeal Suctioning</a></li>
+    </ol>
+  </div>
+
+  <section id="intradermal" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Intradermal Injections</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Used primarily for allergy and tuberculin (TB/Mantoux) skin testing, local anesthesia, and some vaccines. The dermis is the injection layer.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Site:</strong> Inner forearm (most common), upper chest, or upper back. Select a site free of hair, lesions, and heavy pigmentation.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Technique:</strong> Use a 25–27 gauge, 3/8–5/8 inch needle. Hold the skin taut. Insert the needle bevel-up at a <strong>5–15° angle</strong>. Advance only a few millimeters until the bevel is just under the skin. Inject slowly — a pale wheal (bleb) 6–10 mm in diameter should form. Do NOT aspirate. Do NOT massage afterward (distorts results).</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> The wheal (bleb) confirms correct intradermal placement. No wheal = subcutaneous injection — document and notify provider. TB test is read 48–72 hours later; ≥10 mm induration is positive in most groups.
+    </div>
+  </section>
+
+  <section id="heparin" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Heparin Injections</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Route:</strong> Subcutaneous. Angle 90° (or 45° for thin patients). Use a 25–26 gauge, 5/8 inch needle.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Site:</strong> Abdomen, 2 inches from the umbilicus. Rotate sites. Avoid arms and legs (less reliable absorption).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Special considerations:</strong> Do NOT aspirate (increases bruising risk). Do NOT massage after injection. Do NOT expel the air bubble in prefilled syringes — it follows the drug and seals the track. Hold gentle pressure after injection (do not rub).</p>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Safety:</strong> Heparin is a high-alert medication. Always have a second nurse verify the dose. Monitor aPTT levels. Antidote is <strong>protamine sulfate</strong>. Watch for bleeding: bruising, blood in urine/stool, prolonged bleeding from cuts.
+    </div>
+  </section>
+
+  <section id="ear-drops" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Ear Drop Administration</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Preparation:</strong> Warm the drops to body temperature by holding the bottle in your hands for 1–2 minutes (cold drops cause vertigo and nausea).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Position:</strong> Patient lies on side with the affected ear up, or tilts head to the side.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Canal straightening:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Adults and children &gt;3 years:</strong> Pull pinna UP and BACK</li>
+      <li><strong>Children &lt;3 years:</strong> Pull pinna DOWN and BACK</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Instill the prescribed number of drops along the ear canal wall (not directly on the tympanic membrane). Have the patient remain in position 2–3 minutes. A cotton ball may be loosely placed (not packed) if ordered.</p>
+  </section>
+
+  <section id="o2-safety" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">O2 Safety &amp; Oxygenation Chamber Storage</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Oxygen is NOT flammable, but it vigorously supports combustion.</strong> A fire requires three elements — fuel, heat, and oxygen. High oxygen concentrations dramatically lower the ignition point of fuels.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Safety rules:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Post "No Smoking / Oxygen in Use" signs on door and at bedside</li>
+      <li>No open flames, candles, or smoking within the room</li>
+      <li>Use only cotton or wool blankets (no synthetic or woolen friction-producing materials)</li>
+      <li>Avoid oil-based lotions near oxygen equipment</li>
+      <li>Ground electrical equipment; use no-spark plugs</li>
+      <li>Keep oxygen cylinders secured upright in a stand — never free-standing</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Oxygen cylinder storage:</strong> Store in a cool, dry, ventilated area away from heat sources and flammables. Cylinders must be chained or strapped upright. Full and empty cylinders stored separately. Never store in a closed vehicle.</p>
+  </section>
+
+  <section id="pulse-ox" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Pulse Oximetry</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Non-invasive measurement of oxygen saturation (SpO2) of hemoglobin. Normal SpO2: <strong>95–100%</strong>. Below 90% = hypoxia; below 85% = severe hypoxia requiring immediate intervention.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Sites:</strong> Fingertip (most common), toe, earlobe, forehead sensor.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Factors that cause inaccurate readings:</strong> Nail polish (especially dark colors — remove or use alternate site), poor circulation, cold extremities, motion/shivering, carbon monoxide poisoning (CO falsely elevates SpO2), anemia (may read normal even when O2-carrying capacity is low), jaundice.</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Clinical note:</strong> Pulse ox measures saturation, not ventilation. A patient with good SpO2 may still have elevated CO2 (hypercapnia). Always assess respiratory rate and depth alongside SpO2.
+    </div>
+  </section>
+
+  <section id="suctioning" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Suctioning – Procedure &amp; Safety</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Indication:</strong> Patient unable to clear secretions independently. Signs: gurgling respirations, decreased SpO2, visible secretions, ineffective cough.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>General safety principles:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Hyperoxygenate BEFORE suctioning (100% O2 for 30–60 seconds)</li>
+      <li>Apply suction only while WITHDRAWING the catheter (not while inserting)</li>
+      <li>Limit each suction pass to <strong>10–15 seconds</strong></li>
+      <li>Allow 20–30 seconds rest between passes (re-oxygenation)</li>
+      <li>No more than 3 passes per episode</li>
+      <li>Monitor SpO2, heart rate, and rhythm throughout</li>
+      <li>Stop if: SpO2 &lt;90%, cardiac dysrhythmia, cyanosis, or patient distress</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Suction pressure:</strong> Adults 80–150 mmHg; children 60–100 mmHg; neonates 40–60 mmHg.</p>
+  </section>
+
+  <section id="nasopharyngeal" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Nasopharyngeal Suctioning</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Remove secretions from the nasopharynx when the patient cannot cough effectively. Technique is <strong>clean (medical asepsis)</strong>, not sterile, for nasopharyngeal route (sterile for tracheal suctioning).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Explain procedure; position patient with head slightly hyperextended (sniffing position)</li>
+      <li>Lubricate catheter tip with water-soluble lubricant</li>
+      <li>Measure catheter length: tip of nose to earlobe</li>
+      <li>Insert catheter gently along the nasal floor without suction</li>
+      <li>Apply intermittent suction while withdrawing with a rotating motion</li>
+      <li>Rinse catheter between passes</li>
+      <li>Document character and amount of secretions</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Contraindications:</strong> Basilar skull fracture, nasal polyps, clotting disorders, recent nasal surgery. Assess nares for deviation before insertion.
+    </div>
+  </section>
+
+  <!-- Prev/Next Nav -->
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/mobility-exercise`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Mobility &amp; Exercise
+    </a>
+    <a href={`${base}/private/d439/nutrition-elimination`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Nutrition &amp; Elimination →
+    </a>
+  </div>
+</Layout>

@@ -1,0 +1,148 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Sleep, Comfort & Pain – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Sleep, Comfort &amp; Pain</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">😴</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#4f46e5; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Sleep, Comfort &amp; Pain Management</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Guided imagery, assessing and managing pain, Maslow's Hierarchy, restraints, and hyperkalemia.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#guided-imagery" style="color:#6366f1;">Guided Imagery</a></li>
+      <li><a href="#assessing-pain" style="color:#6366f1;">Assessing Pain</a></li>
+      <li><a href="#managing-pain" style="color:#6366f1;">Managing Pain</a></li>
+      <li><a href="#maslow" style="color:#6366f1;">Maslow's Hierarchy of Needs</a></li>
+      <li><a href="#hyperkalemia" style="color:#6366f1;">Hyperkalemia</a></li>
+    </ol>
+  </div>
+
+  <section id="guided-imagery" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Guided Imagery</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> A mind-body technique that uses directed mental visualization to promote relaxation, reduce pain, anxiety, and stress, and enhance healing. The nurse or a recorded script guides the patient through imagining a peaceful, sensory-rich scene.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Physiological basis:</strong> Activates the parasympathetic nervous system, reduces cortisol and catecholamines, lowers heart rate, blood pressure, and respiratory rate. The brain responds to vivid imagery with similar neural pathways as to real experience.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Procedure:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Ensure a quiet environment; dim the lights if possible</li>
+      <li>Have the patient close their eyes and take several slow, deep breaths</li>
+      <li>Guide the patient to imagine a peaceful place (beach, forest, favorite memory)</li>
+      <li>Engage all senses: "Feel the warm sand under your feet... hear the waves..."</li>
+      <li>Continue for 10–20 minutes; bring patient back gradually with instructions to slowly open eyes</li>
+    </ol>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Uses in nursing:</strong> Preoperative anxiety, chronic pain, insomnia, chemotherapy nausea, labor pain, procedural anxiety (before IV insertion, wound care).</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Note:</strong> Guided imagery is NOT appropriate for patients with psychosis or those who have difficulty distinguishing reality. Always assess for contraindications before use.
+    </div>
+  </section>
+
+  <section id="assessing-pain" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Assessing Pain</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Pain is subjective.</strong> The patient's self-report is always the most reliable indicator of pain. Never assume the absence of behavioral signs means absence of pain.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Comprehensive pain assessment — PQRSTU:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>P — Provokes/Palliates:</strong> What makes it better or worse?</li>
+      <li><strong>Q — Quality:</strong> Describe it — sharp, dull, burning, throbbing, crushing, aching?</li>
+      <li><strong>R — Region/Radiation:</strong> Where? Does it radiate anywhere?</li>
+      <li><strong>S — Severity:</strong> Rate 0–10; impact on function and sleep</li>
+      <li><strong>T — Timing:</strong> Onset, duration, constant or intermittent?</li>
+      <li><strong>U — Understanding:</strong> What does the patient think is causing it?</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Pain scales (by population):</strong> NRS 0–10 (adults, children ≥8); Wong-Baker FACES (children 3–7); FLACC scale (infants/toddlers); CPOT or PAINAD (non-verbal/comatose patients).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Reassessment:</strong> Reassess 30–60 min after non-pharmacological interventions; 15–30 min after IV medications; 60 min after oral/IM. Document all reassessments.</p>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> The nurse's role is to BELIEVE the patient's pain report. Do not let vital sign normalcy or absence of grimacing dismiss the patient's stated pain level.
+    </div>
+  </section>
+
+  <section id="managing-pain" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Managing Pain</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Multimodal analgesia</strong> (using multiple approaches together) is the gold standard — reduces reliance on opioids while achieving better pain control.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Pharmacological interventions:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Non-opioids:</strong> Acetaminophen, NSAIDs (ibuprofen, ketorolac) — first-line for mild-moderate pain</li>
+      <li><strong>Opioids:</strong> Morphine, oxycodone, hydromorphone — for moderate-severe pain; monitor for sedation, respiratory depression, constipation, nausea</li>
+      <li><strong>Adjuvants:</strong> Antidepressants (duloxetine), anticonvulsants (gabapentin) for neuropathic pain; corticosteroids for inflammatory pain</li>
+      <li><strong>WHO Pain Ladder:</strong> Step 1 (mild) → non-opioids; Step 2 (moderate) → mild opioids; Step 3 (severe) → strong opioids</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Non-pharmacological interventions:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Cold therapy (acute injury, reduces inflammation and nerve conduction)</li>
+      <li>Heat therapy (muscle pain, chronic conditions — vasodilates, relaxes muscles)</li>
+      <li>Repositioning and pressure relief</li>
+      <li>Massage, TENS (transcutaneous electrical nerve stimulation)</li>
+      <li>Distraction, music therapy, guided imagery</li>
+      <li>Relaxation techniques: deep breathing, progressive muscle relaxation</li>
+      <li>Splinting incision sites when coughing (post-op)</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Safety with opioids:</strong> Monitor respiratory rate (hold if RR &lt;12), sedation level (Pasero Opioid-Induced Sedation Scale), and SpO2. Keep naloxone (Narcan) available for severe respiratory depression.
+    </div>
+  </section>
+
+  <section id="maslow" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Maslow's Hierarchy of Needs</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Abraham Maslow's hierarchy provides a framework for prioritizing patient needs in nursing care. Lower-level needs are addressed before higher-level needs.</p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Physiological needs (highest priority):</strong> Airway, breathing, circulation, food, water, sleep, elimination, warmth, shelter — survival needs. In nursing: always address life-threatening physiological problems first (ABC priority).</li>
+      <li><strong>Safety and security:</strong> Physical safety (fall prevention, restraints, environment), psychological safety, financial security. In nursing: infection control, medication safety, safe environment.</li>
+      <li><strong>Love and belonging:</strong> Social relationships, family, community, belonging. In nursing: therapeutic relationship, family inclusion in care, support groups.</li>
+      <li><strong>Esteem:</strong> Self-esteem, achievement, recognition, respect. In nursing: promote independence, involve patient in decisions, acknowledge accomplishments.</li>
+      <li><strong>Self-actualization (lowest priority in acute care):</strong> Achieving full potential, growth, creativity. In nursing: patient education, wellness promotion, helping patients achieve their goals.</li>
+    </ol>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Clinical application:</strong> A patient in respiratory distress cannot focus on discharge teaching (self-actualization). Stabilize the airway first. Maslow guides the sequence of nursing priorities.
+    </div>
+  </section>
+
+  <section id="hyperkalemia" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Hyperkalemia</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Serum potassium &gt;5.0 mEq/L (normal: 3.5–5.0 mEq/L). Potassium is the primary intracellular cation; small changes in extracellular potassium have large effects on cell membrane potential — particularly cardiac muscle.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Causes:</strong> Renal failure (most common — kidneys cannot excrete K+), metabolic acidosis (H+ moves into cells, K+ moves out), hemolysis, rhabdomyolysis, excessive K+ supplementation, ACE inhibitors/ARBs/K-sparing diuretics, Addison's disease, cell death (burns, crush injuries).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Signs and symptoms:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Cardiac (most dangerous):</strong> EKG changes — peaked T waves (earliest sign), widened QRS, prolonged PR interval, sine-wave pattern → ventricular fibrillation, cardiac arrest</li>
+      <li><strong>Neuromuscular:</strong> Muscle weakness, fatigue, cramps, paresthesias (tingling, numbness in extremities)</li>
+      <li><strong>GI:</strong> Nausea, vomiting, diarrhea, abdominal cramping</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing management:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Continuous cardiac monitoring — watch for EKG changes</li>
+      <li>Hold potassium supplements and K-sparing medications</li>
+      <li>Calcium gluconate IV — stabilizes cardiac membrane (emergency)</li>
+      <li>Sodium bicarbonate, insulin + dextrose — shift K+ back into cells temporarily</li>
+      <li>Kayexalate (sodium polystyrene sulfonate) — exchanges Na+ for K+ in colon (removes K+ from body)</li>
+      <li>Furosemide — promotes K+ excretion (if renal function adequate)</li>
+      <li>Dialysis — for severe hyperkalemia with renal failure</li>
+      <li>Dietary restriction: limit high-K+ foods (bananas, oranges, potatoes, tomatoes, avocado, dark leafy greens)</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> Peaked T waves on EKG = hyperkalemia until proven otherwise. This is a cardiac emergency. Notify provider immediately. Calcium gluconate is given first in emergencies to protect the heart.
+    </div>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/legal-ethical`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Legal &amp; Ethical Practice
+    </a>
+    <a href={`${base}/private/d439/grief-end-of-life`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Grief, Hospice &amp; Palliative Care →
+    </a>
+  </div>
+</Layout>

@@ -1,0 +1,192 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Communication & Patient Teaching – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Communication &amp; Patient Teaching</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">💬</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Communication &amp; Patient Teaching</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">SBAR, therapeutic communication, patient teaching methods, delegation, SBAR, documentation, and change-of-shift reporting.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#sbar" style="color:#6366f1;">SBAR</a></li>
+      <li><a href="#therapeutic" style="color:#6366f1;">Therapeutic Communication</a></li>
+      <li><a href="#teaching" style="color:#6366f1;">Patient Teaching Methods</a></li>
+      <li><a href="#delegation" style="color:#6366f1;">Delegation</a></li>
+      <li><a href="#handoff" style="color:#6366f1;">Change of Shift: Hand-Off Report</a></li>
+      <li><a href="#documentation" style="color:#6366f1;">Documentation / Late Entry</a></li>
+      <li><a href="#sexuality" style="color:#6366f1;">Sexuality and Interview Technique</a></li>
+      <li><a href="#cultural" style="color:#6366f1;">First Step for a Patient from a Different Culture</a></li>
+    </ol>
+  </div>
+
+  <section id="sbar" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">SBAR</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>SBAR</strong> (Situation, Background, Assessment, Recommendation) is a standardized communication framework used when reporting a change in patient condition, giving hand-off reports, and calling a provider. It reduces miscommunication and improves patient safety.</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>S — Situation:</strong> Who you are, who the patient is, what is happening right now. <em>"This is Nurse Jones calling about Mr. Smith in room 204. He is having acute respiratory distress."</em></li>
+      <li><strong>B — Background:</strong> Relevant clinical history, admitting diagnosis, current medications, pertinent lab/test results. <em>"He is a 68-year-old admitted yesterday for COPD exacerbation. He is on 2 L O2 nasal cannula."</em></li>
+      <li><strong>A — Assessment:</strong> Your clinical judgment about what is happening. <em>"His SpO2 has dropped to 88% and RR is 28. I believe he is worsening."</em></li>
+      <li><strong>R — Recommendation:</strong> What you need or suggest. <em>"I recommend increasing his O2 to 4 L and requesting a respiratory therapy consult. Can you come evaluate him now?"</em></li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Exam Tip:</strong> SBAR is used not only for provider calls but also for nursing handoffs, interprofessional rounds, and rapid response team notifications. It's a TJC and QSEN-endorsed tool.
+    </div>
+  </section>
+
+  <section id="therapeutic" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Therapeutic Communication</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> A purposeful, goal-directed communication process that focuses on the patient's needs, promotes healing, and supports the therapeutic relationship. It requires active listening, empathy, and deliberate use of verbal and nonverbal techniques.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Therapeutic techniques:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Active listening:</strong> Full attention; maintain eye contact; nod; avoid interrupting</li>
+      <li><strong>Open-ended questions:</strong> "Tell me more about how you're feeling." — allows elaboration</li>
+      <li><strong>Reflection:</strong> Repeat the feeling back. "It sounds like you're frustrated."</li>
+      <li><strong>Clarification:</strong> "I'm not sure I understand — could you say more?"</li>
+      <li><strong>Focusing:</strong> Directs conversation to important topics. "Let's talk more about your pain."</li>
+      <li><strong>Silence:</strong> Allows patient to think; conveys acceptance; do not rush to fill silence</li>
+      <li><strong>Summarizing:</strong> Restates main points to verify understanding</li>
+      <li><strong>Sharing observations:</strong> "I notice you look tired today."</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Non-therapeutic techniques to AVOID:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>False reassurance: "Everything will be fine." — dismisses feelings</li>
+      <li>Giving advice: "You should do X." — removes patient autonomy</li>
+      <li>Changing the subject inappropriately</li>
+      <li>Closed questions that yield only yes/no answers (when exploration is needed)</li>
+      <li>Judgmental responses or stereotyping</li>
+      <li>"Why" questions — can feel accusatory</li>
+    </ul>
+  </section>
+
+  <section id="teaching" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Patient Teaching Methods</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Effective patient education accounts for learning style, health literacy, cultural background, and readiness to learn. Use the <strong>teach-back method</strong> to confirm understanding.</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Verbal/lecture:</strong> Direct explanation — effective for simple information; pair with written materials</li>
+      <li><strong>Demonstration and return demonstration:</strong> Nurse demonstrates skill (e.g., insulin injection), patient returns demonstration — best for psychomotor skills; confirms ability, not just knowledge</li>
+      <li><strong>Teach-back method:</strong> Ask patient to explain the information in their own words. "Can you show me how you'll take your blood pressure at home?" — identifies misunderstandings without implying they failed</li>
+      <li><strong>Written materials:</strong> Pamphlets, discharge instructions — use 6th-grade reading level; supplement verbal teaching</li>
+      <li><strong>Visual aids:</strong> Diagrams, anatomical models, videos — helpful for visual learners and low-literacy patients</li>
+      <li><strong>Group teaching:</strong> Efficient for common conditions (diabetes class, prenatal); allows peer support</li>
+      <li><strong>One-on-one:</strong> Individualized, most effective for complex or sensitive topics</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Assess readiness to learn first:</strong> Is patient in pain? Anxious? Fatigued? Cognitively able? Motivated? Teach when the patient is receptive — not just when it's convenient for the nurse.</p>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Documentation:</strong> Document what was taught, the method used, patient response/level of understanding, and the need for reinforcement. Teaching is incomplete until understanding is confirmed.
+    </div>
+  </section>
+
+  <section id="delegation" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Delegation</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Transferring the authority to perform a selected nursing task to a competent individual, while retaining accountability for the outcome. Delegation is a legal and ethical nursing responsibility.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Five Rights of Delegation:</strong></p>
+    <ol style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>Right Task:</strong> Task is in the delegate's scope of practice and is appropriate to delegate</li>
+      <li><strong>Right Circumstance:</strong> Patient condition is stable; setting is appropriate</li>
+      <li><strong>Right Person:</strong> Delegate has education, skills, and competency for the task</li>
+      <li><strong>Right Direction/Communication:</strong> Clear, specific instructions given; expected outcome defined</li>
+      <li><strong>Right Supervision/Evaluation:</strong> RN monitors, provides feedback, and evaluates outcomes</li>
+    </ol>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>What CAN be delegated to UAP (nursing assistant):</strong> Activities of daily living (bathing, feeding, ambulation assistance), vital signs on stable patients, I&amp;O measurement, positioning.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>What CANNOT be delegated:</strong> Assessment and nursing judgment, care planning, teaching, medication administration (unless LPN within their scope), evaluation of outcomes.</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Key principle:</strong> The RN can delegate tasks but CANNOT delegate accountability. If the delegated task results in patient harm due to inappropriate delegation, the RN bears responsibility.
+    </div>
+  </section>
+
+  <section id="handoff" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Change of Shift: Hand-Off Report</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> Ensure continuity of care by transferring complete, accurate patient information to the oncoming nurse. Poor handoffs are a leading cause of adverse events.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Bedside handoff (recommended):</strong> Conducted at the patient's bedside with the patient present — improves accuracy, patient engagement, and safety checks (visual verification of IV sites, drains, skin).</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Elements of a complete hand-off report (I PASS the BATON or SBAR format):</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Patient name, age, diagnosis, and code status</li>
+      <li>Current vital signs and assessment findings</li>
+      <li>Pertinent lab/test results and pending tests</li>
+      <li>Current medications, IV fluids, and drip rates</li>
+      <li>Outstanding orders or tasks to complete</li>
+      <li>Patient and family concerns or special considerations</li>
+      <li>Safety risks (fall risk, allergy, isolation precautions)</li>
+      <li>Plan for the upcoming shift</li>
+    </ul>
+  </section>
+
+  <section id="documentation" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Documentation / Late Entry</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Principles of accurate documentation:</strong> Timely, accurate, complete, concise, objective (no opinions or editorializing), legible (for paper), and uses approved abbreviations.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Electronic documentation procedures:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Always log in with your own credentials — never share passwords</li>
+      <li>Log out or lock screen when stepping away from the terminal</li>
+      <li>Document in real time or as close to the event as possible</li>
+      <li>Use drop-down menus, flow sheets, and structured fields as provided</li>
+      <li>Free-text notes for complex clinical situations that don't fit structured fields</li>
+      <li>Never document for another nurse; never allow others to document under your login</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:0.5rem;"><strong>Late entry documentation:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>If documentation was omitted or delayed, add a <strong>late entry</strong> — clearly label it "Late Entry" with the current date and time AND note the actual time of the care or event</li>
+      <li>Example: "Late Entry — Documented on [current date/time] for care provided on [date/time]."</li>
+      <li>NEVER backdate or alter records — this is fraud and grounds for license revocation</li>
+      <li>In paper records, draw a single line through errors (do not use white-out), initial and date the error, write the correction</li>
+    </ul>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Legal principle:</strong> "If it wasn't documented, it wasn't done." The medical record is a legal document. Falsification of records is a criminal offense.
+    </div>
+  </section>
+
+  <section id="sexuality" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Sexuality and Interview Technique</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Sexuality is a component of holistic nursing assessment. Nurses must address it professionally and without bias.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>PLISSIT Model</strong> (Annon, 1976) — framework for sexual health assessment:</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li><strong>P — Permission:</strong> Create an environment where it's okay to discuss sexual concerns. "Many patients have concerns about how their illness or medication affects their sexual health — is that something you'd like to talk about?"</li>
+      <li><strong>LI — Limited Information:</strong> Provide basic factual information related to their specific condition</li>
+      <li><strong>SS — Specific Suggestions:</strong> Targeted advice for the patient's specific concern</li>
+      <li><strong>IT — Intensive Therapy:</strong> Refer to sex therapist or specialist for complex concerns</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Interview techniques:</strong> Use neutral language; do not assume heterosexuality or gender; use the patient's terminology; ask about sexual concerns in the context of their health condition (e.g., cardiac, post-op, medication side effects); maintain privacy; be non-judgmental.</p>
+  </section>
+
+  <section id="cultural" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">First Step for a Patient from a Different Culture</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>The first step is assessment</strong> — specifically, <strong>assessing the patient's cultural beliefs, practices, and preferences</strong> before making any assumptions. This is called a <strong>cultural assessment</strong>.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">Ask respectfully and openly: "Are there any cultural or religious practices that are important to you that we should know about in caring for you?"</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Cultural competence vs. cultural humility:</strong> Cultural competence implies learning a set of facts about cultures (can lead to stereotyping); cultural humility is an ongoing process of self-reflection and openness to learning from each individual patient. Cultural humility is the preferred approach.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Key considerations in cross-cultural care:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Use a trained medical interpreter (not family members) for language barriers — HIPAA and accuracy concerns with family interpreters</li>
+      <li>Assess food preferences and dietary restrictions (Halal, kosher, vegetarian)</li>
+      <li>Ask about traditional or folk medicine practices — non-judgmentally</li>
+      <li>Understand differing beliefs about illness causation, pain expression, decision-making (individual vs. family-centered)</li>
+      <li>Respect modesty requirements (same-gender care provider requests)</li>
+    </ul>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/assessment-vitals`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Assessment &amp; Vital Signs
+    </a>
+    <a href={`${base}/private/d439/legal-ethical`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Legal &amp; Ethical Practice →
+    </a>
+  </div>
+</Layout>

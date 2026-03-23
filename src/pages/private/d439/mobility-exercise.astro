@@ -1,0 +1,561 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Mobility & Exercise – D439" protected={true}>
+  <div style="max-width:860px; margin:0 auto; padding:2rem 1rem;">
+
+    <!-- Breadcrumb -->
+    <nav style="font-size:0.85rem; color:#6b7280; margin-bottom:1.5rem;">
+      <a href={`${base}/private/dashboard`} style="color:#4f46e5; text-decoration:none;">Dashboard</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <a href={`${base}/private/d439`} style="color:#4f46e5; text-decoration:none;">D439 Foundations of Nursing</a>
+      <span style="margin:0 0.4rem;">›</span>
+      <span>Mobility &amp; Exercise</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header style="margin-bottom:2rem;">
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+        <span style="font-size:2rem;">🚶</span>
+        <h1 style="font-size:1.9rem; font-weight:800; color:#1e293b; margin:0;">Mobility &amp; Exercise</h1>
+      </div>
+      <span style="display:inline-block; background:#ede9fe; color:#6d28d9; font-size:0.78rem; font-weight:700; letter-spacing:0.05em; padding:0.25rem 0.75rem; border-radius:9999px; text-transform:uppercase;">D439 – Foundations of Nursing</span>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+      <p style="font-weight:700; color:#1e293b; margin:0 0 0.75rem 0; font-size:0.95rem;">Table of Contents</p>
+      <ol style="margin:0; padding-left:1.25rem; line-height:2; font-size:0.9rem;">
+        <li><a href="#exercise-types-rom" style="color:#4f46e5; text-decoration:none;">Exercise Types and Range of Motion (ROM)</a></li>
+        <li><a href="#isotonic-isometric" style="color:#4f46e5; text-decoration:none;">Isotonic vs. Isometric Exercises</a></li>
+        <li><a href="#log-rolling" style="color:#4f46e5; text-decoration:none;">Log Rolling – How and Why</a></li>
+        <li><a href="#moving-in-bed" style="color:#4f46e5; text-decoration:none;">Moving a Patient in Bed</a></li>
+        <li><a href="#positioning" style="color:#4f46e5; text-decoration:none;">Positioning a Patient in Bed</a></li>
+        <li><a href="#occupied-bed" style="color:#4f46e5; text-decoration:none;">Making an Occupied Bed</a></li>
+        <li><a href="#assistive-devices" style="color:#4f46e5; text-decoration:none;">Canes, Walkers, and Crutches</a></li>
+        <li><a href="#crutch-safety" style="color:#4f46e5; text-decoration:none;">Crutch Safety Teaching</a></li>
+        <li><a href="#measuring-crutches" style="color:#4f46e5; text-decoration:none;">How to Measure Crutches</a></li>
+        <li><a href="#teaching-crutches" style="color:#4f46e5; text-decoration:none;">Steps for Teaching Crutch Use</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. Exercise Types and ROM -->
+    <section id="exercise-types-rom" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">1. Exercise Types and Range of Motion (ROM)</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Range of motion (ROM) exercises move each joint through its full arc of movement. They are classified by who performs the movement and how much resistance or assistance is involved. All ROM exercises help maintain joint flexibility, prevent contractures, and improve circulation.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Types of ROM</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Active ROM:</strong> The patient independently moves each joint through its full range without any assistance. Requires sufficient muscle strength and cognition. Preferred when the patient is capable — maintains strength as well as flexibility.</li>
+        <li><strong>Passive ROM:</strong> The nurse (or therapist) moves the patient's joints through the full range without any muscle effort from the patient. Used when the patient cannot move independently (e.g., unconscious, paralyzed, post-operative immobilization). Maintains joint flexibility but does NOT maintain muscle strength.</li>
+        <li><strong>Active-Assisted ROM:</strong> The patient initiates movement and the nurse assists when muscle strength is insufficient to complete the full arc. Used during recovery from injury or surgery when the patient has some, but not full, strength. Provides a therapeutic middle ground.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Types of Muscle Exercise</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Isometric:</strong> Muscle contracts (tenses) without joint movement or change in muscle length. No visible limb movement occurs. Examples: quadriceps sets (tightening the thigh with knee straight), gluteal sets. Maintains muscle strength during immobility; no joint stress; ideal for patients in casts or with joint injuries.</li>
+        <li><strong>Isotonic:</strong> Muscle contracts AND the joint moves, with muscle shortening (concentric) or lengthening (eccentric). Examples: walking, lifting weights, bicep curls, swimming. Builds strength and cardiovascular fitness; improves endurance.</li>
+        <li><strong>Isokinetic:</strong> Muscle contraction occurs at a controlled, constant speed throughout the full ROM against variable resistance (resistance adapts to the force applied). Requires specialized equipment (e.g., Cybex machine). Used primarily in rehabilitation settings to build strength evenly through the full range of motion.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Benefits of ROM Exercises</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Maintains and restores <strong>joint flexibility</strong> and full range of motion</li>
+        <li>Prevents <strong>contractures</strong> (permanent shortening of muscles, tendons, or joint capsules due to prolonged immobility)</li>
+        <li>Improves <strong>circulation</strong> and venous return, reducing deep vein thrombosis (DVT) risk</li>
+        <li>Prevents muscle atrophy and maintains muscle tone</li>
+        <li>Promotes patient comfort and sense of well-being</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – ROM Nursing Principles</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Support the joint proximal and distal to the joint being exercised</li>
+          <li>Move joints slowly and smoothly; stop if the patient reports pain</li>
+          <li>Never force a joint beyond its natural range — could cause injury</li>
+          <li>Perform ROM during activities of daily living (bathing, dressing) to integrate naturally</li>
+          <li>Document which joints were exercised and patient tolerance</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Active ROM = patient does it alone. Passive ROM = nurse does it for patient (no strength benefit). Active-Assisted = nurse helps patient complete movement.</strong> Passive ROM maintains flexibility but NOT muscle strength. Isometric exercises are ideal for patients who cannot move joints (casts, post-op joint restrictions) because they preserve muscle without stressing the joint.</p>
+      </div>
+    </section>
+
+    <!-- 2. Isotonic vs Isometric -->
+    <section id="isotonic-isometric" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">2. Isotonic vs. Isometric Exercises</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Understanding the distinction between isotonic and isometric exercise is essential for selecting appropriate activity for patients based on their clinical condition, mobility limitations, and therapeutic goals.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Isotonic Exercise (Dynamic)</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Definition:</strong> Muscle contracts and the muscle length changes (shortens during concentric contraction, lengthens during eccentric contraction); joint movement occurs.</li>
+        <li><strong>Examples:</strong> Walking, swimming, jogging, cycling, lifting weights, bicep curls, sit-to-stand transfers.</li>
+        <li><strong>Benefits:</strong> Improves cardiovascular fitness, builds and maintains muscle strength and endurance, supports weight management, maintains bone density, improves joint ROM.</li>
+        <li><strong>Clinical use:</strong> Patients who are ambulatory or have sufficient strength and stability to perform dynamic movement; post-surgical rehabilitation when joint movement is permitted.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Isometric Exercise (Static)</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Definition:</strong> Muscle contracts with tension but no change in muscle length and no joint movement occurs.</li>
+        <li><strong>Examples:</strong> Quadriceps sets (tightening the quad muscle while lying with knee straight), gluteal sets (squeezing buttock muscles), pushing hands against a wall, holding a position.</li>
+        <li><strong>Benefits:</strong> Maintains muscle strength during periods of immobility; no stress on joints; safe for patients with casts, acute joint injuries, or joint replacement precautions; can be performed in bed.</li>
+        <li><strong>Limitations:</strong> Does NOT improve cardiovascular fitness; can transiently elevate blood pressure (Valsalva effect) — caution in cardiac patients; does not maintain joint ROM.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Isometric Exercise After Surgery</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Isometric exercises (quad sets, gluteal sets, ankle pumps) are routinely taught pre-operatively and performed post-operatively before the patient is cleared for ambulation. They help prevent muscle atrophy, improve venous return, and reduce DVT risk — all without placing stress on healing surgical sites or joints.</p>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Isotonic = movement (dynamic); Isometric = no movement (static).</strong> Classic exam question: "A patient has a leg cast. Which exercise is appropriate?" → Isometric (quad sets). Isometric exercises are safe for patients who cannot move the joint but must be used cautiously in patients with hypertension or cardiac disease due to the transient blood pressure rise from the Valsalva maneuver.</p>
+      </div>
+    </section>
+
+    <!-- 3. Log Rolling -->
+    <section id="log-rolling" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">3. Log Rolling – How and Why</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Log rolling is a technique used to turn a patient as a single, rigid unit — maintaining the spine in perfect alignment from head to toe — to prevent spinal cord injury or aggravation of an existing spinal injury.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Purpose</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Maintain <strong>spinal alignment</strong> when turning a patient with a suspected or confirmed spinal cord injury, unstable vertebral fracture, or after spinal surgery</li>
+        <li>Prevent additional neurological damage from spinal movement during repositioning</li>
+        <li>Facilitate safe repositioning for hygiene, skin assessment, and pressure injury prevention</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Indications</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Suspected or confirmed cervical, thoracic, or lumbar spine injuries</li>
+        <li>Post-operative spinal surgery (e.g., laminectomy, spinal fusion, discectomy)</li>
+        <li>Hip replacement surgery (with hip precautions)</li>
+        <li>Any patient for whom spinal movement must be minimized</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Procedure (Step-by-Step)</h3>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Gather <strong>2–3 nurses</strong> (minimum 2; 3 needed for larger patients or cervical injury). Explain the procedure to the patient.</li>
+        <li>Raise the bed to a comfortable working height. Lower the side rail on the side you are turning toward.</li>
+        <li>Position nurses: one at the <strong>head/neck</strong> (stabilizes and directs), one at the <strong>torso/hips</strong>, and one at the <strong>legs</strong> if needed. The nurse at the head gives the count and coordinates the movement.</li>
+        <li>Cross the patient's arms over the chest. Place a pillow between the knees to maintain spinal alignment during the turn.</li>
+        <li>Use a <strong>draw sheet</strong> positioned under the patient from shoulders to hips to assist with turning.</li>
+        <li>All nurses position themselves on the same side (the side toward which the patient will turn). On the count of three, <strong>roll the patient as one unit</strong> — head, neck, spine, hips, and legs moving simultaneously with no twisting.</li>
+        <li>Support the patient in the lateral position with pillows behind the back and between the knees. Ensure the spine remains straight.</li>
+      </ol>
+
+      <div style="background:#fee2e2; border-left:3px solid #ef4444; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#991b1b;">🔴 Safety Alert</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li><strong>Never twist the spine</strong> — the head, spine, and legs must always move as one rigid unit</li>
+          <li>Never attempt log rolling alone — always requires a minimum of 2 nurses</li>
+          <li>If cervical spine injury is suspected, the nurse at the head maintains <strong>manual in-line stabilization</strong> of the cervical spine throughout the turn</li>
+          <li>Maintain the cervical collar in place if prescribed</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Log rolling = move as one unit, no twisting.</strong> The nurse at the head stabilizes the cervical spine AND gives the count. Minimum 2 nurses required. A draw sheet is used to facilitate the turn. Key indication: spinal injury or post-spinal surgery. The pillow between knees maintains spinal alignment in the side-lying position.</p>
+      </div>
+    </section>
+
+    <!-- 4. Moving a Patient in Bed -->
+    <section id="moving-in-bed" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">4. Moving a Patient in Bed</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Safe patient handling is a priority to protect both the patient from injury and the nurse from musculoskeletal injury. Mechanical lift equipment should be used whenever available. Manual techniques are used when equipment is unavailable or for lighter, cooperative patients.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Moving a Patient Up in Bed</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Explain the procedure to the patient; raise the bed to working height; lower the head of bed flat (if medically safe).</li>
+        <li>If the patient is able: instruct them to <strong>bend their knees</strong> and push with their feet while the nurse assists.</li>
+        <li>Position a <strong>draw sheet</strong> under the patient (from shoulders to hips); two nurses stand on opposite sides of the bed.</li>
+        <li>Nurses grasp the draw sheet close to the patient's body, flex their knees, keep their backs straight, and <strong>on the count of three, lift and slide</strong> the patient toward the head of the bed.</li>
+        <li><strong>Never drag the patient</strong> — dragging causes friction and shear injuries to the skin.</li>
+        <li>Use a <strong>mechanical lift or friction-reducing slide sheet</strong> for dependent or bariatric patients.</li>
+        <li>Reposition the pillow under the head, raise the side rails, and return the bed to the lowest position after the move.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Moving a Patient to the Side of the Bed</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Move the patient in <strong>segments</strong>: upper body first, then hips, then legs — this distributes the weight and reduces strain.</li>
+        <li>Use a draw sheet to facilitate movement; slide (do not drag) each segment toward the edge of the bed.</li>
+        <li>Ensure the patient is not at risk of rolling off the bed edge; keep one hand on the patient at all times.</li>
+        <li>This technique is used before turning the patient, performing procedures, or assisting to the edge of the bed prior to dangling or standing.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Safe Patient Handling Principles</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Use lift equipment (Hoyer lift, ceiling lift, sit-to-stand lift) whenever available and indicated</li>
+        <li>Two-nurse minimum for dependent patients requiring manual repositioning</li>
+        <li>Keep the patient close to your body; use a wide base of support and bend at the knees</li>
+        <li>Never lift alone if the patient weighs more than 35 lb (16 kg) without assistive devices</li>
+        <li>Communicate clearly — coordinate moves with a verbal count</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Draw Sheet Use</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">A draw (turning) sheet is placed under the patient from shoulders to hips. It is grasped close to the patient by nurses on each side and used to lift and slide — minimizing friction against the mattress and protecting the patient's skin. It also reduces nurse injury by allowing a mechanical advantage during repositioning.</p>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Never drag a patient — always lift and slide.</strong> Dragging causes shear and friction injuries. The draw sheet is your primary tool for manual repositioning. Lower the HOB flat before moving up in bed (reduces gravity resistance). Always use mechanical lift for bariatric or fully dependent patients. Move in segments (upper body → hips → legs) when moving to the side.</p>
+      </div>
+    </section>
+
+    <!-- 5. Positioning -->
+    <section id="positioning" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">5. Positioning a Patient in Bed</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Correct patient positioning is critical for comfort, respiratory function, prevention of pressure injuries, and facilitation of procedures. Each position has specific indications, benefits, and precautions.
+      </p>
+
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>
+          <strong>Fowler's Position (45–60°):</strong> Head of bed elevated 45–60°. Promotes oxygenation (diaphragm drops, lung expansion increases), aids digestion, facilitates eating, and is the standard post-operative position for abdominal surgery. High Fowler's = 90°.
+        </li>
+        <li>
+          <strong>Semi-Fowler's Position (30–45°):</strong> Head of bed elevated 30–45°. Used for aspiration prevention during tube feedings (maintain for at least 30–60 minutes after feeding), patients with mild respiratory difficulty, and general comfort. The recommended minimum for all patients receiving tube feedings.
+        </li>
+        <li>
+          <strong>Supine (Dorsal Recumbent):</strong> Patient lies flat on back. Used for many assessments and procedures. Risk: aspiration, pressure on sacrum/heels. Place small pillow under head; support knees slightly to prevent hyperextension.
+        </li>
+        <li>
+          <strong>Prone:</strong> Patient lies face down. Rarely used due to difficulty tolerating position. Used for pressure relief from sacrum, and — notably — for <strong>prone positioning in ARDS/COVID-19</strong> to improve oxygenation by recruiting posterior lung segments. Contraindicated with unstable spine, facial/chest injuries, or increased ICP.
+        </li>
+        <li>
+          <strong>Lateral (Side-Lying):</strong> Patient on side (right or left). Relieves pressure on sacrum/heels; used for sleeping comfort and during log rolling. Support with pillows between knees and at back. Use 30° tilt (not full 90°) to avoid pressure on greater trochanter.
+        </li>
+        <li>
+          <strong>Sims Position (Left Lateral with Right Knee Flexed):</strong> Left side-lying with right knee flexed toward chest, right arm forward. Used for rectal examinations, enemas, sigmoidoscopy, and perineal procedures. Gravity assists with rectal instillations.
+        </li>
+        <li>
+          <strong>Trendelenburg:</strong> Entire bed tilted so feet are elevated above the head. Historically used for shock; now <strong>controversial and generally not recommended</strong> — can worsen respiratory function and increase ICP. Some facilities still use it for certain procedures (e.g., central line insertion in subclavian vein).
+        </li>
+        <li>
+          <strong>Reverse Trendelenburg:</strong> Entire bed tilted with head elevated and feet down. Used for patients with GERD, hiatal hernia, or to reduce aspiration risk while keeping the body flat. Also used during some surgical procedures.
+        </li>
+        <li>
+          <strong>Orthopneic / Tripod Position:</strong> Patient sits upright (high Fowler's or on edge of bed) leaning forward with arms supported on overbed table. Maximizes chest expansion and diaphragm drop. Used for patients in severe respiratory distress (COPD exacerbation, asthma, pulmonary edema). The position of choice when a patient is struggling to breathe.
+        </li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Position Complications to Prevent</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Fowler's: watch for patient sliding down (increases shear on sacrum); use footboard</li>
+          <li>Supine: pressure on sacrum, heels, and occiput — use heel protectors and specialty mattress</li>
+          <li>Lateral: pressure on greater trochanter — use 30° tilt, pillow between knees</li>
+          <li>Prone: monitor airway and pressure on face, breasts, genitalia; requires trained team in ICU</li>
+          <li>All positions: reposition every 2 hours; document position changes</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Respiratory distress → Orthopneic (tripod) position first.</strong> Tube feeding → HOB at least 30° (Semi-Fowler's minimum). Post-op abdominal → Fowler's (45–60°). Enema/rectal procedure → Sims (left lateral). Shock → Trendelenburg is controversial; modified Trendelenburg (legs up, HOB flat) is safer. ARDS/COVID hypoxia → Prone positioning improves oxygenation. Semi-Fowler's ≠ Fowler's — know the degree differences.</p>
+      </div>
+    </section>
+
+    <!-- 6. Making an Occupied Bed -->
+    <section id="occupied-bed" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">6. Making an Occupied Bed</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        An occupied bed change is performed when the patient cannot be safely transferred to a chair. The technique maintains patient comfort and dignity while using proper body mechanics to protect the nurse.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Indications</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Patient is on complete bed rest or has mobility restrictions that prevent transfer to a chair</li>
+        <li>Patient is critically ill, post-operative with activity restrictions, or has a spinal precaution</li>
+        <li>Soiled linens require immediate change</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Step-by-Step Procedure</h3>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Prepare:</strong> Explain the procedure to the patient; perform hand hygiene; gather clean linens (bottom sheet, draw sheet, pillowcases) on a clean surface — never the floor.</li>
+        <li><strong>Set up the bed:</strong> Raise the bed to working height to protect your back; lower the side rail on your working side only; keep the opposite side rail up for safety.</li>
+        <li><strong>Loosen linens:</strong> Loosen all soiled linens from the mattress on the working side, working from top to bottom.</li>
+        <li><strong>Position patient:</strong> Roll or log roll the patient to the far (opposite) side of the bed, away from you. Keep the patient covered with a bath blanket for dignity and warmth.</li>
+        <li><strong>Remove and replace on near side:</strong> Roll the soiled bottom sheet toward the patient (do not shake — infection control). Place the clean fitted/flat sheet on the near side, tucking it under the mattress; roll the excess clean linen toward the patient and tuck it under the soiled linen.</li>
+        <li><strong>Roll patient back:</strong> Raise the side rail on the working side; move to the other side of the bed and lower that rail. Roll the patient over the soiled and clean linen roll toward you.</li>
+        <li><strong>Complete the far side:</strong> Remove and discard the soiled sheet; pull through and tuck the clean sheet on the far side. Smooth out any wrinkles (wrinkles cause pressure points and skin breakdown).</li>
+        <li><strong>Apply top linens:</strong> Place a clean top sheet, blanket, and spread; tuck at the foot of the bed with a toe pleat (fold) to prevent foot drop from tight linens pressing down on feet.</li>
+        <li><strong>Finish:</strong> Change pillowcases. Return the patient to a comfortable, aligned position. Raise side rails; lower bed to lowest position; ensure call light is within reach. Perform hand hygiene. Document linen change and skin assessment findings.</li>
+      </ol>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Key Safety Points</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Never shake soiled linens — aerosolizes pathogens and violates infection control</li>
+          <li>Hold soiled linens away from your uniform — carry them to the hamper without placing them on any clean surface</li>
+          <li>Always keep the opposite side rail up when the patient is positioned near the edge</li>
+          <li>Perform a full skin assessment (especially bony prominences) while making the occupied bed — opportunistic assessment time</li>
+          <li>A toe pleat prevents plantar flexion (foot drop) from tight top linens</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Key sequence: raise bed → lower near rail → roll patient away → change near side → roll patient back → change far side → lower bed.</strong> Do NOT shake soiled linens. Always keep opposite rail up. Smooth wrinkles to prevent pressure injuries. The toe pleat prevents foot drop from heavy top linens. Use this bed change as an opportunity to assess skin and perform passive ROM during repositioning.</p>
+      </div>
+    </section>
+
+    <!-- 7. Canes, Walkers, and Crutches -->
+    <section id="assistive-devices" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">7. Canes, Walkers, and Crutches</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Assistive ambulatory devices provide support, improve balance, and reduce weight-bearing on injured extremities. Selection depends on the patient's diagnosis, strength, and weight-bearing status. Correct fitting and gait instruction are essential nursing responsibilities.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Canes</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li><strong>Used on the STRONGER (unaffected) side</strong> — this is a classic exam fact. The cane shifts body weight to the stronger side, reducing weight on the weaker/affected side.</li>
+        <li><strong>Types:</strong> Standard straight cane (single tip), tripod cane (3 tips), quad cane (4 tips — most stable, best for patients with significant weakness).</li>
+        <li><strong>Height adjustment:</strong> The handle should be at the level of the patient's <strong>wrist crease (greater trochanter)</strong> when standing erect with the arm relaxed at the side. Elbow should flex approximately 20–30° when gripping the handle.</li>
+        <li><strong>Gait pattern:</strong> Move the cane and the <strong>weaker leg forward simultaneously</strong>, then advance the stronger leg. "Cane and weak leg together, then strong leg."</li>
+        <li><strong>Stairs with cane:</strong> "Good goes up, bad comes down" — up with the stronger leg; down with the weaker leg (and cane).</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Walkers</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Provide maximum stability; used when the patient needs bilateral upper extremity support.</li>
+        <li><strong>Types:</strong> Standard (pick-up) walker, rolling walker (2-wheel front), wheeled walker (4-wheel/rollator with hand brakes).</li>
+        <li><strong>Height:</strong> Handle at wrist crease/greater trochanter height; elbows flexed 20–30°.</li>
+        <li><strong>Gait — standard walker:</strong> Pick up the walker and advance it forward, then step into the walker (advance the weaker leg first, then the stronger leg). Do not advance the walker too far ahead — keep it within a comfortable step distance.</li>
+        <li><strong>Stairs:</strong> Standard walkers are generally not used on stairs; rolling walkers should not be used on stairs unless specifically designed for it.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Crutches</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Used for partial or non-weight-bearing ambulation when one or both lower extremities are injured or post-operative.</li>
+        <li><strong>Types:</strong> Axillary crutches (most common; rest under the arm), Lofstrand/forearm crutches (cuff around forearm; used for long-term/permanent use).</li>
+        <li><strong>Gait Patterns:</strong>
+          <ul style="line-height:2; color:#374151; padding-left:1.25rem;">
+            <li><strong>4-Point Gait:</strong> Most stable; partial weight bearing on both legs. Pattern: right crutch → left foot → left crutch → right foot. Slow but very stable.</li>
+            <li><strong>3-Point Gait:</strong> Non-weight-bearing on one leg. Both crutches and the affected leg advance together, then the unaffected leg steps through. Most common gait for patients with a fractured extremity.</li>
+            <li><strong>2-Point Gait:</strong> Partial weight bearing. Right crutch and left leg advance together, then left crutch and right leg. Faster than 4-point; requires more balance.</li>
+            <li><strong>Swing-To Gait:</strong> Both crutches advance forward, then patient swings both legs up to the crutches. Used for patients with bilateral lower extremity weakness or paralysis.</li>
+            <li><strong>Swing-Through Gait:</strong> Both crutches advance forward, then patient swings both legs beyond the crutches. Fastest crutch gait; requires significant upper body strength.</li>
+          </ul>
+        </li>
+        <li><strong>Stairs:</strong> "Good goes up, bad comes down" — ascending: unaffected leg steps up first, then crutches and affected leg. Descending: crutches and affected leg go down first, then unaffected leg steps down.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Device Selection Summary</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Cane: mild balance issues or one-sided weakness; used on the STRONG side</li>
+          <li>Walker: significant bilateral stability needs; non-stair environments</li>
+          <li>Axillary crutches: short-term NWB or PWB; one-leg injury; most common post-fracture</li>
+          <li>Forearm crutches: long-term or permanent use (paraplegics, CP); more maneuverability</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Cane = STRONGER side (opposite from what many students assume).</strong> "Good goes up, bad comes down" for ALL assistive devices on stairs. For crutches: 3-point gait = non-weight-bearing (most commonly tested). 4-point gait = most stable. 2-point gait = partial weight bearing, faster. Swing-to/swing-through = bilateral lower extremity involvement.</p>
+      </div>
+    </section>
+
+    <!-- 8. Crutch Safety Teaching -->
+    <section id="crutch-safety" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">8. What to Teach a Patient About Crutch Safety</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Patient education on crutch safety is a core nursing responsibility. Improper use of crutches can result in serious nerve damage, falls, and injury. The following safety points must be taught before discharge.
+      </p>
+
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>
+          <strong>Never rest body weight on the axillary pad:</strong> Weight must be borne through the <strong>handgrips</strong>, not the axillary rest. Leaning on the axilla compresses the radial nerve (brachial plexus), causing <strong>crutch palsy</strong> — tingling, numbness, and weakness of the hands and arms that can become permanent. This is the #1 safety priority.
+        </li>
+        <li>
+          <strong>Check rubber tips regularly:</strong> Inspect the rubber tips on the bottom of crutches for wear, cracking, or loss. Worn tips reduce traction and dramatically increase fall risk. Replace tips when worn.
+        </li>
+        <li>
+          <strong>Keep floors dry and clear:</strong> Avoid wet floors, throw rugs, and clutter. Crutch tips can slip on wet or uneven surfaces. Wipe tips dry if they become wet.
+        </li>
+        <li>
+          <strong>Wear non-slip footwear:</strong> Wear well-fitting, closed-toe shoes with non-slip soles. Never use crutches while barefoot or wearing slippers.
+        </li>
+        <li>
+          <strong>Sitting down safely:</strong> Back up to the chair until the back of the legs touch it, hold both crutches on the affected side, grip the chair arm with the other hand, and slowly lower yourself. Never place crutches against a wall and then try to sit — they may slide away.
+        </li>
+        <li>
+          <strong>Report numbness or tingling in hands:</strong> This signals radial nerve compression from improper weight bearing on the axilla. Instruct the patient to report immediately and correct technique.
+        </li>
+        <li>
+          <strong>Practice with a therapist first:</strong> Always ensure supervised practice with physical therapy before independent use, especially on stairs. Return demonstration before discharge is required.
+        </li>
+        <li>
+          <strong>Keep crutches close:</strong> Store crutches within reach when sitting or lying down so they are accessible when needed. Never leave them across the room.
+        </li>
+      </ul>
+
+      <div style="background:#fee2e2; border-left:3px solid #ef4444; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#991b1b;">🔴 Safety Alert – Crutch Palsy</p>
+        <p style="margin:0; line-height:1.8; color:#374151;">Crutch palsy (radial nerve palsy) results from prolonged pressure on the axillary nerve from resting weight on the axillary bar. Symptoms include numbness, tingling, and weakness in the hand and forearm — which can become permanent if not corrected. <strong>Weight must always be through the handgrips, not the armpits.</strong> There should be 2–3 finger-widths of space between the axilla and the crutch top at all times.</p>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>The most dangerous crutch error is resting weight in the armpits</strong> — this causes radial nerve damage (crutch palsy). Numbness or tingling in the hands during crutch use = crutch palsy warning sign — correct technique immediately. Worn rubber tips = fall risk. Patient education must include return demonstration before discharge. Non-slip footwear is required.</p>
+      </div>
+    </section>
+
+    <!-- 9. Measuring Crutches -->
+    <section id="measuring-crutches" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">9. How to Measure Crutches</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Proper crutch measurement is essential for safe use and prevention of axillary nerve injury. Incorrect length — either too long or too short — leads to improper mechanics and increases fall and injury risk.
+      </p>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Standing Measurement Method (Preferred)</h3>
+      <ol style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Patient stands erect in their normal footwear on a flat surface.</li>
+        <li>Position the crutch tip <strong>6 inches (15 cm) lateral</strong> and <strong>2 inches (5 cm) anterior</strong> to the patient's foot.</li>
+        <li>The top of the crutch (axillary bar) should be <strong>2–3 finger-widths (approximately 1.5–2 inches / 4–5 cm) below the axilla</strong>. This space is essential — direct axillary pressure causes nerve damage.</li>
+        <li>Adjust the <strong>handgrip</strong> so the elbow is flexed at <strong>20–30°</strong> when the patient grips the handle. This angle maximizes weight-bearing efficiency through the arms.</li>
+      </ol>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Height Formula Method</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Crutch length (in inches) ≈ <strong>Patient's height (inches) − 16 inches</strong></li>
+        <li>Example: Patient is 68 inches (5'8") tall → crutch length ≈ 68 − 16 = <strong>52 inches</strong></li>
+        <li>This formula provides a starting estimate; always verify with the standing measurement and adjust for elbow flexion.</li>
+      </ul>
+
+      <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem;">Supine (Lying) Measurement Method (Alternative)</h3>
+      <ul style="line-height:2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>Used when the patient cannot stand for measurement.</li>
+        <li>Measure from the patient's <strong>anterior axillary fold</strong> to a point <strong>6 inches lateral to the heel</strong>.</li>
+        <li>Handgrip: position so elbow flexes 20–30° when arm is at the side with wrist extended.</li>
+      </ul>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – After Measuring</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Document the crutch measurement and adjustment settings in the patient record</li>
+          <li>Have the patient stand and verify: 2–3 finger-widths below axilla; elbow 20–30° when gripping handbar</li>
+          <li>Re-measure if the patient's weight, footwear, or condition changes significantly</li>
+          <li>Refer to physical therapy for formal fitting and gait training</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Key numbers: 2–3 finger-widths below axilla; elbow 20–30° flexion at handgrip; tip 6 inches lateral and 2 inches anterior to foot.</strong> Formula: height − 16 inches. Too-long crutches → axillary pressure → crutch palsy. Too-short crutches → patient hunches forward → falls. The handgrip position is as important as crutch length — check elbow angle.</p>
+      </div>
+    </section>
+
+    <!-- 10. Teaching Crutch Use -->
+    <section id="teaching-crutches" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">10. Steps in Correctly Teaching a Patient How to Use Crutches</h2>
+
+      <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
+        Crutch instruction is a structured educational process. Following a systematic approach ensures the patient is safe, confident, and competent before discharge. Physical therapy leads formal training, but nurses reinforce and evaluate patient competency.
+      </p>
+
+      <ol style="line-height:2.2; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
+        <li>
+          <strong>Assess patient strength and mobility:</strong> Evaluate upper extremity strength (needed to bear weight), balance, coordination, cognitive ability to follow instructions, and prescribed weight-bearing status (NWB, PWB, WBAT, FWB). Ensure the patient is medically stable for ambulation.
+        </li>
+        <li>
+          <strong>Explain the purpose and overall technique:</strong> Describe why crutches are needed, the weight-bearing restrictions ordered by the provider, and what the patient can expect during training. Address questions and concerns to reduce anxiety.
+        </li>
+        <li>
+          <strong>Measure and fit the crutches correctly:</strong> Use standing measurement: tip 6 inches lateral/2 inches anterior, axillary bar 2–3 finger-widths below axilla, elbow 20–30° at handgrip. Adjust and lock the settings securely. Verify rubber tips are intact.
+        </li>
+        <li>
+          <strong>Demonstrate the prescribed gait pattern:</strong> Show (or have physical therapy demonstrate) the specific gait pattern ordered (e.g., 3-point gait for NWB). Explain each step clearly before the patient attempts it. Demonstrate sitting, standing, and turning.
+        </li>
+        <li>
+          <strong>Have the patient return demonstrate on a flat surface:</strong> Observe the patient perform the gait on a level floor. Ensure proper hand position (weight through handgrips, not axilla), correct foot pattern, and safe posture. Provide immediate corrective feedback.
+        </li>
+        <li>
+          <strong>Practice navigating stairs:</strong> If the patient lives in a home with stairs or must navigate stairs, practice with supervision. Teach "Good goes up, bad comes down." Always have a spotter and handrail available. Evaluate competency before considering discharge.
+        </li>
+        <li>
+          <strong>Teach safety measures:</strong> Never rest weight on axilla; inspect rubber tips; wear non-slip shoes; keep floors clear; sit safely (back to chair, crutches on affected side); report numbness/tingling; keep crutches within reach.
+        </li>
+        <li>
+          <strong>Provide written instructions:</strong> Give the patient and caregiver written instructions covering the gait pattern, weight-bearing restrictions, safety rules, how to care for crutches, and when to call the provider. Written materials reinforce verbal teaching and serve as a reference at home.
+        </li>
+        <li>
+          <strong>Evaluate before discharge:</strong> Perform a final competency evaluation — observe independent ambulation on flat surfaces and stairs. Document that education was provided, patient demonstrated correct technique, and verbalized understanding. Ensure the patient can safely perform all activities required in their home environment.
+        </li>
+      </ol>
+
+      <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.5rem 0; font-weight:700; color:#1e40af;">🔵 Clinical Callout – Discharge Readiness Criteria</p>
+        <ul style="margin:0; padding-left:1.25rem; line-height:1.8; color:#374151;">
+          <li>Patient correctly demonstrates gait pattern with proper weight bearing</li>
+          <li>Patient verbalizes all safety precautions, including "no axilla weight bearing"</li>
+          <li>Patient demonstrates safe stair negotiation if required at home</li>
+          <li>Patient verbalizes what symptoms to report (numbness, pain, fall)</li>
+          <li>Written instructions provided and home environment assessed for safety (rugs removed, furniture rearranged, etc.)</li>
+          <li>Follow-up appointment confirmed (orthopedic or physical therapy)</li>
+        </ul>
+      </div>
+
+      <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.375rem 0.375rem 0;">
+        <p style="margin:0 0 0.25rem 0; font-weight:700; color:#92400e;">⭐ Exam Tip</p>
+        <p style="margin:0; line-height:1.8; color:#374151;"><strong>Correct teaching order: Assess → Explain → Measure → Demonstrate → Return demonstrate → Stairs → Safety → Written instructions → Evaluate.</strong> Return demonstration is the gold standard for evaluating patient learning — not just asking "do you understand?" Document both the education provided AND the patient's demonstrated competency. Never discharge a patient with crutches who cannot safely demonstrate the gait and safety measures.</p>
+      </div>
+    </section>
+
+    <!-- Quick Reference Summary -->
+    <section style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; margin-bottom:2.5rem;">
+      <h2 style="font-size:1.05rem; font-weight:700; color:#1e293b; margin:0 0 1rem 0;">📋 Quick Reference Summary</h2>
+      <ul style="margin:0; padding-left:1.25rem; line-height:2.1; color:#374151; font-size:0.92rem;">
+        <li><strong>ROM types:</strong> Active (patient alone) → Active-Assisted (patient + nurse) → Passive (nurse alone). Passive ROM = flexibility only, no strength benefit.</li>
+        <li><strong>Exercise types:</strong> Isometric = no movement, maintains strength (safe for casts); Isotonic = movement, builds strength/cardio; Isokinetic = constant speed, variable resistance (rehab equipment).</li>
+        <li><strong>Log rolling:</strong> Minimum 2 nurses; head nurse stabilizes cervical spine and counts; roll as one unit; never twist spine; draw sheet + pillow between knees.</li>
+        <li><strong>Moving in bed:</strong> Lower HOB flat; lift and slide on count of 3; draw sheet with 2 nurses; never drag; mechanical lift for bariatric/dependent patients.</li>
+        <li><strong>Key positions:</strong> Orthopneic = breathing distress (tripod, leaning forward); Semi-Fowler's (30–45°) = tube feeding minimum; Fowler's (45–60°) = oxygenation/post-op; Sims = enema/rectal; Prone = ARDS oxygenation.</li>
+        <li><strong>Occupied bed:</strong> Raise bed → lower near rail → loosen linens → roll patient away → change near side → roll back → change far side → toe pleat → lower bed. Never shake soiled linens.</li>
+        <li><strong>Cane:</strong> STRONGER side; handle at wrist crease/greater trochanter; cane and weak leg move together; "Good up, bad down" for stairs.</li>
+        <li><strong>Crutch measurement:</strong> 2–3 finger-widths below axilla; elbow 20–30° at handgrip; tip 6 inches lateral, 2 inches anterior to foot; formula: height − 16 inches.</li>
+        <li><strong>Crutch safety #1:</strong> NEVER rest weight on axilla → causes radial nerve damage (crutch palsy). Weight always through handgrips.</li>
+        <li><strong>Gait patterns:</strong> 3-point = NWB (most tested); 4-point = most stable/PWB both legs; 2-point = faster PWB; Swing-to/through = bilateral LE involvement.</li>
+        <li><strong>Crutch teaching steps:</strong> Assess → Explain → Measure → Demonstrate → Return demonstrate → Stairs → Safety → Written instructions → Evaluate/document.</li>
+      </ul>
+    </section>
+
+    <!-- PREV / NEXT Navigation -->
+    <nav style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+      <a href={`${base}/private/d439/wound-skin-care`}
+         style="display:inline-block; background:#f1f5f9; color:#64748b; text-decoration:none; padding:0.65rem 1.4rem; border-radius:9999px; font-weight:600; font-size:0.9rem; transition:background 0.15s;">
+        ← Wound &amp; Skin Care
+      </a>
+      <a href={`${base}/private/d439/medications-procedures`}
+         style="display:inline-block; background:#eef2ff; color:#4f46e5; text-decoration:none; padding:0.65rem 1.4rem; border-radius:9999px; font-weight:600; font-size:0.9rem; transition:background 0.15s;">
+        Medications &amp; Procedures →
+      </a>
+    </nav>
+
+  </div>
+</Layout>

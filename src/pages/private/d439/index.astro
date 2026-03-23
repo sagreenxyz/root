@@ -1,0 +1,283 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'nursing-foundations',
+    label: 'Nursing Foundations',
+    color: '#6366f1',
+    bg: '#eef2ff',
+    border: '#c7d2fe',
+    pages: [
+      {
+        slug: 'nursing-process',
+        icon: '🔄',
+        title: 'Nursing Process (ADPIE)',
+        summary: 'The five steps of the nursing process—Assessment, Diagnosis, Planning, Implementation, and Evaluation—plus critical thinking and assessment interview techniques.',
+        tags: ['ADPIE', 'critical thinking', 'assessment', 'nursing process'],
+      },
+      {
+        slug: 'assessment-vitals',
+        icon: '🩺',
+        title: 'Assessment & Vital Signs',
+        summary: 'Blood pressure measurement technique, causes of hypertension, dehydration assessment, activity intolerance, and pain assessment in adults, children, and comatose patients.',
+        tags: ['blood pressure', 'pain assessment', 'dehydration', 'activity intolerance'],
+      },
+      {
+        slug: 'communication-teaching',
+        icon: '💬',
+        title: 'Communication & Patient Teaching',
+        summary: 'SBAR, therapeutic communication, patient teaching methods, assessment interview techniques, delegation, HIPAA-compliant communication, and change-of-shift reporting.',
+        tags: ['SBAR', 'therapeutic communication', 'delegation', 'teaching'],
+      },
+    ],
+  },
+  {
+    id: 'infection-safety',
+    label: 'Infection Control & Safety',
+    color: '#0891b2',
+    bg: '#ecfeff',
+    border: '#a5f3fc',
+    pages: [
+      {
+        slug: 'infection-control',
+        icon: '🧼',
+        title: 'Infection Control & Asepsis',
+        summary: 'Medical asepsis, surgical asepsis, proper handwashing technique, hand sanitizer use, sterile field setup, gloving, sterile gloving, PPE, and droplet precautions.',
+        tags: ['asepsis', 'hand hygiene', 'sterile technique', 'PPE', 'gloving'],
+      },
+    ],
+  },
+  {
+    id: 'wound-skin',
+    label: 'Wound & Skin Care',
+    color: '#d97706',
+    bg: '#fffbeb',
+    border: '#fde68a',
+    pages: [
+      {
+        slug: 'wound-skin-care',
+        icon: '🩹',
+        title: 'Wound & Skin Care',
+        summary: 'Wound classification, wound drainage types, primary/secondary/tertiary healing, Braden Scale, pressure injury prevention, proper wound care, foot care for diabetics, and shearing force.',
+        tags: ['wounds', 'healing', 'Braden Scale', 'pressure injuries', 'foot care'],
+      },
+    ],
+  },
+  {
+    id: 'mobility',
+    label: 'Mobility & Exercise',
+    color: '#16a34a',
+    bg: '#f0fdf4',
+    border: '#bbf7d0',
+    pages: [
+      {
+        slug: 'mobility-exercise',
+        icon: '🚶',
+        title: 'Mobility & Exercise',
+        summary: 'Exercise types, range of motion, isotonic and isometric exercises, log rolling, moving and positioning a patient in bed, making an occupied bed, crutches, canes, and walkers.',
+        tags: ['ROM', 'exercise', 'log rolling', 'crutches', 'positioning'],
+      },
+    ],
+  },
+  {
+    id: 'medications',
+    label: 'Medications & Clinical Procedures',
+    color: '#dc2626',
+    bg: '#fef2f2',
+    border: '#fecaca',
+    pages: [
+      {
+        slug: 'medications-procedures',
+        icon: '💉',
+        title: 'Medications & Procedures',
+        summary: 'Intradermal and heparin injections, ear drop administration, O2 safety, oxygenation chamber storage, pulse oximetry, and suctioning procedure and safety.',
+        tags: ['injections', 'ear drops', 'O2 safety', 'pulse ox', 'suctioning'],
+      },
+    ],
+  },
+  {
+    id: 'nutrition',
+    label: 'Nutrition & Elimination',
+    color: '#7c3aed',
+    bg: '#f5f3ff',
+    border: '#ddd6fe',
+    pages: [
+      {
+        slug: 'nutrition-elimination',
+        icon: '🍽️',
+        title: 'Nutrition & Elimination',
+        summary: 'Constipation prevention, bowel training, enteral feeding, NG tube insertion, oral care with NG tube, 24-hour urine collection, urinary catheter insertion and removal, and clear liquid diets.',
+        tags: ['enteral feeding', 'NG tube', 'catheter', 'constipation', 'bowel training'],
+      },
+    ],
+  },
+  {
+    id: 'hygiene',
+    label: 'Patient Hygiene & Personal Care',
+    color: '#0d9488',
+    bg: '#f0fdfa',
+    border: '#99f6e4',
+    pages: [
+      {
+        slug: 'hygiene-personal-care',
+        icon: '🛁',
+        title: 'Patient Hygiene & Personal Care',
+        summary: 'Oral care for unconscious patients, oral care with NG tube, tympanic temperature skills, back rub technique, nocturia interventions, and alternative sleep promotion strategies.',
+        tags: ['oral care', 'tympanic temperature', 'back rub', 'sleep', 'nocturia'],
+      },
+    ],
+  },
+  {
+    id: 'legal',
+    label: 'Legal, Ethical & Professional',
+    color: '#b45309',
+    bg: '#fefce8',
+    border: '#fef08a',
+    pages: [
+      {
+        slug: 'legal-ethical',
+        icon: '⚖️',
+        title: 'Legal & Ethical Practice',
+        summary: 'HIPAA, assault and battery with examples, emancipated minor and consent, Good Samaritan Act, documentation and late entries, electronic documentation procedures, and cardiac disease prevention.',
+        tags: ['HIPAA', 'assault', 'battery', 'consent', 'documentation', 'Good Samaritan'],
+      },
+    ],
+  },
+  {
+    id: 'sleep-pain',
+    label: 'Sleep, Comfort & Pain',
+    color: '#4f46e5',
+    bg: '#eef2ff',
+    border: '#c7d2fe',
+    pages: [
+      {
+        slug: 'sleep-comfort-pain',
+        icon: '😴',
+        title: 'Sleep, Comfort & Pain Management',
+        summary: 'Sleep apnea, nocturia, alternative sleep strategies, guided imagery, assessing and managing pain, Maslow\'s Hierarchy of Needs, restraints, and hyperkalemia.',
+        tags: ['sleep apnea', 'pain management', 'Maslow', 'restraints', 'guided imagery'],
+      },
+    ],
+  },
+  {
+    id: 'grief',
+    label: 'Grief, End-of-Life & Communication',
+    color: '#6b7280',
+    bg: '#f9fafb',
+    border: '#d1d5db',
+    pages: [
+      {
+        slug: 'grief-end-of-life',
+        icon: '🕊️',
+        title: 'Grief, Hospice & Palliative Care',
+        summary: 'Stages of grief, hospice versus palliative care, communicating with a grieving family, sexuality and interview technique, empathy with examples, and aspiration precautions.',
+        tags: ['grief', 'hospice', 'palliative care', 'empathy', 'bereavement'],
+      },
+    ],
+  },
+  {
+    id: 'critical-thinking',
+    label: 'Critical Thinking & Review',
+    color: '#0f766e',
+    bg: '#f0fdfa',
+    border: '#5eead4',
+    pages: [
+      {
+        slug: 'critical-thinking',
+        icon: '🧠',
+        title: 'Critical Thinking & Key Review Questions',
+        summary: 'Why critical thinking matters in nursing, plus eight essential clinical review questions covering crutch teaching, Foley catheter insertion, wound staging, grief communication, assault/battery/libel, nursing process steps, cultural competence, and assessment priorities.',
+        tags: ['critical thinking', 'clinical judgment', 'review questions', 'priority setting'],
+      },
+    ],
+  },
+];
+---
+
+<Layout title="D439 Foundations of Nursing – Study Guide" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>D439 Foundations of Nursing</span>
+  </nav>
+
+  <!-- Header -->
+  <div style="margin-bottom:2rem;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2.5rem;">📗</span>
+      <div>
+        <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.1rem;">D439 Foundations of Nursing</h1>
+        <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.5rem;">
+          Study Guide
+        </span>
+      </div>
+    </div>
+    <p style="color:#64748b; font-size:1rem; line-height:1.6; max-width:680px;">
+      Comprehensive study reference for D439 — Foundations of Nursing. Each topic page covers fact retrieval and clinical judgment scenarios. Use the navigation links at the bottom of each page to move between topics.
+    </p>
+  </div>
+
+  <!-- Quick-jump anchor list -->
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.75rem;">Jump to Category</p>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+      {sections.map(s => (
+        <a
+          href={`#${s.id}`}
+          style={`display:inline-block; padding:0.3rem 0.75rem; font-size:0.8rem; font-weight:600; border-radius:1rem; background:${s.bg}; color:${s.color}; border:1px solid ${s.border}; text-decoration:none;`}
+        >
+          {s.label}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Sections -->
+  {sections.map(section => (
+    <div id={section.id} style="margin-bottom:2.5rem;">
+      <div style={`display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:1rem; padding:0.4rem 0.9rem; border-radius:0.4rem; background:${section.bg}; border:1px solid ${section.border};`}>
+        <h2 style={`font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:${section.color}; margin:0;`}>{section.label}</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        {section.pages.map(page => (
+          <a
+            href={`${base}/private/d439/${page.slug}`}
+            style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s, border-color 0.2s;"
+            onmouseover="this.style.boxShadow='0 4px 16px rgba(99,102,241,0.12)'; this.style.borderColor='#a5b4fc';"
+            onmouseout="this.style.boxShadow='none'; this.style.borderColor='#e2e8f0';"
+          >
+            <div style="display:flex; align-items:flex-start; gap:1rem;">
+              <div style="font-size:2rem; line-height:1; flex-shrink:0;">{page.icon}</div>
+              <div style="flex:1; min-width:0;">
+                <h3 style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">{page.title}</h3>
+                <p style="color:#64748b; font-size:0.9rem; line-height:1.6; margin-bottom:0.75rem;">{page.summary}</p>
+                <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                  {page.tags.map(tag => (
+                    <span style="font-size:0.75rem; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:0.3rem; padding:0.1rem 0.5rem;">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div style="color:#94a3b8; font-size:1.2rem; flex-shrink:0; align-self:center;">›</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <!-- Footer callout -->
+  <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem 1.5rem; display:flex; align-items:flex-start; gap:0.75rem;">
+    <span style="font-size:1.25rem; flex-shrink:0;">💡</span>
+    <div>
+      <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">Study Tip</p>
+      <p style="color:#15803d; font-size:0.85rem; line-height:1.6;">
+        Each page includes both fact-recall content and clinical judgment scenarios. At the bottom of every topic page you'll find <strong>Previous</strong> and <strong>Next</strong> navigation links so you can work through the material sequentially without returning to this index.
+      </p>
+    </div>
+  </div>
+</Layout>

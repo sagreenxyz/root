@@ -1,0 +1,170 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Legal & Ethical Practice – D439" protected={true}>
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Legal &amp; Ethical Practice</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">⚖️</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#b45309; background:#fefce8; border:1px solid #fef08a; border-radius:0.3rem; padding:0.15rem 0.45rem;">D439 – Foundations of Nursing</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">Legal &amp; Ethical Practice</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">HIPAA, assault and battery, consent, Good Samaritan Act, emancipated minor, and nursing documentation law.</p>
+  </header>
+
+  <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem;">Contents</p>
+    <ol style="margin:0; padding-left:1.25rem; color:#6366f1; font-size:0.9rem; line-height:2;">
+      <li><a href="#hipaa" style="color:#6366f1;">HIPAA</a></li>
+      <li><a href="#assault" style="color:#6366f1;">Assault – Definition &amp; Example</a></li>
+      <li><a href="#battery" style="color:#6366f1;">Battery – Definition &amp; Example</a></li>
+      <li><a href="#libel" style="color:#6366f1;">Libel – Definition &amp; Example</a></li>
+      <li><a href="#consent" style="color:#6366f1;">Emancipated Minor &amp; Consent</a></li>
+      <li><a href="#good-samaritan" style="color:#6366f1;">Good Samaritan Act</a></li>
+      <li><a href="#restraints" style="color:#6366f1;">Restraints</a></li>
+    </ol>
+  </div>
+
+  <section id="hipaa" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">HIPAA</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Health Insurance Portability and Accountability Act (1996)</strong> — a federal law protecting the privacy and security of patients' <strong>Protected Health Information (PHI)</strong>.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>PHI includes:</strong> Any information that can identify a patient — name, address, date of birth, SSN, diagnosis, treatment, photos, billing information, email/phone, medical record number.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing obligations under HIPAA:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Share PHI only on a <strong>need-to-know basis</strong> (treatment, payment, operations — TPO)</li>
+      <li>Never discuss patient information in public areas (hallways, elevators, cafeteria)</li>
+      <li>Do not share information with family without patient consent (even next of kin — adult patients must authorize disclosure)</li>
+      <li>Use encrypted, secure communication for electronic PHI (ePHI)</li>
+      <li>Log out of EHR systems when leaving workstations</li>
+      <li>Do not access records of patients not under your care (curiosity is NOT a valid reason)</li>
+      <li>Social media: NEVER post patient photos, identifiers, or case details — even without names if details could identify the patient</li>
+    </ul>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Penalties:</strong> Civil penalties up to $50,000 per violation; criminal penalties up to 10 years imprisonment for intentional wrongful disclosure. Nurses have lost their licenses for HIPAA violations on social media.
+    </div>
+  </section>
+
+  <section id="assault" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Assault – Definition &amp; Example</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Assault is the <strong>threat or attempt</strong> of bodily harm that causes the patient reasonable fear or apprehension of being touched without consent. Physical contact does NOT have to occur for assault to be committed.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Key elements:</strong> Intentional threat + patient's reasonable belief that harm will occur + patient does not consent.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing examples:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>"If you don't calm down, I'll give you a shot to make you sleep." — threatening medication as punishment = assault</li>
+      <li>Raising a hand as if to strike a patient (even if no contact occurs) = assault</li>
+      <li>Telling a patient "I'll put restraints on you if you keep this up" without clinical justification = assault</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Remember:</strong> Assault = THREAT (no touch required). Battery = TOUCH without consent.
+    </div>
+  </section>
+
+  <section id="battery" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Battery – Definition &amp; Example</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Battery is the <strong>intentional, unconsented touching</strong> of another person. In nursing, it occurs when a procedure or physical contact is performed without the patient's consent, regardless of intent to help.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Key elements:</strong> Intentional + physical contact + without consent. The nurse does not need to intend harm — only to perform the act.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing examples:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Administering medication to a patient who has clearly refused it (even if medically necessary) = battery</li>
+      <li>Performing a procedure after the patient has withdrawn consent = battery</li>
+      <li>Restraining a patient without a valid order or emergency justification = battery</li>
+      <li>Continuing a physical examination after the patient says "stop" = battery</li>
+    </ul>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Clinical application:</strong> Always obtain informed consent before procedures. If a competent patient refuses treatment, respect that refusal and document it thoroughly. Notify the provider. Do not proceed.
+    </div>
+  </section>
+
+  <section id="libel" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Libel – Definition &amp; Example</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Libel is <strong>written defamation</strong> — publishing false statements of fact that damage a person's reputation. Slander is the spoken equivalent. Both are forms of defamation.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing examples:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Documenting in a patient's chart: "Patient is a drug seeker and exaggerates pain" — if untrue, this is libel; even if partially true, pejorative language in records is professionally and legally problematic</li>
+      <li>Writing a false negative review of a colleague's competence in a formal document = libel</li>
+      <li>Posting false information about a coworker on social media = libel</li>
+    </ul>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Documentation rule:</strong> Write objective, factual observations — not opinions, labels, or judgments. Write "Patient states pain is 10/10 and requests opioid medication" rather than "patient is drug-seeking."
+    </div>
+  </section>
+
+  <section id="consent" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Emancipated Minor &amp; Consent</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Standard rule:</strong> Individuals under 18 (minors) cannot legally consent to medical treatment — a parent or legal guardian must provide consent.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Emancipated minor:</strong> A minor who has been legally granted adult status by a court and can consent to their own medical care. Emancipation criteria vary by state but generally include:</p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Marriage (in states where minor marriage is permitted)</li>
+      <li>Active military service</li>
+      <li>Living independently and self-supporting</li>
+      <li>Court-ordered emancipation</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Mature minor doctrine:</strong> Some states allow minors who demonstrate sufficient maturity and understanding to consent to specific types of care (e.g., STI treatment, reproductive health, substance abuse treatment, mental health) without parental consent — to encourage care-seeking without fear of disclosure.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Emergency exception:</strong> If a minor requires emergency care and parents/guardians cannot be reached, treatment proceeds under the doctrine of implied consent to preserve life and prevent serious harm.</p>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Nurse's role in consent:</strong> Nurses do NOT obtain informed consent (that is the provider's responsibility). Nurses WITNESS the patient's signature, verify the patient appears competent and is not coerced, and notify the provider if a patient expresses doubt or withdraws consent.
+    </div>
+  </section>
+
+  <section id="good-samaritan" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Good Samaritan Act</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Good Samaritan laws are state statutes that provide legal protection to individuals (including healthcare professionals) who voluntarily assist someone in an emergency situation outside of their professional setting, in good faith, and without compensation.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Purpose:</strong> To encourage bystanders — including nurses — to provide emergency assistance without fear of civil liability if outcomes are not ideal.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>General requirements for protection:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Assistance is voluntary (not within the scope of employment)</li>
+      <li>Care is provided in good faith, without compensation</li>
+      <li>Care does not constitute gross negligence or willful misconduct</li>
+      <li>The helper acts within their level of training and competence</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Example:</strong> A nurse witnesses a car accident and stops to assist a victim using CPR. She is generally protected by Good Samaritan law if she acts in good faith within her competency.</p>
+    <div style="background:#eff6ff; border-left:3px solid #3b82f6; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Important:</strong> Good Samaritan protections do NOT apply if the nurse is at work (liability is through employer/malpractice insurance), or if the nurse acts with gross negligence (e.g., providing care far outside their training).
+    </div>
+  </section>
+
+  <section id="restraints" style="margin-bottom:2rem;">
+    <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">Restraints</h2>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Definition:</strong> Any physical or chemical method that restricts a patient's freedom of movement or access to their own body. Restraints are a last resort — least restrictive alternatives must be tried first.</p>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Legal requirements (TJC and CMS):</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Requires a written or verbal provider order (cannot use PRN restraint orders)</li>
+      <li>Orders must be time-limited: adults — reassess every 4 hours; children 9–17 — every 2 hours; children &lt;9 — every 1 hour</li>
+      <li>Physician must evaluate the patient within 1 hour of initiating restraints</li>
+      <li>Informed consent should be obtained if possible</li>
+    </ul>
+    <p style="line-height:1.8; color:#374151; margin-bottom:1rem;"><strong>Nursing responsibilities during restraint use:</strong></p>
+    <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
+      <li>Assess and document every 15–30 minutes (per facility policy)</li>
+      <li>Check circulation, sensation, movement distal to restraint</li>
+      <li>Release and reposition every 2 hours; perform ROM</li>
+      <li>Offer fluids, nutrition, toileting, and hygiene</li>
+      <li>Tie restraints with quick-release knots to bed frame (not side rails)</li>
+      <li>Maintain HOB ≥30° to prevent aspiration</li>
+      <li>Continue to try least-restrictive alternatives and wean restraints ASAP</li>
+    </ul>
+    <div style="background:#fef9c3; border-left:3px solid #eab308; padding:1rem; margin-bottom:1rem; border-radius:0 0.5rem 0.5rem 0;">
+      <strong>Alternatives to restraints:</strong> Bed/chair alarms, low beds, floor mats, family presence, music, therapeutic activity, reorientation, addressing underlying cause (delirium, pain, urinary urgency), mittens, and frequent nurse rounding.
+    </div>
+  </section>
+
+  <div style="display:flex; justify-content:space-between; margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; flex-wrap:wrap; gap:1rem;">
+    <a href={`${base}/private/d439/communication-teaching`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      ← Communication &amp; Patient Teaching
+    </a>
+    <a href={`${base}/private/d439/sleep-comfort-pain`} style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.6rem 1.25rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:2rem; text-decoration:none; font-size:0.875rem; font-weight:600;">
+      Sleep, Comfort &amp; Pain →
+    </a>
+  </div>
+</Layout>
