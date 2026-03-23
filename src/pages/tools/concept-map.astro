@@ -1686,6 +1686,221 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         'Mental status improved to baseline; headache 3/10 at 3 hours; patient verbalized importance of medication adherence. Goals substantially met; ICU monitoring continued overnight.',
       ],
     },
+    /* 23 – Septic Shock */
+    {
+      focusTopic: 'Septic shock',
+      pathophysiology: 'Septic shock is a life-threatening organ dysfunction caused by a dysregulated host response to infection. Pathogens (bacteria, fungi, viruses) trigger massive release of pro-inflammatory cytokines (TNF-α, IL-1β, IL-6), activating complement, coagulation, and kinin pathways. The result is profound vasodilation and distributive shock (low SVR, high CO early), capillary leak, myocardial depression, and impaired cellular oxygen utilization. Tissue hypoperfusion leads to lactic acidosis and multi-organ dysfunction (MODS). Clinical definition: sepsis + vasopressor requirement to maintain MAP ≥65 mmHg + serum lactate >2 mmol/L despite adequate fluid resuscitation. The Surviving Sepsis Campaign (SSC) Hour-1 Bundle guides initial management: blood cultures × 2, broad-spectrum antibiotics within 1 hour, 30 mL/kg IV crystalloid bolus, vasopressors (norepinephrine first-line) for refractory hypotension, and lactate measurement.',
+      riskFactors: [
+        'Immunosuppression (chemotherapy, corticosteroids, HIV/AIDS) — impaired pathogen clearance allows progression to sepsis and shock',
+        'Indwelling devices (central venous catheters, urinary catheters, mechanical ventilation) — direct portal of entry for nosocomial pathogens',
+        'Advanced age and comorbidities (diabetes, CKD, malnutrition) — attenuated immune reserve and impaired end-organ tolerance of hypoperfusion',
+      ],
+      cues: [
+        'HR 128 bpm; BP 76/42 mmHg (MAP 53 mmHg); RR 28/min; T 39.4 °C; SpO₂ 91 % on 6 L/min NC; GCS 13 (confused)',
+        'Lactate 6.2 mmol/L; WBC 22,400/mm³ with 18 % bands; procalcitonin 48 ng/mL; creatinine 2.6 mg/dL (baseline 0.8); total bilirubin 3.1 mg/dL',
+        'Blood cultures × 2 drawn; urine cloudy with WBCs, nitrites positive; chest X-ray shows right lower lobe consolidation',
+        '72-year-old male with Type 2 DM, CKD Stage 3, and recent urologic procedure 5 days ago; currently on metformin and lisinopril; nursing home resident',
+      ],
+      concerning: [
+        'MAP 53 mmHg with lactate 6.2 mmol/L despite adequate fluid history — septic shock requiring immediate vasopressor initiation (norepinephrine) and 30 mL/kg IV crystalloid per SSC Hour-1 Bundle',
+        'Multi-organ dysfunction evident: AKI (creatinine 2.6), hepatic injury (bilirubin 3.1), altered mentation (GCS 13), and respiratory failure (SpO₂ 91 %) — ICU-level care and early broad-spectrum antibiotics are critical',
+      ],
+      hypotheses: [
+        'Initiating norepinephrine IV infusion titrated to MAP ≥65 mmHg will restore end-organ perfusion pressure and halt progressive multi-organ failure within 1–2 hours.',
+        'Administering broad-spectrum antibiotics (piperacillin-tazobactam + vancomycin) within 60 minutes of sepsis recognition will reduce bacterial burden and blunt the inflammatory cascade, improving lactate clearance at 2 hours.',
+        'Aggressive IV fluid resuscitation (30 mL/kg LR bolus over 3 hours) will improve preload and cardiac output, supporting MAP goals while serial lactate reassessment guides further fluid therapy.',
+      ],
+      solutions: [
+        'MAP will be ≥65 mmHg within 1 hour of norepinephrine initiation; lactate will decrease by ≥10 % at 2-hour recheck.',
+        'Blood cultures will be obtained and broad-spectrum antibiotics will be infusing within 60 minutes of sepsis recognition.',
+        'Urine output will increase to ≥0.5 mL/kg/hr within 2 hours of fluid resuscitation; creatinine will trend toward baseline.',
+        'Patient will achieve hemodynamic stability; GCS will improve to ≥14 as perfusion is restored.',
+      ],
+      actions: [
+        'Placed central venous catheter (right internal jugular); initiated norepinephrine 0.1 mcg/kg/min and titrated to MAP ≥65 mmHg; administered 30 mL/kg (2,100 mL) IV LR over 3 hours; inserted Foley for strict hourly urine output.',
+        'Drew blood cultures × 2 from separate sites within 10 minutes; administered piperacillin-tazobactam 3.375 g IV and vancomycin 25 mg/kg IV (dosed for renal function) within 45 minutes of sepsis alert.',
+        'Monitored MAP, CVP, and urine output hourly; reassessed lactate at 2 hours; performed qSOFA and SOFA scoring; applied continuous cardiac monitoring; notified ICU team for transfer.',
+        'Held metformin (AKI risk) and lisinopril (hypotension); educated family on septic shock severity and ICU plan; documented SSC Hour-1 Bundle compliance; coordinated with infectious disease team for antibiotic de-escalation plan.',
+      ],
+      outcomes: [
+        'MAP 68 mmHg at 1 hour on norepinephrine 0.14 mcg/kg/min; hemodynamics improving — vasopressor dose stabilized.',
+        'Lactate 3.8 mmol/L at 2 hours (39 % clearance from 6.2); improvement in perfusion confirmed; continued monitoring.',
+        'Urine output 0.6 mL/kg/hr at 2 hours; creatinine unchanged at 6 hours (2.5 mg/dL) — AKI not worsening; continued renal monitoring.',
+        'GCS improved to 14 at 3 hours; family updated and at bedside. Goals partially met — hemodynamics stabilizing; continued ICU management required for lactate normalization and organ recovery.',
+      ],
+    },
+    /* 24 – Traumatic Brain Injury */
+    {
+      focusTopic: 'Traumatic brain injury (TBI) — moderate-to-severe',
+      pathophysiology: 'Traumatic brain injury results from mechanical forces (blunt, penetrating, blast) causing primary injury: contusion, axonal shearing, hemorrhage (epidural, subdural, subarachnoid, intraparenchymal), and cerebral edema. Secondary injury — occurring hours to days later — is driven by hypoxia, hypotension, hyperthermia, hyperglycemia, and elevated intracranial pressure (ICP). The Monro-Kellie doctrine describes the skull as a fixed-volume compartment: as hemorrhage or edema expands, ICP rises, cerebral perfusion pressure (CPP = MAP − ICP) drops, causing ischemia. Herniation syndromes (uncal, transtentorial) are life-threatening complications. Management targets: ICP <20 mmHg, CPP 60–70 mmHg, PaO₂ >100 mmHg, PaCO₂ 35–40 mmHg, serum sodium 135–145 (or hypertonic saline for ICP control), normoglycemia, and normothermia. GCS classifies severity: mild (13–15), moderate (9–12), severe (≤8).',
+      riskFactors: [
+        'Falls (especially in elderly on anticoagulants) — impact forces cause intracranial hemorrhage exacerbated by impaired clotting',
+        'Motor vehicle collisions (MVCs) — high-velocity deceleration causes diffuse axonal injury and contusions',
+        'Alcohol intoxication — impairs neurological assessment and increases fall/MVC risk; also a confounder for LOC evaluation',
+      ],
+      cues: [
+        'GCS 8 (E2 V2 M4); pupils: right 6 mm sluggish, left 3 mm brisk — anisocoria suggesting right-sided uncal herniation; HR 56 bpm (Cushing response); BP 178/96 mmHg; RR 8/min irregular',
+        'CT head: right temporal epidural hematoma (4 cm, midline shift 7 mm); right temporal contusion; scattered subarachnoid hemorrhage',
+        'INR 1.1; platelets 210,000; blood alcohol level 0.19 g/dL; SpO₂ 88 % on 15 L/min NRB mask; blood glucose 218 mg/dL',
+        '34-year-old male; unrestrained driver in high-speed MVC; found unresponsive; intubated in field by EMS with GCS 6 pre-hospital',
+      ],
+      concerning: [
+        'GCS 8 with anisocoria, Cushing triad (hypertension, bradycardia, irregular respirations), and 7 mm midline shift — impending herniation; neurosurgery must be notified immediately for emergent craniotomy/hematoma evacuation',
+        'SpO₂ 88 % on NRB — adequate oxygenation is a primary neuroprotection target; intubation (already performed) and ventilator management to PaO₂ >100 mmHg and PaCO₂ 35–40 mmHg are critical to prevent secondary brain injury',
+      ],
+      hypotheses: [
+        'Emergent neurosurgical evacuation of the right epidural hematoma will decompress the brain, reduce ICP, restore CPP, and halt herniation — this is the definitive life-saving intervention.',
+        'Optimizing ventilator settings (FiO₂ to achieve PaO₂ >100 mmHg; RR to achieve PaCO₂ 35–40 mmHg) and administering 3 % hypertonic saline or mannitol will reduce ICP and improve CPP while awaiting surgery.',
+        'Maintaining MAP ≥80 mmHg (targeting CPP 60–70 mmHg) with IV vasopressors if needed, normalizing blood glucose, and preventing fever will minimize secondary brain injury in the perioperative period.',
+      ],
+      solutions: [
+        'Neurosurgery will be at bedside within 15 minutes; patient will be in OR within 60 minutes of CT confirmation.',
+        'SpO₂ will be ≥98 % and PaCO₂ 35–40 mmHg on mechanical ventilation within 30 minutes of vent adjustment.',
+        'ICP will be <20 mmHg and CPP ≥60 mmHg post-operatively; mannitol or 3 % NaCl will be used as a bridge if ICP spikes pre-op.',
+        'Blood glucose will be maintained 140–180 mg/dL; temperature will remain ≤37.5 °C.',
+      ],
+      actions: [
+        'Confirmed endotracheal tube placement (7.5 mm cuffed, 22 cm at lip); adjusted ventilator to FiO₂ 1.0, RR 16, TV 450 mL; SpO₂ improved to 99 %; PaCO₂ 37 mmHg on ABG; initiated continuous capnography.',
+        'Administered mannitol 1 g/kg (80 g) IV over 20 minutes for herniation signs per neurosurgery order; elevated HOB to 30°; maintained head/neck midline; initiated seizure prophylaxis with levetiracetam 1,000 mg IV.',
+        'Activated OR and neurosurgery team emergently; prepared blood products (PRBCs, FFP) for perioperative use; placed arterial line for continuous BP monitoring; targeted MAP ≥80 mmHg; started insulin infusion for glucose 218.',
+        'Performed neurological checks every 15 minutes (pupils, GCS components, motor responses); notified trauma team and neurosurgery of anisocoria progression; communicated urgency to OR team; updated family of critical status.',
+      ],
+      outcomes: [
+        'Patient transported to OR 48 minutes after CT results; right temporal craniotomy and hematoma evacuation completed; post-op CT showed midline shift reduced to 1 mm.',
+        'SpO₂ 99 % throughout perioperative period; PaCO₂ 37 mmHg on ABG; ventilator weaning plan initiated post-op.',
+        'Post-op ICP monitor placed (ICP 12 mmHg, CPP 68 mmHg); mannitol discontinued; blood glucose 162 mg/dL on insulin infusion.',
+        'Family informed of successful surgery; GCS 10 at 24 hours post-op; continued ICU neuro monitoring. Goals substantially met — herniation reversed; continued rehabilitation planning needed.',
+      ],
+    },
+    /* 25 – Acute Kidney Injury */
+    {
+      focusTopic: 'Acute kidney injury (AKI) — oliguric, multi-factorial',
+      pathophysiology: 'AKI is an abrupt decline in kidney function defined by the KDIGO criteria: ≥0.3 mg/dL rise in creatinine within 48 hours, ≥1.5× baseline creatinine within 7 days, or urine output <0.5 mL/kg/hr for >6 hours. Causes are classified as pre-renal (decreased perfusion — hypovolemia, shock, heart failure), intrinsic renal (tubular, glomerular, interstitial injury — ATN from ischemia or nephrotoxins; contrast nephropathy; drug-induced), and post-renal (obstructive — BPH, stones, tumor). Ischemic ATN is the most common in-hospital cause: prolonged renal hypoperfusion → tubular epithelial cell necrosis → back-leak of filtrate → cast formation → tubular obstruction → oliguria. Consequences include volume overload, hyperkalemia (potentially fatal arrhythmias), metabolic acidosis, uremia, and anemia. Treatment is directed at the underlying cause; renal replacement therapy (RRT/dialysis) is initiated for refractory hyperkalemia, acidosis, fluid overload, or uremia.',
+      riskFactors: [
+        'Nephrotoxin exposure (NSAIDs, aminoglycosides, IV contrast, ACE inhibitors in renal artery stenosis) — direct tubular toxicity or reduced renal perfusion',
+        'Cardiac surgery or prolonged hypotension — ischemic ATN from renal hypoperfusion during CPB or shock states',
+        'Baseline CKD — reduced nephron reserve makes kidneys vulnerable to acute insults',
+      ],
+      cues: [
+        'Urine output 15 mL/hr × 8 hours; creatinine 4.2 mg/dL (baseline 1.0, 3 months ago); BUN 88 mg/dL; BUN:Cr ratio 21; potassium 6.4 mEq/L; bicarbonate 16 mEq/L; phosphorus 6.2 mg/dL',
+        'ECG: peaked T waves in V2–V4 (hyperkalemia pattern); HR 88 bpm; BP 162/96 mmHg; weight 4 kg above dry weight (fluid retention); bilateral crackles at lung bases; 3+ pitting edema bilateral lower extremities',
+        'Urinalysis: muddy brown casts, specific gravity 1.010, 2+ protein; FeNa 2.8 % (intrinsic renal); renal ultrasound: bilateral kidneys 11 cm, no hydronephrosis',
+        '67-year-old male; underwent coronary artery bypass graft (CABG) 5 days ago; received iodinated contrast during cardiac catheterization pre-op and gentamicin peri-operatively; hypertension and Type 2 DM',
+      ],
+      concerning: [
+        'Potassium 6.4 mEq/L with peaked T waves on ECG — life-threatening hyperkalemia requiring immediate cardiac monitoring and urgent treatment (calcium gluconate, insulin/dextrose, sodium bicarbonate, kayexalate/patiromer)',
+        'Oliguria 15 mL/hr × 8 hours with 4 kg fluid overload and bilateral crackles — fluid overload and impending pulmonary edema in the setting of oliguric AKI; nephrology consult for RRT evaluation is urgent',
+      ],
+      hypotheses: [
+        'Immediate treatment of hyperkalemia (IV calcium gluconate for membrane stabilization, insulin/dextrose for K⁺ shift, loop diuretic challenge) will prevent fatal arrhythmia and may improve urine output if residual tubular function remains.',
+        'Nephrology consultation for urgent RRT evaluation will provide definitive treatment for refractory fluid overload, hyperkalemia, and acidosis if medical management fails within 4–6 hours.',
+        'Eliminating all nephrotoxins (NSAIDs, ACE inhibitors, aminoglycosides, contrast agents), adjusting drug dosing for GFR <15, and optimizing hemodynamics will prevent further renal injury and support recovery of tubular function.',
+      ],
+      solutions: [
+        'Potassium will be reduced to ≤5.5 mEq/L and ECG changes will resolve within 2 hours of treatment initiation.',
+        'Urine output will improve to ≥0.5 mL/kg/hr or RRT will be initiated within 6 hours if diuretic challenge fails.',
+        'No additional nephrotoxin exposure will occur; all medications will be renally dose-adjusted per pharmacy review.',
+        'Patient will not develop pulmonary edema; SpO₂ will remain ≥94 % on current supplemental oxygen.',
+      ],
+      actions: [
+        'Administered calcium gluconate 1 g IV over 3 minutes (membrane stabilization) per order; followed with regular insulin 10 units IV + dextrose 50 % 50 mL; sodium bicarbonate 50 mEq IV for pH 7.21; placed on continuous cardiac telemetry monitoring.',
+        'Administered furosemide 200 mg IV (diuretic challenge); measured urine output hourly; held all nephrotoxic medications (NSAIDs, ACE inhibitors); notified nephrology for urgent RRT evaluation; placed accurate fluid balance documentation every hour.',
+        'Performed head-to-toe assessment with emphasis on fluid status (lung sounds, edema, weight, JVD); kept HOB at 45°; monitored SpO₂ continuously; applied dietary potassium restriction and consulted renal dietitian.',
+        'Educated patient on AKI, fluid restriction, dietary potassium limit, and possible need for dialysis; coordinated with cardiac surgery and nephrology teams; documented medication reconciliation with pharmacy input.',
+      ],
+      outcomes: [
+        'Potassium 5.8 mEq/L at 2 hours (improved from 6.4); peaked T waves resolving on repeat ECG; cardiac monitoring continued.',
+        'Urine output 8 mL/hr at 4 hours — minimal response to furosemide; nephrology initiated CRRT (continuous renal replacement therapy) at 6 hours.',
+        'Lung sounds improved after CRRT initiation (500 mL fluid removal in first 4 hours of CRRT); SpO₂ stable at 95 % on 2 L/min NC.',
+        'Patient verbalized understanding of dialysis need and dietary restrictions. Goals partially met — hyperkalemia and fluid overload addressed via CRRT; renal recovery timeline uncertain; continued monitoring required.',
+      ],
+    },
+    /* 26 – COPD Exacerbation */
+    {
+      focusTopic: 'Acute exacerbation of COPD (AECOPD)',
+      pathophysiology: 'COPD is characterized by persistent airflow limitation due to airway inflammation, mucus hypersecretion, and emphysematous destruction of alveolar walls. Acute exacerbations (AECOPD) are episodes of worsening dyspnea, cough, and sputum production beyond normal daily variation. Triggers include respiratory infections (rhinovirus, influenza, Haemophilus influenzae, Streptococcus pneumoniae), air pollution, and cold air. During exacerbation, increased airway inflammation causes air-trapping and dynamic hyperinflation (auto-PEEP), worsening V/Q mismatch and hypoxemia. Hypercapnia results from increased dead space, respiratory muscle fatigue, and blunted hypercapnic drive (CO₂ retainers). Non-invasive positive pressure ventilation (NIPPV/BiPAP) reduces the work of breathing, decreases PaCO₂, improves oxygenation, and reduces intubation risk. Pharmacologic therapy: short-acting bronchodilators (SABA + SAMA), systemic corticosteroids (prednisone 40 mg × 5 days), and antibiotics (if purulent sputum or clinical infection signs).',
+      riskFactors: [
+        'Current or former heavy cigarette smoking — the primary cause of COPD; ongoing smoking accelerates disease progression and increases exacerbation frequency',
+        'Non-adherence to inhaled maintenance therapy (LABA/LAMA/ICS) — loss of airway protection increases susceptibility to triggers',
+        'Recurrent exacerbations (>2/year) — associated with accelerated FEV1 decline, hospitalization, and mortality risk',
+      ],
+      cues: [
+        'HR 108 bpm; RR 32/min; BP 148/88 mmHg; T 38.1 °C; SpO₂ 82 % on room air, 88 % on 2 L/min NC; using accessory muscles; pursed-lip breathing; tripod positioning',
+        'ABG (on 2 L/min NC): pH 7.28, PaCO₂ 68 mmHg, PaO₂ 52 mmHg, HCO₃ 31 mEq/L — acute-on-chronic hypercapnic respiratory failure',
+        'Chest X-ray: hyperinflated lungs, flattened diaphragms, no infiltrate; peak flow 120 L/min (25 % predicted); sputum purulent and copious; WBC 13,800/mm³',
+        '69-year-old male; 50 pack-year smoker, quit 2 years ago; GOLD Stage III COPD; 3 hospitalizations in past 12 months; non-adherent to tiotropium and fluticasone/salmeterol inhalers; lives alone',
+      ],
+      concerning: [
+        'pH 7.28 with PaCO₂ 68 mmHg and SpO₂ 88 % on 2 L/min NC — acute-on-chronic hypercapnic respiratory failure with acidosis; BiPAP initiation is indicated immediately to prevent intubation',
+        'RR 32/min with accessory muscle use and tripod positioning — impending respiratory muscle fatigue; aggressive bronchodilator therapy (albuterol + ipratropium) and corticosteroids must be initiated concurrently with BiPAP',
+      ],
+      hypotheses: [
+        'Initiating BiPAP (IPAP 12–14 cmH₂O / EPAP 4–6 cmH₂O) will reduce work of breathing, decrease PaCO₂, improve pH to ≥7.35, and avoid endotracheal intubation within 2–4 hours.',
+        'Titrating supplemental oxygen to SpO₂ 88–92 % (avoiding hypercapnic drive blunting) while administering albuterol/ipratropium nebulizations will bronchodilate and reduce dynamic hyperinflation, improving V/Q matching.',
+        'Systemic corticosteroids (methylprednisolone 125 mg IV) and empiric antibiotics (azithromycin or doxycycline for purulent AECOPD) will reduce airway inflammation and treat infectious trigger, shortening recovery time.',
+      ],
+      solutions: [
+        'BiPAP will be initiated within 30 minutes; pH will improve to ≥7.35 and PaCO₂ will decrease by ≥10 mmHg within 2 hours.',
+        'SpO₂ will be maintained at 88–92 % on supplemental oxygen; RR will decrease to <24/min within 1–2 hours of bronchodilator and BiPAP therapy.',
+        'Patient will not require intubation; respiratory status will improve sufficiently for BiPAP wean within 24 hours.',
+        'Patient will verbalize understanding of inhaler technique and adherence importance before discharge.',
+      ],
+      actions: [
+        'Applied BiPAP mask (full-face); set IPAP 12 cmH₂O, EPAP 5 cmH₂O, FiO₂ 0.35; assessed comfort and mask seal; monitored RR, SpO₂, and ABG q1–2h; titrated oxygen to SpO₂ 88–92 %.',
+        'Administered albuterol 2.5 mg + ipratropium 0.5 mg combined nebulization; repeated every 20 minutes × 3 then q4h; administered methylprednisolone 125 mg IV; sent sputum culture; administered azithromycin 500 mg IV for purulent AECOPD.',
+        'Monitored for BiPAP intolerance (claustrophobia, skin breakdown) and signs of failure (GCS decline, worsening hemodynamics); prepared RSI intubation equipment at bedside as standby; placed on continuous cardiac monitoring and capnography.',
+        'Consulted pulmonology and respiratory therapy; initiated patient education on inhaler technique, COPD action plan, and smoking cessation resources; coordinated with case management for home BiPAP and follow-up.',
+      ],
+      outcomes: [
+        'ABG at 2 hours on BiPAP: pH 7.36, PaCO₂ 58 mmHg, PaO₂ 68 mmHg — significant improvement; intubation avoided.',
+        'SpO₂ 90 % on BiPAP + 2 L/min NC; RR 22/min at 2 hours; accessory muscle use decreased; patient more comfortable.',
+        'Peak flow improved to 190 L/min (40 % predicted) at 4 hours after bronchodilator therapy.',
+        'Patient demonstrated correct inhaler technique before discharge; accepted COPD action plan and pulmonology follow-up. Goals met — respiratory failure reversed with NIPPV; discharge planning initiated.',
+      ],
+    },
+    /* 27 – Pediatric DKA */
+    {
+      focusTopic: 'Diabetic ketoacidosis (DKA) — pediatric',
+      pathophysiology: 'Pediatric DKA is a life-threatening complication of Type 1 diabetes mellitus (T1DM) resulting from absolute insulin deficiency. Without insulin, cells cannot utilize glucose; counter-regulatory hormones (glucagon, cortisol, catecholamines, GH) rise, accelerating gluconeogenesis, glycogenolysis, and lipolysis. Free fatty acid oxidation produces ketone bodies (acetoacetate, β-hydroxybutyrate), causing a high-anion-gap metabolic acidosis. Hyperglycemia causes osmotic diuresis with loss of water, sodium, potassium, chloride, and phosphate — often leading to 5–10 % dehydration. Despite total body potassium depletion, serum K⁺ may appear normal or elevated initially due to acidosis-driven transcellular shift; as insulin therapy and hydration correct acidosis, K⁺ re-enters cells rapidly, causing life-threatening hypokalemia. A uniquely pediatric risk is cerebral edema, associated with rapid fluid administration (>10 mL/kg/hr), excessive hypotonic fluids, and rapid glucose drop — the most common cause of DKA mortality in children. Management: cautious rehydration (10 mL/kg isotonic bolus only if hemodynamically unstable, then deficit replacement over 24–48 hours), insulin infusion (0.05–0.1 units/kg/hr), close potassium monitoring and replacement, and neuro checks every 1–2 hours.',
+      riskFactors: [
+        'New-onset T1DM (30–40 % of pediatric DKA) — insulin deficiency unmasked by illness or physiological stress before diagnosis',
+        'Insulin omission or pump failure in known T1DM — accidental or intentional non-adherence leading to acute insulin deficiency',
+        'Intercurrent illness (infection, trauma) — counter-regulatory hormone surge increases insulin requirements beyond usual doses',
+      ],
+      cues: [
+        'HR 138 bpm; BP 90/58 mmHg; RR 30/min (Kussmaul breathing); T 37.8 °C; weight 32 kg; capillary refill 3 seconds; mucous membranes dry; sunken eyes — estimated 8 % dehydration',
+        'Blood glucose 498 mg/dL; pH 7.11; HCO₃ 6 mEq/L; anion gap 28 mEq/L; β-hydroxybutyrate 5.8 mmol/L; Na⁺ 128 mEq/L (corrected Na⁺ 136); K⁺ 3.8 mEq/L (total body depleted); creatinine 1.1 mg/dL',
+        'Urinalysis: glucose 4+, ketones 4+, no nitrites; ECG: sinus tachycardia; Glasgow Coma Scale 13 (lethargic); urinary catheter placed — output 15 mL/hr',
+        '11-year-old female; newly diagnosed T1DM; presented with 3-day history of polyuria, polydipsia, weight loss, and vomiting; no prior diabetes history; no medications; immunizations up to date',
+      ],
+      concerning: [
+        'pH 7.11 with HCO₃ 6 mEq/L and anion gap 28 — severe DKA; insulin infusion and careful fluid management are needed, but NOT a rapid 20 mL/kg bolus — limit isotonic bolus to 10 mL/kg over 30–60 min to reduce cerebral edema risk',
+        'GCS 13 with altered mental status in pediatric DKA — cerebral edema must be monitored closely with hourly neuro checks; any deterioration in mental status mandates head CT and possible mannitol/hypertonic saline administration',
+      ],
+      hypotheses: [
+        'Cautious isotonic fluid resuscitation (0.9 % NaCl 10 mL/kg = 320 mL over 60 minutes) followed by deficit replacement over 48 hours will correct dehydration while minimizing the osmolar shift that precipitates cerebral edema.',
+        'Initiating an insulin infusion at 0.05–0.1 units/kg/hr (no bolus) after 1 hour of fluid resuscitation will lower blood glucose at a controlled rate (50–100 mg/dL/hr) and clear ketones, reducing the anion gap over 6–12 hours.',
+        'Serial potassium monitoring and proactive KCl supplementation (20–40 mEq/L in IV fluids once K⁺ confirmed and urine output established) will prevent insulin-induced hypokalemia, which can cause fatal cardiac arrhythmias.',
+      ],
+      solutions: [
+        'Blood glucose will decrease at 50–100 mg/dL/hr; glucose will reach 250–300 mg/dL within 4–6 hours, at which point dextrose will be added to IV fluids.',
+        'Anion gap will close (≤12 mEq/L) and pH will improve to ≥7.30 within 12 hours of insulin infusion.',
+        'Potassium will remain 3.5–5.5 mEq/L throughout treatment; no cardiac arrhythmias related to hypokalemia.',
+        'Patient will remain neurologically intact; GCS will improve to 15; no signs of cerebral edema will develop.',
+      ],
+      actions: [
+        'Administered 0.9 % NaCl 320 mL (10 mL/kg) IV over 60 minutes per pediatric DKA protocol; began deficit replacement with 0.9 % NaCl + 20 mEq KCl/L at calculated rate for 48-hour rehydration; inserted urinary catheter for strict hourly I&O.',
+        'Started regular insulin infusion at 0.05 units/kg/hr (1.6 units/hr) after first fluid bolus completion; performed bedside glucose checks every 1 hour; added D5 to IV fluids when glucose reached 250 mg/dL (at hour 5).',
+        'Monitored potassium every 1–2 hours; replaced KCl in IV fluids per protocol (increased to 40 mEq/L when K⁺ 3.8 → 3.4 mEq/L at hour 2); held insulin infusion briefly when K⁺ 3.0 mEq/L until replenished.',
+        'Performed hourly neurological assessments (GCS, pupils, headache, vomiting, behavior changes); educated parents on T1DM diagnosis, insulin administration, sick-day management, and when to seek emergency care; coordinated pediatric endocrinology consult.',
+      ],
+      outcomes: [
+        'Blood glucose 312 mg/dL at hour 5; glucose drop rate averaged 37 mg/dL/hr — within safe range; dextrose added to IVF.',
+        'pH 7.29, HCO₃ 15 mEq/L, anion gap 16 mEq/L at hour 12 — DKA partially resolved; continued insulin infusion.',
+        'Potassium remained 3.4–4.2 mEq/L throughout; no arrhythmias; KCl supplementation effective.',
+        'GCS 15 at hour 6; no headache, vomiting, or behavior changes; no cerebral edema; parents verbalized T1DM education. Goals substantially met — DKA resolving, cerebral edema avoided; transitioning to subcutaneous insulin planned.',
+      ],
+    },
   ];
 
   /* ── Load a sample case into the form ───────────────────────── */
