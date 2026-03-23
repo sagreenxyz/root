@@ -204,6 +204,116 @@ Every article page must follow this DOM structure inside `<Layout>`:
 7. Middle pane: render the `<article>` with header and sections.
 8. Right pane: add the sticky TOC `<aside>` as shown in §3.
 9. Add the CSS block from §2 inside a `<style>` tag at the bottom of the file.
+10. Create a companion slides page at `my-topic-slides.astro` (see §9).
+11. Create a companion bullet-point summary page at `my-topic-summary.astro` (see §10).
+12. Add a Related Topics panel to the left pane (see §11).
+13. Apply American English spelling throughout (see §12).
+14. Perform a merge review to check for overlap with existing articles (see §13).
+
+---
+
+## 9. Companion Slides Page
+
+Every encyclopedia article **must** have an associated companion slides page. The slides page presents the same conceptual content in a condensed, presentation-ready format using `SlidesLayout`.
+
+| Rule | Specification |
+|------|---------------|
+| **File name** | `my-topic-slides.astro` (append `-slides` to the article slug). |
+| **Layout** | Use `SlidesLayout.astro`; do **not** use `Layout.astro`. |
+| **Back-link** | Pass `backHref` pointing to the main article and use `backLabel="← Full Article"`. |
+| **Content** | Distill key concepts, definitions, and clinical takeaways from the main article into main slides (one per column), with optional sub-slides for supporting detail. |
+| **Forward-link** | The main article's left sidebar must include a link labelled **"📊 View as Slides"** to the companion slides page, placed above the back-to-encyclopedia link. |
+
+See `docs/slides-design-standards.md` for the full slides structure specification.
+
+---
+
+## 10. Companion Bullet-Point Summary Page
+
+Every encyclopedia article **must** also have an associated companion bullet-point summary page.
+
+| Rule | Specification |
+|------|---------------|
+| **File name** | `my-topic-summary.astro` (append `-summary` to the article slug). |
+| **Layout** | Use `Layout.astro` with the standard three-pane grid. |
+| **Content** | Replace continuous prose sections with structured bullet-point lists. Mirror the section headings from the main article; condense each section's content into concise bullets. Full sentences are preferred over fragments. |
+| **Back-link** | Include a back-navigation link labelled **"← Full Article"** pointing to the main article. |
+| **Forward-link** | The main article's left sidebar must include a link labelled **"📋 Quick Summary"** to the companion summary page, placed above the back-to-encyclopedia link. |
+
+---
+
+## 11. Related Topics Panel
+
+Every encyclopedia article **must** include a Related Topics panel in the left sidebar.
+
+| Rule | Specification |
+|------|---------------|
+| **Placement** | Below the Nursing Relevance panel; above companion-page links and the back-to-encyclopedia link. |
+| **Label** | Panel heading: **"Related Topics"** (green background: `#f0fdf4`, border `#bbf7d0`). |
+| **Count** | Include **3–8** links to other encyclopedia articles directly relevant to the current page. |
+| **Link format** | Prefix each link text with `→` and use the article's full title as link text. Use indigo accent colour (`#6366f1`) with underline on hover. |
+| **Bidirectional maintenance** | When adding a new article, update the Related Topics panels of any existing articles that should now reference it. |
+
+---
+
+## 12. American English Spelling
+
+All content **must** use American English spelling. This applies to article bodies, sidebar panels, headings, tags, and all other user-facing strings.
+
+### Common corrections
+
+| American English (required) | British English (not used) |
+|-----------------------------|---------------------------|
+| etiology | aetiology |
+| anemia | anaemia |
+| diarrhea | diarrhoea |
+| edema | oedema |
+| leukocyte | leucocyte |
+| estrogen | oestrogen |
+| feces | faeces |
+| pediatric | paediatric |
+| orthopedic | orthopaedic |
+| hemoglobin | haemoglobin |
+| hematology | haematology |
+| gynecology | gynaecology |
+| organize | organise |
+| recognize | recognise |
+| analyze | analyse |
+| behavior | behaviour |
+| color | colour |
+| center | centre |
+| defense | defence |
+| program | programme |
+| fulfill | fulfil |
+| license (noun) | licence |
+
+**Exception:** Direct quotations may retain the source's original spelling without correction or annotation.
+
+---
+
+## 13. Merge Review Practice
+
+A merge review must be performed at the following trigger points:
+
+1. **New article added** — the contributor checks whether the new content overlaps substantially with any existing article.
+2. **Existing article revised** — a merge review is performed before the revision is finalised.
+3. **Periodic audit** — the full encyclopedia collection is reviewed at regular intervals.
+
+### Merge criteria
+
+An article is a merge candidate when any of the following apply:
+
+- More than approximately one-third of its substantive content duplicates material in another article.
+- Two articles address topics that readers would naturally expect to find in a single entry.
+- An article is too short to sustain the standard three-pane academic prose format without padding.
+
+### Merge process
+
+1. Consolidate content into the more general or higher-traffic URL.
+2. Update the companion slides and summary pages for the merged article.
+3. Remove the secondary article from the encyclopedia index.
+4. Update the Related Topics panels of all articles that previously linked to the secondary article.
+5. Note the consolidation in the primary article's Quick Facts panel.
 
 ---
 

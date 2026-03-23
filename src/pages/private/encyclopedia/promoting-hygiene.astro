@@ -44,6 +44,17 @@ const sections = [
     body: `Promoting hygiene is simultaneously one of the most basic and most scientifically sophisticated dimensions of nursing practice. Its foundations in germ theory and epidemiology, established by Semmelweis, Pasteur, Lister, and Nightingale, have been elaborated into a rich evidence base that supports every aspect of clinical hygiene practice—from hand hygiene technique to oral care bundles in the ICU. The cultural, psychological, and interpersonal dimensions of hygiene care are equally complex, requiring nurses to bring sensitivity, humility, and respect for individual identity and preference to every hygiene encounter.\n\nHealthcare-associated infections, preventable through systematic hygiene practice, remain a leading cause of patient harm globally. Nursing has both the opportunity and the professional obligation to lead in reducing this burden through exemplary personal practice, team-based quality improvement, patient and family education, and advocacy for institutional hygiene culture. A nurse who understands and enacts the principles of hygiene promotion—technically, interpersonally, and systemically—makes a direct and measurable contribution to patient safety and dignity.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Promoting Hygiene – Encyclopedia" protected={true}>
@@ -133,9 +144,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

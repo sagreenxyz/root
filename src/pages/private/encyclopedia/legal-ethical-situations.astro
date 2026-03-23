@@ -82,6 +82,17 @@ Institutional Responses and Nursing Leadership. Healthcare organisations that re
     body: `Legal and ethical situations pervade nursing practice across every clinical context and patient population. Navigating them requires an integrated repertoire of knowledge—about relevant law, professional standards, ethical principles, and institutional policy—combined with the reflective capacity to apply this knowledge thoughtfully to the particular circumstances of individual situations. The categories surveyed in this article—mandatory reporting, impaired colleagues, professional boundaries, cultural and religious considerations, and whistleblowing—represent some of the most challenging situations nurses encounter, precisely because they involve competing obligations, uncertain evidence, personal risk, and moral complexity. Nursing education that explicitly addresses these situations, that provides both conceptual frameworks and practical skills, and that supports the development of moral courage—the capacity to act ethically in the face of personal or professional risk—prepares nurses for the full demands of professional practice. In a healthcare system that depends on the integrity, advocacy, and ethical commitment of its nursing workforce, the cultivation of this competence is a matter of institutional and social importance as much as individual professional development.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Legal and Ethical Situations – Encyclopedia" protected={true}>
@@ -171,9 +182,7 @@ Institutional Responses and Nursing Leadership. Healthcare organisations that re
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

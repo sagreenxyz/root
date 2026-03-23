@@ -103,6 +103,17 @@ Patient Communication. A paradox of medical terminology education is that fluenc
     body: `Medical terminology constitutes the lexical infrastructure of healthcare communication—a carefully constructed, historically grounded, and continuously evolving language that enables precision, safety, and efficiency in clinical environments. For nursing students, its study is a prerequisite for effective participation in all domains of professional practice: documentation, medication administration, interprofessional communication, patient education, and ongoing professional learning. Approached not as a list of words to be memorised but as a systematic, analysable linguistic code, medical terminology becomes a transferable tool for lifelong clinical learning. The morphological principles that underlie its structure—root-prefix-suffix analysis, combining forms, and class-level naming conventions—equip nurses with a generative capacity to decode novel terms independently, supporting the adaptive expertise that contemporary nursing demands. As health information systems become increasingly data-driven and as nursing practice expands into new clinical domains, terminological literacy will only grow in its importance to safe, effective, and evidence-based patient care.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Medical Terminology – Encyclopedia" protected={true}>
@@ -192,9 +203,7 @@ Patient Communication. A paradox of medical terminology education is that fluenc
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

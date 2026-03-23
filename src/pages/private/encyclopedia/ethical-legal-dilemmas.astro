@@ -84,6 +84,17 @@ Ethics Consultation. Clinical ethics consultation—provided by ethics committee
     body: `Ethical and legal dilemmas are a defining feature of professional nursing practice, arising across clinical specialities, care settings, and patient populations. The complexity of these dilemmas reflects the irreducible value pluralism of healthcare: multiple defensible principles and legitimate interests compete in situations that resist formulaic resolution. Nursing education that develops moral sensitivity—the capacity to perceive ethically relevant features of clinical situations—alongside knowledge of bioethical principles, legal frameworks, and institutional resources equips nurses to engage with dilemmas as competent moral agents rather than as passive bystanders. The cultivation of reflective ethical practice, supported by peer discussion, ethics education, clinical supervision, and institutional ethics infrastructure, is an ongoing professional obligation. In environments of increasing clinical complexity, workforce pressure, and technological change, the capacity for ethical reasoning is not supplementary to clinical expertise but constitutive of it.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Ethical and Legal Dilemmas – Encyclopedia" protected={true}>
@@ -173,9 +184,7 @@ Ethics Consultation. Clinical ethics consultation—provided by ethics committee
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}

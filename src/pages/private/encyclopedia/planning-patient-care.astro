@@ -39,6 +39,17 @@ const sections = [
     body: `Planning patient care is an act of professional synthesis: it draws together the nurse's assessment findings, clinical judgments, evidence-based knowledge, patient values, and interprofessional input into a coherent, individualised, goal-directed framework for therapeutic action. Its components—nursing diagnoses, patient goals, nursing interventions, and evaluation criteria—provide the structural scaffolding for safe, effective, and accountable nursing practice. Its principles—individualisation, patient-centeredness, evidence-base, and continuity—reflect the core values of nursing as a discipline and a profession. For nursing students, the discipline of care planning serves a dual function: it is both a practical tool for organising clinical action and a pedagogical scaffold for developing the integrated clinical reasoning that characterises expert nursing practice. Approached with intellectual engagement and genuine patient-centeredness, care planning is not a documentation burden but a professional opportunity—an occasion to think carefully, act purposefully, and evaluate honestly in service of the patients whose care has been entrusted to the nursing profession.`,
   },
 ];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
 ---
 
 <Layout title="Planning Patient Care – Encyclopedia" protected={true}>
@@ -128,9 +139,7 @@ const sections = [
             {section.heading}
           </h2>
           {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
           ))}
         </section>
       ))}
