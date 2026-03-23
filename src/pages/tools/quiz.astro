@@ -1,0 +1,754 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Interactive Quiz | WGU Nursing Tools" protected={false}>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+    rel="stylesheet"
+  />
+
+  <style is:global>
+    /* ── Quiz shell ────────────────────────────────────────────────── */
+    .qz-shell {
+      max-width: 680px;
+      margin: 0 auto;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 400;
+    }
+
+    /* ── Progress bar ──────────────────────────────────────────────── */
+    .qz-progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    .qz-progress-track {
+      height: 3px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .qz-progress-fill {
+      height: 100%;
+      background: #185fa5;
+      border-radius: 99px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── Carousel viewport ─────────────────────────────────────────── */
+    .qz-carousel-viewport {
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .qz-carousel-track {
+      display: flex;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .qz-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 0fr;
+      transition: grid-template-columns 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .qz-slide.panel-open {
+      grid-template-columns: 1fr 220px;
+    }
+
+    /* ── Question region ───────────────────────────────────────────── */
+    .qz-question-region {
+      padding: 28px 28px 24px;
+      min-width: 0;
+    }
+    .qz-q-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .qz-question-text {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 21px;
+      font-weight: 400;
+      color: #1e293b;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    /* ── Options ───────────────────────────────────────────────────── */
+    .qz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .qz-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 99px;
+      cursor: pointer;
+      background: #fff;
+      text-align: left;
+      width: 100%;
+      transition: transform 0.15s, border-color 0.15s, background 0.15s;
+      font-family: inherit;
+      font-size: 14px;
+      color: #1e293b;
+    }
+    .qz-option:hover:not(:disabled) {
+      transform: translateX(3px);
+    }
+    /* selected */
+    .qz-option.selected {
+      background: #e6f1fb;
+      border-color: #185fa5;
+    }
+    /* correct */
+    .qz-option.correct {
+      background: #e1f5ee;
+      border-color: #0f6e56;
+      color: #0f6e56;
+      opacity: 1 !important;
+    }
+    /* wrong */
+    .qz-option.wrong {
+      background: #faece7;
+      border-color: #993c1d;
+      color: #993c1d;
+      opacity: 0.75;
+    }
+    /* panel-highlight (clicked after check to view explanation) */
+    .qz-option.panel-highlight {
+      outline: 2px solid #185fa5;
+      outline-offset: -2px;
+    }
+    /* disabled after check */
+    .qz-option:disabled {
+      cursor: default;
+    }
+
+    /* ── Marker (A/B/C/D circle) ───────────────────────────────────── */
+    .qz-marker {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      background: transparent;
+      color: #64748b;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .qz-option.selected .qz-marker {
+      background: #185fa5;
+      border-color: #185fa5;
+      color: #fff;
+    }
+    .qz-option.correct .qz-marker {
+      background: #0f6e56;
+      border-color: #0f6e56;
+      color: #fff;
+    }
+    .qz-option.wrong .qz-marker {
+      background: #993c1d;
+      border-color: #993c1d;
+      color: #fff;
+    }
+
+    /* ── Side panel ────────────────────────────────────────────────── */
+    .qz-side-panel {
+      overflow: hidden;
+      border-left: 1px solid #e2e8f0;
+      background: #f8fafc;
+      opacity: 0;
+      transition: opacity 0.2s;
+      min-width: 0;
+    }
+    .qz-slide.panel-open .qz-side-panel {
+      opacity: 1;
+    }
+    .qz-side-panel-inner {
+      padding: 20px 16px;
+      width: 220px;
+    }
+    .qz-panel-opt-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+    .qz-panel-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+    .qz-panel-badge.correct {
+      background: #e1f5ee;
+      color: #0f6e56;
+    }
+    .qz-panel-badge.wrong {
+      background: #faece7;
+      color: #993c1d;
+    }
+    .qz-panel-divider {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 10px 0;
+    }
+    .qz-panel-explanation {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.55;
+    }
+    .qz-panel-hint {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94a3b8;
+      margin-top: 14px;
+    }
+    .qz-panel-content {
+      transition: opacity 0.08s;
+    }
+    .qz-panel-content.fading {
+      opacity: 0;
+    }
+
+    /* ── Bottom row ────────────────────────────────────────────────── */
+    .qz-bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+
+    /* ── Nav dots ──────────────────────────────────────────────────── */
+    .qz-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .qz-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .qz-dot.active {
+      background: #185fa5;
+      transform: scale(1.35);
+    }
+    .qz-dot.answered-correct {
+      background: #0f6e56;
+    }
+    .qz-dot.answered-wrong {
+      background: #993c1d;
+    }
+
+    /* ── Buttons ───────────────────────────────────────────────────── */
+    .qz-btn-row {
+      display: flex;
+      gap: 8px;
+    }
+    .qz-btn {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 99px;
+      padding: 9px 20px;
+      cursor: pointer;
+      transition: opacity 0.15s, background 0.15s;
+    }
+    .qz-btn-check {
+      background: #185fa5;
+      color: #fff;
+    }
+    .qz-btn-check:disabled {
+      background: #94a3b8;
+      cursor: default;
+    }
+    .qz-btn-next {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .qz-btn-next:hover {
+      background: #e2e8f0;
+    }
+
+    /* ── Results screen ────────────────────────────────────────────── */
+    .qz-results {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .qz-results-score {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 48px;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    .qz-results-pct {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .qz-results-bar-track {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      overflow: hidden;
+      max-width: 320px;
+      margin: 0 auto 20px;
+    }
+    .qz-results-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: #185fa5;
+      width: 0;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .qz-results-msg {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .qz-btn-restart {
+      background: #185fa5;
+      color: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 99px;
+      padding: 10px 24px;
+      cursor: pointer;
+    }
+    .qz-btn-restart:hover {
+      background: #124d87;
+    }
+  </style>
+
+  <div style="margin-bottom:2rem;">
+    <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">🧠 Interactive Quiz</h1>
+    <p style="color:#64748b; font-size:1rem;">
+      A proof-of-concept micro-quiz component. Answer each question, check your answer, then explore the rationale in the side panel.
+    </p>
+  </div>
+
+  <div class="qz-shell" id="quiz-shell">
+    <!-- Progress row -->
+    <div class="qz-progress-row">
+      <span id="qz-progress-label">Question 1 of 5</span>
+      <span id="qz-correct-count">0 correct</span>
+    </div>
+    <div class="qz-progress-track">
+      <div class="qz-progress-fill" id="qz-progress-fill" style="width:0%"></div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="qz-carousel-viewport">
+      <div class="qz-carousel-track" id="qz-track"></div>
+    </div>
+
+    <!-- Results (hidden initially) -->
+    <div class="qz-results" id="qz-results" style="display:none"></div>
+
+    <!-- Bottom row -->
+    <div class="qz-bottom-row" id="qz-bottom-row">
+      <div class="qz-dots" id="qz-dots"></div>
+      <div class="qz-btn-row">
+        <button class="qz-btn qz-btn-check" id="qz-btn-check" disabled>Check answer</button>
+        <button class="qz-btn qz-btn-next" id="qz-btn-next" style="display:none">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (() => {
+    /* ── Question data ──────────────────────────────────────────── */
+    const QUESTIONS = [
+      {
+        question: 'Which electrolyte imbalance is most commonly associated with loop diuretic therapy?',
+        options: ['Hypernatremia', 'Hypokalemia', 'Hypermagnesemia', 'Hypercalcemia'],
+        correct: 1,
+        rationales: [
+          'Hypernatremia is not a typical result of loop diuretics. These agents primarily cause loss of potassium and, to a lesser extent, sodium — often resulting in hyponatremia rather than hypernatremia.',
+          'Correct. Loop diuretics (e.g., furosemide) block the Na-K-2Cl cotransporter in the thick ascending limb, greatly increasing urinary potassium excretion and leading to hypokalemia — a well-known adverse effect requiring close monitoring.',
+          'Loop diuretics actually cause hypomagnesemia, not hypermagnesemia, because magnesium reabsorption is partly coupled to the same transporter that is blocked. Elevated magnesium would be seen with renal failure or excessive supplementation.',
+          'Loop diuretics increase urinary calcium excretion, leading to hypocalcemia, not hypercalcemia. This property is exploited therapeutically to treat hypercalcemia of malignancy.',
+        ],
+      },
+      {
+        question: "A patient's ABG shows pH 7.30, PaCO\u2082 50 mmHg, HCO\u2083\u207B 24 mEq/L. How would you classify this?",
+        options: [
+          'Metabolic acidosis with respiratory compensation',
+          'Respiratory alkalosis',
+          'Respiratory acidosis, uncompensated',
+          'Mixed metabolic and respiratory alkalosis',
+        ],
+        correct: 2,
+        rationales: [
+          'Metabolic acidosis would show a low HCO₃⁻ (< 22 mEq/L). Here HCO₃⁻ is normal at 24, ruling out a primary metabolic disorder. The driver of the low pH is the elevated PaCO₂.',
+          'Respiratory alkalosis is defined by a high pH (> 7.45) and low PaCO₂ (< 35 mmHg). This patient has the opposite: low pH and elevated PaCO₂.',
+          'Correct. The pH is acidotic (< 7.35), the PaCO₂ is elevated (> 45 mmHg) — the primary problem — and the HCO₃⁻ is normal, indicating no metabolic compensation has occurred yet. This is uncompensated respiratory acidosis.',
+          'A mixed alkalosis would require both a high pH, elevated HCO₃⁻, and decreased PaCO₂. All findings here point in the opposite direction.',
+        ],
+      },
+      {
+        question: 'When administering IV potassium chloride, what is the maximum safe peripheral infusion rate?',
+        options: ['5 mEq/hr', '10 mEq/hr', '20 mEq/hr', '40 mEq/hr'],
+        correct: 1,
+        rationales: [
+          '5 mEq/hr is within the safe range but is unnecessarily slow for a peripheral line when treating significant hypokalemia. Most guidelines allow up to 10 mEq/hr peripherally.',
+          'Correct. Standard guidelines (INS, institutional policies) allow a maximum peripheral infusion rate of 10 mEq/hr of KCl. Higher rates risk vein irritation, phlebitis, and dangerous cardiac dysrhythmias. Central lines are required for rates > 10 mEq/hr.',
+          '20 mEq/hr is the maximum rate allowable via a central line only, never a peripheral IV, due to risk of cardiac arrest from local hyperpotassemia reaching the heart.',
+          '40 mEq/hr far exceeds safe limits for any route and would place the patient at extreme risk for fatal arrhythmia. This concentration is only seen in pre-mixed bags intended for slow central-line infusion over several hours.',
+        ],
+      },
+      {
+        question: 'Which finding is the most reliable early indicator of septic shock?',
+        options: [
+          'Temperature > 38.3 °C',
+          'Mean arterial pressure < 65 mmHg despite adequate fluid resuscitation',
+          'White blood cell count > 12,000/µL',
+          'Heart rate > 90 bpm',
+        ],
+        correct: 1,
+        rationales: [
+          'Fever is an early sign of systemic infection (SIRS) but is not specific to shock. Hypothermia can also occur in sepsis. Temperature alone does not indicate the hemodynamic compromise that defines septic shock.',
+          'Correct. Per the Sepsis-3 definition, septic shock is specifically identified by persistent hypotension (MAP < 65 mmHg) requiring vasopressors despite adequate fluid resuscitation, along with a serum lactate > 2 mmol/L. This distinguishes septic shock from sepsis.',
+          'Leukocytosis is a systemic inflammatory marker (part of SIRS criteria) but is nonspecific. Many non-infectious and non-shock conditions also cause an elevated WBC.',
+          'Tachycardia is an early compensatory response to many stressors — pain, anxiety, hypovolemia, fever. It lacks the specificity needed to diagnose septic shock on its own.',
+        ],
+      },
+      {
+        question: 'A nurse is preparing to administer heparin 5,000 units subcutaneously. Which technique is correct?',
+        options: [
+          'Aspirate before injecting to confirm needle placement',
+          'Rub the injection site vigorously after injecting',
+          'Inject into the abdomen 2 inches from the umbilicus without aspiration',
+          'Use a 1-inch, 21-gauge needle at a 45° angle',
+        ],
+        correct: 2,
+        rationales: [
+          'Aspiration is contraindicated for subcutaneous heparin injections. Aspirating risks collapsing fragile capillaries and introducing air into tissue, increasing the risk of bruising and hematoma formation.',
+          'Rubbing the site after injection spreads heparin into surrounding tissue, dramatically increasing bruising and hematoma risk. Gentle pressure (if needed) is acceptable, but rubbing is explicitly avoided.',
+          'Correct. Subcutaneous heparin is injected into the fatty layer of the abdomen at least 2 inches from the umbilicus. No aspiration is performed, the site is not rubbed, and a small-gauge (25–26G), 5/8-inch needle is used at a 90° angle (or 45° on thin patients). This technique minimizes bruising and ensures reliable subcutaneous delivery.',
+          'A 1-inch, 21-gauge needle is too large and too long for subcutaneous injection. This size would likely deposit the medication intramuscularly and would cause unnecessary trauma.',
+        ],
+      },
+    ];
+
+    /* ── State ──────────────────────────────────────────────────── */
+    let current = 0;
+    let selected = new Array(QUESTIONS.length).fill(null);   // index of chosen option per question
+    let checked  = new Array(QUESTIONS.length).fill(false);  // whether answer was checked
+    let panelFocused = new Array(QUESTIONS.length).fill(null); // which option is shown in panel
+    let correctCount = 0;
+
+    /* ── DOM refs ───────────────────────────────────────────────── */
+    const track        = document.getElementById('qz-track');
+    const dots         = document.getElementById('qz-dots');
+    const progressFill = document.getElementById('qz-progress-fill');
+    const progressLabel= document.getElementById('qz-progress-label');
+    const correctEl    = document.getElementById('qz-correct-count');
+    const btnCheck     = document.getElementById('qz-btn-check');
+    const btnNext      = document.getElementById('qz-btn-next');
+    const resultsEl    = document.getElementById('qz-results');
+    const bottomRow    = document.getElementById('qz-bottom-row');
+
+    const LABELS = ['A', 'B', 'C', 'D'];
+    const N = QUESTIONS.length;
+
+    /* ── Build slides ───────────────────────────────────────────── */
+    function buildSlides() {
+      track.innerHTML = '';
+      dots.innerHTML  = '';
+
+      QUESTIONS.forEach((q, qi) => {
+        // Slide
+        const slide = document.createElement('div');
+        slide.className = 'qz-slide';
+        slide.id = `qz-slide-${qi}`;
+
+        // Question region
+        const qr = document.createElement('div');
+        qr.className = 'qz-question-region';
+        qr.innerHTML = `
+          <div class="qz-q-label">Question ${qi + 1} of ${N}</div>
+          <div class="qz-question-text">${q.question}</div>
+          <div class="qz-options" id="qz-opts-${qi}"></div>
+        `;
+
+        // Options
+        const optsEl = qr.querySelector(`#qz-opts-${qi}`);
+        q.options.forEach((opt, oi) => {
+          const btn = document.createElement('button');
+          btn.className = 'qz-option';
+          btn.dataset.qi = qi;
+          btn.dataset.oi = oi;
+          btn.innerHTML = `<span class="qz-marker">${LABELS[oi]}</span><span>${opt}</span>`;
+          btn.addEventListener('click', () => onOptionClick(qi, oi, btn));
+          optsEl.appendChild(btn);
+        });
+
+        // Side panel
+        const panel = document.createElement('div');
+        panel.className = 'qz-side-panel';
+        panel.id = `qz-panel-${qi}`;
+        panel.innerHTML = `<div class="qz-side-panel-inner"><div class="qz-panel-content" id="qz-panel-content-${qi}"></div></div>`;
+
+        slide.appendChild(qr);
+        slide.appendChild(panel);
+        track.appendChild(slide);
+
+        // Dot
+        const dot = document.createElement('div');
+        dot.className = 'qz-dot' + (qi === 0 ? ' active' : '');
+        dot.id = `qz-dot-${qi}`;
+        dots.appendChild(dot);
+      });
+    }
+
+    /* ── Option click ───────────────────────────────────────────── */
+    function onOptionClick(qi, oi, _btn) {
+      if (!checked[qi]) {
+        // pre-check: select for answering
+        selected[qi] = oi;
+        refreshOptions(qi);
+        btnCheck.disabled = false;
+      } else {
+        // post-check: swap panel explanation
+        panelFocused[qi] = oi;
+        refreshPanel(qi, true);
+        refreshOptions(qi); // update panel-highlight
+      }
+    }
+
+    /* ── Refresh option visuals for a slide ─────────────────────── */
+    function refreshOptions(qi) {
+      const q = QUESTIONS[qi];
+      const optsEl = document.getElementById(`qz-opts-${qi}`);
+      const btns = optsEl.querySelectorAll('.qz-option');
+      btns.forEach((btn, oi) => {
+        btn.classList.remove('selected', 'correct', 'wrong', 'panel-highlight');
+        btn.disabled = checked[qi];
+
+        if (checked[qi]) {
+          if (oi === q.correct) btn.classList.add('correct');
+          else if (oi === selected[qi]) btn.classList.add('wrong');
+          if (panelFocused[qi] === oi) btn.classList.add('panel-highlight');
+        } else {
+          if (oi === selected[qi]) btn.classList.add('selected');
+        }
+      });
+    }
+
+    /* ── Refresh side panel ─────────────────────────────────────── */
+    function refreshPanel(qi, fade = false) {
+      const q = QUESTIONS[qi];
+      const focused = panelFocused[qi] ?? selected[qi];
+      if (focused === null) return;
+
+      const contentEl = document.getElementById(`qz-panel-content-${qi}`);
+      const isCorrect = focused === q.correct;
+      const label = `Option ${LABELS[focused]}`;
+      const badgeClass = isCorrect ? 'correct' : 'wrong';
+      const badgeText = isCorrect ? 'Correct answer' : 'Incorrect answer';
+
+      const render = () => {
+        contentEl.innerHTML = `
+          <div class="qz-panel-opt-label">${label}</div>
+          <span class="qz-panel-badge ${badgeClass}">${badgeText}</span>
+          <hr class="qz-panel-divider" />
+          <div class="qz-panel-explanation">${q.rationales[focused]}</div>
+          <div class="qz-panel-hint">Click any option to see its explanation.</div>
+        `;
+      };
+
+      if (fade) {
+        contentEl.classList.add('fading');
+        setTimeout(() => {
+          render();
+          contentEl.classList.remove('fading');
+        }, 80);
+      } else {
+        render();
+      }
+    }
+
+    /* ── Check answer ───────────────────────────────────────────── */
+    function checkAnswer() {
+      const qi = current;
+      checked[qi] = true;
+      panelFocused[qi] = selected[qi];
+
+      // Calculate correct count
+      correctCount = checked.filter((c, i) => c && selected[i] === QUESTIONS[i].correct).length;
+      correctEl.textContent = `${correctCount} correct`;
+
+      refreshOptions(qi);
+      refreshPanel(qi, false);
+
+      // Open panel
+      const slide = document.getElementById(`qz-slide-${qi}`);
+      slide.classList.add('panel-open');
+
+      // Update dot
+      const dot = document.getElementById(`qz-dot-${qi}`);
+      dot.classList.remove('active');
+      if (selected[qi] === QUESTIONS[qi].correct) {
+        dot.classList.add('answered-correct');
+      } else {
+        dot.classList.add('answered-wrong');
+      }
+
+      btnCheck.style.display = 'none';
+      btnNext.style.display = '';
+    }
+
+    /* ── Next question ──────────────────────────────────────────── */
+    function goNext() {
+      if (current < N - 1) {
+        current++;
+        goTo(current);
+      } else {
+        showResults();
+      }
+    }
+
+    /* ── Go to slide ────────────────────────────────────────────── */
+    function goTo(qi) {
+      current = qi;
+      track.style.transform = `translateX(-${qi * 100}%)`;
+
+      // Update dots
+      document.querySelectorAll('.qz-dot').forEach((d, i) => {
+        if (!d.classList.contains('answered-correct') && !d.classList.contains('answered-wrong')) {
+          d.classList.toggle('active', i === qi);
+        } else {
+          d.classList.remove('active');
+        }
+      });
+
+      // Update progress bar
+      const answered = checked.filter(Boolean).length;
+      progressFill.style.width = `${(answered / N) * 100}%`;
+      progressLabel.textContent = `Question ${qi + 1} of ${N}`;
+
+      // Button state
+      if (checked[qi]) {
+        btnCheck.style.display = 'none';
+        btnNext.style.display = '';
+      } else {
+        btnCheck.style.display = '';
+        btnCheck.disabled = selected[qi] === null;
+        btnNext.style.display = 'none';
+      }
+    }
+
+    /* ── Results ────────────────────────────────────────────────── */
+    function showResults() {
+      track.parentElement.style.display = 'none'; // hide viewport
+      bottomRow.style.display = 'none';
+
+      const pct = Math.round((correctCount / N) * 100);
+      let msg = '';
+      if (pct === 100) msg = '🎉 Perfect score! Outstanding clinical reasoning.';
+      else if (pct >= 80) msg = '✅ Great job! You have a solid grasp of this material.';
+      else if (pct >= 60) msg = '📚 Good effort. Review the rationales to strengthen your understanding.';
+      else msg = '💡 Keep studying! The explanations for each question can help you learn.';
+
+      resultsEl.style.display = '';
+      resultsEl.innerHTML = `
+        <div class="qz-results-score">${correctCount}/${N}</div>
+        <div class="qz-results-pct">${pct}% correct</div>
+        <div class="qz-results-bar-track">
+          <div class="qz-results-bar-fill" id="qz-res-bar"></div>
+        </div>
+        <div class="qz-results-msg">${msg}</div>
+        <button class="qz-btn-restart" id="qz-restart">Restart quiz</button>
+      `;
+
+      // Animate bar
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const bar = document.getElementById('qz-res-bar');
+          if (bar) bar.style.width = `${pct}%`;
+        });
+      });
+
+      document.getElementById('qz-restart').addEventListener('click', restartQuiz);
+
+      // Final progress bar
+      progressFill.style.width = '100%';
+      progressLabel.textContent = 'Quiz complete';
+      correctEl.textContent = `${correctCount} of ${N} correct`;
+    }
+
+    /* ── Restart ────────────────────────────────────────────────── */
+    function restartQuiz() {
+      current = 0;
+      selected = new Array(N).fill(null);
+      checked  = new Array(N).fill(false);
+      panelFocused = new Array(N).fill(null);
+      correctCount = 0;
+
+      correctEl.textContent = '0 correct';
+      progressFill.style.width = '0%';
+      progressLabel.textContent = `Question 1 of ${N}`;
+
+      resultsEl.style.display = 'none';
+      resultsEl.innerHTML = '';
+      track.parentElement.style.display = '';
+      bottomRow.style.display = '';
+
+      btnCheck.style.display = '';
+      btnCheck.disabled = true;
+      btnNext.style.display = 'none';
+
+      buildSlides();
+      goTo(0);
+    }
+
+    /* ── Wire buttons ───────────────────────────────────────────── */
+    btnCheck.addEventListener('click', checkAnswer);
+    btnNext.addEventListener('click', goNext);
+
+    /* ── Init ───────────────────────────────────────────────────── */
+    buildSlides();
+    goTo(0);
+  })();
+  </script>
+</Layout>
