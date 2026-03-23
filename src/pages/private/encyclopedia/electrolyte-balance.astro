@@ -95,67 +95,7 @@ Patient Education. Patients with conditions predisposing to chronic electrolyte 
   </nav>
 
   <div class="article-grid">
-    <!-- Main article -->
-    <article>
-      <!-- Article header -->
-      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
-        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
-          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
-            ⚡ Physiology &amp; Pathophysiology
-          </span>
-          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
-        </div>
-        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
-          Electrolyte Balance
-        </h1>
-        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
-          An academic overview of the physiological role of electrolytes, their regulatory mechanisms,
-          the pathophysiology and clinical manifestations of key electrolyte imbalances, and the
-          nursing assessment and management principles essential to safe clinical practice.
-        </p>
-        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
-          <span>🎓 Target audience: Nursing students</span>
-          <span>📖 Reading level: Academic</span>
-          <span>🔒 Protected content</span>
-        </div>
-      </header>
 
-      <!-- Article sections -->
-      {sections.map((section, i) => (
-        <section id={section.id} style="margin-bottom:2.25rem;">
-          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
-            <span style="color:#7c3aed; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
-            {section.heading}
-          </h2>
-          {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
-          ))}
-        </section>
-      ))}
-
-      <!-- References -->
-      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
-          {[
-            'Agus, Z. S. (1999). Hypomagnesemia. <em>Journal of the American Society of Nephrology, 10</em>(7), 1616–1622.',
-            'Aronson, P. S., &amp; Giebisch, G. (2011). Effects of pH on potassium: New explanations for old observations. <em>Journal of the American Society of Nephrology, 22</em>(11), 1981–1989.',
-            'Hoorn, E. J., &amp; Zietse, R. (2017). Diagnosis and treatment of hyponatremia: Compilation of the guidelines. <em>Journal of the American Society of Nephrology, 28</em>(5), 1340–1349.',
-            'Kraft, M. D., Btaiche, I. F., &amp; Sacks, G. S. (2005). Review of the refeeding syndrome. <em>Nutrition in Clinical Practice, 20</em>(6), 625–633.',
-            'Mount, D. B. (2016). Fluid and electrolyte disturbances. In D. Kasper, A. Fauci, S. Hauser, D. Longo, J. Jameson, &amp; J. Loscalzo (Eds.), <em>Harrison\'s principles of internal medicine</em> (19th ed., pp. 295–326). McGraw-Hill.',
-            'Pepin, J., &amp; Shields, C. (2012). Advances in diagnosis and management of hypokalemic and hyperkalemic emergencies. <em>Emergency Medicine Practice, 14</em>(2), 1–17.',
-            'Sterns, R. H. (2015). Disorders of plasma sodium—causes, consequences, and correction. <em>New England Journal of Medicine, 372</em>(1), 55–65.',
-            'Zivin, J. R., Gooley, T., Zager, R. A., &amp; Ryan, M. J. (2001). Hypocalcemia: A pervasive metabolic abnormality in the critically ill. <em>American Journal of Kidney Diseases, 37</em>(4), 689–698.',
-          ].map((ref) => (
-            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
-          ))}
-        </ul>
-      </section>
-    </article>
-
-    <!-- Sidebar -->
     <aside style="position:sticky; top:1.5rem;">
       <!-- Contents -->
       <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
@@ -231,13 +171,71 @@ Patient Education. Patients with conditions predisposing to chronic electrolyte 
         onmouseout="this.style.background='#f1f5f9'"
       >← Back to Encyclopedia</a>
     </aside>
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#7c3aed; background:#f5f3ff; border:1px solid #ddd6fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            ⚡ Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Electrolyte Balance
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of the physiological role of electrolytes, their regulatory mechanisms,
+          the pathophysiology and clinical manifestations of key electrolyte imbalances, and the
+          nursing assessment and management principles essential to safe clinical practice.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#7c3aed; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Agus, Z. S. (1999). Hypomagnesemia. <em>Journal of the American Society of Nephrology, 10</em>(7), 1616–1622.',
+            'Aronson, P. S., &amp; Giebisch, G. (2011). Effects of pH on potassium: New explanations for old observations. <em>Journal of the American Society of Nephrology, 22</em>(11), 1981–1989.',
+            'Hoorn, E. J., &amp; Zietse, R. (2017). Diagnosis and treatment of hyponatremia: Compilation of the guidelines. <em>Journal of the American Society of Nephrology, 28</em>(5), 1340–1349.',
+            'Kraft, M. D., Btaiche, I. F., &amp; Sacks, G. S. (2005). Review of the refeeding syndrome. <em>Nutrition in Clinical Practice, 20</em>(6), 625–633.',
+            'Mount, D. B. (2016). Fluid and electrolyte disturbances. In D. Kasper, A. Fauci, S. Hauser, D. Longo, J. Jameson, &amp; J. Loscalzo (Eds.), <em>Harrison\'s principles of internal medicine</em> (19th ed., pp. 295–326). McGraw-Hill.',
+            'Pepin, J., &amp; Shields, C. (2012). Advances in diagnosis and management of hypokalemic and hyperkalemic emergencies. <em>Emergency Medicine Practice, 14</em>(2), 1–17.',
+            'Sterns, R. H. (2015). Disorders of plasma sodium—causes, consequences, and correction. <em>New England Journal of Medicine, 372</em>(1), 55–65.',
+            'Zivin, J. R., Gooley, T., Zager, R. A., &amp; Ryan, M. J. (2001). Hypocalcemia: A pervasive metabolic abnormality in the critically ill. <em>American Journal of Kidney Diseases, 37</em>(4), 689–698.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
   </div>
 </Layout>
 
 <style>
   .article-grid {
     display: grid;
-    grid-template-columns: 1fr 240px;
+    grid-template-columns: 240px 1fr;
     gap: 2rem;
     align-items: start;
   }

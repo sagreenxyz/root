@@ -52,7 +52,63 @@ const sections = [
   </nav>
 
   <div class="article-grid">
-    <!-- Main article -->
+
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Key theorist', def: 'Benner (1984); Tanner (2006)' },
+            { term: 'NCSBN model', def: 'Recognise → Analyse → Prioritise → Generate → Act → Evaluate' },
+            { term: 'Reasoning modes', def: 'Analytical (System 2) &amp; Intuitive (System 1)' },
+            { term: 'Key risk', def: 'Cognitive bias (anchoring, premature closure)' },
+            { term: 'Education strategies', def: 'Simulation, CBL, reflection, preceptorship' },
+            { term: 'Related to', def: 'Patient Safety, Nursing Process, SBAR' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Recognising patient deterioration',
+            '✅ Evidence-based decision-making',
+            '✅ Safe medication administration',
+            '✅ Prioritisation of care',
+            '✅ Effective clinical handover',
+            '✅ Interprofessional communication',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
     <article>
       <!-- Article header -->
       <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
@@ -110,69 +166,13 @@ const sections = [
         </ul>
       </section>
     </article>
-
-    <!-- Sticky sidebar -->
-    <aside style="position:sticky; top:1.5rem;">
-      <!-- Contents -->
-      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
-        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
-          {sections.map((s, i) => (
-            <li style="font-size:0.85rem;">
-              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
-                {i + 1}. {s.heading}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
-        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
-          {[
-            { term: 'Key theorist', def: 'Benner (1984); Tanner (2006)' },
-            { term: 'NCSBN model', def: 'Recognise → Analyse → Prioritise → Generate → Act → Evaluate' },
-            { term: 'Reasoning modes', def: 'Analytical (System 2) &amp; Intuitive (System 1)' },
-            { term: 'Key risk', def: 'Cognitive bias (anchoring, premature closure)' },
-            { term: 'Education strategies', def: 'Simulation, CBL, reflection, preceptorship' },
-            { term: 'Related to', def: 'Patient Safety, Nursing Process, SBAR' },
-          ].map(({ term, def }) => (
-            <div>
-              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
-              <dd style="color:#64748b; margin:0;" set:html={def} />
-            </div>
-          ))}
-        </dl>
-      </div>
-
-      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
-        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
-          {[
-            '✅ Recognising patient deterioration',
-            '✅ Evidence-based decision-making',
-            '✅ Safe medication administration',
-            '✅ Prioritisation of care',
-            '✅ Effective clinical handover',
-            '✅ Interprofessional communication',
-          ].map(item => <li>{item}</li>)}
-        </ul>
-      </div>
-
-      <a
-        href={`${base}/private/encyclopedia`}
-        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
-        onmouseover="this.style.background='#e2e8f0'"
-        onmouseout="this.style.background='#f1f5f9'"
-      >← Back to Encyclopedia</a>
-    </aside>
   </div>
 </Layout>
 
 <style>
   .article-grid {
     display: grid;
-    grid-template-columns: 1fr 240px;
+    grid-template-columns: 240px 1fr;
     gap: 2rem;
     align-items: start;
   }

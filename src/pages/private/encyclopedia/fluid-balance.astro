@@ -101,67 +101,7 @@ Special Populations. Older adults present particular challenges in fluid assessm
   </nav>
 
   <div class="article-grid">
-    <!-- Main article -->
-    <article>
-      <!-- Article header -->
-      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
-        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
-          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#0891b2; background:#ecfeff; border:1px solid #a5f3fc; border-radius:0.35rem; padding:0.2rem 0.55rem;">
-            💧 Physiology &amp; Pathophysiology
-          </span>
-          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
-        </div>
-        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
-          Fluid Balance
-        </h1>
-        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
-          An academic overview of body fluid compartments, neurohormonal regulation mechanisms,
-          the pathophysiology of fluid volume deficit and excess, clinical assessment strategies,
-          and nursing management principles for hospitalised patients.
-        </p>
-        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
-          <span>🎓 Target audience: Nursing students</span>
-          <span>📖 Reading level: Academic</span>
-          <span>🔒 Protected content</span>
-        </div>
-      </header>
 
-      <!-- Article sections -->
-      {sections.map((section, i) => (
-        <section id={section.id} style="margin-bottom:2.25rem;">
-          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
-            <span style="color:#0891b2; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
-            {section.heading}
-          </h2>
-          {section.body.split('\n\n').map((para) => (
-            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
-              {para}
-            </p>
-          ))}
-        </section>
-      ))}
-
-      <!-- References -->
-      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
-          {[
-            'Aucoin, M., &amp; Bhatt, D. L. (2021). Fluid management in the critically ill patient. <em>Critical Care Clinics, 37</em>(2), 345–364.',
-            'Bhave, G., &amp; Neilson, E. G. (2011). Body fluid dynamics: Back to the future. <em>Journal of the American Society of Nephrology, 22</em>(12), 2166–2181.',
-            'Hall, J. E., &amp; Hall, M. E. (2020). <em>Guyton and Hall textbook of medical physiology</em> (14th ed.). Elsevier.',
-            'Herdman, T. H., &amp; Kamitsuru, S. (Eds.). (2018). <em>NANDA international nursing diagnoses: Definitions and classification, 2018–2020.</em> Thieme.',
-            'Hoorn, E. J., &amp; Zietse, R. (2017). Diagnosis and treatment of hyponatremia: Compilation of the guidelines. <em>Journal of the American Society of Nephrology, 28</em>(5), 1340–1349.',
-            'Inzucchi, S. E., &amp; Sherwin, R. S. (2018). Fluid and electrolyte physiology. In L. Goldman &amp; A. I. Schafer (Eds.), <em>Goldman-Cecil medicine</em> (26th ed., pp. 724–741). Elsevier.',
-            'Severs, D., Hoorn, E. J., &amp; Rookmaaker, M. B. (2015). A critical appraisal of intravenous fluids. <em>Nephrology Dialysis Transplantation, 30</em>(2), 178–185.',
-            'Vincent, J. L., &amp; De Backer, D. (2013). Circulatory shock. <em>New England Journal of Medicine, 369</em>(18), 1726–1734.',
-          ].map((ref) => (
-            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
-          ))}
-        </ul>
-      </section>
-    </article>
-
-    <!-- Sidebar -->
     <aside style="position:sticky; top:1.5rem;">
       <!-- Contents -->
       <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
@@ -237,13 +177,71 @@ Special Populations. Older adults present particular challenges in fluid assessm
         onmouseout="this.style.background='#f1f5f9'"
       >← Back to Encyclopedia</a>
     </aside>
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#0891b2; background:#ecfeff; border:1px solid #a5f3fc; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            💧 Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Fluid Balance
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of body fluid compartments, neurohormonal regulation mechanisms,
+          the pathophysiology of fluid volume deficit and excess, clinical assessment strategies,
+          and nursing management principles for hospitalised patients.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#0891b2; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Aucoin, M., &amp; Bhatt, D. L. (2021). Fluid management in the critically ill patient. <em>Critical Care Clinics, 37</em>(2), 345–364.',
+            'Bhave, G., &amp; Neilson, E. G. (2011). Body fluid dynamics: Back to the future. <em>Journal of the American Society of Nephrology, 22</em>(12), 2166–2181.',
+            'Hall, J. E., &amp; Hall, M. E. (2020). <em>Guyton and Hall textbook of medical physiology</em> (14th ed.). Elsevier.',
+            'Herdman, T. H., &amp; Kamitsuru, S. (Eds.). (2018). <em>NANDA international nursing diagnoses: Definitions and classification, 2018–2020.</em> Thieme.',
+            'Hoorn, E. J., &amp; Zietse, R. (2017). Diagnosis and treatment of hyponatremia: Compilation of the guidelines. <em>Journal of the American Society of Nephrology, 28</em>(5), 1340–1349.',
+            'Inzucchi, S. E., &amp; Sherwin, R. S. (2018). Fluid and electrolyte physiology. In L. Goldman &amp; A. I. Schafer (Eds.), <em>Goldman-Cecil medicine</em> (26th ed., pp. 724–741). Elsevier.',
+            'Severs, D., Hoorn, E. J., &amp; Rookmaaker, M. B. (2015). A critical appraisal of intravenous fluids. <em>Nephrology Dialysis Transplantation, 30</em>(2), 178–185.',
+            'Vincent, J. L., &amp; De Backer, D. (2013). Circulatory shock. <em>New England Journal of Medicine, 369</em>(18), 1726–1734.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
   </div>
 </Layout>
 
 <style>
   .article-grid {
     display: grid;
-    grid-template-columns: 1fr 240px;
+    grid-template-columns: 240px 1fr;
     gap: 2rem;
     align-items: start;
   }
