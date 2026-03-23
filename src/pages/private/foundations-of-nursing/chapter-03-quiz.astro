@@ -1,0 +1,308 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Chapter 3 Quiz — Patient Rights, Advocacy, and Informed Consent" protected={true}>
+
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing`} style="color:#6366f1; text-decoration:none; font-weight:500;">Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing/chapter-03`} style="color:#6366f1; text-decoration:none; font-weight:500;">Chapter 3</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>NCLEX Quiz</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">🤝</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">Chapter 3 — Unit 1</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">NCLEX Practice Quiz</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Patient Rights, Advocacy, and Informed Consent — 9 scored questions + 1 NGN scenario with four sub-questions (self-assessed). Select your answers and submit.</p>
+  </header>
+
+  <div id="score-banner" style="display:none; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem; text-align:center;">
+    <div id="score-text" style="font-size:1.5rem; font-weight:800;"></div>
+    <div id="score-sub" style="font-size:0.9rem; margin-top:0.25rem;"></div>
+  </div>
+
+  <div id="quiz-form"></div>
+
+  <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <button id="submit-btn" onclick="submitQuiz()"
+      style="padding:0.75rem 2rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Submit Quiz
+    </button>
+    <button id="reset-btn" onclick="resetQuiz()" style="display:none; padding:0.75rem 1.5rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Retake Quiz
+    </button>
+    <a href={`${base}/private/foundations-of-nursing/chapter-03`}
+      style="padding:0.75rem 1.5rem; background:#fff; color:#64748b; border:1px solid #e2e8f0; border-radius:0.6rem; font-size:0.9rem; font-weight:600; text-decoration:none;">
+      ← Read Chapter 3
+    </a>
+  </div>
+
+</Layout>
+
+<script>
+const QUESTIONS = [
+  {
+    n: 1, type: 'single',
+    stem: 'A nurse is preparing to witness a patient\'s signature on a surgical consent form. The patient says, "I trust my doctor — I just sign whatever she gives me." Which action should the nurse take <strong>first</strong>?',
+    options: [
+      { label: 'A', text: 'Witness the signature because the patient has expressed trust in the physician' },
+      { label: 'B', text: 'Notify the charge nurse that the patient is refusing to consent' },
+      { label: 'C', text: 'Assess the patient\'s understanding of the procedure, risks, and alternatives' },
+      { label: 'D', text: 'Contact the surgeon to re-explain the procedure to the patient' },
+    ],
+    correct: ['C'],
+    rationale: 'Assessing understanding is the nurse\'s primary responsibility before witnessing consent. Passive trust does not constitute comprehension. See Section 3.3.2.',
+  },
+  {
+    n: 2, type: 'single',
+    stem: 'A competent adult patient with terminal cancer refuses further chemotherapy and requests comfort-focused care only. The patient\'s family insists that "everything" be done. Which nursing action is most appropriate?',
+    options: [
+      { label: 'A', text: 'Support the family\'s decision because they know the patient best' },
+      { label: 'B', text: 'Initiate a palliative care consultation and document the patient\'s expressed wishes' },
+      { label: 'C', text: 'Ask the patient to reconsider out of respect for the family\'s wishes' },
+      { label: 'D', text: 'Defer to the oncologist\'s treatment recommendation' },
+    ],
+    correct: ['B'],
+    rationale: 'A competent patient\'s autonomous refusal of treatment must be honored. Initiating palliative care and documenting the patient\'s wishes protects autonomy and ensures the plan is communicated. See Sections 3.3.1 and 3.8.1.',
+  },
+  {
+    n: 3, type: 'single',
+    stem: 'A nurse discovers that a colleague has been accessing the electronic health records of a co-worker who was recently admitted to the unit out of personal concern. Which statement about this situation is accurate?',
+    options: [
+      { label: 'A', text: 'The action is permissible because the nurse knows the patient personally' },
+      { label: 'B', text: 'The action is a HIPAA violation regardless of the nurse\'s intent' },
+      { label: 'C', text: 'The action is appropriate if the nurse does not share the information' },
+      { label: 'D', text: 'The action is permissible with the patient\'s verbal consent' },
+    ],
+    correct: ['B'],
+    rationale: 'Accessing records of patients not under the nurse\'s care violates HIPAA\'s minimum necessary standard regardless of intent or relationship. See Section 3.6.2.',
+  },
+  {
+    n: 4, type: 'single',
+    stem: 'A 15-year-old patient presents to the emergency department requesting testing for a sexually transmitted infection. Her parents are not present. Which of the following is the most appropriate nursing action?',
+    options: [
+      { label: 'A', text: 'Refuse to initiate the visit until a parent provides consent' },
+      { label: 'B', text: 'Contact the patient\'s parents to obtain consent before proceeding' },
+      { label: 'C', text: 'Proceed with the visit, as most states permit minors to consent to STI testing independently' },
+      { label: 'D', text: 'Contact the hospital administrator before providing any care' },
+    ],
+    correct: ['C'],
+    rationale: 'Most U.S. states permit minors to consent to STI testing without parental involvement. Refusing care may deter the patient from seeking needed services. See Section 3.7.1.',
+  },
+  {
+    n: 5, type: 'single',
+    stem: 'A nurse is caring for a patient with a documented DNR order. During a shift, the patient\'s son arrives and demands that the nurse "do everything" if his father arrests. Which response demonstrates appropriate nursing advocacy?',
+    options: [
+      { label: 'A', text: 'Honor the son\'s request because family wishes take precedence' },
+      { label: 'B', text: 'Contact the physician to rescind the DNR order per family request' },
+      { label: 'C', text: 'Explain that the DNR order reflects the patient\'s documented wishes and refer to the attending physician for further discussion' },
+      { label: 'D', text: 'Follow the DNR order without explaining it to the son' },
+    ],
+    correct: ['C'],
+    rationale: 'The DNR order is a valid medical order reflecting the patient\'s documented wishes. Family requests cannot override it. The nurse should explain this respectfully and refer to the physician for family discussion. See Section 3.5.1.',
+  },
+  {
+    n: 6, type: 'sata',
+    stem: 'Which of the following elements is required for a valid informed consent? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Voluntary agreement without coercion' },
+      { label: 'B', text: 'Disclosure of risks, benefits, and alternatives' },
+      { label: 'C', text: 'Patient\'s signature witnessed by two registered nurses' },
+      { label: 'D', text: 'Patient\'s comprehension of the information provided' },
+      { label: 'E', text: 'Physician\'s certification that the procedure is necessary' },
+    ],
+    correct: ['A', 'B', 'D'],
+    rationale: 'Valid informed consent requires voluntary agreement, adequate disclosure, and patient comprehension. Witnessing by two nurses and physician necessity certification are not standard legal requirements. See Section 3.3.1.',
+  },
+  {
+    n: 7, type: 'single',
+    stem: 'A nurse is assigned to care for a patient who is an inmate from a local correctional facility. A correctional officer requests to be present during the patient\'s physical assessment. Which nursing action is most appropriate?',
+    options: [
+      { label: 'A', text: 'Allow the officer to remain, as security takes precedence' },
+      { label: 'B', text: 'Ask the officer to remain outside the assessment area to protect the patient\'s privacy' },
+      { label: 'C', text: 'Refuse to provide care until the officer leaves the facility' },
+      { label: 'D', text: 'Document the officer\'s presence and continue with the assessment' },
+    ],
+    correct: ['B'],
+    rationale: 'Privacy during clinical assessment is a patient right. Correctional officers should remain outside the assessment area unless there is a specific, documented safety threat. See Section 3.7.3.',
+  },
+  {
+    n: 8, type: 'single',
+    stem: 'A patient diagnosed with moderate Alzheimer\'s disease is scheduled for an elective cholecystectomy. The nurse assesses that the patient is unable to explain why the surgery is needed and repeatedly asks when she can go home. Which action should the nurse take?',
+    options: [
+      { label: 'A', text: 'Proceed with the surgical consent because the patient signed the form' },
+      { label: 'B', text: 'Notify the surgical team of concerns regarding the patient\'s decision-making capacity before proceeding' },
+      { label: 'C', text: 'Obtain verbal consent from the patient\'s family at the bedside' },
+      { label: 'D', text: 'Document the patient\'s confusion and allow the procedure to proceed as scheduled' },
+    ],
+    correct: ['B'],
+    rationale: 'The patient\'s inability to explain the procedure or demonstrate appreciation of its personal relevance suggests impaired decision-making capacity. The team must be notified before an elective procedure proceeds. See Section 3.4.2.',
+  },
+  {
+    n: 9, type: 'single',
+    stem: 'A nurse caring for a patient suspects intimate partner violence based on physical findings and the patient\'s affect. The patient denies abuse when the partner is in the room. Which is the priority nursing action?',
+    options: [
+      { label: 'A', text: 'Document the denial and take no further action' },
+      { label: 'B', text: 'Ask the patient directly about abuse in front of the partner to elicit an honest response' },
+      { label: 'C', text: 'Create an opportunity to speak privately with the patient and use a standardized screening tool' },
+      { label: 'D', text: 'Immediately contact law enforcement regardless of the patient\'s wishes' },
+    ],
+    correct: ['C'],
+    rationale: 'Creating a private opportunity for screening is the evidence-based, victim-centered approach. Screening in front of the suspected abuser may increase risk to the patient. See Section 3.7.4.',
+  },
+  {
+    n: '10',
+    type: 'ngn_open',
+    stem: '<strong>(NGN Extended Thinking — Self-Assessed)</strong> A nurse is reviewing the chart of a patient with a living will specifying no mechanical ventilation. The patient is now intubated and unconscious following a respiratory arrest. The patient\'s spouse states: "We ignored the living will — she would want to live."',
+    context: 'The patient is a 68-year-old woman with end-stage COPD. Her living will, completed six months ago and witnessed by two adults, specifically states: "I do not want mechanical ventilation if I have an irreversible condition." The attending physician intubated the patient during the arrest without reviewing the advance directive.',
+    subquestions: [
+      { label: 'a', prompt: 'What is the nurse\'s <strong>immediate priority action</strong>?', answer: 'Notify the attending physician and document the conflict between the patient\'s advance directive and current management.' },
+      { label: 'b', prompt: 'What <strong>ethical principles</strong> are in conflict in this scenario?', answer: 'Autonomy (patient\'s documented preference for no ventilation) vs. beneficence (life-sustaining treatment was provided).' },
+      { label: 'c', prompt: 'Which <strong>institutional resource</strong> should the nurse request?', answer: 'Ethics committee consultation.' },
+      { label: 'd', prompt: 'Does the spouse\'s statement constitute a <strong>valid revocation</strong> of the living will?', answer: 'No — a valid revocation requires the patient to have decision-making capacity at the time of revocation; the patient is unconscious. See Section 3.5.3.' },
+    ],
+  },
+];
+
+function renderQuestion(q, parentLabel) {
+  const id = parentLabel ? parentLabel : 'q' + q.n;
+  const isSATA = q.type === 'sata';
+  const inputType = isSATA ? 'checkbox' : 'radio';
+
+  let optionsHtml = '';
+  q.options.forEach(opt => {
+    optionsHtml += `
+      <label class="opt-label" id="${id}_opt${opt.label}" style="display:flex;align-items:flex-start;gap:0.6rem;padding:0.6rem 0.75rem;border-radius:0.5rem;border:1.5px solid #e2e8f0;margin-bottom:0.5rem;cursor:pointer;">
+        <input type="${inputType}" name="${id}" value="${opt.label}" style="margin-top:0.2rem;flex-shrink:0;accent-color:#6366f1;" />
+        <span><strong>${opt.label}.</strong> ${opt.text}</span>
+      </label>`;
+  });
+
+  return `
+    <div class="question-card" id="card_${id}" style="background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.25rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">${parentLabel ? parentLabel : 'Question ' + q.n}${isSATA ? ' — Select all that apply' : ''}</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1rem;">${q.stem}</p>
+      <div class="options-wrap">${optionsHtml}</div>
+      <div class="rationale-box" id="rat_${id}" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;line-height:1.6;"></div>
+    </div>`;
+}
+
+function renderOpenNGN(q) {
+  let subsHtml = q.subquestions.map(sq => `
+    <div style="margin-bottom:1rem;">
+      <p style="font-weight:700;color:#1e293b;margin-bottom:0.35rem;">(${sq.label}) ${sq.prompt}</p>
+      <details style="border:1px solid #c7d2fe;border-radius:0.5rem;overflow:hidden;">
+        <summary style="padding:0.6rem 1rem;background:#eef2ff;cursor:pointer;font-size:0.875rem;font-weight:600;color:#6366f1;">Show model answer</summary>
+        <div style="padding:0.75rem 1rem;font-size:0.875rem;line-height:1.6;color:#1e293b;">${sq.answer}</div>
+      </details>
+    </div>`).join('');
+
+  return `
+    <div style="background:#f0f4ff;border:2px solid #c7d2fe;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.5rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">Question 10 — NGN Extended Thinking (Self-Assessed)</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:0.5rem;">${q.stem}</p>
+      <p style="font-size:0.85rem;font-style:italic;color:#475569;border-left:3px solid #c7d2fe;padding-left:0.75rem;margin-bottom:1.25rem;">${q.context}</p>
+      ${subsHtml}
+    </div>`;
+}
+
+function renderQuiz() {
+  const form = document.getElementById('quiz-form');
+  let html = '';
+  QUESTIONS.forEach(q => {
+    if (q.type === 'ngn_open') {
+      html += renderOpenNGN(q);
+    } else {
+      html += renderQuestion(q, null);
+    }
+  });
+  form.innerHTML = html;
+}
+
+function collectAnswers() {
+  const allAnswers = {};
+  QUESTIONS.filter(q => q.type !== 'ngn_open').forEach(q => {
+    const id = 'q' + q.n;
+    allAnswers[id] = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value);
+  });
+  return allAnswers;
+}
+
+function gradeAnswers(answers) {
+  let total = 0, correct = 0;
+  const results = {};
+  QUESTIONS.filter(q => q.type !== 'ngn_open').forEach(q => {
+    const id = 'q' + q.n;
+    total++;
+    const given = (answers[id] || []).slice().sort();
+    const expected = q.correct.slice().sort();
+    const isCorrect = JSON.stringify(given) === JSON.stringify(expected);
+    if (isCorrect) correct++;
+    results[id] = { isCorrect, given, expected, rationale: q.rationale };
+  });
+  return { total, correct, results };
+}
+
+function showFeedback(graded) {
+  Object.entries(graded.results).forEach(([id, res]) => {
+    const card = document.getElementById('card_' + id);
+    if (!card) return;
+    card.querySelectorAll('.opt-label').forEach(lbl => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      inp.disabled = true;
+      const val = inp.value;
+      if (res.expected.includes(val) && res.given.includes(val)) { lbl.style.borderColor = '#16a34a'; lbl.style.background = '#f0fdf4'; }
+      else if (res.expected.includes(val)) { lbl.style.borderColor = '#d97706'; lbl.style.background = '#fffbeb'; }
+      else if (res.given.includes(val)) { lbl.style.borderColor = '#dc2626'; lbl.style.background = '#fef2f2'; }
+    });
+    const ratBox = document.getElementById('rat_' + id);
+    if (ratBox) {
+      ratBox.style.display = 'block';
+      ratBox.style.background = res.isCorrect ? '#f0fdf4' : '#fef2f2';
+      ratBox.style.borderLeft = '4px solid ' + (res.isCorrect ? '#16a34a' : '#dc2626');
+      ratBox.style.color = res.isCorrect ? '#166534' : '#991b1b';
+      ratBox.innerHTML = '<strong>' + (res.isCorrect ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + res.rationale;
+    }
+    card.style.borderColor = res.isCorrect ? '#bbf7d0' : '#fecaca';
+  });
+}
+
+function submitQuiz() {
+  const answers = collectAnswers();
+  const graded = gradeAnswers(answers);
+  showFeedback(graded);
+  const pct = Math.round((graded.correct / graded.total) * 100);
+  const banner = document.getElementById('score-banner');
+  document.getElementById('score-text').textContent = graded.correct + ' / ' + graded.total + ' correct (' + pct + '%) — Q10 is self-assessed';
+  document.getElementById('score-sub').textContent = pct >= 80 ? '🎉 Excellent work!' : pct >= 60 ? '📚 Review the highlighted sections.' : '🔍 Review Chapter 3 carefully.';
+  banner.style.display = 'block';
+  banner.style.background = pct >= 80 ? '#f0fdf4' : pct >= 60 ? '#fffbeb' : '#fef2f2';
+  banner.style.border = '1px solid ' + (pct >= 80 ? '#bbf7d0' : pct >= 60 ? '#fde68a' : '#fecaca');
+  document.getElementById('score-text').style.color = pct >= 80 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b';
+  document.getElementById('score-sub').style.color = pct >= 80 ? '#15803d' : pct >= 60 ? '#b45309' : '#b91c1c';
+  banner.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('reset-btn').style.display = 'inline-block';
+}
+
+function resetQuiz() {
+  document.getElementById('score-banner').style.display = 'none';
+  document.getElementById('submit-btn').style.display = 'inline-block';
+  document.getElementById('reset-btn').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', renderQuiz);
+</script>

@@ -1,0 +1,315 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Chapter 5 Quiz — Cultural Humility, Health Literacy, and Inclusive Care" protected={true}>
+
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing`} style="color:#6366f1; text-decoration:none; font-weight:500;">Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing/chapter-05`} style="color:#6366f1; text-decoration:none; font-weight:500;">Chapter 5</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>NCLEX Quiz</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">🌍</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">Chapter 5 — Unit 1</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">NCLEX Practice Quiz</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Cultural Humility, Health Literacy, and Inclusive Care — 9 scored questions + 1 NGN extended-thinking scenario (self-assessed). Select your answers and submit.</p>
+  </header>
+
+  <div id="score-banner" style="display:none; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem; text-align:center;">
+    <div id="score-text" style="font-size:1.5rem; font-weight:800;"></div>
+    <div id="score-sub" style="font-size:0.9rem; margin-top:0.25rem;"></div>
+  </div>
+
+  <div id="quiz-form"></div>
+
+  <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <button id="submit-btn" onclick="submitQuiz()"
+      style="padding:0.75rem 2rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Submit Quiz
+    </button>
+    <button id="reset-btn" onclick="resetQuiz()" style="display:none; padding:0.75rem 1.5rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Retake Quiz
+    </button>
+    <a href={`${base}/private/foundations-of-nursing/chapter-05`}
+      style="padding:0.75rem 1.5rem; background:#fff; color:#64748b; border:1px solid #e2e8f0; border-radius:0.6rem; font-size:0.9rem; font-weight:600; text-decoration:none;">
+      ← Read Chapter 5
+    </a>
+  </div>
+
+</Layout>
+
+<script>
+const QUESTIONS = [
+  {
+    n: 1, type: 'single',
+    stem: 'A nurse is caring for a patient who recently immigrated from Vietnam and has limited English proficiency. Which action by the nurse best demonstrates <strong>culturally responsive practice</strong>?',
+    options: [
+      { label: 'A', text: 'Ask the patient\'s adult son to interpret during the history and physical examination' },
+      { label: 'B', text: 'Speak slowly and loudly to help the patient understand English better' },
+      { label: 'C', text: 'Arrange a professional interpreter before beginning the clinical encounter' },
+      { label: 'D', text: 'Use written communication in English because the patient can read it' },
+    ],
+    correct: ['C'],
+    rationale: 'Federal law (Title VI) requires professional interpreter services for LEP patients. Using family members as interpreters violates confidentiality, risks inaccuracy, and places unfair burden on the family member. See Section 5.4.1.',
+  },
+  {
+    n: 2, type: 'single',
+    stem: 'Which of the following best distinguishes <strong>cultural humility</strong> from cultural competence?',
+    options: [
+      { label: 'A', text: 'Cultural humility requires mastery of the cultural practices of all major ethnic groups' },
+      { label: 'B', text: 'Cultural humility is a fixed state achieved through completion of diversity training' },
+      { label: 'C', text: 'Cultural humility is a lifelong process of self-reflection and patient-centered learning' },
+      { label: 'D', text: 'Cultural humility applies primarily to patients from non-Western cultural backgrounds' },
+    ],
+    correct: ['C'],
+    rationale: 'Cultural humility is a lifelong process characterized by self-reflection and patient-centering, not a fixed state of mastery. See Section 5.1.1.',
+  },
+  {
+    n: 3, type: 'single',
+    stem: 'A nurse is reviewing discharge instructions with a patient with type 2 diabetes. Which action is most consistent with <strong>universal health literacy precautions</strong>?',
+    options: [
+      { label: 'A', text: 'Provide printed instructions at a 12th-grade reading level with detailed medical terminology' },
+      { label: 'B', text: 'Ask the patient, "Do you understand?" before the patient leaves' },
+      { label: 'C', text: 'Use teach-back by asking the patient to demonstrate blood glucose monitoring and explain when to call the provider' },
+      { label: 'D', text: 'Provide instructions in the patient\'s primary language only if the patient requests them' },
+    ],
+    correct: ['C'],
+    rationale: 'Teach-back with skill demonstration is the gold standard for verifying health literacy comprehension, especially for procedural tasks. Asking "Do you understand?" yields socially desirable but clinically meaningless responses. See Section 5.3.3.',
+  },
+  {
+    n: 4, type: 'single',
+    stem: 'A nurse is caring for a transgender man who is admitted for a routine appendectomy. The patient\'s chart displays his legal birth name and indicates his sex as female. Which nursing action is the <strong>priority</strong>?',
+    options: [
+      { label: 'A', text: 'Address the patient using his legal name as listed in the chart' },
+      { label: 'B', text: 'Ask the patient his preferred name and pronouns and document this in the care plan' },
+      { label: 'C', text: 'Notify the surgical team that the patient identifies as transgender before the procedure' },
+      { label: 'D', text: 'Request that a same-gender nurse be assigned to the patient\'s care' },
+    ],
+    correct: ['B'],
+    rationale: 'Asking about preferred name and pronouns and documenting this information is the priority affirming action. The nurse should use the patient\'s correct name and pronouns in all communications. See Section 5.6.2.',
+  },
+  {
+    n: 5, type: 'single',
+    stem: 'A nurse is performing a spiritual assessment using the FICA tool. A patient states: "I used to believe in God, but after this diagnosis, I feel abandoned — like my prayers don\'t matter anymore." Which nursing response is most appropriate?',
+    options: [
+      { label: 'A', text: 'Reassure the patient that God has a plan and that prayer will help' },
+      { label: 'B', text: 'Acknowledge the patient\'s distress, sit quietly with them, and offer a chaplain referral' },
+      { label: 'C', text: 'Redirect the conversation to the patient\'s medical plan of care' },
+      { label: 'D', text: 'Document the statement as a sign of depression and notify the physician' },
+    ],
+    correct: ['B'],
+    rationale: 'Spiritual distress requires acknowledgment, presence, and chaplaincy referral. Reassuring religious platitudes or redirecting the conversation are not therapeutic responses. Spiritual distress is not equivalent to clinical depression. See Section 5.5.3.',
+  },
+  {
+    n: 6, type: 'sata',
+    stem: 'Which of the following are social determinants of health that can directly affect a patient\'s ability to manage a chronic illness? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Limited access to nutritious food in the patient\'s neighborhood' },
+      { label: 'B', text: 'The patient\'s genetic predisposition to the illness' },
+      { label: 'C', text: 'Unstable housing that prevents consistent medication storage' },
+      { label: 'D', text: 'Lack of transportation to follow-up appointments' },
+      { label: 'E', text: 'The patient\'s religious beliefs about medication' },
+    ],
+    correct: ['A', 'C', 'D'],
+    rationale: 'Food access, housing stability, and transportation are social determinants that directly affect chronic disease management. Genetic predisposition is a biological factor, not a social determinant. Religious beliefs may influence behavior but are not classified as SDOH. See Section 5.2.2.',
+  },
+  {
+    n: 7, type: 'single',
+    stem: 'A Deaf patient is admitted to the surgical unit for a cholecystectomy. The charge nurse suggests using written notes on a whiteboard for all communication to avoid scheduling a video remote interpreter. Which nursing response is most appropriate?',
+    options: [
+      { label: 'A', text: 'Agree that written notes are sufficient for postoperative nursing communication' },
+      { label: 'B', text: 'Advocate for scheduling a professional ASL interpreter or VRI service for all significant clinical conversations, as required by the ADA' },
+      { label: 'C', text: 'Ask the patient\'s hearing family member to interpret throughout the hospitalization' },
+      { label: 'D', text: 'Document that the patient is non-communicative due to hearing impairment' },
+    ],
+    correct: ['B'],
+    rationale: 'The ADA requires reasonable accommodation including professional interpreting services for Deaf patients. Written notes are insufficient for complex clinical communication. Using a family member as interpreter violates confidentiality and professional interpreting standards. See Section 5.7.2.',
+  },
+  {
+    n: 8, type: 'single',
+    stem: 'A nurse is caring for a Jehovah\'s Witness patient who is scheduled for elective hip replacement surgery and has refused blood transfusions. The surgeon believes the patient\'s refusal significantly increases surgical risk. Which action by the nurse is most appropriate?',
+    options: [
+      { label: 'A', text: 'Support the patient\'s autonomous refusal, ensure informed refusal is documented, and notify the surgical team of the patient\'s decision' },
+      { label: 'B', text: 'Ask the patient\'s family to persuade the patient to accept transfusions for safety' },
+      { label: 'C', text: 'Contact hospital administration to override the patient\'s refusal' },
+      { label: 'D', text: 'Decline to participate in the patient\'s care due to personal beliefs about the refusal' },
+    ],
+    correct: ['A'],
+    rationale: 'A competent patient\'s autonomous refusal of treatment — including blood products — must be honored. The nurse\'s role is to document the informed refusal and ensure the surgical team is aware. See Chapters 3 and 5.',
+  },
+  {
+    n: 9, type: 'single',
+    stem: 'A nurse is preparing discharge education for a patient whose primary language is Somali and whose reading level was estimated at 5th grade during a prior visit. The patient has heart failure. Which materials are most appropriate?',
+    options: [
+      { label: 'A', text: 'Standard English-language heart failure handouts available on the hospital\'s intranet' },
+      { label: 'B', text: 'Translated materials at a 5th–6th grade reading level with visual diagrams, reviewed using teach-back with a professional interpreter' },
+      { label: 'C', text: 'A detailed printout of the patient\'s medication list in English, reviewed with the patient\'s adult daughter' },
+      { label: 'D', text: 'A referral to the hospital\'s online patient education portal in English' },
+    ],
+    correct: ['B'],
+    rationale: 'Evidence-based practice requires translated materials at an appropriate reading level with visual supports, reviewed using professional interpreter-assisted teach-back. Using family as interpreters is not appropriate for complex discharge education. See Section 5.3.3.',
+  },
+  {
+    n: '10',
+    type: 'ngn_open',
+    stem: '<strong>(NGN Extended Thinking — Self-Assessed)</strong> A nurse working on a medical-surgical unit notices that Black patients with pain after surgery consistently receive lower doses of as-needed opioids than White patients with comparable diagnoses and vital signs. The unit\'s PRN analgesic protocol allows nurses discretion in dosing within a specified range. Chart review confirms a pattern across the past six months. The charge nurse agrees the pattern is concerning but says, "This is above our pay grade."',
+    subquestions: [
+      {
+        label: 'a',
+        prompt: 'What <strong>immediate patient safety action</strong> should the nurse take at the bedside?',
+        answer: 'Assess each assigned patient\'s pain individually and administer analgesics per protocol based on clinical assessment, without allowing racial patterns to influence individual clinical decisions.',
+      },
+      {
+        label: 'b',
+        prompt: 'What <strong>institutional structure</strong> should the nurse engage to address the systemic pattern?',
+        answer: 'The quality improvement committee, patient safety officer, or ethics committee. Shared governance structures and unit-based councils are also appropriate entry points.',
+      },
+      {
+        label: 'c',
+        prompt: 'What type of <strong>data collection</strong> would help quantify the disparity for a quality improvement proposal?',
+        answer: 'Stratified retrospective chart review documenting PRN opioid administration by race, pain scores, diagnosis, and vital signs — to establish whether the disparity is statistically significant after controlling for clinical variables.',
+      },
+      {
+        label: 'd',
+        prompt: 'How does this situation illustrate the relationship between <strong>individual clinical practice</strong> and <strong>systemic health equity advocacy</strong> described in Section 5.8?',
+        answer: 'Individual clinical advocacy requires administering equitable care at the bedside (treating each patient\'s pain based solely on clinical assessment). Systemic equity advocacy requires bringing the pattern to institutional attention through data and formal channels — because individual bedside action alone cannot eliminate a structural disparity. Both levels are professional obligations. See Section 5.8.1.',
+      },
+    ],
+  },
+];
+
+function renderQuestion(q, parentLabel) {
+  const id = parentLabel ? parentLabel : 'q' + q.n;
+  const isSATA = q.type === 'sata';
+  const inputType = isSATA ? 'checkbox' : 'radio';
+  let optionsHtml = '';
+  q.options.forEach(opt => {
+    optionsHtml += `
+      <label class="opt-label" id="${id}_opt${opt.label}" style="display:flex;align-items:flex-start;gap:0.6rem;padding:0.6rem 0.75rem;border-radius:0.5rem;border:1.5px solid #e2e8f0;margin-bottom:0.5rem;cursor:pointer;">
+        <input type="${inputType}" name="${id}" value="${opt.label}" style="margin-top:0.2rem;flex-shrink:0;accent-color:#6366f1;" />
+        <span><strong>${opt.label}.</strong> ${opt.text}</span>
+      </label>`;
+  });
+  return `
+    <div class="question-card" id="card_${id}" style="background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.25rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">${parentLabel ? parentLabel : 'Question ' + q.n}${isSATA ? ' — Select all that apply' : ''}</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1rem;">${q.stem}</p>
+      <div class="options-wrap">${optionsHtml}</div>
+      <div class="rationale-box" id="rat_${id}" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;line-height:1.6;"></div>
+    </div>`;
+}
+
+function renderOpenNGN(q) {
+  let subsHtml = q.subquestions.map(sq => `
+    <div style="margin-bottom:1rem;">
+      <p style="font-weight:700;color:#1e293b;margin-bottom:0.35rem;">(${sq.label}) ${sq.prompt}</p>
+      <details style="border:1px solid #c7d2fe;border-radius:0.5rem;overflow:hidden;">
+        <summary style="padding:0.6rem 1rem;background:#eef2ff;cursor:pointer;font-size:0.875rem;font-weight:600;color:#6366f1;">Show model answer</summary>
+        <div style="padding:0.75rem 1rem;font-size:0.875rem;line-height:1.6;color:#1e293b;">${sq.answer}</div>
+      </details>
+    </div>`).join('');
+  return `
+    <div style="background:#f0f4ff;border:2px solid #c7d2fe;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.5rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">Question 10 — NGN Extended Thinking (Self-Assessed)</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1.25rem;">${q.stem}</p>
+      ${subsHtml}
+    </div>`;
+}
+
+function renderQuiz() {
+  const form = document.getElementById('quiz-form');
+  let html = '';
+  QUESTIONS.forEach(q => {
+    html += q.type === 'ngn_open' ? renderOpenNGN(q) : renderQuestion(q, null);
+  });
+  form.innerHTML = html;
+}
+
+function collectAnswers() {
+  const ans = {};
+  QUESTIONS.filter(q => q.type !== 'ngn_open').forEach(q => {
+    const id = 'q' + q.n;
+    ans[id] = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value);
+  });
+  return ans;
+}
+
+function gradeAnswers(answers) {
+  let total = 0, correct = 0;
+  const results = {};
+  QUESTIONS.filter(q => q.type !== 'ngn_open').forEach(q => {
+    const id = 'q' + q.n;
+    total++;
+    const given = (answers[id] || []).slice().sort();
+    const expected = q.correct.slice().sort();
+    const isCorrect = JSON.stringify(given) === JSON.stringify(expected);
+    if (isCorrect) correct++;
+    results[id] = { isCorrect, given, expected, rationale: q.rationale };
+  });
+  return { total, correct, results };
+}
+
+function showFeedback(graded) {
+  Object.entries(graded.results).forEach(([id, res]) => {
+    const card = document.getElementById('card_' + id);
+    if (!card) return;
+    card.querySelectorAll('.opt-label').forEach(lbl => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      inp.disabled = true;
+      const val = inp.value;
+      if (res.expected.includes(val) && res.given.includes(val)) { lbl.style.borderColor = '#16a34a'; lbl.style.background = '#f0fdf4'; }
+      else if (res.expected.includes(val)) { lbl.style.borderColor = '#d97706'; lbl.style.background = '#fffbeb'; }
+      else if (res.given.includes(val)) { lbl.style.borderColor = '#dc2626'; lbl.style.background = '#fef2f2'; }
+    });
+    const ratBox = document.getElementById('rat_' + id);
+    if (ratBox) {
+      ratBox.style.display = 'block';
+      ratBox.style.background = res.isCorrect ? '#f0fdf4' : '#fef2f2';
+      ratBox.style.borderLeft = '4px solid ' + (res.isCorrect ? '#16a34a' : '#dc2626');
+      ratBox.style.color = res.isCorrect ? '#166534' : '#991b1b';
+      ratBox.innerHTML = '<strong>' + (res.isCorrect ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + res.rationale;
+    }
+    card.style.borderColor = res.isCorrect ? '#bbf7d0' : '#fecaca';
+  });
+}
+
+function submitQuiz() {
+  const answers = collectAnswers();
+  const graded = gradeAnswers(answers);
+  showFeedback(graded);
+  const pct = Math.round((graded.correct / graded.total) * 100);
+  const banner = document.getElementById('score-banner');
+  document.getElementById('score-text').textContent = graded.correct + ' / ' + graded.total + ' correct (' + pct + '%) — Q10 is self-assessed';
+  document.getElementById('score-sub').textContent = pct >= 80 ? '🎉 Excellent work!' : pct >= 60 ? '📚 Review the highlighted sections.' : '🔍 Review Chapter 5 carefully.';
+  banner.style.display = 'block';
+  banner.style.background = pct >= 80 ? '#f0fdf4' : pct >= 60 ? '#fffbeb' : '#fef2f2';
+  banner.style.border = '1px solid ' + (pct >= 80 ? '#bbf7d0' : pct >= 60 ? '#fde68a' : '#fecaca');
+  document.getElementById('score-text').style.color = pct >= 80 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b';
+  document.getElementById('score-sub').style.color = pct >= 80 ? '#15803d' : pct >= 60 ? '#b45309' : '#b91c1c';
+  banner.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('reset-btn').style.display = 'inline-block';
+}
+
+function resetQuiz() {
+  document.getElementById('score-banner').style.display = 'none';
+  document.getElementById('submit-btn').style.display = 'inline-block';
+  document.getElementById('reset-btn').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', renderQuiz);
+</script>
