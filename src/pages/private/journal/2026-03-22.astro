@@ -1,5 +1,6 @@
 ---
 import JournalEntry from '../../../layouts/JournalEntry.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 ---
 
 <JournalEntry
@@ -48,8 +49,19 @@ import JournalEntry from '../../../layouts/JournalEntry.astro';
     To ensure I have a permanent copy for reference throughout the course, I will be
     sending the documentation to myself via email for safekeeping. I have also built an
     interactive version of the concept map template into the
-    <a href="/tools/concept-map" style="color:#6366f1; font-weight:600;">WGU Nursing Tools</a>
+    <a href={`${base}/tools/concept-map`} style="color:#6366f1; font-weight:600;">WGU Nursing Tools</a>
     section of this site, which allows any student to fill in the required fields and
     download or print a professionally formatted PDF for submission.
   </p>
+
+  <div style="margin-top:1.5rem; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.6rem; padding:1rem 1.25rem; font-size:0.875rem; color:#3730a3; display:flex; align-items:flex-start; gap:0.65rem;">
+    <span style="font-size:1.1rem; flex-shrink:0;">🔗</span>
+    <span>
+      <strong>Cross-reference:</strong> The clinical concept map documentation described above is
+      the basis for the interactive
+      <a href={`${base}/tools/concept-map`} style="color:#4f46e5; font-weight:600;">WGU Clinical Concept Map tool</a>
+      available under <em>WGU Nursing Tools</em>. That tool links back to this entry as its
+      source of origin.
+    </span>
+  </div>
 </JournalEntry>

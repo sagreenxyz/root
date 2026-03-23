@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 ---
 
 <Layout title="Clinical Concept Map – WGU Nursing Tools" protected={false}>
@@ -228,6 +229,18 @@ import Layout from '../../layouts/Layout.astro';
       Fill in each section below, then click <strong>Print / Save as PDF</strong> to generate a
       professionally formatted document. All data stays in your browser — nothing is sent to any server.
     </p>
+  </div>
+
+  <!-- Cross-reference notice -->
+  <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.6rem; padding:1rem 1.25rem; margin-bottom:1.5rem; font-size:0.875rem; color:#3730a3; display:flex; align-items:flex-start; gap:0.65rem;" class="no-print">
+    <span style="font-size:1.1rem; flex-shrink:0;">📓</span>
+    <span>
+      <strong>Origin &amp; context:</strong> This tool is based on documentation shared by
+      <strong>Dr. Jen Scarpena</strong> via WebEx on <strong>March 22, 2026</strong> during a
+      pre-assessment meeting for D439 – Foundations of Nursing. See the full account in the
+      <a href={`${base}/private/journal/2026-03-22`} style="color:#4f46e5; font-weight:600;">March 22, 2026 journal entry</a>
+      (sign-in required).
+    </span>
   </div>
 
   <!-- Sticky action bar -->
@@ -508,8 +521,8 @@ import Layout from '../../layouts/Layout.astro';
 
   function save() {
     var data = {};
-    document.querySelectorAll('[id], input, textarea').forEach(function (el) {
-      if (el.id) data[el.id] = el.value;
+    document.querySelectorAll('input[id], textarea[id]').forEach(function (el) {
+      data[el.id] = el.value;
     });
     try { sessionStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch (_) {}
   }
@@ -534,6 +547,13 @@ import Layout from '../../layouts/Layout.astro';
     el.style.height = el.scrollHeight + 'px';
   }
 
+  /* ── Date helper ─────────────────────────────────────────────── */
+  function isoToDisplay(iso) {
+    if (!iso) return '';
+    var parts = iso.split('-');
+    return parts[1] + '/' + parts[2] + '/' + parts[0];
+  }
+
   /* ── Sync student info to print card ────────────────────────── */
   function syncPrintCard() {
     var nameEl = document.getElementById('student-name');
@@ -542,12 +562,7 @@ import Layout from '../../layouts/Layout.astro';
     var printDate = document.getElementById('print-date');
     if (printName) printName.textContent = nameEl ? nameEl.value : '';
     if (printDate && dateEl) {
-      if (dateEl.value) {
-        var parts = dateEl.value.split('-');
-        printDate.textContent = parts[1] + '/' + parts[2] + '/' + parts[0];
-      } else {
-        printDate.textContent = '';
-      }
+      printDate.textContent = isoToDisplay(dateEl.value);
     }
   }
 
@@ -583,7 +598,7 @@ import Layout from '../../layouts/Layout.astro';
       var mm = String(today.getMonth() + 1).padStart(2, '0');
       var dd = String(today.getDate()).padStart(2, '0');
       dateEl.value = today.getFullYear() + '-' + mm + '-' + dd;
-      syncPrintCard();
+      syncPrintCard();   // isoToDisplay is used inside syncPrintCard
       save();
     }
   }
