@@ -363,6 +363,40 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       <option value="7">Case 8 · Post-Op Hip Fracture (ORIF)</option>
       <option value="8">Case 9 · Acute Ischemic Stroke (CVA)</option>
       <option value="9">Case 10 · Acute Appendicitis (Pre-Op)</option>
+      <option value="10">Case 11 · Sepsis / Septic Shock</option>
+      <option value="11">Case 12 · Acute Kidney Injury (AKI)</option>
+      <option value="12">Case 13 · ST-Elevation Myocardial Infarction (STEMI)</option>
+      <option value="13">Case 14 · Pulmonary Embolism (PE)</option>
+      <option value="14">Case 15 · Diabetic Ketoacidosis (DKA)</option>
+      <option value="15">Case 16 · Status Epilepticus</option>
+      <option value="16">Case 17 · Anaphylaxis</option>
+      <option value="17">Case 18 · Acute Pancreatitis</option>
+      <option value="18">Case 19 · Upper Gastrointestinal Bleed</option>
+      <option value="19">Case 20 · Alcohol Withdrawal Syndrome</option>
+      <option value="20">Case 21 · Traumatic Brain Injury (TBI)</option>
+      <option value="21">Case 22 · Sickle Cell Acute Pain Crisis</option>
+      <option value="22">Case 23 · Pediatric Asthma Exacerbation</option>
+      <option value="23">Case 24 · Septic Shock</option>
+      <option value="24">Case 25 · Traumatic Brain Injury (TBI)</option>
+      <option value="25">Case 26 · Acute Kidney Injury (AKI)</option>
+      <option value="26">Case 27 · COPD Exacerbation</option>
+      <option value="27">Case 28 · Diabetic Ketoacidosis – Pediatric</option>
+      <option value="28">Case 29 · Chronic Kidney Disease – Fluid Overload</option>
+      <option value="29">Case 30 · Preeclampsia with Severe Features</option>
+      <option value="30">Case 31 · Pressure Injury (Stage III/IV)</option>
+      <option value="31">Case 32 · Post-Op Total Knee Replacement (TKA)</option>
+      <option value="32">Case 33 · Cellulitis / Skin &amp; Soft Tissue Infection</option>
+      <option value="33">Case 34 · Thyroid Storm (Thyrotoxicosis)</option>
+      <option value="34">Case 35 · Major Burns / Thermal Injury</option>
+      <option value="35">Case 36 · Opioid Overdose / Naloxone Response</option>
+      <option value="36">Case 37 · Alcohol Withdrawal / Delirium Tremens</option>
+      <option value="37">Case 38 · Acute Psychiatric Crisis / Suicidal Ideation</option>
+      <option value="38">Case 39 · Neonatal Hyperbilirubinemia</option>
+      <option value="39">Case 40 · Hip Fracture – Elderly Fall</option>
+      <option value="40">Case 41 · Heart Failure Exacerbation (Acute Decompensated HF)</option>
+      <option value="41">Case 42 · Cancer Pain / Palliative Care</option>
+      <option value="42">Case 43 · Community-Acquired Pneumonia (CAP)</option>
+      <option value="43">Case 44 · Hemorrhagic Stroke (ICH)</option>
     </select>
     <button class="btn btn-outline" onclick="loadCase()">📂 Load Case</button>
   </div>
@@ -1170,6 +1204,1124 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         'Pre-op checklist completed; IV access patent; pre-op antibiotics administered; consent signed; patient transported to OR at 14:30.',
         'No signs of perforation throughout pre-operative period; abdomen tender but localized to RLQ; temperature stable at 38.2 °C.',
         'Patient verbalized understanding of surgery and post-operative care; expressed readiness for OR. All pre-operative goals met.',
+      ],
+    },
+    /* 10 – Sepsis / Septic Shock */
+    {
+      focusTopic: 'Sepsis / septic shock',
+      pathophysiology: 'Sepsis is a life-threatening organ dysfunction caused by a dysregulated host response to infection. A pathogen (bacterial, viral, fungal) triggers a massive systemic inflammatory response, releasing cytokines (TNF-α, IL-1, IL-6) that cause widespread vasodilation, increased vascular permeability, and distributive shock. Myocardial depression further reduces cardiac output. The result is global tissue hypoxia, lactic acidosis, and multi-organ failure if untreated. Septic shock is sepsis plus refractory hypotension requiring vasopressors with a lactate >2 mmol/L. Early recognition and Hour-1 Bundle (blood cultures, broad-spectrum antibiotics, IV fluids, vasopressors, lactate measurement) are the cornerstones of nursing management.',
+      riskFactors: [
+        'Age >65 years or immunocompromised state (chemotherapy, HIV, long-term steroids) — impaired infection clearance',
+        'Indwelling devices (urinary catheters, central lines, endotracheal tubes) — portals of entry for pathogens',
+        'Chronic comorbidities (DM, CKD, liver disease, COPD) — reduced physiological reserve and immune function',
+      ],
+      cues: [
+        'Temperature 39.6 °C; HR 126 bpm; RR 26/min; BP 82/48 mmHg despite 2 L NS bolus; SpO₂ 91 % on 4 L NC',
+        'Lactate 4.8 mmol/L; WBC 22,400/mm³ with 18 % bands; creatinine 2.1 mg/dL (baseline 0.9); bilirubin 2.4 mg/dL; platelets 88,000/mm³',
+        'Altered mental status (GCS 12, confused, not following commands consistently); urine output 15 mL/hr for past 2 hours',
+        '68-year-old male nursing home resident with Foley catheter × 3 weeks; urinalysis: cloudy, WBC >100, nitrite positive; blood cultures × 2 drawn',
+      ],
+      concerning: [
+        'Lactate 4.8 mmol/L with refractory hypotension — meets septic shock criteria; mortality risk >25 %; vasopressor initiation and ICU transfer are immediate priorities',
+        'Oliguria (15 mL/hr) with rising creatinine — acute kidney injury developing; cumulative fluid balance and hourly urine output monitoring are critical to guide resuscitation',
+      ],
+      hypotheses: [
+        'Completing the Hour-1 Sepsis Bundle (blood cultures, broad-spectrum antibiotics, 30 mL/kg IV crystalloid, vasopressors, lactate recheck) will stabilize hemodynamics and reduce organ dysfunction progression.',
+        'Hourly urine output monitoring and serial lactate measurements will allow early detection of worsening organ perfusion and guide fluid/vasopressor titration.',
+        'Initiating norepinephrine per order and positioning the patient supine will increase mean arterial pressure (MAP) to ≥65 mmHg and improve end-organ perfusion.',
+      ],
+      solutions: [
+        'Hour-1 Bundle will be completed within 60 minutes of sepsis recognition; blood cultures drawn before first antibiotic dose.',
+        'MAP will reach ≥65 mmHg within 1 hour of vasopressor initiation; urine output will improve to >0.5 mL/kg/hr.',
+        'Lactate will trend downward toward <2 mmol/L within 6 hours, indicating improved tissue perfusion.',
+        'Patient will be transferred to ICU with continuous hemodynamic monitoring within 1 hour of septic shock identification.',
+      ],
+      actions: [
+        'Drew 2 sets of blood cultures (peripheral + central if available); obtained UA/culture; administered piperacillin-tazobactam 3.375 g IV and vancomycin 25 mg/kg IV per sepsis protocol.',
+        'Administered 30 mL/kg (2,100 mL) NS bolus over 30 minutes via large-bore IVs; reassessed BP, HR, lung sounds, and urine output after bolus.',
+        'Initiated norepinephrine 0.1 mcg/kg/min via central line per order; titrated to maintain MAP ≥65 mmHg; placed Foley for strict hourly output measurement.',
+        'Notified intensivist and arranged ICU transfer; applied continuous cardiac monitoring; rechecked lactate at 2 hours (3.1 mmol/L — downtrending); documented all Bundle elements with timestamps.',
+      ],
+      outcomes: [
+        'Hour-1 Bundle completed within 52 minutes of sepsis recognition; all cultures drawn before antibiotics administered.',
+        'MAP increased to 67 mmHg on norepinephrine 0.15 mcg/kg/min; urine output improved to 0.6 mL/kg/hr by hour 2.',
+        'Lactate trending down (4.8 → 3.1 → 2.2 mmol/L over 6 hours); mental status improving (GCS 14 at 4 hours).',
+        'Patient transferred to MICU; family updated; goals partially met — continued vasopressor support and serial organ function monitoring ongoing.',
+      ],
+    },
+    /* 11 – Acute Kidney Injury (AKI) */
+    {
+      focusTopic: 'Acute kidney injury (AKI)',
+      pathophysiology: 'AKI is an abrupt decline in glomerular filtration rate (GFR) over hours to days, classified by KDIGO criteria as a rise in serum creatinine ≥0.3 mg/dL within 48 hours or ≥1.5× baseline within 7 days, or urine output <0.5 mL/kg/hr for ≥6 hours. Causes are pre-renal (hypovolemia, decreased cardiac output), intrinsic renal (acute tubular necrosis from ischemia or nephrotoxins, glomerulonephritis), or post-renal (obstruction). In hospital-acquired AKI, pre-renal and ATN predominate. Tubular cells injured by ischemia or toxins lose ability to concentrate urine and regulate electrolytes, leading to fluid overload, hyperkalemia, metabolic acidosis, and uremia. Nursing priorities focus on identifying and removing the cause, protecting residual renal function, and preventing life-threatening electrolyte and fluid complications.',
+      riskFactors: [
+        'Exposure to nephrotoxic agents (NSAIDs, aminoglycosides, IV contrast, ACE inhibitors in hypotensive states) — directly injure tubular epithelium',
+        'Pre-existing CKD or DM — reduced renal reserve; even mild insults can precipitate AKI',
+        'Hypovolemia / hypotension (hemorrhage, sepsis, prolonged dehydration) — renal hypoperfusion triggers ischemic ATN',
+      ],
+      cues: [
+        'Creatinine 3.8 mg/dL (baseline 1.0 mg/dL, 2 weeks ago); BUN 64 mg/dL; K⁺ 5.9 mEq/L; HCO₃ 16 mEq/L; phosphorus 6.2 mg/dL',
+        'Urine output 180 mL in past 8 hours; urine dark amber, muddy brown casts on microscopy; weight up 4 kg from 3 days ago',
+        'Bilateral lower-extremity pitting edema 3+; crackles at bilateral lung bases; BP 162/96 mmHg; HR 94 bpm; SpO₂ 94 % on RA',
+        '74-year-old female with DM2, CKD stage 3 (baseline Cr 1.0); received IV contrast for CT angiogram 3 days ago; ibuprofen 600 mg TID for back pain × 2 weeks',
+      ],
+      concerning: [
+        'Potassium 5.9 mEq/L with rising creatinine — severe hyperkalemia risk; continuous cardiac monitoring for peaked T waves, wide QRS, or sine wave pattern is immediately required',
+        'Fluid overload with pulmonary crackles and SpO₂ 94 % — risk of flash pulmonary edema; strict fluid restriction and possible emergent dialysis if respiratory status deteriorates',
+      ],
+      hypotheses: [
+        'Discontinuing all nephrotoxic medications (ibuprofen, holding ACE inhibitors) and providing IV fluid resuscitation to restore euvolemia will remove the ongoing renal insult and improve perfusion.',
+        'Administering sodium polystyrene sulfonate or sodium zirconium cyclosilicate per order and continuous cardiac monitoring will manage hyperkalemia and prevent fatal arrhythmia.',
+        'Strict intake-and-output monitoring with daily weights and fluid restriction will prevent further fluid overload while the team evaluates need for dialysis.',
+      ],
+      solutions: [
+        'Potassium will decrease to <5.5 mEq/L within 4 hours; no cardiac arrhythmias will occur during monitoring period.',
+        'Urine output will increase to >0.5 mL/kg/hr within 6 hours of nephrotoxin discontinuation and appropriate fluid management.',
+        'Respiratory status will remain stable (SpO₂ ≥95 %) without need for emergent intubation.',
+        'Nephrology will be consulted within 2 hours of AKI recognition with trending labs and I&O data provided.',
+      ],
+      actions: [
+        'Discontinued ibuprofen and held lisinopril per nephrology recommendation; placed continuous cardiac monitor; 12-lead ECG obtained (no peaked T waves; QRS 94 ms).',
+        'Administered sodium zirconium cyclosilicate 10 g PO per order; administered calcium gluconate 1 g IV for cardioprotection per order; rechecked K⁺ in 2 hours (5.4 mEq/L).',
+        'Placed Foley catheter for strict hourly UO measurement; restricted fluids to 1 L/day per nephrology; recorded daily weight; tracked cumulative I&O every 4 hours.',
+        'Consulted nephrology (dialysis planning initiated); restricted dietary potassium and phosphorus; educated patient on AKI, nephrotoxin avoidance, and signs of worsening.',
+      ],
+      outcomes: [
+        'Potassium decreased to 5.1 mEq/L at 4 hours; no arrhythmias observed; cardiac monitor continued.',
+        'Urine output improved to 45 mL/hr by hour 8 after nephrotoxin discontinuation; creatinine trended to 3.1 mg/dL at 24 hours.',
+        'SpO₂ maintained 95–97 % on 2 L NC; no respiratory decompensation; diuresis cautiously initiated per nephrology.',
+        'Nephrology following; dialysis deferred pending further improvement; patient understanding of AKI and medication triggers verbalized.',
+      ],
+    },
+    /* 12 – ST-Elevation Myocardial Infarction (STEMI) */
+    {
+      focusTopic: 'ST-elevation myocardial infarction (STEMI)',
+      pathophysiology: 'STEMI results from complete occlusion of a coronary artery — most commonly by rupture of an atherosclerotic plaque and superimposed thrombus formation. Total occlusion causes transmural ischemia (affecting the full thickness of the myocardial wall), producing the classic ST-segment elevation on ECG in leads corresponding to the affected territory. Without rapid reperfusion (PCI goal <90 minutes from first medical contact), irreversible myocyte necrosis progresses from the subendocardium outward (the wavefront phenomenon). Troponin and CK-MB rise as myocyte membranes rupture. Complications include cardiogenic shock, life-threatening arrhythmias (VF, VT), heart block, acute mitral regurgitation, ventricular rupture, and HF. The single most important nursing priority is facilitating door-to-balloon time within the 90-minute benchmark.',
+      riskFactors: [
+        'Coronary artery disease with prior atherosclerosis — vulnerable plaque rupture is the proximate cause of most STEMIs',
+        'Hypertension, hyperlipidemia, DM2, and smoking — accelerate atherosclerotic plaque formation and instability',
+        'Male sex, age >45 (men) or >55 (women), family history of premature CAD — non-modifiable major risk factors',
+      ],
+      cues: [
+        'Crushing substernal chest pain 10/10, radiating to left jaw and arm × 45 minutes; diaphoresis; nausea; extreme anxiety ("I feel like I\'m dying")',
+        '12-lead ECG: ST elevation ≥2 mm in leads II, III, aVF (inferior STEMI); reciprocal ST depression in I, aVL; HR 98 bpm; BP 104/68 mmHg',
+        'Troponin I 0.12 ng/mL (rising; initial draw); K⁺ 3.8 mEq/L; SpO₂ 94 % on RA; RR 22/min; diaphoretic and pale',
+        '58-year-old male smoker; HTN; DM2; hyperlipidemia; no prior cardiac history; last meal 2 hours ago; symptom onset at rest',
+      ],
+      concerning: [
+        'Inferior STEMI with BP 104/68 mmHg — right ventricular infarction may be present (ST elevation in V4R confirms RV involvement); aggressive IV fluid administration and avoidance of nitrates are critical in RV MI',
+        'Time-sensitive emergency — every minute of delay increases infarct size; door-to-balloon time goal <90 min; immediate cath lab activation is the highest priority',
+      ],
+      hypotheses: [
+        'Immediate cath lab activation and PCI will restore coronary perfusion within 90 minutes, limiting myocardial necrosis and reducing mortality.',
+        'Administering aspirin 325 mg, P2Y12 inhibitor (ticagrelor/clopidogrel), and anticoagulation per STEMI protocol will prevent thrombus propagation during the peri-PCI period.',
+        'Continuous cardiac monitoring with a defibrillator immediately available will allow rapid detection and treatment of life-threatening arrhythmias (VF/VT).',
+      ],
+      solutions: [
+        'Cath lab will be activated and patient will arrive in cath lab within 90 minutes of first medical contact.',
+        'Patient will receive aspirin 325 mg, ticagrelor 180 mg, and heparin bolus before transfer to cath lab.',
+        'Patient will remain in sinus rhythm without hemodynamically significant arrhythmias until PCI.',
+        'Pain will decrease to ≤4/10 with morphine and after reperfusion; SpO₂ will remain ≥95 %.',
+      ],
+      actions: [
+        'Activated STEMI alert at 10:14; placed patient on continuous cardiac monitor with defibrillator at bedside; 12-lead ECG transmitted to cardiologist; established two large-bore IVs.',
+        'Administered aspirin 325 mg PO (chewed), ticagrelor 180 mg PO, heparin 5,000-unit bolus IV per STEMI order set; withheld nitrates given BP 104/68 mmHg and inferior STEMI with possible RV involvement.',
+        'Administered morphine 4 mg IV for pain; supplemental O₂ 4 L NC (SpO₂ improved to 96 %); obtained right-sided ECG (V4R: ST elevation 1.5 mm — confirmed RV MI); administered 500 mL NS fluid challenge per cardiology.',
+        'Transported patient to cath lab at 10:41; bedside handoff to cath lab team with complete report; family updated by charge RN; post-PCI monitoring plan communicated.',
+      ],
+      outcomes: [
+        'STEMI alert activated within 10 minutes of ECG interpretation; patient in cath lab at 10:41 (27 min from arrival) — door-to-balloon 68 minutes, within benchmark.',
+        'Culprit lesion (RCA) successfully stented; TIMI 3 flow restored; troponin peaked at 42 ng/mL; EF 45 % post-procedure.',
+        'Remained in sinus rhythm throughout peri-PCI period; no VF or VT; BP improved to 118/74 mmHg post-reperfusion.',
+        'Pain resolved post-PCI; SpO₂ 97 % on RA; patient transferred to CCU for monitoring; goals met.',
+      ],
+    },
+    /* 13 – Pulmonary Embolism (PE) */
+    {
+      focusTopic: 'Pulmonary embolism (PE)',
+      pathophysiology: 'PE occurs when a thrombus (most commonly from the deep veins of the legs or pelvis — DVT) embolizes to the pulmonary vasculature, obstructing blood flow to one or more pulmonary segments. The obstruction increases right ventricular afterload; if large enough, the RV dilates and fails (acute cor pulmonale). V/Q mismatch and hypoxemia result from perfused but unembolized lung receiving redistributed blood flow, while embolized segments are ventilated but unperfused. Massive PE (hemodynamic compromise) carries a 30-day mortality of 30–65 % and requires systemic thrombolysis or surgical embolectomy. Sub-massive PE (RV dysfunction without shock) and low-risk PE are typically managed with anticoagulation. Nursing priorities include hemodynamic monitoring, anticoagulation management, and fall/bleeding precautions.',
+      riskFactors: [
+        'Prolonged immobility (hospitalization, long-haul flight, post-surgical bed rest) — stasis is a key component of Virchow\'s Triad',
+        'Recent surgery (especially orthopedic, abdominal, or pelvic procedures) — endothelial injury and hypercoagulability',
+        'Oral contraceptive use, hormone replacement therapy, pregnancy — estrogen-induced hypercoagulable state',
+      ],
+      cues: [
+        'Sudden onset dyspnea; pleuritic chest pain (sharp, worse with inspiration, right sided); HR 122 bpm; RR 28/min; BP 100/66 mmHg; SpO₂ 88 % on RA',
+        'CT pulmonary angiography (CTPA): bilateral pulmonary emboli with saddle embolus at main pulmonary artery bifurcation; RV/LV ratio 1.4 on CT (RV dilation)',
+        'Troponin I 0.48 ng/mL; BNP 580 pg/mL; ABG: pH 7.48, PaO₂ 58, PaCO₂ 28 (respiratory alkalosis with hypoxemia); ECG: S1Q3T3 pattern, sinus tachycardia',
+        '42-year-old female; 10 days post total hip replacement; right calf pain × 3 days (DVT); on thromboprophylaxis with enoxaparin 40 mg daily (missed last 2 doses)',
+      ],
+      concerning: [
+        'Massive PE with hemodynamic compromise (BP 100/66, SpO₂ 88 %) and RV dilation — systemic thrombolysis versus emergent embolectomy is being considered; resuscitation equipment must be immediately available',
+        'Troponin elevation and BNP 580 pg/mL confirm RV strain — risk of sudden cardiac arrest from pulseless electrical activity; continuous monitoring and code readiness are essential',
+      ],
+      hypotheses: [
+        'Immediate anticoagulation with unfractionated heparin (UFH) IV infusion will prevent further thrombus propagation while the team evaluates need for thrombolysis or embolectomy.',
+        'Supplemental oxygen and positioning (HOB 30°) will improve SpO₂ toward ≥94 % and reduce hypoxemic drive.',
+        'Hemodynamic monitoring every 15 minutes and continuous cardiac monitoring will allow rapid identification of deterioration requiring emergent intervention.',
+      ],
+      solutions: [
+        'IV heparin infusion will be initiated per weight-based protocol within 30 minutes of PE diagnosis.',
+        'SpO₂ will improve to ≥94 % with supplemental oxygen; patient will not require mechanical ventilation in the immediate period.',
+        'Hemodynamic status will be stable (BP ≥90 mmHg systolic) or patient will be escalated to ICU/interventional therapy within 1 hour if deteriorating.',
+        'Patient and family will be educated on PE, anticoagulation therapy, and fall/bleeding precautions before discharge planning.',
+      ],
+      actions: [
+        'Placed patient on high-flow O₂ 15 L via non-rebreather mask (SpO₂ improved to 92 %); placed in HOB 30–45° position; established second large-bore IV; continuous cardiac monitoring initiated.',
+        'Administered UFH 80 units/kg bolus (6,720 units) IV then infusion at 18 units/kg/hr (1,512 units/hr) per weight-based protocol; aPTT ordered at 6 hours; held all IM injections and blood draws from arms if possible.',
+        'Notified interventional radiology and intensivist of hemodynamic compromise; prepared for potential tPA administration per massive PE protocol; placed crash cart at bedside.',
+        'Monitored VS and SpO₂ every 15 minutes; assessed for signs of RV failure (JVD, worsening hypotension); tracked urine output hourly; implemented fall/bleeding precautions; educated patient on PE and anticoagulation.',
+      ],
+      outcomes: [
+        'Heparin initiated within 25 minutes of CTPA result; aPTT therapeutic (68 sec) at 6 hours.',
+        'SpO₂ improved to 93–95 % on NRB; BP stabilized at 106/70 mmHg without vasopressors; tPA deferred pending continued monitoring.',
+        'No cardiac arrest events; patient transferred to ICU for catheter-directed thrombolysis; goals partially met — ongoing hemodynamic support required.',
+        'Family updated; anticoagulation plan explained; DVT prophylaxis review scheduled; PE education initiated.',
+      ],
+    },
+    /* 14 – Diabetic Ketoacidosis (DKA) */
+    {
+      focusTopic: 'Diabetic ketoacidosis (DKA)',
+      pathophysiology: 'DKA is an acute metabolic emergency of type 1 DM (and less commonly type 2 DM) characterized by the triad of hyperglycemia (typically >250 mg/dL), anion-gap metabolic acidosis, and ketonemia/ketonuria. In the absence of sufficient insulin, peripheral glucose uptake falls; counter-regulatory hormones (glucagon, cortisol, catecholamines) drive hepatic glucose production and ketogenesis. Free fatty acids are converted to ketone bodies (β-hydroxybutyrate, acetoacetate), leading to the anion-gap acidosis. Osmotic diuresis causes profound dehydration (typically 3–6 L deficit), hyponatremia, and total-body potassium depletion (even when serum K⁺ appears normal or elevated, due to transcellular shift from acidosis). With insulin therapy, K⁺ shifts back into cells and can drop precipitously, causing fatal hypokalemia — so potassium replacement before or with insulin initiation is critical.',
+      riskFactors: [
+        'Type 1 DM with missed insulin doses (sick-day management failure, insulin pump malfunction, deliberate omission)',
+        'Intercurrent illness or infection — increases counter-regulatory hormones, dramatically raising insulin requirements',
+        'New-onset type 1 DM — DKA may be the index presentation in up to 30 % of newly diagnosed patients',
+      ],
+      cues: [
+        'Blood glucose 622 mg/dL; pH 7.18; HCO₃ 8 mEq/L; anion gap 24 mEq/L; β-hydroxybutyrate 6.8 mmol/L; urine ketones large',
+        'K⁺ 5.2 mEq/L (elevated but total body depleted); Na⁺ 129 mEq/L (corrected Na 136); Cr 1.6 mg/dL; BUN 28 mg/dL; serum osmolality 318 mOsm/kg',
+        'Kussmaul respirations (deep, rapid); fruity breath odor; nausea, vomiting × 12 hours; diffuse abdominal pain; weight down 4 kg from 3 days ago',
+        '19-year-old female with type 1 DM; sick for 3 days (URI); did not take insulin for 2 days ("afraid to take it if not eating"); decreased LOC — responds to voice',
+      ],
+      concerning: [
+        'pH 7.18 with anion gap 24 — severe DKA; rapid deterioration in mental status possible if cerebral edema develops (especially a risk with aggressive free water correction in young patients)',
+        'K⁺ 5.2 mEq/L but total-body potassium severely depleted — once insulin infusion is started, K⁺ will drop rapidly; must supplement potassium before starting insulin if K⁺ <3.5, and monitor K⁺ hourly',
+      ],
+      hypotheses: [
+        'IV fluid resuscitation (0.9 % NS initially, then 0.45 % NS with dextrose once glucose <250 mg/dL) will correct dehydration and improve renal perfusion.',
+        'Insulin infusion at 0.1 units/kg/hr after confirming K⁺ ≥3.5 mEq/L will suppress ketogenesis and reduce blood glucose toward target (150–200 mg/dL during DKA treatment).',
+        'Hourly monitoring of glucose, electrolytes, and anion gap will detect complications (hypokalemia, hypoglycemia, cerebral edema) and allow timely intervention.',
+      ],
+      solutions: [
+        'Blood glucose will decrease at a rate of 50–75 mg/dL/hr toward 150–200 mg/dL; glucose will not drop below 150 mg/dL before ketosis is resolved.',
+        'Potassium will be maintained 3.5–5.0 mEq/L throughout insulin therapy; no cardiac arrhythmias will occur.',
+        'Anion gap will close toward normal (<12 mEq/L) and pH will rise to >7.30 within 6–12 hours of DKA protocol initiation.',
+        'Patient will be alert and oriented, tolerating PO intake, and transitioned to subcutaneous insulin before IV insulin discontinuation.',
+      ],
+      actions: [
+        'Administered 1 L 0.9 % NS bolus over 1 hour per DKA protocol; established continuous cardiac monitoring; rechecked K⁺ at 1 hour (K⁺ 5.2 — safe to start insulin).',
+        'Initiated regular insulin infusion 0.1 units/kg/hr (5.5 units/hr) per DKA protocol; added 20 mEq KCl to each liter of IV fluid; switched to 0.45 % NS at 250 mL/hr.',
+        'Monitored blood glucose hourly via point-of-care testing; obtained BMP every 2 hours; monitored anion gap serially (closed to 14 at 4 hours, 10 at 8 hours); monitored urine output ≥0.5 mL/kg/hr.',
+        'Changed IV fluid to D5-0.45 % NS when glucose reached 220 mg/dL; transitioned patient to subcutaneous glargine + lispro when able to tolerate PO; educated on sick-day insulin management and when to seek care.',
+      ],
+      outcomes: [
+        'Glucose decreased from 622 to 198 mg/dL over 8 hours; anion gap closed to 10; pH improved to 7.32 at 10 hours.',
+        'K⁺ maintained 3.8–4.4 mEq/L throughout insulin infusion; no arrhythmias observed.',
+        'Patient alert, oriented, tolerating clear liquids at 10 hours; transitioned to subcutaneous insulin at 12 hours; IV insulin discontinued 2 hours after SQ given.',
+        'Patient verbalized understanding of sick-day management; endocrinology follow-up arranged; DKA goals met.',
+      ],
+    },
+    /* 15 – Status Epilepticus */
+    {
+      focusTopic: 'Status epilepticus',
+      pathophysiology: 'Status epilepticus (SE) is defined as a seizure lasting ≥5 minutes, or two or more seizures without return to baseline between them. Prolonged seizure activity causes an imbalance between excitatory (glutamate/NMDA) and inhibitory (GABA) neurotransmission — GABA-A receptors internalize, while NMDA receptors up-regulate, making subsequent seizures progressively harder to terminate. Sustained electrical activity causes massive neuronal metabolic demand, leading to hypoxia, lactic acidosis, hyperthermia, rhabdomyolysis, and neurotoxicity. After 30–60 minutes, systemic decompensation (hypotension, arrhythmia, pulmonary edema) and irreversible neuronal injury occur. The first-line treatment is a benzodiazepine within 5 minutes; second-line is fosphenytoin/valproate/levetiracetam; third-line is anesthetic infusion (propofol, midazolam, pentobarbital) with EEG monitoring for refractory SE.',
+      riskFactors: [
+        'Known epilepsy with subtherapeutic antiepileptic drug (AED) levels — most common cause of SE in epilepsy patients',
+        'Acute CNS insults (stroke, TBI, CNS infection, hypertensive encephalopathy) — trigger seizures in structurally compromised brain',
+        'Metabolic derangements (hyponatremia, hypoglycemia, hypocalcemia, uremia, alcohol withdrawal) — lower seizure threshold',
+      ],
+      cues: [
+        'Witnessed tonic-clonic seizure with loss of consciousness; seizure duration now 8 minutes; no sign of termination; eye deviation right; rhythmic jerking of all four extremities',
+        'SpO₂ 84 % (jaw clenched, airway partially obstructed); HR 148 bpm; BP 184/106 mmHg; temperature 38.1 °C; fingerstick glucose 94 mg/dL',
+        '28-year-old male with known epilepsy (on levetiracetam); missed doses for 3 days; no prior episodes of SE; levetiracetam level pending; EMS activated by bystander',
+        'Patient postictal/unresponsive between episode clusters; no IV access in the field; last known normal 15 minutes ago; no trauma; no alcohol/drug use reported',
+      ],
+      concerning: [
+        'SpO₂ 84 % with airway compromise during prolonged seizure — immediate airway management (jaw thrust, suction, NPA or OPA, BVM if needed) and preparation for RSI are critical; hypoxia potentiates neuronal injury',
+        'Seizure duration now ≥8 minutes — benzodiazepine must be given immediately (IM midazolam or IV lorazepam); each minute of delay significantly worsens neurological outcome and treatment resistance',
+      ],
+      hypotheses: [
+        'Administering IM midazolam 10 mg (or lorazepam 4 mg IV once access obtained) within the next 2 minutes will terminate the seizure and allow airway stabilization.',
+        'Protecting the airway (suction, jaw thrust, supplemental O₂, preparing for intubation) and continuous SpO₂ monitoring will prevent hypoxic brain injury during the postictal period.',
+        'Obtaining IV access and administering levetiracetam 60 mg/kg IV (second-line agent) will prevent seizure recurrence while the team investigates the precipitating cause.',
+      ],
+      solutions: [
+        'Seizure will terminate within 5 minutes of benzodiazepine administration.',
+        'SpO₂ will improve to ≥94 % with airway maneuvers and supplemental oxygen; endotracheal intubation will be performed if SpO₂ remains <90 %.',
+        'IV access will be established within 2 minutes for second-line AED administration; levetiracetam will be infused within 20 minutes of benzodiazepine.',
+        'Neurological status (LOC, orientation, focal deficits) will be assessed and documented every 15 minutes in the postictal period.',
+      ],
+      actions: [
+        'Immediately placed patient on side (lateral recumbent position); applied jaw thrust and NPA; suctioned secretions; applied 100 % O₂ via BVM; SpO₂ improved to 91 %.',
+        'Administered midazolam 10 mg IM (anterior thigh) at 8-minute mark; seizure terminated at 11 minutes; placed bite block; established 18-gauge peripheral IV.',
+        'Administered levetiracetam 3,000 mg (60 mg/kg × 50 kg = 3,000 mg, max 4,500 mg) IV over 15 minutes per neurology order; obtained STAT glucose, BMP, AED levels, CT head.',
+        'Monitored neuro status every 15 minutes; continuous EEG monitoring applied for subclinical seizure detection; neurology team at bedside; family updated; ICU transfer arranged.',
+      ],
+      outcomes: [
+        'Seizure terminated 3 minutes after IM midazolam; patient entering postictal phase; no further clinical seizures observed.',
+        'SpO₂ improved to 95 % on 4 L NC by 20 minutes; intubation avoided; airway patent throughout postictal phase.',
+        'Levetiracetam level subtherapeutic (12 mcg/mL); IV loading dose administered; level 38 mcg/mL at 4 hours — therapeutic.',
+        'CT head negative for acute intracranial pathology; patient alert and oriented at 2 hours postictal; transferred to neuro-ICU for EEG monitoring. Goals met.',
+      ],
+    },
+    /* 16 – Anaphylaxis */
+    {
+      focusTopic: 'Anaphylaxis',
+      pathophysiology: 'Anaphylaxis is a severe, life-threatening systemic hypersensitivity reaction mediated primarily by IgE-triggered mast cell and basophil degranulation, releasing histamine, tryptase, prostaglandins, and leukotrienes. These mediators cause widespread vasodilation (distributive shock), increased vascular permeability (angioedema, urticaria, pulmonary edema), and bronchospasm (wheezing, stridor). Upper airway edema (laryngeal/epiglottic) can rapidly cause complete airway obstruction. Biphasic anaphylaxis (recurrence 1–8 hours later) occurs in up to 20 % of cases without apparent re-exposure. Epinephrine (IM, anterolateral thigh) is the only first-line treatment — it counteracts vasodilation, reduces airway edema, and reverses bronchospasm. Antihistamines and corticosteroids are adjuncts only and must not delay epinephrine. Nursing priorities focus on airway management, epinephrine administration, hemodynamic support, and monitoring for biphasic reaction.',
+      riskFactors: [
+        'Prior anaphylactic reaction — history is the strongest predictor; each subsequent reaction may be more severe',
+        'Allergy to common triggers (foods: peanut, tree nuts, shellfish; medications: penicillin, NSAIDs, contrast media; insect venom) — sensitized individuals at high risk',
+        'Asthma — associated with more severe respiratory manifestations of anaphylaxis',
+      ],
+      cues: [
+        'Acute urticaria, angioedema of lips and tongue; audible stridor; expiratory wheeze; patient clutching throat saying "I can\'t breathe"; SpO₂ 86 % on RA',
+        'HR 136 bpm; BP 74/44 mmHg; skin flushed, diffuse hives from chest to thighs; GI: nausea and cramping; patient received IV amoxicillin 30 minutes ago',
+        '34-year-old female; documented penicillin allergy (rash with amoxicillin in childhood); amoxicillin administered in error via wrong EMAR override; alert but extremely anxious',
+        'No epinephrine auto-injector at bedside; code cart immediately outside room; anesthesia notified; allergy alert band not in place at time of administration',
+      ],
+      concerning: [
+        'Stridor with SpO₂ 86 % — laryngeal angioedema is rapidly progressing; every second counts for airway management; epinephrine must be given immediately and anesthesia called for potential emergent intubation',
+        'BP 74/44 mmHg — distributive shock from massive vasodilation; IV access and aggressive fluid resuscitation are simultaneous priorities with airway management',
+      ],
+      hypotheses: [
+        'Administering epinephrine 0.3–0.5 mg IM (1:1,000, anterolateral thigh) immediately will reverse bronchospasm, reduce laryngeal edema, and increase vasomotor tone to treat anaphylactic shock.',
+        'Laying the patient supine with legs elevated (if respiratory compromise allows), supplemental O₂, and rapid IV fluid bolus will improve venous return and increase BP.',
+        'Continuous monitoring for biphasic anaphylaxis for ≥6 hours (with epinephrine and resuscitation equipment available) will allow detection and rapid treatment of recurrence.',
+      ],
+      solutions: [
+        'Epinephrine 0.3 mg IM will be administered within 60 seconds of anaphylaxis recognition.',
+        'SpO₂ will improve to ≥94 % within 5 minutes of epinephrine; stridor will diminish or resolve without emergent intubation.',
+        'BP will improve to ≥90 mmHg systolic within 5–10 minutes of epinephrine + fluid resuscitation.',
+        'Patient will be monitored ≥6 hours in ED/unit with epinephrine available for biphasic reaction; allergy updated in EMAR.',
+      ],
+      actions: [
+        'Called code/rapid response; administered epinephrine 0.5 mg IM (1:1,000) to anterolateral thigh at 09:32; positioned patient supine with legs elevated; 100 % O₂ via NRB mask applied; bag-valve mask at bedside.',
+        'Established two large-bore IVs; administered 1 L NS bolus rapidly; repeated epinephrine 0.5 mg IM at 09:37 (no improvement in BP); initiated norepinephrine infusion per physician order for refractory hypotension.',
+        'Administered diphenhydramine 50 mg IV and methylprednisolone 125 mg IV (adjuncts, after epinephrine); anesthesia performed nasotracheal intubation at 09:40 (complete laryngeal edema on laryngoscopy).',
+        'Updated allergy record (penicillin — anaphylaxis); completed incident report for medication error; educated family on anaphylaxis, epinephrine auto-injector prescription, and allergy identification; ICU transfer arranged for monitoring.',
+      ],
+      outcomes: [
+        'Epinephrine administered within 90 seconds of recognition; second dose given 5 minutes later for persistent hypotension.',
+        'Patient intubated at 09:40 due to complete laryngeal edema; SpO₂ improved to 99 % on ventilator; BP recovered to 102/66 mmHg on norepinephrine.',
+        'No biphasic reaction in 12-hour ICU observation; successfully extubated at 36 hours; discharged with epinephrine auto-injector prescription and allergy bracelet.',
+        'Allergy documented and allergy band placed; medication error reported to pharmacy and risk management; goals partially met — intubation required due to severity.',
+      ],
+    },
+    /* 17 – Acute Pancreatitis */
+    {
+      focusTopic: 'Acute pancreatitis',
+      pathophysiology: 'Acute pancreatitis is inflammation of the pancreas caused by premature intracellular activation of digestive enzymes (particularly trypsin), leading to autodigestion of pancreatic tissue. Common triggers include gallstones (obstructing the pancreatic duct) and alcohol (direct toxicity to acinar cells). The inflammatory cascade releases cytokines that cause local edema, hemorrhage, and fat necrosis; in severe cases, a systemic inflammatory response (SIRS) causes third-spacing of fluids, hypovolemia, ARDS, AKI, and multi-organ dysfunction. Ranson\'s and BISAP scoring systems estimate severity. Mild pancreatitis resolves with IV fluids and bowel rest; severe pancreatitis (necrotizing) may require ICU care, prolonged NPO, enteral nutrition via NJ tube, and surgical or endoscopic intervention. Pain management, hydration, and monitoring for complications (pseudocyst, infected necrosis, sepsis) are the primary nursing priorities.',
+      riskFactors: [
+        'Gallstone disease — obstructs the pancreatic duct at the ampulla of Vater, triggering enzyme activation',
+        'Chronic heavy alcohol use — most common cause of recurrent acute pancreatitis and chronic pancreatitis',
+        'Hypertriglyceridemia (>1,000 mg/dL), hypercalcemia, medications (azathioprine, valproic acid, HCTZ) — less common but significant triggers',
+      ],
+      cues: [
+        'Severe epigastric pain 9/10, radiating to the back, constant, onset 6 hours after fatty meal; nausea and vomiting × 5 episodes; unable to keep anything down',
+        'Lipase 3,840 U/L (>3× ULN); amylase 920 U/L; WBC 15,200/mm³; BUN 22 mg/dL; Cr 1.3 mg/dL; LDH 380 U/L; glucose 168 mg/dL',
+        'HR 112 bpm; BP 96/62 mmHg; RR 20/min; temperature 38.2 °C; abdomen rigid and diffusely tender; hypoactive bowel sounds; Grey Turner\'s sign (flank ecchymosis) absent',
+        '48-year-old male; heavy alcohol use (12+ drinks/day); gallstones on prior imaging; SpO₂ 93 % on RA; CT abdomen: peripancreatic fat stranding, no necrosis',
+      ],
+      concerning: [
+        'BP 96/62 mmHg with HR 112 — significant third-space fluid losses from retroperitoneal inflammation; aggressive early fluid resuscitation (lactated Ringer\'s 250–500 mL/hr) is the most important initial intervention',
+        'SpO₂ 93 % with tachycardia — early SIRS criteria met (HR >90, temp >38, RR >20); monitor for progression to ARDS (falling SpO₂, bilateral infiltrates) as a life-threatening complication',
+      ],
+      hypotheses: [
+        'Aggressive IV fluid resuscitation with LR 250–500 mL/hr for the first 24 hours will correct third-space losses, improve BP, and reduce BUN toward normal (marker of adequate resuscitation).',
+        'Maintaining strict NPO status, providing adequate IV analgesia, and positioning the patient in a comfortable position (knee-to-chest or fetal position) will reduce pain and prevent further stimulation of pancreatic secretion.',
+        'Serial monitoring of lipase, CBC, BMP, and organ function (Cr, SpO₂, LFTs) every 6–12 hours will enable early detection of severe pancreatitis complications (necrosis, ARDS, AKI).',
+      ],
+      solutions: [
+        'BP will increase to ≥100 mmHg systolic and HR will decrease to <100 bpm within 2 hours of IV fluid resuscitation.',
+        'Pain will decrease to ≤4/10 within 1 hour of IV analgesic administration; patient will be comfortable and tolerating NPO status.',
+        'SpO₂ will remain ≥95 % with supplemental O₂; signs of ARDS (new bilateral infiltrates, worsening hypoxia) will be identified and reported immediately.',
+        'Oral nutrition (low-fat soft diet) will be reintroduced within 48–72 hours if pain and ileus resolve and lipase trends down.',
+      ],
+      actions: [
+        'Established two large-bore IVs; initiated LR 500 mL/hr × 2 hours then 250 mL/hr per gastroenterology order; strict NPO; inserted Foley catheter for hourly urine output monitoring.',
+        'Administered morphine 4 mg IV q4h PRN for pain (reassessed q1h with NRS); administered ondansetron 4 mg IV q8h for nausea; placed patient in comfortable position (lateral with knees flexed).',
+        'Applied 2 L NC (SpO₂ improved to 96 %); monitored VS every 2 hours; obtained repeat BMP at 6 hours (BUN improved to 18, Cr stable at 1.1); checked serial BISAP score.',
+        'Educated patient on NPO rationale, alcohol cessation, and gallstone management; gastroenterology and surgery consulted; arranged daily weight and strict I&O monitoring.',
+      ],
+      outcomes: [
+        'BP improved to 108/70 mmHg and HR to 94 bpm within 2 hours of fluids; urine output maintained ≥0.5 mL/kg/hr.',
+        'Pain decreased to 4/10 with morphine at 1 hour; patient resting comfortably; vomiting resolved with antiemetics.',
+        'SpO₂ 96–98 % on 2 L NC; no signs of ARDS at 24 hours; lipase downtrending (3,840 → 1,420 U/L at 24 hours).',
+        'Clear liquid diet introduced at 48 hours; tolerated well; advanced to low-fat soft diet. Alcohol cessation counseling initiated. Goals met.',
+      ],
+    },
+    /* 18 – Upper Gastrointestinal Bleed */
+    {
+      focusTopic: 'Upper gastrointestinal bleed (UGIB)',
+      pathophysiology: 'UGIB refers to bleeding proximal to the ligament of Treitz (esophagus, stomach, duodenum). Common causes include peptic ulcer disease (PUD — most common, often from H. pylori or NSAIDs eroding mucosal protective barriers), esophageal varices (from portal hypertension in cirrhosis), Mallory-Weiss tears, and esophagitis. Peptic ulcer bleeding occurs when erosion exposes submucosal vessels; a Dieulafoy lesion is an aberrant large submucosal artery prone to erosion. Hematemesis (bright red or coffee-ground emesis), melena (tarry black stools — blood digested in upper GI tract), and hematochezia (if massive bleeding) are cardinal presentations. Hypovolemia from acute blood loss stimulates compensatory tachycardia and vasoconstriction (maintain BP initially), then hypotension with orthostatic changes. Esophageal variceal bleeds carry 15–25 % in-hospital mortality. Nursing priorities: volume resuscitation, monitoring hemodynamic stability, preparing for urgent endoscopy, and managing airway (aspiration risk).',
+      riskFactors: [
+        'NSAID or aspirin use — inhibit prostaglandin-mediated mucosal cytoprotection, predisposing to peptic ulceration',
+        'H. pylori infection — disrupts gastric mucosal defense; major cause of PUD',
+        'Cirrhosis and portal hypertension — leads to esophageal varices that rupture spontaneously with minimal provocation',
+      ],
+      cues: [
+        'Two episodes of hematemesis (bright red blood, ~500 mL total) in the past 2 hours; dizziness on sitting; melena × 2 stools today',
+        'HR 122 bpm; BP supine 106/72 mmHg, sitting 88/58 mmHg (significant orthostatic drop); RR 20/min; SpO₂ 95 % on RA; skin pale, cool, diaphoretic',
+        'Hemoglobin 7.8 g/dL (from 12.2 two weeks ago); platelets 88,000/mm³; INR 1.8; BUN 44 mg/dL; Cr 1.0 mg/dL; BUN:Cr ratio 44 (suggests upper GI source)',
+        '58-year-old male with known cirrhosis (Child-Pugh B); splenomegaly; on propranolol 40 mg BID (beta-blocker for variceal prophylaxis); last ETOH 2 days ago; no recent NSAID use',
+      ],
+      concerning: [
+        'Active hematemesis with hemodynamic instability (orthostatic hypotension, tachycardia) and INR 1.8 — high-risk variceal hemorrhage; mortality risk without emergent intervention >20 %; two large-bore IVs and blood products are immediately required',
+        'SpO₂ 95 % with active hematemesis — high aspiration risk; HOB elevation, suction at bedside, and early airway protection planning are essential; emergent endoscopy requires sedation that increases aspiration risk further',
+      ],
+      hypotheses: [
+        'Two large-bore IVs, rapid crystalloid resuscitation, and type-and-crossmatch for packed RBCs will stabilize hemodynamics while preparing for emergent upper endoscopy.',
+        'Administering octreotide 50-mcg IV bolus then 50-mcg/hr infusion will reduce portal pressure and slow variceal bleeding, bridging to endoscopy.',
+        'Administering ceftriaxone 1 g IV (SBP prophylaxis in cirrhosis) and proton pump inhibitor IV will reduce infectious complications and stabilize the mucosal environment.',
+      ],
+      solutions: [
+        'Two large-bore IVs will be placed; T&C drawn; packed RBCs transfusion initiated for Hgb <7 g/dL per restrictive transfusion threshold (target 7–9 g/dL).',
+        'Hemodynamics will stabilize (HR <100, BP ≥90/60) prior to endoscopy suite transport or be escalated to ICU.',
+        'Patient will undergo emergent upper endoscopy within 12–24 hours; bleeding source identified and treated (band ligation, sclerotherapy, clips).',
+        'Patient will not aspirate during the peri-endoscopy period; airway suctioned and HOB maintained ≥30° until transfer to endoscopy suite.',
+      ],
+      actions: [
+        'Placed two 16-gauge IVs; drew T&C, CBC, CMP, INR, LFTs; administered 1 L NS bolus; ordered 2 units pRBCs via massive hemorrhage protocol; NPO ordered; placed NGT to confirm UGI source (coffee-ground aspirate confirmed).',
+        'Administered octreotide 50 mcg IV bolus then 50 mcg/hr infusion per GI order; administered ceftriaxone 1 g IV; PPI (pantoprazole 80 mg bolus then 8 mg/hr infusion) administered per GI/hepatology order.',
+        'Positioned patient HOB 30–45°; suction at bedside; continuous cardiac monitoring; VS every 15 minutes; monitored for worsening hematemesis, melena, or further hemodynamic deterioration.',
+        'Notified GI for emergent endoscopy; anesthesia on standby for airway protection during procedure; patient and family informed of procedure; completed pre-procedure checklist; ICU transfer arranged post-endoscopy.',
+      ],
+      outcomes: [
+        'Two pRBCs transfused; Hgb improved to 9.1 g/dL; HR decreased to 98 bpm; BP stabilized at 110/70 mmHg supine.',
+        'Octreotide infusion running; ceftriaxone and PPI administered; no further episodes of hematemesis in the 2 hours leading to endoscopy.',
+        'Emergent endoscopy at hour 8: esophageal varices identified and banded (3 bands); hemostasis achieved; transferred to ICU for monitoring.',
+        'No aspiration events; patient extubated (had been intubated for airway protection during endoscopy) the following morning; goals met.',
+      ],
+    },
+    /* 19 – Alcohol Withdrawal Syndrome */
+    {
+      focusTopic: 'Alcohol withdrawal syndrome (AWS)',
+      pathophysiology: 'Chronic alcohol use suppresses CNS excitability by potentiating GABA (inhibitory) receptors and inhibiting NMDA glutamate (excitatory) receptors. With abrupt cessation, the CNS becomes hyperexcitable as GABA suppression is removed and glutamate excitation is unmasked — leading to the spectrum of AWS: autonomic hyperactivity (tachycardia, hypertension, diaphoresis, fever), tremors, seizures (typically 12–48 hours post-cessation), hallucinations (auditory, visual, tactile — alcoholic hallucinosis), and in severe cases delirium tremens (DTs: confusion, agitation, severe autonomic instability) — which carries a 5–15 % mortality if untreated. The CIWA-Ar scale quantifies symptom severity (0–67) to guide pharmacotherapy. Benzodiazepines (diazepam, lorazepam, chlordiazepoxide) are the mainstay of treatment, restoring GABA tone. Thiamine 100 mg IV must be given before any dextrose to prevent precipitation or worsening of Wernicke encephalopathy.',
+      riskFactors: [
+        'Chronic heavy daily alcohol use (≥8 drinks/day for men) — the quantity and duration determine severity of physiological dependence and withdrawal risk',
+        'Prior alcohol withdrawal seizures or DTs — strongest predictor of severe withdrawal in the current episode',
+        'Concurrent metabolic derangements (hypomagnesemia, hypophosphatemia, hypokalemia) — lower seizure threshold and worsen withdrawal course',
+      ],
+      cues: [
+        'Tremors, diaphoresis, anxiety ("I need a drink, I\'m going crazy"), visual hallucinations (seeing insects on the wall); CIWA-Ar score 22 (moderate-severe withdrawal)',
+        'HR 118 bpm; BP 168/96 mmHg; temperature 37.9 °C; RR 20/min; SpO₂ 96 % on RA; pupils dilated and reactive bilaterally; diaphoretic',
+        '2 witnessed tonic-clonic seizures in the past 4 hours (lasting 90 seconds each, self-terminated); last alcohol ingestion 36 hours ago; history of DTs on prior admission 2 years ago',
+        '44-year-old male; ETOH 12 beers/day × 10 years; admitted for cellulitis; thiamine 100 mg IV administered on admission; Mg²⁺ 1.4 mEq/L (low); K⁺ 3.1 mEq/L (low)',
+      ],
+      concerning: [
+        'Prior DTs, CIWA-Ar 22, and 2 withdrawal seizures in 4 hours — high risk for delirium tremens (which has 5–15 % untreated mortality); ICU transfer and aggressive benzodiazepine protocol (diazepam or lorazepam) should be activated immediately',
+        'Mg²⁺ 1.4 and K⁺ 3.1 — electrolyte deficiencies lower seizure threshold and worsen cardiac arrhythmia risk; magnesium sulfate and KCl replacement are required before assuming seizures are benzodiazepine-unresponsive',
+      ],
+      hypotheses: [
+        'Administering lorazepam per symptom-triggered CIWA-Ar protocol (lorazepam 2–4 mg IV for CIWA-Ar >15) will suppress CNS hyperexcitability and prevent progression to DTs.',
+        'Replacing magnesium (MgSO₄ 2 g IV) and potassium (KCl 20–40 mEq IV) will correct electrolyte deficiencies that lower seizure threshold and worsen withdrawal.',
+        'A quiet, low-stimulation environment with consistent nursing reassurance and q1h CIWA-Ar assessments will minimize autonomic surges and allow early dose titration.',
+      ],
+      solutions: [
+        'CIWA-Ar score will decrease to <10 within 4 hours of benzodiazepine loading; no further seizures will occur.',
+        'Electrolytes (Mg²⁺, K⁺) will normalize within 4 hours of IV replacement therapy.',
+        'Patient will not progress to delirium tremens; if CIWA-Ar remains >20 after initial benzodiazepine doses, ICU transfer and phenobarbital protocol will be activated.',
+        'Patient will verbalize understanding of alcohol withdrawal risks and accept referral to substance use treatment before discharge.',
+      ],
+      actions: [
+        'Administered lorazepam 4 mg IV at CIWA-Ar 22; reassessed CIWA-Ar at 1 hour (score 14); administered additional lorazepam 2 mg IV; placed patient in low-stimulation private room; dimmed lights; minimized unnecessary stimuli.',
+        'Administered MgSO₄ 2 g IV over 2 hours; KCl 40 mEq IV over 4 hours per order; thiamine 100 mg IV daily × 3 days (Wernicke prophylaxis); folate 1 mg PO daily; multivitamin.',
+        'Performed CIWA-Ar assessment every 1 hour; continuous cardiac monitoring; VS every 30 minutes; seizure precautions (padded side rails, oxygen and suction at bedside, IV access maintained).',
+        'Communicated with intensivist regarding ICU transfer criteria; educated patient on alcohol withdrawal, risks of sudden cessation, and treatment; connected patient with addictions medicine consult; family support engaged.',
+      ],
+      outcomes: [
+        'CIWA-Ar decreased to 9 at 4 hours after lorazepam loading; no further seizures; tremors significantly reduced.',
+        'Mg²⁺ 2.0, K⁺ 3.8 at 4-hour recheck; electrolytes normalized; cardiac monitoring — sinus tachycardia resolving (HR 98 bpm at 4 hours).',
+        'Patient remained in monitored bed; did not progress to DTs; CIWA-Ar ≤8 at 8 hours; downgraded from CIWA q1h to q2h protocol.',
+        'Addictions medicine consult completed; patient accepted outpatient treatment referral; alcohol withdrawal education provided. Goals met.',
+      ],
+    },
+    /* 20 – Pulmonary Embolism */
+    {
+      focusTopic: 'Pulmonary embolism (PE)',
+      pathophysiology: 'PE occurs when a thrombus (most commonly from a deep vein thrombosis in the proximal leg veins) lodges in the pulmonary vasculature, obstructing blood flow to a segment of lung. The resulting dead-space ventilation (ventilated but not perfused lung) causes V/Q mismatch and hypoxemia. Right ventricular (RV) afterload increases acutely, leading to RV dilation, septal shift, and — in massive PE — obstructive shock. Neurohormonal mediators cause pulmonary vasoconstriction and bronchospasm. The Wells criteria and D-dimer are used for pre-test probability assessment; CT pulmonary angiography (CTPA) is the diagnostic gold standard. Hemodynamically stable patients are managed with anticoagulation (heparin → warfarin or DOAC); massive PE with shock requires systemic thrombolysis or catheter-directed therapy.',
+      riskFactors: [
+        'Recent immobility (≥3 days bed rest, long-haul travel, post-operative state) — venous stasis promotes thrombus formation',
+        'Active malignancy — tumor-related hypercoagulability and compression of pelvic veins',
+        'Prior VTE or inherited thrombophilia (Factor V Leiden, antiphospholipid syndrome) — predisposed clotting cascade',
+      ],
+      cues: [
+        'Sudden-onset dyspnea, pleuritic chest pain, and hemoptysis; HR 118 bpm; RR 28/min; SpO₂ 88 % on room air',
+        'BP 96/60 mmHg; right heart strain on ECG (S1Q3T3 pattern, sinus tachycardia); troponin I 0.42 ng/mL; BNP 540 pg/mL',
+        'CT pulmonary angiography confirms bilateral saddle embolism with right ventricular dilation; Wells score 7 (high probability)',
+        '54-year-old female; 6 weeks post right total hip arthroplasty; no prior anticoagulation; lower extremity duplex confirms right proximal DVT',
+      ],
+      concerning: [
+        'Bilateral saddle PE with RV dilation and BP 96/60 mmHg — submassive-to-massive PE with obstructive shock risk; urgent anticoagulation and possible thrombolysis evaluation required',
+        'SpO₂ 88 % on room air with RR 28/min — significant hypoxemia and respiratory distress requiring immediate supplemental oxygen and close airway monitoring',
+      ],
+      hypotheses: [
+        'Initiating IV unfractionated heparin (UFH) bolus and infusion will prevent further thrombus propagation and allow endogenous fibrinolysis to begin, improving hemodynamics within 2–4 hours.',
+        'Supplemental oxygen titrated to SpO₂ ≥94 % and positioning the patient supine (or reverse Trendelenburg) will reduce hypoxemia and minimize RV strain.',
+        'Continuous hemodynamic monitoring and prompt notification of the interventional or pulmonology team for thrombolysis candidacy assessment will enable rapid escalation if BP deteriorates further.',
+      ],
+      solutions: [
+        'Patient will be anticoagulated with IV UFH (80 units/kg bolus, 18 units/kg/hr infusion) within 30 minutes of PE confirmation; aPTT therapeutic (60–100 seconds) within 6 hours.',
+        'SpO₂ will improve to ≥94 % on supplemental oxygen within 30 minutes of initiation.',
+        'MAP will remain ≥65 mmHg; if BP drops further, thrombolysis (alteplase 100 mg IV over 2 hours) will be initiated per physician order.',
+        'Patient will verbalize understanding of long-term anticoagulation therapy and VTE prevention measures before discharge.',
+      ],
+      actions: [
+        'Applied 4 L/min nasal cannula O₂; titrated to SpO₂ ≥94 %; reassessed every 15 minutes; kept patient supine with HOB at 30° to balance RV preload.',
+        'Administered UFH 80 units/kg (5,600 units) IV bolus per order; started infusion at 18 units/kg/hr; sent aPTT, CBC, and coagulation panel; established second IV access.',
+        'Applied continuous cardiac monitoring; initiated hourly BP and SpO₂ documentation; placed patient on strict bed rest; notified pulmonology/IR team regarding submassive PE and thrombolysis evaluation.',
+        'Educated patient on heparin therapy, fall precautions with anticoagulation, and importance of ambulation and compression stockings post-discharge; initiated DVT/PE discharge teaching.',
+      ],
+      outcomes: [
+        'UFH initiated within 22 minutes of CTPA result; aPTT at 6 hours: 72 seconds (therapeutic range met).',
+        'SpO₂ improved to 95 % on 4 L/min NC within 20 minutes; RR decreased to 22/min; patient reports dyspnea "somewhat better."',
+        'BP stabilized at 102/66 mmHg; HR 104 bpm; thrombolysis held per pulmonology — hemodynamics marginally stable; will re-evaluate at 2 hours.',
+        'Patient verbalized understanding of anticoagulation; accepted outpatient DOAC follow-up plan. Goals partially met — anticoagulation achieved, hemodynamics borderline; continued ICU-level monitoring required.',
+      ],
+    },
+    /* 21 – Acute Pancreatitis */
+    {
+      focusTopic: 'Acute pancreatitis',
+      pathophysiology: 'Acute pancreatitis results from premature activation of pancreatic digestive enzymes (trypsinogen → trypsin) within acinar cells, causing auto-digestion of the pancreas and surrounding tissues. The most common triggers are gallstones (obstructing pancreatic duct outflow) and alcohol (promoting premature zymogen activation). The inflammatory cascade releases cytokines (IL-1, IL-6, TNF-α), causing local edema, hemorrhage, and necrosis (severe pancreatitis), as well as systemic effects: SIRS, third-spacing of fluid (capillary leak), hypovolemia, and in severe cases ARDS, AKI, and multi-organ failure. Severity is classified by Revised Atlanta criteria (mild, moderately severe, severe). Ranson criteria and BISAP score guide prognosis. Treatment is supportive: aggressive IV fluid resuscitation (lactated Ringer preferred), pain management, bowel rest (NPO until tolerating), and nutrition support.',
+      riskFactors: [
+        'Cholelithiasis (gallstones) — biliary calculus impacted at the ampulla of Vater obstructs pancreatic duct drainage',
+        'Heavy alcohol use — promotes premature intracellular trypsinogen activation and acinar cell injury',
+        'Hypertriglyceridemia (>1,000 mg/dL) — free fatty acids released by lipase cause direct acinar cytotoxicity',
+      ],
+      cues: [
+        'Severe epigastric pain radiating to the back (8/10), onset 6 hours ago after a fatty meal; nausea and vomiting × 4 episodes; anorexia',
+        'Lipase 2,840 U/L (>3× ULN); amylase 1,120 U/L; WBC 16,200/mm³; BUN 28 mg/dL; creatinine 1.4 mg/dL; hematocrit 46 % (hemoconcentration)',
+        'HR 112 bpm; BP 98/64 mmHg; T 38.2 °C; RR 22/min; abdomen rigid and tender in epigastric/LUQ region with guarding; hypoactive bowel sounds',
+        '42-year-old male; BMI 34; drinks 8–10 beers/day; RUQ ultrasound shows gallstones with no common bile duct dilation; CT abdomen shows pancreatic edema with peripancreatic fat stranding — no necrosis',
+      ],
+      concerning: [
+        'HR 112 bpm and BP 98/64 mmHg with BUN 28 and hematocrit 46 % — hypovolemia from third-spacing; aggressive IV fluid resuscitation (250–500 mL/hr LR) is an immediate priority to prevent ischemic necrosis',
+        'SIRS criteria met (HR >90, T >38 °C, WBC >12,000, RR >20) — risk of progression to severe pancreatitis with organ failure; hourly fluid balance, urine output, and lab trending are critical',
+      ],
+      hypotheses: [
+        'Aggressive IV fluid resuscitation with lactated Ringer at 250–500 mL/hr will restore intravascular volume, improve end-organ perfusion, and prevent pancreatic ischemic necrosis within 4–6 hours.',
+        'IV opioid analgesia (morphine or hydromorphone) will reduce pain to ≤4/10 within 30 minutes, improving comfort and decreasing splinting that worsens respiratory status.',
+        'Strict NPO status with antiemetic therapy and NG suction if needed will rest the pancreas and reduce ongoing enzyme stimulation while preventing aspiration.',
+      ],
+      solutions: [
+        'Urine output will be ≥0.5 mL/kg/hr and HR will decrease to <100 bpm within 4 hours of IV fluid resuscitation.',
+        'Pain will decrease to ≤4/10 within 30 minutes of IV analgesia administration.',
+        'Patient will remain NPO and free of aspiration; nausea and vomiting will be controlled with antiemetics.',
+        'Patient will not progress to pancreatic necrosis, ARDS, or renal failure; serial labs and imaging will be monitored per order.',
+      ],
+      actions: [
+        'Initiated IV LR at 300 mL/hr per order; inserted urinary catheter to monitor strict hourly urine output; obtained IV access × 2 (18 g bilateral ACs); sent repeat labs (BMP, CBC, lipase, LFTs) for 6-hour trend.',
+        'Administered morphine 4 mg IV per order; reassessed pain at 30 minutes (score improved to 4/10); administered ondansetron 4 mg IV for nausea; maintained strict NPO; positioned patient in knee-to-chest (fetal) position for comfort.',
+        'Monitored vital signs every 1 hour; performed respiratory assessments every 2 hours (risk of ARDS); tracked strict I&O; notified provider for urine output <30 mL/hr or worsening hemodynamics.',
+        'Communicated with GI/surgery team regarding gallstone etiology (ERCP vs. elective cholecystectomy); documented BISAP score; initiated patient education on alcohol cessation and dietary modification for pancreatitis prevention.',
+      ],
+      outcomes: [
+        'Urine output averaged 0.7 mL/kg/hr by hour 4; HR improved to 96 bpm; BP 110/72 mmHg — hemodynamics stabilizing.',
+        'Pain score 3/10 at 1 hour post-analgesia; patient tolerated repositioning; nausea resolved with ondansetron.',
+        'No aspiration events; lungs clear on auscultation; SpO₂ 97 % on RA; BUN trending down (24 mg/dL at 6 hours).',
+        'GI consult placed; ERCP tentatively scheduled for Day 2; patient verbalized understanding of NPO rationale. Goals substantially met; continued monitoring for necrosis and organ failure.',
+      ],
+    },
+    /* 22 – Hypertensive Crisis */
+    {
+      focusTopic: 'Hypertensive crisis (hypertensive emergency)',
+      pathophysiology: 'Hypertensive crisis is defined as a severe elevation in blood pressure (typically SBP >180 mmHg and/or DBP >120 mmHg). A hypertensive emergency involves acute target organ damage (TOD): hypertensive encephalopathy, acute ischemic or hemorrhagic stroke, aortic dissection, acute MI, acute pulmonary edema, acute kidney injury, or eclampsia. The pathophysiology involves a sudden marked increase in systemic vascular resistance, mechanical stress on vessel walls, and endothelial injury — triggering a cascade of inflammation, fibrinoid necrosis of arterioles, and ischemia to end organs. A hypertensive urgency (no TOD) requires oral therapy and outpatient follow-up; an emergency requires immediate IV antihypertensive therapy with controlled BP reduction (no more than 25 % MAP reduction in the first hour to avoid cerebral hypoperfusion) using agents such as labetalol, nicardipine, clevidipine, or sodium nitroprusside in an ICU setting.',
+      riskFactors: [
+        'Non-adherence to antihypertensive medications — abrupt withdrawal (especially clonidine) precipitates rebound hypertension',
+        'Chronic uncontrolled hypertension with end-organ remodeling — chronically elevated BP narrows the autoregulatory range, making acute spikes more dangerous',
+        'Stimulant or sympathomimetic use (cocaine, methamphetamine, ephedrine) — catecholamine surge causes rapid severe BP elevation',
+      ],
+      cues: [
+        'BP 218/134 mmHg (right arm); BP 220/130 mmHg (left arm); HR 98 bpm; RR 20/min; T 37.1 °C; SpO₂ 94 % on room air',
+        'Severe occipital headache (9/10) with visual changes (blurring, diplopia); confusion and slurred speech; fundoscopic exam shows papilledema and flame hemorrhages',
+        'Serum creatinine 2.8 mg/dL (baseline 0.9 mg/dL, 3 months ago); urinalysis shows 2+ protein, red cell casts; ECG: left ventricular hypertrophy with strain pattern',
+        '61-year-old male with 15-year history of hypertension and CKD Stage 3; ran out of lisinopril and amlodipine 5 days ago; denies cocaine use; non-smoker',
+      ],
+      concerning: [
+        'Papilledema, flame hemorrhages, confusion, and creatinine 2.8 mg/dL from baseline 0.9 — hypertensive emergency with active neurological and renal target organ damage; IV antihypertensive (labetalol or nicardipine) and ICU admission required immediately',
+        'Slurred speech and visual changes — hypertensive encephalopathy vs. acute stroke must be differentiated immediately with CT head without contrast; BP reduction should not exceed 25 % MAP in first hour to prevent cerebral ischemia',
+      ],
+      hypotheses: [
+        'IV labetalol or nicardipine titrated to reduce MAP by no more than 25 % within the first hour will arrest target organ damage without precipitating cerebral ischemia from overcorrection.',
+        'Urgent CT head (noncontrast) will differentiate hypertensive encephalopathy from hemorrhagic or ischemic stroke, guiding safe BP reduction targets and further management.',
+        'Hourly neuro checks, urine output monitoring, and serial creatinine will detect worsening end-organ damage and guide titration of antihypertensive therapy.',
+      ],
+      solutions: [
+        'MAP will be reduced by ≤25 % within the first hour (target MAP ≤145 mmHg); BP will reach <160/100 mmHg within 6 hours per order.',
+        'CT head will be completed within 30 minutes of ED arrival; neurology will be notified of findings.',
+        'Urine output will remain ≥0.5 mL/kg/hr; creatinine will be rechecked at 6 hours to assess for worsening AKI.',
+        'Patient\'s mental status will improve as BP is controlled; headache will decrease to ≤4/10 within 2 hours of IV therapy.',
+      ],
+      actions: [
+        'Established continuous arterial line monitoring; initiated IV labetalol 20 mg bolus per order; started nicardipine 5 mg/hr IV infusion; titrated to target MAP reduction ≤25 % in first hour.',
+        'Arranged emergent CT head (noncontrast) within 20 minutes; notified neurology on-call of hypertensive emergency with neurological symptoms; placed Foley catheter for strict hourly urine output.',
+        'Performed neuro assessment every 15–30 minutes (GCS, pupils, grip strength, speech); monitored BP every 5 minutes during titration; applied cardiac monitor; sent BMP, CBC, urinalysis, and troponin.',
+        'Educated patient (once mental status improved) on medication adherence, dangers of stopping antihypertensives abruptly, and importance of outpatient follow-up; coordinated renal and neurology follow-up.',
+      ],
+      outcomes: [
+        'MAP reduced from 162 to 121 mmHg (25 % reduction) within 60 minutes on nicardipine 7 mg/hr; BP 168/102 mmHg at 1 hour — within target range.',
+        'CT head showed no hemorrhage or ischemic changes; neurology confirmed hypertensive encephalopathy; continued BP reduction per protocol.',
+        'Urine output 0.6 mL/kg/hr; creatinine at 6 hours 2.4 mg/dL (slight improvement from 2.8); proteinuria present — nephrology consult placed.',
+        'Mental status improved to baseline; headache 3/10 at 3 hours; patient verbalized importance of medication adherence. Goals substantially met; ICU monitoring continued overnight.',
+      ],
+    },
+    /* 23 – Septic Shock */
+    {
+      focusTopic: 'Septic shock',
+      pathophysiology: 'Septic shock is a life-threatening organ dysfunction caused by a dysregulated host response to infection. Pathogens (bacteria, fungi, viruses) trigger massive release of pro-inflammatory cytokines (TNF-α, IL-1β, IL-6), activating complement, coagulation, and kinin pathways. The result is profound vasodilation and distributive shock (low SVR, high CO early), capillary leak, myocardial depression, and impaired cellular oxygen utilization. Tissue hypoperfusion leads to lactic acidosis and multi-organ dysfunction (MODS). Clinical definition: sepsis + vasopressor requirement to maintain MAP ≥65 mmHg + serum lactate >2 mmol/L despite adequate fluid resuscitation. The Surviving Sepsis Campaign (SSC) Hour-1 Bundle guides initial management: blood cultures × 2, broad-spectrum antibiotics within 1 hour, 30 mL/kg IV crystalloid bolus, vasopressors (norepinephrine first-line) for refractory hypotension, and lactate measurement.',
+      riskFactors: [
+        'Immunosuppression (chemotherapy, corticosteroids, HIV/AIDS) — impaired pathogen clearance allows progression to sepsis and shock',
+        'Indwelling devices (central venous catheters, urinary catheters, mechanical ventilation) — direct portal of entry for nosocomial pathogens',
+        'Advanced age and comorbidities (diabetes, CKD, malnutrition) — attenuated immune reserve and impaired end-organ tolerance of hypoperfusion',
+      ],
+      cues: [
+        'HR 128 bpm; BP 76/42 mmHg (MAP 53 mmHg); RR 28/min; T 39.4 °C; SpO₂ 91 % on 6 L/min NC; GCS 13 (confused)',
+        'Lactate 6.2 mmol/L; WBC 22,400/mm³ with 18 % bands; procalcitonin 48 ng/mL; creatinine 2.6 mg/dL (baseline 0.8); total bilirubin 3.1 mg/dL',
+        'Blood cultures × 2 drawn; urine cloudy with WBCs, nitrites positive; chest X-ray shows right lower lobe consolidation',
+        '72-year-old male with Type 2 DM, CKD Stage 3, and recent urologic procedure 5 days ago; currently on metformin and lisinopril; nursing home resident',
+      ],
+      concerning: [
+        'MAP 53 mmHg with lactate 6.2 mmol/L despite adequate fluid history — septic shock requiring immediate vasopressor initiation (norepinephrine) and 30 mL/kg IV crystalloid per SSC Hour-1 Bundle',
+        'Multi-organ dysfunction evident: AKI (creatinine 2.6), hepatic injury (bilirubin 3.1), altered mentation (GCS 13), and respiratory failure (SpO₂ 91 %) — ICU-level care and early broad-spectrum antibiotics are critical',
+      ],
+      hypotheses: [
+        'Initiating norepinephrine IV infusion titrated to MAP ≥65 mmHg will restore end-organ perfusion pressure and halt progressive multi-organ failure within 1–2 hours.',
+        'Administering broad-spectrum antibiotics (piperacillin-tazobactam + vancomycin) within 60 minutes of sepsis recognition will reduce bacterial burden and blunt the inflammatory cascade, improving lactate clearance at 2 hours.',
+        'Aggressive IV fluid resuscitation (30 mL/kg LR bolus over 3 hours) will improve preload and cardiac output, supporting MAP goals while serial lactate reassessment guides further fluid therapy.',
+      ],
+      solutions: [
+        'MAP will be ≥65 mmHg within 1 hour of norepinephrine initiation; lactate will decrease by ≥10 % at 2-hour recheck.',
+        'Blood cultures will be obtained and broad-spectrum antibiotics will be infusing within 60 minutes of sepsis recognition.',
+        'Urine output will increase to ≥0.5 mL/kg/hr within 2 hours of fluid resuscitation; creatinine will trend toward baseline.',
+        'Patient will achieve hemodynamic stability; GCS will improve to ≥14 as perfusion is restored.',
+      ],
+      actions: [
+        'Placed central venous catheter (right internal jugular); initiated norepinephrine 0.1 mcg/kg/min and titrated to MAP ≥65 mmHg; administered 30 mL/kg (2,100 mL) IV LR over 3 hours; inserted Foley for strict hourly urine output.',
+        'Drew blood cultures × 2 from separate sites within 10 minutes; administered piperacillin-tazobactam 3.375 g IV and vancomycin 25 mg/kg IV (dosed for renal function) within 45 minutes of sepsis alert.',
+        'Monitored MAP, CVP, and urine output hourly; reassessed lactate at 2 hours; performed qSOFA and SOFA scoring; applied continuous cardiac monitoring; notified ICU team for transfer.',
+        'Held metformin (AKI risk) and lisinopril (hypotension); educated family on septic shock severity and ICU plan; documented SSC Hour-1 Bundle compliance; coordinated with infectious disease team for antibiotic de-escalation plan.',
+      ],
+      outcomes: [
+        'MAP 68 mmHg at 1 hour on norepinephrine 0.14 mcg/kg/min; hemodynamics improving — vasopressor dose stabilized.',
+        'Lactate 3.8 mmol/L at 2 hours (39 % clearance from 6.2); improvement in perfusion confirmed; continued monitoring.',
+        'Urine output 0.6 mL/kg/hr at 2 hours; creatinine unchanged at 6 hours (2.5 mg/dL) — AKI not worsening; continued renal monitoring.',
+        'GCS improved to 14 at 3 hours; family updated and at bedside. Goals partially met — hemodynamics stabilizing; continued ICU management required for lactate normalization and organ recovery.',
+      ],
+    },
+    /* 24 – Traumatic Brain Injury */
+    {
+      focusTopic: 'Traumatic brain injury (TBI) — moderate-to-severe',
+      pathophysiology: 'Traumatic brain injury results from mechanical forces (blunt, penetrating, blast) causing primary injury: contusion, axonal shearing, hemorrhage (epidural, subdural, subarachnoid, intraparenchymal), and cerebral edema. Secondary injury — occurring hours to days later — is driven by hypoxia, hypotension, hyperthermia, hyperglycemia, and elevated intracranial pressure (ICP). The Monro-Kellie doctrine describes the skull as a fixed-volume compartment: as hemorrhage or edema expands, ICP rises, cerebral perfusion pressure (CPP = MAP − ICP) drops, causing ischemia. Herniation syndromes (uncal, transtentorial) are life-threatening complications. Management targets: ICP <20 mmHg, CPP 60–70 mmHg, PaO₂ >100 mmHg, PaCO₂ 35–40 mmHg, serum sodium 135–145 (or hypertonic saline for ICP control), normoglycemia, and normothermia. GCS classifies severity: mild (13–15), moderate (9–12), severe (≤8).',
+      riskFactors: [
+        'Falls (especially in elderly on anticoagulants) — impact forces cause intracranial hemorrhage exacerbated by impaired clotting',
+        'Motor vehicle collisions (MVCs) — high-velocity deceleration causes diffuse axonal injury and contusions',
+        'Alcohol intoxication — impairs neurological assessment and increases fall/MVC risk; also a confounder for LOC evaluation',
+      ],
+      cues: [
+        'GCS 8 (E2 V2 M4); pupils: right 6 mm sluggish, left 3 mm brisk — anisocoria suggesting right-sided uncal herniation; HR 56 bpm (Cushing response); BP 178/96 mmHg; RR 8/min irregular',
+        'CT head: right temporal epidural hematoma (4 cm, midline shift 7 mm); right temporal contusion; scattered subarachnoid hemorrhage',
+        'INR 1.1; platelets 210,000; blood alcohol level 0.19 g/dL; SpO₂ 88 % on 15 L/min NRB mask; blood glucose 218 mg/dL',
+        '34-year-old male; unrestrained driver in high-speed MVC; found unresponsive; intubated in field by EMS with GCS 6 pre-hospital',
+      ],
+      concerning: [
+        'GCS 8 with anisocoria, Cushing triad (hypertension, bradycardia, irregular respirations), and 7 mm midline shift — impending herniation; neurosurgery must be notified immediately for emergent craniotomy/hematoma evacuation',
+        'SpO₂ 88 % on NRB — adequate oxygenation is a primary neuroprotection target; intubation (already performed) and ventilator management to PaO₂ >100 mmHg and PaCO₂ 35–40 mmHg are critical to prevent secondary brain injury',
+      ],
+      hypotheses: [
+        'Emergent neurosurgical evacuation of the right epidural hematoma will decompress the brain, reduce ICP, restore CPP, and halt herniation — this is the definitive life-saving intervention.',
+        'Optimizing ventilator settings (FiO₂ to achieve PaO₂ >100 mmHg; RR to achieve PaCO₂ 35–40 mmHg) and administering 3 % hypertonic saline or mannitol will reduce ICP and improve CPP while awaiting surgery.',
+        'Maintaining MAP ≥80 mmHg (targeting CPP 60–70 mmHg) with IV vasopressors if needed, normalizing blood glucose, and preventing fever will minimize secondary brain injury in the perioperative period.',
+      ],
+      solutions: [
+        'Neurosurgery will be at bedside within 15 minutes; patient will be in OR within 60 minutes of CT confirmation.',
+        'SpO₂ will be ≥98 % and PaCO₂ 35–40 mmHg on mechanical ventilation within 30 minutes of vent adjustment.',
+        'ICP will be <20 mmHg and CPP ≥60 mmHg post-operatively; mannitol or 3 % NaCl will be used as a bridge if ICP spikes pre-op.',
+        'Blood glucose will be maintained 140–180 mg/dL; temperature will remain ≤37.5 °C.',
+      ],
+      actions: [
+        'Confirmed endotracheal tube placement (7.5 mm cuffed, 22 cm at lip); adjusted ventilator to FiO₂ 1.0, RR 16, TV 450 mL; SpO₂ improved to 99 %; PaCO₂ 37 mmHg on ABG; initiated continuous capnography.',
+        'Administered mannitol 1 g/kg (80 g) IV over 20 minutes for herniation signs per neurosurgery order; elevated HOB to 30°; maintained head/neck midline; initiated seizure prophylaxis with levetiracetam 1,000 mg IV.',
+        'Activated OR and neurosurgery team emergently; prepared blood products (PRBCs, FFP) for perioperative use; placed arterial line for continuous BP monitoring; targeted MAP ≥80 mmHg; started insulin infusion for glucose 218.',
+        'Performed neurological checks every 15 minutes (pupils, GCS components, motor responses); notified trauma team and neurosurgery of anisocoria progression; communicated urgency to OR team; updated family of critical status.',
+      ],
+      outcomes: [
+        'Patient transported to OR 48 minutes after CT results; right temporal craniotomy and hematoma evacuation completed; post-op CT showed midline shift reduced to 1 mm.',
+        'SpO₂ 99 % throughout perioperative period; PaCO₂ 37 mmHg on ABG; ventilator weaning plan initiated post-op.',
+        'Post-op ICP monitor placed (ICP 12 mmHg, CPP 68 mmHg); mannitol discontinued; blood glucose 162 mg/dL on insulin infusion.',
+        'Family informed of successful surgery; GCS 10 at 24 hours post-op; continued ICU neuro monitoring. Goals substantially met — herniation reversed; continued rehabilitation planning needed.',
+      ],
+    },
+    /* 25 – Acute Kidney Injury */
+    {
+      focusTopic: 'Acute kidney injury (AKI) — oliguric, multi-factorial',
+      pathophysiology: 'AKI is an abrupt decline in kidney function defined by the KDIGO criteria: ≥0.3 mg/dL rise in creatinine within 48 hours, ≥1.5× baseline creatinine within 7 days, or urine output <0.5 mL/kg/hr for >6 hours. Causes are classified as pre-renal (decreased perfusion — hypovolemia, shock, heart failure), intrinsic renal (tubular, glomerular, interstitial injury — ATN from ischemia or nephrotoxins; contrast nephropathy; drug-induced), and post-renal (obstructive — BPH, stones, tumor). Ischemic ATN is the most common in-hospital cause: prolonged renal hypoperfusion → tubular epithelial cell necrosis → back-leak of filtrate → cast formation → tubular obstruction → oliguria. Consequences include volume overload, hyperkalemia (potentially fatal arrhythmias), metabolic acidosis, uremia, and anemia. Treatment is directed at the underlying cause; renal replacement therapy (RRT/dialysis) is initiated for refractory hyperkalemia, acidosis, fluid overload, or uremia.',
+      riskFactors: [
+        'Nephrotoxin exposure (NSAIDs, aminoglycosides, IV contrast, ACE inhibitors in renal artery stenosis) — direct tubular toxicity or reduced renal perfusion',
+        'Cardiac surgery or prolonged hypotension — ischemic ATN from renal hypoperfusion during CPB or shock states',
+        'Baseline CKD — reduced nephron reserve makes kidneys vulnerable to acute insults',
+      ],
+      cues: [
+        'Urine output 15 mL/hr × 8 hours; creatinine 4.2 mg/dL (baseline 1.0, 3 months ago); BUN 88 mg/dL; BUN:Cr ratio 21; potassium 6.4 mEq/L; bicarbonate 16 mEq/L; phosphorus 6.2 mg/dL',
+        'ECG: peaked T waves in V2–V4 (hyperkalemia pattern); HR 88 bpm; BP 162/96 mmHg; weight 4 kg above dry weight (fluid retention); bilateral crackles at lung bases; 3+ pitting edema bilateral lower extremities',
+        'Urinalysis: muddy brown casts, specific gravity 1.010, 2+ protein; FeNa 2.8 % (intrinsic renal); renal ultrasound: bilateral kidneys 11 cm, no hydronephrosis',
+        '67-year-old male; underwent coronary artery bypass graft (CABG) 5 days ago; received iodinated contrast during cardiac catheterization pre-op and gentamicin peri-operatively; hypertension and Type 2 DM',
+      ],
+      concerning: [
+        'Potassium 6.4 mEq/L with peaked T waves on ECG — life-threatening hyperkalemia requiring immediate cardiac monitoring and urgent treatment (calcium gluconate, insulin/dextrose, sodium bicarbonate, kayexalate/patiromer)',
+        'Oliguria 15 mL/hr × 8 hours with 4 kg fluid overload and bilateral crackles — fluid overload and impending pulmonary edema in the setting of oliguric AKI; nephrology consult for RRT evaluation is urgent',
+      ],
+      hypotheses: [
+        'Immediate treatment of hyperkalemia (IV calcium gluconate for membrane stabilization, insulin/dextrose for K⁺ shift, loop diuretic challenge) will prevent fatal arrhythmia and may improve urine output if residual tubular function remains.',
+        'Nephrology consultation for urgent RRT evaluation will provide definitive treatment for refractory fluid overload, hyperkalemia, and acidosis if medical management fails within 4–6 hours.',
+        'Eliminating all nephrotoxins (NSAIDs, ACE inhibitors, aminoglycosides, contrast agents), adjusting drug dosing for GFR <15, and optimizing hemodynamics will prevent further renal injury and support recovery of tubular function.',
+      ],
+      solutions: [
+        'Potassium will be reduced to ≤5.5 mEq/L and ECG changes will resolve within 2 hours of treatment initiation.',
+        'Urine output will improve to ≥0.5 mL/kg/hr or RRT will be initiated within 6 hours if diuretic challenge fails.',
+        'No additional nephrotoxin exposure will occur; all medications will be renally dose-adjusted per pharmacy review.',
+        'Patient will not develop pulmonary edema; SpO₂ will remain ≥94 % on current supplemental oxygen.',
+      ],
+      actions: [
+        'Administered calcium gluconate 1 g IV over 3 minutes (membrane stabilization) per order; followed with regular insulin 10 units IV + dextrose 50 % 50 mL; sodium bicarbonate 50 mEq IV for pH 7.21; placed on continuous cardiac telemetry monitoring.',
+        'Administered furosemide 200 mg IV (diuretic challenge); measured urine output hourly; held all nephrotoxic medications (NSAIDs, ACE inhibitors); notified nephrology for urgent RRT evaluation; placed accurate fluid balance documentation every hour.',
+        'Performed head-to-toe assessment with emphasis on fluid status (lung sounds, edema, weight, JVD); kept HOB at 45°; monitored SpO₂ continuously; applied dietary potassium restriction and consulted renal dietitian.',
+        'Educated patient on AKI, fluid restriction, dietary potassium limit, and possible need for dialysis; coordinated with cardiac surgery and nephrology teams; documented medication reconciliation with pharmacy input.',
+      ],
+      outcomes: [
+        'Potassium 5.8 mEq/L at 2 hours (improved from 6.4); peaked T waves resolving on repeat ECG; cardiac monitoring continued.',
+        'Urine output 8 mL/hr at 4 hours — minimal response to furosemide; nephrology initiated CRRT (continuous renal replacement therapy) at 6 hours.',
+        'Lung sounds improved after CRRT initiation (500 mL fluid removal in first 4 hours of CRRT); SpO₂ stable at 95 % on 2 L/min NC.',
+        'Patient verbalized understanding of dialysis need and dietary restrictions. Goals partially met — hyperkalemia and fluid overload addressed via CRRT; renal recovery timeline uncertain; continued monitoring required.',
+      ],
+    },
+    /* 26 – COPD Exacerbation */
+    {
+      focusTopic: 'Acute exacerbation of COPD (AECOPD)',
+      pathophysiology: 'COPD is characterized by persistent airflow limitation due to airway inflammation, mucus hypersecretion, and emphysematous destruction of alveolar walls. Acute exacerbations (AECOPD) are episodes of worsening dyspnea, cough, and sputum production beyond normal daily variation. Triggers include respiratory infections (rhinovirus, influenza, Haemophilus influenzae, Streptococcus pneumoniae), air pollution, and cold air. During exacerbation, increased airway inflammation causes air-trapping and dynamic hyperinflation (auto-PEEP), worsening V/Q mismatch and hypoxemia. Hypercapnia results from increased dead space, respiratory muscle fatigue, and blunted hypercapnic drive (CO₂ retainers). Non-invasive positive pressure ventilation (NIPPV/BiPAP) reduces the work of breathing, decreases PaCO₂, improves oxygenation, and reduces intubation risk. Pharmacologic therapy: short-acting bronchodilators (SABA + SAMA), systemic corticosteroids (prednisone 40 mg × 5 days), and antibiotics (if purulent sputum or clinical infection signs).',
+      riskFactors: [
+        'Current or former heavy cigarette smoking — the primary cause of COPD; ongoing smoking accelerates disease progression and increases exacerbation frequency',
+        'Non-adherence to inhaled maintenance therapy (LABA/LAMA/ICS) — loss of airway protection increases susceptibility to triggers',
+        'Recurrent exacerbations (>2/year) — associated with accelerated FEV1 decline, hospitalization, and mortality risk',
+      ],
+      cues: [
+        'HR 108 bpm; RR 32/min; BP 148/88 mmHg; T 38.1 °C; SpO₂ 82 % on room air, 88 % on 2 L/min NC; using accessory muscles; pursed-lip breathing; tripod positioning',
+        'ABG (on 2 L/min NC): pH 7.28, PaCO₂ 68 mmHg, PaO₂ 52 mmHg, HCO₃ 31 mEq/L — acute-on-chronic hypercapnic respiratory failure',
+        'Chest X-ray: hyperinflated lungs, flattened diaphragms, no infiltrate; peak flow 120 L/min (25 % predicted); sputum purulent and copious; WBC 13,800/mm³',
+        '69-year-old male; 50 pack-year smoker, quit 2 years ago; GOLD Stage III COPD; 3 hospitalizations in past 12 months; non-adherent to tiotropium and fluticasone/salmeterol inhalers; lives alone',
+      ],
+      concerning: [
+        'pH 7.28 with PaCO₂ 68 mmHg and SpO₂ 88 % on 2 L/min NC — acute-on-chronic hypercapnic respiratory failure with acidosis; BiPAP initiation is indicated immediately to prevent intubation',
+        'RR 32/min with accessory muscle use and tripod positioning — impending respiratory muscle fatigue; aggressive bronchodilator therapy (albuterol + ipratropium) and corticosteroids must be initiated concurrently with BiPAP',
+      ],
+      hypotheses: [
+        'Initiating BiPAP (IPAP 12–14 cmH₂O / EPAP 4–6 cmH₂O) will reduce work of breathing, decrease PaCO₂, improve pH to ≥7.35, and avoid endotracheal intubation within 2–4 hours.',
+        'Titrating supplemental oxygen to SpO₂ 88–92 % (avoiding hypercapnic drive blunting) while administering albuterol/ipratropium nebulizations will bronchodilate and reduce dynamic hyperinflation, improving V/Q matching.',
+        'Systemic corticosteroids (methylprednisolone 125 mg IV) and empiric antibiotics (azithromycin or doxycycline for purulent AECOPD) will reduce airway inflammation and treat infectious trigger, shortening recovery time.',
+      ],
+      solutions: [
+        'BiPAP will be initiated within 30 minutes; pH will improve to ≥7.35 and PaCO₂ will decrease by ≥10 mmHg within 2 hours.',
+        'SpO₂ will be maintained at 88–92 % on supplemental oxygen; RR will decrease to <24/min within 1–2 hours of bronchodilator and BiPAP therapy.',
+        'Patient will not require intubation; respiratory status will improve sufficiently for BiPAP wean within 24 hours.',
+        'Patient will verbalize understanding of inhaler technique and adherence importance before discharge.',
+      ],
+      actions: [
+        'Applied BiPAP mask (full-face); set IPAP 12 cmH₂O, EPAP 5 cmH₂O, FiO₂ 0.35; assessed comfort and mask seal; monitored RR, SpO₂, and ABG q1–2h; titrated oxygen to SpO₂ 88–92 %.',
+        'Administered albuterol 2.5 mg + ipratropium 0.5 mg combined nebulization; repeated every 20 minutes × 3 then q4h; administered methylprednisolone 125 mg IV; sent sputum culture; administered azithromycin 500 mg IV for purulent AECOPD.',
+        'Monitored for BiPAP intolerance (claustrophobia, skin breakdown) and signs of failure (GCS decline, worsening hemodynamics); prepared RSI intubation equipment at bedside as standby; placed on continuous cardiac monitoring and capnography.',
+        'Consulted pulmonology and respiratory therapy; initiated patient education on inhaler technique, COPD action plan, and smoking cessation resources; coordinated with case management for home BiPAP and follow-up.',
+      ],
+      outcomes: [
+        'ABG at 2 hours on BiPAP: pH 7.36, PaCO₂ 58 mmHg, PaO₂ 68 mmHg — significant improvement; intubation avoided.',
+        'SpO₂ 90 % on BiPAP + 2 L/min NC; RR 22/min at 2 hours; accessory muscle use decreased; patient more comfortable.',
+        'Peak flow improved to 190 L/min (40 % predicted) at 4 hours after bronchodilator therapy.',
+        'Patient demonstrated correct inhaler technique before discharge; accepted COPD action plan and pulmonology follow-up. Goals met — respiratory failure reversed with NIPPV; discharge planning initiated.',
+      ],
+    },
+    /* 27 – Pediatric DKA */
+    {
+      focusTopic: 'Diabetic ketoacidosis (DKA) — pediatric',
+      pathophysiology: 'Pediatric DKA is a life-threatening complication of Type 1 diabetes mellitus (T1DM) resulting from absolute insulin deficiency. Without insulin, cells cannot utilize glucose; counter-regulatory hormones (glucagon, cortisol, catecholamines, GH) rise, accelerating gluconeogenesis, glycogenolysis, and lipolysis. Free fatty acid oxidation produces ketone bodies (acetoacetate, β-hydroxybutyrate), causing a high-anion-gap metabolic acidosis. Hyperglycemia causes osmotic diuresis with loss of water, sodium, potassium, chloride, and phosphate — often leading to 5–10 % dehydration. Despite total body potassium depletion, serum K⁺ may appear normal or elevated initially due to acidosis-driven transcellular shift; as insulin therapy and hydration correct acidosis, K⁺ re-enters cells rapidly, causing life-threatening hypokalemia. A uniquely pediatric risk is cerebral edema, associated with rapid fluid administration (>10 mL/kg/hr), excessive hypotonic fluids, and rapid glucose drop — the most common cause of DKA mortality in children. Management: cautious rehydration (10 mL/kg isotonic bolus only if hemodynamically unstable, then deficit replacement over 24–48 hours), insulin infusion (0.05–0.1 units/kg/hr), close potassium monitoring and replacement, and neuro checks every 1–2 hours.',
+      riskFactors: [
+        'New-onset T1DM (30–40 % of pediatric DKA) — insulin deficiency unmasked by illness or physiological stress before diagnosis',
+        'Insulin omission or pump failure in known T1DM — accidental or intentional non-adherence leading to acute insulin deficiency',
+        'Intercurrent illness (infection, trauma) — counter-regulatory hormone surge increases insulin requirements beyond usual doses',
+      ],
+      cues: [
+        'HR 138 bpm; BP 90/58 mmHg; RR 30/min (Kussmaul breathing); T 37.8 °C; weight 32 kg; capillary refill 3 seconds; mucous membranes dry; sunken eyes — estimated 8 % dehydration',
+        'Blood glucose 498 mg/dL; pH 7.11; HCO₃ 6 mEq/L; anion gap 28 mEq/L; β-hydroxybutyrate 5.8 mmol/L; Na⁺ 128 mEq/L (corrected Na⁺ 136); K⁺ 3.8 mEq/L (total body depleted); creatinine 1.1 mg/dL',
+        'Urinalysis: glucose 4+, ketones 4+, no nitrites; ECG: sinus tachycardia; Glasgow Coma Scale 13 (lethargic); urinary catheter placed — output 15 mL/hr',
+        '11-year-old female; newly diagnosed T1DM; presented with 3-day history of polyuria, polydipsia, weight loss, and vomiting; no prior diabetes history; no medications; immunizations up to date',
+      ],
+      concerning: [
+        'pH 7.11 with HCO₃ 6 mEq/L and anion gap 28 — severe DKA; insulin infusion and careful fluid management are needed, but NOT a rapid 20 mL/kg bolus — limit isotonic bolus to 10 mL/kg over 30–60 min to reduce cerebral edema risk',
+        'GCS 13 with altered mental status in pediatric DKA — cerebral edema must be monitored closely with hourly neuro checks; any deterioration in mental status mandates head CT and possible mannitol/hypertonic saline administration',
+      ],
+      hypotheses: [
+        'Cautious isotonic fluid resuscitation (0.9 % NaCl 10 mL/kg = 320 mL over 60 minutes) followed by deficit replacement over 48 hours will correct dehydration while minimizing the osmolar shift that precipitates cerebral edema.',
+        'Initiating an insulin infusion at 0.05–0.1 units/kg/hr (no bolus) after 1 hour of fluid resuscitation will lower blood glucose at a controlled rate (50–100 mg/dL/hr) and clear ketones, reducing the anion gap over 6–12 hours.',
+        'Serial potassium monitoring and proactive KCl supplementation (20–40 mEq/L in IV fluids once K⁺ confirmed and urine output established) will prevent insulin-induced hypokalemia, which can cause fatal cardiac arrhythmias.',
+      ],
+      solutions: [
+        'Blood glucose will decrease at 50–100 mg/dL/hr; glucose will reach 250–300 mg/dL within 4–6 hours, at which point dextrose will be added to IV fluids.',
+        'Anion gap will close (≤12 mEq/L) and pH will improve to ≥7.30 within 12 hours of insulin infusion.',
+        'Potassium will remain 3.5–5.5 mEq/L throughout treatment; no cardiac arrhythmias related to hypokalemia.',
+        'Patient will remain neurologically intact; GCS will improve to 15; no signs of cerebral edema will develop.',
+      ],
+      actions: [
+        'Administered 0.9 % NaCl 320 mL (10 mL/kg) IV over 60 minutes per pediatric DKA protocol; began deficit replacement with 0.9 % NaCl + 20 mEq KCl/L at calculated rate for 48-hour rehydration; inserted urinary catheter for strict hourly I&O.',
+        'Started regular insulin infusion at 0.05 units/kg/hr (1.6 units/hr) after first fluid bolus completion; performed bedside glucose checks every 1 hour; added D5 to IV fluids when glucose reached 250 mg/dL (at hour 5).',
+        'Monitored potassium every 1–2 hours; replaced KCl in IV fluids per protocol (increased to 40 mEq/L when K⁺ 3.8 → 3.4 mEq/L at hour 2); held insulin infusion briefly when K⁺ 3.0 mEq/L until replenished.',
+        'Performed hourly neurological assessments (GCS, pupils, headache, vomiting, behavior changes); educated parents on T1DM diagnosis, insulin administration, sick-day management, and when to seek emergency care; coordinated pediatric endocrinology consult.',
+      ],
+      outcomes: [
+        'Blood glucose 312 mg/dL at hour 5; glucose drop rate averaged 37 mg/dL/hr — within safe range; dextrose added to IVF.',
+        'pH 7.29, HCO₃ 15 mEq/L, anion gap 16 mEq/L at hour 12 — DKA partially resolved; continued insulin infusion.',
+        'Potassium remained 3.4–4.2 mEq/L throughout; no arrhythmias; KCl supplementation effective.',
+        'GCS 15 at hour 6; no headache, vomiting, or behavior changes; no cerebral edema; parents verbalized T1DM education. Goals substantially met — DKA resolving, cerebral edema avoided; transitioning to subcutaneous insulin planned.',
+      ],
+    },
+    /* 28 – Chronic Kidney Disease / Fluid Overload */
+    {
+      focusTopic: 'Chronic kidney disease (CKD) Stage 5 — acute decompensated fluid overload',
+      pathophysiology: 'CKD is the progressive, irreversible loss of nephron function resulting in impaired filtration, fluid regulation, erythropoiesis, vitamin D activation, and acid-base balance. In Stage 5 (GFR <15 mL/min), the kidneys lose the ability to excrete excess sodium and water, leading to volume overload, hypertension, and pulmonary edema. The renin–angiotensin–aldosterone system (RAAS) is chronically activated, worsening sodium retention. Reduced erythropoietin (EPO) causes normocytic anemia; reduced 1,25-dihydroxyvitamin D leads to secondary hyperparathyroidism and renal osteodystrophy. Metabolic acidosis results from impaired bicarbonate reabsorption and acid excretion. Uremic toxins accumulate, causing pericarditis, encephalopathy, platelet dysfunction, and pruritus. Decompensated fluid overload in CKD manifests as pulmonary edema, hypertensive emergency, and respiratory failure — requiring urgent dialysis when refractory to diuretics. Dialysis modalities include hemodialysis (HD) and peritoneal dialysis (PD).',
+      riskFactors: [
+        'Uncontrolled hypertension and diabetes mellitus — the two leading causes of CKD worldwide; persistent glomerular hypertension and hyperglycemia accelerate nephron loss',
+        'Dietary non-adherence (high sodium, fluid, potassium, and phosphorus intake) in CKD patients — directly causes fluid overload, hyperkalemia, and hyperphosphatemia between dialysis sessions',
+        'Missed dialysis sessions — allows toxin accumulation and fluid buildup to reach dangerous levels requiring emergency intervention',
+      ],
+      cues: [
+        'HR 110 bpm; BP 196/108 mmHg; RR 26/min; SpO₂ 88 % on room air, 93 % on 4 L/min NC; bilateral crackles throughout lung fields; 4+ pitting edema to knees; JVD 4 cm above clavicle',
+        'Weight 12 kg above estimated dry weight; BUN 98 mg/dL; creatinine 8.4 mg/dL; potassium 6.1 mEq/L; bicarbonate 14 mEq/L; phosphorus 7.8 mg/dL; hemoglobin 8.2 g/dL; pH 7.24 on ABG',
+        'Chest X-ray: bilateral pulmonary edema, cardiomegaly, bilateral pleural effusions; ECG: LVH pattern, peaked T waves (hyperkalemia); BNP 4,800 pg/mL',
+        '58-year-old male; CKD Stage 5 on HD 3×/week; missed 2 consecutive HD sessions due to transportation issues; hypertension, T2DM; on lisinopril, amlodipine, sevelamer, EPO injections',
+      ],
+      concerning: [
+        'SpO₂ 88 % with bilateral pulmonary edema and 12 kg fluid excess — severe acute pulmonary edema from missed dialysis; emergent hemodialysis is the definitive treatment; meanwhile, high-flow oxygen, upright positioning, and IV furosemide (if any residual renal function)',
+        'Potassium 6.1 mEq/L with peaked T waves and pH 7.24 — life-threatening hyperkalemia with acidosis; calcium gluconate, insulin/dextrose, and sodium bicarbonate must be administered immediately while arranging emergent HD',
+      ],
+      hypotheses: [
+        'Emergent hemodialysis will remove 3–5 L of excess fluid and correct hyperkalemia and acidosis, reversing pulmonary edema and restoring SpO₂ within 2–4 hours of HD initiation.',
+        'Immediate hyperkalemia treatment (calcium gluconate for cardiac membrane stabilization; insulin/dextrose for transcellular shift) will reduce the arrhythmia risk while dialysis is being arranged.',
+        'Supplemental oxygen (escalating to BiPAP if SpO₂ <90 %) and upright positioning will maintain oxygenation and reduce preload temporarily until definitive dialysis removes excess fluid.',
+      ],
+      solutions: [
+        'Emergent HD will be initiated within 2 hours; SpO₂ will be ≥94 % and weight will be within 2 kg of dry weight post-HD.',
+        'Potassium will decrease to ≤5.5 mEq/L and peaked T waves will resolve within 30 minutes of hyperkalemia treatment.',
+        'BP will decrease to <160/100 mmHg during and after HD; RR will decrease to <20/min as pulmonary edema resolves.',
+        'Patient will verbalize the importance of consistent HD attendance and sodium/fluid/potassium dietary restrictions.',
+      ],
+      actions: [
+        'Positioned patient upright (90°); applied BiPAP (IPAP 10/EPAP 5) for SpO₂ <90 %; administered calcium gluconate 1 g IV and insulin 10 units IV + D50 for hyperkalemia; administered sodium bicarbonate 50 mEq IV for pH 7.24; placed on continuous telemetry.',
+        'Activated emergent HD unit; placed temporary HD catheter (right internal jugular); coordinated with nephrology for HD session targeting 3 L UF removal over 4 hours; notified dietitian and social work regarding missed sessions.',
+        'Monitored vital signs q15 minutes during HD initiation; reassessed lung sounds, SpO₂, and potassium at 1 hour; administered amlodipine 10 mg PO and hydralazine 10 mg IV for BP >180/100 per order.',
+        'Educated patient and family on consequences of missed HD (fluid overload, hyperkalemia, death risk); connected with social work for transportation assistance; documented dietary recall (ate 2 g sodium/day over prescribed 1.5 g) and fluid intake excess.',
+      ],
+      outcomes: [
+        'HD completed: 3.2 L removed; post-HD weight within 1.5 kg of dry weight; SpO₂ 97 % on 2 L/min NC; lung sounds improved significantly.',
+        'Potassium 4.8 mEq/L post-HD; peaked T waves resolved; BP 148/88 mmHg — improved but continued antihypertensive management.',
+        'pH 7.36 post-HD; patient more comfortable, RR 16/min; BiPAP discontinued 30 minutes after HD initiation.',
+        'Transportation voucher arranged for future HD sessions; patient demonstrated understanding of dietary restrictions and importance of HD adherence. Goals met — emergent decompensation resolved; long-term adherence plan established.',
+      ],
+    },
+    /* 29 – Preeclampsia with Severe Features */
+    {
+      focusTopic: 'Preeclampsia with severe features',
+      pathophysiology: 'Preeclampsia is a multisystem disorder of pregnancy characterized by new-onset hypertension (≥140/90 mmHg) after 20 weeks\' gestation with proteinuria or end-organ dysfunction. The pathophysiology involves abnormal placental trophoblast invasion, leading to defective spiral artery remodeling and placental ischemia. This triggers release of anti-angiogenic factors (sFlt-1, sEng) and inflammatory mediators, causing systemic endothelial dysfunction: generalized vasospasm, increased vascular permeability, platelet activation, and coagulation cascade activation. Severe features include BP ≥160/110 mmHg, severe headache or visual disturbances, pulmonary edema, thrombocytopenia, hepatic dysfunction (elevated transaminases, RUQ pain), AKI (creatinine ≥1.1 mg/dL), or HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets). Eclampsia (generalized seizures) can occur antepartum, intrapartum, or postpartum. Magnesium sulfate is the drug of choice for seizure prophylaxis and treatment. Antihypertensives (labetalol, hydralazine, nifedipine) are used to prevent cerebral hemorrhage. Definitive treatment is delivery of the placenta.',
+      riskFactors: [
+        'Nulliparity, multifetal gestation, and prior preeclampsia — nulliparous uterus lacks prior immune tolerance to trophoblast antigens; twins increase placental mass and risk',
+        'Pre-existing hypertension, diabetes, obesity, and autoimmune disorders (SLE, antiphospholipid syndrome) — augment endothelial vulnerability and inflammatory response',
+        'Extremes of reproductive age (<18 or >35 years) and African American race — associated with higher rates of inadequate prenatal care and underlying vascular risk',
+      ],
+      cues: [
+        'BP 172/112 mmHg (×2, 4 minutes apart); HR 96 bpm; RR 18/min; SpO₂ 97 %; severe frontal headache 9/10; visual changes (scotoma); 3+ pitting edema bilateral lower extremities; 3+ proteinuria on urine dipstick; hyperreflexia (3+ patellar) with clonus',
+        'Platelets 88,000/mm³; AST 112 U/L; ALT 98 U/L; creatinine 1.4 mg/dL; LDH 520 U/L; uric acid 8.2 mg/dL; 24-hour urine protein 4.8 g; hemoglobin 9.8 g/dL (microangiopathic)',
+        'Non-stress test: reactive fetal heart rate, no decelerations; fetal estimated weight 2,450 g (34+2 weeks); placental ultrasound: increased echogenicity; CTG: baseline FHR 148 bpm',
+        '31-year-old G1P0 at 34 weeks and 2 days\' gestation; no prior prenatal history of hypertension; BMI 32; attended all prenatal visits; sudden onset headache and visual changes for 3 hours',
+      ],
+      concerning: [
+        'BP 172/112 mmHg with severe headache, scotoma, and clonus — severe-range hypertension with neurologic symptoms indicating imminent eclampsia risk; IV labetalol or hydralazine must be given within 30–60 minutes and magnesium sulfate initiated for seizure prophylaxis',
+        'HELLP components present (platelets 88,000, AST/ALT elevated, LDH 520, microangiopathic anemia) — HELLP syndrome, a life-threatening complication; delivery is the definitive treatment; obstetrics, maternal-fetal medicine, and NICU must be notified immediately',
+      ],
+      hypotheses: [
+        'Administering IV labetalol 20 mg (or hydralazine 10 mg IV) will reduce BP to 140–155/90–100 mmHg within 15–30 minutes, preventing hypertensive intracerebral hemorrhage.',
+        'Initiating magnesium sulfate 4–6 g IV loading dose followed by 1–2 g/hr maintenance infusion will prevent eclamptic seizures and is neuroprotective for the fetus at 34 weeks.',
+        'Urgent delivery (induction of labor or cesarean section per obstetric assessment) is the only definitive cure for preeclampsia with HELLP; delivery will halt progression of hepatic and hematologic deterioration.',
+      ],
+      solutions: [
+        'BP will be reduced to 140–155/90–100 mmHg within 60 minutes of antihypertensive administration.',
+        'No eclamptic seizure will occur; magnesium sulfate will be infusing within 30 minutes of severe feature recognition.',
+        'Delivery will be initiated within 24 hours; maternal platelet count, liver enzymes, and BP will stabilize post-delivery.',
+        'Fetal well-being will be confirmed by continuous electronic fetal monitoring throughout labor and delivery.',
+      ],
+      actions: [
+        'Administered labetalol 20 mg IV over 2 minutes; BP rechecked at 15 minutes (162/106 mmHg); administered second dose labetalol 40 mg IV; BP reduced to 148/94 mmHg; notified obstetric attending urgently.',
+        'Initiated magnesium sulfate 6 g IV loading dose over 15 minutes, then 2 g/hr maintenance; placed patient in darkened, quiet room; applied continuous fetal monitoring and maternal SpO₂, RR, and urine output monitoring q1h.',
+        'Assessed magnesium toxicity signs q1h (respiratory rate, deep tendon reflexes, urine output); kept calcium gluconate 1 g IV at bedside as antidote; inserted urinary catheter for strict hourly I&O (target >25 mL/hr); restricted fluid intake to 100–125 mL/hr.',
+        'Notified NICU of potential preterm delivery at 34+2 weeks; administered betamethasone 12 mg IM for fetal lung maturity; coordinated with maternal-fetal medicine for delivery plan; educated patient and partner about preeclampsia, delivery necessity, and NICU course.',
+      ],
+      outcomes: [
+        'BP maintained 142–150/90–96 mmHg after labetalol dosing; no eclamptic seizure occurred throughout labor.',
+        'Magnesium sulfate infusing at 2 g/hr; deep tendon reflexes 1+ (therapeutic); urine output 40 mL/hr; RR 14/min — no toxicity signs.',
+        'Labor induced; vaginal delivery at 34+4 weeks; infant 2,480 g — APGAR 7 and 9; transferred to NICU for prematurity monitoring.',
+        'Postpartum: platelets trending up (112,000 at 24 hours); liver enzymes declining; BP improved on PO labetalol. Goals met — eclampsia prevented; delivery accomplished safely; mother and infant stable.',
+      ],
+    },
+    /* 30 – Pressure Injury Stage III/IV */
+    {
+      focusTopic: 'Pressure injury Stage III/IV — sacral',
+      pathophysiology: 'Pressure injuries (formerly decubitus ulcers) result from sustained mechanical pressure, shear, and friction that occlude capillary blood flow to soft tissues over bony prominences. Ischemia lasting >2 hours leads to irreversible tissue necrosis. Stage III injuries involve full-thickness skin and subcutaneous tissue loss extending down to (but not through) fascia; Stage IV injuries extend to muscle, bone, or supporting structures. Deep tissue injury may appear purple or maroon before evolving to a full-thickness wound. The wound bioburden — bacterial colonization progressing to infection — is a critical complication: cellulitis, osteomyelitis, and sepsis can develop from wound bacteria. Staging follows the National Pressure Injury Advisory Panel (NPIAP) system. Healing requires pressure relief, wound debridement, moisture management (moist wound healing environment), adequate protein and caloric nutrition, and infection treatment. Risk scoring (Braden Scale) identifies at-risk patients. Nursing-sensitive quality indicators make pressure injury prevention a national priority.',
+      riskFactors: [
+        'Immobility (paralysis, sedation, restraints, post-surgical positioning) — inability to self-reposition leads to prolonged unrelieved pressure over bony prominences',
+        'Malnutrition and dehydration — protein deficiency impairs tissue repair; dehydration reduces skin turgor and perfusion, increasing vulnerability to ischemic injury',
+        'Incontinence and moisture exposure — skin maceration from urine and feces weakens the protective epidermal barrier, accelerating breakdown',
+      ],
+      cues: [
+        'Sacral wound 8 × 6 cm with full-thickness loss, exposed fascia (Stage III approaching Stage IV), slough 30 % of wound bed, eschar 10 %, granulation tissue 60 %; wound edges undermined 2 cm at 6 o\'clock; malodorous seropurulent drainage; periwound erythema 3 cm surrounding wound',
+        'WBC 18,200/mm³; ESR 88 mm/hr; CRP 142 mg/L; prealbumin 9 mg/dL; albumin 2.1 g/dL; hemoglobin 9.4 g/dL; weight 20 % below ideal body weight; wound culture: Pseudomonas aeruginosa and MRSA — heavy growth',
+        'Braden Scale score: 9 (severe risk); patient unable to turn self; incontinent of urine and stool × 3/day; on hospital mattress without pressure redistribution overlay; last repositioned 4 hours ago per nursing notes',
+        '74-year-old male; post-stroke with left hemiplegia; nursing home resident admitted for wound care; Type 2 DM, PVD, malnutrition; on aspirin, metformin, statin; no home wound care protocol in place',
+      ],
+      concerning: [
+        'Wound culture with MRSA and Pseudomonas, elevated WBC/CRP/ESR, and malodorous drainage with periwound erythema — wound infection likely progressing; IV antibiotics (vancomycin for MRSA; piperacillin-tazobactam for Pseudomonas coverage) and wound debridement are urgent',
+        'Prealbumin 9 mg/dL and albumin 2.1 g/dL with 20 % weight loss — severe malnutrition significantly impairs wound healing; nutritional support (high-protein diet ≥1.2–1.5 g/kg/day or enteral nutrition) is essential for tissue repair',
+      ],
+      hypotheses: [
+        'Implementing a comprehensive pressure redistribution protocol (pressure-redistributing mattress, 2-hour repositioning schedule with 30° lateral tilt, heel offloading devices) will relieve mechanical forces on the sacral wound, enabling the healing environment needed for tissue repair.',
+        'Initiating targeted IV antibiotic therapy based on wound culture results (vancomycin for MRSA, anti-pseudomonal beta-lactam) will clear polymicrobial wound infection, reduce bioburden, and allow granulation tissue formation.',
+        'Providing high-protein nutritional support (oral supplements or enteral tube feeding at ≥30 kcal/kg/day with ≥1.5 g/kg/day protein, plus micronutrients zinc, vitamin C) will correct malnutrition and provide substrate for wound healing.',
+      ],
+      solutions: [
+        'Patient will be repositioned q2h with documented schedule; pressure-redistributing mattress will be in place within 24 hours.',
+        'Wound will show >25 % reduction in slough and increased granulation tissue at 2-week reassessment.',
+        'Prealbumin will increase by ≥2 mg/dL at 1-week recheck, indicating anabolic response to nutritional intervention.',
+        'Wound will be free of clinical infection signs (purulent drainage, malodor, periwound erythema) within 7–10 days of antibiotic therapy.',
+      ],
+      actions: [
+        'Placed patient on alternating-pressure (low-air-loss) mattress; implemented strict 2-hour repositioning schedule with documentation; applied heel protector boots bilaterally; performed moisture-associated skin damage (MASD) care with each incontinence episode using moisture barrier cream.',
+        'Cleansed wound with normal saline irrigation (35 mL syringe, 19-gauge angiocath — 8 psi); performed sharp debridement of slough at bedside (wound care nurse); applied antimicrobial dressing (silver-impregnated foam) per wound care protocol; secured dressing change order.',
+        'Administered vancomycin 15 mg/kg IV (dosed for CrCl) and piperacillin-tazobactam 3.375 g IV per culture-directed antibiotic order; consulted wound care/ostomy nurse, dietitian for enteral supplement initiation, and plastic surgery for Stage IV evaluation.',
+        'Initiated high-protein oral supplements (30 kcal/kg/day; 1.5 g/kg protein); documented Braden Scale daily; educated nursing home staff on repositioning, incontinence care, and nutritional support; developed written wound care transfer plan for return to nursing home.',
+      ],
+      outcomes: [
+        'Alternating-pressure mattress placed within 6 hours; repositioning schedule initiated and documented q2h; heel devices in place.',
+        'Wound debridement and antimicrobial dressing applied; wound size remains stable; periwound erythema 2 cm (slightly improved) at 48-hour reassessment.',
+        'Prealbumin 11 mg/dL at day 7 (up from 9); patient tolerating high-protein supplements 3×/day; weight stable.',
+        'WBC 12,400/mm³ at day 5; malodor reduced; drainage decreased to serosanguineous. Goals partially met — infection being treated and nutritional deficits being corrected; wound healing will require weeks of sustained care.',
+      ],
+    },
+    /* 31 – Post-Op Total Knee Replacement */
+    {
+      focusTopic: 'Post-operative total knee replacement (TKA) — acute care nursing management',
+      pathophysiology: 'Total knee arthroplasty (TKA) replaces damaged knee joint surfaces with metal and polyethylene implants to relieve pain and restore function in end-stage osteoarthritis. The surgical procedure involves arthrotomy, bone resection, cementing or press-fitting of components, and wound closure. Post-operatively, the inflammatory response causes pain, swelling, and increased VTE risk due to venous stasis (reduced mobility), hypercoagulability (surgical stress response, tourniquet use), and endothelial injury — the Virchow triad. Deep vein thrombosis (DVT) and pulmonary embolism (PE) are the most serious post-TKA complications. Multimodal analgesia (nerve blocks, NSAIDs, acetaminophen, opioids as needed) minimizes opioid use and enables early mobilization — essential for preventing VTE, atelectasis, and promoting functional recovery. Enhanced Recovery After Surgery (ERAS) protocols emphasize: pre-operative patient education, multimodal analgesia, early ambulation (within 4 hours of surgery), and early discharge planning.',
+      riskFactors: [
+        'Post-surgical hypercoagulable state and reduced mobility — the leading drivers of DVT/PE after TKA; prophylactic anticoagulation and early ambulation are evidence-based interventions',
+        'Obesity (BMI >30) — increases wound tension, infection risk, surgical difficulty, and VTE risk; also affects analgesia requirements and early mobility',
+        'Advanced age (>65) and osteoporosis — associated with slower bone healing, increased fall risk, and delirium risk with opioid analgesia',
+      ],
+      cues: [
+        'POD 1 (postoperative day 1): HR 88 bpm; BP 128/76 mmHg; T 37.6 °C; SpO₂ 96 % on 2 L/min NC; pain 7/10 at rest, 10/10 with movement; right knee: 2+ pitting edema, warm to touch, hemovac drain 85 mL serosanguineous in past 8 hours; dressing dry and intact',
+        'Hemoglobin 9.2 g/dL (preoperative 13.8 g/dL); platelets 228,000; INR 1.1; creatinine 0.9 mg/dL; eGFR 78; blood glucose 168 mg/dL (patient has T2DM)',
+        'Patient lying flat in bed, not yet ambulated; sequential compression devices (SCDs) applied bilaterally; Foley catheter in place; IV site right antecubital; patient grimacing, guarding right knee, and requesting opioid pain medication',
+        '68-year-old female; elective right TKA for Grade IV osteoarthritis; PMH: T2DM, hypertension, obesity (BMI 34); ASA PS II; on metformin (held peri-operatively), lisinopril (held day of surgery), rivaroxaban prescribed post-op for VTE prophylaxis',
+      ],
+      concerning: [
+        'Pain 10/10 with movement on POD 1, patient not yet ambulated, and grimacing at rest — inadequate pain control is preventing early ambulation (critical ERAS element for VTE, pneumonia, and functional recovery); multimodal analgesia must be optimized before ambulation attempt',
+        'Hemoglobin drop from 13.8 to 9.2 g/dL (4.6 g/dL) in context of hemovac output 85 mL — significant post-surgical blood loss; assess for continued bleeding, orthostatic hypotension, and transfusion threshold (Hgb <8.0 g/dL); ensure IV access adequate',
+      ],
+      hypotheses: [
+        'Administering scheduled acetaminophen 1,000 mg PO q6h + ketorolac 30 mg IV q6h (if creatinine allows) + ice and elevation will provide multimodal baseline analgesia, reducing opioid requirements and making early ambulation feasible.',
+        'Early supervised ambulation with physical therapy on POD 1 (after adequate pain management) will reduce DVT risk, prevent atelectasis, improve quadriceps activation, and promote faster functional recovery — a core ERAS goal.',
+        'Initiating rivaroxaban 10 mg PO daily starting 6–10 hours post-op, maintaining SCDs until ambulatory, and monitoring for bleeding/wound complications will prevent VTE without excessive hemorrhagic risk.',
+      ],
+      solutions: [
+        'Pain will be ≤4/10 at rest and ≤6/10 with movement within 60 minutes of multimodal analgesia administration.',
+        'Patient will ambulate ≥10 feet with PT assistance on POD 1 after pain is controlled.',
+        'No DVT or PE will develop during hospitalization; rivaroxaban will be initiated on schedule; SCDs will remain in place when patient is not ambulating.',
+        'Hemovac output will be <30 mL per 8-hour shift by POD 2; hemoglobin will remain stable (>8.0 g/dL) without transfusion.',
+      ],
+      actions: [
+        'Administered acetaminophen 1,000 mg PO and ketorolac 30 mg IV at scheduled time; elevated right leg on pillow; applied ice pack over dressing for 20 minutes; reassessed pain at 30 minutes (6/10 at rest, 8/10 with movement — improved); notified orthopedic team regarding pain level.',
+        'Contacted physical therapy for morning ambulation session; assisted patient to dangle at bedside; assessed for orthostatic hypotension (BP 122/72 lying → 110/68 sitting — orthostatic symptoms absent); patient ambulated 15 feet with walker and PT on POD 1 morning.',
+        'Initiated rivaroxaban 10 mg PO at 8 hours post-op per order; confirmed SCDs functioning and applied; monitored hemovac output q4h (total 85 mL over 8 hours, decreasing trend); monitored hemoglobin q12h; assessed operative site for increased drainage or hematoma.',
+        'Educated patient on post-TKA exercises (quad sets, ankle pumps, SLR), VTE prevention (hydration, early ambulation, anticoagulant adherence), wound care, and signs of complications (calf pain, PE symptoms, wound infection); coordinated with case management for inpatient rehab or home PT.',
+      ],
+      outcomes: [
+        'Pain 5/10 at rest and 7/10 with movement at 1 hour after multimodal analgesia; patient able to cooperate with PT on POD 1.',
+        'Ambulated 15 feet with walker on POD 1; PT recommending continued ambulation q4h with nursing assist; SCDs in place between ambulation.',
+        'Hemovac output 30 mL in POD 1 evening shift; dressing dry and intact; no signs of hematoma; Hgb stable at 9.0 g/dL at 12 hours.',
+        'Patient demonstrated ankle pumps and quad sets independently; expressed understanding of anticoagulant importance. Goals substantially met — early ambulation achieved; continued pain management and VTE prevention ongoing.',
+      ],
+    },
+    /* 32 – Cellulitis / Skin & Soft Tissue Infection */
+    {
+      focusTopic: 'Cellulitis / skin and soft tissue infection (SSTI) — lower extremity, non-purulent',
+      pathophysiology: 'Cellulitis is an acute bacterial infection of the dermis and subcutaneous tissue, most commonly caused by Group A Streptococcus (GAS, beta-hemolytic) and Staphylococcus aureus (including MRSA). Non-purulent cellulitis (no abscess, no purulent exudate) is typically streptococcal; purulent cellulitis with abscess is more likely staphylococcal/MRSA. Bacteria gain entry through skin disruption (wounds, fissures, tinea pedis, insect bites, venous stasis ulcers). Host immune impairment (diabetes, venous insufficiency, lymphedema, immunosuppression) predisposes to infection. The classic presentation — rubor, calor, dolor, tumor (erythema, warmth, pain, swelling) plus malaise and fever — reflects local and systemic inflammatory responses. Circumferential progression of erythema is monitored by marking the border with a pen to track spread. Complications include bacteremia and sepsis (requires blood cultures and IV antibiotics), fasciitis (subcutaneous crepitus, severe pain out of proportion, rapidly spreading — surgical emergency), and chronic lymphedema. Non-purulent cellulitis of moderate severity is typically treated with IV beta-lactam antibiotics (cefazolin) and elevated extremity.',
+      riskFactors: [
+        'Chronic venous insufficiency and lower extremity edema — stagnant fluid provides a favorable medium for bacterial growth; impaired lymphatic drainage reduces local immunity',
+        'Tinea pedis (athlete\'s foot) and toe-web intertrigo — the most common portal of entry for cellulitis-causing streptococci in the lower leg',
+        'Obesity and diabetes mellitus — impaired microcirculation, neuropathy masking early symptoms, and hyperglycemia impairing neutrophil function increase cellulitis risk and severity',
+      ],
+      cues: [
+        'Left lower leg: erythema extending from ankle to knee, advancing 3 cm beyond original border (marked 4 hours ago); skin warm, tense, and tender to touch; no fluctuance, no crepitus, no blistering; 2+ pitting edema bilateral lower extremities; border demarcated with skin marker',
+        'T 38.8 °C; HR 104 bpm; BP 138/82 mmHg; WBC 16,400/mm³ with left shift; CRP 88 mg/L; ESR 72 mm/hr; blood glucose 214 mg/dL; blood cultures × 2 drawn; erythrocyte sedimentation rate elevated; creatinine 1.1 mg/dL',
+        'No purulence, no fluctuance, no crepitus on palpation — no abscess; Doppler ultrasound of left leg: no DVT; point-of-care CRP elevated; skin surface temperature 38.2 °C by infrared thermometry',
+        '62-year-old male; T2DM (poorly controlled, A1C 10.2 %), chronic venous insufficiency, obesity (BMI 38); bilateral lower extremity edema treated with compression stockings (non-adherent); tinea pedis left foot identified on exam; on metformin and lisinopril',
+      ],
+      concerning: [
+        'Erythema advancing 3 cm beyond skin marker within 4 hours despite empiric antibiotic initiation — cellulitis progression despite treatment; evaluate for necrotizing fasciitis (crepitus, severe pain out of proportion, gas on imaging) and consider broader antibiotic coverage or surgical consult',
+        'Blood glucose 214 mg/dL with A1C 10.2 % in active infection — hyperglycemia impairs neutrophil killing; insulin sliding scale or insulin infusion targeting glucose 140–180 mg/dL will optimize infection response',
+      ],
+      hypotheses: [
+        'IV cefazolin 2 g q8h (for non-purulent streptococcal cellulitis) will achieve tissue antibiotic concentrations adequate to halt bacterial spread; if MRSA is suspected (purulence, risk factors), adding IV vancomycin is indicated.',
+        'Strict leg elevation above heart level will reduce edema, improve venous and lymphatic return, and decrease inflammatory swelling — reducing tissue tension and creating a less hospitable environment for bacterial spread.',
+        'Optimizing blood glucose to 140–180 mg/dL with insulin therapy will restore neutrophil phagocytic function and significantly improve infection response in the diabetic host.',
+      ],
+      solutions: [
+        'Erythema progression will halt (no advancement beyond skin marker) within 24–48 hours of IV antibiotic initiation.',
+        'Temperature will return to ≤37.5 °C within 24 hours; WBC will trend down by 48 hours.',
+        'Blood glucose will be 140–180 mg/dL within 4 hours of insulin administration.',
+        'No signs of necrotizing fasciitis (crepitus, out-of-proportion pain, gas on imaging) will develop.',
+      ],
+      actions: [
+        'Administered cefazolin 2 g IV q8h per order; marked advancing erythema border with skin marker and time/date q4h; elevated left leg above heart level on two pillows; applied cool, moist compresses for comfort.',
+        'Initiated insulin glargine 10 units SQ at bedtime and regular insulin sliding scale per order; administered acetaminophen 650 mg PO for fever and pain; monitored blood glucose q4h; held metformin during acute illness.',
+        'Assessed leg q2h for advancing erythema, crepitus (necrotizing fasciitis signs), and blister formation; monitored temperature and WBC trend; repeated blood cultures if temperature spike; assessed bilateral pedal pulses and Doppler flow.',
+        'Treated tinea pedis with clotrimazole 1 % cream BID per order; educated patient on cellulitis prevention, foot hygiene, compression stocking use for venous insufficiency, and diabetes management; arranged endocrinology follow-up for A1C 10.2 %.',
+      ],
+      outcomes: [
+        'Erythema progression halted at 24 hours — no advancement beyond skin marker; temperature 37.4 °C at 24 hours.',
+        'WBC 11,200/mm³ at 48 hours (down from 16,400); CRP trending down; patient reporting decreased pain and warmth.',
+        'Blood glucose 152–178 mg/dL on insulin therapy; patient tolerating PO fluids; edema slightly improved with elevation.',
+        'No necrotizing fasciitis signs at any assessment. Goals met — cellulitis responding to IV antibiotics; transitioning to PO cephalexin for outpatient completion; tinea pedis treated and prevention education completed.',
+      ],
+    },
+    /* 33 – Thyroid Storm */
+    {
+      focusTopic: 'Thyroid storm (thyrotoxicosis crisis)',
+      pathophysiology: 'Thyroid storm is a life-threatening, extreme hypermetabolic state caused by massive, uncontrolled release of thyroid hormones (T3 and T4). It represents the most severe manifestation of hyperthyroidism, most commonly precipitated by physiological stressors (infection, surgery, trauma, iodine load, radioiodine therapy, DKA) in patients with pre-existing thyroid disease (most often Graves\' disease). Thyroid hormones bind nuclear receptors and dramatically increase metabolic rate, adrenergic receptor density (catecholamine amplification), cardiac contractility, and thermogenesis. The resulting clinical syndrome — hyperthermia, tachyarrhythmias (AF, SVT), high-output cardiac failure, CNS dysfunction (agitation, psychosis, coma), and multiorgan failure — carries 10–30 % mortality. The Burch-Wartofsky Point Scale (BWPS) ≥45 is diagnostic of thyroid storm. Treatment involves simultaneous: (1) beta-blockers (propranolol — blocks adrenergic effects and T4→T3 peripheral conversion); (2) PTU or methimazole (blocks new hormone synthesis); (3) iodine (Lugol\'s — blocks hormone release, given >1 hour after PTU); (4) corticosteroids (block T4→T3 conversion, treat relative adrenal insufficiency); (5) antipyretics (acetaminophen — NOT aspirin, which displaces T4 from protein binding); and (6) treat precipitant.',
+      riskFactors: [
+        'Pre-existing undertreated or undiagnosed Graves\' disease or toxic multinodular goiter — background elevated hormone levels make storm likely with any physiological stressor',
+        'Recent surgery, trauma, or systemic infection — the most common precipitants; surgical stress triggers massive catecholamine and cytokine release that destabilizes thyroid hormone regulation',
+        'Iodine load (IV contrast, amiodarone, topical antiseptics in iodine-sensitive patients) — acutely triggers hormone release from abnormal thyroid tissue (Jod-Basedow effect)',
+      ],
+      cues: [
+        'T 40.2 °C; HR 152 bpm (atrial fibrillation on ECG); BP 158/68 mmHg (wide pulse pressure); RR 26/min; SpO₂ 95 % on room air; diaphoretic, tremulous; GCS 13 (agitated, confused); bilateral exophthalmos; diffuse goiter palpable',
+        'TSH <0.01 mIU/L (critically suppressed); free T4 6.8 ng/dL (normal 0.8–1.8); free T3 18 pg/mL (normal 2–4); WBC 14,200 mm³; ALT 88 U/L; AST 72 U/L; total bilirubin 2.8 mg/dL; glucose 188 mg/dL; lactate 3.1 mmol/L',
+        'BWPS score: temperature (40.2 °C = 30 pts) + CNS (agitation = 10 pts) + GI (vomiting present = 10 pts) + CVS (AFib + HR >140 = 25 pts) = BWPS 75 — thyroid storm confirmed; ECG: atrial fibrillation with RVR at 152 bpm',
+        '44-year-old female; known Graves\' disease (last seen by endocrinologist 8 months ago, off methimazole × 4 months); presented with 2-day history of vomiting and diarrhea; no recent iodine exposure; BMI 22; lives alone',
+      ],
+      concerning: [
+        'BWPS 75 with AFib at 152 bpm, T 40.2 °C, and GCS 13 — confirmed thyroid storm with multi-organ involvement; IV propranolol must be initiated immediately for rate control and adrenergic blockade; cardiac monitoring and ICU admission required',
+        'High-output state with lactate 3.1 and liver dysfunction (elevated transaminases, bilirubin) — impending high-output cardiac failure and hepatic dysfunction from thyroid storm; the complete thyroid storm treatment regimen (propranolol → PTU → iodine → steroids) must be started urgently in proper sequence',
+      ],
+      hypotheses: [
+        'Administering IV propranolol 1 mg q5 minutes (titrated to HR <100 bpm) will block catecholamine amplification and peripheral T4→T3 conversion, reducing heart rate and oxygen consumption within 15–30 minutes.',
+        'PTU 500–1,000 mg PO/NG loading dose (preferred over methimazole in storm for its additional T4→T3 conversion-blocking property) followed by Lugol\'s iodine 5–10 drops PO q8h (>1 hour after PTU) will block new hormone synthesis and release, reducing circulating hormone levels over 24–48 hours.',
+        'Hydrocortisone 300 mg IV bolus then 100 mg q8h will block T4→T3 peripheral conversion, treat relative adrenal insufficiency, and reduce the inflammatory response — a critical adjunct in thyroid storm management.',
+      ],
+      solutions: [
+        'Heart rate will decrease to <110 bpm within 30 minutes of propranolol; AFib rate will be controlled to <100 bpm within 1 hour.',
+        'Temperature will decrease to ≤38.5 °C within 4 hours using acetaminophen and external cooling.',
+        'Free T4 and T3 will begin declining within 24–48 hours of PTU and iodine therapy; TSH will remain suppressed for weeks.',
+        'GCS will improve to 15; agitation will resolve as heart rate and temperature are controlled.',
+      ],
+      actions: [
+        'Administered propranolol 1 mg IV over 1 minute × 3 doses (5-minute intervals); HR decreased from 152 to 112 bpm; applied continuous cardiac monitoring; prepared for cardioversion if hemodynamic instability; placed IV access (two large-bore IVs).',
+        'Administered PTU 500 mg via NG tube (patient too agitated for PO); administered Lugol\'s iodine 10 drops PO/NG 90 minutes after PTU; administered hydrocortisone 300 mg IV bolus; initiated acetaminophen 1,000 mg IV for fever; applied cooling blanket for T 40.2 °C.',
+        'Administered IV fluids (LR 125 mL/hr for dehydration from vomiting/diarrhea); placed urinary catheter; monitored urine output, liver function, and cardiac output q2–4h; sent blood cultures and urine culture to rule out infectious precipitant.',
+        'Notified endocrinology and ICU for storm management and transfer; educated family about thyroid storm severity; identified and treated precipitant (GI infection — IV antibiotics initiated for empirical coverage); documented medication sequence and timing carefully.',
+      ],
+      outcomes: [
+        'HR 98 bpm in sinus rhythm at 2 hours (converted spontaneously from AFib after propranolol and temperature control); hemodynamics stable.',
+        'Temperature 38.2 °C at 4 hours after cooling measures and acetaminophen; diaphoresis decreased; patient less agitated.',
+        'GCS 14 at 3 hours; patient cooperative with care; agitation resolved after adrenergic blockade.',
+        'Free T4 trending down at 24 hours (from 6.8 to 5.1 ng/dL); PTU and iodine continued; ICU monitoring ongoing. Goals substantially met — thyroid storm controlled; endocrinology managing long-term therapy (radioiodine ablation vs. surgery planned).',
+      ],
+    },
+    /* 34 – Major Burns / Thermal Injury */
+    {
+      focusTopic: 'Major burns — thermal injury (>20 % TBSA)',
+      pathophysiology: 'Major burns cause local and systemic injury. Locally, the zones of injury (Jackson\'s model) comprise: zone of coagulation (irreversible necrosis at the center), zone of stasis (at risk — potentially salvageable with adequate perfusion), and zone of hyperemia (peripheral — recovers without treatment). Depth is classified as superficial (first degree), partial thickness superficial/deep (second degree), and full thickness (third degree, involving dermis and deeper structures). The systemic response involves massive capillary leak (first 24–48 hours): inflammatory mediators (histamine, prostaglandins, cytokines) increase capillary permeability, causing profound plasma loss into the interstitium — burn shock. Aggressive fluid resuscitation using the Parkland formula (4 mL × kg × % TBSA in crystalloid over 24 hours, half in first 8 hours) prevents organ failure. Hypermetabolism peaks at 7–10 days: metabolic rate can reach 180 % of baseline, requiring early enteral nutrition. Burn wound infection (Pseudomonas, Staphylococcus, Candida) and inhalation injury are the leading causes of burn mortality. Inhalation injury — diagnosed by singed nasal hairs, facial burns, carbonaceous sputum, hoarseness — indicates early intubation before airway edema obstructs.',
+      riskFactors: [
+        'Home structure fires (often with alcohol or drug intoxication, elderly with impaired escape ability) — leading cause of fatal residential burns',
+        'Scalds (in children and elderly) — hot liquid spills cause deep partial-thickness burns; common in pediatric abuse cases',
+        'Occupational and industrial exposures (chemical burns, electrical burns, flash injuries) — associated with complex wound patterns and potential systemic toxicity',
+      ],
+      cues: [
+        'Burns involving bilateral arms (9 % each), anterior trunk (18 %), and face/head (4.5 %) — estimated 40.5 % TBSA per Rule of Nines; burns are partial and full thickness; facial burns with singed eyebrows and nasal hair; carbonaceous sputum; progressive hoarseness over 30 minutes in ED',
+        'HR 138 bpm; BP 96/62 mmHg (burn shock); RR 24/min; SpO₂ 91 % on 15 L/min NRB; T 36.2 °C; weight 80 kg; urine output via Foley 10 mL/hr over past hour',
+        'Parkland formula calculation: 4 mL × 80 kg × 40 % TBSA = 12,800 mL LR over 24 hours — 6,400 mL in first 8 hours (800 mL/hr); remaining 6,400 mL over 16 hours; ABG: pH 7.30, PaO₂ 72, PaCO₂ 36, HCO₃ 17, COHgb 12 %',
+        '28-year-old male; house fire; found in burning building; brought by EMS; no helmet or seat belt injury; GCS 14 (mild CO exposure); carboxyhemoglobin 12 % on co-oximetry; no blast injury; history unknown',
+      ],
+      concerning: [
+        'Progressive hoarseness, facial burns, singed nasal hair, and carbonaceous sputum — inhalation injury with impending airway obstruction from laryngeal edema; immediate RSI (rapid sequence intubation) with video laryngoscopy is the highest priority before airway edema precludes intubation',
+        'SpO₂ 91 %, COHgb 12 %, and urine output 10 mL/hr — concurrent carbon monoxide poisoning and burn shock; 100 % O₂ via NRB accelerates CO elimination (half-life 5 hours on room air → 60–90 minutes on 100 % O₂); Parkland resuscitation must begin immediately targeting UO 0.5–1 mL/kg/hr',
+      ],
+      hypotheses: [
+        'Immediate RSI with video laryngoscopy (ketamine + succinylcholine) and placement of 7.5–8.0 mm ETT will secure the airway before laryngeal edema progresses — preventing asphyxiation, the most immediately life-threatening burn complication.',
+        'Initiating Parkland fluid resuscitation (LR 800 mL/hr for first 8 hours) will restore intravascular volume, improve cardiac output, and maintain urine output 0.5–1 mL/kg/hr, preventing burn shock and preserving end-organ function.',
+        'Administering 100 % O₂ pre- and post-intubation will reduce carboxyhemoglobin half-life from 5 hours to <90 minutes, rapidly clearing CO and restoring oxygen delivery to tissues — critical for neurological and myocardial protection.',
+      ],
+      solutions: [
+        'ETT will be successfully placed before airway edema worsens; SpO₂ will be ≥97 % after intubation on 100 % FiO₂.',
+        'COHgb will decrease to <5 % within 90 minutes of 100 % O₂ administration; GCS will improve to 15 as CO clears.',
+        'Urine output will be 40–80 mL/hr (0.5–1 mL/kg/hr) within 2 hours of Parkland resuscitation initiation.',
+        'Burn wounds will be covered with sterile dressings; pain will be managed with IV morphine or ketamine infusion; early enteral nutrition will be initiated within 6 hours.',
+      ],
+      actions: [
+        'Performed RSI: preoxygenated with 100 % O₂ × 5 minutes; ketamine 1.5 mg/kg IV + succinylcholine 1.5 mg/kg IV; video laryngoscopy — Grade 2 view; 7.5 ETT placed and confirmed (EtCO₂, CXR, auscultation); secured ETT with tape and gauze dressing (no tape on burned skin).',
+        'Initiated LR at 800 mL/hr (Parkland first 8 hours); placed two large-bore IVs in unburned extremities; measured Foley urine output q1h; adjusted LR rate based on UO (target 40–80 mL/hr); monitored for compartment syndrome in circumferential burns (bilateral arm escharotomy anticipated).',
+        'Applied silver sulfadiazine cream and sterile non-adherent dressings to partial-thickness wounds; covered full-thickness wounds with dry sterile dressings; initiated IV morphine infusion 2–4 mg/hr for pain; obtained wound cultures; placed NG tube — initiated early enteral nutrition at 20 mL/hr.',
+        'Notified burn center for transfer; obtained tetanus immunization (if not up to date); performed ophthalmologic exam for corneal burns; obtained 12-lead ECG (electrical injury rule-out); documented wound surface area using Lund-Browder chart; obtained forensic photos per protocol; coordinated with social work.',
+      ],
+      outcomes: [
+        'ETT placed on first attempt; SpO₂ 99 % on FiO₂ 1.0; airway secured before progressive edema — no desaturation during procedure.',
+        'COHgb 4 % at 90 minutes post-intubation (down from 12 %); GCS improving to 14; neurological monitoring continued.',
+        'Urine output 52 mL/hr at 2 hours on Parkland resuscitation; LR rate adjusted to 700 mL/hr; no compartment syndrome signs yet.',
+        'Enteral feeds initiated at hour 4 at 20 mL/hr; wound care completed; burn center transfer arranged. Goals substantially met — airway secured, resuscitation ongoing; transfer to burn center for definitive surgical care.',
+      ],
+    },
+    /* 35 – Opioid Overdose / Naloxone Response */
+    {
+      focusTopic: 'Opioid overdose — acute respiratory depression / naloxone resuscitation',
+      pathophysiology: 'Opioid overdose occurs when opioid agonists (heroin, fentanyl, oxycodone, morphine, methadone) saturate μ-opioid receptors throughout the CNS, causing dose-dependent CNS and respiratory depression. Mu-receptor activation in the brainstem (pre-Bötzinger complex) suppresses the respiratory drive: hypoxic and hypercapnic ventilatory responses are blunted, respiratory rate falls, and death occurs from hypoxic respiratory failure. Fentanyl and its analogues (carfentanil, acetylfentanyl) are 100–10,000× more potent than morphine; because illicit drug supplies are increasingly contaminated with synthetic opioids, even small exposures cause rapid, life-threatening apnea. The opioid overdose triad: miosis (pin-point pupils), unconsciousness, and respiratory depression (rate <8/min or apnea). Naloxone (Narcan) is a competitive mu-opioid receptor antagonist with rapid onset (1–2 minutes IV) that reverses respiratory depression, sedation, and analgesia. Duration: 30–90 minutes IV — shorter than most opioids, so repeat dosing and monitoring (min 4 hours) are essential to prevent re-narcotization. Harm reduction approaches include community naloxone distribution, safe injection facilities, and medication-assisted treatment (MAT) with buprenorphine or methadone.',
+      riskFactors: [
+        'High-potency synthetic opioid use (illicit fentanyl, fentanyl analogues) — a single pill or small amount can contain a lethal dose; even experienced users cannot gauge potency from appearance',
+        'Recent incarceration, rehabilitation, or hospitalization — loss of opioid tolerance during abstinence makes the previous-tolerance dose now potentially fatal upon relapse',
+        'Polydrug use (opioids + benzodiazepines, alcohol, or other CNS depressants) — synergistic respiratory depression significantly increases overdose lethality',
+      ],
+      cues: [
+        'GCS 4 (E1 V1 M2); RR 4/min, shallow and agonal; HR 52 bpm; BP 82/50 mmHg; SpO₂ 68 % on room air; pupils 1 mm bilaterally, non-reactive (pin-point miosis); cyanotic lips and nail beds; foam at mouth; cold and clammy skin; no gag reflex',
+        'Found by bystanders in apartment bathroom; empty syringe and aluminum foil nearby; suspected fentanyl and heroin use per witness; bystanders administered intranasal naloxone 4 mg × 1 dose before EMS arrival — partial response (RR improved to 4/min from apnea)',
+        'BGL 88 mg/dL (hypoglycemia ruled out); ECG: sinus bradycardia rate 52; 12-lead: no STEMI pattern; naloxone 0.4 mg IV administered by EMS; SpO₂ improved to 78 % with BVM ventilation; no IV access — IO placed right tibia by EMS',
+        '32-year-old male; known opioid use disorder; recently released from 6-month incarceration (tolerance markedly reduced); HIV-negative; Hep C antibody positive; previous naloxone reversal × 2; not currently on MAT',
+      ],
+      concerning: [
+        'SpO₂ 68 % with GCS 4 and RR 4/min — severe hypoxic respiratory failure from opioid overdose; immediate BVM ventilation with 100 % O₂ is the highest priority intervention; intubation is indicated if naloxone does not restore adequate ventilation within 2–3 minutes',
+        'RR 4/min 30 minutes after bystander naloxone 4 mg and EMS naloxone 0.4 mg — likely fentanyl or fentanyl analogue overdose requiring repeated naloxone dosing (2–4 mg IV) and continuous infusion (two-thirds of effective reversal dose per hour) to prevent re-narcotization',
+      ],
+      hypotheses: [
+        'Administering naloxone 2 mg IV rapidly (with BVM ventilation continued) will competitively displace fentanyl from μ-opioid receptors, restoring respiratory drive and consciousness within 2–3 minutes — avoiding intubation if adequate response occurs.',
+        'Initiating a naloxone continuous IV infusion (calculated at two-thirds of the reversal dose per hour) will prevent re-narcotization as naloxone\'s 30–90 minute duration of action is shorter than fentanyl\'s — preventing a second arrest during the monitoring period.',
+        'Continued BVM ventilation with 100 % O₂ during naloxone administration will prevent anoxic brain injury and cardiac arrest from hypoxia — oxygenation support is the life-saving bridge until opioid reversal takes effect.',
+      ],
+      solutions: [
+        'SpO₂ will improve to ≥94 % within 5 minutes of naloxone administration and BVM ventilation.',
+        'RR will increase to ≥10/min and GCS will improve to ≥10 within 3 minutes of effective naloxone dose.',
+        'Intubation will be avoided if naloxone response is adequate; patient will maintain protective airway reflexes.',
+        'Patient will remain monitored for minimum 4 hours after last naloxone dose for signs of re-narcotization; opioid use disorder treatment will be offered before discharge.',
+      ],
+      actions: [
+        'Applied BVM with 100 % O₂ at 12 breaths/min; administered naloxone 2 mg IV via IO × 1 dose; GCS improved to 8 (E2 V2 M4) at 2 minutes; RR 12/min; SpO₂ 88 % — continued BVM; administered naloxone 2 mg IV × second dose; SpO₂ 94 %; GCS 11; RR 14/min.',
+        'Established IV access (18-gauge left antecubital once IO removed after IV confirmed); initiated naloxone continuous infusion at 1.3 mg/hr (two-thirds of 2 mg effective reversal dose); placed patient on continuous cardiac, SpO₂, and RR monitoring; positioned left lateral recovery position when stable.',
+        'Assessed for polysubstance co-ingestion (obtained UDS: fentanyl positive, benzodiazepine positive); initiated thiamine 100 mg IV (nutritional status unknown); obtained ECG (Brugada pattern rule-out); placed Foley catheter; assessed for rhabdomyolysis (CK pending); monitored q15 minutes for opioid withdrawal signs (diaphoresis, agitation, vomiting) as naloxone effect.',
+        'Connected patient with addiction medicine and social work while in ED; offered buprenorphine induction (patient accepted); administered first dose buprenorphine/naloxone 4/1 mg SL in ED (COWS score 12 — in mild withdrawal); provided naloxone 4 mg intranasal kit with patient education to companion; scheduled outpatient MAT follow-up.',
+      ],
+      outcomes: [
+        'SpO₂ 96 % at 5 minutes on room air after naloxone and O₂; BVM discontinued; intubation avoided — patient maintaining airway.',
+        'GCS 14 at 10 minutes; RR 14/min; no re-narcotization in 4-hour monitoring period on naloxone infusion.',
+        'Buprenorphine accepted and administered; patient engaged with addiction medicine; safe use supply (naloxone kit) provided to companion.',
+        'UDS positive for fentanyl and benzodiazepines; CK 820 U/L (mild rhabdomyolysis — IV fluids initiated); patient discharged to MAT program after 6-hour monitoring. Goals met — opioid reversal achieved; harm reduction and MAT pathway initiated.',
       ],
     },
   ];
