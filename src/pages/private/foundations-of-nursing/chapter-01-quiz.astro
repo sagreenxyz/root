@@ -1,0 +1,388 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Chapter 1 Quiz — History and Evolution of Nursing" protected={true}>
+
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing`} style="color:#6366f1; text-decoration:none; font-weight:500;">Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing/chapter-01`} style="color:#6366f1; text-decoration:none; font-weight:500;">Chapter 1</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>NCLEX Quiz</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">📜</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">Chapter 1 — Unit 1</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">NCLEX Practice Quiz</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">History and Evolution of Nursing — 10 questions (including 1 NGN extended-thinking item). Select your answers and submit to see your score and rationales.</p>
+  </header>
+
+  <!-- Score banner (hidden until submitted) -->
+  <div id="score-banner" style="display:none; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem; text-align:center;">
+    <div id="score-text" style="font-size:1.5rem; font-weight:800; color:#166534;"></div>
+    <div id="score-sub" style="font-size:0.9rem; color:#15803d; margin-top:0.25rem;"></div>
+  </div>
+
+  <div id="quiz-form">
+    <!-- Questions injected by JS -->
+  </div>
+
+  <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <button id="submit-btn" onclick="submitQuiz()"
+      style="padding:0.75rem 2rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Submit Quiz
+    </button>
+    <button id="reset-btn" onclick="resetQuiz()" style="display:none; padding:0.75rem 1.5rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Retake Quiz
+    </button>
+    <a href={`${base}/private/foundations-of-nursing/chapter-01`}
+      style="padding:0.75rem 1.5rem; background:#fff; color:#64748b; border:1px solid #e2e8f0; border-radius:0.6rem; font-size:0.9rem; font-weight:600; text-decoration:none;">
+      ← Read Chapter 1
+    </a>
+  </div>
+
+</Layout>
+
+<script>
+const QUESTIONS = [
+  {
+    n: 1,
+    type: 'single',
+    stem: 'A faculty member is explaining to a group of first-semester nursing students why they study nursing history. Which of the following responses by the faculty is <strong>most accurate</strong>?',
+    options: [
+      { label: 'A', text: 'Nursing history is included in the curriculum primarily for licensing examination purposes.' },
+      { label: 'B', text: 'Understanding nursing\'s history helps nurses appreciate how present-day practice authority and professional values were established.' },
+      { label: 'C', text: 'The primary value of nursing history is to learn which historical mistakes to avoid repeating.' },
+      { label: 'D', text: 'Nursing history is relevant only to nurses who plan to work in academic or administrative roles.' },
+    ],
+    correct: ['B'],
+    rationale: 'Nursing history explains the origins of current professional authority, ethical standards, and practice frameworks — not merely for examination purposes or to avoid past mistakes.',
+  },
+  {
+    n: 2,
+    type: 'sata',
+    stem: 'Which of the following are contributions directly attributed to Florence Nightingale? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Establishing the first secular, organized nurse training program in England' },
+      { label: 'B', text: 'Using polar area diagrams to communicate mortality data to policymakers' },
+      { label: 'C', text: 'Founding the American Nurses Association' },
+      { label: 'D', text: 'Reducing mortality at Scutari through environmental sanitary reforms' },
+      { label: 'E', text: 'Publishing <em>Notes on Nursing</em> as the first nursing textbook' },
+    ],
+    correct: ['A', 'B', 'D', 'E'],
+    rationale: 'Nightingale established the Nightingale Training School (A), pioneered data visualization of mortality statistics (B), implemented sanitary reforms at Scutari (D), and published <em>Notes on Nursing</em> (E). The ANA was founded in 1896, not by Nightingale.',
+  },
+  {
+    n: 3,
+    type: 'ordered',
+    stem: 'Place the following milestones in U.S. nursing education in <strong>chronological order</strong>, from earliest to most recent.',
+    options: [
+      { label: 'A', text: 'Publication of the Brown Report (<em>Nursing for the Future</em>)' },
+      { label: 'B', text: 'Opening of the Bellevue Training School in New York' },
+      { label: 'C', text: 'Mildred Montag\'s proposal for the associate degree nursing program' },
+      { label: 'D', text: 'AACN recommendation of the DNP as the preferred APRN credential' },
+      { label: 'E', text: 'North Carolina enacts the first state nursing practice act' },
+    ],
+    correct: ['B', 'E', 'A', 'C', 'D'],
+    rationale: 'Correct chronological order: B — Bellevue Training School (1873); E — NC Nurse Practice Act (1903); A — Brown Report (1948); C — Montag\'s ADN proposal (1951); D — AACN DNP recommendation (2004).',
+  },
+  {
+    n: 4,
+    type: 'single',
+    stem: 'According to Dorothea Orem\'s Self-Care Deficit Theory, nursing intervention is indicated when:',
+    options: [
+      { label: 'A', text: 'The patient is admitted to an acute care hospital.' },
+      { label: 'B', text: 'The patient\'s self-care capacity is less than the self-care required to maintain health.' },
+      { label: 'C', text: 'The patient refuses to participate in their own care.' },
+      { label: 'D', text: 'The patient has a chronic illness that will require lifelong management.' },
+    ],
+    correct: ['B'],
+    rationale: 'Orem\'s theory specifies that nursing intervenes when a self-care deficit exists — when self-care capacity falls below the self-care demand required for health. Hospital admission or chronic illness alone do not necessarily imply a deficit under Orem\'s framework.',
+  },
+  {
+    n: 5,
+    type: 'single',
+    stem: 'The four central concepts of the nursing metaparadigm are:',
+    options: [
+      { label: 'A', text: 'Assessment, diagnosis, planning, and implementation' },
+      { label: 'B', text: 'Safety, quality, patient-centered care, and evidence-based practice' },
+      { label: 'C', text: 'Person, environment, health, and nursing' },
+      { label: 'D', text: 'Theory, research, practice, and education' },
+    ],
+    correct: ['C'],
+    rationale: 'The nursing metaparadigm consists of person, environment, health, and nursing — the four foundational concepts common to all nursing theoretical frameworks (Fawcett, 1984).',
+  },
+  {
+    n: 6,
+    type: 'single',
+    stem: 'A nurse is caring for a recently immigrated patient from a cultural background unfamiliar to the nurse. The patient\'s family insists on certain dietary practices that the nurse does not understand. Which nursing theory would be <strong>most helpful</strong> to guide the nurse\'s approach?',
+    options: [
+      { label: 'A', text: 'Orem\'s Self-Care Deficit Theory' },
+      { label: 'B', text: 'Nightingale\'s Environmental Theory' },
+      { label: 'C', text: 'Leininger\'s Culture Care Theory' },
+      { label: 'D', text: 'Neuman\'s Systems Model' },
+    ],
+    correct: ['C'],
+    rationale: 'Leininger\'s Culture Care Theory specifically addresses the importance of culturally congruent care and is the framework most directly applicable to situations involving cultural practices and beliefs that affect health care.',
+  },
+  {
+    n: 7,
+    type: 'sata',
+    stem: 'Which of the following are identified by the 2021 NASEM report <em>The Future of Nursing 2020–2030</em> as priority areas for the nursing profession? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Achieving health equity' },
+      { label: 'B', text: 'Transitioning all nurses to doctoral-level preparation by 2030' },
+      { label: 'C', text: 'Addressing the social determinants of health' },
+      { label: 'D', text: 'Reducing structural racism in healthcare and nursing education' },
+      { label: 'E', text: 'Eliminating the associate degree pathway to licensure' },
+    ],
+    correct: ['A', 'C', 'D'],
+    rationale: 'The 2021 NASEM report centers health equity, addressing social determinants of health, and reducing structural racism. It does not call for eliminating the ADN pathway or requiring doctoral preparation for all nurses.',
+  },
+  {
+    n: 8,
+    type: 'single',
+    stem: 'According to Patricia Benner\'s Novice to Expert framework, which characteristic most accurately describes a <strong>competent</strong> nurse?',
+    options: [
+      { label: 'A', text: 'Relies entirely on rules and protocols, without contextual modification' },
+      { label: 'B', text: 'Demonstrates an intuitive grasp of clinical situations that is immediate and difficult to articulate' },
+      { label: 'C', text: 'Has approximately two to three years of experience and organizes care efficiently based on recognized patterns' },
+      { label: 'D', text: 'Possesses advanced beginner\'s ability to recognize situational aspects but still struggles with priority-setting' },
+    ],
+    correct: ['C'],
+    rationale: 'Benner\'s competent stage is characterized by approximately two to three years of experience, with the ability to organize and plan care efficiently based on consciously recognized long-range goals and patterns.',
+  },
+  {
+    n: 9,
+    type: 'single',
+    stem: 'Mary Eliza Mahoney is historically significant in nursing because she:',
+    options: [
+      { label: 'A', text: 'Founded the National League for Nursing in 1952' },
+      { label: 'B', text: 'Established the Frontier Nursing Service to provide care in rural Kentucky' },
+      { label: 'C', text: 'Was the first licensed Black professional nurse in the United States, graduating in 1879' },
+      { label: 'D', text: 'Led the campaign for the Army Nurse Corps Act of 1901' },
+    ],
+    correct: ['C'],
+    rationale: 'Mary Mahoney graduated from the New England Hospital for Women and Children in 1879 as the first licensed Black professional nurse in the United States.',
+  },
+  {
+    n: '10',
+    type: 'ngn',
+    stem: '<strong>(NGN Extended Thinking)</strong> Jordan, a first-semester nursing student, is rounding with preceptor Margaret on a busy medical-surgical unit. Jordan observes that 82-year-old Mr. T. has new-onset confusion, increased respiratory rate (24/min), and skin that is warm and dry. The morning EHR temperature reads 38.9°C (102°F). Jordan is unsure whether to report the findings now or wait until the scheduled assessment time.',
+    subquestions: [
+      {
+        label: '10a',
+        stem: '<strong>(Recognize Cues)</strong> Which of Mr. T.\'s findings are <strong>clinically significant</strong> cues that Jordan should recognize as requiring further evaluation? Select all that apply.',
+        type: 'sata',
+        options: [
+          { label: 'A', text: 'Temperature of 38.9°C' },
+          { label: 'B', text: 'Respiratory rate of 24 breaths/minute' },
+          { label: 'C', text: 'Age of 82 years' },
+          { label: 'D', text: 'New-onset confusion' },
+          { label: 'E', text: 'Skin that is warm and dry' },
+        ],
+        correct: ['A', 'B', 'D', 'E'],
+        rationale: 'Temperature 38.9°C (fever), RR 24 (tachypnea), new confusion, and warm/dry skin are all abnormal or acutely changed findings requiring evaluation. Age alone (C) is a risk factor but not itself a cue requiring specific clinical action in this context.',
+      },
+      {
+        label: '10b',
+        stem: '<strong>(Analyze Cues)</strong> Taken together, these findings are most consistent with which clinical problem?',
+        type: 'single',
+        options: [
+          { label: 'A', text: 'Normal aging changes in an older adult patient' },
+          { label: 'B', text: 'Possible early sepsis or serious infection' },
+          { label: 'C', text: 'Medication side effects from a newly started antihypertensive' },
+          { label: 'D', text: 'Anxiety related to hospitalization' },
+        ],
+        correct: ['B'],
+        rationale: 'The combination of fever, tachypnea, new-onset confusion, and altered skin in an elderly patient is consistent with early sepsis or serious infection and requires urgent evaluation.',
+      },
+      {
+        label: '10c',
+        stem: '<strong>(Generate Solutions)</strong> Which action by Jordan is <strong>most appropriate</strong> given these findings?',
+        type: 'single',
+        options: [
+          { label: 'A', text: 'Complete the scheduled assessment at the assigned time to avoid disturbing Margaret' },
+          { label: 'B', text: 'Document the findings in the EHR and wait for the next nursing shift to report' },
+          { label: 'C', text: 'Immediately communicate the findings to Margaret using a structured handoff format (e.g., SBAR)' },
+          { label: 'D', text: 'Call the attending physician directly to report the findings without consulting Margaret first' },
+        ],
+        correct: ['C'],
+        rationale: 'Jordan should immediately communicate findings to Margaret using a structured communication tool (SBAR), not wait, document and defer, or bypass the preceptor chain of authority.',
+      },
+    ],
+  },
+];
+
+function renderQuiz() {
+  const form = document.getElementById('quiz-form');
+  let html = '';
+  let qIndex = 0;
+
+  QUESTIONS.forEach(q => {
+    if (q.type === 'ngn') {
+      html += renderNGN(q, qIndex);
+      qIndex += q.subquestions.length;
+    } else {
+      html += renderQuestion(q, qIndex, null);
+      qIndex++;
+    }
+  });
+
+  form.innerHTML = html;
+}
+
+function renderQuestion(q, idx, parentLabel) {
+  const id = parentLabel ? parentLabel : 'q' + q.n;
+  const isOrdered = q.type === 'ordered';
+  const isSATA = q.type === 'sata';
+  const inputType = (isSATA || isOrdered) ? 'checkbox' : 'radio';
+
+  let optionsHtml = '';
+  q.options.forEach(opt => {
+    optionsHtml += `
+      <label class="opt-label" id="${id}_opt${opt.label}" style="display:flex;align-items:flex-start;gap:0.6rem;padding:0.6rem 0.75rem;border-radius:0.5rem;border:1.5px solid #e2e8f0;margin-bottom:0.5rem;cursor:pointer;transition:border-color 0.15s;">
+        <input type="${inputType}" name="${id}" value="${opt.label}" style="margin-top:0.2rem;flex-shrink:0;accent-color:#6366f1;" />
+        <span><strong>${opt.label}.</strong> ${opt.text}</span>
+      </label>`;
+  });
+
+  return `
+    <div class="question-card" id="card_${id}" style="background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.25rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">${parentLabel ? parentLabel : 'Question ' + q.n}${isSATA ? ' — Select all that apply' : isOrdered ? ' — Ordered response' : ''}</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1rem;">${q.stem}</p>
+      <div class="options-wrap">${optionsHtml}</div>
+      <div class="rationale-box" id="rat_${id}" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;line-height:1.6;"></div>
+    </div>`;
+}
+
+function renderNGN(q, baseIdx) {
+  let inner = q.subquestions.map(sq => renderQuestion(sq, baseIdx++, sq.label)).join('');
+  return `
+    <div style="background:#f0f4ff;border:2px solid #c7d2fe;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.5rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">Question 10 — NGN Extended Thinking</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1.25rem;">${q.stem}</p>
+      ${inner}
+    </div>`;
+}
+
+function collectAnswers() {
+  const allAnswers = {};
+  QUESTIONS.forEach(q => {
+    if (q.type === 'ngn') {
+      q.subquestions.forEach(sq => {
+        const id = sq.label;
+        const checked = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value);
+        allAnswers[id] = checked;
+      });
+    } else {
+      const id = 'q' + q.n;
+      const checked = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value);
+      allAnswers[id] = checked;
+    }
+  });
+  return allAnswers;
+}
+
+function gradeAnswers(answers) {
+  let total = 0, correct = 0;
+  const results = {};
+
+  QUESTIONS.forEach(q => {
+    const subqs = q.type === 'ngn' ? q.subquestions : [{ ...q, label: 'q' + q.n }];
+    subqs.forEach(sq => {
+      const id = sq.label || 'q' + sq.n;
+      total++;
+      const given = (answers[id] || []).slice().sort();
+      const expected = sq.correct.slice().sort();
+      const isCorrect = JSON.stringify(given) === JSON.stringify(expected);
+      if (isCorrect) correct++;
+      results[id] = { isCorrect, given, expected, rationale: sq.rationale };
+    });
+  });
+
+  return { total, correct, results };
+}
+
+function showFeedback(graded) {
+  Object.entries(graded.results).forEach(([id, res]) => {
+    const card = document.getElementById('card_' + id);
+    if (!card) return;
+
+    // Colour option labels
+    const opts = card.querySelectorAll('.opt-label');
+    opts.forEach(lbl => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      const val = inp.value;
+      const isExpected = res.expected.includes(val);
+      const isChosen = res.given.includes(val);
+      inp.disabled = true;
+
+      if (isExpected && isChosen) {
+        lbl.style.borderColor = '#16a34a';
+        lbl.style.background = '#f0fdf4';
+      } else if (isExpected && !isChosen) {
+        lbl.style.borderColor = '#d97706';
+        lbl.style.background = '#fffbeb';
+      } else if (!isExpected && isChosen) {
+        lbl.style.borderColor = '#dc2626';
+        lbl.style.background = '#fef2f2';
+      }
+    });
+
+    const ratBox = document.getElementById('rat_' + id);
+    if (ratBox) {
+      ratBox.style.display = 'block';
+      ratBox.style.background = res.isCorrect ? '#f0fdf4' : '#fef2f2';
+      ratBox.style.borderLeft = '4px solid ' + (res.isCorrect ? '#16a34a' : '#dc2626');
+      ratBox.style.color = res.isCorrect ? '#166534' : '#991b1b';
+      ratBox.innerHTML = '<strong>' + (res.isCorrect ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + res.rationale;
+    }
+
+    card.style.borderColor = res.isCorrect ? '#bbf7d0' : '#fecaca';
+  });
+}
+
+function submitQuiz() {
+  const answers = collectAnswers();
+  const graded = gradeAnswers(answers);
+  showFeedback(graded);
+
+  const pct = Math.round((graded.correct / graded.total) * 100);
+  const banner = document.getElementById('score-banner');
+  document.getElementById('score-text').textContent = graded.correct + ' / ' + graded.total + ' correct (' + pct + '%)';
+  document.getElementById('score-sub').textContent =
+    pct >= 80 ? '🎉 Excellent! You are well-prepared for this material.' :
+    pct >= 60 ? '📚 Good effort — review the sections highlighted below.' :
+    '🔍 Review Chapter 1 carefully before re-attempting.';
+  banner.style.display = 'block';
+  banner.style.background = pct >= 80 ? '#f0fdf4' : pct >= 60 ? '#fffbeb' : '#fef2f2';
+  banner.style.borderColor = pct >= 80 ? '#bbf7d0' : pct >= 60 ? '#fde68a' : '#fecaca';
+  document.getElementById('score-text').style.color = pct >= 80 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b';
+  document.getElementById('score-sub').style.color = pct >= 80 ? '#15803d' : pct >= 60 ? '#b45309' : '#b91c1c';
+
+  banner.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('reset-btn').style.display = 'inline-block';
+}
+
+function resetQuiz() {
+  document.getElementById('score-banner').style.display = 'none';
+  document.getElementById('submit-btn').style.display = 'inline-block';
+  document.getElementById('reset-btn').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', renderQuiz);
+</script>

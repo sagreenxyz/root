@@ -1,0 +1,345 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Chapter 2 Quiz — Legal, Ethical, and Professional Standards" protected={true}>
+
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing`} style="color:#6366f1; text-decoration:none; font-weight:500;">Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing/chapter-02`} style="color:#6366f1; text-decoration:none; font-weight:500;">Chapter 2</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>NCLEX Quiz</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">⚖️</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">Chapter 2 — Unit 1</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">NCLEX Practice Quiz</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Legal, Ethical, and Professional Standards — 10 questions (including 1 NGN extended-thinking item). Select your answers and submit to see your score and rationales.</p>
+  </header>
+
+  <div id="score-banner" style="display:none; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem; text-align:center;">
+    <div id="score-text" style="font-size:1.5rem; font-weight:800;"></div>
+    <div id="score-sub" style="font-size:0.9rem; margin-top:0.25rem;"></div>
+  </div>
+
+  <div id="quiz-form"></div>
+
+  <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <button id="submit-btn" onclick="submitQuiz()"
+      style="padding:0.75rem 2rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Submit Quiz
+    </button>
+    <button id="reset-btn" onclick="resetQuiz()" style="display:none; padding:0.75rem 1.5rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Retake Quiz
+    </button>
+    <a href={`${base}/private/foundations-of-nursing/chapter-02`}
+      style="padding:0.75rem 1.5rem; background:#fff; color:#64748b; border:1px solid #e2e8f0; border-radius:0.6rem; font-size:0.9rem; font-weight:600; text-decoration:none;">
+      ← Read Chapter 2
+    </a>
+  </div>
+
+</Layout>
+
+<script>
+const QUESTIONS = [
+  {
+    n: 1,
+    type: 'single',
+    stem: 'A nurse is assigned to care for a patient who has just arrived from the emergency department. The charge nurse asks the nurse to perform a dressing change on the patient\'s surgical wound using a technique the nurse has not been trained on. Which action should the nurse take <strong>first</strong>?',
+    options: [
+      { label: 'A', text: 'Perform the dressing change as requested to avoid delaying the patient\'s care.' },
+      { label: 'B', text: 'Ask another nurse to observe the procedure to ensure patient safety.' },
+      { label: 'C', text: 'Inform the charge nurse that she has not been trained or validated in this technique and request guidance before proceeding.' },
+      { label: 'D', text: 'Document in the chart that the procedure was outside her competency and perform it anyway.' },
+    ],
+    correct: ['C'],
+    rationale: 'The nurse must refuse to perform tasks outside her verified competency and seek guidance before proceeding; this is both a scope of practice and a patient safety obligation. Option A risks patient harm; options B and D do not address the core issue of competency.',
+  },
+  {
+    n: 2,
+    type: 'sata',
+    stem: 'A registered nurse is preparing to delegate morning care tasks to a nursing assistant. Which of the following tasks is appropriate to delegate? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Measuring and recording the patient\'s vital signs for a stable post-operative patient' },
+      { label: 'B', text: 'Ambulating a stable patient per the physical therapist\'s standing protocol' },
+      { label: 'C', text: 'Performing the initial nursing assessment for a newly admitted patient' },
+      { label: 'D', text: 'Assisting a patient with oral hygiene' },
+      { label: 'E', text: 'Developing the patient\'s care plan' },
+    ],
+    correct: ['A', 'B', 'D'],
+    rationale: 'Vital signs for a stable patient, ambulation per protocol, and oral hygiene are appropriate for UAP delegation. Nursing assessment (C) and care plan development (E) are non-delegable nursing process activities.',
+  },
+  {
+    n: 3,
+    type: 'single',
+    stem: 'A nurse discovers that a colleague posted a photograph on social media showing a patient\'s hospital room and a medication administration record visible in the background. The patient\'s name is not shown. Which statement best describes this situation?',
+    options: [
+      { label: 'A', text: 'No violation has occurred because the patient\'s name was not used.' },
+      { label: 'B', text: 'This likely violates HIPAA because the image may contain sufficient information to identify the patient.' },
+      { label: 'C', text: 'The post is acceptable as long as it is deleted within 24 hours.' },
+      { label: 'D', text: 'Only the photographer is responsible; the nurse who discovered it has no reporting obligation.' },
+    ],
+    correct: ['B'],
+    rationale: 'Even without the patient\'s name, images that reveal room details or documents may allow patient identification. The minimum necessary standard and HIPAA\'s prohibition on impermissible disclosure apply.',
+  },
+  {
+    n: 4,
+    type: 'single',
+    stem: 'A nurse is caring for a patient who has decision-making capacity and refuses a recommended blood transfusion. The nurse believes the patient will die without the transfusion. Which action is ethically and legally appropriate?',
+    options: [
+      { label: 'A', text: 'Administer the transfusion because the nurse\'s beneficence obligation overrides patient preference.' },
+      { label: 'B', text: 'Request that the physician order the transfusion without the patient\'s knowledge.' },
+      { label: 'C', text: 'Document the patient\'s refusal, ensure the patient has received all relevant information, notify the provider, and respect the decision.' },
+      { label: 'D', text: 'Ask the patient\'s family to convince the patient to consent.' },
+    ],
+    correct: ['C'],
+    rationale: 'A competent adult\'s informed refusal of treatment must be respected. The nurse\'s role is to ensure the refusal is informed, document it, and notify the provider — not to override it.',
+  },
+  {
+    n: 5,
+    type: 'single',
+    stem: 'A nurse working in a pediatric emergency department assesses a 4-year-old child with multiple bruises in various stages of healing, inconsistent with the reported mechanism of injury of "falling off the couch." The child is fearful and clings to the nurse. Which action is most appropriate?',
+    options: [
+      { label: 'A', text: 'Wait to report until the findings are confirmed by the physician.' },
+      { label: 'B', text: 'Ask the parents to explain each bruise individually before taking action.' },
+      { label: 'C', text: 'Report the suspected child abuse to child protective services as required by mandatory reporting law.' },
+      { label: 'D', text: 'Document the findings and schedule a follow-up appointment to reassess.' },
+    ],
+    correct: ['C'],
+    rationale: 'Mandatory reporting of suspected child abuse requires reasonable suspicion, not confirmed abuse. Waiting for confirmation or physician involvement delays a legally required report.',
+  },
+  {
+    n: 6,
+    type: 'single',
+    stem: 'Which of the following actions by a nurse is most consistent with Provision 2 of the ANA Code of Ethics for Nurses ("The nurse\'s primary commitment is to the patient")?',
+    options: [
+      { label: 'A', text: 'Complying with an institutional policy that restricts patient access to their own medical records.' },
+      { label: 'B', text: 'Documenting a patient\'s refusal of care accurately and completely even if the documentation reflects poorly on the institution.' },
+      { label: 'C', text: 'Agreeing with the attending physician\'s treatment plan rather than raising a concern to avoid conflict.' },
+      { label: 'D', text: 'Prioritizing the institution\'s financial interests when making discharge planning decisions.' },
+    ],
+    correct: ['B'],
+    rationale: 'Accurate documentation, even when it reflects unfavorably on the institution, places the patient\'s interests (right to an accurate record) first. The other options subordinate patient interests to institutional or team interests.',
+  },
+  {
+    n: 7,
+    type: 'single',
+    stem: 'A nurse is caring for a terminally ill patient who is receiving high-dose opioids for pain management. The nurse is aware that the dose may hasten the patient\'s death. Which bioethical principle best supports the nurse\'s decision to administer the medication as ordered?',
+    options: [
+      { label: 'A', text: 'Justice — the patient deserves access to adequate pain relief.' },
+      { label: 'B', text: 'The principle of double effect, grounded in non-maleficence — the intended effect is pain relief; the potential respiratory depression is foreseen but not intended.' },
+      { label: 'C', text: 'Paternalism — the nurse knows what is best for the patient.' },
+      { label: 'D', text: 'Autonomy — the patient has the right to refuse treatment.' },
+    ],
+    correct: ['B'],
+    rationale: 'The principle of double effect supports administering medication whose primary intent is beneficial (pain relief) even when a harmful side effect (respiratory depression) is foreseen but unintended.',
+  },
+  {
+    n: 8,
+    type: 'sata',
+    stem: 'A nurse identifies what appears to be a pattern of inadequate pain assessment and undertreatment for Black patients on her unit, compared to patients of other racial backgrounds. Which actions are consistent with nursing\'s professional ethical obligations? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Document the observed pattern and bring it to the attention of the unit manager and quality improvement committee.' },
+      { label: 'B', text: 'Continue current practice to avoid conflict with colleagues.' },
+      { label: 'C', text: 'Assess each patient\'s pain thoroughly and advocate for adequate treatment for every patient in her care.' },
+      { label: 'D', text: 'Participate in implicit bias training if offered by the institution.' },
+      { label: 'E', text: 'Pursue policy change through shared governance and professional organizations.' },
+    ],
+    correct: ['A', 'C', 'D', 'E'],
+    rationale: 'All except B are consistent with professional ethical obligations to address health disparities. Continuing current practice (B) perpetuates the disparity.',
+  },
+  {
+    n: 9,
+    type: 'single',
+    stem: 'A nurse is caring for a patient and their family who are in conflict with the medical team about the appropriate goals of care for a patient who lacks decision-making capacity. The conflict has persisted despite multiple family meetings. Which action should the nurse take?',
+    options: [
+      { label: 'A', text: 'Side with the family because they know the patient best.' },
+      { label: 'B', text: 'Defer to the attending physician\'s decision as the final authority.' },
+      { label: 'C', text: 'Request an ethics consultation to facilitate structured ethical analysis and communication.' },
+      { label: 'D', text: 'Document the conflict and take no further action.' },
+    ],
+    correct: ['C'],
+    rationale: 'An ethics consultation provides structured, multidisciplinary support for conflicts about goals of care that have not resolved through ordinary clinical communication.',
+  },
+  {
+    n: '10',
+    type: 'ngn',
+    stem: '<strong>(NGN Extended Thinking)</strong> Priya, a 28-year-old ICU nurse with three years of experience, has recently been observed volunteering for overtime during night shifts, arriving early and staying late, and accessing the narcotic dispensing cabinet for patients not assigned to her. On two occasions, patients she cared for complained of inadequate pain relief despite nursing documentation indicating opioids were administered.',
+    subquestions: [
+      {
+        label: '10a',
+        stem: '<strong>(Recognize Cues)</strong> Which findings in this scenario are most significant and require immediate attention? <strong>Select all that apply.</strong>',
+        type: 'sata',
+        options: [
+          { label: 'A', text: 'Priya works overtime frequently' },
+          { label: 'B', text: 'Priya accesses the narcotic cabinet for patients not assigned to her' },
+          { label: 'C', text: 'Priya arrives early and stays late' },
+          { label: 'D', text: 'Patients report inadequate pain relief despite documented opioid administration' },
+          { label: 'E', text: 'The behavior changes began approximately six months ago' },
+        ],
+        correct: ['B', 'D'],
+        rationale: 'The most significant cues are narcotic cabinet access for non-assigned patients (B) and documentation-reality discrepancy in pain management (D) — both consistent with controlled substance diversion. Overtime and early arrival (A, C) alone are not alarming.',
+      },
+      {
+        label: '10b',
+        stem: '<strong>(Analyze Cues)</strong> Which hypothesis most accurately explains the pattern of findings?',
+        type: 'single',
+        options: [
+          { label: 'A', text: 'Priya is an overachiever who goes above and beyond for her patients.' },
+          { label: 'B', text: 'Priya is diverting controlled substances for personal use, consistent with a substance use disorder.' },
+          { label: 'C', text: 'Priya has assumed informal supervisory responsibilities outside her job description.' },
+          { label: 'D', text: 'The narcotic dispensing cabinet has a technical malfunction.' },
+        ],
+        correct: ['B'],
+        rationale: 'The combination of cabinet access for non-assigned patients and unrelieved patient pain despite documented administration is the hallmark pattern of controlled substance diversion, most commonly associated with substance use disorder.',
+      },
+      {
+        label: '10c',
+        stem: '<strong>(Take Action)</strong> Which action should the nurse manager take immediately?',
+        type: 'single',
+        options: [
+          { label: 'A', text: 'Confront Priya publicly at the next staff meeting.' },
+          { label: 'B', text: 'Terminate Priya\'s employment immediately without further investigation.' },
+          { label: 'C', text: 'Initiate a formal investigation per institutional policy, remove Priya from access to controlled substances during the investigation, and refer to the employee assistance and peer assistance programs.' },
+          { label: 'D', text: 'Issue a verbal warning and increase supervision.' },
+        ],
+        correct: ['C'],
+        rationale: 'The appropriate action initiates a formal investigation, removes access to controlled substances pending investigation, and engages support resources — not immediate termination or public confrontation. Peer assistance programs exist specifically for impaired nurses.',
+      },
+    ],
+  },
+];
+
+function renderQuestion(q, idx, parentLabel) {
+  const id = parentLabel ? parentLabel : 'q' + q.n;
+  const isSATA = q.type === 'sata';
+  const isOrdered = q.type === 'ordered';
+  const inputType = (isSATA || isOrdered) ? 'checkbox' : 'radio';
+
+  let optionsHtml = '';
+  q.options.forEach(opt => {
+    optionsHtml += `
+      <label class="opt-label" id="${id}_opt${opt.label}" style="display:flex;align-items:flex-start;gap:0.6rem;padding:0.6rem 0.75rem;border-radius:0.5rem;border:1.5px solid #e2e8f0;margin-bottom:0.5rem;cursor:pointer;transition:border-color 0.15s;">
+        <input type="${inputType}" name="${id}" value="${opt.label}" style="margin-top:0.2rem;flex-shrink:0;accent-color:#6366f1;" />
+        <span><strong>${opt.label}.</strong> ${opt.text}</span>
+      </label>`;
+  });
+
+  return `
+    <div class="question-card" id="card_${id}" style="background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.25rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">${parentLabel ? parentLabel : 'Question ' + q.n}${isSATA ? ' — Select all that apply' : ''}</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1rem;">${q.stem}</p>
+      <div class="options-wrap">${optionsHtml}</div>
+      <div class="rationale-box" id="rat_${id}" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;line-height:1.6;"></div>
+    </div>`;
+}
+
+function renderQuiz() {
+  const form = document.getElementById('quiz-form');
+  let html = '';
+  QUESTIONS.forEach(q => {
+    if (q.type === 'ngn') {
+      let inner = q.subquestions.map(sq => renderQuestion(sq, 0, sq.label)).join('');
+      html += `<div style="background:#f0f4ff;border:2px solid #c7d2fe;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.5rem;">
+        <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">Question 10 — NGN Extended Thinking</p>
+        <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1.25rem;">${q.stem}</p>
+        ${inner}</div>`;
+    } else {
+      html += renderQuestion(q, 0, null);
+    }
+  });
+  form.innerHTML = html;
+}
+
+function collectAnswers() {
+  const allAnswers = {};
+  QUESTIONS.forEach(q => {
+    const subqs = q.type === 'ngn' ? q.subquestions.map(sq => ({ ...sq, id: sq.label })) : [{ ...q, id: 'q' + q.n }];
+    subqs.forEach(sq => {
+      const id = sq.label || 'q' + sq.n;
+      allAnswers[id] = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value);
+    });
+  });
+  return allAnswers;
+}
+
+function gradeAnswers(answers) {
+  let total = 0, correct = 0;
+  const results = {};
+  QUESTIONS.forEach(q => {
+    const subqs = q.type === 'ngn' ? q.subquestions : [{ ...q, label: 'q' + q.n }];
+    subqs.forEach(sq => {
+      const id = sq.label || 'q' + sq.n;
+      total++;
+      const given = (answers[id] || []).slice().sort();
+      const expected = sq.correct.slice().sort();
+      const isCorrect = JSON.stringify(given) === JSON.stringify(expected);
+      if (isCorrect) correct++;
+      results[id] = { isCorrect, given, expected, rationale: sq.rationale };
+    });
+  });
+  return { total, correct, results };
+}
+
+function showFeedback(graded) {
+  Object.entries(graded.results).forEach(([id, res]) => {
+    const card = document.getElementById('card_' + id);
+    if (!card) return;
+    card.querySelectorAll('.opt-label').forEach(lbl => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      inp.disabled = true;
+      const val = inp.value;
+      if (res.expected.includes(val) && res.given.includes(val)) { lbl.style.borderColor = '#16a34a'; lbl.style.background = '#f0fdf4'; }
+      else if (res.expected.includes(val)) { lbl.style.borderColor = '#d97706'; lbl.style.background = '#fffbeb'; }
+      else if (res.given.includes(val)) { lbl.style.borderColor = '#dc2626'; lbl.style.background = '#fef2f2'; }
+    });
+    const ratBox = document.getElementById('rat_' + id);
+    if (ratBox) {
+      ratBox.style.display = 'block';
+      ratBox.style.background = res.isCorrect ? '#f0fdf4' : '#fef2f2';
+      ratBox.style.borderLeft = '4px solid ' + (res.isCorrect ? '#16a34a' : '#dc2626');
+      ratBox.style.color = res.isCorrect ? '#166534' : '#991b1b';
+      ratBox.innerHTML = '<strong>' + (res.isCorrect ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + res.rationale;
+    }
+    card.style.borderColor = res.isCorrect ? '#bbf7d0' : '#fecaca';
+  });
+}
+
+function submitQuiz() {
+  const answers = collectAnswers();
+  const graded = gradeAnswers(answers);
+  showFeedback(graded);
+  const pct = Math.round((graded.correct / graded.total) * 100);
+  const banner = document.getElementById('score-banner');
+  document.getElementById('score-text').textContent = graded.correct + ' / ' + graded.total + ' correct (' + pct + '%)';
+  document.getElementById('score-sub').textContent = pct >= 80 ? '🎉 Excellent work!' : pct >= 60 ? '📚 Review the highlighted sections.' : '🔍 Review Chapter 2 carefully.';
+  banner.style.display = 'block';
+  banner.style.background = pct >= 80 ? '#f0fdf4' : pct >= 60 ? '#fffbeb' : '#fef2f2';
+  banner.style.border = '1px solid ' + (pct >= 80 ? '#bbf7d0' : pct >= 60 ? '#fde68a' : '#fecaca');
+  document.getElementById('score-text').style.color = pct >= 80 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b';
+  document.getElementById('score-sub').style.color = pct >= 80 ? '#15803d' : pct >= 60 ? '#b45309' : '#b91c1c';
+  banner.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('reset-btn').style.display = 'inline-block';
+}
+
+function resetQuiz() {
+  document.getElementById('score-banner').style.display = 'none';
+  document.getElementById('submit-btn').style.display = 'inline-block';
+  document.getElementById('reset-btn').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', renderQuiz);
+</script>

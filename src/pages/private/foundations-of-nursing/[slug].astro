@@ -1,0 +1,280 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('foundations-of-nursing');
+  return chapters.map(chapter => ({
+    params: { slug: chapter.id.replace(/\.md$/, '') },
+    props: { chapter },
+  }));
+}
+
+const { chapter } = Astro.props;
+const { Content } = await chapter.render();
+
+// Build ordered list of all chapters for prev/next nav
+const allChapters = await getCollection('foundations-of-nursing');
+const sortedChapters = allChapters.sort((a, b) => a.data.chapterNumber - b.data.chapterNumber);
+const currentSlug = chapter.id.replace(/\.md$/, '');
+const currentIndex = sortedChapters.findIndex(c => c.id.replace(/\.md$/, '') === currentSlug);
+const prevChapter = currentIndex > 0 ? sortedChapters[currentIndex - 1] : null;
+const nextChapter = currentIndex < sortedChapters.length - 1 ? sortedChapters[currentIndex + 1] : null;
+
+const chapterTitle = chapter.data.title.replace(/^Chapter \d+: /, '');
+
+const unitColors: Record<string, { color: string; bg: string; border: string }> = {
+  '1 — The Professional Architecture':              { color: '#6366f1', bg: '#eef2ff',  border: '#c7d2fe' },
+  '2 — The Clinical Mindset':                      { color: '#0891b2', bg: '#ecfeff',  border: '#a5f3fc' },
+  '3 — Health, Wellness, and Human Development':   { color: '#16a34a', bg: '#f0fdf4',  border: '#bbf7d0' },
+  '4 — Biological Foundations and Pathophysiology':{ color: '#d97706', bg: '#fffbeb',  border: '#fde68a' },
+  '6 — Clinical Skills':                           { color: '#dc2626', bg: '#fef2f2',  border: '#fecaca' },
+};
+const uc = unitColors[chapter.data.unit] ?? { color: '#6366f1', bg: '#eef2ff', border: '#c7d2fe' };
+---
+
+<Layout title={`${chapter.data.title} – Foundations of Nursing`} protected={true}>
+
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing`} style="color:#6366f1; text-decoration:none; font-weight:500;">Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Chapter {chapter.data.chapterNumber}</span>
+  </nav>
+
+  <div class="chapter-grid">
+
+    <!-- Sidebar TOC (rendered client-side from headings) -->
+    <aside id="chapter-toc" style="position:sticky; top:1.5rem; align-self:start;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">In This Chapter</p>
+        <nav id="toc-links" aria-label="Table of contents">
+          <p style="font-size:0.8rem; color:#94a3b8;">Loading…</p>
+        </nav>
+      </div>
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.5rem;">Chapter Info</p>
+        <dl style="font-size:0.82rem; display:grid; gap:0.5rem;">
+          <div>
+            <dt style="font-weight:600; color:#1e293b;">Chapter</dt>
+            <dd style="color:#64748b; margin:0;">{chapter.data.chapterNumber}</dd>
+          </div>
+          <div>
+            <dt style="font-weight:600; color:#1e293b;">Unit</dt>
+            <dd style="color:#64748b; margin:0;">{chapter.data.unit}</dd>
+          </div>
+          <div>
+            <dt style="font-weight:600; color:#1e293b;">Textbook</dt>
+            <dd style="color:#64748b; margin:0;">Foundations of Nursing</dd>
+          </div>
+        </dl>
+      </div>
+    </aside>
+
+    <!-- Main article -->
+    <article>
+
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem; flex-wrap:wrap;">
+          <span style={`font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:${uc.color}; background:${uc.bg}; border:1px solid ${uc.border}; border-radius:0.35rem; padding:0.2rem 0.55rem;`}>
+            Chapter {chapter.data.chapterNumber}
+          </span>
+          <span style={`font-size:0.75rem; font-weight:600; color:${uc.color}; background:${uc.bg}; border:1px solid ${uc.border}; border-radius:0.35rem; padding:0.2rem 0.55rem;`}>
+            {chapter.data.unit}
+          </span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          {chapterTitle}
+        </h1>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>📚 Foundations of Nursing</span>
+          <span>🎓 NCLEX-RN aligned</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Chapter content rendered from markdown -->
+      <div class="prose">
+        <Content />
+      </div>
+
+      <!-- Prev / Next navigation -->
+      <nav aria-label="Chapter navigation" style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+        {prevChapter ? (
+          <a
+            href={`${base}/private/foundations-of-nursing/${prevChapter.id.replace(/\.md$/, '')}`}
+            style="display:flex; align-items:center; gap:0.5rem; padding:0.75rem 1.25rem; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; text-decoration:none; color:#1e293b; font-size:0.875rem; font-weight:600; transition:border-color 0.2s;"
+            onmouseover="this.style.borderColor='#a5b4fc';"
+            onmouseout="this.style.borderColor='#e2e8f0';"
+          >
+            <span>←</span>
+            <span>Chapter {prevChapter.data.chapterNumber}: {prevChapter.data.title.replace(/^Chapter \d+: /, '')}</span>
+          </a>
+        ) : <div />}
+        {nextChapter ? (
+          <a
+            href={`${base}/private/foundations-of-nursing/${nextChapter.id.replace(/\.md$/, '')}`}
+            style="display:flex; align-items:center; gap:0.5rem; padding:0.75rem 1.25rem; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; text-decoration:none; color:#1e293b; font-size:0.875rem; font-weight:600; transition:border-color 0.2s;"
+            onmouseover="this.style.borderColor='#a5b4fc';"
+            onmouseout="this.style.borderColor='#e2e8f0';"
+          >
+            <span>Chapter {nextChapter.data.chapterNumber}: {nextChapter.data.title.replace(/^Chapter \d+: /, '')}</span>
+            <span>→</span>
+          </a>
+        ) : <div />}
+      </nav>
+
+    </article>
+
+  </div>
+
+</Layout>
+
+<style>
+  /* 2-column grid: sidebar | article */
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .chapter-grid {
+      grid-template-columns: 1fr;
+    }
+    #chapter-toc {
+      display: none;
+    }
+  }
+
+  /* Prose styles for rendered markdown */
+  .prose {
+    color: #374151;
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  .prose :global(h1) { display: none; } /* Hide duplicate title (already in header) */
+  .prose :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .prose :global(h3) {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #6366f1;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .prose :global(h4) {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 1.25rem 0 0.4rem;
+  }
+  .prose :global(p) {
+    margin-bottom: 1rem;
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  .prose :global(li) {
+    margin-bottom: 0.35rem;
+  }
+  .prose :global(strong) { color: #1e293b; }
+  .prose :global(em) { color: #475569; }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+  }
+  .prose :global(th) {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 0.6rem 0.9rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: left;
+  }
+  .prose :global(td) {
+    border: 1px solid #e2e8f0;
+    padding: 0.55rem 0.9rem;
+    color: #374151;
+    vertical-align: top;
+  }
+  .prose :global(tr:nth-child(even) td) {
+    background: #f8fafc;
+  }
+  .prose :global(blockquote) {
+    margin: 1.25rem 0;
+    padding: 0.75rem 1.25rem;
+    border-left: 4px solid #bfdbfe;
+    background: #eff6ff;
+    border-radius: 0 0.5rem 0.5rem 0;
+    color: #1e3a5f;
+    font-size: 0.9rem;
+  }
+  .prose :global(code) {
+    background: #f1f5f9;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.3rem;
+    font-size: 0.875em;
+    color: #1e293b;
+  }
+  .prose :global(pre) {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+  }
+  .prose :global(hr) {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+  .prose :global(a) {
+    color: #6366f1;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  // Build TOC from headings in the article
+  document.addEventListener('DOMContentLoaded', function () {
+    const article = document.querySelector('article');
+    const tocContainer = document.getElementById('toc-links');
+    if (!article || !tocContainer) return;
+
+    const headings = article.querySelectorAll('h2');
+    if (headings.length === 0) {
+      tocContainer.innerHTML = '<p style="font-size:0.8rem;color:#94a3b8;">No sections found.</p>';
+      return;
+    }
+
+    const links: string[] = [];
+    headings.forEach(function (h, i) {
+      const id = h.id || ('section-' + i);
+      if (!h.id) h.id = id;
+      links.push(
+        '<a href="#' + id + '" style="display:block;font-size:0.8rem;color:#6366f1;text-decoration:none;padding:0.2rem 0;line-height:1.4;border-left:2px solid #e2e8f0;padding-left:0.6rem;margin-bottom:0.3rem;" onmouseover="this.style.color=\'#4f46e5\'" onmouseout="this.style.color=\'#6366f1\'">' +
+        h.textContent +
+        '</a>'
+      );
+    });
+    tocContainer.innerHTML = links.join('');
+  });
+</script>

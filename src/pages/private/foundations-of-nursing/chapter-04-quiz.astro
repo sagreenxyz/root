@@ -1,0 +1,316 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Chapter 4 Quiz — Therapeutic Communication" protected={true}>
+
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing`} style="color:#6366f1; text-decoration:none; font-weight:500;">Foundations of Nursing</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/foundations-of-nursing/chapter-04`} style="color:#6366f1; text-decoration:none; font-weight:500;">Chapter 4</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>NCLEX Quiz</span>
+  </nav>
+
+  <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+      <span style="font-size:2rem;">💬</span>
+      <div>
+        <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">Chapter 4 — Unit 1</span>
+        <h1 style="font-size:1.75rem; font-weight:800; color:#1e293b; margin-top:0.25rem;">NCLEX Practice Quiz</h1>
+      </div>
+    </div>
+    <p style="color:#64748b; line-height:1.6;">Therapeutic Communication — 9 scored questions + 1 NGN extended-thinking scenario (self-assessed). Select your answers and submit.</p>
+  </header>
+
+  <div id="score-banner" style="display:none; border-radius:0.75rem; padding:1.25rem 1.5rem; margin-bottom:2rem; text-align:center;">
+    <div id="score-text" style="font-size:1.5rem; font-weight:800;"></div>
+    <div id="score-sub" style="font-size:0.9rem; margin-top:0.25rem;"></div>
+  </div>
+
+  <div id="quiz-form"></div>
+
+  <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <button id="submit-btn" onclick="submitQuiz()"
+      style="padding:0.75rem 2rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Submit Quiz
+    </button>
+    <button id="reset-btn" onclick="resetQuiz()" style="display:none; padding:0.75rem 1.5rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:1rem; font-weight:700; cursor:pointer;">
+      Retake Quiz
+    </button>
+    <a href={`${base}/private/foundations-of-nursing/chapter-04`}
+      style="padding:0.75rem 1.5rem; background:#fff; color:#64748b; border:1px solid #e2e8f0; border-radius:0.6rem; font-size:0.9rem; font-weight:600; text-decoration:none;">
+      ← Read Chapter 4
+    </a>
+  </div>
+
+</Layout>
+
+<script>
+const QUESTIONS = [
+  {
+    n: 1, type: 'single',
+    stem: 'A nurse is preparing to discuss a new cancer diagnosis with a patient. Which action best demonstrates the therapeutic use of the <strong>working phase</strong> of the nurse-patient relationship?',
+    options: [
+      { label: 'A', text: 'Introducing herself and explaining the purpose of the visit' },
+      { label: 'B', text: 'Summarizing what was accomplished and preparing the patient for discharge' },
+      { label: 'C', text: 'Collaborating with the patient to identify fears and explore coping strategies' },
+      { label: 'D', text: 'Reviewing the patient\'s prior medical history with the family before entering the room' },
+    ],
+    correct: ['C'],
+    rationale: 'The working phase involves collaborative, goal-directed therapeutic work. A = orientation phase (introductions). B = termination phase. D = pre-interaction phase work.',
+  },
+  {
+    n: 2, type: 'single',
+    stem: 'A nurse is conducting a shift assessment when the patient becomes tearful and says, "I just don\'t see the point anymore." Which initial response is most therapeutic?',
+    options: [
+      { label: 'A', text: '"Let\'s finish the assessment and then I\'ll have someone from mental health come by."' },
+      { label: 'B', text: '"I\'m going to have the doctor order something to help you feel better."' },
+      { label: 'C', text: '"I hear that you\'re feeling hopeless right now. Tell me more about what\'s been happening."' },
+      { label: 'D', text: '"I know things are hard, but you have so much to live for."' },
+    ],
+    correct: ['C'],
+    rationale: 'Acknowledging the patient\'s statement and inviting elaboration is the therapeutic first response. A delays assessment of possible suicidal ideation. B bypasses therapeutic listening. D offers false reassurance and shifts focus from the patient\'s experience.',
+  },
+  {
+    n: 3, type: 'sata',
+    stem: 'A nurse is delivering discharge instructions to a 78-year-old patient with moderate hearing loss. Which actions are most appropriate to ensure effective communication? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Speak slowly and slightly louder than normal in a face-to-face position' },
+      { label: 'B', text: 'Use simple language and avoid medical jargon' },
+      { label: 'C', text: 'Provide written instructions in addition to verbal teaching' },
+      { label: 'D', text: 'Ask the patient\'s adult daughter to relay the information afterward' },
+      { label: 'E', text: 'Use teach-back to verify the patient\'s understanding' },
+    ],
+    correct: ['A', 'B', 'C', 'E'],
+    rationale: 'Face-to-face speech, simple language, written backup, and teach-back are all evidence-based strategies for patients with hearing loss. D inappropriately delegates patient education and may omit critical information.',
+  },
+  {
+    n: 4, type: 'single',
+    stem: 'A nurse calls a physician using the SBAR framework to report a patient with increasing shortness of breath. Which element of the call represents the "Assessment" component?',
+    options: [
+      { label: 'A', text: '"Mr. Park is a 61-year-old in room 508 with a history of COPD."' },
+      { label: 'B', text: '"His respiratory rate is now 28, SpO₂ is 88% on 2L nasal cannula."' },
+      { label: 'C', text: '"I am concerned this patient may be developing an acute exacerbation and may require respiratory therapy."' },
+      { label: 'D', text: '"I am requesting a physician evaluation now and would like to initiate the respiratory distress protocol."' },
+    ],
+    correct: ['C'],
+    rationale: 'Assessment = the nurse\'s clinical judgment about what is happening. A = Background. B = Situation data. D = Recommendation.',
+  },
+  {
+    n: 5, type: 'single',
+    stem: 'A nurse says to a patient who has just disclosed a plan to leave the hospital against medical advice: "I understand you want to go home, and I also heard you say earlier that you\'re really scared about missing your granddaughter\'s birthday. It sounds like there are two really important things pulling in different directions." This statement is an example of which motivational interviewing skill?',
+    options: [
+      { label: 'A', text: 'Affirmation' },
+      { label: 'B', text: 'Double-sided reflection' },
+      { label: 'C', text: 'Simple restatement' },
+      { label: 'D', text: 'Summarizing' },
+    ],
+    correct: ['B'],
+    rationale: 'A double-sided reflection acknowledges both sides of the patient\'s ambivalence explicitly. Summarizing covers multiple topics without the explicit both-sides framing.',
+  },
+  {
+    n: 6, type: 'single',
+    stem: 'Which of the following nursing documentation entries is written correctly according to the FACT principles?',
+    options: [
+      { label: 'A', text: '"Patient appears to be in considerable pain based on facial grimacing."' },
+      { label: 'B', text: '"Patient was non-compliant with morning medications."' },
+      { label: 'C', text: '"Patient states pain is 9/10 in the left lower extremity. Refused scheduled acetaminophen, stating \'It doesn\'t do anything for me.\' Physician notified at 0914. Return call received at 0932 with order for IV ketorolac 15 mg."' },
+      { label: 'D', text: '"Wound appears to be healing well. No concerns at this time."' },
+    ],
+    correct: ['C'],
+    rationale: 'C is objective, complete, timely, and factual. A uses subjective language ("appears to be") without observable data. B uses judgmental language ("non-compliant"). D is vague and nonspecific.',
+  },
+  {
+    n: 7, type: 'sata',
+    stem: 'Which of the following statements or actions represent <strong>non-therapeutic communication</strong>? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: '"Don\'t worry — the doctor does this procedure every day. You\'ll be fine."' },
+      { label: 'B', text: 'Asking the patient to describe what concerns them most about their diagnosis' },
+      { label: 'C', text: '"If I were you, I would just go ahead with the surgery."' },
+      { label: 'D', text: 'Changing the subject when a patient begins crying during a medication teaching session' },
+      { label: 'E', text: 'Sitting at the patient\'s eye level during a sensitive conversation' },
+    ],
+    correct: ['A', 'C', 'D'],
+    rationale: 'A = false reassurance. C = giving advice/imposing values. D = changing the subject. B (open-ended questioning) and E (therapeutic positioning) are therapeutic techniques.',
+  },
+  {
+    n: 8, type: 'single',
+    stem: 'A nurse is working with a patient hospitalized for alcohol use disorder. The patient says, "I know I need to stop drinking, but I don\'t think I can. My whole social life revolves around it." Which response best reflects a motivational interviewing approach?',
+    options: [
+      { label: 'A', text: '"You really do need to stop. Continued drinking at your level is life-threatening."' },
+      { label: 'B', text: '"Let\'s set a goal: no alcohol for 30 days. Do you think you can commit to that?"' },
+      { label: 'C', text: '"It sounds like you can see how important it is to make a change, and at the same time, you\'re not sure how your life would look without alcohol."' },
+      { label: 'D', text: '"Have you tried attending AA meetings? A lot of people find them very helpful."' },
+    ],
+    correct: ['C'],
+    rationale: 'This is a double-sided reflection that acknowledges change talk and sustain talk without arguing. A confronts and creates reactance. B is premature action planning. D gives unsolicited advice.',
+  },
+  {
+    n: 9, type: 'single',
+    stem: 'Place the following steps in escalating a patient safety concern using the chain of command in the <strong>correct order</strong>, from first to last.',
+    options: [
+      { label: 'A', text: 'Contact the department chief or administrator on call' },
+      { label: 'B', text: 'Call the attending physician with a complete SBAR' },
+      { label: 'C', text: 'Document the concern, all communication attempts, and responses received' },
+      { label: 'D', text: 'Contact the attending\'s supervising physician or fellow if no timely response is received' },
+    ],
+    correct: ['B'],
+    rationale: 'Correct order: (1) Call attending with SBAR (B); (2) Contact supervising physician if no response (D); (3) Contact department chief/administrator (A); (4) Document throughout (C). B is the first discrete escalation action.',
+  },
+  {
+    n: '10',
+    type: 'ngn_open',
+    stem: '<strong>(NGN Extended Thinking — Self-Assessed)</strong> James, 45 years old, was admitted 18 hours ago following a motor vehicle accident with closed head injury (GCS 14) and fractured left femur. Now on post-op day 1, his GCS is 12. He is unable to follow a two-step command and is pulling at his IV. His wife reports: "He\'s been getting worse all night. I kept telling the night nurse but she said it was normal." The night nurse\'s documentation read: <em>"Patient confused and anxious — normal post-operative disorientation."</em>',
+    subquestions: [
+      {
+        label: 'A',
+        prompt: '<strong>(Recognize Cues)</strong> Which findings represent the most clinically significant change from baseline?',
+        answer: 'GCS decreased from 14 to 12 (A), patient not oriented to time or place (C), and wife\'s report of overnight deterioration that was not acted upon (D). Pulling at IV is a behavioral symptom reinforcing altered mental status. Post-op day 1 is context, not a finding.',
+      },
+      {
+        label: 'B',
+        prompt: '<strong>(Prioritize Hypotheses)</strong> What is the priority nursing concern at this time, and why does it take precedence?',
+        answer: 'Acute neurological deterioration (decreasing GCS + disorientation) in a patient with a known closed head injury must be prioritized because it may represent intracranial hemorrhage — a life-threatening emergency with a narrow treatment window.',
+      },
+      {
+        label: 'C',
+        prompt: '<strong>(Take Action)</strong> Construct the complete SBAR call to the physician.',
+        answer: '<strong>S:</strong> "I am calling about James Whitfield in room 316 with a concern for acute neurological deterioration. His GCS has dropped from 14 to 12." <strong>B:</strong> "He has a closed head injury from 18 hours ago. Overnight notes describe confusion attributed to post-op disorientation; wife reports ongoing deterioration." <strong>A:</strong> "I am concerned this patient may have an intracranial hemorrhage requiring immediate evaluation." <strong>R:</strong> "I am requesting an urgent bedside evaluation now."',
+      },
+      {
+        label: 'D',
+        prompt: '<strong>(Evaluate Outcomes)</strong> Identify documentation problems with the night nurse\'s entry and rewrite it correctly.',
+        answer: '<strong>Problems:</strong> (1) "Confused and anxious" is vague — no GCS, no specific orientation deficits documented. (2) "Normal post-op disorientation" is a clinical conclusion without supporting assessment data — and dismisses a potentially life-threatening finding. (3) Wife\'s report of ongoing deterioration is neither documented nor acted upon. <strong>Rewrite:</strong> "0300 — Patient not oriented to place or time. GCS 13 (E4V3M6). Pulling at peripheral IV; secured with additional tape. Wife at bedside reports patient has been increasingly confused since 2200, repeating questions. Wife\'s concerns communicated to charge nurse. Physician notified."',
+      },
+    ],
+  },
+];
+
+function renderQuestion(q, parentLabel) {
+  const id = parentLabel ? parentLabel : 'q' + q.n;
+  const isSATA = q.type === 'sata';
+  const inputType = isSATA ? 'checkbox' : 'radio';
+  let optionsHtml = '';
+  q.options.forEach(opt => {
+    optionsHtml += `
+      <label class="opt-label" id="${id}_opt${opt.label}" style="display:flex;align-items:flex-start;gap:0.6rem;padding:0.6rem 0.75rem;border-radius:0.5rem;border:1.5px solid #e2e8f0;margin-bottom:0.5rem;cursor:pointer;">
+        <input type="${inputType}" name="${id}" value="${opt.label}" style="margin-top:0.2rem;flex-shrink:0;accent-color:#6366f1;" />
+        <span><strong>${opt.label}.</strong> ${opt.text}</span>
+      </label>`;
+  });
+  return `
+    <div class="question-card" id="card_${id}" style="background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.25rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">${parentLabel ? parentLabel : 'Question ' + q.n}${isSATA ? ' — Select all that apply' : ''}</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1rem;">${q.stem}</p>
+      <div class="options-wrap">${optionsHtml}</div>
+      <div class="rationale-box" id="rat_${id}" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:0.5rem;font-size:0.875rem;line-height:1.6;"></div>
+    </div>`;
+}
+
+function renderOpenNGN(q) {
+  let subsHtml = q.subquestions.map(sq => `
+    <div style="margin-bottom:1rem;">
+      <p style="font-weight:700;color:#1e293b;margin-bottom:0.35rem;">(${sq.label}) ${sq.prompt}</p>
+      <details style="border:1px solid #c7d2fe;border-radius:0.5rem;overflow:hidden;">
+        <summary style="padding:0.6rem 1rem;background:#eef2ff;cursor:pointer;font-size:0.875rem;font-weight:600;color:#6366f1;">Show model answer</summary>
+        <div style="padding:0.75rem 1rem;font-size:0.875rem;line-height:1.6;color:#1e293b;">${sq.answer}</div>
+      </details>
+    </div>`).join('');
+  return `
+    <div style="background:#f0f4ff;border:2px solid #c7d2fe;border-radius:0.75rem;padding:1.5rem;margin-bottom:1.5rem;">
+      <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.5rem;">Question 10 — NGN Extended Thinking (Self-Assessed)</p>
+      <p style="font-size:0.95rem;line-height:1.7;color:#1e293b;margin-bottom:1.25rem;">${q.stem}</p>
+      ${subsHtml}
+    </div>`;
+}
+
+function renderQuiz() {
+  const form = document.getElementById('quiz-form');
+  let html = '';
+  QUESTIONS.forEach(q => {
+    html += q.type === 'ngn_open' ? renderOpenNGN(q) : renderQuestion(q, null);
+  });
+  form.innerHTML = html;
+}
+
+function collectAnswers() {
+  const ans = {};
+  QUESTIONS.filter(q => q.type !== 'ngn_open').forEach(q => {
+    const id = 'q' + q.n;
+    ans[id] = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value);
+  });
+  return ans;
+}
+
+function gradeAnswers(answers) {
+  let total = 0, correct = 0;
+  const results = {};
+  QUESTIONS.filter(q => q.type !== 'ngn_open').forEach(q => {
+    const id = 'q' + q.n;
+    total++;
+    const given = (answers[id] || []).slice().sort();
+    const expected = q.correct.slice().sort();
+    const isCorrect = JSON.stringify(given) === JSON.stringify(expected);
+    if (isCorrect) correct++;
+    results[id] = { isCorrect, given, expected, rationale: q.rationale };
+  });
+  return { total, correct, results };
+}
+
+function showFeedback(graded) {
+  Object.entries(graded.results).forEach(([id, res]) => {
+    const card = document.getElementById('card_' + id);
+    if (!card) return;
+    card.querySelectorAll('.opt-label').forEach(lbl => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      inp.disabled = true;
+      const val = inp.value;
+      if (res.expected.includes(val) && res.given.includes(val)) { lbl.style.borderColor = '#16a34a'; lbl.style.background = '#f0fdf4'; }
+      else if (res.expected.includes(val)) { lbl.style.borderColor = '#d97706'; lbl.style.background = '#fffbeb'; }
+      else if (res.given.includes(val)) { lbl.style.borderColor = '#dc2626'; lbl.style.background = '#fef2f2'; }
+    });
+    const ratBox = document.getElementById('rat_' + id);
+    if (ratBox) {
+      ratBox.style.display = 'block';
+      ratBox.style.background = res.isCorrect ? '#f0fdf4' : '#fef2f2';
+      ratBox.style.borderLeft = '4px solid ' + (res.isCorrect ? '#16a34a' : '#dc2626');
+      ratBox.style.color = res.isCorrect ? '#166534' : '#991b1b';
+      ratBox.innerHTML = '<strong>' + (res.isCorrect ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + res.rationale;
+    }
+    card.style.borderColor = res.isCorrect ? '#bbf7d0' : '#fecaca';
+  });
+}
+
+function submitQuiz() {
+  const answers = collectAnswers();
+  const graded = gradeAnswers(answers);
+  showFeedback(graded);
+  const pct = Math.round((graded.correct / graded.total) * 100);
+  const banner = document.getElementById('score-banner');
+  document.getElementById('score-text').textContent = graded.correct + ' / ' + graded.total + ' correct (' + pct + '%) — Q10 is self-assessed';
+  document.getElementById('score-sub').textContent = pct >= 80 ? '🎉 Excellent work!' : pct >= 60 ? '📚 Review the highlighted sections.' : '🔍 Review Chapter 4 carefully.';
+  banner.style.display = 'block';
+  banner.style.background = pct >= 80 ? '#f0fdf4' : pct >= 60 ? '#fffbeb' : '#fef2f2';
+  banner.style.border = '1px solid ' + (pct >= 80 ? '#bbf7d0' : pct >= 60 ? '#fde68a' : '#fecaca');
+  document.getElementById('score-text').style.color = pct >= 80 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b';
+  document.getElementById('score-sub').style.color = pct >= 80 ? '#15803d' : pct >= 60 ? '#b45309' : '#b91c1c';
+  banner.scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('reset-btn').style.display = 'inline-block';
+}
+
+function resetQuiz() {
+  document.getElementById('score-banner').style.display = 'none';
+  document.getElementById('submit-btn').style.display = 'inline-block';
+  document.getElementById('reset-btn').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', renderQuiz);
+</script>
