@@ -190,6 +190,7 @@ import Layout from '../../layouts/Layout.astro';
     .qz-side-panel-inner {
       padding: 20px 16px;
       width: 220px;
+      box-sizing: border-box;
     }
     .qz-panel-opt-label {
       font-size: 11px;
@@ -295,6 +296,13 @@ import Layout from '../../layouts/Layout.astro';
       background: #94a3b8;
       cursor: default;
     }
+    .qz-btn-prev {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .qz-btn-prev:hover {
+      background: #e2e8f0;
+    }
     .qz-btn-next {
       background: #f1f5f9;
       color: #1e293b;
@@ -388,6 +396,7 @@ import Layout from '../../layouts/Layout.astro';
     <div class="qz-bottom-row" id="qz-bottom-row">
       <div class="qz-dots" id="qz-dots"></div>
       <div class="qz-btn-row">
+        <button class="qz-btn qz-btn-prev" id="qz-btn-prev" style="display:none">← Prev</button>
         <button class="qz-btn qz-btn-check" id="qz-btn-check" disabled>Check answer</button>
         <button class="qz-btn qz-btn-next" id="qz-btn-next" style="display:none">Next →</button>
       </div>
@@ -484,6 +493,7 @@ import Layout from '../../layouts/Layout.astro';
     const progressLabel= document.getElementById('qz-progress-label');
     const correctEl    = document.getElementById('qz-correct-count');
     const btnCheck     = document.getElementById('qz-btn-check');
+    const btnPrev      = document.getElementById('qz-btn-prev');
     const btnNext      = document.getElementById('qz-btn-next');
     const resultsEl    = document.getElementById('qz-results');
     const bottomRow    = document.getElementById('qz-bottom-row');
@@ -563,7 +573,7 @@ import Layout from '../../layouts/Layout.astro';
       const btns = optsEl.querySelectorAll('.qz-option');
       btns.forEach((btn, oi) => {
         btn.classList.remove('selected', 'correct', 'wrong', 'panel-highlight');
-        btn.disabled = checked[qi];
+        btn.disabled = false;
 
         if (checked[qi]) {
           if (oi === q.correct) btn.classList.add('correct');
@@ -638,6 +648,14 @@ import Layout from '../../layouts/Layout.astro';
       btnNext.style.display = '';
     }
 
+    /* ── Previous question ──────────────────────────────────────────── */
+    function goPrev() {
+      if (current > 0) {
+        current--;
+        goTo(current);
+      }
+    }
+
     /* ── Next question ──────────────────────────────────────────── */
     function goNext() {
       if (current < N - 1) {
@@ -668,6 +686,7 @@ import Layout from '../../layouts/Layout.astro';
       progressLabel.textContent = `Question ${qi + 1} of ${N}`;
 
       // Button state
+      btnPrev.style.display = qi > 0 ? '' : 'none';
       if (checked[qi]) {
         btnCheck.style.display = 'none';
         btnNext.style.display = '';
@@ -736,6 +755,7 @@ import Layout from '../../layouts/Layout.astro';
 
       btnCheck.style.display = '';
       btnCheck.disabled = true;
+      btnPrev.style.display = 'none';
       btnNext.style.display = 'none';
 
       buildSlides();
@@ -744,6 +764,7 @@ import Layout from '../../layouts/Layout.astro';
 
     /* ── Wire buttons ───────────────────────────────────────────── */
     btnCheck.addEventListener('click', checkAnswer);
+    btnPrev.addEventListener('click', goPrev);
     btnNext.addEventListener('click', goNext);
 
     /* ── Init ───────────────────────────────────────────────────── */
