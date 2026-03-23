@@ -1557,6 +1557,135 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
         'Addictions medicine consult completed; patient accepted outpatient treatment referral; alcohol withdrawal education provided. Goals met.',
       ],
     },
+    /* 20 – Pulmonary Embolism */
+    {
+      focusTopic: 'Pulmonary embolism (PE)',
+      pathophysiology: 'PE occurs when a thrombus (most commonly from a deep vein thrombosis in the proximal leg veins) lodges in the pulmonary vasculature, obstructing blood flow to a segment of lung. The resulting dead-space ventilation (ventilated but not perfused lung) causes V/Q mismatch and hypoxemia. Right ventricular (RV) afterload increases acutely, leading to RV dilation, septal shift, and — in massive PE — obstructive shock. Neurohormonal mediators cause pulmonary vasoconstriction and bronchospasm. The Wells criteria and D-dimer are used for pre-test probability assessment; CT pulmonary angiography (CTPA) is the diagnostic gold standard. Hemodynamically stable patients are managed with anticoagulation (heparin → warfarin or DOAC); massive PE with shock requires systemic thrombolysis or catheter-directed therapy.',
+      riskFactors: [
+        'Recent immobility (≥3 days bed rest, long-haul travel, post-operative state) — venous stasis promotes thrombus formation',
+        'Active malignancy — tumor-related hypercoagulability and compression of pelvic veins',
+        'Prior VTE or inherited thrombophilia (Factor V Leiden, antiphospholipid syndrome) — predisposed clotting cascade',
+      ],
+      cues: [
+        'Sudden-onset dyspnea, pleuritic chest pain, and hemoptysis; HR 118 bpm; RR 28/min; SpO₂ 88 % on room air',
+        'BP 96/60 mmHg; right heart strain on ECG (S1Q3T3 pattern, sinus tachycardia); troponin I 0.42 ng/mL; BNP 540 pg/mL',
+        'CT pulmonary angiography confirms bilateral saddle embolism with right ventricular dilation; Wells score 7 (high probability)',
+        '54-year-old female; 6 weeks post right total hip arthroplasty; no prior anticoagulation; lower extremity duplex confirms right proximal DVT',
+      ],
+      concerning: [
+        'Bilateral saddle PE with RV dilation and BP 96/60 mmHg — submassive-to-massive PE with obstructive shock risk; urgent anticoagulation and possible thrombolysis evaluation required',
+        'SpO₂ 88 % on room air with RR 28/min — significant hypoxemia and respiratory distress requiring immediate supplemental oxygen and close airway monitoring',
+      ],
+      hypotheses: [
+        'Initiating IV unfractionated heparin (UFH) bolus and infusion will prevent further thrombus propagation and allow endogenous fibrinolysis to begin, improving hemodynamics within 2–4 hours.',
+        'Supplemental oxygen titrated to SpO₂ ≥94 % and positioning the patient supine (or reverse Trendelenburg) will reduce hypoxemia and minimize RV strain.',
+        'Continuous hemodynamic monitoring and prompt notification of the interventional or pulmonology team for thrombolysis candidacy assessment will enable rapid escalation if BP deteriorates further.',
+      ],
+      solutions: [
+        'Patient will be anticoagulated with IV UFH (80 units/kg bolus, 18 units/kg/hr infusion) within 30 minutes of PE confirmation; aPTT therapeutic (60–100 seconds) within 6 hours.',
+        'SpO₂ will improve to ≥94 % on supplemental oxygen within 30 minutes of initiation.',
+        'MAP will remain ≥65 mmHg; if BP drops further, thrombolysis (alteplase 100 mg IV over 2 hours) will be initiated per physician order.',
+        'Patient will verbalize understanding of long-term anticoagulation therapy and VTE prevention measures before discharge.',
+      ],
+      actions: [
+        'Applied 4 L/min nasal cannula O₂; titrated to SpO₂ ≥94 %; reassessed every 15 minutes; kept patient supine with HOB at 30° to balance RV preload.',
+        'Administered UFH 80 units/kg (5,600 units) IV bolus per order; started infusion at 18 units/kg/hr; sent aPTT, CBC, and coagulation panel; established second IV access.',
+        'Applied continuous cardiac monitoring; initiated hourly BP and SpO₂ documentation; placed patient on strict bed rest; notified pulmonology/IR team regarding submassive PE and thrombolysis evaluation.',
+        'Educated patient on heparin therapy, fall precautions with anticoagulation, and importance of ambulation and compression stockings post-discharge; initiated DVT/PE discharge teaching.',
+      ],
+      outcomes: [
+        'UFH initiated within 22 minutes of CTPA result; aPTT at 6 hours: 72 seconds (therapeutic range met).',
+        'SpO₂ improved to 95 % on 4 L/min NC within 20 minutes; RR decreased to 22/min; patient reports dyspnea "somewhat better."',
+        'BP stabilized at 102/66 mmHg; HR 104 bpm; thrombolysis held per pulmonology — hemodynamics marginally stable; will re-evaluate at 2 hours.',
+        'Patient verbalized understanding of anticoagulation; accepted outpatient DOAC follow-up plan. Goals partially met — anticoagulation achieved, hemodynamics borderline; continued ICU-level monitoring required.',
+      ],
+    },
+    /* 21 – Acute Pancreatitis */
+    {
+      focusTopic: 'Acute pancreatitis',
+      pathophysiology: 'Acute pancreatitis results from premature activation of pancreatic digestive enzymes (trypsinogen → trypsin) within acinar cells, causing auto-digestion of the pancreas and surrounding tissues. The most common triggers are gallstones (obstructing pancreatic duct outflow) and alcohol (promoting premature zymogen activation). The inflammatory cascade releases cytokines (IL-1, IL-6, TNF-α), causing local edema, hemorrhage, and necrosis (severe pancreatitis), as well as systemic effects: SIRS, third-spacing of fluid (capillary leak), hypovolemia, and in severe cases ARDS, AKI, and multi-organ failure. Severity is classified by Revised Atlanta criteria (mild, moderately severe, severe). Ranson criteria and BISAP score guide prognosis. Treatment is supportive: aggressive IV fluid resuscitation (lactated Ringer preferred), pain management, bowel rest (NPO until tolerating), and nutrition support.',
+      riskFactors: [
+        'Cholelithiasis (gallstones) — biliary calculus impacted at the ampulla of Vater obstructs pancreatic duct drainage',
+        'Heavy alcohol use — promotes premature intracellular trypsinogen activation and acinar cell injury',
+        'Hypertriglyceridemia (>1,000 mg/dL) — free fatty acids released by lipase cause direct acinar cytotoxicity',
+      ],
+      cues: [
+        'Severe epigastric pain radiating to the back (8/10), onset 6 hours ago after a fatty meal; nausea and vomiting × 4 episodes; anorexia',
+        'Lipase 2,840 U/L (>3× ULN); amylase 1,120 U/L; WBC 16,200/mm³; BUN 28 mg/dL; creatinine 1.4 mg/dL; hematocrit 46 % (hemoconcentration)',
+        'HR 112 bpm; BP 98/64 mmHg; T 38.2 °C; RR 22/min; abdomen rigid and tender in epigastric/LUQ region with guarding; hypoactive bowel sounds',
+        '42-year-old male; BMI 34; drinks 8–10 beers/day; RUQ ultrasound shows gallstones with no common bile duct dilation; CT abdomen shows pancreatic edema with peripancreatic fat stranding — no necrosis',
+      ],
+      concerning: [
+        'HR 112 bpm and BP 98/64 mmHg with BUN 28 and hematocrit 46 % — hypovolemia from third-spacing; aggressive IV fluid resuscitation (250–500 mL/hr LR) is an immediate priority to prevent ischemic necrosis',
+        'SIRS criteria met (HR >90, T >38 °C, WBC >12,000, RR >20) — risk of progression to severe pancreatitis with organ failure; hourly fluid balance, urine output, and lab trending are critical',
+      ],
+      hypotheses: [
+        'Aggressive IV fluid resuscitation with lactated Ringer at 250–500 mL/hr will restore intravascular volume, improve end-organ perfusion, and prevent pancreatic ischemic necrosis within 4–6 hours.',
+        'IV opioid analgesia (morphine or hydromorphone) will reduce pain to ≤4/10 within 30 minutes, improving comfort and decreasing splinting that worsens respiratory status.',
+        'Strict NPO status with antiemetic therapy and NG suction if needed will rest the pancreas and reduce ongoing enzyme stimulation while preventing aspiration.',
+      ],
+      solutions: [
+        'Urine output will be ≥0.5 mL/kg/hr and HR will decrease to <100 bpm within 4 hours of IV fluid resuscitation.',
+        'Pain will decrease to ≤4/10 within 30 minutes of IV analgesia administration.',
+        'Patient will remain NPO and free of aspiration; nausea and vomiting will be controlled with antiemetics.',
+        'Patient will not progress to pancreatic necrosis, ARDS, or renal failure; serial labs and imaging will be monitored per order.',
+      ],
+      actions: [
+        'Initiated IV LR at 300 mL/hr per order; inserted urinary catheter to monitor strict hourly urine output; obtained IV access × 2 (18 g bilateral ACs); sent repeat labs (BMP, CBC, lipase, LFTs) for 6-hour trend.',
+        'Administered morphine 4 mg IV per order; reassessed pain at 30 minutes (score improved to 4/10); administered ondansetron 4 mg IV for nausea; maintained strict NPO; positioned patient in knee-to-chest (fetal) position for comfort.',
+        'Monitored vital signs every 1 hour; performed respiratory assessments every 2 hours (risk of ARDS); tracked strict I&O; notified provider for urine output <30 mL/hr or worsening hemodynamics.',
+        'Communicated with GI/surgery team regarding gallstone etiology (ERCP vs. elective cholecystectomy); documented BISAP score; initiated patient education on alcohol cessation and dietary modification for pancreatitis prevention.',
+      ],
+      outcomes: [
+        'Urine output averaged 0.7 mL/kg/hr by hour 4; HR improved to 96 bpm; BP 110/72 mmHg — hemodynamics stabilizing.',
+        'Pain score 3/10 at 1 hour post-analgesia; patient tolerated repositioning; nausea resolved with ondansetron.',
+        'No aspiration events; lungs clear on auscultation; SpO₂ 97 % on RA; BUN trending down (24 mg/dL at 6 hours).',
+        'GI consult placed; ERCP tentatively scheduled for Day 2; patient verbalized understanding of NPO rationale. Goals substantially met; continued monitoring for necrosis and organ failure.',
+      ],
+    },
+    /* 22 – Hypertensive Crisis */
+    {
+      focusTopic: 'Hypertensive crisis (hypertensive emergency)',
+      pathophysiology: 'Hypertensive crisis is defined as a severe elevation in blood pressure (typically SBP >180 mmHg and/or DBP >120 mmHg). A hypertensive emergency involves acute target organ damage (TOD): hypertensive encephalopathy, acute ischemic or hemorrhagic stroke, aortic dissection, acute MI, acute pulmonary edema, acute kidney injury, or eclampsia. The pathophysiology involves a sudden marked increase in systemic vascular resistance, mechanical stress on vessel walls, and endothelial injury — triggering a cascade of inflammation, fibrinoid necrosis of arterioles, and ischemia to end organs. A hypertensive urgency (no TOD) requires oral therapy and outpatient follow-up; an emergency requires immediate IV antihypertensive therapy with controlled BP reduction (no more than 25 % MAP reduction in the first hour to avoid cerebral hypoperfusion) using agents such as labetalol, nicardipine, clevidipine, or sodium nitroprusside in an ICU setting.',
+      riskFactors: [
+        'Non-adherence to antihypertensive medications — abrupt withdrawal (especially clonidine) precipitates rebound hypertension',
+        'Chronic uncontrolled hypertension with end-organ remodeling — chronically elevated BP narrows the autoregulatory range, making acute spikes more dangerous',
+        'Stimulant or sympathomimetic use (cocaine, methamphetamine, ephedrine) — catecholamine surge causes rapid severe BP elevation',
+      ],
+      cues: [
+        'BP 218/134 mmHg (right arm); BP 220/130 mmHg (left arm); HR 98 bpm; RR 20/min; T 37.1 °C; SpO₂ 94 % on room air',
+        'Severe occipital headache (9/10) with visual changes (blurring, diplopia); confusion and slurred speech; fundoscopic exam shows papilledema and flame hemorrhages',
+        'Serum creatinine 2.8 mg/dL (baseline 0.9 mg/dL, 3 months ago); urinalysis shows 2+ protein, red cell casts; ECG: left ventricular hypertrophy with strain pattern',
+        '61-year-old male with 15-year history of hypertension and CKD Stage 3; ran out of lisinopril and amlodipine 5 days ago; denies cocaine use; non-smoker',
+      ],
+      concerning: [
+        'Papilledema, flame hemorrhages, confusion, and creatinine 2.8 mg/dL from baseline 0.9 — hypertensive emergency with active neurological and renal target organ damage; IV antihypertensive (labetalol or nicardipine) and ICU admission required immediately',
+        'Slurred speech and visual changes — hypertensive encephalopathy vs. acute stroke must be differentiated immediately with CT head without contrast; BP reduction should not exceed 25 % MAP in first hour to prevent cerebral ischemia',
+      ],
+      hypotheses: [
+        'IV labetalol or nicardipine titrated to reduce MAP by no more than 25 % within the first hour will arrest target organ damage without precipitating cerebral ischemia from overcorrection.',
+        'Urgent CT head (noncontrast) will differentiate hypertensive encephalopathy from hemorrhagic or ischemic stroke, guiding safe BP reduction targets and further management.',
+        'Hourly neuro checks, urine output monitoring, and serial creatinine will detect worsening end-organ damage and guide titration of antihypertensive therapy.',
+      ],
+      solutions: [
+        'MAP will be reduced by ≤25 % within the first hour (target MAP ≤145 mmHg); BP will reach <160/100 mmHg within 6 hours per order.',
+        'CT head will be completed within 30 minutes of ED arrival; neurology will be notified of findings.',
+        'Urine output will remain ≥0.5 mL/kg/hr; creatinine will be rechecked at 6 hours to assess for worsening AKI.',
+        'Patient\'s mental status will improve as BP is controlled; headache will decrease to ≤4/10 within 2 hours of IV therapy.',
+      ],
+      actions: [
+        'Established continuous arterial line monitoring; initiated IV labetalol 20 mg bolus per order; started nicardipine 5 mg/hr IV infusion; titrated to target MAP reduction ≤25 % in first hour.',
+        'Arranged emergent CT head (noncontrast) within 20 minutes; notified neurology on-call of hypertensive emergency with neurological symptoms; placed Foley catheter for strict hourly urine output.',
+        'Performed neuro assessment every 15–30 minutes (GCS, pupils, grip strength, speech); monitored BP every 5 minutes during titration; applied cardiac monitor; sent BMP, CBC, urinalysis, and troponin.',
+        'Educated patient (once mental status improved) on medication adherence, dangers of stopping antihypertensives abruptly, and importance of outpatient follow-up; coordinated renal and neurology follow-up.',
+      ],
+      outcomes: [
+        'MAP reduced from 162 to 121 mmHg (25 % reduction) within 60 minutes on nicardipine 7 mg/hr; BP 168/102 mmHg at 1 hour — within target range.',
+        'CT head showed no hemorrhage or ischemic changes; neurology confirmed hypertensive encephalopathy; continued BP reduction per protocol.',
+        'Urine output 0.6 mL/kg/hr; creatinine at 6 hours 2.4 mg/dL (slight improvement from 2.8); proteinuria present — nephrology consult placed.',
+        'Mental status improved to baseline; headache 3/10 at 3 hours; patient verbalized importance of medication adherence. Goals substantially met; ICU monitoring continued overnight.',
+      ],
+    },
   ];
 
   /* ── Load a sample case into the form ───────────────────────── */
