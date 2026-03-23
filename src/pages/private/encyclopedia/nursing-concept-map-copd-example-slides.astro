@@ -667,8 +667,11 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
 <style>
   /* ── Slide inner content padding ── */
+  /* padding-left reserves space for the fixed process-indicator sidebar.
+     --process-indicator-w is set synchronously by the indicator JS after the
+     panel is appended; 190px is a safe fallback matching the typical rendered width. */
   .slide {
-    padding: 4rem 3rem 2rem;
+    padding: 4rem 3rem 2rem calc(var(--process-indicator-w, 190px) + 1.5rem);
   }
 
   /* ── Optional slide: extra top padding so content clears back-hint ── */
@@ -1179,6 +1182,14 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     });
 
     document.body.appendChild(panel);
+
+    // Expose the panel's rendered width as a CSS custom property so that
+    // slide content can be offset to the right and never overlap the indicator.
+    // offsetWidth is available synchronously once the element is in the DOM.
+    const panelW = panel.offsetWidth;
+    if (panelW > 0) {
+      document.documentElement.style.setProperty('--process-indicator-w', `${panelW}px`);
+    }
 
     // ── Update dots to reflect the current slide column ───────────────────
     function updateIndicator() {
