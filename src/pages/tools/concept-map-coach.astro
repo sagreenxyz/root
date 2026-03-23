@@ -20,7 +20,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     overflow: hidden;
     border: 1px solid #e2e8f0;
   }
-  .phase-pip {
+  /* phase-pip elements are JS-rendered → :global() required */
+  .phase-bar :global(.phase-pip) {
     flex: 1;
     padding: 0.55rem 0.25rem;
     text-align: center;
@@ -34,10 +35,10 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     line-height: 1.3;
     user-select: none;
   }
-  .phase-pip:last-child { border-right: none; }
-  .phase-pip.active { background: #6366f1; color: #fff; }
-  .phase-pip.done   { background: #dcfce7; color: #15803d; }
-  .phase-pip:hover:not(.active) { background: #eef2ff; color: #4f46e5; }
+  .phase-bar :global(.phase-pip:last-child) { border-right: none; }
+  .phase-bar :global(.phase-pip.active) { background: #6366f1; color: #fff; }
+  .phase-bar :global(.phase-pip.done)   { background: #dcfce7; color: #15803d; }
+  .phase-bar :global(.phase-pip:hover:not(.active)) { background: #eef2ff; color: #4f46e5; }
 
   /* ── Step indicator ─────────────────────────────────────────────── */
   .step-dots {
@@ -47,7 +48,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     margin-bottom: 1.25rem;
     flex-wrap: wrap;
   }
-  .step-dot {
+  /* step-dot / step-label elements are JS-rendered → :global() required */
+  .step-dots :global(.step-dot) {
     width: 0.55rem;
     height: 0.55rem;
     border-radius: 50%;
@@ -55,9 +57,9 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     cursor: pointer;
     transition: background 0.15s, transform 0.1s;
   }
-  .step-dot.active  { background: #6366f1; transform: scale(1.35); }
-  .step-dot.done    { background: #22c55e; }
-  .step-label {
+  .step-dots :global(.step-dot.active)  { background: #6366f1; transform: scale(1.35); }
+  .step-dots :global(.step-dot.done)    { background: #22c55e; }
+  .step-dots :global(.step-label) {
     font-size: 0.78rem;
     color: #94a3b8;
     margin-left: 0.5rem;
@@ -71,7 +73,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     overflow: hidden;
     margin-bottom: 1.25rem;
   }
-  .coach-header {
+  /* All children of .coach-card are JS-rendered → :global() required */
+  .coach-card :global(.coach-header) {
     background: #1e293b;
     color: #fff;
     padding: 0.85rem 1.25rem;
@@ -79,24 +82,24 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     align-items: flex-start;
     gap: 0.75rem;
   }
-  .coach-icon {
+  .coach-card :global(.coach-icon) {
     font-size: 1.4rem;
     line-height: 1;
     flex-shrink: 0;
     margin-top: 0.1rem;
   }
-  .coach-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.1rem; }
-  .coach-phase-tag {
+  .coach-card :global(.coach-title) { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.1rem; }
+  .coach-card :global(.coach-phase-tag) {
     font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: #94a3b8;
   }
-  .coach-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+  .coach-card :global(.coach-body) { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
 
   /* Coach explanation box */
-  .coach-explain {
+  .coach-card :global(.coach-explain) {
     background: #f0f9ff;
     border: 1px solid #bae6fd;
     border-radius: 0.5rem;
@@ -105,10 +108,10 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     color: #0c4a6e;
     line-height: 1.65;
   }
-  .coach-explain strong { color: #0369a1; }
+  .coach-card :global(.coach-explain strong) { color: #0369a1; }
 
   /* Coach tip box */
-  .coach-tip {
+  .coach-card :global(.coach-tip) {
     background: #fefce8;
     border: 1px solid #fde047;
     border-radius: 0.5rem;
@@ -117,30 +120,30 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     color: #713f12;
     line-height: 1.6;
   }
-  .coach-tip::before { content: '💡 '; }
+  .coach-card :global(.coach-tip::before) { content: '💡 '; }
 
   /* Prompt questions */
-  .coach-prompts {
+  .coach-card :global(.coach-prompts) {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
     margin-bottom: 0.25rem;
   }
-  .coach-prompt-item {
+  .coach-card :global(.coach-prompt-item) {
     font-size: 0.82rem;
     color: #475569;
     padding-left: 1.1rem;
     position: relative;
     line-height: 1.55;
   }
-  .coach-prompt-item::before { content: '▸ '; position: absolute; left: 0; color: #6366f1; }
+  .coach-card :global(.coach-prompt-item::before) { content: '▸ '; position: absolute; left: 0; color: #6366f1; }
 
-  /* ── Input fields ────────────────────────────────────────────────── */
-  .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
-  .field-group label { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
-  .field-group .hint { font-size: 0.75rem; color: #64748b; }
-  .field-group input,
-  .field-group textarea {
+  /* ── Input fields (JS-rendered inside .coach-card) ───────────────── */
+  .coach-card :global(.field-group) { display: flex; flex-direction: column; gap: 0.35rem; }
+  .coach-card :global(.field-group label) { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+  .coach-card :global(.field-group .hint) { font-size: 0.75rem; color: #64748b; }
+  .coach-card :global(.field-group input),
+  .coach-card :global(.field-group textarea) {
     width: 100%;
     padding: 0.55rem 0.75rem;
     border: 1px solid #e2e8f0;
@@ -153,14 +156,14 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     transition: border-color 0.15s, box-shadow 0.15s;
     resize: vertical;
   }
-  .field-group input:focus,
-  .field-group textarea:focus {
+  .coach-card :global(.field-group input:focus),
+  .coach-card :global(.field-group textarea:focus) {
     outline: none;
     border-color: #6366f1;
     box-shadow: 0 0 0 3px rgba(99,102,241,.15);
     background: #fff;
   }
-  .field-group textarea { min-height: 100px; line-height: 1.6; }
+  .coach-card :global(.field-group textarea) { min-height: 100px; line-height: 1.6; }
 
   /* ── Navigation bar ─────────────────────────────────────────────── */
   .nav-bar {
@@ -195,14 +198,15 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
   /* ── Summary / Export ────────────────────────────────────────────── */
   #summary-view { display: none; }
-  .summary-section {
+  /* summary-section elements are JS-rendered → :global() required */
+  #summary-view :global(.summary-section) {
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 0.75rem;
     overflow: hidden;
     margin-bottom: 1rem;
   }
-  .summary-section-header {
+  #summary-view :global(.summary-section-header) {
     background: #1e293b;
     color: #fff;
     padding: 0.7rem 1.1rem;
@@ -214,8 +218,8 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     align-items: center;
     gap: 0.5rem;
   }
-  .summary-section-body { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
-  .summary-item-label {
+  #summary-view :global(.summary-section-body) { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  #summary-view :global(.summary-item-label) {
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -223,7 +227,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     color: #6366f1;
     margin-bottom: 0.15rem;
   }
-  .summary-item-value {
+  #summary-view :global(.summary-item-value) {
     font-size: 0.9rem;
     color: #1e293b;
     line-height: 1.6;
@@ -233,7 +237,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     border-radius: 0.35rem;
     padding: 0.5rem 0.75rem;
   }
-  .summary-item-value.empty { color: #94a3b8; font-style: italic; }
+  #summary-view :global(.summary-item-value.empty) { color: #94a3b8; font-style: italic; }
 
   /* ── Print ───────────────────────────────────────────────────────── */
   @media print {
@@ -244,10 +248,10 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     .cmc-page h1 { font-size: 16pt; font-weight: bold; text-align: center; border-bottom: 2pt solid #000; padding-bottom: 5pt; margin-bottom: 12pt; }
     .cmc-page .subtitle, #coach-view, .phase-bar, .step-dots, .nav-bar, .no-print { display: none !important; }
     #summary-view { display: block !important; }
-    .summary-section { border: 1pt solid #000; border-radius: 0; margin-bottom: 8pt; break-inside: avoid; }
-    .summary-section-header { background: #e8e8e8 !important; color: #000 !important; border-bottom: 1pt solid #000; padding: 4pt 8pt; font-size: 8pt; }
-    .summary-item-label { font-size: 7pt; color: #000; }
-    .summary-item-value { font-size: 9pt; background: none !important; border: none; padding: 2pt 0; }
+    :global(.summary-section) { border: 1pt solid #000; border-radius: 0; margin-bottom: 8pt; break-inside: avoid; }
+    :global(.summary-section-header) { background: #e8e8e8 !important; color: #000 !important; border-bottom: 1pt solid #000; padding: 4pt 8pt; font-size: 8pt; }
+    :global(.summary-item-label) { font-size: 7pt; color: #000; }
+    :global(.summary-item-value) { font-size: 9pt; background: none !important; border: none; padding: 2pt 0; }
   }
 </style>
 
