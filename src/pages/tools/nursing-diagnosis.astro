@@ -230,34 +230,96 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
   /* ── Print styles ─────────────────────────────────────────────── */
   @media print {
-    body { background: #fff !important; font-size: 10.5pt; }
+    :global(*) { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-    header, footer, nav, .action-bar, .nd-page .subtitle,
-    .field-group label, .field-group .hint, .info-box, .tip-box,
-    .type-toggle, #form-area, .no-print { display: none !important; }
-
-    .preview-panel { border: 1.5pt solid #6366f1; border-radius: 0; margin: 0; }
-    .preview-header {
-      background: #1e293b !important;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-      padding: 5pt 9pt;
+    :global(body) {
+      background: #fff !important;
+      font-size: 10pt;
+      font-family: 'Times New Roman', Georgia, serif;
+      color: #000 !important;
     }
-    .preview-body { padding: 9pt; }
+
+    /* Remove Layout.astro wrapper padding/constraints in print */
+    :global(main) {
+      padding: 0 !important;
+      max-width: none !important;
+      margin: 0 !important;
+      width: 100% !important;
+    }
+
+    /* Hide Layout.astro chrome, form steps, and web UI elements */
+    :global(header), :global(footer), :global(nav),
+    .action-bar, .nd-page .subtitle,
+    .nd-section, .no-print { display: none !important; }
+
+    /* Page title */
+    .nd-page h1 {
+      font-size: 16pt;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 2pt solid #000;
+      padding-bottom: 5pt;
+      margin-bottom: 12pt;
+      color: #000;
+    }
+
+    /* Preview panel → professional paper output */
+    .preview-panel {
+      border: 1.5pt solid #000;
+      border-radius: 0;
+      margin: 0;
+    }
+    .preview-header {
+      background: #e8e8e8 !important;
+      color: #000 !important;
+      border-bottom: 1pt solid #000;
+      padding: 5pt 9pt;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .preview-body {
+      padding: 10pt;
+      font-size: 10pt;
+      font-family: 'Times New Roman', Georgia, serif;
+      color: #000;
+    }
     .preview-statement {
-      background: #eef2ff !important;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-      border-left: 4pt solid #6366f1 !important;
-      font-size: 12pt;
+      font-size: 11pt;
+      font-weight: bold;
+      font-family: 'Times New Roman', Georgia, serif;
+      color: #000;
+      background: #f0f0f0 !important;
+      border-left: 3pt solid #000 !important;
+      padding: 6pt 8pt;
+      border-radius: 0;
       margin-bottom: 10pt;
+      word-break: break-word;
     }
     .preview-block { margin-bottom: 8pt; }
-    .preview-block-label { font-size: 7pt; }
-    .preview-divider { margin: 7pt 0; }
+    .preview-block-label {
+      font-size: 7.5pt;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #333;
+      margin-bottom: 3pt;
+      border-bottom: 0.5pt solid #ccc;
+      padding-bottom: 1pt;
+    }
+    .preview-block ul, .preview-block ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-family: 'Times New Roman', Georgia, serif;
+    }
+    .preview-block li { margin-bottom: 3pt; }
+    .preview-divider { border: none; border-top: 0.75pt solid #aaa; margin: 7pt 0; }
 
-    .nd-page h1 { font-size: 16pt; }
-    @page { margin: 0.65in; size: letter; }
+    @page { margin: 0.75in; size: letter; }
   }
 </style>
 
@@ -936,11 +998,34 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     init();
   }
 
+  /* ── Strip emoji helper ──────────────────────────────────────── */
+  function stripEmoji(text) {
+    try {
+      return text.replace(/\p{Extended_Pictographic}\uFE0F?(\u200D\p{Extended_Pictographic}\uFE0F?)*/gu, '').replace(/\s+/g, ' ').trim();
+    } catch (_) {
+      return text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/gu, '').replace(/\s+/g, ' ').trim();
+    }
+  }
+
   /* ─── Expand textareas before printing ──────────────────────── */
   window.addEventListener('beforeprint', function () {
     document.querySelectorAll('textarea').forEach(function (ta) {
       ta.style.height = 'auto';
       ta.style.height = ta.scrollHeight + 'px';
+    });
+    /* Strip emojis from headings and preview header for professional print */
+    document.querySelectorAll('h1, h2, .preview-header').forEach(function (el) {
+      el.dataset.origText = el.textContent;
+      el.textContent = stripEmoji(el.textContent);
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    /* Restore original text with emoji */
+    document.querySelectorAll('h1, h2, .preview-header').forEach(function (el) {
+      if (el.dataset.origText !== undefined) {
+        el.textContent = el.dataset.origText;
+        delete el.dataset.origText;
+      }
     });
   });
 })();
