@@ -167,7 +167,224 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   .btn-outline { background: #fff; color: #1e293b; border: 1px solid #e2e8f0; }
   .btn-outline:hover { background: #f1f5f9; }
 
-  /* ── Print styles ─────────────────────────────────────────────── */
+  .btn-slides { background: #0f766e; color: #fff; }
+  .btn-slides:hover { background: #0d9488; }
+
+  /* ── Slide Deck Overlay ── (all :global since slides are JS-injected) */
+  :global(#slide-deck-overlay) {
+    max-width: 860px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+  :global(.sd-controls) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  :global(.sd-ctrl-btn) {
+    padding: 0.45rem 1rem;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  :global(.sd-ctrl-btn:hover:not(:disabled)) { background: #4f46e5; }
+  :global(.sd-ctrl-btn:disabled) { background: #c7d2fe; cursor: not-allowed; }
+  :global(.sd-counter) {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    min-width: 3.5rem;
+    text-align: center;
+  }
+  :global(.sd-exit-btn) {
+    margin-left: auto;
+    padding: 0.45rem 1rem;
+    background: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  :global(.sd-exit-btn:hover) { background: #e2e8f0; }
+
+  /* Viewport */
+  :global(.sd-viewport) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 0;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    scrollbar-width: none;
+  }
+  :global(.sd-viewport::-webkit-scrollbar) { display: none; }
+
+  /* Individual slide */
+  :global(.sd-slide) {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    min-height: 560px;
+    padding: 2rem 2.5rem;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Slide number badge */
+  :global(.sd-slide-number) {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  /* Title slide */
+  :global(.sd-title-slide) {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ccfbf1 0%, #f8fafc 100%);
+  }
+  :global(.sd-badge) {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #0f766e;
+    background: #ccfbf1;
+    border: 1px solid #99f6e4;
+    border-radius: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 1rem;
+  }
+  :global(.sd-main-title) {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+    word-break: break-word;
+  }
+  :global(.sd-sub-title) {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  :global(.sd-note) {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-top: 1rem;
+  }
+
+  /* Slide heading */
+  :global(.sd-heading) {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  :global(.sd-section-label) {
+    display: inline-block;
+    background: #0f766e;
+    color: #fff;
+    border-radius: 0.3rem;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-right: 0.4rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Content body */
+  :global(.sd-body) {
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.65;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  /* Numbered list */
+  :global(.sd-list) {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  :global(.sd-list li) {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.875rem;
+    color: #374151;
+    line-height: 1.5;
+  }
+  :global(.sd-num) {
+    flex-shrink: 0;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: #0f766e;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.05rem;
+  }
+
+  /* Callout box */
+  :global(.sd-callout) {
+    background: #f0fdfa;
+    border-left: 4px solid #99f6e4;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: #134e4a;
+    line-height: 1.6;
+    margin-top: auto;
+  }
+
+  /* Empty state */
+  :global(.sd-empty) {
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    :global(.sd-slide) { padding: 1.25rem; }
+    :global(.sd-main-title) { font-size: 1.5rem; }
+  }
   @media print {
     :global(*) { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
@@ -405,6 +622,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   <div class="action-bar">
     <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
     <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All Fields</button>
+    <button class="btn btn-slides" id="slide-view-btn" onclick="toggleSlideView()">🎞️ Slide View</button>
   </div>
 
   <!-- ── Student Info ───────────────────────────────────────────── -->
@@ -668,9 +886,30 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.5rem; margin-bottom:2rem;" class="no-print">
     <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
     <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All Fields</button>
+    <button class="btn btn-slides" onclick="toggleSlideView()">🎞️ Slide View</button>
   </div>
 
 </div><!-- /.cm-page -->
+
+<!-- ════════════════════════════════════════════════════════
+     SLIDE DECK OVERLAY
+     ════════════════════════════════════════════════════════ -->
+<div id="slide-deck-overlay" style="display:none;" class="no-print">
+
+  <!-- Slide controls bar -->
+  <div class="sd-controls">
+    <button id="sd-prev-btn" class="sd-ctrl-btn" aria-label="Previous slide">← Prev</button>
+    <span id="sd-counter" class="sd-counter">1 / 9</span>
+    <button id="sd-next-btn" class="sd-ctrl-btn" aria-label="Next slide">Next →</button>
+    <button class="sd-exit-btn" onclick="toggleSlideView()">✕ Exit Slide View</button>
+  </div>
+
+  <!-- Slides viewport -->
+  <div class="sd-viewport" id="sd-viewport">
+    <!-- Slides are injected by buildSlides() -->
+  </div>
+
+</div><!-- /#slide-deck-overlay -->
 
 <script is:inline>
 (function () {
@@ -2472,6 +2711,219 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       }
     });
   });
+  /* ── Slide Deck ──────────────────────────────────────────────── */
+  var sdCurrent = 0;
+  var sdTotal = 0;
+  var sdObserver = null;
+
+  /* Keyboard navigation — registered once, checks visibility at runtime */
+  document.addEventListener('keydown', function (e) {
+    var overlay = document.getElementById('slide-deck-overlay');
+    if (!overlay || overlay.style.display === 'none') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); sdGoTo(sdCurrent + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); sdGoTo(sdCurrent - 1); }
+    if (e.key === 'Escape') { window.toggleSlideView(); }
+  });
+
+  function getVal(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+  function getList(selector) {
+    var items = [];
+    document.querySelectorAll(selector).forEach(function (el) {
+      var v = el.value.trim();
+      if (v) items.push(v);
+    });
+    return items;
+  }
+  function esc(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function makeListHTML(items) {
+    if (!items.length) return '<p class="sd-empty">No entries yet — fill in the form and reopen Slide View.</p>';
+    return '<ul class="sd-list">' + items.map(function (item, i) {
+      return '<li><span class="sd-num">' + (i + 1) + '</span><span>' + esc(item) + '</span></li>';
+    }).join('') + '</ul>';
+  }
+  function makeSlide(num, total, extraClass, html) {
+    return '<div class="sd-slide' + (extraClass ? ' ' + extraClass : '') + '">' +
+      '<div class="sd-slide-number">' + num + ' / ' + total + '</div>' +
+      html +
+      '</div>';
+  }
+
+  function buildSlides() {
+    var focusTopic   = getVal('focus-topic') || 'Clinical Concept Map';
+    var location     = getVal('clinical-location');
+    var dates        = getVal('clinical-dates');
+    var patientTypes = getVal('patient-types');
+    var pathophys    = getVal('pathophysiology');
+    var riskFactors  = getList('.risk-factor');
+    var cues         = getList('.cue');
+    var supporting   = getList('.supporting');
+    var concerning   = getList('.concerning');
+    var hypotheses   = getList('.hypothesis');
+    var solutions    = getList('.solution');
+    var actions      = getList('.action');
+    var outcomes     = getList('.outcome');
+
+    var TOTAL = 9;
+
+    var slides = [];
+
+    /* ── Slide 1: Title ── */
+    var metaLines = [];
+    if (location) metaLines.push(esc(location));
+    if (dates) metaLines.push(esc(dates));
+    if (patientTypes) metaLines.push(esc(patientTypes));
+    slides.push(makeSlide(1, TOTAL, 'sd-title-slide',
+      '<div class="sd-badge">Clinical Concept Map</div>' +
+      '<div style="font-size:2.5rem;margin-bottom:0.5rem;">🗺️</div>' +
+      '<h1 class="sd-main-title">' + esc(focusTopic) + '</h1>' +
+      (metaLines.length ? '<p class="sd-sub-title">' + metaLines.join(' &nbsp;·&nbsp; ') + '</p>' : '') +
+      '<p class="sd-note">Use ← → arrow keys or Prev / Next to navigate</p>'
+    ));
+
+    /* ── Slide 2: Pathophysiology & Risk Factors ── */
+    var pathoHTML = pathophys
+      ? '<p style="font-size:0.9rem;line-height:1.65;color:#374151;">' + esc(pathophys) + '</p>'
+      : '<p class="sd-empty">No pathophysiology entered yet.</p>';
+    slides.push(makeSlide(2, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">A</span> Pathophysiology &amp; Risk Factors</h2>' +
+      '<div class="sd-body">' +
+        pathoHTML +
+        '<p style="font-size:0.8rem;font-weight:700;color:#0f766e;margin:0.85rem 0 0.25rem;">Risk Factors</p>' +
+        makeListHTML(riskFactors) +
+      '</div>'
+    ));
+
+    /* ── Slide 3: Recognizing Cues ── */
+    slides.push(makeSlide(3, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">B</span> Recognizing Cues</h2>' +
+      '<div class="sd-body">' + makeListHTML(cues) + '</div>' +
+      '<div class="sd-callout">What does the patient look like? What are the complaints? What relevant medical history and vital signs are present?</div>'
+    ));
+
+    /* ── Slide 4: Analyzing Cues – Supporting ── */
+    slides.push(makeSlide(4, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">C</span> Analyzing Cues – Supporting</h2>' +
+      '<div class="sd-body">' + makeListHTML(supporting) + '</div>' +
+      '<div class="sd-callout">How does each cue connect to the disease process?</div>'
+    ));
+
+    /* ── Slide 5: Analyzing Cues – Concerning ── */
+    slides.push(makeSlide(5, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">C1</span> Analyzing Cues – Concerning</h2>' +
+      '<div class="sd-body">' + makeListHTML(concerning) + '</div>' +
+      '<div class="sd-callout">The two cues of greatest concern from the supporting analysis above.</div>'
+    ));
+
+    /* ── Slide 6: Prioritized Hypotheses ── */
+    slides.push(makeSlide(6, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">D</span> Prioritized Hypotheses</h2>' +
+      '<div class="sd-body">' + makeListHTML(hypotheses) + '</div>' +
+      '<div class="sd-callout">Predict positive impacts of nursing interventions, listed in order of priority.</div>'
+    ));
+
+    /* ── Slide 7: Generated Solutions / Goals ── */
+    slides.push(makeSlide(7, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">E</span> Generated Solutions (Goals)</h2>' +
+      '<div class="sd-body">' + makeListHTML(solutions) + '</div>' +
+      '<div class="sd-callout">Each solution connects a nursing action to an anticipated patient outcome.</div>'
+    ));
+
+    /* ── Slide 8: Take Actions ── */
+    slides.push(makeSlide(8, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">F</span> Take Actions</h2>' +
+      '<div class="sd-body">' + makeListHTML(actions) + '</div>' +
+      '<div class="sd-callout">Nursing actions performed or observed, listed in order of priority.</div>'
+    ));
+
+    /* ── Slide 9: Evaluation Outcomes ── */
+    slides.push(makeSlide(9, TOTAL, '',
+      '<h2 class="sd-heading"><span class="sd-section-label">G</span> Evaluation Outcomes</h2>' +
+      '<div class="sd-body">' + makeListHTML(outcomes) + '</div>' +
+      '<div class="sd-callout">Were the goals from Section E achieved? Document full, partial, or unmet progress.</div>'
+    ));
+
+    var viewport = document.getElementById('sd-viewport');
+    if (viewport) viewport.innerHTML = slides.join('');
+  }
+
+  function sdGoTo(idx) {
+    var viewport = document.getElementById('sd-viewport');
+    if (!viewport) return;
+    var slides = viewport.querySelectorAll('.sd-slide');
+    if (!slides.length) return;
+    sdTotal = slides.length;
+    idx = Math.max(0, Math.min(idx, sdTotal - 1));
+    sdCurrent = idx;
+    slides[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    var counter = document.getElementById('sd-counter');
+    var prevBtn = document.getElementById('sd-prev-btn');
+    var nextBtn = document.getElementById('sd-next-btn');
+    if (counter) counter.textContent = (sdCurrent + 1) + ' / ' + sdTotal;
+    if (prevBtn) prevBtn.disabled = sdCurrent === 0;
+    if (nextBtn) nextBtn.disabled = sdCurrent === sdTotal - 1;
+  }
+
+  function sdSetupNav() {
+    var viewport = document.getElementById('sd-viewport');
+    var prevBtn = document.getElementById('sd-prev-btn');
+    var nextBtn = document.getElementById('sd-next-btn');
+    if (prevBtn) prevBtn.onclick = function () { sdGoTo(sdCurrent - 1); };
+    if (nextBtn) nextBtn.onclick = function () { sdGoTo(sdCurrent + 1); };
+
+    /* IntersectionObserver to sync counter on scroll */
+    if (sdObserver) sdObserver.disconnect();
+    sdObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var slides = Array.prototype.slice.call(viewport.querySelectorAll('.sd-slide'));
+          var idx = slides.indexOf(entry.target);
+          if (idx !== -1) {
+            sdCurrent = idx;
+            var counter = document.getElementById('sd-counter');
+            var prevBtnEl = document.getElementById('sd-prev-btn');
+            var nextBtnEl = document.getElementById('sd-next-btn');
+            if (counter) counter.textContent = (sdCurrent + 1) + ' / ' + sdTotal;
+            if (prevBtnEl) prevBtnEl.disabled = sdCurrent === 0;
+            if (nextBtnEl) nextBtnEl.disabled = sdCurrent === sdTotal - 1;
+          }
+        }
+      });
+    }, { root: viewport, threshold: 0.55 });
+    if (viewport) {
+      viewport.querySelectorAll('.sd-slide').forEach(function (s) { sdObserver.observe(s); });
+    }
+  }
+
+  window.toggleSlideView = function () {
+    var overlay = document.getElementById('slide-deck-overlay');
+    var formEl  = document.getElementById('concept-map-root');
+    var btn     = document.getElementById('slide-view-btn');
+    if (!overlay) return;
+
+    var isOpen = overlay.style.display !== 'none';
+    if (isOpen) {
+      /* Close slide view */
+      overlay.style.display = 'none';
+      if (formEl) formEl.style.display = '';
+      if (btn) btn.textContent = '🎞️ Slide View';
+    } else {
+      /* Open slide view */
+      buildSlides();
+      overlay.style.display = '';
+      if (formEl) formEl.style.display = 'none';
+      if (btn) btn.textContent = '📝 Back to Form';
+      sdCurrent = 0;
+      sdSetupNav();
+      sdGoTo(0);
+      overlay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
 })();
 </script>
 
