@@ -1,0 +1,1088 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Concept Map Coach – WGU Nursing Tools" protected={false}>
+
+<style>
+  /* ── Page shell ─────────────────────────────────────────────────── */
+  .cmc-page { max-width: 860px; margin: 0 auto; }
+  .cmc-page h1 { font-size: 1.75rem; font-weight: 800; color: #1e293b; margin-bottom: 0.3rem; }
+  .cmc-page .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.55; }
+
+  /* ── Phase progress bar ─────────────────────────────────────────── */
+  .phase-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.75rem;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .phase-pip {
+    flex: 1;
+    padding: 0.55rem 0.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: #f8fafc;
+    color: #94a3b8;
+    border-right: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.3;
+    user-select: none;
+  }
+  .phase-pip:last-child { border-right: none; }
+  .phase-pip.active { background: #6366f1; color: #fff; }
+  .phase-pip.done   { background: #dcfce7; color: #15803d; }
+  .phase-pip:hover:not(.active) { background: #eef2ff; color: #4f46e5; }
+
+  /* ── Step indicator ─────────────────────────────────────────────── */
+  .step-dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .step-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #e2e8f0;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .step-dot.active  { background: #6366f1; transform: scale(1.35); }
+  .step-dot.done    { background: #22c55e; }
+  .step-label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-left: 0.5rem;
+  }
+
+  /* ── Coach card ─────────────────────────────────────────────────── */
+  .coach-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .coach-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 0.85rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .coach-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .coach-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.1rem; }
+  .coach-phase-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+  }
+  .coach-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  /* Coach explanation box */
+  .coach-explain {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.5rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.875rem;
+    color: #0c4a6e;
+    line-height: 1.65;
+  }
+  .coach-explain strong { color: #0369a1; }
+
+  /* Coach tip box */
+  .coach-tip {
+    background: #fefce8;
+    border: 1px solid #fde047;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.82rem;
+    color: #713f12;
+    line-height: 1.6;
+  }
+  .coach-tip::before { content: '💡 '; }
+
+  /* Prompt questions */
+  .coach-prompts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.25rem;
+  }
+  .coach-prompt-item {
+    font-size: 0.82rem;
+    color: #475569;
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.55;
+  }
+  .coach-prompt-item::before { content: '▸ '; position: absolute; left: 0; color: #6366f1; }
+
+  /* ── Input fields ────────────────────────────────────────────────── */
+  .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field-group label { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+  .field-group .hint { font-size: 0.75rem; color: #64748b; }
+  .field-group input,
+  .field-group textarea {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1e293b;
+    background: #f8fafc;
+    box-sizing: border-box;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    resize: vertical;
+  }
+  .field-group input:focus,
+  .field-group textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    background: #fff;
+  }
+  .field-group textarea { min-height: 100px; line-height: 1.6; }
+
+  /* ── Navigation bar ─────────────────────────────────────────────── */
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .btn {
+    padding: 0.6rem 1.35rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-primary  { background: #6366f1; color: #fff; }
+  .btn-primary:hover:not(:disabled) { background: #4f46e5; }
+  .btn-outline  { background: #fff; color: #1e293b; border: 1px solid #e2e8f0; }
+  .btn-outline:hover:not(:disabled) { background: #f1f5f9; }
+  .btn-success  { background: #16a34a; color: #fff; }
+  .btn-success:hover:not(:disabled) { background: #15803d; }
+  .btn-danger   { background: #ef4444; color: #fff; }
+  .btn-danger:hover:not(:disabled) { background: #dc2626; }
+
+  .nav-spacer { flex: 1; }
+  .step-counter { font-size: 0.82rem; color: #94a3b8; white-space: nowrap; }
+
+  /* ── Summary / Export ────────────────────────────────────────────── */
+  #summary-view { display: none; }
+  .summary-section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .summary-section-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .summary-section-body { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .summary-item-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6366f1;
+    margin-bottom: 0.15rem;
+  }
+  .summary-item-value {
+    font-size: 0.9rem;
+    color: #1e293b;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.35rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .summary-item-value.empty { color: #94a3b8; font-style: italic; }
+
+  /* ── Print ───────────────────────────────────────────────────────── */
+  @media print {
+    :global(*) { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    :global(body) { background: #fff !important; font-size: 10pt; color: #000 !important; }
+    :global(main) { padding: 0 !important; max-width: none !important; margin: 0 !important; }
+    :global(header), :global(footer), :global(nav) { display: none !important; }
+    .cmc-page h1 { font-size: 16pt; font-weight: bold; text-align: center; border-bottom: 2pt solid #000; padding-bottom: 5pt; margin-bottom: 12pt; }
+    .cmc-page .subtitle, #coach-view, .phase-bar, .step-dots, .nav-bar, .no-print { display: none !important; }
+    #summary-view { display: block !important; }
+    .summary-section { border: 1pt solid #000; border-radius: 0; margin-bottom: 8pt; break-inside: avoid; }
+    .summary-section-header { background: #e8e8e8 !important; color: #000 !important; border-bottom: 1pt solid #000; padding: 4pt 8pt; font-size: 8pt; }
+    .summary-item-label { font-size: 7pt; color: #000; }
+    .summary-item-value { font-size: 9pt; background: none !important; border: none; padding: 2pt 0; }
+  }
+</style>
+
+<div class="cmc-page">
+  <h1>🗺️ Concept Map Coach</h1>
+  <p class="subtitle">
+    A guided, phase-by-phase coaching tool for building a complete nursing concept map.
+    Work through all 7 phases at your own pace—explanations, prompts, and input fields
+    keep your reasoning visible every step of the way.
+  </p>
+
+  <!-- Phase progress bar -->
+  <div class="phase-bar" id="phase-bar"></div>
+
+  <!-- ── Coach view (wizard) ── -->
+  <div id="coach-view">
+    <!-- Step dots -->
+    <div class="step-dots" id="step-dots"></div>
+
+    <!-- Coach card -->
+    <div class="coach-card" id="coach-card"></div>
+
+    <!-- Navigation bar -->
+    <div class="nav-bar">
+      <button class="btn btn-outline" id="btn-prev" onclick="navigate(-1)">← Back</button>
+      <span class="step-counter" id="step-counter"></span>
+      <span class="nav-spacer"></span>
+      <button class="btn btn-danger no-print" id="btn-reset" onclick="confirmReset()" title="Clear all data and restart">🗑 Reset</button>
+      <button class="btn btn-outline no-print" id="btn-copy-json-coach" onclick="copyJSON('btn-copy-json-coach')" title="Copy all your answers as JSON to share">📋 Copy JSON</button>
+      <button class="btn btn-outline no-print" id="btn-summary" onclick="showSummary()">Summary</button>
+      <button class="btn btn-primary" id="btn-next" onclick="navigate(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- ── Summary / Export view ── -->
+  <div id="summary-view">
+    <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; flex-wrap:wrap;" class="no-print">
+      <button class="btn btn-outline" onclick="showCoach()">← Back to Coach</button>
+      <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save PDF</button>
+      <button class="btn btn-success" onclick="exportJSON()">⬇ Export JSON</button>
+      <button class="btn btn-outline" id="btn-copy-json-summary" onclick="copyJSON('btn-copy-json-summary')">📋 Copy JSON</button>
+      <button class="btn btn-outline" onclick="importJSON()">⬆ Import JSON</button>
+    </div>
+    <div id="summary-content"></div>
+  </div>
+</div>
+
+<script>
+/* ===================================================================
+   DATA MODEL — all 7 phases, each with steps
+   =================================================================== */
+const PHASES = [
+  {
+    id: 'p1',
+    label: 'Phase 1',
+    title: 'Data Collection (Assessment)',
+    icon: '🔍',
+    color: '#0ea5e9',
+    steps: [
+      {
+        id: 'p1s1',
+        title: 'Chart Review',
+        explain: `Begin with a comprehensive review of the medical record before entering the patient's room. This establishes the clinical context and gives you a working hypothesis before you conduct your physical assessment.`,
+        tip: `Review the admitting diagnosis, reason for hospitalisation, past medical/surgical history, all progress notes, current physician orders, and any pending results. What do you already know about this patient?`,
+        prompts: [
+          'What is the admitting diagnosis and reason for hospitalisation?',
+          'What relevant past medical/surgical history is documented?',
+          'What current physician orders are in place?',
+          'Are there any outstanding lab results or pending studies?',
+        ],
+        fields: [
+          { id: 'chartReview', label: 'Chart review findings', hint: 'Admitting Dx, relevant history, current orders, pending results…', type: 'textarea', rows: 5 },
+        ],
+      },
+      {
+        id: 'p1s2',
+        title: 'Head-to-Toe Physical Assessment',
+        explain: `The systematic head-to-toe physical examination generates your objective data—the signs that are visible, audible, palpable, or measurable. This provides direct, first-hand knowledge of the patient's current physical state.`,
+        tip: `Work top-to-bottom: neuro → HEENT → respiratory → cardiovascular → GI → GU → musculoskeletal → integumentary → peripheral. Include vital signs (BP, HR, RR, SpO₂, temp, pain), pupil response, breath sounds, heart sounds, bowel sounds, skin integrity, peripheral pulses, and edema.`,
+        prompts: [
+          'What are the current vital signs?',
+          'What abnormal findings did you note in each body system?',
+          'What is the patient\'s neurological status?',
+          'Are there any skin integrity concerns?',
+        ],
+        fields: [
+          { id: 'vitalSigns', label: 'Vital signs', hint: 'BP, HR, RR, SpO₂, Temp, Pain score…', type: 'textarea', rows: 2 },
+          { id: 'physicalFindings', label: 'Physical assessment findings (head-to-toe)', hint: 'Document findings by system. Note abnormals explicitly.', type: 'textarea', rows: 7 },
+        ],
+      },
+      {
+        id: 'p1s3',
+        title: 'Patient & Family Interview',
+        explain: `Subjective data—the symptoms, concerns, values, and goals that only the patient can report—are gathered through therapeutic interviewing. Family or carers can provide corroborating history and insight into functional baseline and home environment.`,
+        tip: `Use open-ended questions: "Tell me about what brought you in today." Ask about the chief complaint using OLDCARTS (Onset, Location, Duration, Character, Aggravating/Relieving factors, Timing, Severity). Ask about pain, functional limitations, understanding of their illness, and concerns.`,
+        prompts: [
+          'What is the patient\'s chief complaint in their own words?',
+          'What symptoms does the patient describe? (OLDCARTS)',
+          'What are the patient\'s primary concerns and priorities?',
+          'What does the patient/family understand about the diagnosis and plan?',
+        ],
+        fields: [
+          { id: 'subjectiveData', label: 'Subjective data (patient/family interview)', hint: 'Chief complaint, symptoms, concerns, values, goals, functional baseline…', type: 'textarea', rows: 5 },
+        ],
+      },
+      {
+        id: 'p1s4',
+        title: 'Review Diagnostics',
+        explain: `Laboratory values, imaging reports, ECGs, cultures, and vital sign trends are reviewed and interpreted in the context of the patient's full clinical picture. A serum lactate of 4.2 in a febrile, hypotensive patient means something very different from one in a post-op patient.`,
+        tip: `Note values that are outside reference ranges. Identify trends—is a value worsening, improving, or stable? Compare to prior results if available. Consider what each abnormal value means for your patient's clinical picture.`,
+        prompts: [
+          'Which lab values are outside normal ranges? What is the clinical significance?',
+          'What do imaging or other diagnostic results show?',
+          'Are any values trending in a clinically significant direction?',
+        ],
+        fields: [
+          { id: 'labValues', label: 'Key lab results', hint: 'CBC, BMP, ABG, lactate, cultures, coagulation, etc. Note abnormals.', type: 'textarea', rows: 4 },
+          { id: 'diagnosticResults', label: 'Imaging / ECG / other diagnostic findings', hint: 'CXR, CT, echo, ECG interpretation…', type: 'textarea', rows: 3 },
+        ],
+      },
+      {
+        id: 'p1s5',
+        title: 'Medication Reconciliation',
+        explain: `A complete medication reconciliation with dosages, routes, frequencies, indications, and clinically significant side effects is essential. Many nursing diagnoses arise directly from pharmacological effects—constipation from opioids, hyponatraemia from diuretics, fall risk from sedatives.`,
+        tip: `For each medication, ask: What is it for? What are the key nursing considerations? What adverse effects are relevant for this patient? Which medications interact with this patient's current condition?`,
+        prompts: [
+          'What medications is this patient currently receiving?',
+          'Which medications have nursing considerations that impact this patient?',
+          'Are any medications contributing to problems you have identified?',
+        ],
+        fields: [
+          { id: 'medications', label: 'Current medications & nursing considerations', hint: 'Drug, dose, route, frequency, indication, key nursing concern…', type: 'textarea', rows: 6 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'p2',
+    label: 'Phase 2',
+    title: 'Data Organisation',
+    icon: '📊',
+    color: '#8b5cf6',
+    steps: [
+      {
+        id: 'p2s1',
+        title: 'Cluster Related Data',
+        explain: `Raw assessment data does not automatically constitute clinical understanding. Clustering groups signs and symptoms that share a common physiological, psychological, or contextual basis—revealing patterns that point toward specific nursing diagnoses.`,
+        tip: `Example cluster → "decreased breath sounds at right base + dullness to percussion + SpO₂ 91% + productive cough" all point toward a respiratory problem. Give each cluster a short descriptive label. A patient typically has 3–6 meaningful clusters.`,
+        prompts: [
+          'What findings naturally group together based on a shared body system or problem?',
+          'Are there cues from assessment, labs, medications, and subjective data that cluster together?',
+          'What pattern does each cluster suggest?',
+        ],
+        fields: [
+          { id: 'dataClusters', label: 'Data clusters (group related findings)', hint: 'Cluster 1: [label] — findings…\nCluster 2: [label] — findings…\n(continue for each cluster)', type: 'textarea', rows: 8 },
+        ],
+      },
+      {
+        id: 'p2s2',
+        title: 'Identify Abnormal Findings',
+        explain: `Within each cluster, explicitly flag values that fall outside established normal ranges or that represent a departure from this patient's personal baseline. Clinical significance is always relative to context and to the individual patient's baseline.`,
+        tip: `A heart rate of 98 bpm in a patient whose normal is 60 bpm may signal early compromise even though 98 is "within normal limits." Always compare to the patient's own baseline when possible, not just textbook ranges.`,
+        prompts: [
+          'Which specific findings are abnormal compared to reference ranges?',
+          'Which findings are abnormal relative to this patient\'s personal baseline?',
+          'Which abnormal findings are most clinically significant and why?',
+        ],
+        fields: [
+          { id: 'abnormalFindings', label: 'Abnormal findings & their clinical significance', hint: 'List each abnormal value/finding and explain why it matters for this patient.', type: 'textarea', rows: 5 },
+        ],
+      },
+      {
+        id: 'p2s3',
+        title: 'Separate Medical vs. Nursing Diagnoses',
+        explain: `A critical distinction: the medical diagnosis names the disease/pathology identified by the physician (e.g., community-acquired pneumonia). The nursing diagnosis names the patient's human response to that disease (e.g., impaired gas exchange, activity intolerance, anxiety). The concept map is organised around nursing diagnoses.`,
+        tip: `Ask yourself: "Can I independently treat this, or does it require a physician order?" Nursing diagnoses address responses to illness—physiological, psychological, safety, self-care, knowledge—that are within nursing scope of practice.`,
+        prompts: [
+          'What is the medical diagnosis (physician\'s domain)?',
+          'What are the patient\'s human responses to that diagnosis that nursing can address?',
+          'Are there problems in areas like safety, self-care, knowledge, coping, or comfort?',
+        ],
+        fields: [
+          { id: 'medicalDiagnoses', label: 'Medical diagnosis / diagnoses (physician\'s domain)', hint: 'The underlying disease(s) or pathological conditions…', type: 'textarea', rows: 2 },
+          { id: 'nursingFocus', label: 'Human responses & nursing concerns identified', hint: 'The patient\'s responses that nursing can address—these will become nursing diagnoses in Phase 3…', type: 'textarea', rows: 4 },
+        ],
+      },
+      {
+        id: 'p2s4',
+        title: 'Place the Central Concept',
+        explain: `The hub of the concept map is the patient's identity and primary nursing concern—not just the medical diagnosis, but the patient as a whole person with specific problems, priorities, and circumstances. All branches radiate outward from this central node.`,
+        tip: `The central concept typically includes the patient's name/identifier, age, primary medical diagnosis, and the one or two most pressing nursing concerns. It is the anchor from which all diagnostic, intervention, and outcome branches extend.`,
+        prompts: [
+          'How would you summarise this patient in one concise statement?',
+          'What is the single most urgent concern dominating this patient\'s care?',
+        ],
+        fields: [
+          { id: 'centralConcept', label: 'Central concept (map hub)', hint: 'E.g., "Mr. X, 68 y/o male, admitted with AECOPD — primary concern: Impaired Gas Exchange with acute respiratory decompensation."', type: 'textarea', rows: 3 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'p3',
+    label: 'Phase 3',
+    title: 'Clinical Reasoning & Nursing Diagnosis',
+    icon: '🧠',
+    color: '#6366f1',
+    steps: [
+      {
+        id: 'p3s1',
+        title: 'Analyse Data Clusters',
+        explain: `Each cluster assembled in Phase 2 is now interrogated: what problem do these cues collectively point to? What is the underlying pathophysiology connecting these findings? Are there competing explanations that must be considered?`,
+        tip: `Avoid premature closure (settling on the first plausible answer) and diagnostic paralysis (inability to commit). For each cluster, state what you believe is happening and why. Connect the pathophysiology to the clinical findings.`,
+        prompts: [
+          'For each cluster, what clinical problem does the pattern suggest?',
+          'What pathophysiology explains the connection between these findings?',
+          'Are there competing diagnoses you need to rule out?',
+        ],
+        fields: [
+          { id: 'clusterAnalysis', label: 'Cluster analysis (what each cluster suggests)', hint: 'Cluster 1 → suggests [problem] because [pathophysiology]…\nCluster 2 → suggests…', type: 'textarea', rows: 7 },
+        ],
+      },
+      {
+        id: 'p3s2',
+        title: 'Formulate Nursing Diagnoses',
+        explain: `Nursing diagnoses are expressed in the three-part NANDA format:\n• Problem (P): the human response — e.g., "Ineffective Airway Clearance"\n• Related To (R/T): the aetiology — e.g., "R/T excessive mucus secondary to pneumonia"\n• As Evidenced By (AEB): defining characteristics from assessment — e.g., "AEB decreased breath sounds, SpO₂ 91%, productive cough"`,
+        tip: `Every nursing diagnosis must be directly traceable to assessment data. The AEB clause proves you didn't invent the diagnosis—it grounds your reasoning in evidence. Use NANDA-I approved labels whenever possible.`,
+        prompts: [
+          'Write each nursing diagnosis in full P+R/T+AEB format.',
+          'Is each diagnosis directly supported by your assessment data (AEB)?',
+          'Have you considered diagnoses in all domains: physiological, safety, self-care, psychosocial, knowledge?',
+        ],
+        fields: [
+          { id: 'nursingDiagnoses', label: 'Nursing diagnoses (NANDA P + R/T + AEB format)', hint: 'Dx 1: [Problem] R/T [aetiology] AEB [defining characteristics]\nDx 2: …\n(list all)', type: 'textarea', rows: 9 },
+        ],
+      },
+      {
+        id: 'p3s3',
+        title: 'Prioritise Diagnoses',
+        explain: `When multiple nursing diagnoses are present—as almost always in acute care—determine which to address first. Apply two complementary frameworks:\n• ABC (Airway → Breathing → Circulation): life-threatening physiological threats are addressed before all others\n• Maslow's Hierarchy: physiological needs > safety > belonging > esteem > self-actualisation\nAlso incorporate the patient's own stated priorities.`,
+        tip: `List your diagnoses in priority order. If a patient has impaired gas exchange AND risk for falls, gas exchange is higher priority even if the patient complains most about pain. Justify your ranking by naming which framework applies.`,
+        prompts: [
+          'Which diagnosis is highest priority and why (ABC or Maslow)?',
+          'What is the patient\'s stated priority—and how does it factor into your ranking?',
+          'Are there any diagnoses that, if unaddressed, would worsen others (cascade effect)?',
+        ],
+        fields: [
+          { id: 'prioritisedDx', label: 'Prioritised nursing diagnoses (highest → lowest)', hint: '#1 [Diagnosis] — priority rationale: [ABC/Maslow/patient priority]…\n#2 …', type: 'textarea', rows: 7 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'p4',
+    label: 'Phase 4',
+    title: 'Goal & Outcome Setting',
+    icon: '🎯',
+    color: '#0f766e',
+    steps: [
+      {
+        id: 'p4s1',
+        title: 'Write SMART Outcomes',
+        explain: `For each nursing diagnosis, write at least one goal statement that is:\n• Specific — clearly describes what the patient will do/demonstrate\n• Measurable — includes objective criteria (a number, behaviour, or observable finding)\n• Attainable — realistic given the patient's current condition\n• Realistic — aligned with overall prognosis and trajectory\n• Time-bound — specifies the timeframe for achievement`,
+        tip: `Example: "Patient will maintain SpO₂ ≥ 94% on ≤ 2 L/min nasal cannula and report dyspnoea ≤ 2/10 within 24 hours of initiating treatment." Note the measurable threshold (94%, ≤2 L/min, ≤2/10) and the timeframe (24 hours).`,
+        prompts: [
+          'For each priority diagnosis, what does success look like—measurably?',
+          'What specific number, behaviour, or observable sign will tell you the goal has been met?',
+          'Is the goal realistic for this patient\'s current condition and likely clinical trajectory?',
+          'What is the timeframe? (Shift? 24 hours? Before discharge?)',
+        ],
+        fields: [
+          { id: 'smartGoals', label: 'SMART outcomes for each nursing diagnosis', hint: 'Dx 1 goal: Patient will [specific, measurable outcome] by [timeframe].\nDx 2 goal: …', type: 'textarea', rows: 8 },
+        ],
+      },
+      {
+        id: 'p4s2',
+        title: 'Short-Term vs. Long-Term Goals',
+        explain: `Short-term goals address immediate clinical priorities (hours to days) and serve as interim milestones—early evidence that the care plan is working. Long-term goals project further into the clinical trajectory (weeks to months) and often relate to functional recovery, self-management, or discharge readiness.`,
+        tip: `Short-term goals frequently represent necessary preconditions for long-term goal achievement. Make this relationship explicit: "Patient will demonstrate effective cough by end of shift [short-term] so that she can independently manage secretions at home [long-term]."`,
+        prompts: [
+          'What can realistically be achieved this shift or within 24–48 hours?',
+          'What does this patient need to achieve before safe discharge?',
+          'How do your short-term goals build toward your long-term goals?',
+        ],
+        fields: [
+          { id: 'shortTermGoals', label: 'Short-term goals (hours–days)', hint: 'Immediate milestones within this shift or 24–48 hours…', type: 'textarea', rows: 4 },
+          { id: 'longTermGoals', label: 'Long-term goals (days–discharge and beyond)', hint: 'Functional recovery, self-management capacity, discharge readiness…', type: 'textarea', rows: 4 },
+        ],
+      },
+      {
+        id: 'p4s3',
+        title: 'Patient-Centred Outcomes',
+        explain: `Goal statements must be written in terms of what the patient will demonstrate or achieve—not what the nurse will do. "Patient will demonstrate correct inhaler technique before discharge" is patient-centred; "Nurse will teach inhaler technique" describes an intervention, not an outcome.`,
+        tip: `Review every goal you have written. If the subject of the sentence is the nurse rather than the patient, rewrite it. The evaluation question must always be: Did the patient achieve this? Not: Did I deliver the care?`,
+        prompts: [
+          'Is the subject of each goal statement the patient (not the nurse)?',
+          'Does each goal reflect what the patient will DO, DEMONSTRATE, or ACHIEVE?',
+          'Have you incorporated the patient\'s own priorities or preferences into any goals?',
+        ],
+        fields: [
+          { id: 'patientCentredReview', label: 'Confirm patient-centred framing', hint: 'Review your goals. Note any that needed rewriting and what you changed—or confirm all are already patient-centred.', type: 'textarea', rows: 3 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'p5',
+    label: 'Phase 5',
+    title: 'Intervention Planning',
+    icon: '🛠',
+    color: '#b45309',
+    steps: [
+      {
+        id: 'p5s1',
+        title: 'Select Evidence-Based Interventions',
+        explain: `Nursing interventions should be selected on the basis of the best available evidence for effectiveness with the patient's specific problem, taking into account their individual circumstances and preferences. Draw on clinical guidelines, protocols, and systematic reviews.`,
+        tip: `For each nursing diagnosis, list the interventions you plan to implement. Think comprehensively: assessment monitoring, positioning, hygiene, education, medication administration, referrals, therapeutic communication, safety measures, nutrition/fluid management.`,
+        prompts: [
+          'What does the evidence say is effective for this specific nursing problem?',
+          'Are there clinical guidelines or protocols that apply?',
+          'What interventions address the aetiology (R/T) as well as the symptoms (AEB)?',
+        ],
+        fields: [
+          { id: 'interventions', label: 'Planned interventions for each nursing diagnosis', hint: 'Dx 1:\n  • Intervention A\n  • Intervention B\nDx 2:\n  • …', type: 'textarea', rows: 10 },
+        ],
+      },
+      {
+        id: 'p5s2',
+        title: 'Categorise Interventions',
+        explain: `Nursing interventions fall into three categories:\n• Independent — nurse initiates based on own professional judgment (no order needed): repositioning, therapeutic communication, oral care, ambulation, education, assessment monitoring\n• Collaborative — implemented jointly with other disciplines (physio, dietitian, social work, pharmacy, respiratory therapy)\n• Dependent — require a physician order: medication administration, IV fluids, diagnostic procedures, ordered wound care`,
+        tip: `Identifying the category of each intervention is clinically important: it defines your scope of practice, clarifies accountability, and guides communication with the interprofessional team.`,
+        prompts: [
+          'Which interventions can you initiate independently right now?',
+          'Which interventions require collaboration with other team members—and who?',
+          'Which interventions require a physician order before implementation?',
+        ],
+        fields: [
+          { id: 'independentInterventions', label: 'Independent interventions', hint: 'Initiated by the nurse without a physician order…', type: 'textarea', rows: 4 },
+          { id: 'collaborativeInterventions', label: 'Collaborative interventions', hint: 'Joint with physio, dietitian, respiratory therapy, social work, etc.…', type: 'textarea', rows: 3 },
+          { id: 'dependentInterventions', label: 'Dependent interventions (require physician order)', hint: 'Medication admin, IV fluid management, ordered procedures…', type: 'textarea', rows: 3 },
+        ],
+      },
+      {
+        id: 'p5s3',
+        title: 'Write Rationale',
+        explain: `For each intervention, articulate the rationale—the physiological, psychological, or evidence-based justification that explains why this intervention is expected to produce the desired patient outcome. A nurse who cannot articulate why she is doing what she is doing is a nurse whose practice is not grounded in clinical reasoning.`,
+        tip: `Rationale connects action to mechanism: "Elevate head of bed 30–45° to reduce risk of aspiration and improve diaphragm excursion, thereby supporting oxygenation." The more specific the mechanism, the stronger the rationale.`,
+        prompts: [
+          'For each intervention, what is the physiological or evidence-based mechanism of action?',
+          'How does this intervention directly address the nursing diagnosis or its aetiology?',
+          'What outcome do you predict, and in what timeframe?',
+        ],
+        fields: [
+          { id: 'rationale', label: 'Rationale for each intervention', hint: 'Intervention A: [action] → [mechanism] → [expected outcome]\nIntervention B: …', type: 'textarea', rows: 8 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'p6',
+    label: 'Phase 6',
+    title: 'Drawing Connections',
+    icon: '🔗',
+    color: '#0369a1',
+    steps: [
+      {
+        id: 'p6s1',
+        title: 'Identify Relationships to Link',
+        explain: `The defining feature of the concept map is the system of directed arrows that make relationships between concepts explicit. Four principal types of relationship are encoded:\n1. Assessment data → Nursing diagnosis (diagnostic relationship)\n2. Nursing diagnosis → Intervention (therapeutic relationship)\n3. Intervention → Expected outcome (efficacy relationship)\n4. Nursing diagnosis ↔ Nursing diagnosis (complication/cascade relationship)`,
+        tip: `Think about which problems cause or worsen other problems. For example: Impaired Mobility → Risk for Pressure Injury → Risk for Infection. These cascade relationships are clinically crucial and reveal the complexity of the patient's situation.`,
+        prompts: [
+          'Which assessment cues directly support (point to) each nursing diagnosis?',
+          'Which interventions are linked to which diagnoses?',
+          'Which interventions are expected to produce which outcomes?',
+          'Do any diagnoses cause or worsen other diagnoses? (cascade/complication links)',
+        ],
+        fields: [
+          { id: 'diagnosticLinks', label: 'Data → Diagnosis links', hint: '[Assessment finding] → [Nursing Diagnosis]\n…list each link', type: 'textarea', rows: 4 },
+          { id: 'therapeuticLinks', label: 'Diagnosis → Intervention links', hint: '[Nursing Diagnosis] → [Intervention]\n…list each link', type: 'textarea', rows: 4 },
+          { id: 'efficacyLinks', label: 'Intervention → Outcome links', hint: '[Intervention] → [Expected Outcome]\n…list each link', type: 'textarea', rows: 4 },
+          { id: 'cascadeLinks', label: 'Diagnosis ↔ Diagnosis (cascade/complication) links', hint: '[Diagnosis A] leads to [Diagnosis B] because…\n…list cascade relationships', type: 'textarea', rows: 3 },
+        ],
+      },
+      {
+        id: 'p6s2',
+        title: 'Label Linking Phrases',
+        explain: `Arrows alone are necessary but not sufficient—the linking phrase articulates the nature of each relationship. Precise linking language makes clinical reasoning legible and testable, transforming the map from a collection of boxes into a coherent argument.`,
+        tip: `Common linking phrases:\n• "leads to" — causal/predictive\n• "as evidenced by" — data supporting a diagnosis\n• "treated with" — diagnosis → primary intervention\n• "worsened by" — aggravating factor\n• "resolved by" — anticipated therapeutic response\n• "at risk for" — prospective/risk-based relationship`,
+        prompts: [
+          'Have you labelled every arrow in your map with a linking phrase?',
+          'Does each linking phrase accurately describe the nature of the relationship?',
+          'Are there any arrows whose direction could be misunderstood without a label?',
+        ],
+        fields: [
+          { id: 'linkingPhrases', label: 'Labelled connections summary', hint: '"[Concept A]" --[linking phrase]--> "[Concept B]"\n…list all your labelled arrows here so you can transfer them to your visual map', type: 'textarea', rows: 9 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'p7',
+    label: 'Phase 7',
+    title: 'Evaluation',
+    icon: '✅',
+    color: '#16a34a',
+    steps: [
+      {
+        id: 'p7s1',
+        title: 'Compare Outcomes to Actual Response',
+        explain: `For each nursing diagnosis, systematically compare the patient's actual response with the expected outcomes established in Phase 4. Has the patient's SpO₂ improved to the target range? Has pain decreased to the stated threshold? Has the patient demonstrated the self-care behaviour specified in the goal?`,
+        tip: `Reassess at the timeframe specified in the goal statement. Use the same measurable criteria you set in Phase 4—this is why SMART goals matter. Document whether each goal was met, partially met, or not met.`,
+        prompts: [
+          'For each goal, what is the patient\'s actual response? (Met / Partially Met / Not Met)',
+          'What objective data supports your evaluation?',
+          'What has changed since your initial assessment?',
+        ],
+        fields: [
+          { id: 'outcomeEvaluation', label: 'Outcome evaluation (compare expected vs. actual)', hint: 'Dx 1 goal: [restate goal] → Status: Met / Partially Met / Not Met\n  Evidence: [objective data]\nDx 2 goal: …', type: 'textarea', rows: 8 },
+        ],
+      },
+      {
+        id: 'p7s2',
+        title: 'Revise or Discontinue Diagnoses',
+        explain: `When new assessment data reveal that a diagnosis has been resolved, it is discontinued and the map is updated. When data reveal that a diagnosis was incorrectly formulated—wrong cluster, wrong R/T factor, or a problem that turned out not to be present—the diagnosis is revised. Willingness to revise in the face of disconfirming evidence is intellectual integrity and a component of safe practice.`,
+        tip: `Ask yourself: Is each diagnosis still valid? Has new data emerged that changes your understanding? Have any problems resolved that can be discontinued? Have any new problems appeared that need to be added?`,
+        prompts: [
+          'Which diagnoses, if any, can be discontinued because the problem has resolved?',
+          'Which diagnoses need to be revised based on new data or re-analysis?',
+          'Have any new problems emerged that require new nursing diagnoses?',
+        ],
+        fields: [
+          { id: 'diagnosisRevision', label: 'Diagnoses to revise, discontinue, or add', hint: 'Discontinued: [diagnosis] — reason: [resolved/not confirmed]\nRevised: [old Dx] → [new Dx] — reason: …\nNew Dx: …', type: 'textarea', rows: 5 },
+        ],
+      },
+      {
+        id: 'p7s3',
+        title: 'Adjust Interventions',
+        explain: `When goals are not met, determine whether the failure is attributable to: the intervention (wrong choice, inadequate dose, poor technique), the goal (set too high, too soon, or misaligned with patient priorities), or the nursing diagnosis (incorrectly formulated, or superseded by a new priority). Each possibility requires a different corrective response.`,
+        tip: `Intervention adjustment is not a failure of the original care plan—it is evidence that you are engaging in the iterative, responsive practice that the nursing process is designed to support. Adjust, document, and reassess.`,
+        prompts: [
+          'For any unmet goal, is the problem with the intervention, the goal, or the diagnosis?',
+          'Which interventions should be modified, discontinued, or added?',
+          'Which goals need to be revised to better reflect realistic, patient-centred outcomes?',
+        ],
+        fields: [
+          { id: 'interventionAdjustments', label: 'Intervention adjustments', hint: 'Modify: [intervention] → [revised intervention] — reason: …\nDiscontinue: [intervention] — reason: …\nAdd: [new intervention] — reason: …', type: 'textarea', rows: 5 },
+        ],
+      },
+      {
+        id: 'p7s4',
+        title: 'Document Changes & Update the Map',
+        explain: `The concept map is a living document. As the patient's condition evolves—new diagnoses emerge, problems resolve, interventions prove effective or ineffective—the map is updated to reflect the current clinical picture. Continuous updating serves patient safety and professional accountability.`,
+        tip: `Your final map should reflect the patient's condition NOW, not just at admission. Document what changed, what you learned, and what implications this has for ongoing care. This is also where your clinical reasoning is most visible.`,
+        prompts: [
+          'What is the overall trajectory of this patient\'s condition?',
+          'What has changed on the map from your initial assessment to now?',
+          'What are the key priorities for the next shift/care period?',
+          'What clinical reasoning have you developed through building this map?',
+        ],
+        fields: [
+          { id: 'mapUpdates', label: 'Map updates and documentation of changes', hint: 'Summary of changes from initial to current map, trajectory, and handoff priorities…', type: 'textarea', rows: 5 },
+          { id: 'clinicalReflection', label: 'Clinical reasoning reflection', hint: 'What did building this concept map reveal about this patient\'s clinical picture that you might have missed without it?', type: 'textarea', rows: 4 },
+        ],
+      },
+    ],
+  },
+];
+
+/* ===================================================================
+   STATE
+   =================================================================== */
+let currentPhase = 0;
+let currentStep  = 0;
+const answers = {}; // keyed by field id
+
+/* ===================================================================
+   INIT
+   =================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  loadFromStorage();
+  renderPhaseBar();
+  renderStep();
+});
+
+/* ===================================================================
+   STORAGE
+   =================================================================== */
+const STORAGE_KEY = 'cmCoach_v1';
+
+function saveToStorage() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ currentPhase, currentStep, answers }));
+  } catch (err) {
+    console.warn('[ConceptMapCoach] Auto-save failed:', err);
+    // Notify the user once per session so they know to use Export JSON as a backup
+    if (!saveToStorage._warned) {
+      saveToStorage._warned = true;
+      alert('⚠️ Auto-save to browser storage failed (storage may be full or disabled).\nUse "Export JSON" or "Copy JSON" to save your work manually.');
+    }
+  }
+}
+
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    currentPhase = data.currentPhase || 0;
+    currentStep  = data.currentStep  || 0;
+    Object.assign(answers, data.answers || {});
+  } catch (err) {
+    console.warn('[ConceptMapCoach] Could not load saved data (may be corrupted):', err);
+    // Clear the corrupted entry so the next save works cleanly
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+  }
+}
+
+function confirmReset() {
+  if (!confirm('Clear all your data and start over? This cannot be undone.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  currentPhase = 0;
+  currentStep  = 0;
+  for (const k of Object.keys(answers)) delete answers[k];
+  renderPhaseBar();
+  renderStep();
+  showCoach();
+}
+
+/* ===================================================================
+   NAVIGATION
+   =================================================================== */
+function navigate(dir) {
+  saveCurrentAnswers();
+  const phase = PHASES[currentPhase];
+  const nextStep = currentStep + dir;
+
+  if (nextStep >= 0 && nextStep < phase.steps.length) {
+    currentStep = nextStep;
+  } else if (dir > 0 && currentPhase < PHASES.length - 1) {
+    currentPhase++;
+    currentStep = 0;
+  } else if (dir < 0 && currentPhase > 0) {
+    currentPhase--;
+    currentStep = PHASES[currentPhase].steps.length - 1;
+  }
+  saveToStorage();
+  renderPhaseBar();
+  renderStep();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function jumpToPhase(phaseIdx) {
+  saveCurrentAnswers();
+  currentPhase = phaseIdx;
+  currentStep  = 0;
+  saveToStorage();
+  renderPhaseBar();
+  renderStep();
+  showCoach();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function jumpToStep(stepIdx) {
+  saveCurrentAnswers();
+  currentStep = stepIdx;
+  saveToStorage();
+  renderPhaseBar();
+  renderStep();
+}
+
+/* ===================================================================
+   SAVE ANSWERS FROM DOM
+   =================================================================== */
+function saveCurrentAnswers() {
+  const phase = PHASES[currentPhase];
+  const step  = phase.steps[currentStep];
+  for (const field of step.fields) {
+    const el = document.getElementById('field_' + field.id);
+    if (el) answers[field.id] = el.value;
+  }
+}
+
+/* ===================================================================
+   CHECK IF PHASE IS COMPLETE
+   =================================================================== */
+function isPhaseComplete(phaseIdx) {
+  const phase = PHASES[phaseIdx];
+  return phase.steps.every(step =>
+    step.fields.every(f => answers[f.id] && answers[f.id].trim().length > 0)
+  );
+}
+
+/* ===================================================================
+   RENDER — PHASE BAR
+   =================================================================== */
+function renderPhaseBar() {
+  const bar = document.getElementById('phase-bar');
+  bar.innerHTML = PHASES.map((p, i) => {
+    const cls = i === currentPhase ? 'active' : (isPhaseComplete(i) ? 'done' : '');
+    return `<div class="phase-pip ${cls}" onclick="jumpToPhase(${i})" title="${p.title}">${p.label}<br><span style="font-weight:400;opacity:0.8;">${p.icon}</span></div>`;
+  }).join('');
+}
+
+/* ===================================================================
+   RENDER — STEP
+   =================================================================== */
+function renderStep() {
+  const phase = PHASES[currentPhase];
+  const step  = phase.steps[currentStep];
+  const totalSteps = phase.steps.length;
+  const globalStep = PHASES.slice(0, currentPhase).reduce((s, p) => s + p.steps.length, 0) + currentStep + 1;
+  const totalGlobal = PHASES.reduce((s, p) => s + p.steps.length, 0);
+
+  // Step dots
+  const dotsEl = document.getElementById('step-dots');
+  dotsEl.innerHTML = phase.steps.map((s, i) => {
+    const fieldsDone = s.fields.every(f => answers[f.id] && answers[f.id].trim().length > 0);
+    const cls = i === currentStep ? 'active' : (fieldsDone ? 'done' : '');
+    return `<div class="step-dot ${cls}" onclick="jumpToStep(${i})" title="${s.title}"></div>`;
+  }).join('') + `<span class="step-label">${phase.title} — Step ${currentStep + 1} of ${totalSteps}</span>`;
+
+  // Coach card
+  const card = document.getElementById('coach-card');
+  const promptsHTML = step.prompts.map(p =>
+    `<div class="coach-prompt-item">${escHtml(p)}</div>`
+  ).join('');
+  const fieldsHTML = step.fields.map(f => {
+    const val = answers[f.id] || '';
+    if (f.type === 'textarea') {
+      return `<div class="field-group">
+        <label for="field_${f.id}">${escHtml(f.label)}</label>
+        ${f.hint ? `<span class="hint">${escHtml(f.hint)}</span>` : ''}
+        <textarea id="field_${f.id}" rows="${f.rows || 4}" placeholder="${escHtml(f.hint || '')}">${escHtml(val)}</textarea>
+      </div>`;
+    }
+    return `<div class="field-group">
+      <label for="field_${f.id}">${escHtml(f.label)}</label>
+      ${f.hint ? `<span class="hint">${escHtml(f.hint)}</span>` : ''}
+      <input type="text" id="field_${f.id}" value="${escHtml(val)}" placeholder="${escHtml(f.hint || '')}">
+    </div>`;
+  }).join('');
+
+  const explainParas = step.explain.split('\n').map(l => `<p style="margin:0 0 0.35rem;">${escHtml(l)}</p>`).join('');
+  const tipText = step.tip.split('\n').map(l => escHtml(l)).join('<br>');
+
+  card.innerHTML = `
+    <div class="coach-header" style="background:${escHtml(phase.color)};">
+      <div class="coach-icon">${step.icon || phase.icon}</div>
+      <div>
+        <div class="coach-phase-tag">${escHtml(phase.label)} · ${escHtml(phase.title)}</div>
+        <div class="coach-title">${escHtml(step.title)}</div>
+      </div>
+    </div>
+    <div class="coach-body">
+      <div class="coach-explain">${explainParas}</div>
+      <div class="coach-tip">${tipText}</div>
+      <div>
+        <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#475569; margin-bottom:0.5rem;">Guiding questions</div>
+        <div class="coach-prompts">${promptsHTML}</div>
+      </div>
+      ${fieldsHTML}
+    </div>`;
+
+  // Navigation
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const counter = document.getElementById('step-counter');
+
+  const isFirst = currentPhase === 0 && currentStep === 0;
+  const isLast  = currentPhase === PHASES.length - 1 && currentStep === phase.steps.length - 1;
+
+  btnPrev.disabled = isFirst;
+  btnNext.textContent = isLast ? '📋 View Summary' : 'Next →';
+  btnNext.className = isLast ? 'btn btn-success' : 'btn btn-primary';
+  btnNext.onclick = isLast ? () => { saveCurrentAnswers(); showSummary(); } : () => navigate(1);
+
+  counter.textContent = `Step ${globalStep} of ${totalGlobal}`;
+}
+
+/* ===================================================================
+   SUMMARY VIEW
+   =================================================================== */
+function showSummary() {
+  saveCurrentAnswers();
+  saveToStorage();
+  document.getElementById('coach-view').style.display = 'none';
+  document.getElementById('summary-view').style.display = 'block';
+  renderSummary();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showCoach() {
+  document.getElementById('summary-view').style.display = 'none';
+  document.getElementById('coach-view').style.display = 'block';
+  renderPhaseBar();
+  renderStep();
+}
+
+function renderSummary() {
+  const content = document.getElementById('summary-content');
+  let html = '';
+  for (const phase of PHASES) {
+    const stepsHTML = phase.steps.map(step => {
+      return step.fields.map(f => {
+        const val = (answers[f.id] || '').trim();
+        const cls = val ? '' : 'empty';
+        return `<div>
+          <div class="summary-item-label">${escHtml(step.title)} — ${escHtml(f.label)}</div>
+          <div class="summary-item-value ${cls}">${val ? escHtml(val) : '(not yet completed)'}</div>
+        </div>`;
+      }).join('');
+    }).join('');
+
+    html += `<div class="summary-section">
+      <div class="summary-section-header" style="background:${escHtml(phase.color)};">
+        ${escHtml(phase.icon)} ${escHtml(phase.label)}: ${escHtml(phase.title)}
+      </div>
+      <div class="summary-section-body">${stepsHTML}</div>
+    </div>`;
+  }
+  content.innerHTML = html;
+}
+
+/* ===================================================================
+   EXPORT / IMPORT JSON
+   =================================================================== */
+function exportJSON() {
+  saveCurrentAnswers();
+  const data = { version: 1, timestamp: new Date().toISOString(), answers };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'concept-map-coach-' + new Date().toISOString().slice(0, 10) + '.json';
+  a.click();
+}
+
+async function copyJSON(btnId) {
+  saveCurrentAnswers();
+  const data = { version: 1, timestamp: new Date().toISOString(), answers };
+  const text = JSON.stringify(data, null, 2);
+  const btn = document.getElementById(btnId);
+
+  function markCopied() {
+    if (!btn) return;
+    const orig = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 2000);
+  }
+
+  // Try modern Clipboard API first
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      markCopied();
+      return;
+    } catch (err) {
+      console.warn('[ConceptMapCoach] Clipboard API failed, trying execCommand fallback:', err);
+    }
+  }
+
+  // execCommand fallback (deprecated but still widely supported)
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (ok) { markCopied(); return; }
+  } catch (err) {
+    console.warn('[ConceptMapCoach] execCommand fallback failed:', err);
+  }
+
+  // Last resort: show a dialog with the text so the user can copy manually
+  showCopyModal(text);
+}
+
+function showCopyModal(text) {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;';
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:.75rem;max-width:560px;width:100%;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+      <p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0;">Automatic copy is not available in this browser</p>
+      <p style="font-size:.82rem;color:#475569;margin:0;">Select all the text below and copy it manually (Ctrl+A then Ctrl+C):</p>
+      <textarea readonly rows="10" style="width:100%;font-size:.8rem;font-family:monospace;border:1px solid #e2e8f0;border-radius:.4rem;padding:.5rem;resize:vertical;box-sizing:border-box;" onclick="this.select()">${escHtml(text)}</textarea>
+      <button onclick="this.closest('div').parentElement.remove()" style="align-self:flex-end;padding:.5rem 1.25rem;background:#6366f1;color:#fff;border:none;border-radius:.4rem;font-size:.875rem;font-weight:600;cursor:pointer;">Close</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  // Auto-select the textarea for convenience
+  const ta = overlay.querySelector('textarea');
+  if (ta) { setTimeout(() => { ta.focus(); ta.select(); }, 50); }
+}
+
+function importJSON() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json,application/json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (data && data.answers) {
+          Object.assign(answers, data.answers);
+          saveToStorage();
+          renderSummary();
+          alert('Data imported successfully!');
+        } else {
+          alert('Import failed: the file does not contain valid Concept Map Coach data (missing "answers" key).');
+        }
+      } catch (err) {
+        alert('Import failed: the file could not be parsed as JSON.\n\nDetails: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+/* ===================================================================
+   UTILITY
+   =================================================================== */
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+</script>
+
+</Layout>
