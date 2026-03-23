@@ -1,0 +1,195 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Paralysis—the loss of voluntary muscle function in one or more body regions—is among the most clinically significant neurological presentations encountered in nursing practice. Its aetiology, clinical features, and management differ profoundly depending on the anatomical site at which the causative lesion disrupts the motor pathway. The two principal categories of paralysis are spastic (upper motor neurone) paralysis and flaccid (lower motor neurone) paralysis, each reflecting a fundamentally different mechanism of motor pathway disruption and producing a distinctive constellation of signs and symptoms.\n\nAn accurate understanding of the pathophysiological distinction between spastic and flaccid paralysis is essential for nurses across clinical specialties. It underpins safe patient handling, appropriate positioning, targeted rehabilitation support, risk stratification for complications, and effective patient and family education. This article presents the neuroanatomical basis of motor control, the pathophysiology of both forms of paralysis, their clinical differentiation, and the nursing management principles that follow from an understanding of each type.`,
+  },
+  {
+    id: 'motor-pathway-anatomy',
+    heading: 'Anatomy of the Motor Pathway',
+    body: `Voluntary movement is executed through a two-neurone motor pathway that connects the cerebral cortex to the skeletal muscle fibre.\n\nUpper Motor Neurones (UMN). Upper motor neurones originate in the primary motor cortex (precentral gyrus, Brodmann area 4) and adjacent premotor areas of the frontal lobe. Their axons descend through the internal capsule and brainstem, crossing (decussating) in the pyramidal decussation at the junction of the medulla oblongata and spinal cord. After decussating, the majority of fibres travel within the lateral corticospinal tract of the spinal cord white matter to synapse—directly or via interneurones—on lower motor neurones in the anterior horn of the spinal cord grey matter. UMN axons that do not decussate in the medulla form the anterior corticospinal tract, which crosses at the segmental level. Additional descending pathways (rubrospinal, reticulospinal, vestibulospinal) modulate tone and reflex activity. Crucially, UMNs exert both excitatory and inhibitory influences on the LMN pool; the net inhibitory influence predominates, restraining reflex arcs and maintaining tonal equilibrium.\n\nLower Motor Neurones (LMN). Lower motor neurones are located in the anterior horns of the spinal cord (for skeletal muscles of the trunk and limbs) and in the motor nuclei of cranial nerves (for muscles of the head and neck). Their axons exit through the anterior nerve roots, join the peripheral nerve, and terminate at the neuromuscular junction. An LMN and all of the muscle fibres it innervates constitute a motor unit, the final common pathway for all motor commands. LMN axons also convey trophic signals that maintain the structural integrity and metabolic competence of the muscle fibre.\n\nThe Reflex Arc. Spinal reflex arcs—in which sensory input from muscle spindles (via Ia afferent fibres) synapses directly onto the same-segment LMN pool—provide the anatomical substrate for stretch reflexes (deep tendon reflexes). Normally, descending UMN input modulates the gain of this arc, preventing hyperreflexia. When UMN input is removed, this inhibitory gating is lost; when LMN integrity is disrupted, the reflex arc itself is interrupted.`,
+  },
+  {
+    id: 'spastic-paralysis',
+    heading: 'Spastic (Upper Motor Neurone) Paralysis',
+    body: `Spastic paralysis, also called UMN paralysis, results from a lesion anywhere along the upper motor neurone pathway—from the motor cortex, through the internal capsule, brainstem, and spinal cord white matter—above the level of the anterior horn cell.\n\nPathophysiology. When UMN axons are damaged, the inhibitory modulation they exert over spinal reflex arcs is lost or diminished. The LMN pool and its reflex arcs remain anatomically intact, but are released from descending inhibitory control. This disinhibition produces several characteristic phenomena. First, spasticity—velocity-dependent resistance to passive muscle stretch—develops because the stretch reflex arc becomes hyperexcitable in the absence of normal corticospinal gating. Second, deep tendon reflexes (DTRs) are exaggerated (hyperreflexia), because the same arc that mediates stretch reflexes operates without adequate inhibition. Third, pathological reflexes emerge: the Babinski sign (extensor plantar response), in which stroking the lateral plantar surface of the foot produces dorsiflexion of the great toe and fanning of the other toes, is the most clinically important. In the intact adult nervous system, corticospinal tract activity suppresses this primitive reflex; its re-emergence signals UMN damage above the sacral spinal cord.\n\nMuscle tone in spastic paralysis is increased (hypertonia). Clinically, this presents as the 'clasp-knife' phenomenon: initial high resistance to passive movement that suddenly gives way as the velocity of stretch activates Golgi tendon organ inhibitory reflexes. Sustained clonus—a series of rhythmic muscle contractions elicited by rapid, sustained passive dorsiflexion of the foot—may also be present and reflects severe hyperexcitability of the stretch reflex arc.\n\nParalysis Pattern. The distribution of weakness in UMN lesions reflects the somatotopic organisation of the corticospinal pathway. Cortical lesions tend to produce contralateral weakness that is often more pronounced in the distal limb. Internal capsule or hemispheric lesions typically produce contralateral hemiplegia. Bilateral spinal cord lesions produce paraplegia (lower limbs) or tetraplegia (all four limbs), with the level of involvement corresponding to the spinal cord segment affected. Importantly, in the acute phase of a severe UMN lesion (such as spinal cord injury or stroke), spinal shock may produce initial flaccidity and areflexia, even though the lesion is above the LMN level; spasticity and hyperreflexia emerge over days to weeks as the spinal cord recovers from the initial physiological disruption.\n\nMuscle Bulk. Because LMNs remain intact and continue to supply trophic input to the muscle, significant muscle atrophy is not a feature of pure UMN lesions, particularly in the early phase. Disuse atrophy may develop over time due to immobility, but this is less severe than the denervation atrophy seen in LMN lesions.\n\nCommon Causes. Stroke (ischaemic or haemorrhagic), traumatic spinal cord injury, multiple sclerosis, brain tumours, cerebral palsy, primary lateral sclerosis, and parasagittal meningiomas are among the most common causes of UMN (spastic) paralysis encountered in clinical practice.`,
+  },
+  {
+    id: 'flaccid-paralysis',
+    heading: 'Flaccid (Lower Motor Neurone) Paralysis',
+    body: `Flaccid paralysis, also called LMN paralysis, results from damage to the lower motor neurone itself, to the anterior horn cell, the ventral nerve root, the peripheral nerve, or the neuromuscular junction.\n\nPathophysiology. When the LMN is damaged, the motor unit loses both its motor command signal and the trophic support the LMN provides to the muscle. Without the trophic signal conveyed by the motor nerve, the muscle undergoes denervation changes: within days, individual muscle fibres begin to fire spontaneously (fibrillations and positive sharp waves on electromyography), a consequence of upregulation of acetylcholine receptor expression across the entire muscle membrane and increased membrane excitability. This supersensitivity to circulating acetylcholine produces the characteristic fibrillation potentials. Over weeks to months, the muscle undergoes progressive denervation atrophy—a far more rapid and severe process than disuse atrophy—as the structural maintenance provided by LMN-derived factors (including acetylcholine itself and various neurotrophins) is withdrawn.\n\nSpinal reflex arcs are interrupted because the efferent limb of the arc (the LMN) is non-functional. Consequently, deep tendon reflexes are diminished or absent (hyporeflexia or areflexia), and pathological reflexes such as the Babinski sign cannot be elicited. Muscle tone is decreased (hypotonia or atonia), because the muscle is incapable of responding to afferent stretch signals that normally maintain resting tone.\n\nFasciculations—visible, spontaneous twitching of portions of a muscle produced by the synchronous discharge of individual surviving motor units—are a clinically important sign of anterior horn cell or motor nerve root disease. They reflect the irritability of partially denervated motor units and are particularly prominent in anterior horn cell diseases such as amyotrophic lateral sclerosis (ALS) and spinal muscular atrophy (SMA). Fasciculations are not typically seen in peripheral neuropathy unless motor axons are significantly damaged.\n\nParalysis Pattern. LMN weakness is distributed according to the specific nerve or nerve root injured. Damage to a single peripheral nerve produces weakness limited to the muscles supplied by that nerve (mononeuropathy). Damage to a nerve root (radiculopathy) produces weakness in the myotome corresponding to that root. Diffuse peripheral neuropathy (polyneuropathy) characteristically produces length-dependent, symmetrical weakness and sensory loss beginning in the distal lower limbs. Anterior horn cell disease may produce a patchy, asymmetrical pattern of weakness.\n\nMuscle Bulk. Denervation atrophy is a prominent early feature of LMN paralysis. Muscle mass may be visibly reduced within weeks of denervation, progressing to severe wasting over months in the absence of reinnervation. Contractures may develop but tend to occur later than in UMN lesions and are predominantly due to fibrosis of denervated muscle.\n\nCommon Causes. Guillain-Barré syndrome, poliomyelitis, cauda equina syndrome, peripheral neuropathy (diabetic, toxic, infectious), traumatic nerve injury, motor neurone diseases (ALS, SMA), and neuromuscular junction disorders (myasthenia gravis, Lambert-Eaton syndrome) are among the common causes of LMN (flaccid) paralysis.`,
+  },
+  {
+    id: 'comparison',
+    heading: 'Comparative Clinical Features',
+    body: `The clinical distinction between spastic and flaccid paralysis is made primarily on the basis of the pattern of weakness, muscle tone, deep tendon reflexes, the presence or absence of pathological reflexes, and associated features of muscle bulk and spontaneous activity.\n\nMuscle Tone. In spastic paralysis, tone is increased (hypertonia), presenting as spasticity or rigidity. In flaccid paralysis, tone is decreased (hypotonia or atonia), and the limb feels limp and offers little resistance to passive movement.\n\nDeep Tendon Reflexes. UMN lesions produce hyperreflexia with a brisk, often pathologically exaggerated reflex response; clonus may be present. LMN lesions produce hyporeflexia or areflexia, as the efferent arc of the reflex is disrupted.\n\nPathological Reflexes. The Babinski sign and other signs of UMN release (Hoffman's sign in the upper limb) are present in UMN lesions. These signs are absent in LMN lesions because the motor nerve cannot carry the reflex response even if the arc were intact.\n\nMuscle Bulk and Atrophy. Significant, early muscle atrophy strongly suggests LMN involvement due to denervation. UMN lesions produce relatively preserved muscle bulk early, with disuse atrophy developing slowly over time.\n\nFasciculations. Visible fasciculations at rest indicate LMN (particularly anterior horn cell or nerve root) pathology. They are not a feature of pure UMN lesions.\n\nDistribution of Weakness. UMN lesions tend to produce patterns that respect the somatotopic cortical representation—hemiplegia, paraplegia, tetraplegia—with distal limbs often more affected. LMN lesions produce focal, nerve root, or myotomal distributions, or a length-dependent stocking-and-glove distribution in polyneuropathy.\n\nAssociated Sensory Signs. Many causes of UMN and LMN paralysis also disrupt sensory pathways. Spinal cord lesions producing UMN weakness may present with a spinal sensory level below the lesion. Peripheral nerve and root lesions producing LMN weakness are often accompanied by dermatomal or peripheral nerve sensory loss and neuropathic pain.\n\nA concise comparison: spastic paralysis features hyperreflexia, hypertonia, extensor plantar response (Babinski), little early atrophy, no fasciculations, and a distribution reflecting the somatotopic organisation of the UMN pathway. Flaccid paralysis features hyporeflexia or areflexia, hypotonia, absent pathological reflexes, early and prominent atrophy, possible fasciculations, and a distribution reflecting the specific LMN structures involved.`,
+  },
+  {
+    id: 'nursing-assessment',
+    heading: 'Nursing Assessment',
+    body: `Neurological assessment is the cornerstone of nursing care for patients with paralysis. A systematic approach enables the nurse to detect deterioration, evaluate the response to treatment, identify emerging complications, and communicate effectively with the interprofessional team.\n\nMotor Assessment. Muscle strength is assessed using the Medical Research Council (MRC) grading scale (0–5), applied systematically to proximal and distal muscle groups in each limb. Serial assessments—documenting changes over time—are essential for detecting progression or recovery. Muscle tone is assessed by moving the limb passively through its range; increased resistance suggests spasticity, whereas limpness indicates flaccidity.\n\nReflex Assessment. Deep tendon reflexes (biceps, brachioradialis, triceps, knee, ankle) are elicited with a tendon hammer and graded on a standard scale (0 = absent, 1 = diminished, 2 = normal, 3 = brisk, 4 = clonus). The plantar response (Babinski sign) is elicited by stroking the lateral aspect of the sole. A positive (extensor) Babinski response is recorded and reported promptly, as it indicates UMN pathway disruption.\n\nSensory Assessment. Sensory changes accompanying paralysis—including loss of light touch, pain, temperature, proprioception, and vibration—help localise the lesion and identify areas at risk for pressure injury and undetected trauma. A dermatome map facilitates systematic sensory assessment and documentation.\n\nFunctional Assessment. The patient's ability to perform activities of daily living (ADLs)—including bed mobility, transfers, continence, feeding, and self-care—is assessed to establish baseline function, set rehabilitation goals, and prioritise nursing interventions. Validated tools such as the Functional Independence Measure (FIM) and the Barthel Index provide standardised frameworks for functional assessment and care planning.\n\nVital Signs and Autonomic Function. Patients with high spinal cord lesions (above T6) are at risk for autonomic dysreflexia—a potentially life-threatening syndrome of hypertension, bradycardia, flushing, and diaphoresis triggered by noxious stimuli below the level of injury. Nurses must be able to recognise and respond to this emergency. Orthostatic hypotension, bladder and bowel dysfunction, and thermoregulatory impairment are additional autonomic sequelae of high-level spinal cord lesions.`,
+  },
+  {
+    id: 'nursing-management',
+    heading: 'Nursing Management',
+    body: `Nursing management of paralysis addresses the immediate physiological consequences of motor loss, the prevention of complications, and the facilitation of rehabilitation and adaptation.\n\nPositioning and Skin Integrity. Both spastic and flaccid paralysis significantly increase the risk of pressure injury due to immobility, loss of sensation, and altered tissue perfusion. Pressure injury prevention requires meticulous repositioning (at minimum every two hours), pressure-redistributing mattresses and seating cushions, skin inspection with every turn, and moisture management. Positioning for the spastic patient must also consider the management of spastic postures—flexion contractures of the hip and knee or equinus deformity of the ankle are common in spastic lower limb paralysis—and therapeutic positioning with appropriate splints or orthoses may be prescribed in collaboration with physiotherapy and occupational therapy.\n\nContracture and Spasticity Management. Spasticity, while sometimes functionally useful (stiffness in the leg may assist weight-bearing), can be painful, disabling, and a barrier to rehabilitation. Nursing interventions include passive range-of-motion (ROM) exercises, positioning and splinting to counteract spastic postures, careful personal hygiene to prevent trigger stimuli, and administration of antispasticity medications (baclofen, tizanidine, diazepam) as prescribed. In severe spasticity, intrathecal baclofen pumps or botulinum toxin injections may be used in specialist settings.\n\nPrevention of Contractures. Contractures—fixed shortening of muscle, tendon, or joint capsule—can develop rapidly in both spastic and flaccid paralysis, though through different mechanisms. In spastic paralysis, the muscle is held in a shortened position by tonic hyperactivity; in flaccid paralysis, the atrophied and fibrotic muscle loses elasticity. Serial passive ROM exercises, positioning, and splinting are foundational interventions. Nurses reinforce the ROM programme prescribed by physiotherapy during daily care activities.\n\nRespiratory Management. Paralysis of respiratory muscles—particularly in high cervical SCI, Guillain-Barré syndrome, or severe ALS—may compromise ventilation. Regular assessment of respiratory rate, oxygen saturation, tidal volume, and accessory muscle use is essential. Assisted coughing, incentive spirometry, and early liaison with respiratory therapy or critical care services are indicated when respiratory compromise is identified or anticipated.\n\nBladder and Bowel Management. Both UMN and LMN lesions produce neurogenic bladder and bowel dysfunction, though the patterns differ. UMN bladder dysfunction typically presents as a hyperreflexic (spastic) bladder with urgency, frequency, and reflex incontinence; LMN dysfunction produces an areflexic (flaccid) bladder with overflow incontinence. Timed voiding, intermittent catheterisation, and appropriate use of urinary catheters reduce the risk of urinary tract infection and renal complications. Neurogenic bowel management—including scheduled bowel programmes, digital rectal stimulation (where appropriate), and pharmaceutical support—prevents faecal impaction and incontinence.\n\nPain Management. Neuropathic pain—characterised by burning, shooting, or electric-shock-like sensations—is common in both UMN and LMN lesions, particularly in spinal cord injury and peripheral neuropathy. Assessment using validated pain tools (Numeric Rating Scale, Neuropathic Pain Scale), non-pharmacological strategies (positioning, heat/cold, transcutaneous electrical nerve stimulation), and adjuvant analgesics (gabapentinoids, tricyclic antidepressants, serotonin-noradrenaline reuptake inhibitors) are core elements of pain management.\n\nPsychosocial Support. Paralysis profoundly affects body image, independence, relationships, and life roles. Depression and anxiety are prevalent among patients with new or progressive paralysis. Nurses provide compassionate, person-centred support, facilitate access to psychology services and peer support, and advocate for the patient's goals across the rehabilitation team.`,
+  },
+  {
+    id: 'rehabilitation',
+    heading: 'Rehabilitation and Recovery',
+    body: `Rehabilitation aims to maximise functional recovery, minimise disability, and promote community reintegration for people living with paralysis. The nurse's role within the interprofessional rehabilitation team is to bridge the gap between therapeutic exercises and real-life functional activities.\n\nNeuroplasticity and Recovery. The central nervous system retains a degree of plasticity—the capacity to reorganise neural circuits in response to activity and experience—that underpins functional recovery after UMN injury. Repetitive, task-specific training capitalises on neuroplasticity to promote cortical remapping and functional compensation. In peripheral nerve injuries (LMN), axonal regeneration proceeds at approximately 1–3 mm per day when the connective tissue framework of the nerve is preserved; recovery may therefore take months to years depending on the distance from the injury to the target muscle.\n\nAssistive Technology and Adaptive Equipment. Wheelchairs, orthoses, communication aids, environmental control systems, and functional electrical stimulation devices extend independence for patients with permanent or severe paralysis. Nurses facilitate access to these technologies, teach safe use, and assess their effectiveness in the patient's daily routine.\n\nFamily and Caregiver Education. Paralysis affects not only the patient but the entire family system. Teaching family members safe assistance techniques for transfers and positioning, recognising signs of complications (pressure injury, autonomic dysreflexia, respiratory decline), and managing neurogenic bladder and bowel programmes is an important nursing responsibility. Caregiver burden is a recognised risk that warrants proactive assessment and support.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `The distinction between spastic (UMN) and flaccid (LMN) paralysis is not merely an academic exercise; it is a clinically actionable framework that guides every dimension of nursing assessment, care planning, and intervention for patients with motor pathway disease. Spastic paralysis—resulting from disrupted inhibitory control over intact spinal reflex arcs—produces hypertonia, hyperreflexia, pathological reflexes, and relatively preserved early muscle bulk. Flaccid paralysis—resulting from destruction of the final common motor pathway—produces hypotonia, areflexia, absent pathological reflexes, and early, severe denervation atrophy.\n\nNurses who understand these pathophysiological differences are better equipped to anticipate complications, interpret assessment findings, communicate precisely with colleagues, and deliver individualised, evidence-based care. Whether caring for a patient with a fresh stroke, a newly diagnosed spinal cord injury, Guillain-Barré syndrome, or a longstanding neurodegenerative disease, the conceptual framework of UMN versus LMN paralysis provides an indispensable lens through which clinical observations can be systematically organised and acted upon.`,
+  },
+];
+---
+
+<Layout title="Spastic vs Flaccid Paralysis – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Spastic vs Flaccid Paralysis</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Spastic (UMN)', def: 'Hypertonia, hyperreflexia, Babinski +ve' },
+            { term: 'Flaccid (LMN)', def: 'Hypotonia, areflexia, early atrophy' },
+            { term: 'Key UMN sign', def: 'Positive Babinski (extensor plantar)' },
+            { term: 'Key LMN sign', def: 'Fasciculations; denervation atrophy' },
+            { term: 'Spinal shock', def: 'Transient flaccidity after UMN lesion' },
+            { term: 'Nerve regen rate', def: '~1–3 mm/day after LMN injury' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Neurological assessment',
+            '✅ Pressure injury prevention',
+            '✅ Spasticity management',
+            '✅ Contracture prevention',
+            '✅ Neurogenic bladder/bowel care',
+            '✅ Autonomic dysreflexia recognition',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🧠 Physiology &amp; Pathophysiology
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Spastic vs Flaccid Paralysis
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          The pathophysiological basis of upper motor neurone (spastic) and lower motor neurone (flaccid) paralysis,
+          their comparative clinical features, and evidence-based nursing assessment and management principles.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Baehr, M., &amp; Frotscher, M. (2012). <em>Duus\' Topical Diagnosis in Neurology: Anatomy, Physiology, Signs, Symptoms</em> (5th ed.). Thieme.',
+            'Brashear, A., &amp; Elovic, E. (Eds.). (2010). <em>Spasticity: Diagnosis and Management</em>. Demos Medical.',
+            'Brazis, P. W., Masdeu, J. C., &amp; Biller, J. (2022). <em>Localization in Clinical Neurology</em> (8th ed.). Lippincott Williams &amp; Wilkins.',
+            'Dietz, V., &amp; Sinkjaer, T. (2007). Spastic movement disorder: Impaired reflex function and altered muscle mechanics. <em>Lancet Neurology, 6</em>(8), 725–733.',
+            'Gilman, S. (2002). Clinical examination of the nervous system. <em>New England Journal of Medicine, 347</em>(8), 600–606. (Erratum published 2002, NEJM, 347, 1914.)',
+            'Lance, J. W. (1980). The control of muscle tone, reflexes, and movement: Robert Wartenberg lecture. <em>Neurology, 30</em>(12), 1303–1313.',
+            'Lundy-Ekman, L. (2013). <em>Neuroscience: Fundamentals for Rehabilitation</em> (4th ed.). Saunders/Elsevier.',
+            'National Institute for Health and Care Excellence. (2016). <em>Spasticity in under 19s: Management</em> (Clinical Guideline CG145). NICE.',
+            'Somers, M. F. (2010). <em>Spinal Cord Injury: Functional Rehabilitation</em> (3rd ed.). Pearson.',
+            'Tortora, G. J., &amp; Derrickson, B. H. (2017). <em>Principles of Anatomy and Physiology</em> (15th ed.). Wiley.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
