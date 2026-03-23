@@ -1,471 +1,504 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
 const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 ---
 
-<Layout title="Nursing Process (ADPIE) – Slides – D439 Foundations of Nursing" protected={true}>
+<SlidesLayout
+  title="Nursing Process (ADPIE) – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/nursing-process`}
+  backLabel="← Full Article"
+>
 
-  <!-- Breadcrumb -->
-  <nav aria-label="Breadcrumb" style="margin-bottom:1rem; font-size:0.85rem; color:#64748b;">
-    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
-    <span style="margin:0 0.4rem;">›</span>
-    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
-    <span style="margin:0 0.4rem;">›</span>
-    <a href={`${base}/private/d439/nursing-process`} style="color:#6366f1; text-decoration:none; font-weight:500;">Nursing Process (ADPIE)</a>
-    <span style="margin:0 0.4rem;">›</span>
-    <span>Slides</span>
-  </nav>
+  <!--
+    Slide structure follows docs/slides-design-standards.md:
+      • Each .slide-column holds one main slide (row 0) and optional slides (row 1+).
+      • Horizontal (→) moves between columns (main slides).
+      • Vertical (↓) moves to optional sub-slides within a column.
+      • Right arrow from an optional slide skips to the next MAIN slide.
+  -->
 
-  <!-- Slide controls -->
-  <div class="slide-controls">
-    <button id="prev-btn" class="ctrl-btn" aria-label="Previous slide">← Prev</button>
-    <span id="slide-counter" class="slide-counter">1 / 10</span>
-    <button id="next-btn" class="ctrl-btn" aria-label="Next slide">Next →</button>
-    <a href={`${base}/private/d439/nursing-process`} class="back-link">← Back to full article</a>
-  </div>
+  <div class="slides-wrapper">
 
-  <!-- Slide track -->
-  <div class="slides-viewport" id="slides-viewport">
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 1: Title -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide slide-title">
-      <div class="slide-badge">D439 – Foundations of Nursing</div>
-      <div class="title-icon">🔄</div>
-      <h1 class="slide-main-title">Nursing Process</h1>
-      <h2 class="slide-subtitle">ADPIE</h2>
-      <div class="adpie-row">
-        {['A','D','P','I','E'].map((letter, i) => {
-          const labels = ['Assessment', 'Diagnosis', 'Planning', 'Implementation', 'Evaluation'];
-          return (
-            <div class="adpie-letter">
-              <span class="letter">{letter}</span>
-              <span class="label">{labels[i]}</span>
-            </div>
-          );
-        })}
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 1 · Title (main only)                                  -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">🔄</div>
+          <h1 class="slide-main-title">Nursing Process</h1>
+          <h2 class="slide-subtitle">ADPIE</h2>
+          <div class="adpie-row">
+            {['A','D','P','I','E'].map((letter, i) => {
+              const labels = ['Assessment', 'Diagnosis', 'Planning', 'Implementation', 'Evaluation'];
+              return (
+                <div class="adpie-letter">
+                  <span class="letter">{letter}</span>
+                  <span class="label">{labels[i]}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
       </div>
-      <p class="slide-note">Use ← → arrow keys or the Prev / Next buttons to navigate</p>
     </div>
 
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 2: Overview -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">2 / 10</div>
-      <h2 class="slide-heading">What is the Nursing Process?</h2>
-      <p class="slide-intro">A <strong>systematic, cyclic, patient-centred</strong> framework for delivering individualized nursing care.</p>
-      <div class="overview-grid">
-        {[
-          { step: 'A', name: 'Assessment', q: 'What is the patient experiencing?' },
-          { step: 'D', name: 'Diagnosis',  q: 'What nursing problems exist?' },
-          { step: 'P', name: 'Planning',   q: 'What outcomes & how to achieve them?' },
-          { step: 'I', name: 'Implementation', q: 'What actions will be taken?' },
-          { step: 'E', name: 'Evaluation', q: 'Were outcomes achieved?' },
-        ].map(({ step, name, q }) => (
-          <div class="overview-row">
-            <span class="step-badge">{step}</span>
-            <div>
-              <strong>{name}</strong>
-              <span class="step-q">{q}</span>
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 2 · Overview (main only)                               -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 10</div>
+          <h2 class="slide-heading">What is the Nursing Process?</h2>
+          <p class="slide-intro">A <strong>systematic, cyclic, patient-centred</strong> framework for delivering individualized nursing care.</p>
+          <div class="overview-grid">
+            {[
+              { step: 'A', name: 'Assessment', q: 'What is the patient experiencing?' },
+              { step: 'D', name: 'Diagnosis',  q: 'What nursing problems exist?' },
+              { step: 'P', name: 'Planning',   q: 'What outcomes & how to achieve them?' },
+              { step: 'I', name: 'Implementation', q: 'What actions will be taken?' },
+              { step: 'E', name: 'Evaluation', q: 'Were outcomes achieved?' },
+            ].map(({ step, name, q }) => (
+              <div class="overview-row">
+                <span class="step-badge">{step}</span>
+                <div>
+                  <strong>{name}</strong>
+                  <span class="step-q">{q}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="callout callout-tip">
+            ♻️ The process is <strong>cyclic</strong> — evaluation loops back to assessment as patient status changes.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 3 · Assessment  (main + optional: PQRST / OLDCART)    -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">3 / 10</div>
+          <h2 class="slide-heading"><span class="step-letter">A</span> Assessment</h2>
+          <p class="slide-intro"><strong>First and continuous</strong> step — collect, organise, validate, and document patient data.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Data Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Subjective</strong> — patient's own words; symptoms &amp; feelings<br/><em>"My head is pounding."</em></li>
+                <li><strong>Objective</strong> — measurable, observable findings<br/><em>BP 168/94, HR 102, skin diaphoretic</em></li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Assessment Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Initial</strong> — comprehensive baseline on admission</li>
+                <li><strong>Focused</strong> — targeted to specific problem/system</li>
+                <li><strong>Emergency</strong> — rapid ABC (Airway · Breathing · Circulation)</li>
+                <li><strong>Time-lapsed</strong> — compares current vs. baseline</li>
+              </ul>
             </div>
           </div>
-        ))}
-      </div>
-      <div class="callout callout-tip">
-        ♻️ The process is <strong>cyclic</strong> — evaluation loops back to assessment as patient status changes.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 3: Assessment -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">3 / 10</div>
-      <h2 class="slide-heading"><span class="step-letter">A</span> Assessment</h2>
-      <p class="slide-intro"><strong>First and continuous</strong> step — collect, organise, validate, and document patient data.</p>
-      <div class="two-col">
-        <div class="col-card">
-          <h3 class="col-title">Data Types</h3>
-          <ul class="bullet-list">
-            <li><strong>Subjective</strong> — patient's own words; symptoms &amp; feelings<br/><em>"My head is pounding."</em></li>
-            <li><strong>Objective</strong> — measurable, observable findings<br/><em>BP 168/94, HR 102, skin diaphoretic</em></li>
-          </ul>
-        </div>
-        <div class="col-card">
-          <h3 class="col-title">Assessment Types</h3>
-          <ul class="bullet-list">
-            <li><strong>Initial</strong> — comprehensive baseline on admission</li>
-            <li><strong>Focused</strong> — targeted to specific problem/system</li>
-            <li><strong>Emergency</strong> — rapid ABC (Airway · Breathing · Circulation)</li>
-            <li><strong>Time-lapsed</strong> — compares current vs. baseline</li>
-          </ul>
-        </div>
-      </div>
-      <div class="callout">
-        📋 <strong>Key point:</strong> Validate unexpected data — repeat measurements, cross-check sources.
-        Document <em>immediately</em>; delayed charting introduces error.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 4: Diagnosis -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">4 / 10</div>
-      <h2 class="slide-heading"><span class="step-letter">D</span> Diagnosis</h2>
-      <p class="slide-intro">Nurse's clinical judgment about the patient's <strong>response</strong> to actual or potential health problems (≠ medical diagnosis).</p>
-      <div class="two-col">
-        <div class="col-card">
-          <h3 class="col-title">NANDA-I Types</h3>
-          <ul class="bullet-list">
-            <li><strong>Actual</strong> — problem exists now; supported by signs &amp; symptoms</li>
-            <li><strong>Risk</strong> — "Risk for …" — potential problem; <em>no defining characteristics needed</em></li>
-            <li><strong>Wellness</strong> — "Readiness for Enhanced …"</li>
-          </ul>
-        </div>
-        <div class="col-card">
-          <h3 class="col-title">PES Format (Actual)</h3>
-          <ul class="bullet-list">
-            <li><strong>P</strong> — Problem (NANDA-I label)</li>
-            <li><strong>E</strong> — Etiology (related to / r/t)</li>
-            <li><strong>S</strong> — Signs &amp; Symptoms (AEB)</li>
-          </ul>
-          <p style="font-size:0.8rem; margin-top:0.5rem; color:#374151; font-style:italic;">
-            "Acute Pain r/t surgical incision AEB pain 7/10, guarding, diaphoresis."
-          </p>
-        </div>
-      </div>
-      <div class="callout callout-tip">
-        ✅ <strong>Exam tip:</strong> Risk diagnoses have <em>no "S"</em> (no current signs/symptoms).
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 5: Planning -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">5 / 10</div>
-      <h2 class="slide-heading"><span class="step-letter">P</span> Planning</h2>
-      <p class="slide-intro">Set <strong>measurable, patient-centred goals</strong> and select evidence-based interventions → the care plan.</p>
-      <div class="two-col">
-        <div class="col-card">
-          <h3 class="col-title">SMART Goals</h3>
-          <ul class="bullet-list">
-            <li><strong>S</strong>pecific — who does what?</li>
-            <li><strong>M</strong>easurable — observable criterion (pain ≤ 3/10)</li>
-            <li><strong>A</strong>ttainable — realistic for patient's condition</li>
-            <li><strong>R</strong>elevant — directly addresses the nursing dx</li>
-            <li><strong>T</strong>ime-bound — specifies deadline</li>
-          </ul>
-        </div>
-        <div class="col-card">
-          <h3 class="col-title">Prioritisation</h3>
-          <ul class="bullet-list">
-            <li>🔴 <strong>ABC</strong> — Airway → Breathing → Circulation</li>
-            <li>🟠 <strong>Maslow L1</strong> — Physiological (life-threatening first)</li>
-            <li>🟡 <strong>Maslow L2</strong> — Safety &amp; security</li>
-            <li>🟢 <strong>Maslow L3–5</strong> — Belonging / Esteem / Self-actualisation</li>
-            <li>Actual problems before risk problems</li>
-          </ul>
-        </div>
-      </div>
-      <div class="callout">
-        📋 Goals are written for the <strong>patient</strong>, not the nurse. Involve patient &amp; family in care planning.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 6: Implementation -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">6 / 10</div>
-      <h2 class="slide-heading"><span class="step-letter">I</span> Implementation</h2>
-      <p class="slide-intro">The <strong>action phase</strong> — carry out planned interventions. Reassess before acting; document immediately after.</p>
-      <div class="three-col">
-        <div class="col-card col-card-sm">
-          <h3 class="col-title col-title-sm">Independent</h3>
-          <p class="col-body">Within nursing scope — <em>no physician order needed</em></p>
-          <p class="col-example">Repositioning q2h, deep-breathing exercises, compression stockings</p>
-        </div>
-        <div class="col-card col-card-sm">
-          <h3 class="col-title col-title-sm">Dependent</h3>
-          <p class="col-body">Requires a <em>physician order</em></p>
-          <p class="col-example">Administering medications, ordered wound care, diagnostic labs</p>
-        </div>
-        <div class="col-card col-card-sm">
-          <h3 class="col-title col-title-sm">Collaborative</h3>
-          <p class="col-body">Planned with <em>other team members</em></p>
-          <p class="col-example">PT referral, dietitian consult, respiratory therapy</p>
-        </div>
-      </div>
-      <div class="callout callout-tip">
-        ✅ Documentation must include: time, date, nurse's signature — immediately after completion.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 7: Evaluation -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">7 / 10</div>
-      <h2 class="slide-heading"><span class="step-letter">E</span> Evaluation</h2>
-      <p class="slide-intro">Compare <strong>actual outcomes</strong> to expected outcomes — ongoing, not a one-time event.</p>
-      <div class="eval-grid">
-        <div class="eval-card eval-met">
-          <div class="eval-icon">✅</div>
-          <h3>Goal Met</h3>
-          <p>Patient achieved expected outcome → continue or discontinue the nursing diagnosis.</p>
-        </div>
-        <div class="eval-card eval-partial">
-          <div class="eval-icon">⚠️</div>
-          <h3>Partially Met</h3>
-          <p>Some progress made → modify the plan: adjust goal, add interventions, revise timeline.</p>
-        </div>
-        <div class="eval-card eval-not">
-          <div class="eval-icon">❌</div>
-          <h3>Not Met</h3>
-          <p>No progress / deterioration → reassess thoroughly; revise diagnosis, goals, or interventions.</p>
-        </div>
-      </div>
-      <div class="callout callout-tip">
-        ♻️ Evaluation loops back to <strong>Assessment</strong> — nursing is cyclic, not linear.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 8: Critical Thinking -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">8 / 10</div>
-      <h2 class="slide-heading">Critical Thinking in Nursing</h2>
-      <p class="slide-intro">Purposeful, disciplined reasoning to make <strong>sound clinical judgments</strong> — applied at every ADPIE step.</p>
-      <div class="two-col">
-        <div class="col-card">
-          <h3 class="col-title">Clinical Judgment Cycle</h3>
-          <ul class="bullet-list">
-            <li>🔍 <strong>Notice</strong> — recognise relevant cues</li>
-            <li>🧩 <strong>Interpret</strong> — analyse clinical significance</li>
-            <li>⚡ <strong>Respond</strong> — take appropriate action</li>
-            <li>🪞 <strong>Reflect</strong> — evaluate outcomes &amp; own reasoning</li>
-          </ul>
-          <p style="font-size:0.78rem; color:#64748b; margin-top:0.5rem;">Tanner's Clinical Judgment Model (2006)</p>
-        </div>
-        <div class="col-card">
-          <h3 class="col-title">NGN: 6 Cognitive Skills</h3>
-          <ul class="bullet-list">
-            <li>Recognise cues</li>
-            <li>Analyse cues</li>
-            <li>Prioritise hypotheses</li>
-            <li>Generate solutions</li>
-            <li>Take action</li>
-            <li>Evaluate outcomes</li>
-          </ul>
-          <p style="font-size:0.78rem; color:#64748b; margin-top:0.5rem;">NCSBN Next Generation NCLEX (NGN)</p>
-        </div>
-      </div>
-      <div class="callout">
-        📋 A critically thinking nurse <strong>acts on cues early</strong> — e.g., declining urine output + confusion = reassess for hypovolaemia, don't wait for rounds.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 9: Assessment Interview Techniques -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide">
-      <div class="slide-number">9 / 10</div>
-      <h2 class="slide-heading">Assessment Interview Techniques</h2>
-      <p class="slide-intro">Expert technique maximises <strong>data quality</strong>, builds trust, and establishes the therapeutic relationship.</p>
-      <div class="technique-grid">
-        <div class="technique-card">
-          <div class="tech-icon">💬</div>
-          <h3>Open-ended Questions</h3>
-          <p>Invite elaboration — can't be answered yes/no.<br/><em>"Describe your pain."</em></p>
-        </div>
-        <div class="technique-card">
-          <div class="tech-icon">🎯</div>
-          <h3>Closed Questions</h3>
-          <p>Precise, specific data.<br/><em>"Rate pain 0–10."</em></p>
-        </div>
-        <div class="technique-card">
-          <div class="tech-icon">👂</div>
-          <h3>Active Listening</h3>
-          <p>Eye contact, no interrupting, reflect back what you heard.</p>
-        </div>
-        <div class="technique-card">
-          <div class="tech-icon">❓</div>
-          <h3>Clarification</h3>
-          <p>Prevent wrong assumptions.<br/><em>"What do you mean by awful?"</em></p>
-        </div>
-        <div class="technique-card">
-          <div class="tech-icon">🔁</div>
-          <h3>Reflection</h3>
-          <p>Repeat/paraphrase to validate feelings and invite more detail.</p>
-        </div>
-        <div class="technique-card">
-          <div class="tech-icon">🤫</div>
-          <h3>Therapeutic Silence</h3>
-          <p>Deliberate pause — gives patient time to think; signals patience &amp; respect.</p>
-        </div>
-      </div>
-      <div class="callout callout-tip">
-        ⚠️ <strong>Avoid leading questions</strong> — they bias the response.<br/>
-        <em>"You're not having chest pain, are you?"</em> → problematic.
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════ -->
-    <!-- SLIDE 10: Exam Tips -->
-    <!-- ══════════════════════════════════════════ -->
-    <div class="slide slide-exam">
-      <div class="slide-number">10 / 10</div>
-      <h2 class="slide-heading">Key Exam Tips</h2>
-      <div class="tips-grid">
-        {[
-          { icon: '🥇', tip: 'Assessment is ALWAYS the first step' },
-          { icon: '⚕️', tip: 'Nursing dx describes human response ≠ medical dx (disease)' },
-          { icon: '🎯', tip: 'Goals are patient-centred, not nurse-centred' },
-          { icon: '🚨', tip: 'Airway > Breathing > Circulation always' },
-          { icon: '📝', tip: 'Risk dx has no "S" — no current signs/symptoms' },
-          { icon: '💬', tip: 'Subjective = patient reports; Objective = nurse observes/measures' },
-          { icon: '♻️', tip: 'Evaluation loops back to assessment — process is cyclic' },
-          { icon: '🔍', tip: 'Validate unexpected data; document immediately' },
-        ].map(({ icon, tip }) => (
-          <div class="tip-card">
-            <span class="tip-icon">{icon}</span>
-            <span class="tip-text">{tip}</span>
+          <div class="callout">
+            📋 <strong>Key point:</strong> Validate unexpected data — repeat measurements, cross-check sources.
+            Document <em>immediately</em>; delayed charting introduces error.
           </div>
-        ))}
-      </div>
-      <div style="margin-top:1.5rem; text-align:center;">
-        <a href={`${base}/private/d439/nursing-process`} class="article-link">Read full article →</a>
-        <a href={`${base}/private/d439`} class="article-link article-link-ghost">← Back to D439</a>
+          <!-- Hint that an optional detail slide is available below -->
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>Pain &amp; symptom mnemonics</span>
+          </div>
+        </div>
+
+        <!-- Optional slide: Pain assessment mnemonics (PQRST & OLDCART) -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Assessment</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Pain &amp; Symptom Assessment Mnemonics</h2>
+            <p class="slide-intro">Use structured mnemonics to ensure complete, reproducible symptom data collection.</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">PQRST</h3>
+                <ul class="bullet-list">
+                  <li><strong>P</strong> — Provokes / Palliates (what makes it worse / better?)</li>
+                  <li><strong>Q</strong> — Quality (sharp, dull, burning, pressure?)</li>
+                  <li><strong>R</strong> — Region / Radiation (where? does it spread?)</li>
+                  <li><strong>S</strong> — Severity (0–10 scale)</li>
+                  <li><strong>T</strong> — Timing (onset, duration, frequency)</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">OLDCART</h3>
+                <ul class="bullet-list">
+                  <li><strong>O</strong> — Onset (when did it start?)</li>
+                  <li><strong>L</strong> — Location (exactly where?)</li>
+                  <li><strong>D</strong> — Duration (how long?)</li>
+                  <li><strong>C</strong> — Characteristics (nature of symptom)</li>
+                  <li><strong>A</strong> — Aggravating / Alleviating factors</li>
+                  <li><strong>R</strong> — Related symptoms (nausea, fever, etc.)</li>
+                  <li><strong>T</strong> — Treatment tried so far</li>
+                </ul>
+              </div>
+            </div>
+            <div class="callout callout-tip">
+              ✅ Either mnemonic is acceptable on NCLEX. PQRST is most common for pain; OLDCART is broader for any symptom.
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-  </div><!-- /slides-viewport -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 4 · Diagnosis  (main + optional: PES examples)         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
 
-</Layout>
+        <!-- Main slide -->
+        <div class="slide">
+          <div class="slide-number">4 / 10</div>
+          <h2 class="slide-heading"><span class="step-letter">D</span> Diagnosis</h2>
+          <p class="slide-intro">Nurse's clinical judgment about the patient's <strong>response</strong> to actual or potential health problems (≠ medical diagnosis).</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">NANDA-I Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Actual</strong> — problem exists now; supported by signs &amp; symptoms</li>
+                <li><strong>Risk</strong> — "Risk for …" — potential problem; <em>no defining characteristics needed</em></li>
+                <li><strong>Wellness</strong> — "Readiness for Enhanced …"</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">PES Format (Actual)</h3>
+              <ul class="bullet-list">
+                <li><strong>P</strong> — Problem (NANDA-I label)</li>
+                <li><strong>E</strong> — Etiology (related to / r/t)</li>
+                <li><strong>S</strong> — Signs &amp; Symptoms (AEB)</li>
+              </ul>
+              <p style="font-size:0.8rem; margin-top:0.5rem; color:#374151; font-style:italic;">
+                "Acute Pain r/t surgical incision AEB pain 7/10, guarding, diaphoresis."
+              </p>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ <strong>Exam tip:</strong> Risk diagnoses have <em>no "S"</em> (no current signs/symptoms).
+          </div>
+          <div class="optional-hint">
+            <span class="arrow">↓</span>
+            <span>PES statement examples</span>
+          </div>
+        </div>
 
-<script>
-  const viewport = document.getElementById('slides-viewport') as HTMLElement;
-  const counter  = document.getElementById('slide-counter') as HTMLElement;
-  const prevBtn  = document.getElementById('prev-btn') as HTMLButtonElement;
-  const nextBtn  = document.getElementById('next-btn') as HTMLButtonElement;
-  const slides   = Array.from(viewport.querySelectorAll('.slide')) as HTMLElement[];
-  const total    = slides.length;
-  let current    = 0;
+        <!-- Optional slide: Additional PES examples -->
+        <div class="slide optional">
+          <div class="back-hint">
+            <span class="arrow">↑</span>
+            <span>Back to Diagnosis</span>
+          </div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">PES Statement Examples</h2>
+            <p class="slide-intro">Practice writing complete nursing diagnoses using the PES format.</p>
+            <div class="pes-list">
+              {[
+                {
+                  label: 'Actual (Pain)',
+                  stmt: 'Acute Pain r/t surgical incision AEB patient rating pain 7/10, grimacing, guarding abdomen, and diaphoresis.',
+                  color: '#f0fdf4', border: '#bbf7d0'
+                },
+                {
+                  label: 'Risk (Falls)',
+                  stmt: 'Risk for Falls r/t altered gait secondary to left hip arthroplasty and sedative medications.',
+                  color: '#fffbeb', border: '#fde68a'
+                },
+                {
+                  label: 'Wellness',
+                  stmt: 'Readiness for Enhanced Nutrition r/t expressed desire to improve dietary habits and increase fruit/vegetable intake.',
+                  color: '#eef2ff', border: '#c7d2fe'
+                },
+                {
+                  label: 'Actual (Airway)',
+                  stmt: 'Ineffective Airway Clearance r/t excessive secretions AEB inability to expectorate, crackles in bilateral lung bases, SpO₂ 91%.',
+                  color: '#fef2f2', border: '#fecaca'
+                },
+              ].map(({ label, stmt, color, border }) => (
+                <div class="pes-card" style={`background:${color}; border-color:${border};`}>
+                  <span class="pes-label">{label}</span>
+                  <p class="pes-stmt">{stmt}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-  function goTo(index: number) {
-    current = Math.max(0, Math.min(total - 1, index));
-    slides[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    counter.textContent = `${current + 1} / ${total}`;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total - 1;
-  }
+      </div>
+    </div>
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 5 · Planning (main only)                               -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 10</div>
+          <h2 class="slide-heading"><span class="step-letter">P</span> Planning</h2>
+          <p class="slide-intro">Set <strong>measurable, patient-centred goals</strong> and select evidence-based interventions → the care plan.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">SMART Goals</h3>
+              <ul class="bullet-list">
+                <li><strong>S</strong>pecific — who does what?</li>
+                <li><strong>M</strong>easurable — observable criterion (pain ≤ 3/10)</li>
+                <li><strong>A</strong>ttainable — realistic for patient's condition</li>
+                <li><strong>R</strong>elevant — directly addresses the nursing dx</li>
+                <li><strong>T</strong>ime-bound — specifies deadline</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Prioritisation</h3>
+              <ul class="bullet-list">
+                <li>🔴 <strong>ABC</strong> — Airway → Breathing → Circulation</li>
+                <li>🟠 <strong>Maslow L1</strong> — Physiological (life-threatening first)</li>
+                <li>🟡 <strong>Maslow L2</strong> — Safety &amp; security</li>
+                <li>🟢 <strong>Maslow L3–5</strong> — Belonging / Esteem / Self-actualisation</li>
+                <li>Actual problems before risk problems</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            📋 Goals are written for the <strong>patient</strong>, not the nurse. Involve patient &amp; family in care planning.
+          </div>
+        </div>
+      </div>
+    </div>
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
-    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
-  });
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 6 · Implementation (main only)                         -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 10</div>
+          <h2 class="slide-heading"><span class="step-letter">I</span> Implementation</h2>
+          <p class="slide-intro">The <strong>action phase</strong> — carry out planned interventions. Reassess before acting; document immediately after.</p>
+          <div class="three-col">
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Independent</h3>
+              <p class="col-body">Within nursing scope — <em>no physician order needed</em></p>
+              <p class="col-example">Repositioning q2h, deep-breathing exercises, compression stockings</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Dependent</h3>
+              <p class="col-body">Requires a <em>physician order</em></p>
+              <p class="col-example">Administering medications, ordered wound care, diagnostic labs</p>
+            </div>
+            <div class="col-card col-card-sm">
+              <h3 class="col-title col-title-sm">Collaborative</h3>
+              <p class="col-body">Planned with <em>other team members</em></p>
+              <p class="col-example">PT referral, dietitian consult, respiratory therapy</p>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ✅ Documentation must include: time, date, nurse's signature — immediately after completion.
+          </div>
+        </div>
+      </div>
+    </div>
 
-  // Keep counter in sync when user scrolls manually
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const idx = slides.indexOf(entry.target as HTMLElement);
-          if (idx !== -1) {
-            current = idx;
-            counter.textContent = `${current + 1} / ${total}`;
-            prevBtn.disabled = current === 0;
-            nextBtn.disabled = current === total - 1;
-          }
-        }
-      });
-    },
-    { root: viewport, threshold: 0.55 }
-  );
-  slides.forEach((s) => observer.observe(s));
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 7 · Evaluation (main only)                             -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">7 / 10</div>
+          <h2 class="slide-heading"><span class="step-letter">E</span> Evaluation</h2>
+          <p class="slide-intro">Compare <strong>actual outcomes</strong> to expected outcomes — ongoing, not a one-time event.</p>
+          <div class="eval-grid">
+            <div class="eval-card eval-met">
+              <div class="eval-icon">✅</div>
+              <h3>Goal Met</h3>
+              <p>Patient achieved expected outcome → continue or discontinue the nursing diagnosis.</p>
+            </div>
+            <div class="eval-card eval-partial">
+              <div class="eval-icon">⚠️</div>
+              <h3>Partially Met</h3>
+              <p>Some progress made → modify the plan: adjust goal, add interventions, revise timeline.</p>
+            </div>
+            <div class="eval-card eval-not">
+              <div class="eval-icon">❌</div>
+              <h3>Not Met</h3>
+              <p>No progress / deterioration → reassess thoroughly; revise diagnosis, goals, or interventions.</p>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ♻️ Evaluation loops back to <strong>Assessment</strong> — nursing is cyclic, not linear.
+          </div>
+        </div>
+      </div>
+    </div>
 
-  goTo(0);
-</script>
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 8 · Critical Thinking (main only)                      -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">8 / 10</div>
+          <h2 class="slide-heading">Critical Thinking in Nursing</h2>
+          <p class="slide-intro">Purposeful, disciplined reasoning to make <strong>sound clinical judgments</strong> — applied at every ADPIE step.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Clinical Judgment Cycle</h3>
+              <ul class="bullet-list">
+                <li>🔍 <strong>Notice</strong> — recognise relevant cues</li>
+                <li>🧩 <strong>Interpret</strong> — analyse clinical significance</li>
+                <li>⚡ <strong>Respond</strong> — take appropriate action</li>
+                <li>🪞 <strong>Reflect</strong> — evaluate outcomes &amp; own reasoning</li>
+              </ul>
+              <p style="font-size:0.78rem; color:#64748b; margin-top:0.5rem;">Tanner's Clinical Judgment Model (2006)</p>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">NGN: 6 Cognitive Skills</h3>
+              <ul class="bullet-list">
+                <li>Recognise cues</li>
+                <li>Analyse cues</li>
+                <li>Prioritise hypotheses</li>
+                <li>Generate solutions</li>
+                <li>Take action</li>
+                <li>Evaluate outcomes</li>
+              </ul>
+              <p style="font-size:0.78rem; color:#64748b; margin-top:0.5rem;">NCSBN Next Generation NCLEX (NGN)</p>
+            </div>
+          </div>
+          <div class="callout">
+            📋 A critically thinking nurse <strong>acts on cues early</strong> — e.g., declining urine output + confusion = reassess for hypovolaemia, don't wait for rounds.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 9 · Assessment Interview Techniques (main only)        -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">9 / 10</div>
+          <h2 class="slide-heading">Assessment Interview Techniques</h2>
+          <p class="slide-intro">Expert technique maximises <strong>data quality</strong>, builds trust, and establishes the therapeutic relationship.</p>
+          <div class="technique-grid">
+            <div class="technique-card">
+              <div class="tech-icon">💬</div>
+              <h3>Open-ended Questions</h3>
+              <p>Invite elaboration — can't be answered yes/no.<br/><em>"Describe your pain."</em></p>
+            </div>
+            <div class="technique-card">
+              <div class="tech-icon">🎯</div>
+              <h3>Closed Questions</h3>
+              <p>Precise, specific data.<br/><em>"Rate pain 0–10."</em></p>
+            </div>
+            <div class="technique-card">
+              <div class="tech-icon">👂</div>
+              <h3>Active Listening</h3>
+              <p>Eye contact, no interrupting, reflect back what you heard.</p>
+            </div>
+            <div class="technique-card">
+              <div class="tech-icon">❓</div>
+              <h3>Clarification</h3>
+              <p>Prevent wrong assumptions.<br/><em>"What do you mean by awful?"</em></p>
+            </div>
+            <div class="technique-card">
+              <div class="tech-icon">🔁</div>
+              <h3>Reflection</h3>
+              <p>Repeat/paraphrase to validate feelings and invite more detail.</p>
+            </div>
+            <div class="technique-card">
+              <div class="tech-icon">🤫</div>
+              <h3>Therapeutic Silence</h3>
+              <p>Deliberate pause — gives patient time to think; signals patience &amp; respect.</p>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ⚠️ <strong>Avoid leading questions</strong> — they bias the response.<br/>
+            <em>"You're not having chest pain, are you?"</em> → problematic.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <!-- COLUMN 10 · Exam Tips (main only)                             -->
+    <!-- ══════════════════════════════════════════════════════════════ -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">10 / 10</div>
+          <h2 class="slide-heading">Key Exam Tips</h2>
+          <div class="tips-grid">
+            {[
+              { icon: '🥇', tip: 'Assessment is ALWAYS the first step' },
+              { icon: '⚕️', tip: 'Nursing dx describes human response ≠ medical dx (disease)' },
+              { icon: '🎯', tip: 'Goals are patient-centred, not nurse-centred' },
+              { icon: '🚨', tip: 'Airway > Breathing > Circulation always' },
+              { icon: '📝', tip: 'Risk dx has no "S" — no current signs/symptoms' },
+              { icon: '��', tip: 'Subjective = patient reports; Objective = nurse observes/measures' },
+              { icon: '♻️', tip: 'Evaluation loops back to assessment — process is cyclic' },
+              { icon: '🔍', tip: 'Validate unexpected data; document immediately' },
+            ].map(({ icon, tip }) => (
+              <div class="tip-card">
+                <span class="tip-icon">{icon}</span>
+                <span class="tip-text">{tip}</span>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/nursing-process`} class="article-link">Read full article →</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">← Back to D439</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /slides-wrapper -->
+
+</SlidesLayout>
 
 <style>
-  /* ── Slides viewport ── */
-  .slides-viewport {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 0;
-    border-radius: 0.75rem;
-    border: 1px solid #e2e8f0;
-    background: #f8fafc;
-    /* hide scrollbar visually but keep it functional */
-    scrollbar-width: none;
-  }
-  .slides-viewport::-webkit-scrollbar { display: none; }
-
-  /* ── Individual slide ── */
+  /* ── Slide inner content padding (HUD is 3rem tall; slides already have padding-top:3rem from layout) ── */
   .slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    min-height: 560px;
-    padding: 2rem 2.5rem;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    box-sizing: border-box;
+    padding: 4rem 3rem 2rem;
   }
 
-  /* ── Controls ── */
-  .slide-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
+  /* ── Optional slide: extra top padding so content clears back-hint ── */
+  .slide.optional {
+    padding-top: 5rem;
   }
-  .ctrl-btn {
-    padding: 0.45rem 1rem;
-    background: #6366f1;
-    color: #fff;
-    border: none;
-    border-radius: 9999px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s;
+
+  /* ── Optional slide inner wrapper (centres content) ── */
+  .opt-inner {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
   }
-  .ctrl-btn:hover:not(:disabled) { background: #4f46e5; }
-  .ctrl-btn:disabled { background: #c7d2fe; cursor: not-allowed; }
-  .slide-counter {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #64748b;
-    min-width: 3.5rem;
-    text-align: center;
-  }
-  .back-link {
-    margin-left: auto;
-    font-size: 0.8rem;
-    color: #6366f1;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .back-link:hover { text-decoration: underline; }
 
   /* ── Slide number badge (top-right) ── */
   .slide-number {
     position: absolute;
-    top: 1rem;
-    right: 1.25rem;
+    top: 3.5rem;
+    right: 1.5rem;
     font-size: 0.75rem;
     color: #94a3b8;
     font-weight: 600;
@@ -731,6 +764,36 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
   .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
 
+  /* ── PES list (optional slide) ── */
+  .pes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+  .pes-card {
+    border: 1px solid transparent;
+    border-radius: 0.6rem;
+    padding: 0.85rem 1rem;
+  }
+  .pes-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #475569;
+    margin-bottom: 0.35rem;
+  }
+  .pes-stmt {
+    font-size: 0.875rem;
+    color: #1e293b;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+  }
+
   /* ── Article link buttons ── */
   .article-link {
     display: inline-flex;
@@ -754,10 +817,11 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
   /* ── Responsive ── */
   @media (max-width: 640px) {
-    .slide { padding: 1.25rem; }
+    .slide { padding: 4rem 1.25rem 1.5rem; }
     .two-col, .eval-grid, .technique-grid { grid-template-columns: 1fr; }
     .three-col { grid-template-columns: 1fr; }
     .tips-grid { grid-template-columns: 1fr; }
     .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
   }
 </style>

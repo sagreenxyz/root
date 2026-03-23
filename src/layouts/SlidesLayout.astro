@@ -1,0 +1,496 @@
+---
+/**
+ * SlidesLayout.astro
+ *
+ * Full-screen presentation layout. Conforms to the slides design standards
+ * defined in docs/slides-design-standards.md.
+ *
+ * The <slot /> must contain a `.slides-wrapper` element structured as:
+ *
+ *   <div class="slides-wrapper">
+ *     <div class="slide-column">           ← one column per main slide
+ *       <div class="slide">…</div>         ← main slide (always first child)
+ *       <div class="slide optional">…</div> ← optional slide(s) below main
+ *     </div>
+ *     …
+ *   </div>
+ *
+ * Navigation is controlled by the slides-engine.ts script that is inlined below.
+ */
+interface Props {
+  title: string;
+  protected?: boolean;
+  backHref?: string;
+  backLabel?: string;
+}
+
+const {
+  title,
+  protected: isProtected = true,
+  backHref = '/',
+  backLabel = '← Back',
+} = Astro.props;
+
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --accent: #6366f1;
+        --accent-dark: #4f46e5;
+        --text: #1e293b;
+        --muted: #64748b;
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --border: #e2e8f0;
+      }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;           /* outer document never scrolls */
+        background: #000;
+        font-family: system-ui, -apple-system, sans-serif;
+        color: var(--text);
+      }
+
+      /* ── HUD overlay (always on top) ── */
+      #slides-hud {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 0.75rem;
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: #fff;
+        font-size: 0.8rem;
+        transition: opacity 0.4s;
+      }
+      #slides-hud.hud-hidden { opacity: 0; pointer-events: none; }
+
+      .hud-btn {
+        padding: 0.3rem 0.75rem;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 9999px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s;
+        line-height: 1;
+      }
+      .hud-btn:hover:not(:disabled) { background: var(--accent-dark); }
+      .hud-btn:disabled { background: rgba(255,255,255,0.2); cursor: not-allowed; }
+
+      #slide-counter {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.8);
+        min-width: 4rem;
+        text-align: center;
+      }
+      #optional-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: #f59e0b;
+        color: #1c1917;
+        border-radius: 0.25rem;
+        padding: 0.15rem 0.4rem;
+        display: none;
+      }
+      #optional-badge.visible { display: inline-block; }
+
+      .hud-back {
+        margin-left: auto;
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 500;
+        transition: color 0.15s;
+      }
+      .hud-back:hover { color: #fff; }
+
+      /* ── Fullscreen toggle button ── */
+      #fullscreen-btn {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 0.35rem;
+        color: rgba(255,255,255,0.7);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.72rem;
+        cursor: pointer;
+        transition: color 0.15s, border-color 0.15s;
+      }
+      #fullscreen-btn:hover { color: #fff; border-color: rgba(255,255,255,0.7); }
+
+      /* ── Slides outer wrapper ── */
+      /*
+       * DESIGN STANDARD: The slides-wrapper is a 2-D scroll surface.
+       * Horizontal axis = main slides (columns).
+       * Vertical axis (within a column) = optional sub-slides.
+       * Both axes use scroll-snap for crisp, full-screen snapping.
+       */
+      #slides-outer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;    /* JS controls all scrolling */
+      }
+
+      .slides-wrapper {
+        display: flex;
+        flex-direction: row;    /* columns laid out horizontally */
+        width: 100%;
+        height: 100%;
+        transition: transform 0.45s cubic-bezier(0.42, 0, 0.18, 1.0);
+        will-change: transform;
+      }
+
+      /* ── Each column contains one main slide + zero-or-more optional slides ── */
+      .slide-column {
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .column-inner {
+        display: flex;
+        flex-direction: column;   /* slides stack vertically inside a column */
+        height: 100%;
+        transition: transform 0.45s cubic-bezier(0.42, 0, 0.18, 1.0);
+        will-change: transform;
+      }
+
+      /* ── Individual slide ── */
+      /*
+       * DESIGN STANDARD: Every slide — main or optional — occupies
+       * exactly 100vw × 100vh (100dvh) so no content overflows the viewport.
+       */
+      .slide {
+        flex: 0 0 100vh;
+        flex: 0 0 100dvh;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        /* Subtle top padding so content clears the HUD */
+        padding-top: 3rem;
+      }
+
+      /* Optional slides get a thin amber left border as a visual cue */
+      .slide.optional {
+        border-left: 4px solid #f59e0b;
+      }
+
+      /* ── Down-arrow hint shown on main slides that have optional content ── */
+      .optional-hint {
+        position: absolute;
+        bottom: 1.25rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        color: #94a3b8;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        pointer-events: none;
+        animation: bounce-down 1.8s ease-in-out infinite;
+      }
+      .optional-hint .arrow { font-size: 1.1rem; }
+      @keyframes bounce-down {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50%       { transform: translateX(-50%) translateY(5px); }
+      }
+
+      /* ── Up-arrow hint shown on optional slides ── */
+      .back-hint {
+        position: absolute;
+        top: 3.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        color: #f59e0b;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+      .back-hint .arrow { font-size: 1.1rem; }
+    </style>
+  </head>
+  <body>
+
+    <!-- HUD: controls shown as a translucent overlay -->
+    <div id="slides-hud">
+      <button id="prev-btn" class="hud-btn" aria-label="Previous main slide">← Prev</button>
+      <span id="slide-counter">1 / 1</span>
+      <button id="next-btn" class="hud-btn" aria-label="Next main slide">Next →</button>
+      <button id="down-btn" class="hud-btn" aria-label="Show optional slide" style="display:none">▼ Optional</button>
+      <button id="up-btn"   class="hud-btn" aria-label="Return to main slide" style="display:none">▲ Main</button>
+      <span id="optional-badge">Optional</span>
+      <button id="fullscreen-btn" aria-label="Toggle fullscreen">⤢ Fullscreen</button>
+      <a id="hud-back" class="hud-back" href={backHref}>{backLabel}</a>
+    </div>
+
+    <!-- Outer container (fixed, full viewport) -->
+    <div id="slides-outer">
+      <!-- .slides-wrapper is positioned/translated by JS -->
+      <slot />
+    </div>
+
+    <!-- Auth guard -->
+    {isProtected && (
+      <script define:vars={{ base }}>
+        (function () {
+          var token = sessionStorage.getItem('auth_token');
+          if (!token) {
+            window.location.replace((base || '') + '/login?next=' + encodeURIComponent(window.location.pathname));
+          }
+        })();
+      </script>
+    )}
+
+    <!-- Inactivity auto-logout (15 min) -->
+    <script define:vars={{ base }}>
+      (function () {
+        var TIMEOUT_MS = 15 * 60 * 1000;
+        var WARN_MS    = 60 * 1000;
+        var logoutTimer = null, warnTimer = null, warnEl = null, countdownInterval = null;
+        function clearAll() { clearTimeout(logoutTimer); clearTimeout(warnTimer); clearInterval(countdownInterval); }
+        function removeWarning() { clearInterval(countdownInterval); if (warnEl) { warnEl.remove(); warnEl = null; } }
+        function showWarning() {
+          if (!warnEl) {
+            warnEl = document.createElement('div');
+            warnEl.setAttribute('role', 'alert');
+            warnEl.style.cssText = 'position:fixed;bottom:1.5rem;right:1.5rem;background:#1e293b;color:#fff;padding:1rem 1.25rem;border-radius:0.75rem;font-size:0.875rem;font-family:system-ui,sans-serif;box-shadow:0 4px 24px rgba(0,0,0,.3);z-index:9999;max-width:300px;line-height:1.5;';
+            document.body.appendChild(warnEl);
+          }
+          var secsLeft = Math.round(WARN_MS / 1000);
+          function render() { warnEl.innerHTML = '\u26a0\ufe0f You will be signed out in <strong>' + secsLeft + '</strong>s.'; }
+          render();
+          countdownInterval = setInterval(function () { secsLeft--; if (secsLeft > 0) render(); else clearInterval(countdownInterval); }, 1000);
+        }
+        function doLogout() { sessionStorage.removeItem('auth_token'); sessionStorage.removeItem('auth_user'); window.location.replace((base || '') + '/login?timeout=1'); }
+        function reset() { if (!sessionStorage.getItem('auth_token')) return; clearAll(); removeWarning(); warnTimer = setTimeout(showWarning, TIMEOUT_MS - WARN_MS); logoutTimer = setTimeout(doLogout, TIMEOUT_MS); }
+        function start() { if (!sessionStorage.getItem('auth_token')) return; ['mousemove','mousedown','keydown','scroll','touchstart','click'].forEach(function(ev){ document.addEventListener(ev, reset, { passive: true }); }); reset(); }
+        document.addEventListener('auth:login', start);
+        if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', start); } else { start(); }
+      })();
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SLIDES ENGINE
+         Implements the design standards from docs/slides-design-standards.md:
+           • Horizontal (left→right) navigation between main slides (columns).
+           • Vertical (down) navigation to optional sub-slides within a column.
+           • RIGHT from an optional slide skips to the next MAIN slide (row 0).
+           • LEFT from an optional slide skips to the previous MAIN slide (row 0).
+           • HUD auto-hides after 3 s of inactivity; reappears on mouse/touch.
+         ═══════════════════════════════════════════════════════════════ -->
+    <script>
+      (function () {
+        const wrapper  = document.querySelector('.slides-wrapper') as HTMLElement;
+        const columns  = Array.from(wrapper.querySelectorAll('.slide-column')) as HTMLElement[];
+        const counter  = document.getElementById('slide-counter') as HTMLElement;
+        const prevBtn  = document.getElementById('prev-btn')  as HTMLButtonElement;
+        const nextBtn  = document.getElementById('next-btn')  as HTMLButtonElement;
+        const downBtn  = document.getElementById('down-btn')  as HTMLButtonElement;
+        const upBtn    = document.getElementById('up-btn')    as HTMLButtonElement;
+        const optBadge = document.getElementById('optional-badge') as HTMLElement;
+        const hud      = document.getElementById('slides-hud') as HTMLElement;
+        const fsBtn    = document.getElementById('fullscreen-btn') as HTMLButtonElement;
+
+        const totalCols = columns.length;
+
+        // Per-column data: list of slide elements, current row index
+        const colData = columns.map((col) => {
+          const inner   = col.querySelector('.column-inner') as HTMLElement;
+          const slides  = Array.from(col.querySelectorAll('.slide')) as HTMLElement[];
+          return { col, inner, slides, row: 0 };
+        });
+
+        let currentCol = 0;
+
+        // ── HUD auto-hide ──────────────────────────────────────────
+        let hideTimer: ReturnType<typeof setTimeout>;
+        function showHud() {
+          hud.classList.remove('hud-hidden');
+          clearTimeout(hideTimer);
+          hideTimer = setTimeout(() => hud.classList.add('hud-hidden'), 3000);
+        }
+        ['mousemove', 'touchstart', 'keydown', 'click'].forEach((ev) =>
+          document.addEventListener(ev, showHud, { passive: true })
+        );
+        showHud();
+
+        // ── Fullscreen ─────────────────────────────────────────────
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen?.();
+          } else {
+            document.exitFullscreen?.();
+          }
+        });
+
+        // ── Update HUD state ───────────────────────────────────────
+        function updateHud() {
+          const { slides, row } = colData[currentCol];
+          const isOptional = slides[row]?.classList.contains('optional');
+
+          // Counter: show main-slide index, total main slides
+          counter.textContent = `${currentCol + 1} / ${totalCols}`;
+
+          prevBtn.disabled = currentCol === 0;
+          nextBtn.disabled = currentCol === totalCols - 1;
+
+          // Down button: only shown when a column has optional slides and we're on row 0
+          const hasOptional = slides.length > 1;
+          downBtn.style.display = (hasOptional && row === 0) ? '' : 'none';
+          upBtn.style.display   = (row > 0) ? '' : 'none';
+
+          // Optional badge
+          if (isOptional) {
+            optBadge.classList.add('visible');
+          } else {
+            optBadge.classList.remove('visible');
+          }
+        }
+
+        // ── Navigate to a specific column / row ────────────────────
+        function goTo(col: number, row: number) {
+          col = Math.max(0, Math.min(totalCols - 1, col));
+          const cd = colData[col];
+          row = Math.max(0, Math.min(cd.slides.length - 1, row));
+
+          currentCol = col;
+          cd.row = row;
+
+          // Move the outer wrapper horizontally.
+          // Use window.innerWidth (px) instead of vw to match the actual slide width.
+          wrapper.style.transform = `translateX(-${col * window.innerWidth}px)`;
+
+          // Move the column-inner vertically.
+          // Use window.innerHeight (px) instead of vh/dvh to match the actual
+          // rendered slide height, which uses 100dvh (dynamic viewport height).
+          cd.inner.style.transform = `translateY(-${row * window.innerHeight}px)`;
+
+          updateHud();
+        }
+
+        // ── Button handlers ────────────────────────────────────────
+        // DESIGN STANDARD: Prev/Next always navigate between main slides (row 0).
+        prevBtn.addEventListener('click', () => goTo(currentCol - 1, 0));
+        nextBtn.addEventListener('click', () => goTo(currentCol + 1, 0));
+
+        // DESIGN STANDARD: Down/Up navigate within the current column's optional slides.
+        downBtn.addEventListener('click', () => {
+          const cd = colData[currentCol];
+          goTo(currentCol, cd.row + 1);
+        });
+        upBtn.addEventListener('click', () => {
+          const cd = colData[currentCol];
+          goTo(currentCol, cd.row - 1);
+        });
+
+        // ── Keyboard navigation ────────────────────────────────────
+        document.addEventListener('keydown', (e) => {
+          const cd = colData[currentCol];
+          switch (e.key) {
+            case 'ArrowRight':
+            case 'PageDown':
+              e.preventDefault();
+              // DESIGN STANDARD: Right from any row (including optional) → next main slide.
+              goTo(currentCol + 1, 0);
+              break;
+            case 'ArrowLeft':
+            case 'PageUp':
+              e.preventDefault();
+              // DESIGN STANDARD: Left from any row → previous main slide.
+              goTo(currentCol - 1, 0);
+              break;
+            case 'ArrowDown':
+              e.preventDefault();
+              // DESIGN STANDARD: Down navigates to optional slide within current column.
+              goTo(currentCol, cd.row + 1);
+              break;
+            case 'ArrowUp':
+              e.preventDefault();
+              // DESIGN STANDARD: Up returns toward the main slide within current column.
+              goTo(currentCol, cd.row - 1);
+              break;
+            case 'f':
+            case 'F':
+              if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+              else document.exitFullscreen?.();
+              break;
+            case 'Escape':
+              if (document.fullscreenElement) document.exitFullscreen?.();
+              break;
+          }
+        });
+
+        // ── Touch / swipe support ──────────────────────────────────
+        let touchStartX = 0, touchStartY = 0;
+        document.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        document.addEventListener('touchend', (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+          const cd = colData[currentCol];
+          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            // Horizontal swipe → main slide navigation (always resets to row 0)
+            if (dx < 0) goTo(currentCol + 1, 0);
+            else        goTo(currentCol - 1, 0);
+          } else if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
+            // Vertical swipe → optional slide navigation within column
+            if (dy < 0) goTo(currentCol, cd.row + 1);
+            else        goTo(currentCol, cd.row - 1);
+          }
+        }, { passive: true });
+
+        // ── Initial state ──────────────────────────────────────────
+        goTo(0, 0);
+        // Reset all column positions (in case browser preserved scroll)
+        colData.forEach((cd) => { cd.inner.style.transform = 'translateY(0)'; });
+      })();
+    </script>
+
+  </body>
+</html>
