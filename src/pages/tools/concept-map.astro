@@ -169,69 +169,128 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
   /* ── Print styles ─────────────────────────────────────────────── */
   @media print {
-    body { background: #fff !important; font-size: 10.5pt; }
+    :global(*) { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-    /* Hide everything we don't need */
-    header, footer, nav, .action-bar,
-    .field-group label, .field-group .hint,
-    .info-box, .cm-page .subtitle,
-    .numbered-item .num { display: none !important; }
+    :global(body) {
+      background: #fff !important;
+      font-size: 10pt;
+      font-family: 'Times New Roman', Georgia, serif;
+      color: #000 !important;
+    }
 
-    /* Section chrome */
+    /* Remove Layout.astro wrapper padding/constraints in print */
+    :global(main) {
+      padding: 0 !important;
+      max-width: none !important;
+      margin: 0 !important;
+      width: 100% !important;
+    }
+
+    /* Hide Layout.astro chrome and web UI elements */
+    :global(header), :global(footer), :global(nav),
+    .action-bar, .field-group .hint, .info-box,
+    .cm-page .subtitle, .no-print { display: none !important; }
+
+    /* Page title */
+    .cm-page h1 {
+      font-size: 16pt;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 2pt solid #000;
+      padding-bottom: 5pt;
+      margin-bottom: 12pt;
+      color: #000;
+    }
+
+    /* Section chrome → professional paper form box */
     .cm-section {
-      border: 1px solid #c7d2fe;
+      border: 1pt solid #000;
       border-radius: 0;
-      margin-bottom: 14pt;
+      margin-bottom: 12pt;
       break-inside: avoid;
       page-break-inside: avoid;
     }
     .cm-section-header {
-      background: #1e293b !important;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-      padding: 5pt 9pt;
+      background: #e8e8e8 !important;
+      color: #000 !important;
+      border-bottom: 1pt solid #000;
+      padding: 4pt 8pt;
     }
-    .cm-section-header h2 { font-size: 8pt; }
-    .cm-section-body { padding: 9pt; gap: 8pt; }
+    .cm-section-header h2 {
+      font-size: 9pt;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      color: #000;
+    }
+    .cm-section-header .rev { font-size: 7pt; color: #555; }
+    .cm-section-body { padding: 8pt; gap: 6pt; }
 
-    /* Inputs / textareas → styled text blocks */
+    /* Field labels — visible in print as proper form field labels */
+    .field-group label {
+      display: block !important;
+      font-size: 7.5pt !important;
+      font-weight: bold !important;
+      font-family: Arial, Helvetica, sans-serif !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      color: #333 !important;
+      margin-bottom: 1pt;
+    }
+
+    /* Numbered item circles → plain black-outlined */
+    .numbered-item .num {
+      display: inline-flex !important;
+      background: #fff !important;
+      color: #000 !important;
+      border: 1pt solid #000 !important;
+      border-radius: 50% !important;
+      width: 14pt !important;
+      height: 14pt !important;
+      font-size: 7.5pt !important;
+      font-family: Arial, Helvetica, sans-serif;
+      flex-shrink: 0;
+    }
+
+    /* Inputs / textareas → paper form lines */
     .field-group input,
     .field-group textarea,
     .numbered-item input,
     .numbered-item textarea {
       border: none !important;
-      border-bottom: 1pt solid #cbd5e1 !important;
+      border-bottom: 0.75pt solid #000 !important;
       border-radius: 0 !important;
       background: transparent !important;
       box-shadow: none !important;
       padding: 2pt 0 !important;
       font-size: 10pt;
+      font-family: 'Times New Roman', Georgia, serif;
+      color: #000;
       resize: none;
       height: auto !important;
       min-height: unset !important;
     }
     .field-group textarea,
-    .numbered-item textarea { min-height: 30pt !important; }
+    .numbered-item textarea { min-height: 28pt !important; }
 
     /* Row adjustments */
     .row2 { grid-template-columns: 1fr 1fr; gap: 9pt; }
     .numbered-item { align-items: center; gap: 4pt; }
 
-    /* Page title block */
-    .cm-page h1 { font-size: 16pt; }
-
-    /* Privacy notice */
+    /* Privacy notice — neutral gray */
     .privacy-notice {
-      background: #fef9c3 !important;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
+      background: #f0f0f0 !important;
+      border: 0.75pt solid #999 !important;
+      border-radius: 0 !important;
       font-size: 8pt;
+      color: #333;
+      padding: 4pt 6pt;
     }
 
-    /* Student info card */
+    /* Student info card — clean black border */
     #student-info-card {
-      border: 1.5pt solid #6366f1;
-      border-radius: 4pt;
+      border: 1.5pt solid #000;
+      border-radius: 0;
       padding: 8pt;
       margin-bottom: 14pt;
       display: flex !important;
@@ -240,21 +299,27 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     #student-info-card .si-field { flex: 1; }
     #student-info-card .si-label {
       font-size: 7pt;
-      font-weight: 700;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
       text-transform: uppercase;
-      letter-spacing: .05em;
-      color: #6366f1;
+      letter-spacing: 0.05em;
+      color: #333;
       margin-bottom: 2pt;
     }
     #student-info-card .si-value {
       font-size: 11pt;
-      font-weight: 600;
-      color: #1e293b;
-      border-bottom: 1pt solid #c7d2fe;
+      font-weight: bold;
+      font-family: 'Times New Roman', Georgia, serif;
+      color: #000;
+      border-bottom: 0.75pt solid #000;
       padding-bottom: 2pt;
+      min-height: 14pt;
     }
 
-    @page { margin: 0.65in; size: letter; }
+    /* Hide date picker icon in print */
+    :global(input[type="date"]::-webkit-calendar-picker-indicator) { display: none !important; }
+
+    @page { margin: 0.75in; size: letter; }
   }
 </style>
 
@@ -309,7 +374,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
   </div>
 
   <!-- ── Student Info ───────────────────────────────────────────── -->
-  <div class="cm-section">
+  <div class="cm-section no-print">
     <div class="cm-section-header">
       <h2>👤 Student Information</h2>
     </div>
@@ -1219,6 +1284,15 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     init();
   }
 
+  /* ── Strip emoji helper ──────────────────────────────────────── */
+  function stripEmoji(text) {
+    try {
+      return text.replace(/\p{Extended_Pictographic}\uFE0F?(\u200D\p{Extended_Pictographic}\uFE0F?)*/gu, '').replace(/\s+/g, ' ').trim();
+    } catch (_) {
+      return text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/gu, '').replace(/\s+/g, ' ').trim();
+    }
+  }
+
   /* Show student info print card before printing */
   window.addEventListener('beforeprint', function () {
     syncPrintCard();
@@ -1229,10 +1303,22 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       ta.style.height = 'auto';
       ta.style.height = ta.scrollHeight + 'px';
     });
+    /* Strip emojis from headings for professional paper-form appearance */
+    document.querySelectorAll('h1, h2').forEach(function (el) {
+      el.dataset.origText = el.textContent;
+      el.textContent = stripEmoji(el.textContent);
+    });
   });
   window.addEventListener('afterprint', function () {
     var card = document.getElementById('student-info-card');
     if (card) card.style.display = 'none';
+    /* Restore original heading text with emoji */
+    document.querySelectorAll('h1, h2').forEach(function (el) {
+      if (el.dataset.origText !== undefined) {
+        el.textContent = el.dataset.origText;
+        delete el.dataset.origText;
+      }
+    });
   });
 })();
 </script>
