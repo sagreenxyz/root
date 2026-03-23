@@ -120,20 +120,6 @@ Institutional Responses and Nursing Leadership. Healthcare organisations that re
         </div>
       </header>
 
-      <!-- Table of contents -->
-      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:2rem;">
-        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
-        <ol style="list-style:none; display:flex; flex-wrap:wrap; gap:0.35rem 0.75rem; padding:0; margin:0;">
-          {sections.map((s, i) => (
-            <li style="font-size:0.85rem;">
-              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
-                {i + 1}. {s.heading}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-
       <!-- Article sections -->
       {sections.map((section, i) => (
         <section id={section.id} style="margin-bottom:2.25rem;">
@@ -171,6 +157,19 @@ Institutional Responses and Nursing Leadership. Healthcare organisations that re
 
     <!-- Sticky sidebar -->
     <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
+        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
+          {sections.map((s, i) => (
+            <li style="font-size:0.85rem;">
+              <a href={`#${s.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
+                {i + 1}. {s.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
       <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
         <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
         <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
