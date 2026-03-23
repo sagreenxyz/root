@@ -1022,3 +1022,219 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     border: 1.5px solid #ea580c;
   }
 </style>
+
+<script>
+  /**
+   * Process Indicator — shows where in the 7-phase concept map process
+   * each slide sits. A compact panel is fixed to the left edge of the
+   * viewport; the active phase dot is highlighted in orange.
+   *
+   * The indicator is appended directly to document.body so it is never
+   * clipped by #slides-outer (which has overflow:hidden).
+   */
+  (function () {
+    const PHASES = [
+      'Data Collection',
+      'Data Organisation',
+      'Clinical Reasoning',
+      'Goal Setting',
+      'Intervention Planning',
+      'Drawing Connections',
+      'Evaluation',
+    ];
+
+    // Maps slide column index (0-based) to the active phase number.
+    // 0  = no phase highlighted (intro/overview slides)
+    // 1–7 = that specific phase highlighted
+    // -1 = all phases highlighted (takeaways / all-phases-complete)
+    const colPhaseMap: Record<number, number> = {
+      0: 0,   // Col 0 · Title slide
+      1: 0,   // Col 1 · Case Overview (pre-process)
+      2: 1,   // Col 2 · Phase 1: Data Collection
+      3: 2,   // Col 3 · Phase 2: Data Organisation
+      4: 3,   // Col 4 · Phase 3: Clinical Reasoning
+      5: 4,   // Col 5 · Phase 4: Goal Setting
+      6: 5,   // Col 6 · Phase 5: Intervention Planning
+      7: 6,   // Col 7 · Phase 6: Drawing Connections
+      8: 7,   // Col 8 · Phase 7: Evaluation
+      9: -1,  // Col 9 · Key Takeaways (all phases complete)
+    };
+
+    // ── Build the indicator panel ─────────────────────────────────────────
+    const panel = document.createElement('div');
+    panel.id = 'concept-process-indicator';
+    panel.setAttribute('aria-label', 'Concept map process steps indicator');
+    panel.setAttribute('role', 'complementary');
+    Object.assign(panel.style, {
+      position: 'fixed',
+      left: '0',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      zIndex: '50',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '0',
+      background: 'rgba(15, 23, 42, 0.82)',
+      WebkitBackdropFilter: 'blur(6px)',
+      backdropFilter: 'blur(6px)',
+      borderRadius: '0 0.75rem 0.75rem 0',
+      padding: '0.6rem 0.45rem',
+      userSelect: 'none',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+    });
+
+    // "PROCESS" micro-label at the top of the panel
+    const heading = document.createElement('div');
+    heading.textContent = 'Process';
+    Object.assign(heading.style, {
+      fontSize: '0.47rem',
+      fontWeight: '700',
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase',
+      color: 'rgba(255,255,255,0.35)',
+      marginBottom: '0.45rem',
+    });
+    panel.appendChild(heading);
+
+    // ── Phase dot items ──────────────────────────────────────────────────
+    const items: Array<{ dot: HTMLElement; numEl: HTMLElement }> = [];
+
+    PHASES.forEach((name, i) => {
+      const phaseNum = i + 1;
+
+      // Connector line between dots (skip before the first dot)
+      if (i > 0) {
+        const line = document.createElement('div');
+        Object.assign(line.style, {
+          width: '2px',
+          height: '10px',
+          background: 'rgba(255,255,255,0.18)',
+          margin: '0 auto',
+          borderRadius: '1px',
+        });
+        panel.appendChild(line);
+      }
+
+      // Wrapper (provides tooltip via title attribute)
+      const item = document.createElement('div');
+      item.setAttribute('title', `Phase ${phaseNum}: ${name}`);
+      Object.assign(item.style, {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        cursor: 'default',
+        transition: 'opacity 0.3s',
+      });
+
+      // Circle dot
+      const dot = document.createElement('div');
+      Object.assign(dot.style, {
+        width: '22px',
+        height: '22px',
+        borderRadius: '50%',
+        background: 'rgba(255,255,255,0.12)',
+        border: '1.5px solid rgba(255,255,255,0.18)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'background 0.3s, border-color 0.3s, transform 0.3s',
+        boxSizing: 'border-box',
+      });
+
+      const numEl = document.createElement('span');
+      numEl.textContent = String(phaseNum);
+      Object.assign(numEl.style, {
+        fontSize: '0.6rem',
+        fontWeight: '800',
+        color: 'rgba(255,255,255,0.35)',
+        lineHeight: '1',
+        transition: 'color 0.3s',
+      });
+
+      dot.appendChild(numEl);
+      item.appendChild(dot);
+      panel.appendChild(item);
+      items.push({ dot, numEl });
+    });
+
+    document.body.appendChild(panel);
+
+    // ── Update dots to reflect the current slide column ───────────────────
+    function updateIndicator() {
+      const wrapper = document.querySelector<HTMLElement>('.slides-wrapper');
+      if (!wrapper) return;
+
+      const match = wrapper.style.transform.match(/translateX\((-?\d+(?:\.\d+)?)px\)/);
+      const tx = match ? parseFloat(match[1]) : 0;
+      const col = Math.round(Math.abs(tx) / window.innerWidth);
+      const activePhase = colPhaseMap[col] ?? 0;
+
+      items.forEach(({ dot, numEl }, i) => {
+        const phase = i + 1;
+
+        if (activePhase === -1) {
+          // All-complete state (Key Takeaways slide)
+          dot.style.background = 'rgba(234,88,12,0.55)';
+          dot.style.borderColor = 'rgba(234,88,12,0.75)';
+          dot.style.transform = 'scale(1)';
+          numEl.style.color = '#fff';
+          (dot.parentElement as HTMLElement).style.opacity = '1';
+        } else if (activePhase === 0) {
+          // No active phase (Title / Case Overview)
+          dot.style.background = 'rgba(255,255,255,0.10)';
+          dot.style.borderColor = 'rgba(255,255,255,0.15)';
+          dot.style.transform = 'scale(1)';
+          numEl.style.color = 'rgba(255,255,255,0.3)';
+          (dot.parentElement as HTMLElement).style.opacity = '0.65';
+        } else if (phase === activePhase) {
+          // Currently active phase
+          dot.style.background = '#ea580c';
+          dot.style.borderColor = '#ea580c';
+          dot.style.transform = 'scale(1.2)';
+          numEl.style.color = '#fff';
+          (dot.parentElement as HTMLElement).style.opacity = '1';
+        } else if (phase < activePhase) {
+          // Already-covered phase
+          dot.style.background = 'rgba(234,88,12,0.28)';
+          dot.style.borderColor = 'rgba(234,88,12,0.45)';
+          dot.style.transform = 'scale(1)';
+          numEl.style.color = 'rgba(255,255,255,0.65)';
+          (dot.parentElement as HTMLElement).style.opacity = '0.9';
+        } else {
+          // Upcoming phase
+          dot.style.background = 'rgba(255,255,255,0.08)';
+          dot.style.borderColor = 'rgba(255,255,255,0.13)';
+          dot.style.transform = 'scale(1)';
+          numEl.style.color = 'rgba(255,255,255,0.22)';
+          (dot.parentElement as HTMLElement).style.opacity = '0.5';
+        }
+      });
+    }
+
+    // ── Watch .slides-wrapper's transform for navigation changes ─────────
+    function watchWrapper() {
+      const wrapper = document.querySelector('.slides-wrapper');
+      if (!wrapper) return;
+      const observer = new MutationObserver(updateIndicator);
+      // MutationObserver is intentionally not disconnected: this is a full-page
+      // presentation; the wrapper persists for the entire page lifetime.
+      observer.observe(wrapper, { attributes: true, attributeFilter: ['style'] });
+      // Debounced resize handler — recalculates the active phase after the user
+      // finishes resizing the window (SlidesLayout uses window.innerWidth in its
+      // translateX transform, so column boundaries shift on resize).
+      let resizeTimer: ReturnType<typeof setTimeout>;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateIndicator, 100);
+      }, { passive: true });
+      updateIndicator();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', watchWrapper);
+    } else {
+      watchWrapper();
+    }
+  })();
+</script>
