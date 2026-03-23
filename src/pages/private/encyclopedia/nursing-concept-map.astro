@@ -1,0 +1,291 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `A nursing concept map is a visual clinical reasoning tool that organises complex patient data into an interconnected diagram, revealing the relationships between a patient's medical problems, nursing diagnoses, interventions, and expected outcomes. Unlike a linear care plan, which presents nursing diagnoses sequentially, the concept map places the patient at the centre of a web of causally and clinically linked concepts, making the reasoning behind clinical decisions explicit and navigable.\n\nConcept mapping originated in cognitive science as a method for representing knowledge structures and was adapted for nursing education in the 1990s as a means of developing and demonstrating clinical reasoning. Research consistently demonstrates that students who construct concept maps develop deeper understanding of clinical relationships, more sophisticated prioritisation skills, and greater facility with the complex multi-problem thinking that characterises real-world nursing practice. For the registered nurse, the concept map is a dynamic documentation and communication tool that evolves with the patient's clinical status.\n\nGenerating a complete nursing concept map is a seven-phase process moving from initial data collection through evaluation and map revision. Each phase demands specific cognitive skills, and together they constitute a comprehensive exercise in clinical reasoning, nursing judgment, and evidence-based practice. The following sections describe each phase in depth, followed by an examination of the critical thinking moves that animate them, the NCSBN Clinical Judgment Model that frames contemporary competency assessment, and the typology of cues that inform every phase of concept map development.`,
+  },
+  {
+    id: 'phase1',
+    heading: 'Phase 1: Data Collection (Assessment)',
+    body: `The concept map begins with the most thorough and systematic data collection the nurse can achieve. No subsequent phase can compensate for deficiencies in the assessment foundation.\n\nReviewing the patient's chart. The nurse begins with a comprehensive review of the medical record: the admitting diagnosis and reason for hospitalisation, the past medical and surgical history, progress notes from all disciplines, current physician orders, and any outstanding results awaiting review. Chart review establishes the clinical context within which all subsequently gathered data will be interpreted and provides the starting point for hypothesis generation before the patient is even encountered.\n\nConducting a head-to-toe physical assessment. The systematic physical examination generates objective data—the signs visible, audible, palpable, or measurable by the nurse—that form the physiological substrate of the concept map. A thorough head-to-toe assessment ensures that no body system is overlooked and that the nurse has direct, first-hand knowledge of the patient's current physical state, independent of what prior documentation records.\n\nInterviewing the patient and family. The patient interview yields subjective data—the symptoms, concerns, values, and goals that only the patient can report. Effective clinical interviewing requires active listening, open-ended questioning, and the therapeutic presence necessary to elicit information the patient might otherwise withhold. Family members or carers may provide corroborating history, insight into functional baseline, and information about the home environment that is indispensable for discharge planning.\n\nReviewing diagnostics. Laboratory values, imaging reports, electrocardiograms, culture results, and vital signs trends are systematically reviewed. The nurse does not merely note these results but interprets them in the context of the patient's clinical picture: a serum lactate of 4.2 mmol/L means something very different in a patient presenting with fever and hypotension than in one recovering uneventfully from elective surgery.\n\nCompiling the medication list. A complete medication reconciliation—current medications with dosages, routes, frequencies, indications, and clinically significant side effects—is essential. Many nursing diagnoses arise directly from pharmacological effects: constipation from opioids, hyponatraemia from diuretics, fall risk from sedating agents. The medication list is both a source of diagnostic cues and a determinant of nursing interventions.`,
+  },
+  {
+    id: 'phase2',
+    heading: 'Phase 2: Data Organisation',
+    body: `Raw assessment data does not automatically constitute clinical understanding. Phase 2 transforms the data collected in Phase 1 into organised, interpretable clusters that point toward specific nursing diagnoses.\n\nClustering related data. Data clustering is the process of grouping signs and symptoms that share a common physiological, psychological, or contextual basis. A patient who presents with decreased breath sounds at the right base, dullness to percussion, SpO₂ of 91%, and a productive cough represents a cluster pointing toward ineffective airway clearance or impaired gas exchange. Clustering requires the nurse to identify patterns rather than treating each finding as an isolated datum, and it is a cognitive skill that develops with both theoretical knowledge and clinical experience.\n\nIdentifying abnormal findings. Within each data cluster, the nurse explicitly flags values and findings that fall outside established normal ranges or that represent a departure from the patient's own baseline. The clinical significance of a finding often depends on comparison: a heart rate of 98 bpm in a patient whose resting rate is typically 60 bpm may indicate early physiological compromise even though 98 bpm falls within the textbook normal range. Identifying abnormal findings requires not only knowledge of reference ranges but sensitivity to individual variation.\n\nSeparating medical from nursing diagnoses. A critical conceptual distinction in nursing practice is the difference between the medical diagnosis—the disease or pathological condition identified by the physician (e.g., community-acquired pneumonia)—and the nursing diagnosis—the patient's human response to that disease or condition (e.g., impaired gas exchange, activity intolerance, anxiety related to breathlessness). The concept map is organised around nursing diagnoses because it is the nurse's role to address the patient's response to illness, not to treat the underlying pathology per se. Maintaining this distinction prevents the nurse from reducing her role to that of a medical assistant and ensures the map captures the full scope of nursing practice.\n\nPlacing the central concept. The hub of the concept map is typically occupied by the patient's identity and primary nursing concern—not the medical diagnosis alone but the patient as a person with a specific set of problems, priorities, and circumstances. All branches of the map radiate outward from this central node, encoding the relationships between the patient's situation and the clinical problems, nursing diagnoses, interventions, and outcomes that the map will document.`,
+  },
+  {
+    id: 'phase3',
+    heading: 'Phase 3: Clinical Reasoning and Nursing Diagnosis',
+    body: `Phase 3 is the intellectual heart of the concept map. It requires the nurse to move from organised data to diagnostic conclusions and to prioritise those conclusions according to established clinical frameworks.\n\nAnalysing data clusters. Each cluster assembled in Phase 2 is now interrogated: what problem do these cues collectively point to? What is the underlying pathophysiology connecting these findings? Are there competing explanations that must be considered? This analytical process requires integration of anatomical, physiological, and pharmacological knowledge with the specific patient data collected. The nurse must avoid both premature closure—settling on the first plausible diagnosis without fully examining the evidence—and diagnostic paralysis—the inability to commit to a diagnosis in the face of uncertainty.\n\nFormulating nursing diagnoses. Nursing diagnoses are formulated using the NANDA International taxonomy and expressed in the three-part Problem + Related To (R/T) + As Evidenced By (AEB) format. The problem statement names the human response (e.g., Ineffective Airway Clearance); the related-to clause identifies the aetiology or contributing factor (e.g., R/T excessive mucus secondary to pneumonia); the as-evidenced-by clause cites the defining characteristics from the assessment data (e.g., AEB decreased breath sounds at right base, SpO₂ 91%, productive cough). This three-part structure ensures that the nursing diagnosis is clinically grounded, patient-specific, and directly connected to the assessment data from which it was derived.\n\nPrioritising diagnoses. When multiple nursing diagnoses are present—as they almost invariably are in acute care—the nurse must determine which to address first. Two complementary frameworks guide this prioritisation. The ABC framework (Airway, Breathing, Circulation) directs the nurse to address life-threatening physiological threats before all others: a compromised airway or impaired gas exchange takes priority over all other diagnoses regardless of the patient's stated preferences. Maslow's Hierarchy of Needs provides a broader framework: physiological needs (nutrition, elimination, oxygenation, thermoregulation, rest) take precedence over safety needs, which precede belonging, esteem, and self-actualisation needs. The patient's own stated priorities also merit incorporation: a patient who insists that her worst problem is pain, not the skin breakdown the nurse has identified, deserves to have that perspective acknowledged in the care plan.`,
+  },
+  {
+    id: 'phase4',
+    heading: 'Phase 4: Goal and Outcome Setting',
+    body: `Nursing diagnoses identify patient problems; goals and outcomes specify what successful nursing care will look like. Well-constructed goals provide the criteria against which nursing care is later evaluated and are indispensable for demonstrating the effectiveness of nursing practice.\n\nWriting SMART outcomes. For each nursing diagnosis, the nurse writes at least one goal statement that is Specific (describing clearly what the patient will do or demonstrate), Measurable (including objective criteria—a number, a behaviour, an observable finding—by which achievement can be assessed), Attainable (realistic given the patient's current condition, resources, and clinical context), Realistic (aligned with the patient's overall prognosis and trajectory), and Time-bound (specifying the timeframe within which the goal is expected to be achieved). A SMART outcome for a patient with impaired gas exchange might read: "Patient will maintain SpO₂ ≥ 94% on ≤ 2 L/min nasal cannula and report dyspnoea rated ≤ 2/10 within 24 hours of initiation of treatment."\n\nDifferentiating short-term from long-term goals. Short-term goals address immediate clinical priorities and are typically achievable within hours to days; they serve as intermediate milestones and provide the nurse with early evidence of whether the care plan is working. Long-term goals project further into the clinical trajectory—weeks to months—and often relate to functional recovery, self-management capacity, or discharge readiness. Both types of goal are relevant to the concept map, and their relationship should be explicit: short-term goals frequently represent necessary preconditions for long-term goal achievement.\n\nCentring outcomes on the patient. Goal statements must be patient-centred, written in terms of what the patient will demonstrate or achieve, not what the nurse will do. "Patient will demonstrate correct inhaler technique before discharge" is a patient-centred outcome; "Nurse will teach inhaler technique" describes an intervention, not an outcome. This distinction matters both for conceptual clarity and for the evaluation phase: whether an intervention was delivered is not the same question as whether it produced the intended patient response.`,
+  },
+  {
+    id: 'phase5',
+    heading: 'Phase 5: Intervention Planning',
+    body: `Interventions are the specific, purposeful nursing actions designed to help the patient achieve the established goals. Phase 5 requires the nurse to identify, categorise, justify, and specify the interventions she will implement for each nursing diagnosis.\n\nSelecting evidence-based interventions. Nursing interventions should be selected on the basis of the best available evidence for their effectiveness with the patient's specific problem, taking into account the patient's individual circumstances and preferences. Evidence-based practice requires the nurse to draw on clinical guidelines, systematic reviews, and established protocols rather than relying exclusively on tradition, habit, or the preferences of individual practitioners.\n\nCategorising interventions. Nursing interventions fall into three categories. Independent interventions are those the nurse initiates and carries out on the basis of her own professional judgment and scope of practice, without requiring a physician order: repositioning to prevent pressure injury, therapeutic communication, oral care, ambulation, education, and assessment monitoring. Collaborative interventions are those implemented jointly with other members of the healthcare team—the physiotherapist, dietitian, social worker, pharmacist, or respiratory therapist—and require coordinated planning and communication. Dependent interventions are those that require a physician order to initiate: medication administration, diagnostic procedures, intravenous fluid management, and wound care protocols ordered by the physician.\n\nWriting rationale. For each intervention, particularly in educational contexts, the nurse articulates the rationale—the physiological, psychological, or evidence-based justification that explains why this intervention is expected to produce the desired patient outcome. Rationale-writing is a discipline that develops the nurse's ability to connect action to evidence and to evaluate interventions critically rather than implementing them reflexively. A nurse who cannot articulate why she is doing what she is doing is a nurse whose practice is not grounded in clinical reasoning.`,
+  },
+  {
+    id: 'phase6',
+    heading: 'Phase 6: Drawing Connections',
+    body: `The defining visual feature of the concept map—and the feature that most powerfully supports clinical reasoning—is the system of arrows and linking phrases that make relationships between concepts explicit.\n\nDrawing linking arrows. Directed arrows are drawn to encode four principal types of relationship: from assessment data to nursing diagnoses (the diagnostic relationship, showing which cues point to which problems); from nursing diagnoses to interventions (the therapeutic relationship, showing which nursing actions address which problems); from interventions to expected outcomes (the efficacy relationship, showing what each intervention is intended to achieve); and between nursing diagnoses themselves (the complication relationship, showing how one problem may cause, worsen, or interact with another—for example, how impaired mobility leads to risk for pressure injury, which in turn leads to risk for infection).\n\nLabelling arrows with linking phrases. The arrow alone is necessary but not sufficient: the linking phrase articulates the nature of the relationship. "Leads to" identifies a causal or predictive relationship; "as evidenced by" connects a diagnosis to its supporting data; "treated with" connects a diagnosis to its primary interventions; "worsened by" identifies aggravating factors; "resolved by" anticipates therapeutic response. Precise linking language makes the nurse's clinical reasoning legible and testable—it transforms the map from a collection of boxes into an argument.\n\nThe power of the concept map resides precisely in the density and accuracy of these connections. A map with many isolated nodes and few arrows reflects superficial clinical thinking; a map with richly interconnected nodes—where each diagnosis is supported by multiple cues, addressed by several interventions, and linked to related diagnoses—reflects the integrated, multi-system reasoning that characterises expert clinical practice.`,
+  },
+  {
+    id: 'phase7',
+    heading: 'Phase 7: Evaluation',
+    body: `Evaluation is the final and most clinically consequential phase of the nursing process and of concept map construction. It is the phase that distinguishes responsive, evidence-informed nursing care from static, protocol-driven task completion.\n\nComparing outcomes to actual patient response. For each nursing diagnosis, the nurse systematically compares the patient's actual response with the expected outcomes established in Phase 4. Has the patient's SpO₂ improved to the target range? Has pain decreased to the stated threshold? Has the patient demonstrated the self-care behaviour specified in the goal? This comparison requires both objective measurement and clinical observation and must be conducted at the timeframe specified in the goal statement.\n\nRevising or discontinuing diagnoses. When new assessment data reveal that a diagnosis has been resolved, it is discontinued and the map is updated accordingly. When data reveal that a diagnosis was incorrectly formulated—because the nurse mis-clustered the cues, chose the wrong related-to factor, or identified a problem that turned out not to be present—the diagnosis is revised. The willingness to revise diagnoses in the face of disconfirming evidence is a mark of intellectual integrity and an essential component of safe nursing practice.\n\nAdjusting interventions. When goals are not being met, the nurse must determine whether the failure is attributable to the intervention (wrong choice, inadequate dose, poor technique), the goal (set too high, too soon, or not aligned with the patient's actual priorities), or the nursing diagnosis (incorrectly formulated, or superseded by a new clinical priority). Each possibility requires a different corrective response. Intervention adjustment is not a failure of the original care plan but a sign that the nurse is engaging in the iterative, responsive practice that the nursing process is designed to support.\n\nDocumenting changes and updating the map. The concept map is a living document. As the patient's condition evolves—new diagnoses emerge, problems resolve, interventions prove effective or ineffective—the map is updated to reflect the current clinical picture. This continuous updating serves both patient safety (by ensuring that care is directed at current rather than historical problems) and professional accountability (by providing a documented record of the nurse's ongoing clinical reasoning).`,
+  },
+  {
+    id: 'critical-thinking',
+    heading: 'Critical Thinking Steps in Decision-Making',
+    body: `Behind each phase of concept map construction lies a set of cognitive moves—the mental operations through which the nurse processes clinical information and arrives at clinical decisions. Making these moves explicit supports both their deliberate development and their recognition in practice.\n\nRecognising. The nurse continuously asks: what is abnormal here? What stands out from the baseline? What has changed since the last assessment? Recognition requires both knowledge of normal parameters and attentiveness to the individual patient's baseline, since clinical significance is always relative to context.\n\nAnalysing. Beyond recognition, the nurse asks: why is this happening? What is the underlying physiological, pathological, or pharmacological mechanism? Analysis requires integration of theoretical knowledge with the specific patient data and is the foundation of the diagnostic phase of concept map construction.\n\nClustering. Findings that individually might seem unremarkable acquire diagnostic significance when grouped together. The nurse asks: what findings go together? Do they point to a common underlying problem? Are there competing clusters that suggest alternative diagnoses?\n\nPrioritising. Given multiple identified problems, the nurse must determine which is most urgent or most immediately life-threatening. Prioritisation requires application of clinical frameworks (ABCs, Maslow's Hierarchy) alongside real-time clinical judgment about the patient's current trajectory.\n\nHypothesising. The nurse projects forward in time: what do I predict will happen if I do not intervene? What complications are this patient at risk for? Hypothesis generation is the cognitive foundation of risk-based nursing diagnoses and preventive nursing care.\n\nSelecting. Among multiple possible interventions for a given diagnosis, the nurse must choose those with the strongest evidence base and the best fit with this patient's specific circumstances. Selection requires both evidence literacy and the clinical wisdom to adapt evidence-based recommendations to individual patients.\n\nPredicting. For each selected intervention, the nurse asks: what outcome should I expect? In what timeframe? Prediction operationalises the goal-setting phase of concept map construction and creates the basis for evaluation.\n\nEvaluating. After interventions have been implemented, the nurse asks: did the intervention work? Did the patient respond as expected? Do I need to change my approach? Evaluation is the phase that closes the nursing process cycle and drives the revision and updating of the concept map.\n\nReflecting. Reflective thinking operates at a meta-level: what would I do differently? What did I miss in my initial assessment? What have I learned from this patient encounter that will inform my practice with future patients? Reflection converts clinical experience into professional learning.`,
+  },
+  {
+    id: 'ncsbn-model',
+    heading: 'The Clinical Judgment Model (NCSBN)',
+    body: `The National Council of State Boards of Nursing (NCSBN) developed the Clinical Judgment Measurement Model as the framework for the Next Generation NCLEX (NGN) examination, and it now represents the prevailing standard for conceptualising and assessing nursing critical thinking in licensure and educational contexts. The model describes six cognitive skills that together constitute clinical judgment as the NCSBN defines it.\n\nRecognise Cues. The nurse identifies which pieces of information in the clinical situation are relevant and significant. Not all data are equally important; cue recognition requires the nurse to distinguish signal from noise and to attend to the findings that carry the greatest diagnostic or prognostic weight.\n\nAnalyse Cues. The nurse determines what the recognised cues mean clinically. This analysis requires relating individual cues to each other and to the nurse's knowledge of pathophysiology, pharmacology, and normal development to generate clinical meaning from raw data.\n\nPrioritise Hypotheses. Multiple possible explanations for the patient's presentation may be consistent with the cues. The nurse ranks these hypotheses by their urgency and clinical likelihood, placing life-threatening possibilities at the top of the differential regardless of their statistical probability.\n\nGenerate Solutions. For each prioritised hypothesis, the nurse identifies possible interventions—what could be done to address this problem? Solution generation requires broad clinical knowledge combined with creativity and systematic thinking about the full range of nursing options.\n\nTake Action. The nurse selects and implements the most appropriate intervention from among the generated solutions, based on the best available evidence and the specific patient context. Taking action requires confidence, decisiveness, and the procedural competence to execute the selected intervention safely and effectively.\n\nEvaluate Outcomes. After the action has been taken, the nurse assesses the patient's response. Did the intervention produce the expected outcome? Is the patient's condition improving, stable, or worsening? Evaluation determines whether the current care plan should be continued, modified, or fundamentally revised.\n\nThis six-step model maps directly onto the phases of concept map construction and provides a unifying cognitive framework for understanding why each phase of the concept map process is clinically necessary.`,
+  },
+  {
+    id: 'cue-types',
+    heading: 'Types of Cues Needed',
+    body: `Cues are the pieces of information that signal a potential or actual patient problem. A comprehensive concept map draws on cues from multiple categories, and the nurse's ability to recognise cues across all categories is a mark of clinical competence.\n\nPhysiological cues (objective). These are the measurable, directly observable findings of physical assessment and diagnostic investigation: vital signs (blood pressure, heart rate, respiratory rate, oxygen saturation, temperature, pain scale); physical examination findings (breath sounds, skin colour and integrity, peripheral oedema, bowel sounds, wound appearance); laboratory values (complete blood count, basic metabolic panel, arterial blood gases, cultures, coagulation studies); diagnostic results (chest radiograph findings, electrocardiographic changes, computed tomography and magnetic resonance imaging reports); and functional measures such as intake and output balance, neurological status (Glasgow Coma Scale, pupillary responses), and functional assessment scores.\n\nSubjective cues (patient-reported). These are the symptoms, experiences, and perceptions that only the patient can provide: the chief complaint expressed in the patient's own words; symptoms characterised by their onset, location, duration, character, and aggravating and relieving factors; the patient's own understanding and perception of their condition; cultural, spiritual, and personal values that affect the patient's response to illness and preferences for care; and functional limitations identified by the patient rather than the nurse.\n\nHistorical and contextual cues. These are pieces of information that establish the clinical background against which current findings are interpreted: past medical and surgical history; family history relevant to genetic risk; current medications, doses, and known allergies; immunisation history and social history (tobacco, alcohol, and substance use; living situation; support systems); and recent hospitalisations or procedures that may influence the current presentation.\n\nBehavioural and psychosocial cues. These cues reflect the patient's psychological state and social functioning: anxiety, confusion, depression, or agitation; coping mechanisms and available support systems; adherence to treatment plans and healthcare engagement patterns; and health literacy and the patient's demonstrated understanding of their diagnosis and care requirements.\n\nEnvironmental and safety cues. These cues relate to the patient's risk for harm: fall risk factors including muscle weakness, altered mental status, and polypharmacy; pressure injury risk as quantified by the Braden Scale; infection risk related to immunosuppression, invasive lines, or open wounds; and home environment factors relevant to discharge safety and community reintegration.\n\nTrending cues (change over time). These cues capture clinically significant change: vital signs trending upward or downward across hours or shifts; worsening or improving laboratory values; the patient's response—or absence of response—to initiated interventions; and new symptoms appearing mid-shift that represent a change from the patient's condition at the beginning of the nurse's care period.\n\nThe key principle governing cue interpretation is that no single cue makes a nursing diagnosis. The diagnostic power of the concept map arises from the clustering of multiple cues from multiple categories into a coherent, clinically plausible picture. The more connections the nurse can identify and articulate between cues, and between cues and diagnoses, the stronger and more defensible her clinical reasoning becomes.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Generating a full nursing concept map is an exercise in comprehensive clinical reasoning. It begins with systematic data collection, progresses through organised data analysis and diagnostic formulation, moves through goal-setting and intervention planning, makes reasoning explicit through visual connection-drawing, and closes with rigorous evaluation and iterative revision. Each phase demands specific cognitive skills—recognition, analysis, clustering, prioritisation, hypothesis generation, solution selection, action, and reflection—that are collectively captured in the NCSBN Clinical Judgment Model and directly assessed in the Next Generation NCLEX examination.\n\nThe concept map is more than a pedagogical exercise. For the practising nurse, it externalises and systematises clinical reasoning in a way that supports communication, continuity, and collaborative care. For the nursing student, it is a scaffold for developing the complex, multi-system thinking that will eventually become the intuitive expertise of expert practice. For nursing education, it provides a window into the reasoning processes of students that written care plans alone cannot reveal—and a platform for targeted feedback on the quality of clinical judgment.\n\nApproached with intellectual rigour and genuine patient-centredness, the nursing concept map is one of the most powerful tools available for translating assessment data into personalised, evidence-based, goal-directed nursing care.`,
+  },
+];
+---
+
+<Layout title="Nursing Concept Map – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Nursing Concept Map</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <!-- Sticky sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <!-- Contents -->
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#94a3b8; margin-bottom:0.65rem;">Contents</p>
+        <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
+          {sections.map((s, i) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+                onmouseover="this.style.color='#6366f1'"
+                onmouseout="this.style.color='#475569'"
+              >
+                <span style="color:#94a3b8; margin-right:0.35rem;">{i + 1}.</span>{s.heading}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#references"
+              style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+              onmouseover="this.style.color='#6366f1'"
+              onmouseout="this.style.color='#475569'"
+            >
+              <span style="color:#94a3b8; margin-right:0.35rem;">{sections.length + 1}.</span>Key References
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Quick-reference phases -->
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#15803d; margin-bottom:0.5rem;">7 Phases</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.8rem; color:#166534; display:flex; flex-direction:column; gap:0.3rem;">
+          {[
+            '1. Data Collection',
+            '2. Data Organisation',
+            '3. Clinical Reasoning & Dx',
+            '4. Goal / Outcome Setting',
+            '5. Intervention Planning',
+            '6. Drawing Connections',
+            '7. Evaluation',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <!-- Nursing relevance panel -->
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Clinical reasoning & judgment',
+            '✅ NANDA-I nursing diagnoses',
+            '✅ ABC & Maslow prioritisation',
+            '✅ SMART outcome writing',
+            '✅ Evidence-based interventions',
+            '✅ NCLEX-NGN preparation',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            🗺️ Care Planning &amp; Nursing Process
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Nursing Concept Map
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          A comprehensive guide to generating a full nursing concept map across seven structured
+          phases—from initial patient assessment through evaluation—covering clinical reasoning
+          strategies, the NCSBN Clinical Judgment Model, and the typology of cues that underpin
+          evidence-based nursing diagnosis and intervention planning.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;">
+              {para}
+            </p>
+          ))}
+        </section>
+      ))}
+
+      <!-- Critical thinking table -->
+      <section id="ct-table" style="margin-bottom:2.25rem;">
+        <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0;">
+          Critical Thinking Quick-Reference
+        </h2>
+        <div style="overflow-x:auto;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+            <thead>
+              <tr style="background:#f8fafc; border-bottom:2px solid #e2e8f0;">
+                <th style="text-align:left; padding:0.65rem 0.85rem; font-weight:700; color:#1e293b;">Step</th>
+                <th style="text-align:left; padding:0.65rem 0.85rem; font-weight:700; color:#1e293b;">What You Are Asking</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Recognising', 'What is abnormal here? What stands out?'],
+                ['Analysing', 'Why is this happening? What is the underlying cause?'],
+                ['Clustering', 'What findings go together? Do they point to a pattern?'],
+                ['Prioritising', 'Which problem is most urgent or life-threatening?'],
+                ['Hypothesising', 'What do I predict will happen if I do not intervene?'],
+                ['Selecting', 'Which intervention has the best evidence for this patient?'],
+                ['Predicting', 'What outcome should I expect? In what timeframe?'],
+                ['Evaluating', 'Did the intervention work? Do I need to change my approach?'],
+                ['Reflecting', 'What would I do differently? What did I miss?'],
+              ].map(([step, question], idx) => (
+                <tr style={`border-bottom:1px solid #e2e8f0; background:${idx % 2 === 0 ? '#fff' : '#f8fafc'};`}>
+                  <td style="padding:0.6rem 0.85rem; font-weight:600; color:#4f46e5; white-space:nowrap;">{step}</td>
+                  <td style="padding:0.6rem 0.85rem; color:#334155;">{question}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Cue types quick-reference -->
+      <section id="cue-summary" style="margin-bottom:2.25rem;">
+        <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0;">
+          Cue Categories at a Glance
+        </h2>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            { colour: '#fef2f2', border: '#fecaca', dot: '🔴', label: 'Physiological (Objective)', examples: 'Vital signs, physical exam, labs, diagnostics, I&O, neuro status' },
+            { colour: '#fefce8', border: '#fde68a', dot: '🟡', label: 'Subjective (Patient-Reported)', examples: 'Chief complaint, symptom character, patient perception, cultural values' },
+            { colour: '#f0fdf4', border: '#bbf7d0', dot: '🟢', label: 'Historical / Contextual', examples: 'Past medical/surgical history, family history, medications, social history' },
+            { colour: '#eff6ff', border: '#bfdbfe', dot: '🔵', label: 'Behavioural / Psychosocial', examples: 'Anxiety, coping, treatment adherence, health literacy' },
+            { colour: '#fff7ed', border: '#fed7aa', dot: '🟠', label: 'Environmental / Safety', examples: 'Fall risk, pressure injury risk, infection risk, discharge safety' },
+            { colour: '#faf5ff', border: '#e9d5ff', dot: '🟣', label: 'Trending (Change Over Time)', examples: 'Vital sign trends, worsening/improving labs, response to interventions, new symptoms' },
+          ].map(({ colour, border, dot, label, examples }) => (
+            <div style={`background:${colour}; border:1px solid ${border}; border-radius:0.5rem; padding:0.75rem 1rem; display:flex; gap:0.75rem; align-items:flex-start;`}>
+              <span style="font-size:1.1rem; flex-shrink:0;">{dot}</span>
+              <div>
+                <p style="font-weight:700; color:#1e293b; font-size:0.9rem; margin-bottom:0.2rem;">{label}</p>
+                <p style="color:#475569; font-size:0.85rem; margin:0;">{examples}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style="margin-top:1rem; background:#fafafa; border:1px solid #e2e8f0; border-radius:0.5rem; padding:0.85rem 1rem;">
+          <p style="font-size:0.875rem; color:#334155; margin:0; line-height:1.7;">
+            <strong>Key principle:</strong> No single cue makes a diagnosis. The power of the concept map lies in
+            <em>clustering multiple cues together</em> to form a complete clinical picture. The more connections
+            you can draw between cues, the stronger your clinical reasoning becomes.
+          </p>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Alfaro-LeFevre, R. (2019). <em>Critical thinking, clinical reasoning, and clinical judgment: A practical approach</em> (7th ed.). Elsevier.',
+            'Herdman, T. H., Kamitsuru, S., &amp; Lopes, C. T. (Eds.). (2021). <em>NANDA International nursing diagnoses: Definitions and classification 2021–2023</em> (12th ed.). Thieme.',
+            'Levett-Jones, T. (Ed.). (2018). <em>Clinical reasoning: Learning to think like a nurse</em> (3rd ed.). Pearson Australia.',
+            'National Council of State Boards of Nursing. (2019). <em>NCLEX-RN examination: Test plan for the National Council Licensure Examination for Registered Nurses.</em> NCSBN.',
+            'Nettina, S. M. (2019). <em>Lippincott manual of nursing practice</em> (11th ed.). Wolters Kluwer.',
+            'Novak, J. D., &amp; Cañas, A. J. (2008). <em>The theory underlying concept maps and how to construct and use them.</em> Florida Institute for Human and Machine Cognition.',
+            'Tanner, C. A. (2006). Thinking like a nurse: A research-based model of clinical judgment in nursing. <em>Journal of Nursing Education, 45</em>(6), 204–211.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
