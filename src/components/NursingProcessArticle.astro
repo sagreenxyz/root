@@ -695,11 +695,11 @@ const qrDataUrl: string | null = revealUrl
    * can pop up the pre-generated QR code modal to share the link easily.
    */
   (function () {
-    var btn     = document.getElementById('reveal-copy-btn') as HTMLButtonElement | null;
+    var btn = document.getElementById('reveal-copy-btn') as HTMLButtonElement | null;
     if (!btn) return;          // no reveal URL on this page (e.g. the public reveal page itself)
 
-    var qrBtn   = document.getElementById('qr-show-btn')    as HTMLButtonElement | null;
-    var qrModal = document.getElementById('qr-modal')       as HTMLElement | null;
+    var qrBtn = document.getElementById('qr-show-btn') as HTMLButtonElement | null;
+    var qrModal = document.getElementById('qr-modal') as HTMLElement | null;
     var qrClose = document.getElementById('qr-modal-close') as HTMLButtonElement | null;
 
     /** Show the copy button only for authenticated users. */
