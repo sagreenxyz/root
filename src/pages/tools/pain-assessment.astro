@@ -1,0 +1,1460 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Pain Assessment Tool – WGU Nursing Tools" protected={false}>
+
+<style>
+  /* ── Page wrapper ─────────────────────────────────────────────── */
+  .pa-page { max-width: 920px; margin: 0 auto; }
+  .pa-page h1 { font-size: 1.75rem; font-weight: 800; color: #1e293b; margin-bottom: 0.35rem; }
+  .pa-page .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 2rem; }
+
+  /* ── Section card ─────────────────────────────────────────────── */
+  .pa-section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .pa-section-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .pa-section-header h2 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .step-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: #6366f1;
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .pa-section-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  /* ── Population selector ──────────────────────────────────────── */
+  .pop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.75rem;
+  }
+  .pop-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.9rem 0.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.65rem;
+    background: #f8fafc;
+    cursor: pointer;
+    font-family: inherit;
+    color: #475569;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.15s;
+    line-height: 1.3;
+  }
+  .pop-btn:hover { border-color: #a5b4fc; background: #f0f4ff; }
+  .pop-btn.active { border-color: #6366f1; background: #eef2ff; color: #4338ca; }
+  .pop-btn .pop-icon { font-size: 1.6rem; line-height: 1; }
+  .pop-btn .pop-scale {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #6366f1;
+    background: #e0e7ff;
+    border-radius: 999px;
+    padding: 0.1rem 0.45rem;
+    margin-top: 0.1rem;
+  }
+  .pop-btn.active .pop-scale { background: #c7d2fe; }
+
+  /* ── Scale info box ───────────────────────────────────────────── */
+  .scale-info {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: #0c4a6e;
+    line-height: 1.65;
+  }
+  .scale-info strong { color: #0369a1; }
+
+  /* ── Field group ──────────────────────────────────────────────── */
+  .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field-group label { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+  .field-group .hint { font-size: 0.75rem; color: #64748b; }
+  .field-group input,
+  .field-group textarea,
+  .field-group select {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .field-group input:focus,
+  .field-group textarea:focus,
+  .field-group select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    background: #fff;
+  }
+  .field-group textarea { min-height: 70px; line-height: 1.6; }
+  .field-group select { appearance: auto; cursor: pointer; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) {
+    .row2 { grid-template-columns: 1fr; }
+    .pop-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── NRS slider ───────────────────────────────────────────────── */
+  .nrs-wrap { display: flex; flex-direction: column; gap: 0.5rem; }
+  .nrs-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #22c55e 0%, #eab308 40%, #ef4444 100%);
+    outline: none;
+    cursor: pointer;
+  }
+  .nrs-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #4f46e5;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #6366f1;
+    cursor: pointer;
+  }
+  .nrs-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #4f46e5;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #6366f1;
+    cursor: pointer;
+  }
+  .nrs-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: #64748b; }
+  .nrs-value-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+  }
+  .nrs-severity {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    color: #fff;
+  }
+
+  /* ── Behavioral scale table ───────────────────────────────────── */
+  .bscale-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .bscale-table th {
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .bscale-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  .bscale-table tr:last-child td { border-bottom: none; }
+  .bscale-table tr:nth-child(even) td { background: #fafafa; }
+  .bscale-table .indicator-name { font-weight: 700; color: #1e293b; white-space: nowrap; }
+  .bscale-table select { min-width: 120px; }
+
+  /* ── Score display ────────────────────────────────────────────── */
+  .score-display {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.25rem;
+    background: #f8fafc;
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+  }
+  .score-num {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1;
+  }
+  .score-label { font-size: 0.78rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+  .score-interp {
+    flex: 1;
+    font-size: 0.88rem;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .sev-none    { background: #16a34a; }
+  .sev-mild    { background: #65a30d; }
+  .sev-moderate{ background: #d97706; }
+  .sev-severe  { background: #dc2626; }
+
+  /* ── FACES selector ───────────────────────────────────────────── */
+  .faces-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+  }
+  .face-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.6rem 0.25rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.15s;
+  }
+  .face-btn .face-emoji { font-size: 2rem; line-height: 1; }
+  .face-btn:hover { border-color: #a5b4fc; background: #eef2ff; }
+  .face-btn.active { border-color: #6366f1; background: #eef2ff; color: #4338ca; }
+  @media (max-width: 500px) {
+    .faces-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Callout boxes ────────────────────────────────────────────── */
+  .info-box {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #0369a1;
+  }
+  .tip-box {
+    background: #fefce8;
+    border: 1px solid #fde047;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #713f12;
+  }
+  .warn-box {
+    background: #fff7ed;
+    border-left: 3px solid #f97316;
+    border-radius: 0 0.4rem 0.4rem 0;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.8rem;
+    color: #7c2d12;
+  }
+
+  /* ── Action bar ───────────────────────────────────────────────── */
+  .action-bar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f8fafc;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn-primary   { background: #6366f1; color: #fff; }
+  .btn-primary:hover { background: #4f46e5; }
+  .btn-secondary { background: #0ea5e9; color: #fff; }
+  .btn-secondary:hover { background: #0284c7; }
+  .btn-outline   { background: #fff; color: #1e293b; border: 1px solid #e2e8f0; }
+  .btn-outline:hover { background: #f1f5f9; }
+  .btn-toast {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    pointer-events: none;
+  }
+
+  /* ── Preview panel ────────────────────────────────────────────── */
+  .preview-panel {
+    background: #fff;
+    border: 2px solid #c7d2fe;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .preview-header {
+    background: #4f46e5;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .preview-body { padding: 1.5rem; font-size: 0.9rem; color: #1e293b; line-height: 1.7; }
+  .preview-block { margin-bottom: 1rem; }
+  .preview-block-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #6366f1;
+    margin-bottom: 0.25rem;
+  }
+  .preview-score-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #eef2ff;
+    border-left: 4px solid #6366f1;
+    padding: 0.5rem 0.9rem;
+    border-radius: 0 0.4rem 0.4rem 0;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .preview-divider { border: none; border-top: 1px solid #e2e8f0; margin: 0.9rem 0; }
+  .placeholder-text { color: #94a3b8; font-style: italic; }
+
+  /* ── Print ────────────────────────────────────────────────────── */
+  @media print {
+    :global(*) { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    :global(body) { background: #fff !important; font-size: 10pt; font-family: 'Times New Roman', Georgia, serif; color: #000 !important; }
+    :global(main) { padding: 0 !important; max-width: none !important; margin: 0 !important; width: 100% !important; }
+    :global(header), :global(footer), :global(nav),
+    .action-bar, .pa-page .subtitle, .pa-section,
+    .no-print { display: none !important; }
+
+    .pa-page h1 {
+      font-size: 16pt;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 2pt solid #000;
+      padding-bottom: 5pt;
+      margin-bottom: 12pt;
+      color: #000;
+    }
+    .preview-panel { border: 1.5pt solid #000; border-radius: 0; margin: 0; }
+    .preview-header {
+      background: #e8e8e8 !important;
+      color: #000 !important;
+      border-bottom: 1pt solid #000;
+      padding: 5pt 9pt;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      font-weight: bold;
+    }
+    .preview-body { padding: 10pt; font-size: 10pt; color: #000; }
+    .preview-score-block {
+      background: #f0f0f0 !important;
+      border-left: 3pt solid #000 !important;
+      border-radius: 0;
+    }
+  }
+</style>
+
+<div class="pa-page">
+  <h1>🩹 Pain Assessment Tool</h1>
+  <p class="subtitle">
+    Select a patient population to get the evidence-based pain scale, score the assessment, and generate a formatted summary.
+  </p>
+
+  <!-- ── Action bar ──────────────────────────────────────────────── -->
+  <div class="action-bar no-print">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="btn btn-secondary" id="copy-btn" onclick="copyAssessment()">📋 Copy Summary</button>
+    <button class="btn btn-outline" onclick="clearAll()">🗑️ Clear All</button>
+    <span class="btn-toast" id="copy-toast">✓ Copied!</span>
+  </div>
+
+  <!-- ── Step 1: Population selector ────────────────────────────── -->
+  <div class="pa-section no-print">
+    <div class="pa-section-header">
+      <h2>Step 1 — Select Patient Population</h2>
+      <span class="step-badge">1 of 3</span>
+    </div>
+    <div class="pa-section-body">
+      <div class="pop-grid">
+        <button class="pop-btn active" data-pop="adult-verbal" onclick="selectPop(this)">
+          <span class="pop-icon">🧑</span>
+          Adult — Verbal
+          <span class="pop-scale">NRS 0–10</span>
+        </button>
+        <button class="pop-btn" data-pop="adult-icu" onclick="selectPop(this)">
+          <span class="pop-icon">🛏️</span>
+          Adult — ICU / Non-verbal
+          <span class="pop-scale">CPOT 0–8</span>
+        </button>
+        <button class="pop-btn" data-pop="adult-dementia" onclick="selectPop(this)">
+          <span class="pop-icon">🧓</span>
+          Adult — Dementia
+          <span class="pop-scale">PAINAD 0–10</span>
+        </button>
+        <button class="pop-btn" data-pop="child-8plus" onclick="selectPop(this)">
+          <span class="pop-icon">🧒</span>
+          Child ≥ 8 years
+          <span class="pop-scale">NRS 0–10</span>
+        </button>
+        <button class="pop-btn" data-pop="child-3-7" onclick="selectPop(this)">
+          <span class="pop-icon">👧</span>
+          Child 3–7 years
+          <span class="pop-scale">FACES</span>
+        </button>
+        <button class="pop-btn" data-pop="infant" onclick="selectPop(this)">
+          <span class="pop-icon">👶</span>
+          Infant / Toddler &lt; 3 yr
+          <span class="pop-scale">FLACC 0–10</span>
+        </button>
+        <button class="pop-btn" data-pop="neonate" onclick="selectPop(this)">
+          <span class="pop-icon">🍼</span>
+          Neonate
+          <span class="pop-scale">NIPS 0–7</span>
+        </button>
+      </div>
+
+      <div id="scale-info-box" class="scale-info"></div>
+    </div>
+  </div>
+
+  <!-- ── Step 2: Scale scoring ───────────────────────────────────── -->
+  <div class="pa-section no-print">
+    <div class="pa-section-header">
+      <h2 id="scale-section-title">Step 2 — Score: NRS (Numeric Rating Scale)</h2>
+      <span class="step-badge">2 of 3</span>
+    </div>
+    <div class="pa-section-body">
+
+      <!-- NRS (adult-verbal, child-8plus) -->
+      <div id="scale-nrs">
+        <div class="field-group nrs-wrap">
+          <label>Patient's self-reported pain (0 = no pain · 10 = worst imaginable)</label>
+          <input type="range" class="nrs-slider" id="nrs-slider" min="0" max="10" value="0" oninput="updateNRS(this.value)" />
+          <div class="nrs-labels">
+            <span>0 — No pain</span>
+            <span>5 — Moderate</span>
+            <span>10 — Worst</span>
+          </div>
+          <div class="nrs-value-display">
+            <span id="nrs-val">0</span>
+            <span class="nrs-severity sev-none" id="nrs-sev">No pain</span>
+          </div>
+        </div>
+        <div class="tip-box">
+          <strong>Tip:</strong> Ask: "On a scale from 0 to 10, with 0 being no pain at all and 10 being the worst pain you can imagine, how would you rate your pain right now?"
+        </div>
+      </div>
+
+      <!-- CPOT (adult-icu) -->
+      <div id="scale-cpot" style="display:none;">
+        <p style="font-size:0.85rem; color:#64748b; margin-bottom:0.75rem;">Score each indicator. Total ≥ 3 = significant pain requiring intervention.</p>
+        <div style="overflow-x:auto;">
+          <table class="bscale-table" id="cpot-table">
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th>Descriptor</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="indicator-name">Facial expression</td>
+                <td>
+                  <small>0 = Relaxed, neutral<br>
+                  1 = Tense (brow lowering, orbit tightening)<br>
+                  2 = Grimacing (all of above + eyelids tightly closed)</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="cpot-face" onchange="updateBehavioralScore('cpot')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Tense</option>
+                      <option value="2">2 – Grimacing</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Body movements</td>
+                <td>
+                  <small>0 = Absence of movements<br>
+                  1 = Protection/guarding<br>
+                  2 = Restlessness/agitation</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="cpot-body" onchange="updateBehavioralScore('cpot')">
+                      <option value="0">0 – None</option>
+                      <option value="1">1 – Guarding</option>
+                      <option value="2">2 – Restless</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Muscle tension</td>
+                <td>
+                  <small>0 = Relaxed<br>
+                  1 = Tense / rigid<br>
+                  2 = Very tense / rigid</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="cpot-muscle" onchange="updateBehavioralScore('cpot')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Tense</option>
+                      <option value="2">2 – Very tense</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Ventilator compliance / Vocalization</td>
+                <td>
+                  <small><em>Intubated:</em> 0 = Tolerating, 1 = Coughing, 2 = Fighting vent<br>
+                  <em>Extubated:</em> 0 = No sound/talking, 1 = Sighing/moaning, 2 = Crying/sobbing</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="cpot-vent" onchange="updateBehavioralScore('cpot')">
+                      <option value="0">0 – Tolerating / Quiet</option>
+                      <option value="1">1 – Coughing / Moaning</option>
+                      <option value="2">2 – Fighting / Crying</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="score-display" id="cpot-score-display">
+          <div>
+            <div class="score-num" id="cpot-total">0</div>
+            <div class="score-label">/ 8 total</div>
+          </div>
+          <div class="score-interp">
+            <span class="score-badge sev-none" id="cpot-sev">0–2: No significant pain</span>
+          </div>
+        </div>
+        <div class="warn-box">
+          <strong>⚠ Principle:</strong> Absence of behavioral pain indicators does NOT rule out pain in deeply sedated or pharmacologically paralyzed patients. Assume painful procedures (suctioning, turning, wound care) cause pain and premedicate as ordered.
+        </div>
+      </div>
+
+      <!-- PAINAD (adult-dementia) -->
+      <div id="scale-painad" style="display:none;">
+        <p style="font-size:0.85rem; color:#64748b; margin-bottom:0.75rem;">Score each indicator. Total 1–3 = mild, 4–6 = moderate, 7–10 = severe pain.</p>
+        <div style="overflow-x:auto;">
+          <table class="bscale-table">
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th>Descriptor</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="indicator-name">Breathing</td>
+                <td>
+                  <small>0 = Normal<br>
+                  1 = Occasional labored breathing<br>
+                  2 = Noisy labored / Cheyne-Stokes</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="painad-breath" onchange="updateBehavioralScore('painad')">
+                      <option value="0">0 – Normal</option>
+                      <option value="1">1 – Labored (occasional)</option>
+                      <option value="2">2 – Noisy / Cheyne-Stokes</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Negative vocalization</td>
+                <td>
+                  <small>0 = None<br>
+                  1 = Occasional moan/groan<br>
+                  2 = Repeated calling out / crying</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="painad-vocal" onchange="updateBehavioralScore('painad')">
+                      <option value="0">0 – None</option>
+                      <option value="1">1 – Occasional moan</option>
+                      <option value="2">2 – Repeated calling / crying</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Facial expression</td>
+                <td>
+                  <small>0 = Smiling or inexpressive<br>
+                  1 = Sad / frightened / frowning<br>
+                  2 = Facial grimacing</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="painad-face" onchange="updateBehavioralScore('painad')">
+                      <option value="0">0 – Smiling / Inexpressive</option>
+                      <option value="1">1 – Sad / Frowning</option>
+                      <option value="2">2 – Grimacing</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Body language</td>
+                <td>
+                  <small>0 = Relaxed<br>
+                  1 = Tense / distressed pacing / fidgeting<br>
+                  2 = Rigid / fists clenched / pulling away / striking</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="painad-body" onchange="updateBehavioralScore('painad')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Tense / Fidgeting</option>
+                      <option value="2">2 – Rigid / Striking out</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Consolability</td>
+                <td>
+                  <small>0 = No need to console<br>
+                  1 = Distracted by voice/touch<br>
+                  2 = Unable to console/distract</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="painad-console" onchange="updateBehavioralScore('painad')">
+                      <option value="0">0 – No need to console</option>
+                      <option value="1">1 – Distracted by voice/touch</option>
+                      <option value="2">2 – Unable to console</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="score-display" id="painad-score-display">
+          <div>
+            <div class="score-num" id="painad-total">0</div>
+            <div class="score-label">/ 10 total</div>
+          </div>
+          <div class="score-interp">
+            <span class="score-badge sev-none" id="painad-sev">0: No pain indicated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wong-Baker FACES (child-3-7) -->
+      <div id="scale-faces" style="display:none;">
+        <div class="field-group">
+          <label>Point to the face that shows how much the child's hurt</label>
+          <div class="hint">Ask: "Which face shows how much you hurt right now?"</div>
+        </div>
+        <div class="faces-grid" id="faces-grid">
+          <button class="face-btn active" data-score="0" onclick="selectFace(this)">
+            <span class="face-emoji">😀</span>
+            <span>0</span>
+            <span style="font-size:0.62rem; color:#64748b;">No hurt</span>
+          </button>
+          <button class="face-btn" data-score="2" onclick="selectFace(this)">
+            <span class="face-emoji">🙂</span>
+            <span>2</span>
+            <span style="font-size:0.62rem; color:#64748b;">Hurts little</span>
+          </button>
+          <button class="face-btn" data-score="4" onclick="selectFace(this)">
+            <span class="face-emoji">😐</span>
+            <span>4</span>
+            <span style="font-size:0.62rem; color:#64748b;">Hurts more</span>
+          </button>
+          <button class="face-btn" data-score="6" onclick="selectFace(this)">
+            <span class="face-emoji">😟</span>
+            <span>6</span>
+            <span style="font-size:0.62rem; color:#64748b;">Hurts even more</span>
+          </button>
+          <button class="face-btn" data-score="8" onclick="selectFace(this)">
+            <span class="face-emoji">😢</span>
+            <span>8</span>
+            <span style="font-size:0.62rem; color:#64748b;">Hurts whole lot</span>
+          </button>
+          <button class="face-btn" data-score="10" onclick="selectFace(this)">
+            <span class="face-emoji">😭</span>
+            <span>10</span>
+            <span style="font-size:0.62rem; color:#64748b;">Hurts worst</span>
+          </button>
+        </div>
+        <div class="score-display" style="margin-top:1rem;">
+          <div>
+            <div class="score-num" id="faces-val">0</div>
+            <div class="score-label">/ 10</div>
+          </div>
+          <div class="score-interp">
+            <span class="score-badge sev-none" id="faces-sev">No pain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLACC (infant) -->
+      <div id="scale-flacc" style="display:none;">
+        <p style="font-size:0.85rem; color:#64748b; margin-bottom:0.75rem;">Observe each indicator for 1–5 minutes. Total 1–3 = mild, 4–6 = moderate, 7–10 = severe.</p>
+        <div style="overflow-x:auto;">
+          <table class="bscale-table">
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th>Descriptor</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="indicator-name">Face</td>
+                <td>
+                  <small>0 = No expression / smile<br>
+                  1 = Occasional grimace / frown<br>
+                  2 = Frequent grimace / clenched jaw</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="flacc-face" onchange="updateBehavioralScore('flacc')">
+                      <option value="0">0 – No expression</option>
+                      <option value="1">1 – Occasional grimace</option>
+                      <option value="2">2 – Frequent grimace</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Legs</td>
+                <td>
+                  <small>0 = Normal position / relaxed<br>
+                  1 = Uneasy / restless / tense<br>
+                  2 = Kicking / legs drawn up</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="flacc-legs" onchange="updateBehavioralScore('flacc')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Restless / Tense</option>
+                      <option value="2">2 – Kicking / Drawn up</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Activity</td>
+                <td>
+                  <small>0 = Lying quietly / normal<br>
+                  1 = Squirming / shifting / tense<br>
+                  2 = Arched / rigid / jerking</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="flacc-activity" onchange="updateBehavioralScore('flacc')">
+                      <option value="0">0 – Lying quietly</option>
+                      <option value="1">1 – Squirming / Shifting</option>
+                      <option value="2">2 – Arched / Rigid</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Cry</td>
+                <td>
+                  <small>0 = No cry (awake or asleep)<br>
+                  1 = Moans / whimpers / occasional complaint<br>
+                  2 = Crying steadily / screams / sobs</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="flacc-cry" onchange="updateBehavioralScore('flacc')">
+                      <option value="0">0 – No cry</option>
+                      <option value="1">1 – Moans / Whimpers</option>
+                      <option value="2">2 – Crying / Screaming</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Consolability</td>
+                <td>
+                  <small>0 = Content / relaxed<br>
+                  1 = Reassured by touch / hugging<br>
+                  2 = Difficult to console</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="flacc-console" onchange="updateBehavioralScore('flacc')">
+                      <option value="0">0 – Content / Relaxed</option>
+                      <option value="1">1 – Reassured by touch</option>
+                      <option value="2">2 – Difficult to console</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="score-display" id="flacc-score-display">
+          <div>
+            <div class="score-num" id="flacc-total">0</div>
+            <div class="score-label">/ 10 total</div>
+          </div>
+          <div class="score-interp">
+            <span class="score-badge sev-none" id="flacc-sev">0: Relaxed / No pain</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NIPS (neonate) -->
+      <div id="scale-nips" style="display:none;">
+        <p style="font-size:0.85rem; color:#64748b; margin-bottom:0.75rem;">Score each indicator. Total ≥ 3 = significant pain. Max score = 7.</p>
+        <div style="overflow-x:auto;">
+          <table class="bscale-table">
+            <thead>
+              <tr>
+                <th>Indicator</th>
+                <th>Descriptor</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="indicator-name">Facial expression</td>
+                <td>
+                  <small>0 = Relaxed<br>
+                  1 = Grimace</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="nips-face" onchange="updateBehavioralScore('nips')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Grimace</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Cry</td>
+                <td>
+                  <small>0 = No cry<br>
+                  1 = Whimper<br>
+                  2 = Vigorous cry</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="nips-cry" onchange="updateBehavioralScore('nips')">
+                      <option value="0">0 – No cry</option>
+                      <option value="1">1 – Whimper</option>
+                      <option value="2">2 – Vigorous cry</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Breathing pattern</td>
+                <td>
+                  <small>0 = Relaxed<br>
+                  1 = Change (irregular / faster / gasping / holding)</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="nips-breath" onchange="updateBehavioralScore('nips')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Changed breathing</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Arms</td>
+                <td>
+                  <small>0 = Relaxed / restrained<br>
+                  1 = Flexed / extended</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="nips-arms" onchange="updateBehavioralScore('nips')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Flexed / Extended</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Legs</td>
+                <td>
+                  <small>0 = Relaxed / restrained<br>
+                  1 = Flexed / extended</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="nips-legs" onchange="updateBehavioralScore('nips')">
+                      <option value="0">0 – Relaxed</option>
+                      <option value="1">1 – Flexed / Extended</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="indicator-name">State of arousal</td>
+                <td>
+                  <small>0 = Sleeping / Quiet awake<br>
+                  1 = Fussy</small>
+                </td>
+                <td>
+                  <div class="field-group">
+                    <select id="nips-arousal" onchange="updateBehavioralScore('nips')">
+                      <option value="0">0 – Sleeping / Awake</option>
+                      <option value="1">1 – Fussy</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="score-display" id="nips-score-display">
+          <div>
+            <div class="score-num" id="nips-total">0</div>
+            <div class="score-label">/ 7 total</div>
+          </div>
+          <div class="score-interp">
+            <span class="score-badge sev-none" id="nips-sev">0–2: Minimal / No pain</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Step 3: PQRSTU assessment fields ──────────────────────── -->
+  <div class="pa-section no-print" id="pqrstu-section">
+    <div class="pa-section-header">
+      <h2>Step 3 — PQRSTU Pain Assessment</h2>
+      <span class="step-badge">3 of 3</span>
+    </div>
+    <div class="pa-section-body">
+      <div class="info-box">
+        <strong>PQRSTU</strong> — a structured framework for a complete pain history. Use patient's own words wherever possible.
+      </div>
+
+      <div class="row2">
+        <div class="field-group">
+          <label>P — Provokes / Palliates</label>
+          <div class="hint">What makes the pain better or worse?</div>
+          <textarea id="pq-p" placeholder="e.g., 'Worse with movement, better with rest and ice…'" oninput="updatePreview()"></textarea>
+        </div>
+        <div class="field-group">
+          <label>Q — Quality</label>
+          <div class="hint">Sharp, dull, burning, throbbing, aching, stabbing, cramping?</div>
+          <textarea id="pq-q" placeholder="e.g., 'Sharp, stabbing sensation…'" oninput="updatePreview()"></textarea>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field-group">
+          <label>R — Region / Radiation</label>
+          <div class="hint">Where is the pain? Does it radiate anywhere?</div>
+          <textarea id="pq-r" placeholder="e.g., 'Right lower quadrant, radiating to the groin…'" oninput="updatePreview()"></textarea>
+        </div>
+        <div class="field-group">
+          <label>S — Severity</label>
+          <div class="hint">Pain scale score (auto-populated from Step 2) and any additional context</div>
+          <textarea id="pq-s" placeholder="Auto-filled from Step 2 score — add context here…" oninput="updatePreview()"></textarea>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field-group">
+          <label>T — Timing</label>
+          <div class="hint">Constant or intermittent? When did it start? Duration?</div>
+          <textarea id="pq-t" placeholder="e.g., 'Constant for 3 hours; started after fall…'" oninput="updatePreview()"></textarea>
+        </div>
+        <div class="field-group">
+          <label>U — Understanding / Impact</label>
+          <div class="hint">What does the patient think is causing the pain? How does it affect function?</div>
+          <textarea id="pq-u" placeholder="e.g., 'Patient believes related to surgery; unable to ambulate…'" oninput="updatePreview()"></textarea>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Additional clinical notes / observations</label>
+        <textarea id="pq-notes" rows="3" placeholder="Vital sign changes, nonverbal cues, current analgesics, allergies, reassessment plan…" oninput="updatePreview()"></textarea>
+      </div>
+
+      <div class="tip-box">
+        <strong>📋 Reassessment timing:</strong> Reassess 30–60 min after a non-pharmacological intervention; 15–30 min after IV medication; 60 min after oral or IM medication. Document every reassessment.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Preview panel ───────────────────────────────────────────── -->
+  <div class="preview-panel">
+    <div class="preview-header">📄 Assessment Summary</div>
+    <div class="preview-body" id="preview-body">
+      <span class="placeholder-text">Complete Steps 1–3 above to generate a formatted assessment summary.</span>
+    </div>
+  </div>
+</div><!-- /.pa-page -->
+
+<script is:inline>
+  /* ================================================================
+     POPULATION / SCALE DATA
+  ================================================================ */
+  const POP_DATA = {
+    'adult-verbal': {
+      label: 'Adult — Verbal',
+      scale: 'NRS (Numeric Rating Scale)',
+      scaleDiv: 'scale-nrs',
+      info: '<strong>NRS (Numeric Rating Scale)</strong> — the gold standard for cognitively intact adults and children ≥ 8 years old.<br>Patient self-reports pain on a 0–10 scale. <strong>0</strong> = no pain; <strong>10</strong> = worst imaginable pain.<br><em>Range interpretations:</em> 1–3 mild · 4–6 moderate · 7–10 severe.'
+    },
+    'adult-icu': {
+      label: 'Adult — ICU / Non-verbal',
+      scale: 'CPOT (Critical Care Pain Observation Tool)',
+      scaleDiv: 'scale-cpot',
+      info: '<strong>CPOT (Critical Care Pain Observation Tool)</strong> — validated for sedated, intubated, or non-communicative patients in the ICU.<br>Four behavioral indicators each scored 0–2. <strong>Total 0–8.</strong> Score ≥ 3 = significant pain requiring intervention.'
+    },
+    'adult-dementia': {
+      label: 'Adult — Dementia',
+      scale: 'PAINAD (Pain Assessment in Advanced Dementia)',
+      scaleDiv: 'scale-painad',
+      info: '<strong>PAINAD (Pain Assessment in Advanced Dementia)</strong> — validated for patients with severe dementia who cannot verbally report pain.<br>Five behavioral indicators each scored 0–2. <strong>Total 0–10.</strong> Score 1–3 = mild · 4–6 = moderate · 7–10 = severe pain.'
+    },
+    'child-8plus': {
+      label: 'Child ≥ 8 years',
+      scale: 'NRS (Numeric Rating Scale)',
+      scaleDiv: 'scale-nrs',
+      info: '<strong>NRS (Numeric Rating Scale)</strong> — recommended for children 8 years and older who can reliably self-report pain on a 0–10 scale.<br>Use the same approach as adults: "0 is no pain at all, 10 is the worst pain you can imagine."'
+    },
+    'child-3-7': {
+      label: 'Child 3–7 years',
+      scale: 'Wong-Baker FACES Pain Rating Scale',
+      scaleDiv: 'scale-faces',
+      info: '<strong>Wong-Baker FACES Pain Rating Scale</strong> — designed for children 3–7 years who can point to a face representing their pain level.<br>Scores range from 0 (no hurt) to 10 (hurts as much as you can imagine), in increments of 2.'
+    },
+    'infant': {
+      label: 'Infant / Toddler < 3 yr',
+      scale: 'FLACC Scale',
+      scaleDiv: 'scale-flacc',
+      info: '<strong>FLACC Scale</strong> (Face · Legs · Activity · Cry · Consolability) — validated behavioral observation scale for infants and toddlers who cannot verbally report pain.<br>Each of 5 indicators scored 0–2; <strong>total 0–10.</strong> Score 1–3 = mild · 4–6 = moderate · 7–10 = severe.'
+    },
+    'neonate': {
+      label: 'Neonate',
+      scale: 'NIPS (Neonatal Infant Pain Scale)',
+      scaleDiv: 'scale-nips',
+      info: '<strong>NIPS (Neonatal Infant Pain Scale)</strong> — designed for premature and full-term neonates. Six behavioral indicators; facial expression and each limb scored 0–1, cry scored 0–2. <strong>Total 0–7.</strong> Score ≥ 3 = significant pain requiring intervention.'
+    }
+  };
+
+  const DEFAULT_POPULATION = 'adult-verbal';
+  let currentPop = DEFAULT_POPULATION;
+  let facesScore = 0;
+
+  /* ================================================================
+     POPULATION SELECTION
+  ================================================================ */
+  function selectPop(btn) {
+    document.querySelectorAll('.pop-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPop = btn.dataset.pop;
+
+    const data = POP_DATA[currentPop];
+
+    // Update info box
+    document.getElementById('scale-info-box').innerHTML = data.info;
+
+    // Update scale section title
+    document.getElementById('scale-section-title').textContent =
+      'Step 2 — Score: ' + data.scale;
+
+    // Hide all scale divs, show the correct one
+    ['scale-nrs','scale-cpot','scale-painad','scale-faces','scale-flacc','scale-nips']
+      .forEach(id => { document.getElementById(id).style.display = 'none'; });
+    document.getElementById(data.scaleDiv).style.display = '';
+
+    // Clear the auto-filled S field so it reflects the new scale on next interaction
+    const sField = document.getElementById('pq-s');
+    if (!sField.dataset.manuallyEdited) {
+      sField.value = '';
+    }
+
+    updatePreview();
+  }
+
+  /* ================================================================
+     NRS SLIDER
+  ================================================================ */
+  function updateNRS(val) {
+    val = parseInt(val, 10);
+    document.getElementById('nrs-val').textContent = val;
+    const { label, cls } = severityNRS(val);
+    const sevEl = document.getElementById('nrs-sev');
+    sevEl.textContent = label;
+    sevEl.className = 'nrs-severity ' + cls;
+
+    // Auto-fill S field in PQRSTU
+    const sField = document.getElementById('pq-s');
+    if (!sField.dataset.manuallyEdited) {
+      sField.value = val + '/10 — ' + label;
+    }
+    updatePreview();
+  }
+
+  function severityNRS(v) {
+    if (v === 0)       return { label: 'No pain',  cls: 'sev-none' };
+    if (v <= 3)        return { label: 'Mild',      cls: 'sev-mild' };
+    if (v <= 6)        return { label: 'Moderate',  cls: 'sev-moderate' };
+    return               { label: 'Severe',    cls: 'sev-severe' };
+  }
+
+  /* Mark S field as manually edited if user types in it */
+  document.getElementById('pq-s').addEventListener('input', function() {
+    this.dataset.manuallyEdited = 'true';
+  });
+
+  /* ================================================================
+     BEHAVIORAL SCALES (CPOT / PAINAD / FLACC / NIPS)
+  ================================================================ */
+  const SCALE_CONFIG = {
+    cpot: {
+      ids: ['cpot-face','cpot-body','cpot-muscle','cpot-vent'],
+      maxScore: 8,
+      totalId: 'cpot-total',
+      sevId: 'cpot-sev',
+      severity: (s) => {
+        if (s <= 2) return { label: '0–2: No significant pain', cls: 'sev-none' };
+        if (s <= 4) return { label: '3–4: Moderate pain', cls: 'sev-moderate' };
+        return { label: '5–8: Severe pain', cls: 'sev-severe' };
+      }
+    },
+    painad: {
+      ids: ['painad-breath','painad-vocal','painad-face','painad-body','painad-console'],
+      maxScore: 10,
+      totalId: 'painad-total',
+      sevId: 'painad-sev',
+      severity: (s) => {
+        if (s === 0) return { label: '0: No pain indicated', cls: 'sev-none' };
+        if (s <= 3)  return { label: '1–3: Mild pain', cls: 'sev-mild' };
+        if (s <= 6)  return { label: '4–6: Moderate pain', cls: 'sev-moderate' };
+        return { label: '7–10: Severe pain', cls: 'sev-severe' };
+      }
+    },
+    flacc: {
+      ids: ['flacc-face','flacc-legs','flacc-activity','flacc-cry','flacc-console'],
+      maxScore: 10,
+      totalId: 'flacc-total',
+      sevId: 'flacc-sev',
+      severity: (s) => {
+        if (s === 0) return { label: '0: Relaxed / No pain', cls: 'sev-none' };
+        if (s <= 3)  return { label: '1–3: Mild discomfort', cls: 'sev-mild' };
+        if (s <= 6)  return { label: '4–6: Moderate pain', cls: 'sev-moderate' };
+        return { label: '7–10: Severe pain / discomfort', cls: 'sev-severe' };
+      }
+    },
+    nips: {
+      ids: ['nips-face','nips-cry','nips-breath','nips-arms','nips-legs','nips-arousal'],
+      maxScore: 7,
+      totalId: 'nips-total',
+      sevId: 'nips-sev',
+      severity: (s) => {
+        if (s <= 2) return { label: '0–2: Minimal / No pain', cls: 'sev-none' };
+        if (s <= 4) return { label: '3–4: Moderate pain', cls: 'sev-moderate' };
+        return { label: '5–7: Severe pain', cls: 'sev-severe' };
+      }
+    }
+  };
+
+  function updateBehavioralScore(scaleKey) {
+    const cfg = SCALE_CONFIG[scaleKey];
+    if (!cfg) return;
+    const total = cfg.ids.reduce((sum, id) => {
+      const el = document.getElementById(id);
+      return sum + (el ? parseInt(el.value, 10) : 0);
+    }, 0);
+    const totalEl = document.getElementById(cfg.totalId);
+    const sevEl = document.getElementById(cfg.sevId);
+    if (totalEl) totalEl.textContent = total;
+    const { label, cls } = cfg.severity(total);
+    if (sevEl) {
+      sevEl.textContent = label;
+      sevEl.className = 'score-badge ' + cls;
+    }
+
+    // Auto-fill S field
+    const sField = document.getElementById('pq-s');
+    if (sField && !sField.dataset.manuallyEdited) {
+      sField.value = total + '/' + cfg.maxScore + ' (' + label + ')';
+    }
+    updatePreview();
+  }
+
+  /* ================================================================
+     WONG-BAKER FACES
+  ================================================================ */
+  function selectFace(btn) {
+    document.querySelectorAll('.face-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    facesScore = parseInt(btn.dataset.score, 10);
+    document.getElementById('faces-val').textContent = facesScore;
+    const { label, cls } = severityNRS(facesScore);
+    const sevEl = document.getElementById('faces-sev');
+    sevEl.textContent = label;
+    sevEl.className = 'score-badge ' + cls;
+
+    // Auto-fill S field
+    const sField = document.getElementById('pq-s');
+    if (!sField.dataset.manuallyEdited) {
+      sField.value = facesScore + '/10 — ' + label + ' (Wong-Baker FACES)';
+    }
+    updatePreview();
+  }
+
+  /* ================================================================
+     GET CURRENT SCALE SCORE (for preview)
+  ================================================================ */
+  function getCurrentScore() {
+    const pop = POP_DATA[currentPop];
+    if (pop.scaleDiv === 'scale-nrs') {
+      const v = parseInt(document.getElementById('nrs-slider').value, 10);
+      const { label } = severityNRS(v);
+      return { scale: pop.scale, score: v + '/10', severity: label };
+    }
+    if (pop.scaleDiv === 'scale-faces') {
+      const { label } = severityNRS(facesScore);
+      return { scale: pop.scale, score: facesScore + '/10', severity: label };
+    }
+    const scaleKeys = { 'scale-cpot': 'cpot', 'scale-painad': 'painad', 'scale-flacc': 'flacc', 'scale-nips': 'nips' };
+    const key = scaleKeys[pop.scaleDiv];
+    if (key) {
+      const cfg = SCALE_CONFIG[key];
+      const total = cfg.ids.reduce((sum, id) => {
+        const el = document.getElementById(id);
+        return sum + (el ? parseInt(el.value, 10) : 0);
+      }, 0);
+      const { label } = cfg.severity(total);
+      return { scale: pop.scale, score: total + '/' + cfg.maxScore, severity: label };
+    }
+    return { scale: pop.scale, score: '—', severity: '—' };
+  }
+
+  /* ================================================================
+     PREVIEW UPDATE
+  ================================================================ */
+  function updatePreview() {
+    const popData = POP_DATA[currentPop];
+    const scoreData = getCurrentScore();
+
+    const fields = {
+      p: (document.getElementById('pq-p').value || '').trim(),
+      q: (document.getElementById('pq-q').value || '').trim(),
+      r: (document.getElementById('pq-r').value || '').trim(),
+      s: (document.getElementById('pq-s').value || '').trim(),
+      t: (document.getElementById('pq-t').value || '').trim(),
+      u: (document.getElementById('pq-u').value || '').trim(),
+      notes: (document.getElementById('pq-notes').value || '').trim()
+    };
+
+    const hasContent = Object.values(fields).some(v => v) || scoreData.score.split('/')[0] !== '0';
+
+    if (!hasContent) {
+      document.getElementById('preview-body').innerHTML =
+        '<span class="placeholder-text">Complete Steps 1–3 above to generate a formatted assessment summary.</span>';
+      return;
+    }
+
+    let html = '';
+
+    // Patient population + scale
+    html += '<div class="preview-block">';
+    html += '<div class="preview-block-label">Patient Population &amp; Scale</div>';
+    html += '<div>' + popData.label + ' — <strong>' + popData.scale + '</strong></div>';
+    html += '</div>';
+
+    // Score
+    html += '<div class="preview-score-block">';
+    html += '🩹 Pain Score: ' + scoreData.score + ' &nbsp;|&nbsp; ' + scoreData.severity;
+    html += '</div>';
+
+    html += '<hr class="preview-divider">';
+
+    // PQRSTU fields
+    const pqItems = [
+      { key: 'p', label: 'P — Provokes / Palliates', val: fields.p },
+      { key: 'q', label: 'Q — Quality',              val: fields.q },
+      { key: 'r', label: 'R — Region / Radiation',   val: fields.r },
+      { key: 's', label: 'S — Severity',             val: fields.s },
+      { key: 't', label: 'T — Timing',               val: fields.t },
+      { key: 'u', label: 'U — Understanding / Impact', val: fields.u }
+    ];
+
+    const filledItems = pqItems.filter(i => i.val);
+    if (filledItems.length) {
+      html += '<div class="preview-block">';
+      html += '<div class="preview-block-label">PQRSTU Assessment</div>';
+      filledItems.forEach(item => {
+        html += '<div style="margin-bottom:0.4rem;"><strong>' + item.label + ':</strong> ' + escHtml(item.val) + '</div>';
+      });
+      html += '</div>';
+    }
+
+    if (fields.notes) {
+      html += '<hr class="preview-divider">';
+      html += '<div class="preview-block">';
+      html += '<div class="preview-block-label">Clinical Notes</div>';
+      html += '<div>' + escHtml(fields.notes) + '</div>';
+      html += '</div>';
+    }
+
+    document.getElementById('preview-body').innerHTML = html;
+  }
+
+  function escHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/\n/g, '<br>');
+  }
+
+  /* ================================================================
+     COPY / CLEAR
+  ================================================================ */
+  function copyAssessment() {
+    const body = document.getElementById('preview-body');
+    const text = body.innerText || body.textContent;
+    if (!text || text.includes('Complete Steps')) {
+      alert('Complete the assessment first to generate a summary.');
+      return;
+    }
+    navigator.clipboard.writeText(text).then(() => {
+      const toast = document.getElementById('copy-toast');
+      toast.style.display = 'inline-flex';
+      setTimeout(() => { toast.style.display = 'none'; }, 2000);
+    }).catch(() => {
+      alert('Could not access clipboard. Please copy the text manually.');
+    });
+  }
+
+  function clearAll() {
+    if (!confirm('Clear all fields and reset scores?')) return;
+
+    // Reset NRS
+    document.getElementById('nrs-slider').value = 0;
+    updateNRS(0);
+
+    // Reset faces
+    document.querySelectorAll('.face-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.face-btn[data-score="0"]').classList.add('active');
+    facesScore = 0;
+    document.getElementById('faces-val').textContent = '0';
+    document.getElementById('faces-sev').textContent = 'No pain';
+    document.getElementById('faces-sev').className = 'score-badge sev-none';
+
+    // Reset all behavioral selects
+    ['cpot-face','cpot-body','cpot-muscle','cpot-vent',
+     'painad-breath','painad-vocal','painad-face','painad-body','painad-console',
+     'flacc-face','flacc-legs','flacc-activity','flacc-cry','flacc-console',
+     'nips-face','nips-cry','nips-breath','nips-arms','nips-legs','nips-arousal']
+      .forEach(id => { document.getElementById(id).value = '0'; });
+
+    ['cpot','painad','flacc','nips'].forEach(k => updateBehavioralScore(k));
+
+    // Reset PQRSTU
+    ['pq-p','pq-q','pq-r','pq-s','pq-t','pq-u','pq-notes'].forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      delete el.dataset.manuallyEdited;
+    });
+
+    updatePreview();
+  }
+
+  /* ================================================================
+     INITIALISE
+  ================================================================ */
+  document.addEventListener('DOMContentLoaded', function() {
+    // Trigger initial population selection
+    const defaultBtn = document.querySelector('.pop-btn[data-pop="' + DEFAULT_POPULATION + '"]');
+    if (defaultBtn) selectPop(defaultBtn);
+    updateNRS(0);
+  });
+</script>
+
+</Layout>
