@@ -1,0 +1,336 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Professional Misconduct in Nursing – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/professional-misconduct`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">🚨</div>
+          <h1 class="slide-main-title">Professional Misconduct in Nursing</h1>
+          <h2 class="slide-subtitle">Negligence · Boundaries · Reporting · License Protection</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Negligence vs. Malpractice -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 9</div>
+          <h2 class="slide-heading">⚖️ Negligence vs. Malpractice</h2>
+          <p class="slide-intro"><strong>Malpractice</strong> = professional negligence by a licensed nurse that falls below the accepted standard of care and causes patient harm. All malpractice is negligence; not all negligence is malpractice.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">4 Ds of Malpractice</h3>
+              <ul class="bullet-list">
+                <li><strong>Duty</strong> — nurse-patient relationship existed</li>
+                <li><strong>Dereliction</strong> — breach of the standard of care</li>
+                <li><strong>Direct causation</strong> — breach caused the harm</li>
+                <li><strong>Damages</strong> — provable patient harm resulted</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Nursing Malpractice Examples</h3>
+              <ul class="bullet-list">
+                <li>Wrong medication dose → cardiac arrest</li>
+                <li>Failing to report deteriorating vitals → respiratory failure</li>
+                <li>Fall-risk patient left alone → hip fracture</li>
+                <li>Skipping hand hygiene → MRSA infection</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            ⚠️ <strong>Standard of care</strong> = what a reasonably prudent nurse with the same education and experience would do in the same situation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Types of Misconduct -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 9</div>
+          <h2 class="slide-heading">📋 Types of Professional Misconduct</h2>
+          <p class="slide-intro">Any act or omission that violates legal, ethical, or professional standards can constitute professional misconduct.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Clinical / Documentation</h3>
+              <ul class="bullet-list">
+                <li>Clinical incompetence</li>
+                <li>Fraud &amp; falsification of records</li>
+                <li>Documentation of care not given</li>
+                <li>Practicing outside scope of practice</li>
+                <li>Patient abandonment</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Conduct &amp; Ethics</h3>
+              <ul class="bullet-list">
+                <li>Drug diversion</li>
+                <li>Patient abuse or neglect</li>
+                <li>Professional boundary violations</li>
+                <li>HIPAA violations</li>
+                <li>Failure to maintain competency</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 <strong>Documentation falsification</strong> = fraud. It results in immediate license action in virtually every state — it is among the most severely punished acts of misconduct.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: BON Discipline -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 9</div>
+          <h2 class="slide-heading">🏛️ State BON Disciplinary Process</h2>
+          <p class="slide-intro">Each state <strong>Board of Nursing (BON)</strong> has legal authority to license and discipline nurses. The <strong>NCSBN</strong> supports state boards and develops NCLEX examinations.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Disciplinary Steps</h3>
+              <ul class="bullet-list">
+                <li>Complaint filed (patient, employer, peer, law enforcement)</li>
+                <li>BON investigation — nurse submits written response</li>
+                <li>Formal hearing (administrative law) if warranted</li>
+                <li>BON decision and action</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Possible Actions (least → most severe)</h3>
+              <ul class="bullet-list">
+                <li>Letter of concern / reprimand</li>
+                <li>Fine</li>
+                <li>Probation / practice restrictions</li>
+                <li>Suspension</li>
+                <li><strong>Revocation</strong> — loss of license</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            🔎 <strong>Nursys</strong> — NCSBN's national database; all BON actions are visible to employers and other states. eNLC: discipline in one compact state affects all compact states.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Mandatory Reporting -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 9</div>
+          <h2 class="slide-heading">📢 Mandatory Reporting Obligations</h2>
+          <p class="slide-intro">Nurses are <strong>mandatory reporters</strong> in every U.S. state. Reporting is a <em>legal obligation</em> — not a choice. Failure to report is itself professional misconduct.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">What Must Be Reported</h3>
+              <ul class="bullet-list">
+                <li><strong>Child abuse / neglect</strong> → CPS (suspicion = enough)</li>
+                <li><strong>Elder / vulnerable adult abuse</strong> → APS</li>
+                <li><strong>Communicable diseases</strong> → state/local health dept.</li>
+                <li><strong>Gunshot wounds / criminal injuries</strong> → law enforcement</li>
+                <li><strong>Impaired colleague</strong> → supervisor / BON</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Protections for Reporters</h3>
+              <ul class="bullet-list">
+                <li>Good faith reports → civil immunity (even if unfounded)</li>
+                <li>Whistleblower laws protect against employer retaliation</li>
+                <li>Cannot be legally fired for good-faith regulatory reports</li>
+              </ul>
+              <div style="margin-top:0.6rem; font-size:0.82rem; color:#dc2626; font-weight:600;">
+                ⚠️ Proof is NOT required before filing a report.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Boundary Violations -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 9</div>
+          <h2 class="slide-heading">🚧 Professional Boundary Violations</h2>
+          <p class="slide-intro">Boundaries protect the therapeutic relationship and patient dignity. The nurse holds significant power — the patient is vulnerable and trusting.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">NCSBN Continuum</h3>
+              <ul class="bullet-list">
+                <li><strong>Under-involvement:</strong> Neglect, cold, abusive</li>
+                <li><strong>Appropriate:</strong> Therapeutic, patient-centered</li>
+                <li><strong>Over-involvement:</strong> Favoritism, special relationship</li>
+                <li><strong>Sexual misconduct:</strong> Most severe violation</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Red Flags</h3>
+              <ul class="bullet-list">
+                <li>Keeping a relationship "secret"</li>
+                <li>Sharing personal contact info with patient</li>
+                <li>Accepting gifts of significant value</li>
+                <li>Meeting patient outside clinical setting</li>
+                <li>Excessive personal self-disclosure</li>
+                <li>"This patient is special — rules don't apply"</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 <em>Limited, purposeful self-disclosure</em> can be therapeutic. <em>Excessive personal disclosure</em> shifts focus from patient to nurse — that is a violation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Substance Abuse -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">7 / 9</div>
+          <h2 class="slide-heading">💊 Substance Abuse &amp; Impaired Practice</h2>
+          <p class="slide-intro">SUD affects an estimated <strong>10–15% of nurses</strong>. Drug diversion is a professional misconduct violation AND a criminal offense.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Warning Signs of Impaired Colleague</h3>
+              <ul class="bullet-list">
+                <li>Frequent requests to give other nurses' narcotics</li>
+                <li>Narcotic count discrepancies / waste irregularities</li>
+                <li>Slurred speech, unsteady gait, alcohol odor on shift</li>
+                <li>Patients report inadequate pain relief (diversion)</li>
+                <li>Volunteers for extra shifts to access controlled substances</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Peer Assistance Programs</h3>
+              <ul class="bullet-list">
+                <li>Confidential, alternative-to-discipline pathway</li>
+                <li>Voluntary self-report → treatment program</li>
+                <li>Random drug testing + supervised practice</li>
+                <li>Duration: typically 2–5 years</li>
+                <li>High recovery rates with early intervention</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            🫶 <strong>Reporting an impaired nurse = patient advocacy + potentially saving the nurse's career.</strong> Silence that allows continued impaired practice endangers patients and can result in discipline for those who knew and did not act.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 8: Lateral Violence & Social Media -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">8 / 9</div>
+          <h2 class="slide-heading">🤝 Lateral Violence &amp; Social Media</h2>
+          <p class="slide-intro">Both are recognized patient safety and professional conduct issues — not merely "workplace comfort" problems.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Lateral Violence (Horizontal Hostility)</h3>
+              <ul class="bullet-list">
+                <li>Verbal abuse, sarcasm, public humiliation</li>
+                <li>Non-verbal hostility (eye-rolling, exclusion)</li>
+                <li>Withholding information from peers</li>
+                <li>Sabotage, gossip, rumors</li>
+                <li>"Eating our young" — targeting new nurses</li>
+                <li><strong>TJC</strong> requires facility policies addressing disruptive behavior</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Social Media Violations</h3>
+              <ul class="bullet-list">
+                <li>Any patient info — even without names — if identifiable</li>
+                <li>Photos of patients / records / medications</li>
+                <li>Complaining about patients or employers in identifiable ways</li>
+                <li>Friend requests / following patients online</li>
+              </ul>
+              <div style="margin-top:0.6rem; font-size:0.82rem; color:#dc2626; font-weight:600;">
+                ⚠️ Removing the name ≠ HIPAA compliant. Details can identify.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 9: License Protection & Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">9 / 9</div>
+          <h2 class="slide-heading">🛡️ Protecting Your License — Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">📄</span><span class="tip-text">Document thoroughly — if it isn't documented, legally it didn't happen</span></div>
+            <div class="tip-card"><span class="tip-icon">🔗</span><span class="tip-text">Follow the chain of command when assigned an unsafe task; document your concern</span></div>
+            <div class="tip-card"><span class="tip-icon">🚫</span><span class="tip-text">Never delegate outside UAP scope; you retain accountability for delegated tasks</span></div>
+            <div class="tip-card"><span class="tip-icon">📋</span><span class="tip-text">Report errors honestly — concealment is treated more harshly than the original error</span></div>
+            <div class="tip-card"><span class="tip-icon">⚖️</span><span class="tip-text">Carry individual malpractice insurance — employer insurance protects the institution, not you</span></div>
+            <div class="tip-card"><span class="tip-icon">🏛️</span><span class="tip-text">If you receive a BON complaint: consult a nurse attorney before responding in writing</span></div>
+            <div class="tip-card"><span class="tip-icon">📢</span><span class="tip-text">Mandatory reporting: suspicion alone is sufficient — you do not need proof</span></div>
+            <div class="tip-card"><span class="tip-icon">📱</span><span class="tip-text">Social media: when in doubt, don't post. Nursing students are held to the same standard as RNs</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/professional-misconduct`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #fef2f2 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #b45309; background: #fefce8; border: 1px solid #fef08a; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #dc2626; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #fef2f2; border-left: 4px solid #fca5a5; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #7f1d1d; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .slide-exam { background: linear-gradient(135deg, #fff7ed 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #dc2626; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #b91c1c; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>
