@@ -11,6 +11,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.8"
+    "astro": "^5.15.8",
+    "qrcode": "1.5.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.6"
   }
 }

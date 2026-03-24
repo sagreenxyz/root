@@ -30,681 +30,74 @@ const toc = [
     <span>Nursing Process (ADPIE)</span>
   </nav>
 
-  <div class="article-grid">
-    <!-- Main article -->
-    <article>
-
-      <!-- Article header -->
-      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
-        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem; flex-wrap:wrap;">
-          <span style="font-size:1.75rem;" aria-hidden="true">🔄</span>
-          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
-            D439 – Foundations of Nursing
-          </span>
-        </div>
-        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
-          Nursing Process (ADPIE)
-        </h1>
-        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
-          A comprehensive exam-ready review of the five-step nursing process—Assessment, Diagnosis, Planning,
-          Implementation, and Evaluation—along with critical thinking in nursing and therapeutic assessment
-          interview techniques.
-        </p>
-        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap; margin-bottom:1rem;">
-          <span>🎓 D439 Foundations of Nursing</span>
-          <span>📖 Exam-focused content</span>
-          <span>🔒 Protected content</span>
-        </div>
-        <a
-          href={`${base}/private/d439/nursing-process-slides`}
-          style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1.1rem; background:#6366f1; color:#fff; border-radius:9999px; font-size:0.85rem; font-weight:600; text-decoration:none;"
-        >▶ View as Slides</a>
-        <button
-          id="reveal-copy-btn"
-          data-url={revealUrl}
-          style="display:none; align-items:center; gap:0.4rem; padding:0.5rem 1.1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:9999px; font-size:0.85rem; font-weight:600; cursor:pointer;"
-          aria-label="Copy reveal link to clipboard"
-        >🔗 Copy Reveal Link</button>
-      </header>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- SECTION 1: ADPIE -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <section id="adpie" style="margin-bottom:2.5rem;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
-          1. ADPIE – Every Step Reviewed
-        </h2>
-
-        <!-- Assessment -->
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Assessment</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Assessment is the <strong>first and continuous</strong> step of the nursing process. The nurse
-          systematically collects, organises, validates, and documents data about a patient's health status.
-          Without complete and accurate assessment, every subsequent step of the nursing process is compromised.
-        </p>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;"><strong>Types of data collected:</strong></p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Subjective data</strong> – what the patient tells you (symptoms, feelings, perceptions). Example: "I feel nauseated and my head is pounding." Only the patient can report subjective data; it is recorded in quotation marks.</li>
-          <li><strong>Objective data</strong> – measurable, observable findings collected through physical examination and diagnostic tests. Example: BP 168/94 mmHg, HR 102 bpm, skin flushed and diaphoretic.</li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;"><strong>Types of assessment:</strong></p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Initial (admission) assessment</strong> – comprehensive head-to-toe database collected on first contact; establishes baseline.</li>
-          <li><strong>Focused assessment</strong> – targeted assessment of a specific problem or body system (e.g., respiratory assessment for a patient with dyspnoea).</li>
-          <li><strong>Emergency assessment</strong> – rapid, life-threatening situation (ABC: Airway, Breathing, Circulation first).</li>
-          <li><strong>Time-lapsed reassessment</strong> – compares current status against earlier baseline; done at each shift or follow-up visit.</li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Data sources include the patient (primary source), family/caregivers, the medical record, other
-          healthcare team members, and laboratory/diagnostic results. The nurse validates data to ensure
-          accuracy—for example, re-measuring an unexpected vital sign or asking a clarifying follow-up question.
-        </p>
-
-        <!-- Callout box -->
-        <div style="background:#eff6ff; border-left:4px solid #bfdbfe; border-radius:0.5rem; padding:1rem 1.25rem; margin-bottom:1.25rem;">
-          <p style="font-size:0.875rem; font-weight:700; color:#1d4ed8; margin-bottom:0.4rem;">📋 Clinical Example – Assessment</p>
-          <p style="font-size:0.875rem; color:#1e3a5f; line-height:1.7; margin:0;">
-            Mrs. T., 72 years old, is admitted with confusion. The nurse collects subjective data by asking
-            her family (surrogate source): <em>"She wasn't making sense this morning and didn't recognise me."</em>
-            Objective data includes: GCS 12/15, T 38.9 °C, urine dark amber, specific gravity 1.030,
-            HR 112 bpm. Both data types together guide the diagnosis of acute confusion related to dehydration
-            and possible infection.
-          </p>
-        </div>
-
-        <!-- Diagnosis -->
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Diagnosis</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          The nursing diagnosis is the nurse's clinical judgment about a patient's response to actual or
-          potential health problems. It differs from a medical diagnosis (which identifies disease) in that
-          it describes the <strong>human response</strong> to that disease or condition, which is within the
-          nurse's scope of practice to treat.
-        </p>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
-          Nursing diagnoses are drawn from the <strong>NANDA-I</strong> (North American Nursing Diagnosis
-          Association International) taxonomy. There are three main types:
-        </p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Actual nursing diagnosis</strong> – problem that currently exists. Supported by defining characteristics (signs and symptoms).</li>
-          <li><strong>Risk nursing diagnosis</strong> – potential problem that does not yet exist but for which the patient is vulnerable. Written as "Risk for…" with no defining characteristics required.</li>
-          <li><strong>Health-promotion (wellness) diagnosis</strong> – readiness to move to a higher level of health. Written as "Readiness for Enhanced…"</li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;"><strong>PES format</strong> (for actual diagnoses):</p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>P</strong> – Problem (NANDA-I label): e.g., <em>Acute Pain</em></li>
-          <li><strong>E</strong> – Etiology (related to / "r/t"): e.g., <em>related to surgical incision</em></li>
-          <li><strong>S</strong> – Signs and Symptoms (as evidenced by / "aeb"): e.g., <em>as evidenced by patient rating pain 7/10, guarding abdomen, diaphoresis</em></li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Full statement: <em>"Acute Pain related to surgical incision as evidenced by patient rating pain 7/10,
-          guarding abdomen, and diaphoresis."</em> For risk diagnoses, there is no "S" (no current signs):
-          <em>"Risk for Falls related to postoperative sedation and orthostatic hypotension."</em>
-        </p>
-
-        <!-- Planning -->
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Planning</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          During planning, the nurse sets <strong>measurable, patient-centred goals</strong> and selects
-          nursing interventions to achieve those goals. Planning produces the individualised care plan.
-          Goals are written for the patient (what the patient will do), not the nurse.
-        </p>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;"><strong>SMART goals:</strong></p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>S</strong> – Specific: Who will do what?</li>
-          <li><strong>M</strong> – Measurable: Observable, with a criterion (e.g., pain ≤ 3/10)</li>
-          <li><strong>A</strong> – Attainable: Realistic given patient's condition and resources</li>
-          <li><strong>R</strong> – Relevant: Directly addresses the nursing diagnosis</li>
-          <li><strong>T</strong> – Time-bound: Specifies when the goal will be met (e.g., "within 30 minutes of analgesia administration")</li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;">
-          Example SMART goal: <em>"The patient will report pain ≤ 3/10 within 30 minutes of analgesic
-          administration, as verbally stated to the nurse, by end of shift."</em>
-        </p>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;"><strong>Prioritisation using Maslow's Hierarchy of Needs:</strong></p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Level 1 – Physiological needs</strong> (highest priority): airway, breathing, circulation, nutrition, fluid, elimination, rest. Always address life-threatening physiological problems first.</li>
-          <li><strong>Level 2 – Safety and security</strong>: fall prevention, infection control, safe environment.</li>
-          <li><strong>Level 3 – Love and belonging</strong>: social support, therapeutic relationship.</li>
-          <li><strong>Level 4 – Esteem</strong>: self-confidence, dignity, autonomy.</li>
-          <li><strong>Level 5 – Self-actualisation</strong> (lowest priority): personal growth, creativity.</li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Additional prioritisation frameworks include the <strong>ABC</strong> method (Airway before
-          Breathing before Circulation) and Maslow's hierarchy. Actual problems generally take priority
-          over risk problems, and acute problems take priority over chronic ones.
-        </p>
-
-        <!-- Implementation -->
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Implementation</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Implementation is the action phase—carrying out the planned interventions. The nurse must
-          reassess the patient before each intervention to confirm it is still appropriate, and document
-          all actions taken immediately after completion.
-        </p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Independent interventions</strong>: Actions the nurse can initiate without a physician order, within nursing scope of practice. Examples: repositioning a patient every 2 hours, teaching deep breathing exercises, applying compression stockings.</li>
-          <li><strong>Dependent interventions</strong>: Actions that require a physician order. Examples: administering prescribed medications, performing ordered wound care, obtaining diagnostic labs.</li>
-          <li><strong>Collaborative (interdependent) interventions</strong>: Actions planned and performed with other healthcare team members. Examples: physical therapy referral, dietitian consultation, respiratory therapy treatments.</li>
-        </ul>
-
-        <!-- Callout -->
-        <div style="background:#eff6ff; border-left:4px solid #bfdbfe; border-radius:0.5rem; padding:1rem 1.25rem; margin-bottom:1.25rem;">
-          <p style="font-size:0.875rem; font-weight:700; color:#1d4ed8; margin-bottom:0.4rem;">📋 Clinical Example – Implementation</p>
-          <p style="font-size:0.875rem; color:#1e3a5f; line-height:1.7; margin:0;">
-            For a patient with impaired skin integrity (pressure ulcer Stage II on sacrum): The nurse
-            performs an <strong>independent</strong> intervention by repositioning the patient off the sacrum
-            every 2 hours and placing a foam wedge. She carries out a <strong>dependent</strong> intervention
-            by applying the prescribed hydrocolloid dressing. She coordinates a <strong>collaborative</strong>
-            intervention by referral to the wound care specialist and dietitian for nutritional optimisation.
-          </p>
-        </div>
-
-        <!-- Evaluation -->
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Evaluation</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Evaluation is the final—yet ongoing—step. The nurse determines whether the patient has achieved
-          the expected outcomes set during planning. It involves comparing the patient's actual response to
-          the stated goals and deciding whether to continue, modify, or terminate the care plan.
-        </p>
-        <p style="line-height:1.8; color:#374151; margin-bottom:0.75rem;"><strong>Three possible conclusions after evaluation:</strong></p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Goal met</strong>: Patient achieved the expected outcome → continue current plan or discharge/discontinue the nursing diagnosis.</li>
-          <li><strong>Goal partially met</strong>: Patient progressed toward the goal but has not fully achieved it → modify the plan (adjust the goal, add interventions, revise the timeline).</li>
-          <li><strong>Goal not met</strong>: Patient has made no progress or has deteriorated → reassess thoroughly; identify barriers; revise diagnosis, goals, or interventions entirely.</li>
-        </ul>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Evaluation loops back to assessment—nursing is cyclical, not linear. If the goal is not met, the
-          nurse must reassess to determine why: Was the assessment incomplete? Was the diagnosis incorrect?
-          Were the interventions evidence-based and realistic? Was the goal SMART and patient-centred?
-        </p>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- SECTION 2: Critical Thinking -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <section id="critical-thinking" style="margin-bottom:2.5rem;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
-          2. Critical Thinking in Nursing
-        </h2>
-
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          <strong>Critical thinking</strong> in nursing is a purposeful, disciplined, self-regulatory process
-          of reasoning that nurses use to make sound clinical judgments. It is not simply memorising facts;
-          it is the active, skillful application of knowledge to evaluate evidence, identify problems,
-          consider alternatives, and determine the safest, most effective course of action for each patient.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Why Critical Thinking Is Essential in Nursing</h3>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li>Patients present with complex, multisystem problems that rarely match textbook cases exactly.</li>
-          <li>Healthcare environments are dynamic—patient status changes rapidly, requiring constant reassessment.</li>
-          <li>Nurses must prioritise care among multiple patients simultaneously, often with limited resources.</li>
-          <li>Errors in nursing judgment can directly harm or kill patients; critical thinking reduces preventable errors.</li>
-          <li>Evidence-based practice requires evaluating research and applying it appropriately to individual patients.</li>
-        </ul>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Clinical Judgment</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          <strong>Clinical judgment</strong> is the outcome of critical thinking applied in a clinical context.
-          It involves <em>noticing</em> relevant cues, <em>interpreting</em> their significance,
-          <em>responding</em> with appropriate action, and <em>reflecting</em> on outcomes (Tanner's Clinical
-          Judgment Model, 2006). The NCSBN's Next Generation NCLEX (NGN) Clinical Judgment Measurement Model
-          describes six cognitive skills nurses must demonstrate: recognise cues, analyse cues, prioritise
-          hypotheses, generate solutions, take action, and evaluate outcomes.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Critical Thinking at Each ADPIE Step</h3>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Assessment</strong>: Deciding what data to collect, which sources are most reliable, what is clinically significant, and what should be validated further.</li>
-          <li><strong>Diagnosis</strong>: Clustering data, recognising patterns, differentiating actual vs. risk vs. wellness diagnoses, avoiding premature closure (settling on an incorrect diagnosis too quickly).</li>
-          <li><strong>Planning</strong>: Setting realistic, patient-centred goals; selecting interventions based on evidence; anticipating complications.</li>
-          <li><strong>Implementation</strong>: Adapting interventions to the patient's current response; recognising when a planned action is no longer safe or appropriate.</li>
-          <li><strong>Evaluation</strong>: Objectively determining whether goals were met; willingness to revise the plan when outcomes are not achieved.</li>
-        </ul>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Attributes of a Critical Thinker in Nursing</h3>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Inquisitiveness</strong>: Asks "why?" and seeks to understand the underlying pathophysiology, not just the protocol.</li>
-          <li><strong>Open-mindedness</strong>: Considers alternative diagnoses and interventions; does not dismiss patient or family input.</li>
-          <li><strong>Analytical thinking</strong>: Breaks complex situations into components; examines cause-and-effect relationships.</li>
-          <li><strong>Self-confidence</strong>: Trusts clinical judgment and is willing to advocate for the patient, even when this requires questioning orders.</li>
-          <li><strong>Contextual perspective</strong>: Considers the patient as a whole person, including cultural, psychosocial, and environmental factors.</li>
-          <li><strong>Intellectual integrity</strong>: Applies the same standards of reasoning regardless of personal bias or convenience.</li>
-          <li><strong>Creativity</strong>: Generates novel, individualised solutions when standard approaches are inadequate.</li>
-          <li><strong>Reflection</strong>: Evaluates own reasoning and practice to identify areas for improvement.</li>
-        </ul>
-
-        <div style="background:#eff6ff; border-left:4px solid #bfdbfe; border-radius:0.5rem; padding:1rem 1.25rem; margin-bottom:1.25rem;">
-          <p style="font-size:0.875rem; font-weight:700; color:#1d4ed8; margin-bottom:0.4rem;">📋 Clinical Example – Critical Thinking</p>
-          <p style="font-size:0.875rem; color:#1e3a5f; line-height:1.7; margin:0;">
-            A nurse assesses a post-operative patient and notices mild confusion and a drop in urine output
-            from 60 mL/hr to 15 mL/hr over two hours. A novice nurse might chart the observation and wait
-            for rounds. A <strong>critically thinking nurse</strong> recognises these as early signs of
-            hypovolaemia or haemorrhage, checks the surgical drain output, auscultates lung sounds, re-checks
-            BP (now 94/60 mmHg from 120/78 mmHg earlier), and immediately notifies the surgeon using SBAR—
-            potentially preventing haemorrhagic shock.
-          </p>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- SECTION 3: Assessment Interview Techniques -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <section id="interview-techniques" style="margin-bottom:2.5rem;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
-          3. Assessment Interview Techniques
-        </h2>
-
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          The <strong>assessment interview</strong> is the structured conversation between nurse and patient
-          that forms the foundation of subjective data collection. Expert interview technique maximises
-          the quality and completeness of the data obtained, builds trust, and establishes the therapeutic
-          relationship that underpins all subsequent nursing care.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Open-Ended vs. Closed Questions</h3>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Open-ended questions</strong> invite the patient to elaborate and share their perspective freely. They cannot be answered with a single word. Example: <em>"Can you describe what your pain feels like?"</em> or <em>"Tell me what has been worrying you most."</em> Use early in the interview to gather broad information.</li>
-          <li><strong>Closed questions</strong> elicit specific, focused information and can be answered "yes/no" or with a number. Example: <em>"Is the pain sharp or dull?"</em> or <em>"On a scale of 0–10, how would you rate your pain?"</em> Use to clarify or obtain precise data.</li>
-          <li><strong>Leading questions</strong> should be <em>avoided</em> as they suggest the "correct" answer and bias the response. Example (problematic): <em>"You're not having chest pain, are you?"</em></li>
-        </ul>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Active Listening</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Active listening is a deliberate process of receiving, processing, and responding to the patient's
-          verbal and nonverbal communication. It includes: making and maintaining appropriate eye contact;
-          leaning slightly forward; nodding affirmatively; avoiding interruptions; allowing the patient to
-          complete sentences; and reflecting back what you have heard (<em>"So it sounds like the pain started
-          after you lifted the box—is that right?"</em>). Active listening signals respect and
-          interest and dramatically increases the patient's willingness to share sensitive information.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Clarification</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          When a patient's statement is vague or ambiguous, the nurse asks for clarification to ensure
-          accurate data. Clarification prevents incorrect assumptions. Example: Patient says, <em>"I feel
-          awful."</em> The nurse responds: <em>"When you say you feel awful, can you describe specifically
-          what you're experiencing?"</em> Clarification avoids interpreting the patient's experience through
-          the nurse's own framework.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Reflection</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Reflection involves repeating the patient's own words or paraphrasing their statements to
-          encourage further exploration and to demonstrate understanding. Example: Patient states, <em>"I'm
-          worried about my surgery tomorrow."</em> Nurse reflects: <em>"You're worried about your surgery."</em>
-          This technique validates the patient's feelings and invites elaboration without redirecting the
-          conversation.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Silence as a Technique</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Therapeutic silence is a deliberate, purposeful pause that gives the patient time to think,
-          feel, and formulate a response without pressure. Many nurses fill silences out of discomfort,
-          inadvertently cutting off important disclosures. Silence communicates patience, respect, and
-          genuine interest. It is particularly valuable when a patient is emotional, grieving, or processing
-          difficult information. The nurse remains present and attentive during silence—not distracted by
-          a computer or chart.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Body Language and Nonverbal Communication</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Research suggests that the majority of communication is nonverbal. During the assessment interview,
-          the nurse should attend to both her own and the patient's nonverbal cues:
-        </p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Nurse's posture</strong>: Sit at eye level rather than standing over the patient; avoid crossing arms (signals defensiveness); face the patient directly.</li>
-          <li><strong>Proximity</strong>: Respect personal and cultural space preferences; generally 1–1.5 meters is appropriate.</li>
-          <li><strong>Facial expression</strong>: Remain open and non-judgmental; avoid expressions of shock, disgust, or disbelief.</li>
-          <li><strong>Patient cues</strong>: Note incongruence between verbal and nonverbal communication (e.g., patient says "I'm fine" while wincing and guarding abdomen). Document and explore discrepancies.</li>
-        </ul>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">Therapeutic Communication During Assessment</h3>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li><strong>Introduce yourself</strong> and explain the purpose of the interview to put the patient at ease.</li>
-          <li><strong>Ensure privacy</strong>: Close the curtain or door; if a family member is present, confirm with the patient that they are comfortable proceeding.</li>
-          <li><strong>Use plain language</strong>: Avoid medical jargon; adjust vocabulary to the patient's health literacy level.</li>
-          <li><strong>Non-judgmental approach</strong>: Respond to disclosures (e.g., substance use, sexual history, mental health history) without visible judgement. Example: Instead of "That was a bad idea," respond "Thank you for telling me that—it's important for your care."</li>
-          <li><strong>Empathy</strong>: Acknowledge and validate the patient's emotions before redirecting to clinical questions. <em>"That sounds really frightening. I want to make sure we understand exactly what's been happening for you."</em></li>
-          <li><strong>Summarise</strong>: At the end of the interview, briefly summarise the key information gathered and give the patient an opportunity to correct or add to it.</li>
-        </ul>
-
-        <div style="background:#eff6ff; border-left:4px solid #bfdbfe; border-radius:0.5rem; padding:1rem 1.25rem; margin-bottom:1.25rem;">
-          <p style="font-size:0.875rem; font-weight:700; color:#1d4ed8; margin-bottom:0.4rem;">📋 Clinical Example – Interview Technique</p>
-          <p style="font-size:0.875rem; color:#1e3a5f; line-height:1.7; margin:0;">
-            A nurse is admitting a 45-year-old man with chest pain. She sits at his bedside (eye level),
-            introduces herself, closes the curtain, and begins with an <strong>open-ended question</strong>:
-            <em>"Mr. J., can you describe in your own words what brought you in today?"</em> He begins
-            speaking, and she actively listens without interrupting. When he says, "It gets really bad
-            sometimes," she uses <strong>clarification</strong>: <em>"When you say really bad—can you tell
-            me what that means? How would you rate it on a scale of 0–10?"</em> She uses
-            <strong>silence</strong> after he pauses to recall timing details, allowing him to
-            complete his thought uninterrupted.
-          </p>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- SECTION 4: Steps Overview -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <section id="steps-overview" style="margin-bottom:2.5rem;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
-          4. Steps of the Nursing Process
-        </h2>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          The following numbered format is designed for clinical recall and exam preparation. The nursing
-          process is <strong>cyclic and continuous</strong>—it does not end after evaluation but loops back
-          to assessment as patient status changes.
-        </p>
-
-        <ol style="line-height:1.9; color:#374151; padding-left:1.5rem; margin-bottom:1rem;">
-          <li style="margin-bottom:0.85rem;">
-            <strong>Assessment (A)</strong><br />
-            Collect subjective data (interview) and objective data (physical exam, records, labs).
-            Use a systematic, head-to-toe or body-systems approach. Validate data. Document findings.
-            <em>Key question: What is the patient experiencing?</em>
-          </li>
-          <li style="margin-bottom:0.85rem;">
-            <strong>Diagnosis (D)</strong><br />
-            Analyse and cluster data to identify patterns. Formulate NANDA-I nursing diagnoses in
-            PES format (actual) or "Risk for…" format (risk). Prioritise diagnoses using Maslow's hierarchy
-            and ABC (Airway &gt; Breathing &gt; Circulation). Distinguish nursing diagnoses from
-            medical diagnoses.
-            <em>Key question: What nursing problems does the data indicate?</em>
-          </li>
-          <li style="margin-bottom:0.85rem;">
-            <strong>Planning (P)</strong><br />
-            Write SMART, patient-centred expected outcomes. Select evidence-based nursing interventions.
-            Involve the patient and family in care planning. Document the care plan.
-            <em>Key question: What outcomes do we want, and how will we achieve them?</em>
-          </li>
-          <li style="margin-bottom:0.85rem;">
-            <strong>Implementation (I)</strong><br />
-            Reassess before acting. Carry out independent, dependent, and collaborative interventions.
-            Provide patient education. Document interventions immediately after completion with time,
-            date, and nurse's signature.
-            <em>Key question: What actions will be taken?</em>
-          </li>
-          <li style="margin-bottom:0.85rem;">
-            <strong>Evaluation (E)</strong><br />
-            Compare actual patient outcomes to expected outcomes. Determine if goals were met,
-            partially met, or not met. Revise the care plan as needed. Loop back to reassessment.
-            <em>Key question: Did the patient achieve the expected outcomes?</em>
-          </li>
-        </ol>
-
-        <!-- Summary table -->
-        <div style="overflow-x:auto; margin-bottom:1rem;">
-          <table style="width:100%; border-collapse:collapse; font-size:0.875rem; color:#374151;">
-            <thead>
-              <tr style="background:#eef2ff; border-bottom:2px solid #c7d2fe;">
-                <th style="text-align:left; padding:0.6rem 0.8rem; font-weight:700; color:#1e293b;">Step</th>
-                <th style="text-align:left; padding:0.6rem 0.8rem; font-weight:700; color:#1e293b;">Verb</th>
-                <th style="text-align:left; padding:0.6rem 0.8rem; font-weight:700; color:#1e293b;">Key Output</th>
-                <th style="text-align:left; padding:0.6rem 0.8rem; font-weight:700; color:#1e293b;">Who leads?</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Assessment', 'Collect & Validate', 'Patient database (subjective + objective)', 'Nurse'],
-                ['Diagnosis', 'Analyse & Interpret', 'Prioritised nursing diagnosis list', 'Nurse'],
-                ['Planning', 'Set Goals & Select Interventions', 'Individualised care plan', 'Nurse + Patient'],
-                ['Implementation', 'Act', 'Interventions performed; patient education delivered', 'Nurse + Team'],
-                ['Evaluation', 'Measure & Revise', 'Goal-met determination; revised plan', 'Nurse'],
-              ].map(([step, verb, output, who]) => (
-                <tr style="border-bottom:1px solid #e2e8f0;">
-                  <td style="padding:0.6rem 0.8rem; font-weight:600; color:#6366f1;">{step}</td>
-                  <td style="padding:0.6rem 0.8rem;">{verb}</td>
-                  <td style="padding:0.6rem 0.8rem;">{output}</td>
-                  <td style="padding:0.6rem 0.8rem;">{who}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- SECTION 5: Most Important Thing During Assessment -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <section id="assessment-importance" style="margin-bottom:2.5rem;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
-          5. Most Important Thing During Assessment
-        </h2>
-
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          If you remember only one thing about assessment, remember this: the most important purpose of
-          the assessment phase is to <strong>collect complete and accurate data</strong>. Every subsequent
-          step—diagnosis, planning, implementation, and evaluation—depends entirely on the quality of data
-          collected in this phase. An inaccurate or incomplete assessment will produce an incorrect diagnosis,
-          an inappropriate plan, ineffective interventions, and meaningless evaluation.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">1. Collecting Complete and Accurate Data</h3>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li>Gather data from <strong>multiple sources</strong>: patient, family, records, team members, diagnostics.</li>
-          <li>Use a <strong>structured, systematic framework</strong> (head-to-toe or body systems) to ensure all areas are assessed.</li>
-          <li><strong>Validate</strong> data that seems unexpected or inconsistent—repeat measurements, cross-check with other sources.</li>
-          <li>Document <strong>immediately and accurately</strong>; delayed documentation relies on memory and introduces error.</li>
-          <li>Collect <strong>both subjective AND objective data</strong>—neither alone gives a complete picture. Subjective data tells you what the patient experiences; objective data provides measurable evidence. Together they are the basis of the nursing diagnosis.</li>
-        </ul>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">2. The Therapeutic Relationship</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          A <strong>therapeutic nurse-patient relationship</strong> is the essential foundation for
-          effective assessment. Patients who trust their nurse disclose more complete and accurate
-          information, including sensitive details about substance use, mental health, sexual history,
-          or non-adherence to treatment. Building this relationship begins the moment the nurse enters
-          the room: introduce yourself by name and role, maintain eye contact, sit at the patient's
-          level, and demonstrate genuine interest and empathy.
-        </p>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">3. Non-Judgmental Approach</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          A non-judgmental approach means the nurse acknowledges and accepts the patient's values,
-          beliefs, behaviours, and disclosures <strong>without expressing criticism or disapproval</strong>,
-          even when those behaviours conflict with the nurse's own values or recommended health practices.
-          Judgmental responses cause patients to withhold critical information, compromising the accuracy
-          of the database. A non-judgmental posture includes:
-        </p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li>Neutral, factual language: <em>"How many alcoholic drinks do you have per day?"</em> rather than <em>"You don't drink too much, do you?"</em></li>
-          <li>Controlled facial expression and body language when hearing unexpected disclosures.</li>
-          <li>Explicitly thanking the patient for sharing sensitive information: <em>"Thank you for telling me—this helps me give you better care."</em></li>
-          <li>Separating personal values from professional responsibilities.</li>
-        </ul>
-
-        <h3 style="font-size:1rem; font-weight:700; color:#6366f1; margin:1.25rem 0 0.5rem;">4. Subjective AND Objective Data—Both Are Required</h3>
-        <p style="line-height:1.8; color:#374151; margin-bottom:1rem;">
-          Nurses sometimes undervalue subjective data because it "can't be measured," or overlook subtle
-          objective findings because the patient "looks fine." <strong>Both types of data are equally essential</strong>.
-        </p>
-        <ul style="line-height:1.8; color:#374151; margin-bottom:1rem; padding-left:1.5rem;">
-          <li>Subjective data captures the patient's experience—their pain, fear, nausea, fatigue, and goals. It cannot be inferred from objective findings alone.</li>
-          <li>Objective data provides measurable evidence that validates, contradicts, or adds context to what the patient reports.</li>
-          <li>When subjective and objective data conflict, the nurse must investigate further rather than dismissing one in favour of the other.</li>
-        </ul>
-
-        <div style="background:#eff6ff; border-left:4px solid #bfdbfe; border-radius:0.5rem; padding:1rem 1.25rem; margin-bottom:1.25rem;">
-          <p style="font-size:0.875rem; font-weight:700; color:#1d4ed8; margin-bottom:0.4rem;">📋 Clinical Example – Importance of Assessment Quality</p>
-          <p style="font-size:0.875rem; color:#1e3a5f; line-height:1.7; margin:0;">
-            A 55-year-old woman is admitted with "abdominal discomfort." She mentions to her nurse,
-            almost as an afterthought, <em>"I also feel pressure in my jaw and my left arm feels
-            heavy."</em> A nurse focused only on the chief complaint (abdominal pain) and objective
-            abdominal findings might miss this critical subjective disclosure. A thorough assessment—
-            including comprehensive review of all symptoms in the patient's own words—immediately
-            raises concern for an <strong>atypical MI presentation</strong> (more common in women).
-            The nurse orders a STAT 12-lead ECG and notifies the physician. This is the power of
-            complete assessment.
-          </p>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- SECTION 6: Micro-Quiz -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <section id="microquiz" style="margin-bottom:2.5rem;">
-        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
-          6. Micro-Quiz — 12 Practice Questions
-        </h2>
-        <p style="font-size:0.9rem; color:#475569; margin-bottom:1.25rem; line-height:1.6;">
-          Test your knowledge of the nursing process. Select your answers and click <strong>Submit Quiz</strong> to see your score and rationales.
-        </p>
-
-        <!-- Score banner (hidden until submitted) -->
-        <div id="mq-score-banner" style="display:none; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:1.5rem; text-align:center;">
-          <div id="mq-score-text" style="font-size:1.35rem; font-weight:800;"></div>
-          <div id="mq-score-sub" style="font-size:0.875rem; margin-top:0.2rem;"></div>
-        </div>
-
-        <div id="mq-form"></div>
-
-        <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
-          <button id="mq-submit-btn" onclick="mqSubmit()"
-            style="padding:0.65rem 1.75rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:0.95rem; font-weight:700; cursor:pointer;">
-            Submit Quiz
-          </button>
-          <button id="mq-reset-btn" onclick="mqReset()" style="display:none; padding:0.65rem 1.4rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:0.95rem; font-weight:700; cursor:pointer;">
-            Retake Quiz
-          </button>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- PREVIOUS / NEXT NAVIGATION -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <nav aria-label="Page navigation" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; gap:1rem; flex-wrap:wrap;">
-        <a
-          href={`${base}/private/d439`}
-          style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.2rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:9999px; font-size:0.875rem; font-weight:600; text-decoration:none;"
-        >← Back to D439 Index</a>
-
-        <a
-          href={`${base}/private/d439/infection-control`}
-          style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.2rem; background:#6366f1; color:#fff; border:1px solid #6366f1; border-radius:9999px; font-size:0.875rem; font-weight:600; text-decoration:none;"
-        >Infection Control &amp; Asepsis →</a>
-      </nav>
-
-    </article>
+  <!--
+    NursingProcessArticle — shared article body for sections 1–5, the sidebar (TOC,
+    Quick Facts, Exam Tips), the copy-reveal-link button, and the QR-code modal.
+    The micro-quiz section and page navigation are injected via the default slot;
+    the sidebar back-link is injected via the sidebar-footer slot.
+  -->
+  <NursingProcessArticle
+    isProtected
+    slidesHref={`${base}/private/d439/nursing-process-slides`}
+    revealUrl={revealUrl}
+    showMicroQuiz
+  >
 
     <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- SIDEBAR -->
+    <!-- SECTION 6: Micro-Quiz (private page only)             -->
     <!-- ═══════════════════════════════════════════════════════ -->
-    <aside style="position:sticky; top:1.5rem; align-self:start;">
+    <section id="microquiz" style="margin-bottom:2.5rem;">
+      <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
+        6. Micro-Quiz — 12 Practice Questions
+      </h2>
+      <p style="font-size:0.9rem; color:#475569; margin-bottom:1.25rem; line-height:1.6;">
+        Test your knowledge of the nursing process. Select your answers and click <strong>Submit Quiz</strong> to see your score and rationales.
+      </p>
 
-      <!-- Table of Contents -->
-      <nav aria-label="Table of contents" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.6rem;">Contents</p>
-        <ol style="list-style:none; display:flex; flex-direction:column; gap:0.35rem; padding:0; margin:0;">
-          {toc.map((item, i) => (
-            <li style="font-size:0.85rem;">
-              <a href={`#${item.id}`} style="color:#6366f1; text-decoration:none; font-weight:500;">
-                {i + 1}. {item.label}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-
-      <!-- Quick Facts -->
-      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
-        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
-          {[
-            { term: 'Acronym', def: 'ADPIE' },
-            { term: 'First step', def: 'Assessment (always)' },
-            { term: 'Subjective data', def: "Patient's own words; symptoms" },
-            { term: 'Objective data', def: 'Measurable; nurse observes/measures' },
-            { term: 'Diagnosis format', def: 'PES (Problem + Etiology + Signs)' },
-            { term: 'Goal format', def: 'SMART (Specific, Measurable, Attainable, Relevant, Time-bound)' },
-            { term: 'Priority framework', def: "Maslow's Hierarchy; ABC" },
-            { term: 'Evaluation result', def: 'Met / Partially Met / Not Met' },
-          ].map(({ term, def }) => (
-            <div>
-              <dt style="font-weight:600; color:#1e293b;">{term}</dt>
-              <dd style="color:#64748b; margin:0;">{def}</dd>
-            </div>
-          ))}
-        </dl>
+      <!-- Score banner (hidden until submitted) -->
+      <div id="mq-score-banner" style="display:none; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:1.5rem; text-align:center;">
+        <div id="mq-score-text" style="font-size:1.35rem; font-weight:800;"></div>
+        <div id="mq-score-sub" style="font-size:0.875rem; margin-top:0.2rem;"></div>
       </div>
 
-      <!-- Exam Tips -->
-      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
-        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Exam Tips</p>
-        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
-          {[
-            '✅ Assessment is ALWAYS first',
-            '✅ Nursing dx ≠ medical dx',
-            '✅ Goals are patient-centred',
-            '✅ Airway > Breathing > Circulation',
-            '✅ Evaluation loops back to assessment',
-            '✅ Risk dx has no "S" in PES',
-            '✅ Subjective = patient reports',
-            '✅ Objective = nurse observes/measures',
-          ].map(item => <li>{item}</li>)}
-        </ul>
-      </div>
+      <div id="mq-form"></div>
 
-      <!-- Back link -->
+      <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <button id="mq-submit-btn" onclick="mqSubmit()"
+          style="padding:0.65rem 1.75rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:0.95rem; font-weight:700; cursor:pointer;">
+          Submit Quiz
+        </button>
+        <button id="mq-reset-btn" onclick="mqReset()" style="display:none; padding:0.65rem 1.4rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:0.95rem; font-weight:700; cursor:pointer;">
+          Retake Quiz
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PREVIOUS / NEXT NAVIGATION                            -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <nav aria-label="Page navigation" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; gap:1rem; flex-wrap:wrap;">
       <a
         href={`${base}/private/d439`}
-        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none;"
+        style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.2rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:9999px; font-size:0.875rem; font-weight:600; text-decoration:none;"
       >← Back to D439 Index</a>
 
-    </aside>
-  </div>
+      <a
+        href={`${base}/private/d439/infection-control`}
+        style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.2rem; background:#6366f1; color:#fff; border:1px solid #6366f1; border-radius:9999px; font-size:0.875rem; font-weight:600; text-decoration:none;"
+      >Infection Control &amp; Asepsis →</a>
+    </nav>
+
+    <!-- Sidebar back-link (private page only) -->
+    <a
+      slot="sidebar-footer"
+      href={`${base}/private/d439`}
+      style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none;"
+    >← Back to D439 Index</a>
+
+  </NursingProcessArticle>
+
 </Layout>
-
-<script>
-  /* Reveal-link copy button — only shown when the user is logged in. */
-  (function () {
-    var btn = document.getElementById('reveal-copy-btn');
-    if (!btn) return;
-
-    function showBtn() {
-      if (sessionStorage.getItem('auth_token')) {
-        btn.style.display = 'inline-flex';
-      }
-    }
-
-    btn.addEventListener('click', function () {
-      var url = btn.getAttribute('data-url');
-      if (!url) return;
-      navigator.clipboard.writeText(url).then(function () {
-        var original = btn.textContent;
-        btn.textContent = '✅ Copied!';
-        setTimeout(function () { btn.textContent = original; }, 2000);
-      }).catch(function () {
-        /* Fallback for browsers without clipboard API permission */
-        btn.textContent = '⚠ Copy failed';
-        setTimeout(function () { btn.textContent = '🔗 Copy Reveal Link'; }, 2000);
-      });
-    });
-
-    /* Show when already authenticated on page load */
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showBtn);
-    } else {
-      showBtn();
-    }
-    /* Show if the user logs in on this page (unlikely but correct) */
-    document.addEventListener('auth:login', showBtn);
-  })();
-</script>
-
-<style>
-  .article-grid {
-    display: grid;
-    grid-template-columns: 1fr 240px;
-    gap: 2rem;
-    align-items: start;
-  }
-  @media (max-width: 768px) {
-    .article-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
 
 <script is:inline>
 const MQ_QUESTIONS = [
