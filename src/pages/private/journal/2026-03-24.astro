@@ -1,0 +1,90 @@
+---
+import JournalEntry from '../../../layouts/JournalEntry.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<JournalEntry
+  title="Development Sprint – Quiz Fixes, Mobile Encyclopedia, ADPIE Quiz, HMAC Reveal Links & Slide Polish"
+  date="2026-03-24"
+  entryType="Development Log"
+  course="D439 – Foundations of Nursing"
+  showConceptMap={false}
+>
+  <p style="margin-bottom:1rem;">
+    Today's development sprint produced <strong>5 pull requests</strong> merged across
+    quiz reliability, mobile layout, new embedded quizzes, a security-aware daily-reveal
+    link system, and slide-deck polish.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🐛 Bug Fixes</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>Quiz submit/reset button fix</strong> (PR #62) — Submit and reset buttons on
+    the
+    <a href={`${base}/private/d439/nursing-process`} style="color:#6366f1; font-weight:600;">Nursing Process</a>
+    page and all chapter quiz pages were silently doing nothing. The root cause was that
+    Astro bundles inline <code>&lt;script&gt;</code> tags as ES modules with deferred
+    evaluation, so <code>getElementById</code> calls at module scope ran before the DOM
+    was ready. Fixed by wrapping all DOM queries in a <code>DOMContentLoaded</code>
+    listener across every affected page.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">📱 Mobile Layout</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>Encyclopedia mobile redesign</strong> (PR #61) — All encyclopedia article
+    pages received a mobile-first layout pass (≤768px breakpoint). Both the left topic
+    panel and the right TOC sidebar are now hidden on phones via
+    <code>.article-grid &gt; aside &#123; display: none; &#125;</code> so the full
+    viewport width is given to the article content. At the tablet breakpoint (≤1024px)
+    only the right TOC sidebar collapses. CSS is applied inline in each of the 23
+    article <code>.astro</code> files because Astro's scoped styles cannot be shared
+    across components.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">📝 New Embedded Quiz</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>ADPIE micro-quiz on the Nursing Process page</strong> (PR #60) — A
+    12-question NCLEX-style micro-quiz covering the five ADPIE phases (Assessment,
+    Diagnosis, Planning, Implementation, Evaluation) was embedded directly on the
+    <a href={`${base}/private/d439/nursing-process`} style="color:#6366f1; font-weight:600;">Nursing Process</a>
+    study page. The quiz uses the same horizontally-sliding question carousel and
+    pill-shaped answer options introduced in the standalone
+    <a href={`${base}/tools/quiz`} style="color:#6366f1; font-weight:600;">/tools/quiz</a>
+    component.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🔐 Security &amp; Access</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>Daily-expiring per-page HMAC reveal links</strong> (PR #59) — A
+    build-time HMAC token system was added to generate daily-expiring reveal links for
+    individual private pages. Each link is signed with a secret key at build time and
+    expires at midnight UTC, so shared links become invalid the following day. This
+    gives a lightweight, no-backend way to share specific private pages with
+    time-limited access without exposing the site-wide password.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🖼️ Slide Polish</h2>
+
+  <p style="margin-bottom:1rem;">
+    <strong>Hide legend panel on title &amp; final slides</strong> (PR #58) — The left
+    legend panel that annotates slide columns was being rendered on the title slide and
+    the closing summary slide, where it cluttered the layout. The panel is now hidden on
+    both the first and last slides of every slide deck so those slides can use the full
+    horizontal width for their content.
+  </p>
+
+  <div style="margin-top:1.5rem; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.6rem; padding:1rem 1.25rem; font-size:0.875rem; color:#3730a3; display:flex; align-items:flex-start; gap:0.65rem;">
+    <span style="font-size:1.1rem; flex-shrink:0;">🔗</span>
+    <span>
+      <strong>Cross-references:</strong> Tools and quizzes documented above are available
+      under
+      <a href={`${base}/tools`} style="color:#4f46e5; font-weight:600;">WGU Nursing Tools</a>.
+      The D439 private study section is accessible from the
+      <a href={`${base}/private/dashboard`} style="color:#4f46e5; font-weight:600;">private dashboard</a>
+      after sign-in.
+    </span>
+  </div>
+</JournalEntry>
