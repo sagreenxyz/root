@@ -3,8 +3,9 @@
  * /reveal/[token] – Daily-expiring public reveal pages.
  *
  * getStaticPaths() runs at BUILD TIME only in Node.js.  It:
- *   1. Reads REVEAL_SECRET from the build environment (never sent to the browser).
- *   2. Computes a per-page, per-day HMAC-SHA256 token for each allowlisted page.
+ *   1. Reads REVEAL_SECRET and REVEAL_BUILD_ID from the build environment
+ *      (never sent to the browser).
+ *   2. Computes a per-page, per-build HMAC-SHA256 token for each allowlisted page.
  *   3. Returns one static path per allowlisted page.
  *
  * The resulting pages are fully public (no auth gate).  They expire automatically
@@ -20,8 +21,9 @@ import { getDailyRevealToken, REVEALABLE_PAGES, type RevealPage } from '../../li
 
 export function getStaticPaths() {
   const secret = import.meta.env.REVEAL_SECRET ?? '';
+  const buildId = import.meta.env.REVEAL_BUILD_ID ?? '';
   return REVEALABLE_PAGES.map((page: RevealPage) => ({
-    params: { token: getDailyRevealToken(secret, page.slug) },
+    params: { token: getRevealToken(secret, page.slug, buildId) },
     props: { page },
   }));
 }
