@@ -1,7 +1,5 @@
 # sagreenxyz.github.io
 
-https://sagreenxyz.github.io
-
 An [Astro](https://astro.build) site hosted on [GitHub Pages](https://pages.github.com), with client-side authentication protection.
 
 ## Features
