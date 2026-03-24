@@ -17,7 +17,7 @@
  */
 import Layout from '../../layouts/Layout.astro';
 import NursingProcessArticle from '../../components/NursingProcessArticle.astro';
-import { getDailyRevealToken, REVEALABLE_PAGES, type RevealPage } from '../../lib/revealToken';
+import { getRevealToken, REVEALABLE_PAGES, type RevealPage } from '../../lib/revealToken';
 
 export function getStaticPaths() {
   const secret = import.meta.env.REVEAL_SECRET ?? '';

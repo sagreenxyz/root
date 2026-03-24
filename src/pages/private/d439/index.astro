@@ -254,12 +254,17 @@ const sections = [
               <div style="flex:1; min-width:0;">
                 <h3 style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">{page.title}</h3>
                 <p style="color:#64748b; font-size:0.9rem; line-height:1.6; margin-bottom:0.75rem;">{page.summary}</p>
-                <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                <div style="display:flex; gap:0.4rem; flex-wrap:wrap; align-items:center;">
                   {page.tags.map(tag => (
                     <span style="font-size:0.75rem; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:0.3rem; padding:0.1rem 0.5rem;">
                       {tag}
                     </span>
                   ))}
+                  <a
+                    href={`${base}/private/d439/${page.slug}-slides`}
+                    onclick="event.stopPropagation();"
+                    style="margin-left:auto; display:inline-flex; align-items:center; gap:0.3rem; padding:0.2rem 0.65rem; background:#eef2ff; color:#4f46e5; border:1px solid #c7d2fe; border-radius:9999px; font-size:0.75rem; font-weight:600; text-decoration:none; flex-shrink:0;"
+                  >▶ Slides</a>
                 </div>
               </div>
               <div style="color:#94a3b8; font-size:1.2rem; flex-shrink:0; align-self:center;">›</div>
@@ -276,7 +281,7 @@ const sections = [
     <div>
       <p style="font-weight:700; font-size:0.9rem; color:#166534; margin-bottom:0.25rem;">Study Tip</p>
       <p style="color:#15803d; font-size:0.85rem; line-height:1.6;">
-        Each page includes both fact-recall content and clinical judgment scenarios. At the bottom of every topic page you'll find <strong>Previous</strong> and <strong>Next</strong> navigation links so you can work through the material sequentially without returning to this index.
+        Each page includes both fact-recall content and clinical judgment scenarios. At the bottom of every topic page you'll find <strong>Previous</strong> and <strong>Next</strong> navigation links so you can work through the material sequentially without returning to this index. Every topic also has a <strong>▶ Slides</strong> button for full-screen slide presentations — great for active review sessions.
       </p>
     </div>
   </div>
