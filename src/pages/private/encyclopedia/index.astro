@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
 const articles = [
+  // ── Nursing Foundations ──────────────────────────────────────────────────
   {
     slug: 'introduction-to-nursing',
     icon: '🏥',
@@ -12,6 +13,7 @@ const articles = [
       'An overview of nursing as a discipline and profession, covering its historical development, defining characteristics, theoretical frameworks, domains of practice, and the nursing process.',
     tags: ['nursing history', 'nursing theory', 'nursing process', 'professional identity', 'foundations'],
   },
+  // ── Professional & Regulatory Practice ──────────────────────────────────
   {
     slug: 'nursing-scope-of-practice',
     icon: '⚖️',
@@ -21,6 +23,35 @@ const articles = [
       'The regulatory, professional, and ethical dimensions of nursing scope of practice, including levels of practice, delegation principles, and the evolving policy debate around scope expansion.',
     tags: ['regulation', 'scope of practice', 'delegation', 'APRN', 'Nurse Practice Act'],
   },
+  {
+    slug: 'nurse-practice-act',
+    icon: '📋',
+    category: 'Professional & Regulatory Practice',
+    title: 'Nurse Practice Act',
+    summary:
+      'The foundational legislative instrument governing nursing practice—its historical development, structural provisions, scope of practice definitions, board of nursing authority, APRN regulation, and implications for nursing practice.',
+    tags: ['NPA', 'scope of practice', 'licensure', 'BON', 'APRN', 'delegation', 'regulation'],
+  },
+  // ── Ethics & Law ─────────────────────────────────────────────────────────
+  {
+    slug: 'ethical-legal-dilemmas',
+    icon: '⚖️',
+    category: 'Ethics & Law',
+    title: 'Ethical and Legal Dilemmas',
+    summary:
+      'Situations in which competing moral principles and legal obligations resist clear resolution—covering bioethical foundations, informed consent, end-of-life care, confidentiality, resource allocation, and ethical decision-making frameworks.',
+    tags: ['ethics', 'law', 'informed consent', 'autonomy', 'end-of-life', 'moral distress'],
+  },
+  {
+    slug: 'legal-ethical-situations',
+    icon: '⚖️',
+    category: 'Ethics & Law',
+    title: 'Legal and Ethical Situations',
+    summary:
+      'Major categories of legal and ethical situation in nursing practice—mandatory reporting of abuse, impaired colleagues, professional boundary management, cultural and religious considerations, and whistleblowing for patient safety.',
+    tags: ['mandatory reporting', 'boundaries', 'whistleblowing', 'cultural humility', 'abuse', 'conscientious objection'],
+  },
+  // ── Clinical Reasoning & Decision-Making ─────────────────────────────────
   {
     slug: 'clinical-judgment',
     icon: '🧩',
@@ -39,6 +70,7 @@ const articles = [
       'The disciplined application of the three core methods of inference—deduction, induction, and abduction—to clinical decision-making, evidence evaluation, and the development of sound nursing judgment.',
     tags: ['critical reasoning', 'deduction', 'induction', 'abduction', 'inference', 'clinical judgment', 'EBP'],
   },
+  // ── Care Planning & Nursing Process ──────────────────────────────────────
   {
     slug: 'nursing-concept-map',
     icon: '🗺️',
@@ -65,6 +97,18 @@ const articles = [
     summary:
       'The planning phase of the nursing process: nursing diagnoses, patient goals, evidence-based interventions, prioritisation frameworks, documentation standards, and interprofessional coordination.',
     tags: ['care planning', 'nursing diagnosis', 'NANDA', 'SMART goals', 'nursing process'],
+  },
+  {
+    slug: 'nursing-decisions-actions',
+    icon: '🩺',
+    category: 'Care Planning & Nursing Process',
+    title: 'Nursing Decisions and Actions',
+    summary:
+      'The cognitive and behavioural foundations of nursing practice—clinical reasoning models, the nursing process (ADPIE), priority setting, evidence-based practice, delegation, and professional accountability for nursing decisions.',
+    tags: ['clinical reasoning', 'nursing process', 'ADPIE', 'EBP', 'accountability', 'delegation'],
+  },
+  // ── Physiology & Pathophysiology ─────────────────────────────────────────
+  {
     slug: 'fluid-balance',
     icon: '💧',
     category: 'Physiology & Pathophysiology',
@@ -92,33 +136,6 @@ const articles = [
     tags: ['ABG', 'pH', 'acidosis', 'alkalosis', 'bicarbonate', 'PaCO₂', 'blood gas'],
   },
   {
-    slug: 'reference-ranges',
-    icon: '📊',
-    category: 'Clinical Utility',
-    title: 'Clinical Reference Ranges',
-    summary:
-      'A consolidated quick-reference guide for clinical placements covering ABG parameters, serum electrolytes, fluid assessment values, acid-base disorder patterns, compensation formulae, and key clinical signs.',
-    tags: ['reference', 'normal values', 'clinicals', 'ABG', 'electrolytes', 'quick reference'],
-  },
-  {
-    slug: 'theory-of-mind',
-    icon: '🧠',
-    category: 'Psychology & Neuroscience',
-    title: 'Theory of Mind',
-    summary:
-      'The cognitive capacity to attribute mental states—beliefs, intentions, desires, and emotions—to oneself and others, and its significance for empathic nursing practice.',
-    tags: ['cognition', 'empathy', 'autism', 'communication', 'neuroscience'],
-  },
-  {
-    slug: 'principles-of-mobility',
-    icon: '🚶',
-    category: 'Clinical Nursing Practice',
-    title: 'Principles of Mobility',
-    summary:
-      'The physiological basis of human movement, the systemic consequences of immobility, and evidence-based nursing assessment and interventions to promote and restore functional mobility.',
-    tags: ['mobility', 'immobility', 'falls prevention', 'rehabilitation', 'safe patient handling'],
-  },
-  {
     slug: 'spastic-vs-flaccid-paralysis',
     icon: '🧠',
     category: 'Physiology & Pathophysiology',
@@ -126,67 +143,6 @@ const articles = [
     summary:
       'The pathophysiological basis of upper motor neurone (spastic) and lower motor neurone (flaccid) paralysis, their comparative clinical features, and evidence-based nursing assessment and management.',
     tags: ['paralysis', 'UMN', 'LMN', 'spasticity', 'neurological assessment', 'pathophysiology'],
-  },
-  {
-    slug: 'promoting-hygiene',
-    icon: '🧼',
-    category: 'Clinical Nursing Practice',
-    title: 'Promoting Hygiene',
-    summary:
-      'The evidence base underpinning personal hygiene care, hand hygiene, infection prevention, and the cultural and psychosocial dimensions of hygiene promotion across clinical settings.',
-    tags: ['hygiene', 'infection prevention', 'hand hygiene', 'personal care', 'patient safety'],
-  },
-  {
-    slug: 'principles-of-comfort',
-    icon: '🛏️',
-    category: 'Clinical Nursing Practice',
-    title: 'Principles of Comfort',
-    summary:
-      'Kolcaba\'s Theory of Comfort, the multi-dimensional assessment and promotion of patient comfort, and pharmacological and non-pharmacological interventions across clinical settings.',
-    tags: ['comfort', 'pain management', 'palliative care', 'Kolcaba', 'person-centred care'],
-    slug: 'medical-terminology',
-    icon: '🏥',
-    category: 'Clinical Foundations',
-    title: 'Medical Terminology',
-    summary:
-      'The standardised language of healthcare—its classical Greek and Latin origins, morphological structure, body-system vocabularies, abbreviation safety, pharmacological naming conventions, and implications for nursing documentation.',
-    tags: ['terminology', 'roots & suffixes', 'pharmacology', 'documentation', 'abbreviations'],
-  },
-  {
-    slug: 'ethical-legal-dilemmas',
-    icon: '⚖️',
-    category: 'Ethics & Law',
-    title: 'Ethical and Legal Dilemmas',
-    summary:
-      'Situations in which competing moral principles and legal obligations resist clear resolution—covering bioethical foundations, informed consent, end-of-life care, confidentiality, resource allocation, and ethical decision-making frameworks.',
-    tags: ['ethics', 'law', 'informed consent', 'autonomy', 'end-of-life', 'moral distress'],
-  },
-  {
-    slug: 'nursing-decisions-actions',
-    icon: '🩺',
-    category: 'Clinical Practice',
-    title: 'Nursing Decisions and Actions',
-    summary:
-      'The cognitive and behavioural foundations of nursing practice—clinical reasoning models, the nursing process (ADPIE), priority setting, evidence-based practice, delegation, and professional accountability for nursing decisions.',
-    tags: ['clinical reasoning', 'nursing process', 'ADPIE', 'EBP', 'accountability', 'delegation'],
-  },
-  {
-    slug: 'legal-ethical-situations',
-    icon: '⚖️',
-    category: 'Ethics & Law',
-    title: 'Legal and Ethical Situations',
-    summary:
-      'Major categories of legal and ethical situation in nursing practice—mandatory reporting of abuse, impaired colleagues, professional boundary management, cultural and religious considerations, and whistleblowing for patient safety.',
-    tags: ['mandatory reporting', 'boundaries', 'whistleblowing', 'cultural humility', 'abuse', 'conscientious objection'],
-  },
-  {
-    slug: 'nurse-practice-act',
-    icon: '📋',
-    category: 'Nursing Law & Regulation',
-    title: 'Nurse Practice Act',
-    summary:
-      'The foundational legislative instrument governing nursing practice—its historical development, structural provisions, scope of practice definitions, board of nursing authority, APRN regulation, and implications for nursing practice.',
-    tags: ['NPA', 'scope of practice', 'licensure', 'BON', 'APRN', 'delegation', 'regulation'],
   },
   {
     slug: 'charcot-foot',
@@ -206,6 +162,65 @@ const articles = [
       'A comprehensive academic overview of COPD pathophysiology—covering inflammatory mechanisms, emphysema and chronic bronchitis subtypes, spirometric diagnosis, the GOLD spirometric grades (1–4), the 2023 GOLD ABE classification system, acute exacerbation management, and evidence-based nursing care.',
     tags: ['COPD', 'GOLD criteria', 'emphysema', 'chronic bronchitis', 'spirometry', 'FEV1', 'pathophysiology', 'exacerbation', 'oxygen therapy'],
   },
+  // ── Clinical Nursing Practice ─────────────────────────────────────────────
+  {
+    slug: 'principles-of-mobility',
+    icon: '🚶',
+    category: 'Clinical Nursing Practice',
+    title: 'Principles of Mobility',
+    summary:
+      'The physiological basis of human movement, the systemic consequences of immobility, and evidence-based nursing assessment and interventions to promote and restore functional mobility.',
+    tags: ['mobility', 'immobility', 'falls prevention', 'rehabilitation', 'safe patient handling'],
+  },
+  {
+    slug: 'promoting-hygiene',
+    icon: '🧼',
+    category: 'Clinical Nursing Practice',
+    title: 'Promoting Hygiene',
+    summary:
+      'The evidence base underpinning personal hygiene care, hand hygiene, infection prevention, and the cultural and psychosocial dimensions of hygiene promotion across clinical settings.',
+    tags: ['hygiene', 'infection prevention', 'hand hygiene', 'personal care', 'patient safety'],
+  },
+  {
+    slug: 'principles-of-comfort',
+    icon: '🛏️',
+    category: 'Clinical Nursing Practice',
+    title: 'Principles of Comfort',
+    summary:
+      "Kolcaba's Theory of Comfort, the multi-dimensional assessment and promotion of patient comfort, and pharmacological and non-pharmacological interventions across clinical settings.",
+    tags: ['comfort', 'pain management', 'palliative care', 'Kolcaba', 'person-centred care'],
+  },
+  // ── Psychology & Neuroscience ─────────────────────────────────────────────
+  {
+    slug: 'theory-of-mind',
+    icon: '🧠',
+    category: 'Psychology & Neuroscience',
+    title: 'Theory of Mind',
+    summary:
+      'The cognitive capacity to attribute mental states—beliefs, intentions, desires, and emotions—to oneself and others, and its significance for empathic nursing practice.',
+    tags: ['cognition', 'empathy', 'autism', 'communication', 'neuroscience'],
+  },
+  // ── Clinical Foundations ──────────────────────────────────────────────────
+  {
+    slug: 'medical-terminology',
+    icon: '🏥',
+    category: 'Clinical Foundations',
+    title: 'Medical Terminology',
+    summary:
+      'The standardised language of healthcare—its classical Greek and Latin origins, morphological structure, body-system vocabularies, abbreviation safety, pharmacological naming conventions, and implications for nursing documentation.',
+    tags: ['terminology', 'roots & suffixes', 'pharmacology', 'documentation', 'abbreviations'],
+  },
+  // ── Clinical Utility ──────────────────────────────────────────────────────
+  {
+    slug: 'reference-ranges',
+    icon: '📊',
+    category: 'Clinical Utility',
+    title: 'Clinical Reference Ranges',
+    summary:
+      'A consolidated quick-reference guide for clinical placements covering ABG parameters, serum electrolytes, fluid assessment values, acid-base disorder patterns, compensation formulae, and key clinical signs.',
+    tags: ['reference', 'normal values', 'clinicals', 'ABG', 'electrolytes', 'quick reference'],
+  },
+  // ── Meta & Standards ──────────────────────────────────────────────────────
   {
     slug: 'encyclopedia-standards',
     icon: '📐',
@@ -216,6 +231,43 @@ const articles = [
     tags: ['standards', 'development', 'American English', 'slides', 'summary', 'merge review', 'related topics', 'contributor guide'],
   },
 ];
+
+// Ordered list of categories (controls the display sequence)
+const CATEGORY_ORDER = [
+  'Nursing Foundations',
+  'Professional & Regulatory Practice',
+  'Ethics & Law',
+  'Clinical Reasoning & Decision-Making',
+  'Care Planning & Nursing Process',
+  'Physiology & Pathophysiology',
+  'Clinical Nursing Practice',
+  'Psychology & Neuroscience',
+  'Clinical Foundations',
+  'Clinical Utility',
+  'Meta & Standards',
+];
+
+// Category metadata: icon and accent color
+const CATEGORY_META: Record<string, { icon: string; color: string; bg: string; border: string }> = {
+  'Nursing Foundations':                 { icon: '🏥', color: '#1e40af', bg: '#eff6ff', border: '#bfdbfe' },
+  'Professional & Regulatory Practice':  { icon: '⚖️', color: '#6d28d9', bg: '#f5f3ff', border: '#ddd6fe' },
+  'Ethics & Law':                        { icon: '📜', color: '#92400e', bg: '#fffbeb', border: '#fde68a' },
+  'Clinical Reasoning & Decision-Making': { icon: '🧩', color: '#065f46', bg: '#ecfdf5', border: '#a7f3d0' },
+  'Care Planning & Nursing Process':    { icon: '📋', color: '#0f766e', bg: '#f0fdfa', border: '#99f6e4' },
+  'Physiology & Pathophysiology':       { icon: '🧪', color: '#991b1b', bg: '#fef2f2', border: '#fecaca' },
+  'Clinical Nursing Practice':          { icon: '🩺', color: '#0369a1', bg: '#f0f9ff', border: '#bae6fd' },
+  'Psychology & Neuroscience':          { icon: '🧠', color: '#7c3aed', bg: '#faf5ff', border: '#e9d5ff' },
+  'Clinical Foundations':               { icon: '📖', color: '#374151', bg: '#f9fafb', border: '#e5e7eb' },
+  'Clinical Utility':                   { icon: '📊', color: '#047857', bg: '#f0fdf4', border: '#bbf7d0' },
+  'Meta & Standards':                   { icon: '📐', color: '#6366f1', bg: '#eef2ff', border: '#c7d2fe' },
+};
+
+// Group articles by category, preserving CATEGORY_ORDER
+const grouped = CATEGORY_ORDER.map((cat) => ({
+  category: cat,
+  meta: CATEGORY_META[cat] ?? { icon: '📁', color: '#475569', bg: '#f8fafc', border: '#e2e8f0' },
+  articles: articles.filter((a) => a.category === cat),
+})).filter((g) => g.articles.length > 0);
 ---
 
 <Layout title="Encyclopedia – Root" protected={true}>
@@ -227,7 +279,7 @@ const articles = [
   </nav>
 
   <!-- Header -->
-  <div style="margin-bottom:2rem;">
+  <div style="margin-bottom:1.75rem;">
     <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">📚 Encyclopedia</h1>
     <p style="color:#64748b; font-size:1rem; line-height:1.6;">
       Academic reference articles written for nursing students. All content in this section is
@@ -236,36 +288,59 @@ const articles = [
     </p>
   </div>
 
-  <!-- Article grid -->
-  <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2.5rem;">
-    {articles.map((article) => (
+  <!-- Quick-jump category bar -->
+  <nav aria-label="Jump to category" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:2rem;">
+    {grouped.map((g) => (
       <a
-        href={`${base}/private/encyclopedia/${article.slug}`}
-        style="display:block; background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.5rem; text-decoration:none; color:inherit; transition:box-shadow 0.2s, border-color 0.2s;"
-        onmouseover="this.style.boxShadow='0 4px 16px rgba(99,102,241,0.12)'; this.style.borderColor='#a5b4fc';"
-        onmouseout="this.style.boxShadow='none'; this.style.borderColor='#e2e8f0';"
+        href={`#cat-${g.category.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`}
+        style={`display:inline-flex; align-items:center; gap:0.35rem; font-size:0.78rem; font-weight:600; padding:0.3rem 0.7rem; border-radius:999px; border:1px solid ${g.meta.border}; background:${g.meta.bg}; color:${g.meta.color}; text-decoration:none; white-space:nowrap;`}
       >
-        <div style="display:flex; align-items:flex-start; gap:1rem;">
-          <div style="font-size:2rem; line-height:1; flex-shrink:0;">{article.icon}</div>
-          <div style="flex:1; min-width:0;">
-            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem; flex-wrap:wrap;">
-              <span style="font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.3rem; padding:0.15rem 0.45rem;">
-                {article.category}
-              </span>
-            </div>
-            <h2 style="font-size:1.1rem; font-weight:700; color:#1e293b; margin-bottom:0.4rem;">{article.title}</h2>
-            <p style="color:#64748b; font-size:0.9rem; line-height:1.6; margin-bottom:0.75rem;">{article.summary}</p>
-            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
-              {article.tags.map(tag => (
-                <span style="font-size:0.75rem; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:0.3rem; padding:0.1rem 0.5rem;">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div style="color:#94a3b8; font-size:1.2rem; flex-shrink:0; align-self:center;">›</div>
-        </div>
+        <span>{g.meta.icon}</span>
+        <span>{g.category}</span>
+        <span style="opacity:0.6; font-weight:400;">({g.articles.length})</span>
       </a>
+    ))}
+  </nav>
+
+  <!-- Grouped sections -->
+  <div style="display:flex; flex-direction:column; gap:2rem; margin-bottom:2.5rem;">
+    {grouped.map((g) => (
+      <section id={`cat-${g.category.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`}>
+        <!-- Category heading -->
+        <div style={`display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem; padding-bottom:0.6rem; border-bottom:2px solid ${g.meta.border};`}>
+          <span style="font-size:1.4rem; line-height:1;">{g.meta.icon}</span>
+          <h2 style={`font-size:1.1rem; font-weight:800; color:${g.meta.color}; margin:0; letter-spacing:0.01em;`}>{g.category}</h2>
+          <span style={`margin-left:auto; font-size:0.75rem; font-weight:600; color:${g.meta.color}; background:${g.meta.bg}; border:1px solid ${g.meta.border}; border-radius:999px; padding:0.15rem 0.55rem;`}>
+            {g.articles.length} {g.articles.length === 1 ? 'article' : 'articles'}
+          </span>
+        </div>
+
+        <!-- 2-column card grid -->
+        <div class="article-grid">
+          {g.articles.map((article) => (
+            <a
+              href={`${base}/private/encyclopedia/${article.slug}`}
+              class="article-card"
+            >
+              <div style="display:flex; align-items:flex-start; gap:0.85rem;">
+                <div style="font-size:1.75rem; line-height:1; flex-shrink:0; margin-top:0.1rem;">{article.icon}</div>
+                <div style="flex:1; min-width:0;">
+                  <h3 style="font-size:1rem; font-weight:700; color:#1e293b; margin:0 0 0.4rem;">{article.title}</h3>
+                  <p style="color:#64748b; font-size:0.85rem; line-height:1.55; margin:0 0 0.6rem;">{article.summary}</p>
+                  <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
+                    {article.tags.map(tag => (
+                      <span style="font-size:0.72rem; color:#475569; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:0.25rem; padding:0.08rem 0.4rem;">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div style="color:#94a3b8; font-size:1.1rem; flex-shrink:0; align-self:center; margin-left:0.25rem;">›</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     ))}
   </div>
 
@@ -283,3 +358,33 @@ const articles = [
     </div>
   </div>
 </Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .article-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .article-card:hover {
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.12);
+    border-color: #a5b4fc;
+  }
+
+  @media (max-width: 700px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
