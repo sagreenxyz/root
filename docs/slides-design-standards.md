@@ -191,4 +191,25 @@ Every slide page must follow this exact DOM structure inside `SlidesLayout.astro
 
 ---
 
+## 10. Left Legend / Process Indicator
+
+Some slide presentations include a fixed **legend panel on the left edge** of the viewport that shows the steps or phases of the topic and highlights the one currently active. This pattern is called the *process indicator*.
+
+### 10.1 Visibility rules
+
+| Slide position | Legend visibility |
+|----------------|-------------------|
+| **Title slide** (first column, `slide-title` class) | **Hidden** — the title slide is self-contained and the legend would be distracting. |
+| **Intermediate slides** (all columns between first and last) | **Visible** — the legend is shown and updated in real time as the user navigates. |
+| **Final slide** (last column, `slide-exam` class) | **Hidden** — the final slide is a summary / takeaways screen that stands alone. |
+
+### 10.2 Implementation
+
+- The panel is created programmatically in a `<script>` block and appended to `document.body` (not inside `#slides-outer`) so it is never clipped by the `overflow: hidden` container.
+- After the panel is appended, read `panel.offsetWidth` synchronously and write it to the `--process-indicator-w` CSS custom property on `:root`. Slide content uses `padding-left: calc(var(--process-indicator-w, 190px) + 1.5rem)` so it is never obscured.
+- Override `padding-left: 3rem` on `.slide-title` and `.slide-exam` so those slides (which hide the legend) are not over-indented.
+- A `MutationObserver` watches the `.slides-wrapper` `style` attribute. In the observer callback, compute the current column and call `panel.style.display = (col === 0 || col === totalCols - 1) ? 'none' : 'flex'`.
+
+---
+
 *Last updated: March 2026*

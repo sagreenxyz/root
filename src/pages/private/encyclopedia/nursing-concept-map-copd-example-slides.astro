@@ -674,6 +674,12 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
     padding: 4rem 3rem 2rem calc(var(--process-indicator-w, 190px) + 1.5rem);
   }
 
+  /* Title and final slides have no legend; restore standard left padding. */
+  .slide-title,
+  .slide-exam {
+    padding-left: 3rem;
+  }
+
   /* ── Optional slide: extra top padding so content clears back-hint ── */
   .slide.optional {
     padding-top: 5rem;
@@ -1191,6 +1197,9 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       document.documentElement.style.setProperty('--process-indicator-w', `${panelW}px`);
     }
 
+    // Total number of columns (slides) in this presentation.
+    const totalCols = document.querySelectorAll('.slide-column').length;
+
     // ── Update dots to reflect the current slide column ───────────────────
     function updateIndicator() {
       const wrapper = document.querySelector<HTMLElement>('.slides-wrapper');
@@ -1199,6 +1208,11 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       const match = wrapper.style.transform.match(/translateX\((-?\d+(?:\.\d+)?)px\)/);
       const tx = match ? parseFloat(match[1]) : 0;
       const col = Math.round(Math.abs(tx) / window.innerWidth);
+
+      // DESIGN STANDARD: Hide the legend on the title slide (col 0) and the
+      // final slide (last column). Show it only on intermediate slides.
+      panel.style.display = (col === 0 || col === totalCols - 1) ? 'none' : 'flex';
+
       const activePhase = colPhaseMap[col] ?? 0;
 
       items.forEach(({ dot, numEl, labelEl }, i) => {
