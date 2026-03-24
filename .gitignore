@@ -30,3 +30,4 @@ pnpm-debug.log*
 
 # Build-time auto-encrypted content (generated from src/data/plaintext/ by encrypt-with-hash.mjs)
 src/data/encrypted-auto/
+wget-log
