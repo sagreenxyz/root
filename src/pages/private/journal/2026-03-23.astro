@@ -4,7 +4,7 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 ---
 
 <JournalEntry
-  title="Major Development Sprint – Tools, Encyclopedia, Slides, Concept Map Coach & Textbook Quizzes"
+  title="Major Development Sprint – Tools, Encyclopedia, Slides, Concept Map Coach, Textbook Quizzes & Mobile Polish"
   date="2026-03-23"
   entryType="Development Log"
   course="D439 – Foundations of Nursing"
@@ -12,10 +12,10 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 >
   <p style="margin-bottom:1rem;">
     Today marked a major development sprint for the site. Over the course of the day,
-    <strong>28 pull requests</strong> were opened, reviewed, and merged — spanning new
+    <strong>33 pull requests</strong> were opened, reviewed, and merged — spanning new
     interactive tools, encyclopedia articles, slide decks, layout improvements, bug fixes,
-    and a full Foundations of Nursing textbook + quiz infrastructure. The work spans both
-    the public WGU Nursing Tools section and the private study area.
+    mobile layout polish, and a full Foundations of Nursing textbook + quiz infrastructure.
+    The work spans both the public WGU Nursing Tools section and the private study area.
   </p>
 
   <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🛠️ New Tools</h2>
@@ -226,6 +226,63 @@ const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
       mismatch that broke the CI pipeline was resolved.
     </li>
   </ul>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🐛 Bug Fixes</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>Quiz submit/reset button fix</strong> (PR #62) — Submit and reset buttons on
+    the
+    <a href={`${base}/private/d439/nursing-process`} style="color:#6366f1; font-weight:600;">Nursing Process</a>
+    page and all chapter quiz pages were silently doing nothing. Astro bundles inline
+    <code>&lt;script&gt;</code> tags as ES modules with deferred evaluation, so
+    <code>getElementById</code> calls at module scope ran before the DOM was ready.
+    Fixed by wrapping all DOM queries in a <code>DOMContentLoaded</code> listener across
+    every affected page.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">📱 Mobile Layout</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>Encyclopedia mobile redesign</strong> (PR #61) — All encyclopedia article
+    pages received a mobile-first layout pass (≤768px breakpoint). Both the left topic
+    panel and the right TOC sidebar are now hidden on phones so the full viewport width
+    is given to the article content. At the tablet breakpoint (≤1024px) only the right
+    TOC sidebar collapses. CSS is applied inline in each of the 23 article
+    <code>.astro</code> files.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">📝 Additional Embedded Quiz</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>ADPIE micro-quiz on the Nursing Process page</strong> (PR #60) — A
+    12-question NCLEX-style micro-quiz covering the five ADPIE phases (Assessment,
+    Diagnosis, Planning, Implementation, Evaluation) was embedded directly on the
+    <a href={`${base}/private/d439/nursing-process`} style="color:#6366f1; font-weight:600;">Nursing Process</a>
+    study page, using the same horizontally-sliding carousel introduced in the standalone
+    <a href={`${base}/tools/quiz`} style="color:#6366f1; font-weight:600;">/tools/quiz</a>
+    component.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🔐 Security &amp; Access</h2>
+
+  <p style="margin-bottom:0.75rem;">
+    <strong>Daily-expiring per-page HMAC reveal links</strong> (PR #59) — A build-time
+    HMAC token system was added to generate daily-expiring reveal links for individual
+    private pages. Each link is signed with a secret key at build time and expires at
+    midnight UTC, so shared links become invalid the following day. This provides a
+    lightweight, no-backend way to share specific private pages with time-limited access
+    without exposing the site-wide password.
+  </p>
+
+  <h2 style="font-size:1.2rem; font-weight:700; color:#1e293b; margin:1.5rem 0 0.75rem;">🖼️ Additional Slide Polish</h2>
+
+  <p style="margin-bottom:1rem;">
+    <strong>Hide legend panel on title &amp; final slides</strong> (PR #58) — The left
+    legend panel that annotates slide columns was being rendered on the title slide and
+    the closing summary slide, where it cluttered the layout. The panel is now hidden on
+    both the first and last slides of every slide deck so those slides use the full
+    horizontal width for their content.
+  </p>
 
   <div style="margin-top:1.5rem; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.6rem; padding:1rem 1.25rem; font-size:0.875rem; color:#3730a3; display:flex; align-items:flex-start; gap:0.65rem;">
     <span style="font-size:1.1rem; flex-shrink:0;">🔗</span>
