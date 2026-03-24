@@ -1,0 +1,347 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Mobility &amp; Exercise – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/mobility-exercise`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">🚶</div>
+          <h1 class="slide-main-title">Mobility &amp; Exercise</h1>
+          <h2 class="slide-subtitle">ROM · Positioning · Assistive Devices · Safe Handling</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: ROM & Exercise Types -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 7</div>
+          <h2 class="slide-heading">🏋️ ROM &amp; Exercise Types</h2>
+          <p class="slide-intro">Choose exercise type based on patient's condition and goals. ROM principles apply regardless of type.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">ROM Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Active ROM</strong> — patient performs alone; maintains strength + flexibility</li>
+                <li><strong>Passive ROM</strong> — nurse performs; maintains flexibility ONLY (no strength benefit)</li>
+                <li><strong>Active-Assisted</strong> — nurse helps complete arc of motion</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">ROM Principles</h3>
+              <ul class="bullet-list">
+                <li>Support proximal AND distal to joint</li>
+                <li>Slow, smooth, controlled movements</li>
+                <li>Stop at point of pain — never force</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Exercise Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Isometric</strong> — muscle contracts, NO joint movement (quad sets, glut sets); ideal in cast/joint injury; maintains strength; can elevate BP</li>
+                <li><strong>Isotonic</strong> — muscle contracts + joint moves (walking, weights); builds strength + cardiovascular fitness</li>
+                <li><strong>Isokinetic</strong> — constant speed with specialized equipment; rehabilitation settings</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Passive ROM maintains joint flexibility but does NOT build or maintain muscle strength.
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Isokinetic exercise detail</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to ROM &amp; Exercise</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Isokinetic Exercise &amp; Exercise Physiology</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Isokinetic Exercise</h3>
+                <ul class="bullet-list">
+                  <li>Muscle contracts at constant speed throughout full ROM</li>
+                  <li>Requires specialized equipment (Cybex, Biodex)</li>
+                  <li>Used in rehabilitation and sports medicine</li>
+                  <li>Most effective for rebuilding specific muscle groups post-injury</li>
+                  <li>Not practical for bedside or home use</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Exercise Progression in Hospital</h3>
+                <ul class="bullet-list">
+                  <li>Step 1: Passive ROM in bed</li>
+                  <li>Step 2: Active ROM in bed</li>
+                  <li>Step 3: Dangle legs at bedside</li>
+                  <li>Step 4: Transfer to chair</li>
+                  <li>Step 5: Stand with assistance</li>
+                  <li>Step 6: Ambulate with assistive device</li>
+                  <li>Step 7: Independent ambulation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Log Rolling -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 7</div>
+          <h2 class="slide-heading">🪵 Log Rolling</h2>
+          <p class="slide-intro">Maintains <strong>spinal alignment</strong> when turning — essential for spinal cord injury and post-spinal surgery patients.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Procedure</h3>
+              <ul class="bullet-list">
+                <li>Minimum <strong>2–3 nurses</strong> required</li>
+                <li>Nurse at head: <strong>stabilizes cervical spine AND gives count</strong></li>
+                <li>Cross patient's arms over chest</li>
+                <li>Pillow between knees</li>
+                <li>Draw sheet placed under patient</li>
+                <li>All nurses on same side to receive patient</li>
+                <li>Turn as <strong>ONE unit</strong> — head/neck/spine/hips/legs simultaneously</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Safety Rules</h3>
+              <ul class="bullet-list">
+                <li><strong>NEVER</strong> twist the spine during turning</li>
+                <li>Never attempt alone</li>
+                <li>Maintain cervical collar if prescribed</li>
+                <li>Support in lateral position with pillows</li>
+                <li>Pillow between knees (prevents hip rotation)</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                Nurse at the HEAD gives the count AND controls cervical spine — most critical position.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Assistive Devices -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 7</div>
+          <h2 class="slide-heading">🦯 Canes, Walkers &amp; Crutches</h2>
+          <p class="slide-intro">Correct fitting and gait technique prevents falls and promotes safe ambulation.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Cane &amp; Walker</h3>
+              <ul class="bullet-list">
+                <li><strong>Cane:</strong> hold in <strong>STRONGER (unaffected) hand</strong> — classic NCLEX fact</li>
+                <li>Handle at wrist crease / greater trochanter; elbow 20–30°</li>
+                <li>Cane gait: cane + weak leg forward together, then strong leg</li>
+                <li><strong>Walker:</strong> maximum stability; pick-up walker: advance first, then weak leg, then strong leg</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Stairs — ALL Devices</h3>
+              <ul class="bullet-list">
+                <li>Up stairs: <strong>"Good goes UP"</strong> (unaffected leg leads)</li>
+                <li>Down stairs: <strong>"Bad comes DOWN"</strong> (affected leg leads)</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Crutch Gaits</h3>
+              <ul class="bullet-list">
+                <li><strong>4-point</strong> — most stable; partial WB both legs; slowest</li>
+                <li><strong>3-point</strong> — non-WB one leg; most common post-fracture</li>
+                <li><strong>2-point</strong> — partial WB; faster than 4-point</li>
+                <li><strong>Swing-to</strong> — both legs lift to crutch level</li>
+                <li><strong>Swing-through</strong> — bilateral lower extremity involvement</li>
+              </ul>
+            </div>
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Crutch measurement details</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Assistive Devices</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Crutch Measurement &amp; Fitting</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Measurement Points</h3>
+                <ul class="bullet-list">
+                  <li><strong>Tip:</strong> 6" lateral and 2" anterior to foot</li>
+                  <li><strong>Axillary bar:</strong> 2–3 finger-widths below axilla (3–4 cm)</li>
+                  <li><strong>Hand grip:</strong> elbow flexed at 20–30°</li>
+                  <li><strong>Formula:</strong> patient height – 16 inches</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Crutch Safety</h3>
+                <ul class="bullet-list">
+                  <li>Weight on <strong>HANDS</strong>, NOT axilla — crutch palsy (brachial plexus injury)</li>
+                  <li>Check rubber tips for wear; replace if worn</li>
+                  <li>Non-slip footwear required</li>
+                  <li>Inspect crutch integrity at each use</li>
+                  <li>Proper body mechanics: lean slightly forward</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Positioning -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 7</div>
+          <h2 class="slide-heading">🛏️ Patient Positioning</h2>
+          <p class="slide-intro">Correct positioning prevents complications, promotes comfort, and facilitates procedures.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Common Positions &amp; Uses</h3>
+              <ul class="bullet-list">
+                <li><strong>Semi-Fowler's (30–45°):</strong> promotes lung expansion, reduces aspiration</li>
+                <li><strong>High-Fowler's (90°):</strong> maximizes breathing; COPD, CHF, eating</li>
+                <li><strong>Supine:</strong> flat; pillows under head and knees</li>
+                <li><strong>Sims' (lateral + top leg forward):</strong> enema, perineal exam, post-stroke</li>
+                <li><strong>Prone:</strong> posterior lung ventilation (ARDS); contraindicated in spinal injury, pregnancy</li>
+                <li><strong>Lateral:</strong> prevents aspiration in unconscious patient</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Trendelenburg Positions</h3>
+              <ul class="bullet-list">
+                <li><strong>Trendelenburg:</strong> feet above head — rarely used; concerns about cerebral/airway pressure</li>
+                <li><strong>Modified Trendelenburg:</strong> legs elevated, trunk flat — preferred for hypovolemic shock</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                Reposition at minimum every <strong>2 hours</strong> in bed; every <strong>1 hour</strong> in chair. HOB ≤30° for pressure injury prevention.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Safe Patient Moving -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 7</div>
+          <h2 class="slide-heading">🔄 Safe Patient Moving &amp; Bed Making</h2>
+          <p class="slide-intro"><strong>NEVER drag</strong> a patient — friction and shear cause pressure injuries. Use lift devices and draw sheets.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Moving Patient Up in Bed</h3>
+              <ul class="bullet-list">
+                <li>Lower HOB flat if safe to do so</li>
+                <li>Patient bends knees, pushes with feet if able</li>
+                <li>Use draw sheet — 2 nurses on opposite sides</li>
+                <li>Count together and slide (never drag)</li>
+                <li>Use friction-reducing sheet or slide board</li>
+                <li>Raise HOB after repositioning</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Occupied Bed Making</h3>
+              <ul class="bullet-list">
+                <li>Explain procedure; raise bed height</li>
+                <li>Lower near side rail; loosen linens</li>
+                <li>Roll patient AWAY; change near side; roll back</li>
+                <li>Apply top linens with <strong>TOE PLEAT</strong> (prevents foot drop)</li>
+                <li><strong>NEVER shake soiled linens</strong> — disperses microorganisms</li>
+                <li>Keep opposite rail UP throughout</li>
+                <li>Document skin assessment during repositioning</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Toe pleat = horizontal fold of top sheet at feet, allowing toe dorsiflexion — prevents foot drop.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">7 / 7</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">💪</span><span class="tip-text">Active ROM = patient alone; Passive ROM = NO strength benefit</span></div>
+            <div class="tip-card"><span class="tip-icon">🦵</span><span class="tip-text">Isometric = NO joint movement; safe in cast; can elevate BP</span></div>
+            <div class="tip-card"><span class="tip-icon">🦯</span><span class="tip-text">Cane = hold in STRONGER (unaffected) side — classic NCLEX trap</span></div>
+            <div class="tip-card"><span class="tip-icon">🪜</span><span class="tip-text">"Good up, bad down" for stairs applies to ALL assistive devices</span></div>
+            <div class="tip-card"><span class="tip-icon">🔢</span><span class="tip-text">3-point gait = non-weight-bearing on one leg (post-fracture)</span></div>
+            <div class="tip-card"><span class="tip-icon">🪵</span><span class="tip-text">Log rolling = minimum 2 nurses; nurse at HEAD gives count</span></div>
+            <div class="tip-card"><span class="tip-icon">🚫</span><span class="tip-text">NEVER drag patient — causes friction/shear pressure injuries</span></div>
+            <div class="tip-card"><span class="tip-icon">🦶</span><span class="tip-text">Toe pleat in top sheet prevents foot drop in bed-bound patients</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/mobility-exercise`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>

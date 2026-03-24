@@ -1,0 +1,303 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Wound &amp; Skin Care – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/wound-skin-care`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">🩹</div>
+          <h1 class="slide-main-title">Wound &amp; Skin Care</h1>
+          <h2 class="slide-subtitle">Pressure Injuries · Wound Healing · Braden Scale · Dressings</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Wound Classification -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 7</div>
+          <h2 class="slide-heading">📋 Wound Classification</h2>
+          <p class="slide-intro">Accurate wound classification guides treatment planning and communication across the care team.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">By Duration &amp; Depth</h3>
+              <ul class="bullet-list">
+                <li><strong>Acute</strong> — heals predictably in &lt;4 weeks (surgical, traumatic)</li>
+                <li><strong>Chronic</strong> — stalls &gt;4–6 weeks (pressure injuries, diabetic ulcers, venous stasis)</li>
+                <li><strong>Superficial</strong> — epidermis only</li>
+                <li><strong>Partial thickness</strong> — into dermis</li>
+                <li><strong>Full thickness</strong> — through dermis to subQ, muscle, or bone</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Contamination Classes</h3>
+              <ul class="bullet-list">
+                <li><strong>Class I — Clean:</strong> &lt;2% infection risk (elective, no inflammation)</li>
+                <li><strong>Class II — Clean-Contaminated:</strong> 5–15% (GI/GU tract entered)</li>
+                <li><strong>Class III — Contaminated:</strong> 15–30% (traumatic, major break in technique)</li>
+                <li><strong>Class IV — Dirty/Infected:</strong> &gt;30% (pus, perforated viscus, devitalized tissue)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Complete pressure injury staging</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Wound Classification</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Pressure Injury Staging — Complete (NPIAP)</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Stages I–IV</h3>
+                <ul class="bullet-list">
+                  <li><strong>Stage I</strong> — non-blanchable erythema, intact skin; first visible sign; may be warm/firm/painful</li>
+                  <li><strong>Stage II</strong> — partial thickness, shallow open ulcer or intact/open blister; no slough/eschar</li>
+                  <li><strong>Stage III</strong> — full thickness; subQ fat visible; may have slough; tunneling possible; bone/tendon NOT visible</li>
+                  <li><strong>Stage IV</strong> — full thickness; bone, tendon, or muscle EXPOSED; may have slough/eschar; often has tunneling/undermining</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Additional Categories</h3>
+                <ul class="bullet-list">
+                  <li><strong>Unstageable</strong> — full thickness suspected but wound bed obscured by slough or stable eschar; cannot determine stage until debrided</li>
+                  <li><strong>Deep Tissue Pressure Injury (DTPI)</strong> — deep purple or maroon localized area or blood-filled blister; intact or non-intact skin</li>
+                </ul>
+                <div class="callout" style="margin-top:0.75rem;">
+                  NEVER reverse-stage a healing wound — healing doesn't go Stage IV → III → II → I.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Wound Drainage Types -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 7</div>
+          <h2 class="slide-heading">💧 Wound Drainage Types</h2>
+          <p class="slide-intro">Accurate drainage assessment determines whether healing is progressing normally or infection is present.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Drainage Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Serous</strong> — clear/straw, watery, <em>NORMAL</em> (inflammatory phase)</li>
+                <li><strong>Serosanguineous</strong> — pink-tinged, thin, <em>NORMAL</em> early healing</li>
+                <li><strong>Sanguineous</strong> — bright red fresh blood; small amounts normal post-op, but ABNORMAL if excessive/increasing</li>
+                <li><strong>Purulent</strong> — thick, opaque, yellow/green, foul odor = <em>ALWAYS ABNORMAL</em> = infection → culture + notify provider</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Drainage Amounts &amp; Drains</h3>
+              <ul class="bullet-list">
+                <li><strong>Scant</strong> — &lt;1 cm on dressing</li>
+                <li><strong>Small</strong> — ≤2.5 cm (1 inch)</li>
+                <li><strong>Moderate</strong> — 2.5–7.5 cm</li>
+                <li><strong>Large/Copious</strong> — saturates dressing</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Types of Drains</h3>
+              <ul class="bullet-list">
+                <li><strong>JP drain</strong> — closed suction, bulb</li>
+                <li><strong>Hemovac</strong> — larger closed suction</li>
+                <li><strong>Penrose</strong> — open/passive, gravity-dependent</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Wound Healing by Intention & Phases -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 7</div>
+          <h2 class="slide-heading">🔄 Healing by Intention &amp; Phases</h2>
+          <p class="slide-intro">The type of wound closure affects healing time, scar formation, and infection risk.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Types of Intention</h3>
+              <ul class="bullet-list">
+                <li><strong>Primary intention</strong> — edges approximated (sutures/staples/Steri-Strips); minimal scarring; closure 5–7 days; example: surgical incision</li>
+                <li><strong>Secondary intention</strong> — left open; heals inside-out via granulation, wound contraction, epithelialization; more scarring; weeks to months; example: pressure injuries</li>
+                <li><strong>Tertiary intention</strong> — intentionally left open 3–5 days (contaminated/infected), then surgically closed</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Healing Phases</h3>
+              <ul class="bullet-list">
+                <li><strong>Hemostasis</strong> — immediate; clot formation, vasoconstriction</li>
+                <li><strong>Inflammation</strong> — days 1–4; redness/warmth/swelling = NORMAL; phagocytosis</li>
+                <li><strong>Proliferation</strong> — days 4–21; granulation tissue forms; epithelialization</li>
+                <li><strong>Maturation</strong> — day 21 to 2 years; collagen remodeling; ~80% of original tensile strength</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Inflammatory phase redness and swelling are NORMAL — document but don't treat if no signs of infection (purulent drainage, increasing pain, fever).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Braden Scale & Prevention -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 7</div>
+          <h2 class="slide-heading">📊 Braden Scale &amp; Pressure Injury Prevention</h2>
+          <p class="slide-intro">Braden scale predicts pressure injury risk — lower score = higher risk. Act on findings proactively.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Braden Scale</h3>
+              <ul class="bullet-list">
+                <li><strong>6 subscales:</strong> sensory perception, moisture, activity, mobility, nutrition, friction/shear</li>
+                <li>Score ≤<strong>18</strong> = at risk</li>
+                <li>Score ≤<strong>12</strong> = high risk</li>
+                <li>Score ≤<strong>9</strong> = very high risk</li>
+                <li>Assess on admission and regularly</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Prevention Interventions</h3>
+              <ul class="bullet-list">
+                <li>Reposition <strong>q2h</strong> in bed; <strong>q1h</strong> in chair</li>
+                <li>HOB ≤<strong>30°</strong> (reduces sacral shear)</li>
+                <li>Use lift devices — <strong>never drag</strong></li>
+                <li>Pressure-redistribution mattress</li>
+                <li>Keep skin clean and dry; moisture barriers for incontinence</li>
+                <li>Adequate nutrition: protein, zinc, vitamin C</li>
+                <li>Heel protectors; pad bony prominences</li>
+                <li><strong>NEVER</strong> massage reddened bony prominences</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Wound Care & Diabetic Foot -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 7</div>
+          <h2 class="slide-heading">🩺 Wound Care &amp; Diabetic Foot</h2>
+          <p class="slide-intro">Proper wound care promotes healing; diabetic foot care prevents amputation — the most serious preventable complication.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Wound Cleansing &amp; Dressings</h3>
+              <ul class="bullet-list">
+                <li>Clean with <strong>normal saline</strong> or wound cleanser</li>
+                <li><strong>Avoid:</strong> hydrogen peroxide, povidone-iodine in healing wounds (damages granulation tissue)</li>
+                <li>Moist wound environment promotes healing</li>
+                <li><strong>Dressings:</strong> hydrocolloid (light exudate), foam (moderate), alginate (heavy), transparent film (Stage I–II), wet-to-dry (debridement), VAC/negative pressure</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Diabetic Foot Care</h3>
+              <ul class="bullet-list">
+                <li>Wash daily with mild soap and <strong>warm</strong> (not hot) water</li>
+                <li>Dry thoroughly between toes</li>
+                <li>Inspect <strong>daily</strong> for blisters, cracks, redness, swelling</li>
+                <li>Non-restrictive socks; well-fitting shoes</li>
+                <li><strong>No barefoot walking</strong></li>
+                <li>Trim nails straight across</li>
+                <li>Professional nail care if poor vision or neuropathy</li>
+                <li><strong>Report any wound immediately</strong> — healing impaired by neuropathy + vascular insufficiency</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">7 / 7</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">🔴</span><span class="tip-text">Purulent drainage = ALWAYS infection → culture + notify provider</span></div>
+            <div class="tip-card"><span class="tip-icon">✅</span><span class="tip-text">Serous and serosanguineous drainage = normal early healing</span></div>
+            <div class="tip-card"><span class="tip-icon">🚫</span><span class="tip-text">NEVER massage reddened bony prominences — worsens tissue damage</span></div>
+            <div class="tip-card"><span class="tip-icon">🔄</span><span class="tip-text">Reposition every 2 hours in bed; every 1 hour in chair</span></div>
+            <div class="tip-card"><span class="tip-icon">🛏️</span><span class="tip-text">HOB ≤30° prevents sacral shear; reduces pressure injury risk</span></div>
+            <div class="tip-card"><span class="tip-icon">⬆️</span><span class="tip-text">NEVER downstage a healing pressure injury — healing doesn't reverse stages</span></div>
+            <div class="tip-card"><span class="tip-icon">🩹</span><span class="tip-text">Stage I = intact non-blanchable; Stage IV = bone or tendon EXPOSED</span></div>
+            <div class="tip-card"><span class="tip-icon">🧪</span><span class="tip-text">Don't use hydrogen peroxide on healing wounds — damages granulation tissue</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/wound-skin-care`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>

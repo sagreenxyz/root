@@ -1,0 +1,355 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Infection Control &amp; Asepsis – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/infection-control`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">🧼</div>
+          <h1 class="slide-main-title">Infection Control &amp; Asepsis</h1>
+          <h2 class="slide-subtitle">Hand Hygiene · Sterile Technique · PPE · Isolation</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Medical vs Surgical Asepsis -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 8</div>
+          <h2 class="slide-heading">🏥 Medical vs. Surgical Asepsis</h2>
+          <p class="slide-intro">Understanding the difference prevents infection and ensures appropriate technique for each clinical situation.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Medical Asepsis (Clean Technique)</h3>
+              <ul class="bullet-list">
+                <li>Reduces &amp; prevents spread of microorganisms</li>
+                <li>Used for: routine assessments, oral medications, bathing, peripheral IV</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Chain of Infection (6 Links)</h3>
+              <ul class="bullet-list">
+                <li>Infectious agent → antimicrobials</li>
+                <li>Reservoir → wound care, clean equipment</li>
+                <li>Portal of Exit → cover coughs (masks)</li>
+                <li><strong>Mode of Transmission → hand hygiene/PPE</strong></li>
+                <li>Portal of Entry → intact skin, sterile technique</li>
+                <li>Susceptible Host → immunizations, nutrition</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Surgical Asepsis (Sterile Technique)</h3>
+              <ul class="bullet-list">
+                <li>Eliminates ALL microorganisms</li>
+                <li>Required for: urinary catheter, central line, surgical procedures, deep wound care, trach inner cannula</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                🙌 Hand hygiene breaks the <em>Mode of Transmission</em> link — most important single intervention.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Sterile Field Principles -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 8</div>
+          <h2 class="slide-heading">⚗️ Sterile Field Principles</h2>
+          <p class="slide-intro">Sterile technique must be maintained throughout the procedure. When in doubt — replace it.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Rules of the Sterile Field</h3>
+              <ul class="bullet-list">
+                <li>Sterile + unsterile = <strong>contaminated</strong></li>
+                <li>Wet = <strong>contaminated</strong> (strike-through contamination)</li>
+                <li><strong>1-inch border</strong> around sterile field = contaminated</li>
+                <li>Below waist = <strong>contaminated</strong></li>
+                <li>Unattended = <strong>contaminated</strong></li>
+                <li>Never reach <strong>over</strong> a sterile field</li>
+                <li>No talking, coughing, or sneezing over the field</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Opening Sterile Packages</h3>
+              <ul class="bullet-list">
+                <li>Open first flap away from you</li>
+                <li>Open side flaps to sides</li>
+                <li>Last flap toward you</li>
+                <li>Never cross over sterile contents</li>
+                <li>Inspect packaging integrity before opening</li>
+                <li>Check expiration date</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                When in doubt about sterility — <strong>throw it out</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Handwashing -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 8</div>
+          <h2 class="slide-heading">🙌 Hand Hygiene</h2>
+          <p class="slide-intro">Hand hygiene is the <strong>single most effective</strong> method to prevent infection transmission.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">CDC 5-Step Handwashing</h3>
+              <ul class="bullet-list">
+                <li><strong>Wet</strong> — warm running water</li>
+                <li><strong>Lather</strong> — soap, scrub <strong>20 seconds</strong> (Happy Birthday × 2)</li>
+                <li><strong>Scrub</strong> — palms, backs, between fingers, under nails, wrists</li>
+                <li><strong>Rinse</strong> — fingertips pointing DOWN</li>
+                <li><strong>Dry</strong> — paper towel; use towel to turn off faucet</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">WHO 5 Moments &amp; Soap Rules</h3>
+              <ul class="bullet-list">
+                <li>Before patient contact</li>
+                <li>Before clean/aseptic procedure</li>
+                <li>After body fluid exposure</li>
+                <li>After patient contact</li>
+                <li>After touching patient surroundings</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Soap + Water REQUIRED for:</h3>
+              <ul class="bullet-list">
+                <li>Visibly soiled hands</li>
+                <li><strong>C. difficile</strong> — ABHR not effective</li>
+                <li><strong>Norovirus</strong> — ABHR not effective</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Sterile Gloving -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 8</div>
+          <h2 class="slide-heading">🧤 Sterile Gloving</h2>
+          <p class="slide-intro">Maintaining sterility during gloving prevents contamination of the sterile field.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Donning Sterile Gloves</h3>
+              <ul class="bullet-list">
+                <li><strong>First glove</strong> (dominant hand): bare fingers touch <strong>INSIDE cuff only</strong></li>
+                <li><strong>Second glove</strong>: sterile-gloved fingers slide under <strong>OUTSIDE cuff</strong></li>
+                <li>Adjust fit: sterile touches sterile only</li>
+                <li>Keep hands above waist at all times</li>
+                <li>If torn → remove both, hand hygiene, re-glove</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Key Memory Points</h3>
+              <ul class="bullet-list">
+                <li>Only INSIDE of glove #1 is touched by bare skin</li>
+                <li>OUTSIDE of glove #2 is touched by sterile glove #1</li>
+                <li>Never let sterile glove touch unsterile surface</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                Sterile + unsterile = contaminated. If there's any doubt, re-glove.
+              </div>
+            </div>
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Clean glove donning and doffing technique</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Sterile Gloving</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Clean Glove — Donning &amp; Doffing</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Donning Clean Gloves</h3>
+                <ul class="bullet-list">
+                  <li>Pick up by cuff edge</li>
+                  <li>Inspect for tears or defects</li>
+                  <li>Slide on — no special technique required</li>
+                  <li>Size appropriately (too large = poor dexterity)</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Doffing Clean Gloves (Most Contaminated First)</h3>
+                <ul class="bullet-list">
+                  <li>Pinch <strong>outside of palm</strong> of first glove</li>
+                  <li>Peel off, turning inside out — hold in gloved hand</li>
+                  <li>Slide <strong>bare fingers under the cuff</strong> of second glove</li>
+                  <li>Peel off, encasing the first glove inside</li>
+                  <li>Discard immediately</li>
+                  <li><strong>Hand hygiene immediately after</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: PPE & Isolation -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 8</div>
+          <h2 class="slide-heading">🦺 PPE &amp; Isolation Precautions</h2>
+          <p class="slide-intro">Don PPE before entering; doff in reverse order (most contaminated first) before leaving the room.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">PPE Order</h3>
+              <ul class="bullet-list">
+                <li><strong>DONNING:</strong> Gown → Mask → Goggles → Gloves</li>
+                <li><strong>DOFFING:</strong> Gloves → Goggles → Gown → Mask</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Isolation Types</h3>
+              <ul class="bullet-list">
+                <li><strong>Airborne:</strong> N95, negative pressure room — TB, measles, chickenpox, COVID</li>
+                <li><strong>Droplet:</strong> surgical mask within 3 ft — influenza, pertussis, meningitis, strep</li>
+                <li><strong>Contact:</strong> gown + gloves — MRSA, C.diff, VRE, scabies</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">PPE Type Selection</h3>
+              <ul class="bullet-list">
+                <li><strong>Gloves</strong> — any body fluid contact</li>
+                <li><strong>Gown</strong> — contact precautions, splash risk</li>
+                <li><strong>Surgical mask</strong> — droplet, within 3 ft</li>
+                <li><strong>N95 respirator</strong> — airborne (must be fit-tested)</li>
+                <li><strong>Eye protection/goggles</strong> — splash to eyes</li>
+                <li><strong>Face shield</strong> — high-risk splash</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Droplet Precautions -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">7 / 8</div>
+          <h2 class="slide-heading">💧 Droplet Precautions Detail</h2>
+          <p class="slide-intro">Droplets travel <strong>&lt;3 feet</strong> — do NOT remain suspended in air (unlike airborne particles).</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Droplet Precautions</h3>
+              <ul class="bullet-list">
+                <li>Private room (door can be OPEN)</li>
+                <li>Surgical mask when within <strong>3 feet</strong></li>
+                <li>Examples: influenza, pertussis, meningitis (bacterial), streptococcal pharyngitis, mumps, rubella</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Contact Precautions</h3>
+              <ul class="bullet-list">
+                <li>Private room or cohort with same pathogen</li>
+                <li>Gown + gloves for all contact</li>
+                <li>Dedicated equipment (stethoscope, BP cuff)</li>
+                <li>Examples: MRSA, C. diff, VRE, scabies, RSV</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                C. diff: soap + water mandatory; ABHR (alcohol-based hand rub) is NOT effective against spores.
+              </div>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Airborne = negative pressure room with door CLOSED + N95 (must be fit-tested annually).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 8: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">8 / 8</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">🙌</span><span class="tip-text">Hand hygiene = single most effective infection prevention measure</span></div>
+            <div class="tip-card"><span class="tip-icon">🧻</span><span class="tip-text">C. diff + norovirus = SOAP AND WATER only (ABHR not effective)</span></div>
+            <div class="tip-card"><span class="tip-icon">📏</span><span class="tip-text">1-inch border of sterile field is always contaminated</span></div>
+            <div class="tip-card"><span class="tip-icon">⬇️</span><span class="tip-text">Below waist = contaminated; keep sterile hands above waist</span></div>
+            <div class="tip-card"><span class="tip-icon">🧤</span><span class="tip-text">Bare fingers touch ONLY inside cuff of first sterile glove</span></div>
+            <div class="tip-card"><span class="tip-icon">🔴</span><span class="tip-text">Doff gloves FIRST when removing PPE (most contaminated item)</span></div>
+            <div class="tip-card"><span class="tip-icon">😷</span><span class="tip-text">N95 = airborne precautions (TB, measles, chickenpox); must be fit-tested</span></div>
+            <div class="tip-card"><span class="tip-icon">❓</span><span class="tip-text">When in doubt about sterility — replace it. No exceptions.</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/infection-control`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>
