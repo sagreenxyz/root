@@ -1,0 +1,253 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+
+const sections = [
+  {
+    id: 'introduction',
+    heading: 'Introduction',
+    body: `Motivational Interviewing (MI) is a collaborative, person-centred counselling method designed to strengthen an individual's intrinsic motivation and commitment to change. Originally developed within the field of addiction treatment, MI has since been adopted across a broad spectrum of healthcare disciplines—including nursing—as an evidence-based strategy for facilitating health behaviour change. The approach is grounded in the recognition that ambivalence about change is a natural human condition, and that skilled exploration of that ambivalence—rather than confrontation or persuasion—is the most effective path toward sustainable behaviour modification.\n\nFor nursing professionals, MI represents both a set of practical communication techniques and a philosophical orientation toward the nurse-patient relationship. Its emphasis on autonomy, empathy, and collaborative goal-setting resonates with the core values of patient-centred care that underpin contemporary nursing ethics and practice standards. As nurses increasingly occupy expanded clinical roles—in chronic disease management, community health, mental health, and preventive care—the capacity to facilitate meaningful conversations about behaviour change has become an indispensable professional competency. This article provides a comprehensive academic overview of MI from a nursing perspective, integrating its theoretical and methodological foundations with its applications in therapeutic communication and clinical nursing practice.`,
+  },
+  {
+    id: 'historical-development',
+    heading: 'Historical Development',
+    body: `Motivational Interviewing was introduced by the clinical psychologist William R. Miller in a 1983 paper published in Behavioural Psychotherapy, in which he described a new approach to working with problem drinkers that emphasised listening over lecturing, and elicitation of the patient's own motivations for change over expert prescription. The approach emerged from Miller's clinical observation that confrontational counselling styles—prevalent in addiction treatment at the time—frequently provoked resistance and disengagement, whereas empathic, non-directive listening appeared to facilitate openness and a willingness to examine ambivalence.\n\nIn subsequent years, Miller collaborated with the British psychologist Stephen Rollnick to refine and formalise the approach. Their landmark 1991 text Motivational Interviewing: Preparing People to Change Addictive Behaviour provided the first comprehensive theoretical and clinical account of MI. Successive editions—published in 2002 and 2012—substantially expanded the model, incorporating developments from self-determination theory, client-centred therapy, and the transtheoretical model of behaviour change, and extending MI's applicability beyond addiction to a wide range of health behaviour domains.\n\nThe empirical literature on MI has grown substantially since the 1990s. Meta-analyses have demonstrated its efficacy across diverse health behaviours—including smoking cessation, physical activity, dietary change, medication adherence, and management of chronic conditions—in comparison with control conditions and with traditional didactic health education. The translation of MI into nursing and allied health contexts has been accompanied by the development of specialised training programmes and fidelity measurement instruments, most notably the Motivational Interviewing Treatment Integrity (MITI) coding system, which enables systematic assessment and feedback on MI practice quality.`,
+  },
+  {
+    id: 'theoretical-foundations',
+    heading: 'Theoretical Foundations',
+    body: `Motivational Interviewing draws on several intersecting theoretical traditions, each of which contributes to its conceptual coherence and clinical utility.\n\nSelf-Determination Theory. Developed by Edward Deci and Richard Ryan, self-determination theory (SDT) distinguishes between intrinsic motivation—behaviour driven by genuine personal values and interest—and extrinsic motivation—behaviour driven by external rewards, pressures, or social expectations. SDT posits that intrinsic motivation, when cultivated within supportive relationships that satisfy three basic psychological needs (competence, autonomy, and relatedness), produces more durable and sustainable behaviour change than extrinsic motivation. MI operationalises this insight by deliberately building a relational context that supports autonomy, affirms competence, and establishes genuine collaborative connection—conditions that facilitate the internalisation of motivation for health behaviour change.\n\nClient-Centred Therapy. Carl Rogers's foundational articulation of client-centred therapy introduced the therapeutic triad of empathy, unconditional positive regard, and genuineness as the necessary and sufficient conditions for therapeutic change. MI incorporates these relational conditions—particularly empathic listening and unconditional acceptance of the client as a person—as non-negotiable foundations of the therapeutic relationship. The MI practitioner aims not to judge, correct, or advise, but to understand and reflect the client's experience with accuracy and care. This Rogerian heritage is evident in MI's emphasis on reflective listening and its deliberate avoidance of the "righting reflex"—the clinician's impulse to correct, advise, or argue in favour of change.\n\nTranstheoretical Model. James Prochaska and Carlo DiClemente's transtheoretical model (TTM), sometimes called the Stages of Change model, conceptualises behaviour change as a dynamic, non-linear process comprising five stages: precontemplation, contemplation, preparation, action, and maintenance. While MI is not theoretically confined to the TTM, the two frameworks have frequently been integrated in clinical training and practice. Understanding a patient's current stage of readiness is clinically useful in calibrating the focus and tone of MI conversations—exploring ambivalence is most salient for patients in contemplation, while consolidating commitment and planning is more relevant for those in preparation.`,
+  },
+  {
+    id: 'mi-spirit',
+    heading: 'The Spirit of Motivational Interviewing',
+    body: `Miller and Rollnick identify the "spirit" of MI—a set of underlying attitudes and values that define the relational climate within which MI techniques are properly applied—as foundational to effective practice. The spirit of MI is captured in the acronym PACE: Partnership, Acceptance, Compassion, and Evocation.\n\nPartnership. MI is conducted as a collaborative partnership between practitioner and patient, rather than as an expert-driven, prescriptive consultation. The nurse does not position herself as the authority who tells the patient what to do; rather, she engages as a fellow explorer of the patient's experience, values, and motivations. This collaborative stance is expressed in the language used, the questions asked, and the degree of genuine curiosity brought to the patient's perspective. In nursing practice, partnership requires a deliberate step back from the expert role—a stance that may feel counterintuitive given the professional expectation that nurses possess and deploy clinical knowledge—toward a more facilitative and curious orientation.\n\nAcceptance. The spirit of acceptance in MI encompasses four interrelated dimensions: absolute worth (unconditional positive regard for the patient as a person of inherent value), accurate empathy (genuine effort to understand the patient's subjective experience from the patient's own frame of reference), autonomy support (active affirmation of the patient's right to make his own decisions), and affirmation (deliberate recognition of the patient's strengths, efforts, and competencies). Acceptance does not imply approval of all of a patient's choices; rather, it signifies a commitment to engaging with the patient as a whole person rather than as a problem to be fixed.\n\nCompassion. In MI, compassion is defined specifically as the practitioner's active commitment to promoting the patient's welfare and prioritising the patient's needs over the practitioner's own interests. This definition aligns closely with the nursing virtue of advocacy—acting on behalf of the patient's best interests within the therapeutic relationship. Compassion in MI motivates the nurse to remain patient-centred even when conversations are challenging, emotionally taxing, or characterised by sustained ambivalence.\n\nEvocation. The principle of evocation holds that the patient already possesses the motivation, strengths, and resources needed for change, and that the clinician's role is to draw these out rather than install them from without. This stands in direct contrast to the deficit model implicit in traditional health education, which assumes that patients fail to change because they lack knowledge, skills, or motivation that the clinician must supply. Evocation directs the nurse toward asking the patient what matters to them, what they already know, and what ideas they have for change—recognising the patient as the expert on their own life and values.`,
+  },
+  {
+    id: 'four-processes',
+    heading: 'The Four Processes of Motivational Interviewing',
+    body: `The third edition of Miller and Rollnick's foundational text (2012) reorganised the MI framework around four sequential but overlapping processes: Engaging, Focusing, Evoking, and Planning. These processes provide a dynamic map for understanding where a clinical conversation is at any given point and what the most clinically appropriate next move might be.\n\nEngaging. The engaging process establishes the relational foundation for the MI conversation. It encompasses the nurse's efforts to build rapport, demonstrate empathy, and create a safe relational space in which the patient feels heard, respected, and not judged. Engaging is not a preliminary step to be completed quickly before the "real work" begins; it is an ongoing relational commitment that must be maintained throughout the encounter. Failure to adequately engage—manifested in premature focusing, unsolicited advice-giving, or challenges to the patient's perspective—risks rupturing the therapeutic alliance and foreclosing the patient's openness to exploration.\n\nFocusing. The focusing process involves establishing and maintaining a shared directional agenda for the conversation—clarifying what aspect of the patient's life or health behaviour is the most productive focus of MI at this moment. In nursing contexts, focusing often requires navigating between the nurse's clinical agenda (which may prioritise certain health behaviours based on clinical risk) and the patient's own priorities, concerns, and values. Skilled focusing honours the patient's autonomy by making the agenda-setting process explicit and collaborative, rather than imposing a nurse-determined focus without acknowledgment.\n\nEvoking. The evoking process is the heart of MI: the deliberate elicitation of the patient's own arguments for change—their desire, ability, reasons, and need to change (collectively termed "change talk"). Evoking involves careful attention to what the patient is saying, selective reinforcement of change talk, and exploration of the ambivalence that characterises the contemplative stance toward behaviour change. The nurse listens for and strategically draws out the patient's own articulation of why change might matter—recognising that arguments for change are more persuasive when they come from the patient than when they come from the clinician.\n\nPlanning. The planning process emerges naturally when a patient's ambivalence has shifted sufficiently toward motivation and the patient expresses readiness to consider how to change. Planning in MI involves collaboratively developing a change plan that is specific, achievable, and grounded in the patient's own values and priorities. Importantly, MI cautions against premature planning—initiating detailed goal-setting and problem-solving before adequate motivation has been evoked can undermine the patient's sense of autonomy and produce superficial compliance rather than genuine commitment.`,
+  },
+  {
+    id: 'oars',
+    heading: 'Core Communication Skills: OARS',
+    body: `The OARS framework—Open-ended questions, Affirmations, Reflective listening, and Summaries—provides a practical shorthand for the core communication skills that operationalise MI's spirit and processes in clinical conversation.\n\nOpen-Ended Questions. Open-ended questions invite expansive responses rather than yes/no or one-word answers, and thereby create space for the patient to articulate their own experience, values, and concerns. In contrast to closed questions (which gather specific information efficiently but may foreclose elaboration), open-ended questions signal curiosity and respect for the patient's perspective. Examples relevant to nursing include: "What concerns you most about making this change?"; "How has living with this condition affected your daily life?"; "What have you already tried, and how did that go for you?" Strategic use of open-ended questions can draw out change talk, explore ambivalence, and deepen the nurse's understanding of the patient's motivational landscape.\n\nAffirmations. Affirmations are genuine expressions of recognition and appreciation for the patient's strengths, efforts, and character. They differ from generic praise ("Good job!") in that they are specific, sincere, and focused on what the patient brings to the situation rather than on the clinician's approval. Examples include: "You've managed some really difficult circumstances and kept trying"; "It takes courage to be this honest about what's been hard." Affirmations build the patient's self-efficacy—their belief in their capacity to change—which is one of the most reliable predictors of successful behaviour change. For nurses trained to identify patient deficits and problems, the deliberate cultivation of strength-based affirmation requires attentional reorientation.\n\nReflective Listening. Reflective listening—the practice of making reflections that convey accurate understanding of what the patient has said—is the foundational skill of MI and, arguably, of therapeutic communication more broadly. Reflections may be simple (closely mirroring the patient's words) or complex (adding meaning, making inferences, connecting themes, or amplifying the emotional content of what the patient has expressed). Skilled reflective listening demonstrates that the nurse has genuinely heard the patient, provides an opportunity for the patient to correct misunderstandings, and—through selective reflection of change talk—gently guides the conversation in a productive direction. In contrast, advice-giving, reassurance, and interrogation—however well-intentioned—may interrupt the patient's internal processing and inadvertently increase resistance.\n\nSummaries. Summaries are extended reflections that collect, link, and present back to the patient a synthesis of what has been discussed. They serve multiple functions: they reinforce the patient's sense of being heard; they provide structure and coherence to the conversation; they invite the patient to correct errors or omissions; and—when strategically composed to foreground change talk—they can powerfully consolidate momentum toward change. Transitional summaries mark a shift in focus (e.g., moving from exploring ambivalence to discussing planning), while collecting summaries gather threads across a longer conversation.`,
+  },
+  {
+    id: 'change-talk',
+    heading: 'Change Talk, Sustain Talk, and Ambivalence',
+    body: `A distinctive conceptual contribution of MI is its detailed attention to what patients say within conversations about behaviour change. Miller and Rollnick distinguish between change talk—patient speech that favours change—and sustain talk—patient speech that favours the status quo. Understanding and responding strategically to these two types of speech is central to effective MI practice.\n\nChange Talk. Change talk is further categorised using the acronym DARN-CAT. The preparatory forms of change talk—Desire ("I want to be healthier"), Ability ("I could probably cut back if I tried"), Reason ("My kids are why I want to stop"), and Need ("I have to do something different")—indicate emerging motivation but do not necessarily predict imminent action. The mobilising forms of change talk—Commitment ("I am going to start exercising"), Activation ("I'm ready to make an appointment"), and Taking Steps ("I already went for a walk this week")—reflect higher levels of motivation and stronger predictions of behaviour change. The MI practitioner attends carefully to the emergence of mobilising change talk as a signal that the patient is moving toward readiness to plan.\n\nSustain Talk. Sustain talk is not denial, resistance, or pathological defensiveness; it is the normal expression of the other side of ambivalence—the reasons to stay the same. Effective MI practice does not suppress or argue against sustain talk, but rather acknowledges it with empathy ("It sounds like this has been a really difficult habit to change") while selectively directing curiosity toward the change-oriented side of the ambivalence. Arguing against sustain talk—the "righting reflex" in action—typically produces reactance: the patient defends the status quo more vigorously.\n\nAmbivalence and the Decisional Balance. Ambivalence—simultaneously holding motivations for change and motivations for the status quo—is a normal and almost universal feature of contemplating significant behaviour change. MI frames ambivalence not as a character deficit or a barrier to be overcome, but as the natural terrain to be explored with curiosity and without judgment. One MI-consistent strategy for making ambivalence explicit is the decisional balance: inviting the patient to articulate both the benefits of change and the benefits of staying the same, thereby externalising the internal conflict and enabling it to be examined collaboratively. Importantly, the nurse's role is not to resolve the patient's ambivalence by arguing for change, but to create the relational conditions within which the patient can resolve it themselves.`,
+  },
+  {
+    id: 'therapeutic-communication',
+    heading: 'Motivational Interviewing and Therapeutic Communication in Nursing',
+    body: `Therapeutic communication in nursing refers to the purposeful, goal-directed use of communication skills to support the physical, psychological, and social wellbeing of patients. Its foundational elements—empathic listening, active presence, non-judgmental stance, genuine interest in the patient's experience, and careful use of verbal and non-verbal communication—align closely with the spirit and skills of MI. Understanding the relationship between these two frameworks is essential for nursing students, as MI provides both a theoretical rationale and a practical method for implementing therapeutic communication principles in health behaviour contexts.\n\nEmpathy as a Clinical Skill. Both therapeutic communication and MI identify empathy as a central clinical competency—not merely a dispositional quality, but a learnable, practicable skill. In the nursing literature, empathy is typically differentiated from sympathy: sympathy involves sharing the patient's feeling state, whereas empathy involves understanding the patient's perspective from within their frame of reference while maintaining one's own. MI operationalises empathic communication through reflective listening, which demonstrates understanding without endorsing or colluding. The nursing student who can accurately reflect a patient's ambivalent feelings—"It sounds like part of you really wants to make this change, and another part of you isn't sure if it's possible"—communicates deeper empathic understanding than one who merely expresses sympathy.\n\nNon-Judgmental Communication. A core principle of therapeutic communication is the suspension of judgment in favour of genuine curiosity about and acceptance of the patient's experience. MI elaborates this principle through its concept of acceptance, specifically the dimension of unconditional positive regard—extending respect and dignity to the patient regardless of their behaviour choices, values, or past experiences. For nurses, this is a demanding professional stance, particularly in relation to health behaviours (smoking, substance use, poor dietary habits) toward which clinical training may instil negative attitudes. Reflective awareness of one's own judgments, and deliberate practice of acceptance, are important elements of professional development in therapeutic communication.\n\nActive Listening and Reflective Response. Active listening—the deliberate, attentive, and responsive engagement with what a patient is saying—is a cornerstone of therapeutic communication nursing curricula. MI extends active listening into a specific clinical methodology through the OARS framework, particularly reflective listening. The nursing student moving from generic active listening to MI-consistent reflective listening learns to do more than simply attend; she learns to formulate reflective statements that demonstrate understanding, elicit elaboration, and—when strategically deployed—guide the conversation toward the patient's own motivations for change. This represents a significant advancement of competency rather than a departure from therapeutic communication principles.\n\nAvoiding Communication Barriers. Traditional nursing therapeutic communication curricula identify communication barriers—including offering unsolicited advice, minimising patient concerns, changing the subject, and using clichés—as obstacles to effective nurse-patient interaction. MI provides a theoretical account of why these barriers are harmful (they undermine autonomy, damage the therapeutic alliance, and evoke resistance) and a specific alternative framework for what to do instead. The concept of the "righting reflex"—the clinician's habitual impulse to correct, advise, and prescribe—names and explains one of the most pervasive communication barriers in clinical practice, offering a clinically useful label for a phenomenon that nursing students frequently observe in themselves and their colleagues.`,
+  },
+  {
+    id: 'nursing-applications',
+    heading: 'Applications in Nursing Practice',
+    body: `Motivational Interviewing has been adapted and applied across a wide range of nursing clinical contexts, with evidence supporting its utility in facilitating health behaviour change in diverse patient populations.\n\nChronic Disease Management. Nurses working with patients who have chronic conditions—including type 2 diabetes, hypertension, heart failure, and chronic obstructive pulmonary disease—routinely encounter the challenge of supporting patients to make and sustain lifestyle modifications and medication adherence. MI provides a structured approach to these conversations that respects patient autonomy, acknowledges the complexity of behaviour change, and is more effective than didactic health education in producing durable change. A systematic review by Christie and Channon (2014) found that MI-based interventions delivered by nurses and allied health professionals improved glycaemic control, dietary behaviour, and physical activity in patients with type 2 diabetes.\n\nMental Health Nursing. In mental health settings, MI has demonstrated efficacy in supporting patients to engage with treatment, manage substance use comorbidities, and adhere to medication regimens. Its non-confrontational, autonomy-supportive approach is particularly well-suited to working with patients whose psychiatric symptoms may include ambivalence, paranoia, or hostility toward prescribed treatment. Mental health nurses trained in MI are better equipped to maintain a therapeutic relationship during difficult conversations about medication side effects, non-adherence, and risky behaviour—conversations in which the righting reflex is especially tempting and especially counterproductive.\n\nPreventive Health and Health Promotion. Community and public health nurses occupy a strategically important position for health promotion conversations—interactions that are frequently brief, opportunistic, and occurring with patients who are not yet experiencing illness. Brief motivational interventions (BMIs)—adaptations of MI for single-session or very brief interactions—have been applied to smoking cessation, alcohol reduction, physical activity promotion, and sexual health counselling in primary care and community settings. The nursing literature supports the integration of BMI training into community nursing competency frameworks.\n\nPaediatric and Family Nursing. Motivational interviewing has been adapted for use with parents and caregivers, as well as with adolescent patients, in paediatric nursing contexts. Family-based MI recognises that behaviour change in children and young people frequently requires engagement with the motivational landscape of the family system, not just the individual patient. Adolescent health contexts—including eating disorders, substance use, sexual health, and mental health—present particular opportunities and challenges for MI-informed nursing, given the centrality of autonomy and identity in adolescent development.\n\nPalliative and End-of-Life Care. While MI is primarily associated with behaviour change promotion, its spirit and skills are directly applicable in palliative and end-of-life nursing contexts, where the nurse's role is often to support patients and families in exploring values, articulating preferences, and making decisions about care. The emphasis on autonomy support, reflective listening, and acceptance makes MI-informed communication well-suited to goals-of-care conversations, advance care planning, and the support of patients facing existential uncertainty.`,
+  },
+  {
+    id: 'fidelity-training',
+    heading: 'Fidelity, Training, and Competency Development',
+    body: `A consistent finding across the MI research literature is that the quality of MI practice—its fidelity to the model's principles and methods—significantly moderates outcomes. Brief training workshops produce gains in MI knowledge and self-assessed competence, but may not reliably produce MI-consistent clinical behaviour; sustained skills development, with coached practice and structured feedback, is necessary for durable competency acquisition.\n\nThe Motivational Interviewing Treatment Integrity (MITI) coding system provides the most widely used instrument for fidelity assessment. Trained raters apply the MITI to recorded clinical encounters, producing scores on global dimensions (partnership, empathy, autonomy-evocation focus, softening sustain talk, cultivating change talk) and on specific behavioural counts (reflections, questions, MI-consistent behaviours, MI-inconsistent behaviours). Feedback from MITI ratings enables targeted skill development and has been shown to accelerate competency acquisition more effectively than training alone.\n\nFor nursing education, this evidence has important implications. Pre-registration nursing programmes that include MI training should supplement introductory workshops with structured practice opportunities—including role-play, simulated patient encounters, and the use of standardised clinical cases—combined with formative feedback from trained supervisors. Post-registration continuing professional development in MI should incorporate direct observation of clinical practice and individualized coaching. The nursing literature suggests that clinical placements that model MI-consistent communication provide a reinforcing environment for novice practitioners, while placements characterised by directive or paternalistic communication styles may undermine skills developed in formal training.`,
+  },
+  {
+    id: 'challenges-limitations',
+    heading: 'Challenges, Contraindications, and Critical Perspectives',
+    body: `Despite its robust evidence base and wide applicability, MI is not universally appropriate, and its integration into nursing practice is not without challenges.\n\nTime Constraints. A frequently cited barrier to MI implementation in nursing is the perception that MI requires extended consultation time that is incompatible with the demands of acute clinical settings. While formal MI conversations may be extended, the MI spirit and core skills (particularly empathic listening, open-ended questions, and affirmations) can be integrated into brief interactions without requiring a lengthy dedicated session. Brief Negotiation Interviews (BNIs) and "MI-consistent" communication styles, as distinguished from formal MI protocol delivery, represent achievable adaptations for resource-constrained nursing contexts.\n\nCultural and Contextual Adaptation. MI was developed within a specific cultural and clinical tradition, and its assumptions about autonomy, individual decision-making, and the appropriateness of exploring ambivalence may not translate straightforwardly across cultures or clinical populations. In collectivist cultural contexts, where health decisions are embedded in family and community dynamics, the individualistic focus of MI may require adaptation. Culturally competent adaptation of MI requires attention to the values, communication styles, and decision-making norms of diverse patient populations—a task that aligns with nursing's broader commitment to cultural humility.\n\nEmergency and Acute Situations. MI is not appropriate in all clinical situations. In acute emergencies—when a patient is at immediate risk of harm—directive, prescriptive communication is clinically indicated. Similarly, when patients are acutely psychotic, severely cognitively impaired, or in a crisis state, MI's characteristic reliance on patient autonomy and reflection may be clinically inappropriate. Nurses must be able to distinguish situations in which MI is indicated from those in which more directive approaches are required, and to transition fluidly between modes.\n\nRisk of Superficial Adoption. A critical concern in the MI training literature is the risk of superficial technique adoption without integration of the underlying spirit. Practitioners who apply MI techniques (open-ended questions, reflections) without genuinely embodying the attitudes of partnership, acceptance, compassion, and evocation may produce interactions that are structurally MI-consistent but relationally hollow—and therefore less effective. The cultivation of the MI spirit requires not only skill training but attitudinal and reflective development, including honest examination of one's own assumptions about patient motivation, autonomy, and the nature of the nurse's role.`,
+  },
+  {
+    id: 'conclusion',
+    heading: 'Conclusion',
+    body: `Motivational Interviewing represents one of the most thoroughly evidenced and practically significant contributions of behavioural science to clinical nursing practice. Its theoretical foundations in self-determination theory, client-centred therapy, and the transtheoretical model provide a coherent and empirically grounded account of why collaborative, autonomy-supportive conversations produce more durable behaviour change than directive advice-giving or information provision alone. Its practical framework—the PACE spirit, the four processes, and the OARS skills—offers nurses a structured yet flexible method for implementing these insights across a wide range of clinical contexts and patient populations.\n\nThe alignment between MI and the established principles of therapeutic communication in nursing is profound. Both frameworks centre empathy, non-judgmental acceptance, active listening, and genuine patient-centred engagement as the foundation of effective clinical interaction. MI elaborates and operationalises these principles in a way that connects them directly to the promotion of health behaviour change—a connection that is increasingly urgent as the burden of chronic disease and preventable health conditions continues to grow globally.\n\nFor nursing students, developing competency in MI involves more than learning a set of techniques; it requires a fundamental reorientation of the nurse-patient relationship away from expertise-driven paternalism toward collaborative exploration of the patient's own values, motivations, and capacity for change. This reorientation is not merely a clinical strategy; it is an expression of the core nursing values of autonomy, dignity, and person-centred care. As the evidence base for MI in nursing continues to grow, its integration into pre-registration curricula, post-registration training, and continuing professional development represents an important opportunity to enhance the quality, humanity, and effectiveness of nursing practice.`,
+  },
+];
+
+const renderPara = (para) => {
+  const dotIdx = para.indexOf('. ');
+  if (dotIdx > 0 && dotIdx < para.length - 2) {
+    const phrase = para.slice(0, dotIdx + 1);
+    if (phrase.split(/\s+/).length <= 6) {
+      return `<strong>${phrase}</strong> ${para.slice(dotIdx + 2)}`;
+    }
+  }
+  return para;
+};
+---
+
+<Layout title="Motivational Interviewing – Encyclopedia" protected={true}>
+  <!-- Breadcrumb -->
+  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
+    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <a href={`${base}/private/encyclopedia`} style="color:#6366f1; text-decoration:none; font-weight:500;">Encyclopedia</a>
+    <span style="margin:0 0.4rem;">›</span>
+    <span>Motivational Interviewing</span>
+  </nav>
+
+  <div class="article-grid">
+
+    <!-- Left sidebar -->
+    <aside style="position:sticky; top:1.5rem;">
+      <div style="background:#fff; border:1px solid #e2e8f0; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#64748b; margin-bottom:0.75rem;">Quick Facts</p>
+        <dl style="font-size:0.85rem; display:grid; gap:0.6rem;">
+          {[
+            { term: 'Founders', def: 'William R. Miller &amp; Stephen Rollnick (1983–1991)' },
+            { term: 'MI Spirit (PACE)', def: 'Partnership, Acceptance, Compassion, Evocation' },
+            { term: 'Four Processes', def: 'Engaging → Focusing → Evoking → Planning' },
+            { term: 'Core Skills', def: 'OARS: Open questions, Affirmations, Reflections, Summaries' },
+            { term: 'Change Talk', def: 'DARN-CAT: Desire, Ability, Reason, Need; Commitment, Activation, Taking Steps' },
+            { term: 'Evidence base', def: 'Effective for chronic disease, mental health, substance use, preventive care' },
+            { term: 'Fidelity tool', def: 'MITI (Motivational Interviewing Treatment Integrity) coding system' },
+          ].map(({ term, def }) => (
+            <div>
+              <dt style="font-weight:600; color:#1e293b;" set:html={term} />
+              <dd style="color:#64748b; margin:0;" set:html={def} />
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div style="background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.75rem; padding:1.25rem; margin-bottom:1rem;">
+        <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#4f46e5; margin-bottom:0.5rem;">Nursing Relevance</p>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.85rem; color:#374151; display:flex; flex-direction:column; gap:0.4rem;">
+          {[
+            '✅ Chronic disease self-management',
+            '✅ Medication adherence support',
+            '✅ Therapeutic communication',
+            '✅ Mental health nursing',
+            '✅ Health promotion & prevention',
+            '✅ Smoking & substance use cessation',
+            '✅ Person-centred care',
+          ].map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <a
+        href={`${base}/private/encyclopedia`}
+        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none; transition:background 0.15s;"
+        onmouseover="this.style.background='#e2e8f0'"
+        onmouseout="this.style.background='#f1f5f9'"
+      >← Back to Encyclopedia</a>
+    </aside>
+
+    <article>
+      <!-- Article header -->
+      <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid #e2e8f0;">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+          <span style="font-size:0.75rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6366f1; background:#eef2ff; border:1px solid #c7d2fe; border-radius:0.35rem; padding:0.2rem 0.55rem;">
+            💬 Communication &amp; Behaviour Change
+          </span>
+          <span style="font-size:0.75rem; color:#94a3b8;">Encyclopedia Article</span>
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; line-height:1.25; margin-bottom:0.75rem; color:#1e293b;">
+          Motivational Interviewing
+        </h1>
+        <p style="font-size:1.05rem; color:#475569; line-height:1.65; margin-bottom:1rem;">
+          An academic overview of Motivational Interviewing from a nursing perspective, covering its
+          theoretical foundations, the MI spirit and four-process model, core OARS communication skills,
+          change talk, therapeutic communication integration, and clinical applications across nursing practice.
+        </p>
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
+          <span>🎓 Target audience: Nursing students</span>
+          <span>📖 Reading level: Academic</span>
+          <span>🔒 Protected content</span>
+        </div>
+      </header>
+
+      <!-- Article sections -->
+      {sections.map((section, i) => (
+        <section id={section.id} style="margin-bottom:2.25rem;">
+          <h2 style="font-size:1.25rem; font-weight:700; color:#1e293b; margin-bottom:0.85rem; padding-bottom:0.4rem; border-bottom:2px solid #e2e8f0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="color:#6366f1; font-size:0.95rem; font-weight:800;">{i + 1}.</span>
+            {section.heading}
+          </h2>
+          {section.body.split('\n\n').map((para) => (
+            <p style="line-height:1.8; color:#334155; font-size:0.975rem; margin-bottom:1rem;" set:html={renderPara(para)} />
+          ))}
+        </section>
+      ))}
+
+      <!-- References -->
+      <section id="references" style="margin-top:2.5rem; padding-top:1.5rem; border-top:2px solid #e2e8f0;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:1rem;">Key References</h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          {[
+            'Christie, D., &amp; Channon, S. (2014). The potential for motivational interviewing to improve outcomes in the management of diabetes and obesity in paediatric and adult populations: A clinical review. <em>Diabetes, Obesity and Metabolism, 16</em>(5), 381–387.',
+            'Deci, E. L., &amp; Ryan, R. M. (2000). The "what" and "why" of goal pursuits: Human needs and the self-determination of behavior. <em>Psychological Inquiry, 11</em>(4), 227–268.',
+            'Hardcastle, S. J., Taylor, A. H., Bailey, M. P., Harley, R. A., &amp; Hagger, M. S. (2013). Effectiveness of a motivational interviewing intervention on weight loss, physical activity and cardiovascular disease risk factors: A randomised controlled trial with a 12-month post-intervention follow-up. <em>International Journal of Behavioral Nutrition and Physical Activity, 10</em>, 40.',
+            'Lundahl, B., Moleni, T., Burke, B. L., Butters, R., Tollefson, D., Butler, C., &amp; Rollnick, S. (2013). Motivational interviewing in medical care settings: A systematic review and meta-analysis of randomized controlled trials. <em>Patient Education and Counseling, 93</em>(2), 157–168.',
+            'Miller, W. R. (1983). Motivational interviewing with problem drinkers. <em>Behavioural Psychotherapy, 11</em>(2), 147–172.',
+            'Miller, W. R., &amp; Rollnick, S. (2012). <em>Motivational interviewing: Helping people change</em> (3rd ed.). Guilford Press.',
+            'Moyers, T. B., Martin, T., Manuel, J. K., Hendrickson, S. M. L., &amp; Miller, W. R. (2005). Assessing competence in the use of motivational interviewing. <em>Journal of Substance Abuse Treatment, 28</em>(1), 19–26.',
+            'Prochaska, J. O., &amp; DiClemente, C. C. (1983). Stages and processes of self-change of smoking: Toward an integrative model of change. <em>Journal of Consulting and Clinical Psychology, 51</em>(3), 390–395.',
+            'Rollnick, S., Miller, W. R., &amp; Butler, C. C. (2008). <em>Motivational interviewing in health care: Helping patients change behavior.</em> Guilford Press.',
+            'Rogers, C. R. (1957). The necessary and sufficient conditions of therapeutic personality change. <em>Journal of Consulting Psychology, 21</em>(2), 95–103.',
+            'Thompson, D. R., Chair, S. Y., Chan, S. W., Astin, F., Davidson, P. M., &amp; Ski, C. F. (2011). Motivational interviewing: A useful approach to improving cardiovascular health? <em>Journal of Clinical Nursing, 20</em>(9–10), 1236–1244.',
+          ].map((ref) => (
+            <li style="font-size:0.85rem; color:#475569; line-height:1.6; padding-left:1.25rem; text-indent:-1.25rem;" set:html={ref} />
+          ))}
+        </ul>
+      </section>
+    </article>
+
+    <!-- Right sidebar: Table of Contents -->
+    <aside style="position:sticky; top:1.5rem;">
+      <nav aria-label="Article sections" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1.1rem 1.25rem;">
+        <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:#94a3b8; margin-bottom:0.65rem;">Contents</p>
+        <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem;">
+          {sections.map((s, i) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+                onmouseover="this.style.color='#6366f1'"
+                onmouseout="this.style.color='#475569'"
+              >
+                <span style="color:#94a3b8; margin-right:0.35rem;">{i + 1}.</span>{s.heading}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#references"
+              style="font-size:0.82rem; color:#475569; text-decoration:none; display:block; padding:0.2rem 0; line-height:1.4;"
+              onmouseover="this.style.color='#6366f1'"
+              onmouseout="this.style.color='#475569'"
+            >
+              <span style="color:#94a3b8; margin-right:0.35rem;">{sections.length + 1}.</span>Key References
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </aside>
+  </div>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr 220px;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .article-grid {
+      grid-template-columns: 200px 1fr;
+    }
+    .article-grid > aside:last-child {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    .article-grid {
+      grid-template-columns: 1fr;
+    }
+    .article-grid > aside {
+      display: none;
+    }
+  }
+</style>
