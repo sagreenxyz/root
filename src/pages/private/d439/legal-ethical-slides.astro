@@ -1,0 +1,325 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Legal &amp; Ethical Practice – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/legal-ethical`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">⚖️</div>
+          <h1 class="slide-main-title">Legal &amp; Ethical Practice</h1>
+          <h2 class="slide-subtitle">HIPAA · Consent · Restraints · Torts</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: HIPAA -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 7</div>
+          <h2 class="slide-heading">🔒 HIPAA — Patient Privacy</h2>
+          <p class="slide-intro">Protected Health Information (PHI) = any information that identifies a patient. Disclosure requires patient consent except for <strong>TPO</strong> (Treatment, Payment, Operations).</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">What is PHI?</h3>
+              <ul class="bullet-list">
+                <li>Name, date of birth, SSN</li>
+                <li>Diagnosis, medical record #</li>
+                <li>Photos, geographic data</li>
+                <li>Anything that could identify the patient</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Nursing Obligations</h3>
+              <ul class="bullet-list">
+                <li><strong>Need-to-know only</strong> — even for coworkers</li>
+                <li>No discussing PHI in public areas</li>
+                <li>No family disclosure without consent</li>
+                <li>Log out of EHR when leaving workstation</li>
+                <li>No curiosity access ("snooping")</li>
+                <li><strong>Social media:</strong> NEVER post patient info</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            ⚠️ <strong>Penalties:</strong> Civil up to $50,000/violation; Criminal prosecution up to 10 years imprisonment for willful disclosure.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Assault vs Battery -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 7</div>
+          <h2 class="slide-heading">⚠️ Assault vs. Battery</h2>
+          <p class="slide-intro">Both are intentional torts. Understanding the difference is critical for nursing practice and NCLEX.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Assault — THREAT</h3>
+              <ul class="bullet-list">
+                <li><strong>No physical contact required</strong></li>
+                <li>Creates fear of imminent harm</li>
+                <li>Examples:
+                  <ul>
+                    <li>"If you don't cooperate, I'll sedate you"</li>
+                    <li>Raising a hand toward patient</li>
+                    <li>Threatening restraints without justification</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Battery — UNCONSENTED TOUCH</h3>
+              <ul class="bullet-list">
+                <li>Intentional, unconsented physical contact</li>
+                <li>Examples:
+                  <ul>
+                    <li>Medicating a patient who refused</li>
+                    <li>Continuing procedure after consent withdrawn</li>
+                    <li>Applying restraints without an order</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Document <em>objective</em> facts only. "Patient states..." not "patient is drug-seeking."
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Libel/defamation &amp; documentation rules</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Assault vs. Battery</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Defamation, Libel &amp; Safe Documentation</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Defamation of Character</h3>
+                <ul class="bullet-list">
+                  <li><strong>Libel</strong> — written false statements damaging reputation</li>
+                  <li><strong>Slander</strong> — spoken false statements</li>
+                  <li>Charting opinions as facts = potential libel</li>
+                  <li>"Patient is lying about pain" → libel risk</li>
+                  <li>Safer: "Patient rates pain 10/10; no behavioral distress observed"</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Safe Documentation Principles</h3>
+                <ul class="bullet-list">
+                  <li>Objective, factual, descriptive language</li>
+                  <li>Quote patient's exact words with quotation marks</li>
+                  <li>Record measurable observations</li>
+                  <li>Avoid diagnoses unless ordered</li>
+                  <li>Date, time, and sign every entry</li>
+                  <li>Never skip lines or leave blank spaces</li>
+                  <li>Correct errors properly — never white-out</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Consent & Emancipated Minor -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 7</div>
+          <h2 class="slide-heading">✍️ Consent &amp; Emancipated Minor</h2>
+          <p class="slide-intro">Informed consent requires the provider to explain risks, benefits, and alternatives. The nurse's role is to <strong>WITNESS</strong> the signature — not to obtain consent.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Minor Exceptions (Self-Consent)</h3>
+              <ul class="bullet-list">
+                <li><strong>Emancipated minor:</strong> married, military, living independently, court-ordered</li>
+                <li><strong>Mature minor doctrine:</strong> STI treatment, reproductive health, substance abuse, mental health</li>
+                <li><strong>Emergency exception:</strong> implied consent when parent unavailable and life-threatening</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Nurse's Role in Consent</h3>
+              <ul class="bullet-list">
+                <li><strong>Witness</strong> patient signature</li>
+                <li>Verify patient is competent and not coerced</li>
+                <li>Notify provider if patient has questions or doubts</li>
+                <li><strong>NOT</strong> the nurse's role to explain procedure or obtain consent</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">3 Elements of Valid Consent</h3>
+              <ul class="bullet-list">
+                <li>Disclosure of information</li>
+                <li>Patient competence</li>
+                <li>Voluntary agreement</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Good Samaritan Act -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 7</div>
+          <h2 class="slide-heading">🚑 Good Samaritan Act</h2>
+          <p class="slide-intro">Provides legal protection for nurses who voluntarily provide emergency care outside their place of employment.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Requirements for Protection</h3>
+              <ul class="bullet-list">
+                <li>Voluntary assistance (not at work)</li>
+                <li>Good faith (genuinely trying to help)</li>
+                <li>No compensation received</li>
+                <li>No gross negligence</li>
+                <li>Actions within nurse's training/scope</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Does NOT Apply When</h3>
+              <ul class="bullet-list">
+                <li>At your workplace</li>
+                <li>Gross negligence (reckless disregard)</li>
+                <li>Receiving compensation</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Classic Example</h3>
+              <ul class="bullet-list">
+                <li>Nurse driving by car accident</li>
+                <li>Stops and performs CPR</li>
+                <li>Protected even if outcome poor</li>
+                <li>Must stop once started if qualified help unavailable</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Good Samaritan laws vary by state. Always act within your scope of practice even off-duty.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Restraints -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 7</div>
+          <h2 class="slide-heading">🔗 Restraints — Last Resort</h2>
+          <p class="slide-intro">Restraints are only used when all alternatives have failed and patient safety is at immediate risk.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Legal Requirements</h3>
+              <ul class="bullet-list">
+                <li>Written or verbal order required — <strong>NO PRN restraint orders</strong></li>
+                <li>MD must evaluate within <strong>1 hour</strong></li>
+                <li>Time limits: adults q4h, children 9–17 q2h, &lt;9 q1h</li>
+                <li>Document behavior justifying restraints</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Nursing Care in Restraints</h3>
+              <ul class="bullet-list">
+                <li>Assess q<strong>15–30 minutes</strong></li>
+                <li>Check circulation/sensation/movement each check</li>
+                <li>Release q<strong>2 hours</strong> for ROM, repositioning</li>
+                <li>Offer fluids, nutrition, toileting</li>
+                <li><strong>Quick-release knot</strong> tied to bed FRAME (not rails)</li>
+                <li>HOB ≥30° to prevent aspiration</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            🔄 <strong>Alternatives first:</strong> bed alarms, low beds, family presence, music therapy, frequent rounding, reorientation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">7 / 7</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">🔒</span><span class="tip-text">HIPAA = need-to-know only; includes coworkers not on care team</span></div>
+            <div class="tip-card"><span class="tip-icon">⚠️</span><span class="tip-text">Assault = threat (no touch required); Battery = unconsented touch</span></div>
+            <div class="tip-card"><span class="tip-icon">📝</span><span class="tip-text">Document objective facts, not opinions or character judgments</span></div>
+            <div class="tip-card"><span class="tip-icon">✍️</span><span class="tip-text">Nurse WITNESSES consent — does NOT obtain informed consent</span></div>
+            <div class="tip-card"><span class="tip-icon">🚑</span><span class="tip-text">Good Samaritan = off-duty, voluntary, good faith, no compensation</span></div>
+            <div class="tip-card"><span class="tip-icon">🔗</span><span class="tip-text">Restraints require an order — NO PRN restraint orders allowed</span></div>
+            <div class="tip-card"><span class="tip-icon">🛏️</span><span class="tip-text">Tie restraints to bed FRAME — never to side rails</span></div>
+            <div class="tip-card"><span class="tip-icon">📱</span><span class="tip-text">Social media: NEVER post any patient info, even without name</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/legal-ethical`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>

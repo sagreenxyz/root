@@ -1,0 +1,362 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Communication &amp; Patient Teaching – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/communication-teaching`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">💬</div>
+          <h1 class="slide-main-title">Communication &amp; Patient Teaching</h1>
+          <h2 class="slide-subtitle">SBAR · Therapeutic Communication · Delegation · Documentation</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: SBAR -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 8</div>
+          <h2 class="slide-heading">📋 SBAR Communication</h2>
+          <p class="slide-intro">Standardized format for critical communication — provider calls, handoffs, rapid response activations.</p>
+          <div class="overview-grid">
+            <div class="overview-row">
+              <span class="step-badge">S</span>
+              <div><strong>Situation</strong> — who you are, patient name/room, what is happening NOW<span class="step-q">"Mrs. Smith in 412 is having acute respiratory distress."</span></div>
+            </div>
+            <div class="overview-row">
+              <span class="step-badge">B</span>
+              <div><strong>Background</strong> — admitting dx, relevant history, current meds, recent labs<span class="step-q">COPD exacerbation, admitted yesterday, on bronchodilators</span></div>
+            </div>
+            <div class="overview-row">
+              <span class="step-badge">A</span>
+              <div><strong>Assessment</strong> — your clinical judgment of the problem<span class="step-q">"I think she's having a COPD exacerbation."</span></div>
+            </div>
+            <div class="overview-row">
+              <span class="step-badge">R</span>
+              <div><strong>Recommendation</strong> — what you need from the provider<span class="step-q">"I need you to come evaluate her now and consider nebs/steroids."</span></div>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 SBAR is also used for bedside handoff reports and rapid response team notifications.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Therapeutic Communication -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 8</div>
+          <h2 class="slide-heading">🗣️ Therapeutic Communication</h2>
+          <p class="slide-intro">Purposeful, patient-focused communication that promotes healing, trust, and understanding.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Therapeutic Techniques</h3>
+              <ul class="bullet-list">
+                <li><strong>Active listening</strong> — full attention, eye contact</li>
+                <li><strong>Open-ended questions</strong> — "Tell me about your pain"</li>
+                <li><strong>Reflection</strong> — mirrors patient's words/feelings</li>
+                <li><strong>Clarification</strong> — "Can you explain what you mean?"</li>
+                <li><strong>Focusing</strong> — directs to important topic</li>
+                <li><strong>Silence</strong> — allows processing, conveys presence</li>
+                <li><strong>Summarizing</strong> — confirms understanding</li>
+                <li><strong>Sharing observations</strong> — "You seem anxious today"</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Barriers to Avoid</h3>
+              <ul class="bullet-list">
+                <li>False reassurance — "Everything will be fine"</li>
+                <li>Giving unsolicited advice</li>
+                <li>Closed questions (yes/no only)</li>
+                <li>Changing the subject abruptly</li>
+                <li>Judgmental or disapproving responses</li>
+                <li>"Why" questions (feel accusatory)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Non-therapeutic techniques to AVOID</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Therapeutic Communication</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Non-Therapeutic Responses — Examples</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">What NOT to Say → Better Alternative</h3>
+                <ul class="bullet-list">
+                  <li>"Don't worry" → "What concerns you most?"</li>
+                  <li>"You should..." → "Some patients find it helpful to..."</li>
+                  <li>"Why did you wait so long?" → "Tell me when this started"</li>
+                  <li>"I know how you feel" → "This must be very difficult"</li>
+                  <li>"Everything happens for a reason" → Sit quietly with the patient</li>
+                  <li>"Are you in pain?" → "Describe any discomfort you're having"</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Crossed Communication Pitfalls</h3>
+                <ul class="bullet-list">
+                  <li><strong>Giving approval/disapproval</strong> — implies nurse judges behavior</li>
+                  <li><strong>Defending</strong> — protecting the institution, not the patient</li>
+                  <li><strong>Belittling feelings</strong> — "At least you don't have cancer"</li>
+                  <li><strong>Probing</strong> — persistent questions beyond patient comfort</li>
+                  <li><strong>Testing</strong> — challenging patient to prove point</li>
+                </ul>
+                <div class="callout" style="margin-top:0.75rem;">
+                  Focus on the patient's <em>feelings</em>, not the facts of their situation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Patient Teaching Methods -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 8</div>
+          <h2 class="slide-heading">📚 Patient Teaching Methods</h2>
+          <p class="slide-intro">Assess readiness to learn <strong>before</strong> teaching. Choose the method that fits the patient's learning style.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Teaching Methods</h3>
+              <ul class="bullet-list">
+                <li><strong>Teach-back</strong> — gold standard; ask patient to explain in own words</li>
+                <li><strong>Demonstration + Return demo</strong> — best for psychomotor skills (insulin injection)</li>
+                <li><strong>Lecture/verbal</strong> — overview and explanations</li>
+                <li><strong>Written materials</strong> — 6th-grade reading level</li>
+                <li><strong>Visual aids</strong> — diagrams, videos, models</li>
+                <li><strong>Group teaching</strong> — peer support, efficient</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Assess Readiness to Learn</h3>
+              <ul class="bullet-list">
+                <li><strong>Physical</strong> — pain-free, not fatigued, sensory intact</li>
+                <li><strong>Emotional</strong> — anxiety reduces learning capacity</li>
+                <li><strong>Cognitive</strong> — literacy, language, developmental level</li>
+                <li><strong>Motivational</strong> — patient values the information</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Documentation</h3>
+              <ul class="bullet-list">
+                <li>What was taught</li>
+                <li>Method used</li>
+                <li>Patient response / understanding demonstrated</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Delegation -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 8</div>
+          <h2 class="slide-heading">👥 Delegation — 5 Rights</h2>
+          <p class="slide-intro">RN <strong>retains accountability</strong> for all delegated tasks. Delegation transfers responsibility, not accountability.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">5 Rights of Delegation</h3>
+              <ul class="bullet-list">
+                <li><strong>Right Task</strong> — within UAP scope</li>
+                <li><strong>Right Circumstance</strong> — stable patient</li>
+                <li><strong>Right Person</strong> — competent UAP</li>
+                <li><strong>Right Direction</strong> — clear instructions</li>
+                <li><strong>Right Supervision</strong> — RN monitors outcomes</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">CAN Delegate to UAP</h3>
+              <ul class="bullet-list">
+                <li>ADLs (bathing, grooming, feeding)</li>
+                <li>Vital signs — stable patients</li>
+                <li>Intake &amp; Output measurement</li>
+                <li>Repositioning, ambulation assistance</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">CANNOT Delegate</h3>
+              <ul class="bullet-list">
+                <li>Assessment &amp; nursing judgment</li>
+                <li>Care planning</li>
+                <li>Patient/family teaching</li>
+                <li>Medication administration</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 RN accountability is NEVER delegated. If UAP reports abnormal finding, RN must assess personally.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Hand-Off Report & Documentation -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 8</div>
+          <h2 class="slide-heading">📝 Hand-Off &amp; Documentation</h2>
+          <p class="slide-intro">Accurate handoff prevents errors. Documentation is the legal record of care.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Bedside Hand-Off Elements</h3>
+              <ul class="bullet-list">
+                <li>Name, age, diagnosis, code status</li>
+                <li>Current vital signs &amp; trends</li>
+                <li>Recent labs, imaging results</li>
+                <li>Medications &amp; IV fluids</li>
+                <li>Pending orders / procedures</li>
+                <li>Family concerns &amp; psychosocial</li>
+                <li>Safety risks (falls, allergies)</li>
+                <li>Plan for next shift</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Documentation Rules</h3>
+              <ul class="bullet-list">
+                <li><strong>Late entry:</strong> label "Late Entry" with CURRENT date/time AND actual event time</li>
+                <li><strong>NEVER</strong> backdate or alter records</li>
+                <li><strong>Error correction (paper):</strong> single line through error, initial and date — never white-out</li>
+                <li>Document <em>objective</em> findings, not opinions</li>
+                <li>Avoid "patient appears to be drug-seeking"</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            ⚖️ If it wasn't documented, it wasn't done — legally and professionally.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Cultural Competence -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">7 / 8</div>
+          <h2 class="slide-heading">🌍 Cultural Competence</h2>
+          <p class="slide-intro"><strong>First step = cultural assessment.</strong> Ask about beliefs, practices, and preferences before assuming.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Cultural Assessment</h3>
+              <ul class="bullet-list">
+                <li>Health beliefs and practices</li>
+                <li>Religious/spiritual practices</li>
+                <li>Food restrictions and preferences</li>
+                <li>Modesty and gender preferences</li>
+                <li>Traditional/folk medicine use</li>
+                <li>Language preference</li>
+                <li>Decision-making (individual vs. family)</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Key Principles</h3>
+              <ul class="bullet-list">
+                <li>Use <strong>trained medical interpreter</strong> — not family members</li>
+                <li>Cultural <strong>humility</strong> vs. competence — ongoing learning</li>
+                <li>Avoid assumptions based on appearance</li>
+                <li>PLISSIT model for sensitive topics</li>
+              </ul>
+              <div class="col-example" style="margin-top:0.5rem;">PLISSIT: Permission, Limited Information, Specific Suggestions, Intensive Therapy</div>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Using family members as interpreters violates HIPAA and can lead to errors. Always request a trained medical interpreter.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 8: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">8 / 8</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">📋</span><span class="tip-text">SBAR = standardized communication for provider calls and handoffs</span></div>
+            <div class="tip-card"><span class="tip-icon">❓</span><span class="tip-text">Open-ended questions first — invite full narrative response</span></div>
+            <div class="tip-card"><span class="tip-icon">✅</span><span class="tip-text">Teach-back confirms understanding — patient explains in own words</span></div>
+            <div class="tip-card"><span class="tip-icon">👥</span><span class="tip-text">RN cannot delegate accountability — ever</span></div>
+            <div class="tip-card"><span class="tip-icon">⏱️</span><span class="tip-text">Late entry: note current time AND actual time of care</span></div>
+            <div class="tip-card"><span class="tip-icon">🌍</span><span class="tip-text">Cultural assessment is the FIRST step with diverse patients</span></div>
+            <div class="tip-card"><span class="tip-icon">📝</span><span class="tip-text">Document: what was taught AND patient's demonstrated response</span></div>
+            <div class="tip-card"><span class="tip-icon">🚫</span><span class="tip-text">Never use family as interpreter — requires trained medical interpreter</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/communication-teaching`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>

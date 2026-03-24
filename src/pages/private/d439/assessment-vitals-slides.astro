@@ -1,0 +1,399 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Assessment &amp; Vital Signs – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/assessment-vitals`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">🩺</div>
+          <h1 class="slide-main-title">Assessment &amp; Vital Signs</h1>
+          <h2 class="slide-subtitle">Vitals · Pain · Dehydration · Cardiac Prevention</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Blood Pressure Measurement -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 8</div>
+          <h2 class="slide-heading">🩸 Blood Pressure Measurement</h2>
+          <p class="slide-intro">Normal BP is <strong>&lt;120/&lt;80 mmHg</strong>. Proper technique is essential for accurate readings.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">8-Step Procedure</h3>
+              <ul class="bullet-list">
+                <li>Rest patient <strong>5 minutes</strong> prior</li>
+                <li>Seat with arm at <strong>heart level</strong></li>
+                <li>Palpate brachial pulse first</li>
+                <li>Inflate 20–30 mmHg above palpated SBP</li>
+                <li>Deflate <strong>2–3 mmHg/sec</strong></li>
+                <li>Systolic = <strong>first Korotkoff sound</strong></li>
+                <li>Diastolic = <strong>last Korotkoff sound</strong></li>
+                <li>Document arm, position, cuff size</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Cuff Sizing Errors</h3>
+              <ul class="bullet-list">
+                <li><strong>Too small</strong> → falsely HIGH reading</li>
+                <li><strong>Too large</strong> → falsely LOW reading</li>
+                <li>Bladder should encircle <strong>80% of arm</strong></li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Common Errors</h3>
+              <ul class="bullet-list">
+                <li><strong>Auscultatory gap</strong> — sounds disappear then return (can miss true systolic)</li>
+                <li>Arm below heart → falsely high</li>
+                <li>Talking during measurement</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Always palpate pulse first to estimate systolic pressure and avoid missing an auscultatory gap.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Causes of Hypertension -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 8</div>
+          <h2 class="slide-heading">📈 Causes of Hypertension</h2>
+          <p class="slide-intro">HTN affects ~47% of U.S. adults. Understanding etiology guides treatment.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Primary HTN (90–95%)</h3>
+              <ul class="bullet-list">
+                <li>No identifiable cause</li>
+                <li><strong>Risk factors:</strong> age, obesity, high sodium intake, inactivity, tobacco, chronic stress, race (Black adults higher risk)</li>
+                <li>Managed with lifestyle + medications</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Secondary HTN (5–10%)</h3>
+              <ul class="bullet-list">
+                <li><strong>CKD</strong> — most common secondary cause</li>
+                <li>Primary aldosteronism</li>
+                <li>Renal artery stenosis</li>
+                <li>Obstructive sleep apnea</li>
+                <li>Thyroid disorders</li>
+                <li>Medications (NSAIDs, OCP, decongestants)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">
+            🔬 <strong>Pathophysiology:</strong> BP = CO × SVR. RAAS activation → angiotensin II → vasoconstriction + aldosterone → sodium/water retention → elevated BP.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Dehydration Assessment -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 8</div>
+          <h2 class="slide-heading">💧 Dehydration Assessment</h2>
+          <p class="slide-intro">Fluid volume deficit (FVD) requires rapid recognition. Assess across multiple systems.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Clinical Signs</h3>
+              <ul class="bullet-list">
+                <li><strong>Skin turgor</strong> — tenting (tent test on sternum)</li>
+                <li>Mucous membranes dry, sticky</li>
+                <li><strong>VS:</strong> tachycardia, orthostatic hypotension</li>
+                <li>Urine output <strong>&lt;30 mL/hr</strong>, dark, concentrated</li>
+                <li>Sunken eyes, flat neck veins</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Lab Findings</h3>
+              <ul class="bullet-list">
+                <li><strong>Hematocrit</strong> ↑ (hemoconcentration)</li>
+                <li><strong>BUN</strong> ↑ (pre-renal)</li>
+                <li><strong>Na+</strong> ↑ (hypernatremia in concentrated loss)</li>
+                <li><strong>Serum osmolality</strong> ↑</li>
+                <li>Specific gravity ↑ (&gt;1.030)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            ⚠️ <strong>Exam tip:</strong> Skin turgor is <em>unreliable in elderly</em> patients (normal skin loses elasticity). Assess oral mucosa instead.
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>Lab values detail</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Dehydration</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">Dehydration Lab Values — Detail</h2>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">Key Lab Normals &amp; FVD Changes</h3>
+                <ul class="bullet-list">
+                  <li><strong>BUN</strong> normal 7–20 mg/dL → ↑ in FVD</li>
+                  <li><strong>Creatinine</strong> normal 0.6–1.2 → may ↑ (pre-renal AKI)</li>
+                  <li><strong>BUN:Cr ratio</strong> &gt;20:1 = pre-renal (dehydration)</li>
+                  <li><strong>Na+</strong> normal 135–145 → ↑ hypernatremia</li>
+                  <li><strong>Hct</strong> normal 36–46% (F), 41–53% (M) → ↑</li>
+                  <li><strong>Urine specific gravity</strong> 1.010–1.030 → ↑&gt;1.030</li>
+                  <li><strong>Serum osmolality</strong> 285–295 → ↑ &gt;295</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">Orthostatic Vital Signs</h3>
+                <ul class="bullet-list">
+                  <li>Measure BP and HR supine, sitting, standing</li>
+                  <li>Positive orthostatism: SBP drop ≥20 mmHg OR DBP drop ≥10 mmHg</li>
+                  <li>HR rise ≥20 bpm with position change</li>
+                  <li>Suggests ≥15–20% blood volume loss</li>
+                </ul>
+                <div class="callout" style="margin-top:0.75rem;">
+                  Elderly patients may have orthostatic hypotension without fluid loss (autonomic dysfunction).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Activity Intolerance -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 8</div>
+          <h2 class="slide-heading">🏃 Activity Intolerance</h2>
+          <p class="slide-intro">NANDA: insufficient physiological or psychological energy to endure or complete required or desired daily activities.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Stop Activity Parameters</h3>
+              <ul class="bullet-list">
+                <li>HR &gt;20 bpm above baseline <em>or</em> &gt;100 with minimal exertion</li>
+                <li>SBP drops &gt;20 mmHg</li>
+                <li>RR &gt;24 breaths/min</li>
+                <li>SpO₂ &lt;90%</li>
+                <li>Chest pain, severe dyspnea, dizziness</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Causes &amp; Actions</h3>
+              <ul class="bullet-list">
+                <li><strong>Causes:</strong> cardiac disease, anemia, COPD, deconditioning, prolonged bed rest</li>
+                <li><strong>Action:</strong> Stop activity immediately</li>
+                <li>Assist patient to rest position</li>
+                <li>Reassess VS every 5 minutes</li>
+                <li>Report to provider if no resolution</li>
+                <li>Increase activity gradually (energy conservation)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 SpO₂ &lt;90% = STOP immediately. Hypoxia during exertion is a medical emergency.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Pain Assessment -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 8</div>
+          <h2 class="slide-heading">😣 Pain Assessment</h2>
+          <p class="slide-intro">Pain is <strong>subjective</strong> — always believe the patient's self-report. Use validated tools.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">PQRSTU Mnemonic</h3>
+              <ul class="bullet-list">
+                <li><strong>P</strong> — Provokes / Palliates</li>
+                <li><strong>Q</strong> — Quality (sharp, dull, burning, throbbing)</li>
+                <li><strong>R</strong> — Region / Radiation</li>
+                <li><strong>S</strong> — Severity 0–10</li>
+                <li><strong>T</strong> — Timing (onset, constant vs. intermittent)</li>
+                <li><strong>U</strong> — Understanding (patient's perception)</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Pain Scales by Population</h3>
+              <ul class="bullet-list">
+                <li><strong>NRS</strong> 0–10 — adults, cognitively intact</li>
+                <li><strong>FACES</strong> — children 3–7 years</li>
+                <li><strong>FLACC</strong> — infants/preverbal (Face, Legs, Activity, Cry, Consolability)</li>
+                <li><strong>CPOT</strong> — critical care nonverbal</li>
+                <li><strong>PAINAD</strong> — dementia patients</li>
+              </ul>
+              <div class="col-example">Reassess: 30–60 min after non-pharm; 15–30 min after IV meds</div>
+            </div>
+          </div>
+          <div class="callout">
+            🔁 <strong>Reassessment is mandatory</strong> after every pain intervention. Document initial score AND response score.
+          </div>
+          <div class="optional-hint"><span class="arrow">↓</span><span>CPOT scale for comatose patients</span></div>
+        </div>
+        <div class="slide optional">
+          <div class="back-hint"><span class="arrow">↑</span><span>Back to Pain Assessment</span></div>
+          <div class="opt-inner">
+            <h2 class="slide-heading">CPOT — Critical-Care Pain Observation Tool</h2>
+            <p class="slide-intro">Used for nonverbal/comatose patients. Scores 0–8 (≥3 = significant pain).</p>
+            <div class="two-col">
+              <div class="col-card">
+                <h3 class="col-title">4 Behavioral Indicators</h3>
+                <ul class="bullet-list">
+                  <li><strong>Facial expression:</strong> relaxed (0) → grimacing (2)</li>
+                  <li><strong>Body movements:</strong> absent (0) → agitated (2)</li>
+                  <li><strong>Muscle tension:</strong> relaxed (0) → rigid (2)</li>
+                  <li><strong>Compliance with ventilator</strong> (intubated): tolerating (0) → fighting (2)<br/>
+                      <em>or</em> <strong>Vocalization</strong> (extubated): no sounds (0) → moaning/crying (2)</li>
+                </ul>
+              </div>
+              <div class="col-card">
+                <h3 class="col-title">PAINAD Scale (Dementia)</h3>
+                <ul class="bullet-list">
+                  <li>Breathing independent of vocalization</li>
+                  <li>Negative vocalization</li>
+                  <li>Facial expression</li>
+                  <li>Body language</li>
+                  <li>Consolability</li>
+                  <li>Score 0–10; ≥2 = moderate pain</li>
+                </ul>
+                <div class="callout" style="margin-top:0.75rem;">
+                  When in doubt, administer analgesic and observe behavioral response.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Cardiac Disease Prevention -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">7 / 8</div>
+          <h2 class="slide-heading">❤️ Cardiac Disease Prevention</h2>
+          <p class="slide-intro">Modify risk factors to reduce cardiovascular events. Smoking cessation is the <strong>most impactful</strong> single intervention.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Modifiable Risk Factors</h3>
+              <ul class="bullet-list">
+                <li>🚭 <strong>Smoking cessation</strong> — #1 priority</li>
+                <li>BP target <strong>&lt;130/80 mmHg</strong></li>
+                <li>Cholesterol — statin therapy if indicated</li>
+                <li>Diabetes — HbA1c <strong>&lt;7%</strong></li>
+                <li>Exercise <strong>150 min/week</strong> moderate-intensity</li>
+                <li>BMI <strong>18.5–24.9</strong> (weight management)</li>
+                <li>Alcohol moderation (≤1 drink/day women, ≤2 men)</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Diet Recommendations</h3>
+              <ul class="bullet-list">
+                <li><strong>Mediterranean diet</strong> — olive oil, fish, vegetables, nuts</li>
+                <li><strong>DASH diet</strong> — low sodium (&lt;2,300 mg/day), fruits, vegetables, low-fat dairy</li>
+                <li>Limit saturated fats, trans fats, refined carbs</li>
+                <li>Increase omega-3 fatty acids</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Non-Modifiable</h3>
+              <ul class="bullet-list">
+                <li>Age, sex, family history, race</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 Stress management (mindfulness, exercise) lowers cortisol → reduces BP and CV risk.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 8: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">8 / 8</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">🩸</span><span class="tip-text">Normal BP &lt;120/&lt;80 mmHg; HTN Stage 1 = 130–139/80–89</span></div>
+            <div class="tip-card"><span class="tip-icon">📏</span><span class="tip-text">Too-small cuff = falsely HIGH; too-large cuff = falsely LOW</span></div>
+            <div class="tip-card"><span class="tip-icon">👴</span><span class="tip-text">Skin turgor unreliable in elderly — assess oral mucosa instead</span></div>
+            <div class="tip-card"><span class="tip-icon">😣</span><span class="tip-text">Pain is subjective — ALWAYS believe patient's self-report</span></div>
+            <div class="tip-card"><span class="tip-icon">🤫</span><span class="tip-text">CPOT for nonverbal/comatose; PAINAD for dementia patients</span></div>
+            <div class="tip-card"><span class="tip-icon">🔁</span><span class="tip-text">Reassess pain after ALL interventions — document response score</span></div>
+            <div class="tip-card"><span class="tip-icon">🚭</span><span class="tip-text">Smoking = #1 modifiable cardiac risk factor</span></div>
+            <div class="tip-card"><span class="tip-icon">🏃</span><span class="tip-text">STOP activity if SpO₂ &lt;90%, HR &gt;100, or SBP drops &gt;20 mmHg</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/assessment-vitals`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>

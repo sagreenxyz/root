@@ -1,0 +1,290 @@
+---
+import SlidesLayout from '../../../layouts/SlidesLayout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<SlidesLayout
+  title="Medications &amp; Procedures – Slides – D439 Foundations of Nursing"
+  protected={true}
+  backHref={`${base}/private/d439/medications-procedures`}
+  backLabel="← Full Article"
+>
+  <div class="slides-wrapper">
+
+    <!-- COLUMN 1: Title -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-title">
+          <div class="slide-badge">D439 – Foundations of Nursing</div>
+          <div class="title-icon">💉</div>
+          <h1 class="slide-main-title">Medications &amp; Procedures</h1>
+          <h2 class="slide-subtitle">Injections · O₂ Safety · Suctioning · Pulse Oximetry</h2>
+          <p class="slide-note">← → Arrow keys or Prev / Next buttons to navigate · ↓ Arrow key for optional detail slides</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Injection Types -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">2 / 7</div>
+          <h2 class="slide-heading">💉 Injection Types</h2>
+          <p class="slide-intro">Technique varies by route. Correct needle angle and site selection prevent injury and ensure drug delivery.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Intradermal (TB/Mantoux Test)</h3>
+              <ul class="bullet-list">
+                <li>Gauge: 25–27G, 3/8–5/8" length</li>
+                <li>Angle: <strong>5–15°</strong>, bevel UP</li>
+                <li>Small amounts (0.01–0.1 mL)</li>
+                <li>NO aspiration, NO massage</li>
+                <li><strong>Pale wheal (bleb)</strong> confirms correct placement</li>
+                <li>Read result at <strong>48–72 hours</strong> (≥10 mm = positive)</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Subcutaneous Heparin</h3>
+              <ul class="bullet-list">
+                <li>Gauge: 25–26G, 5/8" length</li>
+                <li>Angle: <strong>90°</strong> (or 45° if thin patient)</li>
+                <li>Abdomen — <strong>2" from umbilicus</strong>, rotate sites</li>
+                <li>NO aspiration, NO massage</li>
+                <li>Do NOT expel air bubble in prefilled syringe</li>
+                <li>Hold pressure after injection</li>
+                <li>Antidote: <strong>protamine sulfate</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Ear Drop Administration -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">3 / 7</div>
+          <h2 class="slide-heading">👂 Ear Drop Administration</h2>
+          <p class="slide-intro">Canal straightening direction prevents pain and ensures medication reaches the tympanic membrane.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Procedure</h3>
+              <ul class="bullet-list">
+                <li><strong>Warm to body temperature</strong> — cold drops cause vertigo</li>
+                <li>Position: affected ear UPWARD</li>
+                <li><strong>Adults (&gt;3 yr):</strong> pull pinna <strong>UP and BACK</strong></li>
+                <li><strong>Children &lt;3 yr:</strong> pull pinna <strong>DOWN and BACK</strong></li>
+                <li>Instill along canal WALL (not onto TM)</li>
+                <li>Remain in position <strong>2–3 minutes</strong></li>
+                <li>Cotton ball loosely if ordered (do NOT pack tightly)</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Key Safety Points</h3>
+              <ul class="bullet-list">
+                <li>Never instill cold drops directly from refrigerator</li>
+                <li>Roll bottle in palms to warm, or hold for 1–2 min</li>
+                <li>Same pinna direction rule as tympanic thermometer</li>
+                <li>Assess for pain, discharge, hearing changes</li>
+                <li>Document: medication, dose, ear(s), patient response</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                Memory: Adults — UP and BACK (like lifting UP to see). Children — DOWN and BACK.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 4: Oxygen Safety -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">4 / 7</div>
+          <h2 class="slide-heading">🔥 Oxygen Safety</h2>
+          <p class="slide-intro">Oxygen is <strong>not flammable</strong> but <strong>supports combustion</strong> — it makes fires burn faster and hotter.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Safety Rules in Use</h3>
+              <ul class="bullet-list">
+                <li>Post <strong>"No Smoking / O₂ in Use"</strong> signs</li>
+                <li>No open flames or candles</li>
+                <li>Cotton/wool blankets only — no synthetics (static)</li>
+                <li>No oil-based lotions near O₂ equipment</li>
+                <li>Ground all electrical equipment</li>
+                <li>Secure cylinders upright in a stand</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Cylinder Storage</h3>
+              <ul class="bullet-list">
+                <li>Cool, dry, ventilated area</li>
+                <li>Chain cylinders upright — never lay flat</li>
+                <li>Full and empty cylinders stored separately</li>
+                <li>Never store in a closed vehicle (heat → pressure)</li>
+                <li>Away from heat sources and flammable materials</li>
+              </ul>
+              <div class="callout" style="margin-top:0.75rem;">
+                Fire triangle: Fuel + Heat + O₂. O₂ enriches the oxidizer component.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 5: Pulse Oximetry -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">5 / 7</div>
+          <h2 class="slide-heading">📊 Pulse Oximetry</h2>
+          <p class="slide-intro">Measures SpO₂ (oxygen saturation of hemoglobin). Normal: <strong>95–100%</strong>. SpO₂ does NOT measure ventilation adequacy.</p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">SpO₂ Values &amp; Sites</h3>
+              <ul class="bullet-list">
+                <li><strong>95–100%</strong> — normal</li>
+                <li><strong>&lt;90%</strong> — hypoxia; intervene</li>
+                <li><strong>&lt;85%</strong> — severe; immediate action</li>
+                <li><strong>Sites:</strong> fingertip (most common), toe, earlobe, forehead</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Causes of Inaccurate Readings</h3>
+              <ul class="bullet-list">
+                <li>Dark nail polish (remove or use earlobe)</li>
+                <li>Poor circulation / peripheral vascular disease</li>
+                <li>Cold extremities / hypothermia</li>
+                <li>Motion artifact / shivering</li>
+                <li><strong>CO poisoning</strong> — falsely ELEVATES SpO₂</li>
+                <li><strong>Anemia</strong> — may read normal despite low O₂ carrying capacity</li>
+                <li>Jaundice (bilirubin interference)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout callout-tip">
+            💡 SpO₂ ≠ ventilation. Also assess respiratory rate and depth — a patient can be retaining CO₂ with normal SpO₂.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 6: Suctioning -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide">
+          <div class="slide-number">6 / 7</div>
+          <h2 class="slide-heading">🌬️ Suctioning</h2>
+          <p class="slide-intro">Suctioning clears the airway when the patient cannot effectively cough. <strong>Always hyperoxygenate first.</strong></p>
+          <div class="two-col">
+            <div class="col-card">
+              <h3 class="col-title">Procedure &amp; Safety</h3>
+              <ul class="bullet-list">
+                <li><strong>Hyperoxygenate BEFORE</strong> — 100% O₂ for 30–60 seconds</li>
+                <li>Apply suction <strong>ONLY while withdrawing</strong></li>
+                <li>Limit to <strong>10–15 seconds</strong> per pass</li>
+                <li>Rest <strong>20–30 seconds</strong> between passes</li>
+                <li>Maximum <strong>3 passes</strong> per episode</li>
+                <li>Rotate catheter while withdrawing</li>
+                <li>Suction oral cavity AFTER deep suctioning</li>
+              </ul>
+            </div>
+            <div class="col-card">
+              <h3 class="col-title">Pressures &amp; When to Stop</h3>
+              <ul class="bullet-list">
+                <li><strong>Adults:</strong> 80–150 mmHg</li>
+                <li><strong>Children:</strong> 60–100 mmHg</li>
+                <li><strong>Neonates:</strong> 40–60 mmHg</li>
+                <li><strong>Stop if:</strong> SpO₂ &lt;90%, dysrhythmia, cyanosis, distress</li>
+              </ul>
+              <h3 class="col-title" style="margin-top:0.75rem;">Contraindications</h3>
+              <ul class="bullet-list">
+                <li>Basilar skull fracture (no nasopharyngeal)</li>
+                <li>Coagulopathy (increased bleeding risk)</li>
+                <li>Nasal polyps or obstruction</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 7: Exam Tips -->
+    <div class="slide-column">
+      <div class="column-inner">
+        <div class="slide slide-exam">
+          <div class="slide-number">7 / 7</div>
+          <h2 class="slide-heading">📝 Exam Tips &amp; Key Points</h2>
+          <div class="tips-grid">
+            <div class="tip-card"><span class="tip-icon">🔵</span><span class="tip-text">Wheal (bleb) confirms intradermal placement; no wheal = subcutaneous</span></div>
+            <div class="tip-card"><span class="tip-icon">🚫</span><span class="tip-text">Never massage heparin injection site — causes bruising</span></div>
+            <div class="tip-card"><span class="tip-icon">👆</span><span class="tip-text">Adult ear: pinna UP and BACK; Child &lt;3 yr: DOWN and BACK</span></div>
+            <div class="tip-card"><span class="tip-icon">🔥</span><span class="tip-text">O₂ is NOT flammable but SUPPORTS combustion — fire risk</span></div>
+            <div class="tip-card"><span class="tip-icon">🚗</span><span class="tip-text">CO poisoning falsely ELEVATES SpO₂ — classic trap question</span></div>
+            <div class="tip-card"><span class="tip-icon">💨</span><span class="tip-text">Always hyperoxygenate BEFORE suctioning (100% O₂, 30–60 sec)</span></div>
+            <div class="tip-card"><span class="tip-icon">⬆️</span><span class="tip-text">NEVER suction while inserting — suction ONLY while withdrawing</span></div>
+            <div class="tip-card"><span class="tip-icon">⏱️</span><span class="tip-text">10–15 seconds maximum per suction pass; 3 passes max per episode</span></div>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href={`${base}/private/d439/medications-procedures`} class="article-link">← Full Article</a>
+            <a href={`${base}/private/d439`} class="article-link article-link-ghost">D439 Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+  .slide { padding: 4rem 3rem 2rem; }
+  .slide.optional { padding-top: 5rem; }
+  .opt-inner { max-width: 900px; width: 100%; margin: 0 auto; }
+  .slide-number { position: absolute; top: 3.5rem; right: 1.5rem; font-size: 0.75rem; color: #94a3b8; font-weight: 600; }
+  .slide-title { align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%); }
+  .slide-badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #6366f1; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 0.35rem; padding: 0.2rem 0.55rem; margin-bottom: 1rem; }
+  .title-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+  .slide-main-title { font-size: 2.4rem; font-weight: 800; color: #1e293b; line-height: 1.15; margin-bottom: 0.25rem; }
+  .slide-subtitle { font-size: 1.5rem; font-weight: 700; color: #6366f1; margin-bottom: 1.5rem; }
+  .slide-note { font-size: 0.78rem; color: #94a3b8; }
+  .slide-heading { font-size: 1.4rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 0.5rem; }
+  .step-letter { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #6366f1; color: #fff; border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+  .slide-intro { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; flex: 1; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; flex: 1; }
+  .col-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.6rem; padding: 1rem; }
+  .col-card-sm { padding: 0.85rem; }
+  .col-title { font-size: 0.875rem; font-weight: 700; color: #6366f1; margin-bottom: 0.5rem; }
+  .col-title-sm { font-size: 0.8rem; }
+  .col-body { font-size: 0.82rem; color: #374151; margin-bottom: 0.4rem; }
+  .col-example { font-size: 0.78rem; color: #64748b; font-style: italic; }
+  .bullet-list { font-size: 0.85rem; color: #374151; line-height: 1.7; padding-left: 1.1rem; margin: 0; }
+  .bullet-list li { margin-bottom: 0.25rem; }
+  .callout { background: #eff6ff; border-left: 4px solid #bfdbfe; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #1e3a5f; line-height: 1.6; margin-top: auto; }
+  .callout-tip { background: #eef2ff; border-left-color: #a5b4fc; color: #312e81; }
+  .optional-hint { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; margin-top: auto; padding-top: 0.5rem; }
+  .back-hint { position: absolute; top: 3rem; left: 1.5rem; display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #94a3b8; }
+  .optional-hint .arrow, .back-hint .arrow { font-size: 1rem; }
+  .overview-grid { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; margin-bottom: 0.75rem; }
+  .overview-row { display: flex; align-items: flex-start; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.6rem 0.85rem; font-size: 0.875rem; color: #374151; }
+  .step-badge { flex-shrink: 0; width: 1.75rem; height: 1.75rem; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+  .step-q { display: block; font-size: 0.78rem; color: #64748b; font-style: italic; margin-top: 0.1rem; }
+  .slide-exam { background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%); }
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; flex: 1; }
+  .tip-card { display: flex; align-items: flex-start; gap: 0.6rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.55rem; padding: 0.65rem 0.85rem; }
+  .tip-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .tip-text { font-size: 0.84rem; color: #374151; line-height: 1.45; }
+  .article-link { display: inline-flex; align-items: center; padding: 0.55rem 1.1rem; background: #6366f1; color: #fff; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; margin: 0 0.25rem; }
+  .article-link:hover { background: #4f46e5; }
+  .article-link-ghost { background: #f1f5f9; color: #1e293b; border: 1px solid #e2e8f0; }
+  .article-link-ghost:hover { background: #e2e8f0; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.25rem 1.5rem; }
+    .two-col, .three-col, .tips-grid { grid-template-columns: 1fr; }
+    .slide-main-title { font-size: 1.8rem; }
+    .slide-number { top: 3rem; right: 1rem; }
+  }
+  </style>
+</SlidesLayout>
