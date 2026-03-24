@@ -45,6 +45,7 @@ jobs:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
           AUTH_HASH: ${{ secrets.AUTH_HASH }}
           REVEAL_SECRET: ${{ secrets.REVEAL_SECRET }}
+          REVEAL_BUILD_ID: ${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

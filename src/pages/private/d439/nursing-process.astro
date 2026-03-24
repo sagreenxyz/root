@@ -1,11 +1,12 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getDailyRevealToken } from '../../../lib/revealToken';
+import { getRevealToken } from '../../../lib/revealToken';
 const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
-// Compute today's reveal token at build time (REVEAL_SECRET never reaches the client).
+// Compute the reveal token at build time (REVEAL_SECRET never reaches the client).
 const revealSecret = import.meta.env.REVEAL_SECRET ?? '';
-const revealToken = getDailyRevealToken(revealSecret, 'nursing-process');
+const revealBuildId = import.meta.env.REVEAL_BUILD_ID ?? '';
+const revealToken = getRevealToken(revealSecret, 'nursing-process', revealBuildId);
 const revealUrl = `${base}/reveal/${revealToken}`;
 
 const toc = [
