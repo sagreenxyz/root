@@ -1,13 +1,31 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import { getDailyRevealToken } from '../../../lib/revealToken';
+/**
+ * /reveal/[token] – Daily-expiring public reveal pages.
+ *
+ * getStaticPaths() runs at BUILD TIME only in Node.js.  It:
+ *   1. Reads REVEAL_SECRET from the build environment (never sent to the browser).
+ *   2. Computes a per-page, per-day HMAC-SHA256 token for each allowlisted page.
+ *   3. Returns one static path per allowlisted page.
+ *
+ * The resulting pages are fully public (no auth gate).  They expire automatically
+ * each nightly rebuild because the token changes with the date; the previous
+ * day's URL simply returns 404.
+ */
+import Layout from '../../layouts/Layout.astro';
+import { getDailyRevealToken, REVEALABLE_PAGES, type RevealPage } from '../../lib/revealToken';
+
+export async function getStaticPaths() {
+  const secret = import.meta.env.REVEAL_SECRET ?? '';
+  return REVEALABLE_PAGES.map((page: RevealPage) => ({
+    params: { token: getDailyRevealToken(secret, page.slug) },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: RevealPage };
 const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
 
-// Compute today's reveal token at build time (REVEAL_SECRET never reaches the client).
-const revealSecret = import.meta.env.REVEAL_SECRET ?? '';
-const revealToken = getDailyRevealToken(revealSecret, 'nursing-process');
-const revealUrl = `${base}/reveal/${revealToken}`;
-
+// TOC entries (same as the private page)
 const toc = [
   { id: 'adpie', label: 'ADPIE – Every Step Reviewed' },
   { id: 'critical-thinking', label: 'Critical Thinking in Nursing' },
@@ -17,16 +35,13 @@ const toc = [
 ];
 ---
 
-<Layout title="Nursing Process (ADPIE) – D439 Foundations of Nursing" protected={true}>
+<Layout title={page.title} protected={false}>
 
-  <!-- Breadcrumb -->
-  <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem; font-size:0.85rem; color:#64748b;">
-    <a href={`${base}/private/dashboard`} style="color:#6366f1; text-decoration:none; font-weight:500;">Dashboard</a>
-    <span style="margin:0 0.4rem;">›</span>
-    <a href={`${base}/private/d439`} style="color:#6366f1; text-decoration:none; font-weight:500;">D439 Foundations of Nursing</a>
-    <span style="margin:0 0.4rem;">›</span>
-    <span>Nursing Process (ADPIE)</span>
-  </nav>
+  <!-- Reveal banner -->
+  <div style="background:#fef9c3; border:1px solid #fde68a; border-radius:0.65rem; padding:0.85rem 1.1rem; margin-bottom:1.5rem; font-size:0.875rem; color:#713f12; display:flex; align-items:center; gap:0.6rem;">
+    <span aria-hidden="true">🔓</span>
+    <span><strong>Public reveal link</strong> — This page is temporarily public via a time-limited link. It will expire after the next nightly rebuild.</span>
+  </div>
 
   <div class="article-grid">
     <!-- Main article -->
@@ -48,21 +63,10 @@ const toc = [
           Implementation, and Evaluation—along with critical thinking in nursing and therapeutic assessment
           interview techniques.
         </p>
-        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap; margin-bottom:1rem;">
+        <div style="display:flex; gap:1.5rem; font-size:0.8rem; color:#94a3b8; flex-wrap:wrap;">
           <span>🎓 D439 Foundations of Nursing</span>
           <span>📖 Exam-focused content</span>
-          <span>🔒 Protected content</span>
         </div>
-        <a
-          href={`${base}/private/d439/nursing-process-slides`}
-          style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.5rem 1.1rem; background:#6366f1; color:#fff; border-radius:9999px; font-size:0.85rem; font-weight:600; text-decoration:none;"
-        >▶ View as Slides</a>
-        <button
-          id="reveal-copy-btn"
-          data-url={revealUrl}
-          style="display:none; align-items:center; gap:0.4rem; padding:0.5rem 1.1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:9999px; font-size:0.85rem; font-weight:600; cursor:pointer;"
-          aria-label="Copy reveal link to clipboard"
-        >🔗 Copy Reveal Link</button>
       </header>
 
       <!-- ═══════════════════════════════════════════════════════ -->
@@ -538,21 +542,6 @@ const toc = [
         </div>
       </section>
 
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- PREVIOUS / NEXT NAVIGATION -->
-      <!-- ═══════════════════════════════════════════════════════ -->
-      <nav aria-label="Page navigation" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; gap:1rem; flex-wrap:wrap;">
-        <a
-          href={`${base}/private/d439`}
-          style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.2rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:9999px; font-size:0.875rem; font-weight:600; text-decoration:none;"
-        >← Back to D439 Index</a>
-
-        <a
-          href={`${base}/private/d439/infection-control`}
-          style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.6rem 1.2rem; background:#6366f1; color:#fff; border:1px solid #6366f1; border-radius:9999px; font-size:0.875rem; font-weight:600; text-decoration:none;"
-        >Infection Control &amp; Asepsis →</a>
-      </nav>
-
     </article>
 
     <!-- ═══════════════════════════════════════════════════════ -->
@@ -613,52 +602,9 @@ const toc = [
         </ul>
       </div>
 
-      <!-- Back link -->
-      <a
-        href={`${base}/private/d439`}
-        style="display:block; text-align:center; padding:0.6rem 1rem; background:#f1f5f9; color:#1e293b; border:1px solid #e2e8f0; border-radius:0.5rem; font-size:0.875rem; font-weight:600; text-decoration:none;"
-      >← Back to D439 Index</a>
-
     </aside>
   </div>
 </Layout>
-
-<script>
-  /* Reveal-link copy button — only shown when the user is logged in. */
-  (function () {
-    var btn = document.getElementById('reveal-copy-btn');
-    if (!btn) return;
-
-    function showBtn() {
-      if (sessionStorage.getItem('auth_token')) {
-        btn.style.display = 'inline-flex';
-      }
-    }
-
-    btn.addEventListener('click', function () {
-      var url = btn.getAttribute('data-url');
-      if (!url) return;
-      navigator.clipboard.writeText(url).then(function () {
-        var original = btn.textContent;
-        btn.textContent = '✅ Copied!';
-        setTimeout(function () { btn.textContent = original; }, 2000);
-      }).catch(function () {
-        /* Fallback for browsers without clipboard API permission */
-        btn.textContent = '⚠ Copy failed';
-        setTimeout(function () { btn.textContent = '🔗 Copy Reveal Link'; }, 2000);
-      });
-    });
-
-    /* Show when already authenticated on page load */
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showBtn);
-    } else {
-      showBtn();
-    }
-    /* Show if the user logs in on this page (unlikely but correct) */
-    document.addEventListener('auth:login', showBtn);
-  })();
-</script>
 
 <style>
   .article-grid {

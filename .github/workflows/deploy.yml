@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +44,7 @@ jobs:
           SITE: ${{ steps.pages.outputs.origin }}
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
           AUTH_HASH: ${{ secrets.AUTH_HASH }}
+          REVEAL_SECRET: ${{ secrets.REVEAL_SECRET }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
