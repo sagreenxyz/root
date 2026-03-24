@@ -8,6 +8,7 @@ const toc = [
   { id: 'interview-techniques', label: 'Assessment Interview Techniques' },
   { id: 'steps-overview', label: 'Steps of the Nursing Process' },
   { id: 'assessment-importance', label: 'Most Important Thing During Assessment' },
+  { id: 'microquiz', label: 'Micro-Quiz (12 Questions)' },
 ];
 ---
 
@@ -527,6 +528,36 @@ const toc = [
       </section>
 
       <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- SECTION 6: Micro-Quiz -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <section id="microquiz" style="margin-bottom:2.5rem;">
+        <h2 style="font-size:1.15rem; font-weight:700; color:#1e293b; margin-bottom:0.75rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0;">
+          6. Micro-Quiz — 12 Practice Questions
+        </h2>
+        <p style="font-size:0.9rem; color:#475569; margin-bottom:1.25rem; line-height:1.6;">
+          Test your knowledge of the nursing process. Select your answers and click <strong>Submit Quiz</strong> to see your score and rationales.
+        </p>
+
+        <!-- Score banner (hidden until submitted) -->
+        <div id="mq-score-banner" style="display:none; border-radius:0.75rem; padding:1.1rem 1.25rem; margin-bottom:1.5rem; text-align:center;">
+          <div id="mq-score-text" style="font-size:1.35rem; font-weight:800;"></div>
+          <div id="mq-score-sub" style="font-size:0.875rem; margin-top:0.2rem;"></div>
+        </div>
+
+        <div id="mq-form"></div>
+
+        <div style="margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+          <button id="mq-submit-btn" onclick="mqSubmit()"
+            style="padding:0.65rem 1.75rem; background:#6366f1; color:#fff; border:none; border-radius:0.6rem; font-size:0.95rem; font-weight:700; cursor:pointer;">
+            Submit Quiz
+          </button>
+          <button id="mq-reset-btn" onclick="mqReset()" style="display:none; padding:0.65rem 1.4rem; background:#fff; color:#6366f1; border:2px solid #6366f1; border-radius:0.6rem; font-size:0.95rem; font-weight:700; cursor:pointer;">
+            Retake Quiz
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
       <!-- PREVIOUS / NEXT NAVIGATION -->
       <!-- ═══════════════════════════════════════════════════════ -->
       <nav aria-label="Page navigation" style="display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #e2e8f0; gap:1rem; flex-wrap:wrap;">
@@ -624,3 +655,253 @@ const toc = [
     }
   }
 </style>
+
+<script>
+const MQ_QUESTIONS = [
+  {
+    n: 1,
+    type: 'single',
+    stem: 'Which step of the nursing process is ALWAYS performed first?',
+    options: [
+      { label: 'A', text: 'Diagnosis' },
+      { label: 'B', text: 'Planning' },
+      { label: 'C', text: 'Assessment' },
+      { label: 'D', text: 'Implementation' },
+    ],
+    correct: ['C'],
+    rationale: 'Assessment is always the first and continuous step of the nursing process. All other steps depend on the data gathered during assessment.',
+  },
+  {
+    n: 2,
+    type: 'single',
+    stem: 'A nurse measures a patient\'s blood pressure and records 142/88 mmHg. This is an example of:',
+    options: [
+      { label: 'A', text: 'Subjective data' },
+      { label: 'B', text: 'Objective data' },
+      { label: 'C', text: 'Primary source data only' },
+      { label: 'D', text: 'Validated data' },
+    ],
+    correct: ['B'],
+    rationale: 'Objective data is measurable and observable by the nurse, such as vital signs, lab values, and physical examination findings. Blood pressure is a measurable, objective finding.',
+  },
+  {
+    n: 3,
+    type: 'single',
+    stem: 'A patient states, "I feel like my heart is racing and I can\'t catch my breath." This is an example of:',
+    options: [
+      { label: 'A', text: 'Objective data' },
+      { label: 'B', text: 'Secondary source data' },
+      { label: 'C', text: 'Subjective data' },
+      { label: 'D', text: 'Validated data' },
+    ],
+    correct: ['C'],
+    rationale: 'Subjective data is what the patient reports — their symptoms, feelings, and perceptions. Only the patient can provide subjective data, and it is recorded in the patient\'s own words.',
+  },
+  {
+    n: 4,
+    type: 'single',
+    stem: 'A correctly written actual nursing diagnosis in PES format is:',
+    options: [
+      { label: 'A', text: 'Hypertension related to high sodium intake' },
+      { label: 'B', text: 'Acute Pain related to surgical incision as evidenced by patient rating pain 8/10 and guarding abdomen' },
+      { label: 'C', text: 'Risk for Falls related to muscle weakness' },
+      { label: 'D', text: 'Administer analgesics as ordered for pain management' },
+    ],
+    correct: ['B'],
+    rationale: 'An actual nursing diagnosis uses PES format: Problem (Acute Pain) + Etiology (related to surgical incision) + Signs/Symptoms (as evidenced by…). Option A is a medical diagnosis. Option C is a risk diagnosis. Option D is a nursing intervention.',
+  },
+  {
+    n: 5,
+    type: 'single',
+    stem: 'Which statement correctly describes a <em>risk</em> nursing diagnosis?',
+    options: [
+      { label: 'A', text: 'It is written in PES format with defining characteristics required.' },
+      { label: 'B', text: 'It describes a problem that currently exists and is supported by signs and symptoms.' },
+      { label: 'C', text: 'It identifies a potential problem for which the patient is vulnerable; no signs or symptoms are present.' },
+      { label: 'D', text: 'It is written as "Readiness for Enhanced…" and reflects a desire to improve health.' },
+    ],
+    correct: ['C'],
+    rationale: 'A risk nursing diagnosis describes a potential problem that does not yet exist. Because no problem is present, there are no defining characteristics (signs/symptoms). It is written as "Risk for…" followed by the related risk factors.',
+  },
+  {
+    n: 6,
+    type: 'single',
+    stem: 'A nurse writes the following goal: "The patient will walk 30 feet with a walker by end of shift, as observed by the nurse." Which SMART criterion is <strong>most clearly demonstrated</strong>?',
+    options: [
+      { label: 'A', text: 'Specific and measurable' },
+      { label: 'B', text: 'Attainable' },
+      { label: 'C', text: 'Relevant' },
+      { label: 'D', text: 'Time-bound only' },
+    ],
+    correct: ['A'],
+    rationale: 'The goal specifies exactly what the patient will do (walk 30 feet with a walker) and states a measurable criterion (30 feet, observed by nurse) with a time frame (end of shift) — making it both specific and measurable.',
+  },
+  {
+    n: 7,
+    type: 'single',
+    stem: 'Using Maslow\'s Hierarchy of Needs, which nursing diagnosis has the <strong>highest priority</strong>?',
+    options: [
+      { label: 'A', text: 'Anxiety related to upcoming surgical procedure' },
+      { label: 'B', text: 'Impaired Social Interaction related to prolonged hospitalisation' },
+      { label: 'C', text: 'Ineffective Airway Clearance related to excessive secretions' },
+      { label: 'D', text: 'Low Self-Esteem related to body image changes' },
+    ],
+    correct: ['C'],
+    rationale: 'Maslow\'s hierarchy places physiological needs at the highest priority. An airway problem is life-threatening and must be addressed first. Anxiety (safety), impaired social interaction (love/belonging), and low self-esteem (esteem) are lower-level needs.',
+  },
+  {
+    n: 8,
+    type: 'sata',
+    stem: 'Which of the following are examples of <em>independent</em> nursing interventions? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'Repositioning the patient every 2 hours to prevent pressure injuries' },
+      { label: 'B', text: 'Administering a prescribed antibiotic' },
+      { label: 'C', text: 'Teaching the patient deep-breathing and coughing exercises' },
+      { label: 'D', text: 'Applying ordered compression stockings' },
+      { label: 'E', text: 'Encouraging oral fluid intake for a patient with dehydration' },
+    ],
+    correct: ['A', 'C', 'E'],
+    rationale: 'Independent interventions are actions the nurse can initiate without a physician order within the scope of nursing practice: repositioning (A), patient education (C), and encouraging fluids (E). Administering a prescribed antibiotic (B) and applying ordered stockings (D) are dependent interventions — they require a physician order.',
+  },
+  {
+    n: 9,
+    type: 'single',
+    stem: 'After evaluating a patient\'s outcome, the nurse determines the goal was <strong>not met</strong>. The nurse\'s next action should be to:',
+    options: [
+      { label: 'A', text: 'Discontinue the nursing diagnosis and care plan.' },
+      { label: 'B', text: 'Continue the existing plan unchanged and reassess next shift.' },
+      { label: 'C', text: 'Reassess the patient and revise the diagnosis, goals, or interventions as needed.' },
+      { label: 'D', text: 'Report the unmet goal to the physician for a new medical order.' },
+    ],
+    correct: ['C'],
+    rationale: 'When a goal is not met, the nurse loops back to the assessment phase, identifies why the goal was not achieved, and revises the care plan accordingly. This illustrates the cyclical, continuous nature of the nursing process.',
+  },
+  {
+    n: 10,
+    type: 'single',
+    stem: 'A nurse is performing a comprehensive head-to-toe physical examination on a newly admitted patient to establish a baseline. This type of assessment is called:',
+    options: [
+      { label: 'A', text: 'Focused assessment' },
+      { label: 'B', text: 'Emergency assessment' },
+      { label: 'C', text: 'Time-lapsed reassessment' },
+      { label: 'D', text: 'Initial (admission) assessment' },
+    ],
+    correct: ['D'],
+    rationale: 'The initial (admission) assessment is a comprehensive database collected on first contact with the patient to establish a baseline. A focused assessment targets a specific problem; emergency assessment addresses life-threatening priorities; time-lapsed reassessment compares current status to a prior baseline.',
+  },
+  {
+    n: 11,
+    type: 'single',
+    stem: 'During the assessment interview, the nurse says: "When you say you feel \'awful,\' can you describe specifically what you are experiencing?" This technique is called:',
+    options: [
+      { label: 'A', text: 'Reflection' },
+      { label: 'B', text: 'Clarification' },
+      { label: 'C', text: 'Therapeutic silence' },
+      { label: 'D', text: 'Leading questioning' },
+    ],
+    correct: ['B'],
+    rationale: 'Clarification is used when a patient\'s statement is vague or ambiguous. The nurse asks for clarification to ensure accurate data collection and to avoid misinterpreting the patient\'s experience.',
+  },
+  {
+    n: 12,
+    type: 'sata',
+    stem: 'Which of the following statements about the nursing process are <strong>correct</strong>? <strong>(Select all that apply.)</strong>',
+    options: [
+      { label: 'A', text: 'The nursing process is linear and ends after evaluation.' },
+      { label: 'B', text: 'Assessment is the foundation upon which all other steps depend.' },
+      { label: 'C', text: 'A nursing diagnosis describes the human response to a health problem, within nursing scope of practice.' },
+      { label: 'D', text: 'Goals written during planning should be nurse-centred, describing what the nurse will do.' },
+      { label: 'E', text: 'Evaluation determines whether expected outcomes have been achieved and may lead to revision of the care plan.' },
+    ],
+    correct: ['B', 'C', 'E'],
+    rationale: 'The nursing process is cyclical, not linear (A is false). Goals must be patient-centred, not nurse-centred (D is false). Assessment is foundational (B), nursing diagnoses address human responses (C), and evaluation measures goal achievement and drives plan revision (E).',
+  },
+];
+
+function mqRenderQuestion(q) {
+  const id = 'mq' + q.n;
+  const isSATA = q.type === 'sata';
+  const inputType = isSATA ? 'checkbox' : 'radio';
+  let optionsHtml = '';
+  q.options.forEach(opt => {
+    optionsHtml += `
+      <label class="mq-opt" id="${id}_opt${opt.label}" style="display:flex;align-items:flex-start;gap:0.6rem;padding:0.55rem 0.75rem;border-radius:0.5rem;border:1.5px solid #e2e8f0;margin-bottom:0.45rem;cursor:pointer;transition:border-color 0.15s;">
+        <input type="${inputType}" name="${id}" value="${opt.label}" style="margin-top:0.2rem;flex-shrink:0;accent-color:#6366f1;" />
+        <span><strong>${opt.label}.</strong> ${opt.text}</span>
+      </label>`;
+  });
+  return `
+    <div class="mq-card" id="mqcard_${id}" style="background:#fff;border:1px solid #e2e8f0;border-radius:0.75rem;padding:1.25rem 1.5rem;margin-bottom:1rem;">
+      <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#6366f1;margin-bottom:0.4rem;">Question ${q.n}${isSATA ? ' — Select all that apply' : ''}</p>
+      <p style="font-size:0.925rem;line-height:1.7;color:#1e293b;margin-bottom:0.9rem;">${q.stem}</p>
+      <div>${optionsHtml}</div>
+      <div class="mq-rat" id="mqrat_${id}" style="display:none;margin-top:0.9rem;padding:0.7rem 0.9rem;border-radius:0.45rem;font-size:0.85rem;line-height:1.6;"></div>
+    </div>`;
+}
+
+function mqRender() {
+  document.getElementById('mq-form').innerHTML = MQ_QUESTIONS.map(mqRenderQuestion).join('');
+}
+
+function mqSubmit() {
+  let total = 0, correct = 0;
+  MQ_QUESTIONS.forEach(q => {
+    const id = 'mq' + q.n;
+    const given = [...document.querySelectorAll(`input[name="${id}"]:checked`)].map(i => i.value).sort();
+    const expected = q.correct.slice().sort();
+    const isCorrect = JSON.stringify(given) === JSON.stringify(expected);
+    if (isCorrect) correct++;
+    total++;
+
+    const card = document.getElementById('mqcard_' + id);
+    card.querySelectorAll('.mq-opt').forEach(lbl => {
+      const inp = lbl.querySelector('input');
+      if (!inp) return;
+      inp.disabled = true;
+      const val = inp.value;
+      if (expected.includes(val) && given.includes(val)) {
+        lbl.style.borderColor = '#16a34a'; lbl.style.background = '#f0fdf4';
+      } else if (expected.includes(val) && !given.includes(val)) {
+        lbl.style.borderColor = '#d97706'; lbl.style.background = '#fffbeb';
+      } else if (!expected.includes(val) && given.includes(val)) {
+        lbl.style.borderColor = '#dc2626'; lbl.style.background = '#fef2f2';
+      }
+    });
+    card.style.borderColor = isCorrect ? '#bbf7d0' : '#fecaca';
+
+    const rat = document.getElementById('mqrat_' + id);
+    rat.style.display = 'block';
+    rat.style.background = isCorrect ? '#f0fdf4' : '#fef2f2';
+    rat.style.borderLeft = '4px solid ' + (isCorrect ? '#16a34a' : '#dc2626');
+    rat.style.color = isCorrect ? '#166534' : '#991b1b';
+    rat.innerHTML = '<strong>' + (isCorrect ? '✓ Correct' : '✗ Incorrect') + '</strong> — ' + q.rationale;
+  });
+
+  const pct = Math.round((correct / total) * 100);
+  const banner = document.getElementById('mq-score-banner');
+  document.getElementById('mq-score-text').textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+  document.getElementById('mq-score-sub').textContent =
+    pct >= 80 ? '🎉 Excellent! You have a strong grasp of the nursing process.' :
+    pct >= 60 ? '📚 Good effort — review the highlighted rationales.' :
+    '🔍 Review the ADPIE sections above before retrying.';
+  banner.style.display = 'block';
+  banner.style.background = pct >= 80 ? '#f0fdf4' : pct >= 60 ? '#fffbeb' : '#fef2f2';
+  banner.style.border = '1px solid ' + (pct >= 80 ? '#bbf7d0' : pct >= 60 ? '#fde68a' : '#fecaca');
+  document.getElementById('mq-score-text').style.color = pct >= 80 ? '#166534' : pct >= 60 ? '#92400e' : '#991b1b';
+  document.getElementById('mq-score-sub').style.color = pct >= 80 ? '#15803d' : pct >= 60 ? '#b45309' : '#b91c1c';
+  banner.scrollIntoView({ behavior: 'smooth' });
+
+  document.getElementById('mq-submit-btn').style.display = 'none';
+  document.getElementById('mq-reset-btn').style.display = 'inline-block';
+}
+
+function mqReset() {
+  document.getElementById('mq-score-banner').style.display = 'none';
+  document.getElementById('mq-submit-btn').style.display = 'inline-block';
+  document.getElementById('mq-reset-btn').style.display = 'none';
+  mqRender();
+  document.getElementById('microquiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', mqRender);
+</script>
