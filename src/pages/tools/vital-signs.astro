@@ -1,0 +1,704 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = (import.meta.env.BASE_URL || '').replace(/\/$/, '');
+---
+
+<Layout title="Vital Signs Assessor – WGU Nursing Tools" protected={false}>
+
+<style>
+  /* ── Page wrapper ─────────────────────────────────────────────── */
+  .vs-page { max-width: 960px; margin: 0 auto; }
+  .vs-page h1 { font-size: 1.75rem; font-weight: 800; color: #1e293b; margin-bottom: 0.35rem; }
+  .vs-page .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 2rem; }
+
+  /* ── Card sections ────────────────────────────────────────────── */
+  .vs-section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .vs-section-header {
+    background: #1e293b;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .vs-section-header .icon { font-size: 1.15rem; }
+  .vs-section-header h2 { font-size: 0.9rem; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 0.06em; }
+  .vs-section-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  /* ── Input grid ───────────────────────────────────────────────── */
+  .field-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field-group label { font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+  .field-group .hint { font-size: 0.75rem; color: #64748b; }
+  .field-group input,
+  .field-group select,
+  .field-group textarea {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    resize: vertical;
+  }
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    background: #fff;
+  }
+  .field-group textarea { min-height: 70px; line-height: 1.6; }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .row4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .row2, .row3, .row4 { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .row4 { grid-template-columns: 1fr 1fr; } }
+
+  /* ── Status pills ─────────────────────────────────────────────── */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    white-space: nowrap;
+  }
+  .status-normal  { background: #dcfce7; color: #14532d; }
+  .status-low     { background: #fef3c7; color: #78350f; }
+  .status-high    { background: #fee2e2; color: #7f1d1d; }
+  .status-blank   { background: #f1f5f9; color: #94a3b8; }
+
+  /* ── Vital sign result rows ───────────────────────────────────── */
+  .vs-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+  }
+  .vs-result-row:last-child { border-bottom: none; }
+  .vs-result-label { font-size: 0.85rem; font-weight: 700; color: #1e293b; min-width: 120px; }
+  .vs-result-value { font-size: 1.1rem; font-weight: 800; color: #1e293b; flex: 1; text-align: right; }
+  .vs-result-interp { font-size: 0.8rem; color: #475569; flex: 2; }
+
+  /* ── Trend table ──────────────────────────────────────────────── */
+  .trend-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .trend-table th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    border-bottom: 2px solid #e2e8f0;
+    background: #f8fafc;
+  }
+  .trend-table td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+  .trend-table tr:last-child td { border-bottom: none; }
+  .trend-table tr:hover td { background: #f8fafc; }
+  .trend-table .del-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ef4444;
+    font-size: 1rem;
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.3rem;
+    transition: background 0.15s;
+  }
+  .trend-table .del-btn:hover { background: #fee2e2; }
+
+  /* ── Action buttons ───────────────────────────────────────────── */
+  .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  .btn-primary { background: #6366f1; color: #fff; }
+  .btn-primary:hover { background: #4f46e5; }
+  .btn-outline { background: #fff; color: #1e293b; border: 1px solid #e2e8f0; }
+  .btn-outline:hover { background: #f8fafc; }
+  .btn-danger  { background: #ef4444; color: #fff; }
+  .btn-danger:hover  { background: #dc2626; }
+
+  /* ── Summary / interpretation box ────────────────────────────── */
+  .interp-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #1e293b;
+  }
+  .interp-box ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+  .interp-box li { margin-bottom: 0.35rem; }
+
+  /* ── Normal-ranges reference ──────────────────────────────────── */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.75rem;
+  }
+  .ref-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+  .ref-card .ref-label { font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+  .ref-card .ref-range { font-size: 0.95rem; font-weight: 700; color: #1e293b; }
+  .ref-card .ref-unit  { font-size: 0.75rem; color: #94a3b8; }
+
+  /* ── Pain scale ───────────────────────────────────────────────── */
+  .pain-scale { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .pain-btn {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s, border-color 0.15s;
+  }
+  .pain-btn:hover { transform: scale(1.15); }
+  .pain-btn.selected { border-color: #1e293b; transform: scale(1.2); }
+
+  /* ── Print ───────────────────────────────────────────────────── */
+  @media print {
+    :global(header), :global(footer), :global(nav) { display: none !important; }
+    :global(main) { padding: 0 !important; }
+    .btn-row, .no-print { display: none !important; }
+    .vs-page { max-width: 100%; }
+  }
+</style>
+
+<div class="vs-page">
+  <h1>🩺 Vital Signs Assessor</h1>
+  <p class="subtitle">Enter patient vitals to get instant interpretation, clinical notes, and a running trend log.</p>
+
+  <!-- ── Patient context ─────────────────────────────────────── -->
+  <div class="vs-section">
+    <div class="vs-section-header">
+      <span class="icon">👤</span>
+      <h2>Patient Context</h2>
+    </div>
+    <div class="vs-section-body">
+      <div class="row3">
+        <div class="field-group">
+          <label for="pt-name">Patient Identifier</label>
+          <input id="pt-name" type="text" placeholder="e.g. Room 204 / initials" />
+        </div>
+        <div class="field-group">
+          <label for="pt-age">Age</label>
+          <input id="pt-age" type="number" min="0" max="120" placeholder="years" />
+        </div>
+        <div class="field-group">
+          <label for="pt-notes">Clinical Notes</label>
+          <input id="pt-notes" type="text" placeholder="diagnoses, context…" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Vital sign inputs ───────────────────────────────────── -->
+  <div class="vs-section">
+    <div class="vs-section-header">
+      <span class="icon">📋</span>
+      <h2>Enter Vitals</h2>
+    </div>
+    <div class="vs-section-body">
+
+      <!-- Blood Pressure -->
+      <div class="field-group">
+        <label>Blood Pressure</label>
+        <span class="hint">Normal adult: 90–119 / 60–79 mmHg</span>
+        <div class="row2">
+          <div class="field-group">
+            <label for="bp-sys">Systolic (mmHg)</label>
+            <input id="bp-sys" type="number" min="40" max="300" placeholder="e.g. 120" oninput="interpretVitals()" />
+          </div>
+          <div class="field-group">
+            <label for="bp-dia">Diastolic (mmHg)</label>
+            <input id="bp-dia" type="number" min="20" max="200" placeholder="e.g. 80" oninput="interpretVitals()" />
+          </div>
+        </div>
+        <div style="margin-top:0.4rem;">
+          <span id="bp-status" class="status-pill status-blank">—</span>
+          <span id="bp-interp" style="font-size:0.8rem; color:#475569; margin-left:0.5rem;"></span>
+        </div>
+      </div>
+
+      <!-- Pulse -->
+      <div class="field-group">
+        <label for="pulse">Pulse / Heart Rate (bpm)</label>
+        <span class="hint">Normal adult: 60–100 bpm</span>
+        <input id="pulse" type="number" min="20" max="300" placeholder="e.g. 72" oninput="interpretVitals()" />
+        <div style="margin-top:0.4rem;">
+          <span id="pulse-status" class="status-pill status-blank">—</span>
+          <span id="pulse-interp" style="font-size:0.8rem; color:#475569; margin-left:0.5rem;"></span>
+        </div>
+      </div>
+
+      <!-- Respirations -->
+      <div class="field-group">
+        <label for="rr">Respiratory Rate (breaths/min)</label>
+        <span class="hint">Normal adult: 12–20 breaths/min</span>
+        <input id="rr" type="number" min="1" max="80" placeholder="e.g. 16" oninput="interpretVitals()" />
+        <div style="margin-top:0.4rem;">
+          <span id="rr-status" class="status-pill status-blank">—</span>
+          <span id="rr-interp" style="font-size:0.8rem; color:#475569; margin-left:0.5rem;"></span>
+        </div>
+      </div>
+
+      <!-- Temperature -->
+      <div class="field-group">
+        <label>Temperature</label>
+        <span class="hint">Normal adult: 36.1–37.2 °C (97.0–99.0 °F)</span>
+        <div class="row2">
+          <div class="field-group">
+            <label for="temp-val">Value</label>
+            <input id="temp-val" type="number" step="0.1" placeholder="e.g. 37.0" oninput="interpretVitals()" />
+          </div>
+          <div class="field-group">
+            <label for="temp-unit">Unit</label>
+            <select id="temp-unit" onchange="interpretVitals()">
+              <option value="C">°C (Celsius)</option>
+              <option value="F">°F (Fahrenheit)</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:0.4rem;">
+          <span id="temp-status" class="status-pill status-blank">—</span>
+          <span id="temp-interp" style="font-size:0.8rem; color:#475569; margin-left:0.5rem;"></span>
+        </div>
+      </div>
+
+      <!-- SpO2 (bonus — commonly assessed alongside vitals) -->
+      <div class="field-group">
+        <label for="spo2">Oxygen Saturation / SpO₂ (%)</label>
+        <span class="hint">Normal: ≥ 95%</span>
+        <input id="spo2" type="number" min="50" max="100" placeholder="e.g. 98" oninput="interpretVitals()" />
+        <div style="margin-top:0.4rem;">
+          <span id="spo2-status" class="status-pill status-blank">—</span>
+          <span id="spo2-interp" style="font-size:0.8rem; color:#475569; margin-left:0.5rem;"></span>
+        </div>
+      </div>
+
+      <!-- Pain Assessment -->
+      <div class="field-group">
+        <label>Pain Scale (0–10) — Numeric Rating Scale</label>
+        <span class="hint">0 = No pain · 1–3 = Mild · 4–6 = Moderate · 7–10 = Severe</span>
+        <div class="pain-scale" id="pain-scale-btns"></div>
+        <input type="hidden" id="pain-score" value="" />
+        <div style="margin-top:0.4rem;">
+          <span id="pain-status" class="status-pill status-blank">—</span>
+          <span id="pain-interp" style="font-size:0.8rem; color:#475569; margin-left:0.5rem;"></span>
+        </div>
+        <div class="row2" style="margin-top:0.75rem;">
+          <div class="field-group">
+            <label for="pain-location">Pain Location</label>
+            <input id="pain-location" type="text" placeholder="e.g. left lower abdomen" />
+          </div>
+          <div class="field-group">
+            <label for="pain-quality">Pain Quality</label>
+            <input id="pain-quality" type="text" placeholder="e.g. sharp, dull, throbbing" />
+          </div>
+        </div>
+        <div class="field-group" style="margin-top:0.5rem;">
+          <label for="pain-notes">Additional Pain Notes</label>
+          <textarea id="pain-notes" placeholder="Radiation, aggravating/relieving factors, onset…"></textarea>
+        </div>
+      </div>
+
+      <!-- Timestamp -->
+      <div class="row2">
+        <div class="field-group">
+          <label for="vs-time">Date &amp; Time</label>
+          <input id="vs-time" type="datetime-local" />
+        </div>
+        <div class="field-group">
+          <label for="vs-site">Assessment Site / Route (temp)</label>
+          <select id="vs-site">
+            <option value="">— Select —</option>
+            <option>Oral</option>
+            <option>Axillary</option>
+            <option>Rectal</option>
+            <option>Tympanic</option>
+            <option>Temporal</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Interpretation summary ──────────────────────────────── -->
+  <div class="vs-section">
+    <div class="vs-section-header">
+      <span class="icon">🔍</span>
+      <h2>Clinical Interpretation</h2>
+    </div>
+    <div class="vs-section-body">
+      <div class="interp-box" id="summary-box">
+        <em style="color:#94a3b8;">Enter vitals above to see a clinical summary.</em>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="addToTrend()">➕ Add to Trend Log</button>
+        <button class="btn btn-outline" onclick="clearForm()">🗑 Clear</button>
+        <button class="btn btn-outline no-print" onclick="window.print()">🖨 Print</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Trend log ───────────────────────────────────────────── -->
+  <div class="vs-section" id="trend-section" style="display:none;">
+    <div class="vs-section-header">
+      <span class="icon">📈</span>
+      <h2>Trend Log</h2>
+    </div>
+    <div class="vs-section-body">
+      <div style="overflow-x:auto;">
+        <table class="trend-table" id="trend-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>BP (mmHg)</th>
+              <th>Pulse (bpm)</th>
+              <th>RR (br/min)</th>
+              <th>Temp</th>
+              <th>SpO₂ (%)</th>
+              <th>Pain</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="trend-body"></tbody>
+        </table>
+      </div>
+      <div class="btn-row" style="margin-top:0.5rem;">
+        <button class="btn btn-danger no-print" onclick="clearTrend()">🗑 Clear Log</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Normal ranges reference ─────────────────────────────── -->
+  <div class="vs-section">
+    <div class="vs-section-header">
+      <span class="icon">📚</span>
+      <h2>Normal Ranges Reference (Adult)</h2>
+    </div>
+    <div class="vs-section-body">
+      <div class="ref-grid">
+        <div class="ref-card">
+          <div class="ref-label">Systolic BP</div>
+          <div class="ref-range">90–119</div>
+          <div class="ref-unit">mmHg</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">Diastolic BP</div>
+          <div class="ref-range">60–79</div>
+          <div class="ref-unit">mmHg</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">Heart Rate</div>
+          <div class="ref-range">60–100</div>
+          <div class="ref-unit">bpm</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">Respiratory Rate</div>
+          <div class="ref-range">12–20</div>
+          <div class="ref-unit">breaths/min</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">Temperature</div>
+          <div class="ref-range">36.1–37.2</div>
+          <div class="ref-unit">°C (97.0–99.0 °F)</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">SpO₂</div>
+          <div class="ref-range">≥ 95</div>
+          <div class="ref-unit">%</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">Pain (NRS)</div>
+          <div class="ref-range">0</div>
+          <div class="ref-unit">No pain (goal)</div>
+        </div>
+        <div class="ref-card">
+          <div class="ref-label">MAP Target</div>
+          <div class="ref-range">≥ 65</div>
+          <div class="ref-unit">mmHg (critically ill)</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem; font-size:0.8rem; color:#64748b; line-height:1.6;">
+        <strong>BP Classifications (JNC / AHA):</strong><br/>
+        Normal: &lt;120/&lt;80 · Elevated: 120–129/&lt;80 · Stage 1 HTN: 130–139/80–89 · Stage 2 HTN: ≥140/≥90 · Hypertensive Crisis: &gt;180/&gt;120<br/>
+        Hypotension: &lt;90 systolic
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .vs-page -->
+
+<script>
+// ── Constants ──────────────────────────────────────────────────
+const F_TO_C_FACTOR = 5 / 9;
+
+// ── Helpers ────────────────────────────────────────────────────
+function nowLocalIso() {
+  const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
+// ── Pain scale buttons ─────────────────────────────────────────
+(function buildPainScale() {
+  const container = document.getElementById('pain-scale-btns');
+  const colors = [
+    '#22c55e','#4ade80','#86efac', // 0-2 green
+    '#fbbf24','#f59e0b','#d97706', // 3-5 amber
+    '#f97316','#ef4444','#dc2626','#b91c1c','#7f1d1d' // 6-10 red
+  ];
+  for (let i = 0; i <= 10; i++) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'pain-btn';
+    btn.textContent = i;
+    btn.style.background = colors[i];
+    btn.style.color = i <= 4 ? '#1e293b' : '#fff';
+    btn.dataset.val = i;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pain-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('pain-score').value = i;
+      interpretVitals();
+    });
+    container.appendChild(btn);
+  }
+})();
+
+// ── Set default datetime ───────────────────────────────────────
+(function setDefaultTime() {
+  document.getElementById('vs-time').value = nowLocalIso();
+})();
+
+// ── Helpers ────────────────────────────────────────────────────
+function setStatus(id, cls, label) {
+  const el = document.getElementById(id);
+  el.className = 'status-pill ' + cls;
+  el.textContent = label;
+}
+function setInterp(id, text) {
+  document.getElementById(id).textContent = text;
+}
+
+// ── MAP calculation ────────────────────────────────────────────
+function calcMAP(sys, dia) {
+  return Math.round(dia + (sys - dia) / 3);
+}
+
+// ── Classify BP ────────────────────────────────────────────────
+function classifyBP(sys, dia) {
+  if (sys < 90 || dia < 60) return { cls: 'status-low', label: 'Hypotension', interp: 'Systolic <90 or diastolic <60 mmHg. Monitor for dizziness, syncope, reduced perfusion.' };
+  if (sys < 120 && dia < 80)  return { cls: 'status-normal', label: 'Normal', interp: 'Blood pressure within normal adult range.' };
+  if (sys <= 129 && dia < 80) return { cls: 'status-low', label: 'Elevated', interp: 'Elevated systolic (120–129). Lifestyle modification recommended.' };
+  if (sys <= 139 || dia <= 89) return { cls: 'status-high', label: 'Stage 1 HTN', interp: 'Stage 1 hypertension (130–139 / 80–89). Monitor; medication may be indicated.' };
+  if (sys <= 180 && dia <= 120) return { cls: 'status-high', label: 'Stage 2 HTN', interp: 'Stage 2 hypertension (≥140 / ≥90). Likely requires antihypertensive therapy.' };
+  return { cls: 'status-high', label: '⚠ Crisis', interp: 'Hypertensive crisis (>180/>120). Notify provider immediately.' };
+}
+
+// ── Interpret all vitals ───────────────────────────────────────
+function interpretVitals() {
+  const sys  = parseFloat(document.getElementById('bp-sys').value);
+  const dia  = parseFloat(document.getElementById('bp-dia').value);
+  const hr   = parseFloat(document.getElementById('pulse').value);
+  const rr   = parseFloat(document.getElementById('rr').value);
+  const tempV = parseFloat(document.getElementById('temp-val').value);
+  const tempU = document.getElementById('temp-unit').value;
+  const spo2  = parseFloat(document.getElementById('spo2').value);
+  const pain  = document.getElementById('pain-score').value;
+
+  const findings = [];
+
+  // BP
+  if (!isNaN(sys) && !isNaN(dia)) {
+    const bp = classifyBP(sys, dia);
+    setStatus('bp-status', bp.cls, bp.label);
+    const map = calcMAP(sys, dia);
+    setInterp('bp-interp', `${bp.interp} MAP ≈ ${map} mmHg.`);
+    if (bp.label !== 'Normal') findings.push(`BP ${sys}/${dia} mmHg — ${bp.label} (MAP ${map})`);
+  } else {
+    setStatus('bp-status', 'status-blank', '—'); setInterp('bp-interp', '');
+  }
+
+  // Pulse
+  if (!isNaN(hr)) {
+    if (hr < 60)       { setStatus('pulse-status','status-low','Bradycardia'); setInterp('pulse-interp','HR <60 bpm. Assess for symptoms; check medications, conduction issues.'); findings.push(`Pulse ${hr} bpm — Bradycardia`); }
+    else if (hr <= 100){ setStatus('pulse-status','status-normal','Normal'); setInterp('pulse-interp','Heart rate within normal adult range.'); }
+    else               { setStatus('pulse-status','status-high','Tachycardia'); setInterp('pulse-interp','HR >100 bpm. Assess for pain, fever, dehydration, anxiety, cardiac dysrhythmia.'); findings.push(`Pulse ${hr} bpm — Tachycardia`); }
+  } else {
+    setStatus('pulse-status','status-blank','—'); setInterp('pulse-interp','');
+  }
+
+  // RR
+  if (!isNaN(rr)) {
+    if (rr < 12)       { setStatus('rr-status','status-low','Bradypnea'); setInterp('rr-interp','RR <12 breaths/min. Assess airway; consider opioid effect, CNS depression.'); findings.push(`RR ${rr} — Bradypnea`); }
+    else if (rr <= 20) { setStatus('rr-status','status-normal','Normal'); setInterp('rr-interp','Respiratory rate within normal adult range.'); }
+    else if (rr <= 24) { setStatus('rr-status','status-high','Mildly Elevated'); setInterp('rr-interp','RR 21–24 breaths/min. Monitor; may indicate early respiratory distress or anxiety.'); findings.push(`RR ${rr} — Mildly elevated`); }
+    else               { setStatus('rr-status','status-high','Tachypnea'); setInterp('rr-interp','RR >24 breaths/min. Assess O₂ sat, lung sounds; may indicate respiratory distress, sepsis, PE.'); findings.push(`RR ${rr} — Tachypnea`); }
+  } else {
+    setStatus('rr-status','status-blank','—'); setInterp('rr-interp','');
+  }
+
+  // Temperature — convert to Celsius for logic
+  if (!isNaN(tempV)) {
+    const tempC = tempU === 'F' ? (tempV - 32) * F_TO_C_FACTOR : tempV;
+    const disp  = tempU === 'F' ? `${tempV} °F (${tempC.toFixed(1)} °C)` : `${tempV} °C`;
+    if (tempC < 35)        { setStatus('temp-status','status-low','Hypothermia'); setInterp('temp-interp',`${disp} — Temp <35°C. Initiate warming measures; assess for cause.`); findings.push(`Temp ${disp} — Hypothermia`); }
+    else if (tempC < 36.1) { setStatus('temp-status','status-low','Low Normal'); setInterp('temp-interp',`${disp} — Slightly below normal. Monitor.`); }
+    else if (tempC <= 37.2){ setStatus('temp-status','status-normal','Normal'); setInterp('temp-interp',`${disp} — Temperature within normal range.`); }
+    else if (tempC < 38.3) { setStatus('temp-status','status-high','Low-grade Fever'); setInterp('temp-interp',`${disp} — Low-grade fever (37.3–38.2°C). Monitor; assess for infection or inflammation.`); findings.push(`Temp ${disp} — Low-grade fever`); }
+    else if (tempC < 40)   { setStatus('temp-status','status-high','Fever'); setInterp('temp-interp',`${disp} — Fever (≥38.3°C). Assess for infection; administer antipyretics per order; notify provider.`); findings.push(`Temp ${disp} — Fever`); }
+    else                   { setStatus('temp-status','status-high','⚠ Hyperthermia'); setInterp('temp-interp',`${disp} — High fever ≥40°C. Urgent intervention required; cooling measures, notify provider immediately.`); findings.push(`Temp ${disp} — Hyperthermia ≥40°C`); }
+  } else {
+    setStatus('temp-status','status-blank','—'); setInterp('temp-interp','');
+  }
+
+  // SpO2
+  if (!isNaN(spo2)) {
+    if (spo2 < 90)       { setStatus('spo2-status','status-high','Critical'); setInterp('spo2-interp','SpO₂ <90%. Hypoxia — apply O₂ immediately; notify provider; assess airway.'); findings.push(`SpO₂ ${spo2}% — Critical hypoxia`); }
+    else if (spo2 < 94)  { setStatus('spo2-status','status-high','Low'); setInterp('spo2-interp','SpO₂ 90–93%. Below acceptable range; consider supplemental O₂; monitor closely.'); findings.push(`SpO₂ ${spo2}% — Below normal`); }
+    else if (spo2 < 95)  { setStatus('spo2-status','status-low','Borderline'); setInterp('spo2-interp','SpO₂ 94%. Borderline; monitor trending.'); }
+    else                  { setStatus('spo2-status','status-normal','Normal'); setInterp('spo2-interp','Oxygen saturation within acceptable range.'); }
+  } else {
+    setStatus('spo2-status','status-blank','—'); setInterp('spo2-interp','');
+  }
+
+  // Pain
+  if (pain !== '') {
+    const p = parseInt(pain);
+    if (p === 0)      { setStatus('pain-status','status-normal','No Pain'); setInterp('pain-interp','Patient reports no pain (0/10).'); }
+    else if (p <= 3)  { setStatus('pain-status','status-low','Mild'); setInterp('pain-interp',`Mild pain (${p}/10). Non-pharmacological measures may suffice; reassess after intervention.`); findings.push(`Pain ${p}/10 — Mild`); }
+    else if (p <= 6)  { setStatus('pain-status','status-high','Moderate'); setInterp('pain-interp',`Moderate pain (${p}/10). Pharmacological and non-pharmacological interventions indicated; notify provider.`); findings.push(`Pain ${p}/10 — Moderate`); }
+    else              { setStatus('pain-status','status-high','Severe'); setInterp('pain-interp',`Severe pain (${p}/10). Priority intervention required; notify provider promptly.`); findings.push(`Pain ${p}/10 — Severe`); }
+  } else {
+    setStatus('pain-status','status-blank','—'); setInterp('pain-interp','');
+  }
+
+  // ── Summary box ─────────────────────────────────────────────
+  const box = document.getElementById('summary-box');
+  if (findings.length === 0) {
+    box.innerHTML = '<span style="color:#22c55e; font-weight:700;">✅ All entered vitals are within normal limits.</span>';
+  } else {
+    box.innerHTML = '<strong style="color:#dc2626;">⚠ Abnormal Findings:</strong><ul>' +
+      findings.map(f => `<li>${f}</li>`).join('') + '</ul>' +
+      '<p style="margin-top:0.5rem; font-size:0.85rem; color:#475569;">Review each flagged vital sign. Document findings, notify provider as indicated, and reassess after interventions.</p>';
+  }
+}
+
+// ── Add to trend log ───────────────────────────────────────────
+function addToTrend() {
+  const sys   = document.getElementById('bp-sys').value;
+  const dia   = document.getElementById('bp-dia').value;
+  const hr    = document.getElementById('pulse').value;
+  const rr    = document.getElementById('rr').value;
+  const tempV = document.getElementById('temp-val').value;
+  const tempU = document.getElementById('temp-unit').value;
+  const spo2  = document.getElementById('spo2').value;
+  const pain  = document.getElementById('pain-score').value;
+  const ts    = document.getElementById('vs-time').value;
+
+  const timeDisplay = ts ? new Date(ts).toLocaleString([], {month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—';
+  const bpDisplay   = sys && dia ? `${sys}/${dia}` : '—';
+  const hrDisplay   = hr   || '—';
+  const rrDisplay   = rr   || '—';
+  const tempDisplay = tempV ? `${tempV} °${tempU}` : '—';
+  const spo2Display = spo2  ? `${spo2}%` : '—';
+  const painDisplay = pain !== '' ? `${pain}/10` : '—';
+
+  const tbody = document.getElementById('trend-body');
+  const idx   = tbody.rows.length;
+  const row   = tbody.insertRow();
+  row.id = `trend-row-${idx}`;
+  row.innerHTML = `
+    <td>${timeDisplay}</td>
+    <td>${bpDisplay}</td>
+    <td>${hrDisplay}</td>
+    <td>${rrDisplay}</td>
+    <td>${tempDisplay}</td>
+    <td>${spo2Display}</td>
+    <td>${painDisplay}</td>
+    <td><button class="del-btn" onclick="deleteRow('trend-row-${idx}')" aria-label="Delete row">✕</button></td>
+  `;
+
+  document.getElementById('trend-section').style.display = '';
+}
+
+function deleteRow(id) {
+  const row = document.getElementById(id);
+  if (row) row.remove();
+  if (document.getElementById('trend-body').rows.length === 0) {
+    document.getElementById('trend-section').style.display = 'none';
+  }
+}
+
+function clearTrend() {
+  document.getElementById('trend-body').innerHTML = '';
+  document.getElementById('trend-section').style.display = 'none';
+}
+
+// ── Clear form ─────────────────────────────────────────────────
+function clearForm() {
+  ['bp-sys','bp-dia','pulse','rr','temp-val','spo2','pain-location','pain-quality','pain-notes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('pain-score').value = '';
+  document.querySelectorAll('.pain-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('temp-unit').value = 'C';
+  document.getElementById('vs-site').value = '';
+  ['bp-status','pulse-status','rr-status','temp-status','spo2-status','pain-status'].forEach(id => {
+    setStatus(id,'status-blank','—');
+  });
+  ['bp-interp','pulse-interp','rr-interp','temp-interp','spo2-interp','pain-interp'].forEach(id => {
+    setInterp(id,'');
+  });
+  document.getElementById('summary-box').innerHTML = '<em style="color:#94a3b8;">Enter vitals above to see a clinical summary.</em>';
+
+  // Reset time to now
+  document.getElementById('vs-time').value = nowLocalIso();
+}
+</script>
+
+</Layout>
